@@ -9,6 +9,7 @@ from contextlib import asynccontextmanager
 
 from app.config import settings
 from app.database import init_db, close_db
+from app.routers import auth_router, lessons_router, certificates_router
 
 
 @asynccontextmanager
@@ -46,6 +47,11 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+# Register routers
+app.include_router(auth_router)
+app.include_router(lessons_router)
+app.include_router(certificates_router)
 
 
 @app.get("/")
