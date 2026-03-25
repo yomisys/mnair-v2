@@ -1,0 +1,60 @@
+id: day1_what_is_ai_en
+day: 1
+topic: what_is_ai
+language: en
+title: "What is Artificial Intelligence?"
+content: |
+  Artificial Intelligence (AI) is when computers and machines can do things that normally need human intelligence. Think of it as teaching computers to learn, think, and make decisions.
+
+  In Nigeria, AI is already around you! When your bank app detects fraud, when Google translates Yoruba to English, or when your phone recognizes your face - that's AI at work.
+
+  AI can:
+  - Recognize patterns (like spotting fake naira notes)
+  - Make predictions (like weather forecasts for farmers)
+  - Understand language (like chatbots answering questions)
+  - See and identify things (like cameras reading license plates)
+
+  AI is not magic or human-like robots. It's computer programs that learn from data to solve specific problems. Just like you learned to ride okada by practicing, AI learns by seeing many examples.
+
+  Nigeria needs AI skills! From agriculture to healthcare, finance to education - AI can help solve our local challenges. That's why you're learning this!
+
+quiz:
+  - question: "What is Artificial Intelligence?"
+    options:
+      - "A. Computers that can learn and make decisions"
+      - "B. Only robots that look like humans"
+      - "C. Magic that makes computers smart"
+      - "D. A type of phone application"
+    correct: 0
+
+  - question: "Which Nigerian example shows AI in action?"
+    options:
+      - "A. Using a Nokia 3310 phone"
+      - "B. Bank apps detecting fraud"
+      - "C. Writing with pen and paper"
+      - "D. Cooking jollof rice"
+    correct: 1
+
+  - question: "How does AI learn?"
+    options:
+      - "A. By magic spells"
+      - "B. By seeing many examples and patterns"
+      - "C. Only from textbooks"
+      - "D. It doesn't need to learn"
+    correct: 1
+
+  - question: "Why is AI important for Nigeria?"
+    options:
+      - "A. It's only useful in America"
+      - "B. It can help solve local challenges"
+      - "C. We don't need it here"
+      - "D. Only big companies can use it"
+    correct: 1
+
+  - question: "What can AI NOT do currently?"
+    options:
+      - "A. Recognize your face"
+      - "B. Translate languages"
+      - "C. Think exactly like a human brain"
+      - "D. Detect patterns in data"
+    correct: 2

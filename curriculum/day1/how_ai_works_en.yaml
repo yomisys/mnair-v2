@@ -1,0 +1,69 @@
+id: day1_how_ai_works_en
+day: 1
+topic: how_ai_works
+language: en
+title: "How Does AI Work?"
+content: |
+  AI works by learning from data - lots and lots of examples. Imagine teaching a child what a mango is. You show them many mangoes until they can recognize any mango, even ones they've never seen before. AI learns the same way!
+
+  The Three Steps of AI:
+
+  1. DATA COLLECTION: Gather many examples
+     - For face recognition: thousands of face photos
+     - For language translation: millions of sentences
+     - For fraud detection: records of past transactions
+
+  2. TRAINING: The AI studies the patterns
+     - Like how you learned that green + yellow often means "Lagos danfo"
+     - AI finds patterns humans might miss
+     - This is called "machine learning"
+
+  3. PREDICTION: AI uses what it learned
+     - Your phone predicts the next word when typing
+     - YouTube recommends videos you might like
+     - Banks predict if a transaction is suspicious
+
+  Think of AI like agbero at motor park - after seeing thousands of passengers, he can quickly spot who's traveling far just by their luggage!
+
+  The more good data AI sees, the better it becomes. Bad data creates bad AI - this is why quality matters.
+
+quiz:
+  - question: "What does AI need most to learn?"
+    options:
+      - "A. Electricity only"
+      - "B. Lots of data and examples"
+      - "C. Magic powers"
+      - "D. Just programming"
+    correct: 1
+
+  - question: "What are the three main steps of AI?"
+    options:
+      - "A. Buy, Sell, Profit"
+      - "B. Read, Write, Delete"
+      - "C. Data Collection, Training, Prediction"
+      - "D. Install, Run, Close"
+    correct: 2
+
+  - question: "What happens if AI trains on bad data?"
+    options:
+      - "A. It makes bad predictions"
+      - "B. It becomes smarter anyway"
+      - "C. Nothing changes"
+      - "D. It fixes itself"
+    correct: 0
+
+  - question: "What is 'training' in AI?"
+    options:
+      - "A. Teaching humans to code"
+      - "B. Running on a treadmill"
+      - "C. AI studying patterns in data"
+      - "D. Installing updates"
+    correct: 2
+
+  - question: "Which is an example of AI prediction?"
+    options:
+      - "A. Your phone suggesting next word while typing"
+      - "B. Pressing a power button"
+      - "C. Printing a document"
+      - "D. Turning on your generator"
+    correct: 0

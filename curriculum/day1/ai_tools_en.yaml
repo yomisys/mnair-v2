@@ -1,0 +1,79 @@
+id: day1_ai_tools_en
+day: 1
+topic: ai_tools
+language: en
+title: "AI Tools You Can Use Today"
+content: |
+  You don't need to be a programmer to use AI! Here are free AI tools you can start using on your phone right now:
+
+  CHATGPT (chat.openai.com):
+  - Ask questions and get answers
+  - Write emails, essays, or business plans
+  - Translate between languages
+  - Works on any phone browser, even with small data
+
+  GOOGLE LENS:
+  - Point your camera at text to translate it
+  - Identify plants, animals, or products
+  - Scan and copy text from photos
+  - Free on Android phones
+
+  GRAMMARLY:
+  - Checks your English spelling and grammar
+  - Helps you write better emails and messages
+  - Free version works well for basic needs
+
+  CANVA AI:
+  - Design posters, logos, and social media posts
+  - AI suggests designs based on what you need
+  - Great for small business owners
+
+  GOOGLE TRANSLATE:
+  - Translate between 100+ languages including Yoruba, Igbo, Hausa
+  - Works offline if you download the language pack
+  - Can translate text in photos
+
+  These tools are FREE or have free versions. You can use them on cheap Android phones with limited data. The key is to start experimenting and learning!
+
+  Remember: The best way to learn AI is to use it. Start today!
+
+quiz:
+  - question: "What can ChatGPT help you do?"
+    options:
+      - "A. Cook jollof rice"
+      - "B. Answer questions and write text"
+      - "C. Fix your generator"
+      - "D. Send money"
+    correct: 1
+
+  - question: "Which AI tool can translate text in photos?"
+    options:
+      - "A. Calculator"
+      - "B. Google Lens"
+      - "C. Clock app"
+      - "D. Contacts"
+    correct: 1
+
+  - question: "Do you need expensive phone to use these AI tools?"
+    options:
+      - "A. Yes, iPhone only"
+      - "B. Yes, flagship Android only"
+      - "C. No, most work on cheap Android phones"
+      - "D. You need a laptop"
+    correct: 2
+
+  - question: "What does Grammarly help with?"
+    options:
+      - "A. Math calculations"
+      - "B. Checking spelling and grammar"
+      - "C. Playing music"
+      - "D. Making phone calls"
+    correct: 1
+
+  - question: "Can Google Translate work offline?"
+    options:
+      - "A. No, never"
+      - "B. Yes, if you download the language pack"
+      - "C. Only in America"
+      - "D. Only with premium subscription"
+    correct: 1

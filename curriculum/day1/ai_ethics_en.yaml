@@ -1,0 +1,77 @@
+id: day1_ai_ethics_en
+day: 1
+topic: ai_ethics
+language: en
+title: "AI Ethics and Responsibility"
+content: |
+  AI is powerful, but with power comes responsibility! As Nigerians building and using AI, we must think about ethics - doing what's right.
+
+  KEY ETHICAL ISSUES:
+
+  1. BIAS AND FAIRNESS:
+     - If AI trains only on Igbo names, it may not recognize Hausa names
+     - Facial recognition trained only on oyinbo faces may fail on Nigerian faces
+     - Solution: Use diverse Nigerian data when building AI
+
+  2. PRIVACY:
+     - AI needs data, but people's information must be protected
+     - Remember the Nigeria Data Protection Act (NDPA)
+     - Never share personal data without permission
+
+  3. JOBS AND DISPLACEMENT:
+     - AI may replace some jobs (like automatic toll gates replacing collectors)
+     - But AI also creates NEW jobs (AI trainers, data analysts)
+     - Solution: Learn AI skills to stay relevant!
+
+  4. MISINFORMATION:
+     - AI can create fake videos ("deepfakes") or false news
+     - ChatGPT can make up "facts" - always verify!
+     - Think before sharing AI-generated content
+
+  5. NIGERIAN CONTEXT:
+     - Build AI that understands our languages and culture
+     - Don't just copy American solutions - solve Nigerian problems
+     - Include people from all 36 states in AI development
+
+  As you learn AI, ask yourself: "Is this fair? Is this helpful? Is this honest?" That's ethical AI!
+
+quiz:
+  - question: "What is AI bias?"
+    options:
+      - "A. When AI works perfectly for everyone"
+      - "B. When AI favors one group over another unfairly"
+      - "C. When AI is too expensive"
+      - "D. When AI runs slowly"
+    correct: 1
+
+  - question: "What is Nigeria's data protection law called?"
+    options:
+      - "A. USA Privacy Act"
+      - "B. Lagos Data Law"
+      - "C. Nigeria Data Protection Act (NDPA)"
+      - "D. Internet Safety Law"
+    correct: 2
+
+  - question: "What should you do with AI-generated information?"
+    options:
+      - "A. Believe everything immediately"
+      - "B. Verify before sharing"
+      - "C. Share as quickly as possible"
+      - "D. Ignore all of it"
+    correct: 1
+
+  - question: "How can we reduce AI bias in Nigeria?"
+    options:
+      - "A. Use only foreign AI"
+      - "B. Use diverse Nigerian data from all tribes"
+      - "C. Build AI only in Lagos"
+      - "D. Ignore the problem"
+    correct: 1
+
+  - question: "What is a 'deepfake'?"
+    options:
+      - "A. A real video"
+      - "B. AI-generated fake video or audio"
+      - "C. A type of phone"
+      - "D. A new dance move"
+    correct: 1

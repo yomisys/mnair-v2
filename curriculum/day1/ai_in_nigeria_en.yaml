@@ -1,0 +1,74 @@
+id: day1_ai_in_nigeria_en
+day: 1
+topic: ai_in_nigeria
+language: en
+title: "AI in Nigeria Today"
+content: |
+  AI is not just for Silicon Valley - it's already solving Nigerian problems right here at home!
+
+  FINANCE & BANKING:
+  - Kuda, OPay, and PalmPay use AI to detect fraud and approve loans instantly
+  - AI checks if transactions are suspicious before they go through
+  - Credit scoring without collateral - AI analyzes your phone usage patterns
+
+  AGRICULTURE:
+  - FarmCrowdy uses AI to predict crop yields
+  - Weather prediction apps help farmers know when to plant
+  - Image recognition spots crop diseases from phone photos
+
+  HEALTHCARE:
+  - Some Nigerian hospitals use AI to read X-rays and detect diseases
+  - Chatbots answer basic health questions in local languages
+  - AI helps predict malaria outbreaks before they spread
+
+  TRANSPORTATION:
+  - Google Maps predicts Lagos traffic (AI learns from millions of trips)
+  - Ride-hailing apps like Bolt match drivers to riders efficiently
+  - Some companies test AI for pothole detection on Nigerian roads
+
+  EDUCATION:
+  - Apps like uLesson personalize learning for each student
+  - AI tutors can answer questions in Yoruba, Igbo, or Hausa
+
+  The opportunities are massive! Nigeria has unique problems that AI can help solve - from power distribution to waste management.
+
+quiz:
+  - question: "Which Nigerian sector uses AI for fraud detection?"
+    options:
+      - "A. Traditional markets only"
+      - "B. Banking and fintech"
+      - "C. Tailoring shops"
+      - "D. Football clubs"
+    correct: 1
+
+  - question: "How can AI help Nigerian farmers?"
+    options:
+      - "A. By farming for them"
+      - "B. Predicting weather and detecting crop diseases"
+      - "C. Harvesting crops manually"
+      - "D. It cannot help farmers"
+    correct: 1
+
+  - question: "What does Google Maps use AI for in Lagos?"
+    options:
+      - "A. To build new roads"
+      - "B. To predict traffic patterns"
+      - "C. To name streets"
+      - "D. To count houses"
+    correct: 1
+
+  - question: "Which statement about AI in Nigeria is TRUE?"
+    options:
+      - "A. AI only works in America"
+      - "B. Nigeria has no AI companies"
+      - "C. AI is already solving Nigerian problems"
+      - "D. AI is too expensive for Nigeria"
+    correct: 2
+
+  - question: "How can AI help Nigerian healthcare?"
+    options:
+      - "A. By replacing all doctors"
+      - "B. Reading X-rays and predicting disease outbreaks"
+      - "C. Building hospitals"
+      - "D. Manufacturing drugs"
+    correct: 1
