@@ -6,7 +6,7 @@ Handles user registration, login, and profile management
 from __future__ import annotations
 from datetime import timedelta
 
-from fastapi import APIRouter, Depends, HTTPException, status
+from fastapi import APIRouter, Depends, HTTPException, status, Request
 from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession
 
@@ -26,12 +26,14 @@ from app.utils.auth import (
     get_current_user,
 )
 from app.config import settings
+from app.middleware.rate_limit import AUTH_RATE_LIMIT, DEFAULT_RATE_LIMIT
 
 router = APIRouter(prefix="/api/v1/auth", tags=["Authentication"])
 
 
 @router.post("/register", response_model=UserResponse, status_code=status.HTTP_201_CREATED)
 async def register_user(
+    request: Request,
     user_data: UserRegister,
     db: AsyncSession = Depends(get_db)
 ):
@@ -76,6 +78,7 @@ async def register_user(
 
 @router.post("/login", response_model=Token)
 async def login_user(
+    request: Request,
     credentials: UserLogin,
     db: AsyncSession = Depends(get_db)
 ):
@@ -147,6 +150,7 @@ async def login_user(
 
 @router.get("/me", response_model=UserResponse)
 async def get_current_user_profile(
+    request: Request,
     current_user: User = Depends(get_current_user)
 ):
     """
