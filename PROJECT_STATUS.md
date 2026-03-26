@@ -290,7 +290,7 @@
 
 #### Modules 7 & 8: Public Landing + Certificate Verification
 - **Status**: ✅ Complete
-- **Commit**: `[pending]`
+- **Commit**: `175f190`
 - **Files**: 3 React components
 - **Key Features**:
   - Public landing page with Nigerian branding
