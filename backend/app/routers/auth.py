@@ -118,13 +118,13 @@ async def login_user(
             )
 
         # Admin users should have password_hash field
-        if not hasattr(user, "password_hash") or not user.password_hash:
+        if not hasattr(user, "hashed_password") or not user.hashed_password:
             raise HTTPException(
                 status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
                 detail="Admin account not properly configured"
             )
 
-        if not verify_password(credentials.password, user.password_hash):
+        if not verify_password(credentials.password, user.hashed_password):
             raise HTTPException(
                 status_code=status.HTTP_401_UNAUTHORIZED,
                 detail="Incorrect password"

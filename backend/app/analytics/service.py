@@ -177,8 +177,8 @@ class AnalyticsService:
             select(func.count(LessonProgress.id)).where(
                 and_(
                     LessonProgress.is_completed == True,
-                    LessonProgress.completion_date >= start_of_day,
-                    LessonProgress.completion_date <= end_of_day
+                    LessonProgress.completed_at >= start_of_day,
+                    LessonProgress.completed_at <= end_of_day
                 )
             )
         )
@@ -205,8 +205,8 @@ class AnalyticsService:
         attempts_today_result = await self.db.execute(
             select(func.count(QuizAttempt.id)).where(
                 and_(
-                    QuizAttempt.attempt_date >= start_of_day,
-                    QuizAttempt.attempt_date <= end_of_day
+                    QuizAttempt.attempted_at >= start_of_day,
+                    QuizAttempt.attempted_at <= end_of_day
                 )
             )
         )

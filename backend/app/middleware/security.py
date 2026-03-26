@@ -87,6 +87,6 @@ class SecurityHeadersMiddleware(BaseHTTPMiddleware):
         response.headers["Permissions-Policy"] = ", ".join(permissions_directives)
 
         # Remove server header to avoid information disclosure
-        response.headers.pop("Server", None)
+        if "Server" in response.headers: del response.headers["Server"]
 
         return response

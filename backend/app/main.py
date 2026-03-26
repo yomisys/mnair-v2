@@ -18,6 +18,8 @@ from app.routers import (
     analytics_router,
     employers_router,
 )
+from app.channels.whatsapp import router as whatsapp_router
+from app.routers.test_whatsapp import router as test_whatsapp_router
 from app.middleware import (
     limiter,
     SecurityHeadersMiddleware,
@@ -34,21 +36,21 @@ async def lifespan(app: FastAPI):
     Handles startup and shutdown events
     """
     # Startup
-    print("🚀 Starting MNAIR Platform...")
+    print("[START] Starting MNAIR Platform...")
 
     # Setup logging
     setup_logging(log_level=settings.LOG_LEVEL if hasattr(settings, 'LOG_LEVEL') else "INFO")
-    print("✅ Logging configured")
+    print("[OK] Logging configured")
 
     await init_db()
-    print("✅ Database initialized")
+    print("[OK] Database initialized")
 
     yield
 
     # Shutdown
-    print("🛑 Shutting down MNAIR Platform...")
+    print("[STOP] Shutting down MNAIR Platform...")
     await close_db()
-    print("✅ Database connections closed")
+    print("[OK] Database connections closed")
 
 
 # Create FastAPI app
@@ -64,22 +66,24 @@ app.state.limiter = limiter
 app.add_exception_handler(RateLimitExceeded, _rate_limit_exceeded_handler)
 
 # Add security middleware (order matters!)
+# Temporarily disabled custom middleware due to Starlette BaseHTTPMiddleware issues
+# TODO: Reimplement as pure ASGI middleware for production
 # 1. Security headers (first to apply to all responses)
-enable_hsts = settings.APP_ENV == "production"  # Only enable HSTS in production
-app.add_middleware(SecurityHeadersMiddleware, enable_hsts=enable_hsts)
+# enable_hsts = settings.APP_ENV == "production"  # Only enable HSTS in production
+# app.add_middleware(SecurityHeadersMiddleware, enable_hsts=enable_hsts)
 
 # 2. Request logging
-app.add_middleware(RequestLoggingMiddleware, log_body=False)  # Don't log bodies for privacy
+# app.add_middleware(RequestLoggingMiddleware, log_body=False)  # Don't log bodies for privacy
 
 # 3. Input validation
-app.add_middleware(
-    InputValidationMiddleware,
-    max_body_size=10 * 1024 * 1024,  # 10MB max body size
-    enable_sql_injection_check=True,
-    enable_xss_check=True,
-    enable_path_traversal_check=True,
-    enable_command_injection_check=False,  # Disabled for now (too many false positives)
-)
+# app.add_middleware(
+#     InputValidationMiddleware,
+#     max_body_size=10 * 1024 * 1024,  # 10MB max body size
+#     enable_sql_injection_check=True,
+#     enable_xss_check=True,
+#     enable_path_traversal_check=True,
+#     enable_command_injection_check=False,  # Disabled for now (too many false positives)
+# )
 
 # 4. CORS (last to ensure proper preflight handling)
 app.add_middleware(
@@ -98,6 +102,8 @@ app.include_router(lessons_router)
 app.include_router(certificates_router)
 app.include_router(analytics_router)
 app.include_router(employers_router)
+app.include_router(whatsapp_router)
+app.include_router(test_whatsapp_router)
 
 
 @app.get("/")

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import {
   Box,
@@ -9,6 +9,11 @@ import {
   Card,
   CardContent,
   Stack,
+  Dialog,
+  DialogTitle,
+  DialogContent,
+  DialogActions,
+  Divider,
 } from '@mui/material'
 import {
   School as SchoolIcon,
@@ -17,6 +22,9 @@ import {
   EmojiEvents as TrophyIcon,
   Speed as SpeedIcon,
   Public as PublicIcon,
+  WhatsApp as WhatsAppIcon,
+  Message as MessageIcon,
+  Dialpad as DialpadIcon,
 } from '@mui/icons-material'
 
 const FeatureCard: React.FC<{
@@ -50,6 +58,15 @@ const FeatureCard: React.FC<{
 
 const Home: React.FC = () => {
   const navigate = useNavigate()
+  const [openDialog, setOpenDialog] = useState(false)
+
+  const handleStartLearning = () => {
+    setOpenDialog(true)
+  }
+
+  const handleCloseDialog = () => {
+    setOpenDialog(false)
+  }
 
   return (
     <Box>
@@ -87,6 +104,7 @@ const Home: React.FC = () => {
             <Button
               variant="contained"
               size="large"
+              onClick={handleStartLearning}
               sx={{
                 bgcolor: 'white',
                 color: 'primary.main',
@@ -287,6 +305,7 @@ const Home: React.FC = () => {
             <Button
               variant="contained"
               size="large"
+              onClick={handleStartLearning}
               sx={{
                 bgcolor: 'white',
                 color: 'primary.main',
@@ -300,6 +319,7 @@ const Home: React.FC = () => {
             <Button
               variant="outlined"
               size="large"
+              onClick={handleStartLearning}
               sx={{
                 borderColor: 'white',
                 color: 'white',
@@ -313,6 +333,161 @@ const Home: React.FC = () => {
           </Stack>
         </Container>
       </Box>
+
+      {/* Start Learning Dialog */}
+      <Dialog
+        open={openDialog}
+        onClose={handleCloseDialog}
+        maxWidth="sm"
+        fullWidth
+      >
+        <DialogTitle>
+          <Typography variant="h5" fontWeight="bold">
+            How to Start Learning
+          </Typography>
+        </DialogTitle>
+        <DialogContent>
+          <Typography variant="body2" color="text.secondary" sx={{ mb: 3 }}>
+            Choose your preferred method to begin your AI literacy journey:
+          </Typography>
+
+          <Stack spacing={3}>
+            {/* WhatsApp Option */}
+            <Card variant="outlined">
+              <CardContent>
+                <Stack direction="row" spacing={2} alignItems="flex-start">
+                  <Box
+                    sx={{
+                      p: 1.5,
+                      borderRadius: 2,
+                      bgcolor: 'success.light',
+                      color: 'white',
+                    }}
+                  >
+                    <WhatsAppIcon />
+                  </Box>
+                  <Box flex={1}>
+                    <Typography variant="h6" gutterBottom>
+                      WhatsApp
+                    </Typography>
+                    <Typography variant="body2" color="text.secondary" sx={{ mb: 1 }}>
+                      Send <strong>"START"</strong> to:
+                    </Typography>
+                    <Typography
+                      variant="h6"
+                      color="primary"
+                      sx={{
+                        p: 1,
+                        bgcolor: 'grey.100',
+                        borderRadius: 1,
+                        fontFamily: 'monospace',
+                      }}
+                    >
+                      +234 XXX XXX XXXX
+                    </Typography>
+                    <Typography variant="caption" color="text.secondary" display="block" sx={{ mt: 1 }}>
+                      (WhatsApp number to be configured)
+                    </Typography>
+                  </Box>
+                </Stack>
+              </CardContent>
+            </Card>
+
+            {/* USSD Option */}
+            <Card variant="outlined">
+              <CardContent>
+                <Stack direction="row" spacing={2} alignItems="flex-start">
+                  <Box
+                    sx={{
+                      p: 1.5,
+                      borderRadius: 2,
+                      bgcolor: 'primary.main',
+                      color: 'white',
+                    }}
+                  >
+                    <DialpadIcon />
+                  </Box>
+                  <Box flex={1}>
+                    <Typography variant="h6" gutterBottom>
+                      USSD (No Internet Required)
+                    </Typography>
+                    <Typography variant="body2" color="text.secondary" sx={{ mb: 1 }}>
+                      Dial this code on your phone:
+                    </Typography>
+                    <Typography
+                      variant="h6"
+                      color="primary"
+                      sx={{
+                        p: 1,
+                        bgcolor: 'grey.100',
+                        borderRadius: 1,
+                        fontFamily: 'monospace',
+                      }}
+                    >
+                      *384*8080#
+                    </Typography>
+                    <Typography variant="caption" color="text.secondary" display="block" sx={{ mt: 1 }}>
+                      Works on all Nigerian networks
+                    </Typography>
+                  </Box>
+                </Stack>
+              </CardContent>
+            </Card>
+
+            {/* SMS Option */}
+            <Card variant="outlined">
+              <CardContent>
+                <Stack direction="row" spacing={2} alignItems="flex-start">
+                  <Box
+                    sx={{
+                      p: 1.5,
+                      borderRadius: 2,
+                      bgcolor: 'info.main',
+                      color: 'white',
+                    }}
+                  >
+                    <MessageIcon />
+                  </Box>
+                  <Box flex={1}>
+                    <Typography variant="h6" gutterBottom>
+                      SMS
+                    </Typography>
+                    <Typography variant="body2" color="text.secondary" sx={{ mb: 1 }}>
+                      Send <strong>"START"</strong> to:
+                    </Typography>
+                    <Typography
+                      variant="h6"
+                      color="primary"
+                      sx={{
+                        p: 1,
+                        bgcolor: 'grey.100',
+                        borderRadius: 1,
+                        fontFamily: 'monospace',
+                      }}
+                    >
+                      38480
+                    </Typography>
+                    <Typography variant="caption" color="text.secondary" display="block" sx={{ mt: 1 }}>
+                      Standard SMS rates may apply
+                    </Typography>
+                  </Box>
+                </Stack>
+              </CardContent>
+            </Card>
+          </Stack>
+
+          <Divider sx={{ my: 3 }} />
+
+          <Typography variant="body2" color="text.secondary" align="center">
+            After connecting, follow the prompts to select your language and start Day 1!
+          </Typography>
+        </DialogContent>
+        <DialogActions sx={{ p: 2 }}>
+          <Button onClick={handleCloseDialog} variant="contained" fullWidth>
+            Got It
+          </Button>
+        </DialogActions>
+      </Dialog>
     </Box>
   )
 }
