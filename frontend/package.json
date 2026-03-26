@@ -1,0 +1,33 @@
+{
+  "name": "mnair-admin-dashboard",
+  "version": "1.0.0",
+  "description": "MNAIR Platform - Admin Dashboard",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview",
+    "lint": "tsc --noEmit"
+  },
+  "keywords": ["mnair", "admin", "dashboard", "nigeria", "ai", "education"],
+  "author": "MNAIR Team",
+  "license": "MIT",
+  "dependencies": {
+    "@emotion/react": "^11.14.0",
+    "@emotion/styled": "^11.14.1",
+    "@mui/icons-material": "^5.18.0",
+    "@mui/material": "^5.18.0",
+    "@types/react": "^18.3.28",
+    "@types/react-dom": "^18.3.7",
+    "@vitejs/plugin-react": "^4.7.0",
+    "axios": "^1.13.6",
+    "chart.js": "^4.5.1",
+    "date-fns": "^3.6.0",
+    "react": "^18.3.1",
+    "react-chartjs-2": "^5.3.1",
+    "react-dom": "^18.3.1",
+    "react-router-dom": "^6.30.3",
+    "typescript": "^5.9.3",
+    "vite": "^4.5.14"
+  }
+}
