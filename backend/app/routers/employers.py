@@ -223,9 +223,8 @@ async def search_certificates(
             verification_url=cert.verification_url
         ))
 
-    # TODO: Increment employer verification count
-    # current_employer.increment_verification_count()
-    # await db.commit()
+    current_employer.increment_verification_count()
+    await db.commit()
 
     return results
 
@@ -252,9 +251,8 @@ async def verify_certificate_by_id(
             detail="Certificate not found"
         )
 
-    # TODO: Increment employer verification count
-    # current_employer.increment_verification_count()
-    # await db.commit()
+    current_employer.increment_verification_count()
+    await db.commit()
 
     return CertificateSearchResult(
         certificate_id=certificate.certificate_id,

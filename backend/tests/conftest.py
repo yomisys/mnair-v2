@@ -2,6 +2,14 @@
 Pytest configuration and fixtures for MNAIR backend tests
 """
 
+import os
+
+# Set required env vars before any app imports so Pydantic Settings doesn't fail.
+os.environ.setdefault("JWT_SECRET_KEY", "test-jwt-secret-key-for-testing-only-not-production")
+os.environ.setdefault("SESSION_SECRET", "test-session-secret-not-for-production")
+os.environ.setdefault("DATABASE_PASSWORD", "mnair_password")
+os.environ.setdefault("REDIS_PASSWORD", "test_redis_password")
+
 import pytest
 import pytest_asyncio
 from sqlalchemy.ext.asyncio import create_async_engine, AsyncSession
@@ -55,3 +63,24 @@ async def test_db():
 
     # Dispose engine
     await engine.dispose()
+
+
+@pytest_asyncio.fixture
+async def client(test_db):
+    """
+    HTTP test client with the test database injected.
+    Use this for route-level tests that need real HTTP semantics.
+    """
+    from httpx import AsyncClient as HttpxClient
+    from app.main import app
+    from app.database import get_db
+
+    async def _override_get_db():
+        yield test_db
+
+    app.dependency_overrides[get_db] = _override_get_db
+    try:
+        async with HttpxClient(app=app, base_url="http://test") as c:
+            yield c
+    finally:
+        app.dependency_overrides.clear()

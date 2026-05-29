@@ -149,9 +149,19 @@ class AnalyticsService:
         )
         analytics.users_completed_program = completed_result.scalar() or 0
 
-        # Completions today (users who reached day 7 today)
-        # This is an approximation - ideally we'd track completion_date
-        analytics.completions_today = 0  # TODO: Add completion tracking
+        # Completions today: lesson_progress rows marked complete today
+        start_of_day = datetime.combine(target_date, datetime.min.time())
+        end_of_day = datetime.combine(target_date, datetime.max.time())
+        completions_today_result = await self.db.execute(
+            select(func.count(LessonProgress.id)).where(
+                and_(
+                    LessonProgress.is_completed == True,
+                    LessonProgress.completed_at >= start_of_day,
+                    LessonProgress.completed_at <= end_of_day,
+                )
+            )
+        )
+        analytics.completions_today = completions_today_result.scalar() or 0
 
         # Completion rate
         if analytics.total_users > 0:

@@ -586,15 +586,20 @@ class WhatsAppWebhookHandler:
         current_question = conversation.context.get("current_question", 0)
         answers = conversation.context.get("answers", [])
 
-        # Record answer
+        # Record answer.
+        # Replace the entire dict so SQLAlchemy detects the JSON column change —
+        # in-place mutation (context["key"] = val) is invisible to the ORM.
         answers.append(answer_idx)
-        conversation.context["answers"] = answers
 
         # Check if quiz complete
         if current_question < 4:
             # More questions
             next_question = current_question + 1
-            conversation.context["current_question"] = next_question
+            conversation.context = {
+                **conversation.context,
+                "current_question": next_question,
+                "answers": answers,
+            }
             await self.db.commit()
 
             # Send next question
