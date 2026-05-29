@@ -17,6 +17,7 @@ from sqlalchemy.ext.asyncio import AsyncSession
 from app.config import settings
 from app.database import get_db
 from app.models.user import User
+from app.models.employer import Employer
 
 # HTTP Bearer token scheme
 security = HTTPBearer()
@@ -127,13 +128,21 @@ async def get_current_user(
         user_id: str = payload.get("sub")
         if user_id is None:
             raise credentials_exception
+        # Reject employer tokens — they use "employer:{id}" prefix
+        if user_id.startswith("employer:"):
+            raise credentials_exception
 
     except JWTError:
         raise credentials_exception
 
+    try:
+        uid = int(user_id)
+    except (ValueError, TypeError):
+        raise credentials_exception
+
     # Get user from database
     result = await db.execute(
-        select(User).where(User.id == int(user_id))
+        select(User).where(User.id == uid)
     )
     user = result.scalar_one_or_none()
 
@@ -171,3 +180,58 @@ async def get_current_admin_user(
         )
 
     return current_user
+
+
+async def get_current_employer(
+    credentials: HTTPAuthorizationCredentials = Depends(security),
+    db: AsyncSession = Depends(get_db)
+) -> Employer:
+    """
+    Get current authenticated employer from JWT token.
+
+    Employer tokens use sub = "employer:{id}" to distinguish from user tokens.
+
+    Raises:
+        HTTPException 401: If token is invalid, missing, or is a user token.
+        HTTPException 403: If employer account is inactive.
+    """
+    credentials_exception = HTTPException(
+        status_code=status.HTTP_401_UNAUTHORIZED,
+        detail="Could not validate employer credentials",
+        headers={"WWW-Authenticate": "Bearer"},
+    )
+
+    try:
+        token = credentials.credentials
+        payload = jwt.decode(
+            token,
+            settings.JWT_SECRET_KEY,
+            algorithms=[settings.JWT_ALGORITHM],
+        )
+        sub: str = payload.get("sub")
+        if not sub or not sub.startswith("employer:"):
+            raise credentials_exception
+        employer_id_str = sub.split(":", 1)[1]
+    except JWTError:
+        raise credentials_exception
+
+    try:
+        employer_id = int(employer_id_str)
+    except (ValueError, TypeError):
+        raise credentials_exception
+
+    result = await db.execute(
+        select(Employer).where(Employer.id == employer_id)
+    )
+    employer = result.scalar_one_or_none()
+
+    if employer is None:
+        raise credentials_exception
+
+    if not employer.is_active:
+        raise HTTPException(
+            status_code=status.HTTP_403_FORBIDDEN,
+            detail="Employer account is inactive",
+        )
+
+    return employer

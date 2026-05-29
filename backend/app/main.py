@@ -3,14 +3,20 @@ FastAPI Application Entry Point
 Main application initialization
 """
 
-from fastapi import FastAPI
-from fastapi.middleware.cors import CORSMiddleware
+import time
+import logging
+import re
 from contextlib import asynccontextmanager
+
+from fastapi import FastAPI, Request, Response
+from fastapi.middleware.cors import CORSMiddleware
+from fastapi.responses import JSONResponse
 from slowapi import _rate_limit_exceeded_handler
 from slowapi.errors import RateLimitExceeded
+from sqlalchemy import text
 
 from app.config import settings
-from app.database import init_db, close_db
+from app.database import init_db, close_db, get_db
 from app.routers import (
     auth_router,
     lessons_router,
@@ -19,41 +25,48 @@ from app.routers import (
     employers_router,
 )
 from app.channels.whatsapp import router as whatsapp_router
-from app.routers.test_whatsapp import router as test_whatsapp_router
-from app.middleware import (
-    limiter,
-    SecurityHeadersMiddleware,
-    RequestLoggingMiddleware,
-    InputValidationMiddleware,
-)
+from app.middleware import limiter
 from app.middleware.logging import setup_logging
+
+logger = logging.getLogger(__name__)
+
+# ── SQL injection / XSS / path-traversal patterns (compiled once at startup) ──
+_SQL_PATTERNS = [
+    re.compile(r"(\bUNION\b.*\bSELECT\b)", re.IGNORECASE),
+    re.compile(r"(\bSELECT\b.*\bFROM\b.*\bWHERE\b)", re.IGNORECASE),
+    re.compile(r"(\bINSERT\b.*\bINTO\b)", re.IGNORECASE),
+    re.compile(r"(\bUPDATE\b.*\bSET\b)", re.IGNORECASE),
+    re.compile(r"(\bDELETE\b.*\bFROM\b)", re.IGNORECASE),
+    re.compile(r"(\bDROP\b.*\bTABLE\b)", re.IGNORECASE),
+    re.compile(r"(;.*--)"),
+    re.compile(r"('.*OR.*'.*=.*')"),
+]
+_XSS_PATTERNS = [
+    re.compile(r"<script[^>]*>.*?</script>", re.IGNORECASE),
+    re.compile(r"javascript:", re.IGNORECASE),
+    re.compile(r"on\w+\s*=", re.IGNORECASE),
+    re.compile(r"<iframe", re.IGNORECASE),
+]
+_PATH_PATTERNS = [
+    re.compile(r"\.\./"),
+    re.compile(r"%2e%2e", re.IGNORECASE),
+]
+
+_MAX_BODY_SIZE = 10 * 1024 * 1024  # 10 MB
 
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
-    """
-    Application lifespan manager
-    Handles startup and shutdown events
-    """
-    # Startup
-    print("[START] Starting MNAIR Platform...")
-
-    # Setup logging
-    setup_logging(log_level=settings.LOG_LEVEL if hasattr(settings, 'LOG_LEVEL') else "INFO")
-    print("[OK] Logging configured")
-
+    setup_logging(log_level="INFO")
+    logger.info("Starting MNAIR Platform...")
     await init_db()
-    print("[OK] Database initialized")
-
+    logger.info("Database initialized")
     yield
-
-    # Shutdown
-    print("[STOP] Shutting down MNAIR Platform...")
+    logger.info("Shutting down MNAIR Platform...")
     await close_db()
-    print("[OK] Database connections closed")
+    logger.info("Database connections closed")
 
 
-# Create FastAPI app
 app = FastAPI(
     title=settings.APP_NAME,
     version=settings.API_VERSION,
@@ -61,54 +74,134 @@ app = FastAPI(
     lifespan=lifespan,
 )
 
-# Add rate limiter state
 app.state.limiter = limiter
 app.add_exception_handler(RateLimitExceeded, _rate_limit_exceeded_handler)
 
-# Add security middleware (order matters!)
-# Temporarily disabled custom middleware due to Starlette BaseHTTPMiddleware issues
-# TODO: Reimplement as pure ASGI middleware for production
-# 1. Security headers (first to apply to all responses)
-# enable_hsts = settings.APP_ENV == "production"  # Only enable HSTS in production
-# app.add_middleware(SecurityHeadersMiddleware, enable_hsts=enable_hsts)
 
-# 2. Request logging
-# app.add_middleware(RequestLoggingMiddleware, log_body=False)  # Don't log bodies for privacy
+# ── Middleware (registration order is LIFO → last registered runs first) ──
+# Desired request order: CORS → InputValidation → RequestLogging → SecurityHeaders → handler
+# Register in reverse: SecurityHeaders first, then Logging, then Validation, then CORS last.
 
-# 3. Input validation
-# app.add_middleware(
-#     InputValidationMiddleware,
-#     max_body_size=10 * 1024 * 1024,  # 10MB max body size
-#     enable_sql_injection_check=True,
-#     enable_xss_check=True,
-#     enable_path_traversal_check=True,
-#     enable_command_injection_check=False,  # Disabled for now (too many false positives)
-# )
+@app.middleware("http")
+async def add_security_headers(request: Request, call_next):
+    response: Response = await call_next(request)
+    response.headers["X-Content-Type-Options"] = "nosniff"
+    response.headers["X-Frame-Options"] = "SAMEORIGIN"
+    response.headers["X-XSS-Protection"] = "1; mode=block"
+    response.headers["Referrer-Policy"] = "strict-origin-when-cross-origin"
+    if settings.APP_ENV == "production":
+        response.headers["Strict-Transport-Security"] = "max-age=31536000; includeSubDomains"
+    response.headers["Content-Security-Policy"] = (
+        "default-src 'self'; script-src 'self' 'unsafe-inline'; "
+        "style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; "
+        "font-src 'self' data:; connect-src 'self'; frame-ancestors 'self'"
+    )
+    return response
 
-# 4. CORS (last to ensure proper preflight handling)
+
+@app.middleware("http")
+async def log_requests(request: Request, call_next):
+    start = time.time()
+    method = request.method
+    path = request.url.path
+    client_ip = request.client.host if request.client else "unknown"
+    logger.info(
+        "Request started",
+        extra={"method": method, "path": path, "client_ip": client_ip},
+    )
+    try:
+        response = await call_next(request)
+    except Exception as exc:
+        logger.error(
+            "Request failed",
+            extra={"method": method, "path": path, "error": str(exc)},
+        )
+        raise
+    duration = time.time() - start
+    logger.info(
+        "Request completed",
+        extra={
+            "method": method,
+            "path": path,
+            "status": response.status_code,
+            "duration_ms": round(duration * 1000),
+        },
+    )
+    return response
+
+
+@app.middleware("http")
+async def validate_input(request: Request, call_next):
+    # Skip validation for OPTIONS preflight (handled by CORS before this runs)
+    if request.method == "OPTIONS":
+        return await call_next(request)
+
+    # Check content-length before reading
+    content_length = request.headers.get("content-length")
+    if content_length and int(content_length) > _MAX_BODY_SIZE:
+        return JSONResponse(
+            status_code=413,
+            content={"detail": "Request body too large (max 10MB)"},
+        )
+
+    # Read and cache the body so downstream handlers can read it too.
+    # Calling request.body() caches it in request._body automatically
+    # (FastAPI 0.109 / Starlette 0.36 behaviour — verified).
+    body = await request.body()
+    if len(body) > _MAX_BODY_SIZE:
+        return JSONResponse(
+            status_code=413,
+            content={"detail": "Request body too large (max 10MB)"},
+        )
+
+    if body:
+        body_text = body.decode("utf-8", errors="ignore")
+        for pattern in _SQL_PATTERNS:
+            if pattern.search(body_text):
+                logger.warning("SQL injection pattern detected", extra={"path": request.url.path, "client_ip": request.client.host if request.client else "unknown"})
+                return JSONResponse(status_code=400, content={"detail": "Invalid request"})
+        for pattern in _XSS_PATTERNS:
+            if pattern.search(body_text):
+                logger.warning("XSS pattern detected", extra={"path": request.url.path})
+                return JSONResponse(status_code=400, content={"detail": "Invalid request"})
+        for pattern in _PATH_PATTERNS:
+            if pattern.search(request.url.path):
+                logger.warning("Path traversal attempt", extra={"path": request.url.path})
+                return JSONResponse(status_code=400, content={"detail": "Invalid request"})
+
+    return await call_next(request)
+
+
+# CORS — registered last so it wraps everything (runs first for requests)
 app.add_middleware(
     CORSMiddleware,
     allow_origins=settings.cors_origins_list,
     allow_credentials=True,
-    allow_methods=["GET", "POST", "PUT", "DELETE", "PATCH"],  # Explicit methods instead of *
-    allow_headers=["Authorization", "Content-Type"],  # Explicit headers
-    expose_headers=["X-Total-Count"],  # Expose pagination headers
-    max_age=3600,  # Cache preflight for 1 hour
+    allow_methods=["GET", "POST", "PUT", "DELETE", "PATCH"],
+    allow_headers=["Authorization", "Content-Type"],
+    expose_headers=["X-Total-Count"],
+    max_age=3600,
 )
 
-# Register routers
+
+# ── Routers ──
 app.include_router(auth_router)
 app.include_router(lessons_router)
 app.include_router(certificates_router)
 app.include_router(analytics_router)
 app.include_router(employers_router)
 app.include_router(whatsapp_router)
-app.include_router(test_whatsapp_router)
+
+# Test simulator — development only; never expose in production
+if settings.APP_ENV != "production":
+    from app.routers.test_whatsapp import router as test_whatsapp_router
+    app.include_router(test_whatsapp_router)
+    logger.debug("Test WhatsApp simulator enabled (non-production environment)")
 
 
+# ── Routes ──
 @app.get("/")
 async def root():
-    """Health check endpoint"""
     return {
         "name": settings.APP_NAME,
         "version": settings.API_VERSION,
@@ -119,21 +212,57 @@ async def root():
 
 @app.get("/health")
 async def health_check():
-    """Detailed health check"""
-    return {
-        "status": "healthy",
-        "database": "connected",
-        "redis": "connected",
-        "minio": "connected",
-    }
+    """Real connectivity health check — returns 503 if any service is down."""
+    from app.database import engine
+    import redis.asyncio as aioredis
+
+    checks = {}
+    overall = True
+
+    # PostgreSQL
+    try:
+        async with engine.begin() as conn:
+            await conn.execute(text("SELECT 1"))
+        checks["database"] = "connected"
+    except Exception as exc:
+        logger.error("Health check: database unreachable", extra={"error": str(exc)})
+        checks["database"] = "unreachable"
+        overall = False
+
+    # Redis
+    try:
+        r = aioredis.from_url(settings.REDIS_URL, socket_connect_timeout=2)
+        await r.ping()
+        await r.aclose()
+        checks["redis"] = "connected"
+    except Exception as exc:
+        logger.error("Health check: redis unreachable", extra={"error": str(exc)})
+        checks["redis"] = "unreachable"
+        overall = False
+
+    # MinIO / S3
+    try:
+        from minio import Minio
+        client = Minio(
+            settings.MINIO_ENDPOINT,
+            access_key=settings.MINIO_ACCESS_KEY,
+            secret_key=settings.MINIO_SECRET_KEY,
+            secure=settings.MINIO_SECURE,
+        )
+        client.bucket_exists(settings.MINIO_BUCKET)
+        checks["minio"] = "connected"
+    except Exception as exc:
+        logger.error("Health check: minio unreachable", extra={"error": str(exc)})
+        checks["minio"] = "unreachable"
+        overall = False
+
+    status_code = 200 if overall else 503
+    return JSONResponse(
+        status_code=status_code,
+        content={"status": "healthy" if overall else "degraded", **checks},
+    )
 
 
 if __name__ == "__main__":
     import uvicorn
-
-    uvicorn.run(
-        "app.main:app",
-        host="0.0.0.0",
-        port=8000,
-        reload=settings.APP_DEBUG,
-    )
+    uvicorn.run("app.main:app", host="0.0.0.0", port=8000, reload=settings.APP_DEBUG)

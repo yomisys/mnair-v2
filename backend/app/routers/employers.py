@@ -27,6 +27,7 @@ from app.utils.auth import (
     create_access_token,
     get_password_hash,
     verify_password,
+    get_current_employer,
 )
 from app.config import settings
 
@@ -159,28 +160,18 @@ async def login_employer(
 
 @router.get("/me", response_model=EmployerResponse)
 async def get_employer_profile(
-    # TODO: Add get_current_employer dependency
-    # current_employer: Employer = Depends(get_current_employer),
+    current_employer: Employer = Depends(get_current_employer),
     db: AsyncSession = Depends(get_db)
 ):
-    """
-    Get current employer's profile
-
-    Requires authentication
-    """
-    # For MVP, return placeholder
-    raise HTTPException(
-        status_code=status.HTTP_501_NOT_IMPLEMENTED,
-        detail="Employer authentication middleware not implemented yet"
-    )
+    """Get current employer's profile. Requires employer JWT."""
+    return current_employer
 
 
 @router.post("/certificates/search", response_model=List[CertificateSearchResult])
 async def search_certificates(
     search: CertificateSearchRequest,
-    db: AsyncSession = Depends(get_db)
-    # TODO: Add employer authentication
-    # current_employer: Employer = Depends(get_current_employer),
+    current_employer: Employer = Depends(get_current_employer),
+    db: AsyncSession = Depends(get_db),
 ):
     """
     Search for certificates by phone number, name, or certificate ID
@@ -242,9 +233,8 @@ async def search_certificates(
 @router.get("/certificates/verify/{certificate_id}", response_model=CertificateSearchResult)
 async def verify_certificate_by_id(
     certificate_id: str,
-    db: AsyncSession = Depends(get_db)
-    # TODO: Add employer authentication
-    # current_employer: Employer = Depends(get_current_employer),
+    current_employer: Employer = Depends(get_current_employer),
+    db: AsyncSession = Depends(get_db),
 ):
     """
     Verify a specific certificate by ID
@@ -282,20 +272,16 @@ async def verify_certificate_by_id(
 
 @router.get("/stats", response_model=dict)
 async def get_employer_stats(
-    # TODO: Add employer authentication
-    # current_employer: Employer = Depends(get_current_employer),
-    db: AsyncSession = Depends(get_db)
+    current_employer: Employer = Depends(get_current_employer),
+    db: AsyncSession = Depends(get_db),
 ):
     """
-    Get employer's verification statistics
-
-    Returns:
-    - Total certificates verified
-    - Verifications this month
-    - Last verification date
+    Get employer's verification statistics.
+    Returns total certificates verified, this month, and last verification date.
     """
-    # For MVP, return placeholder
-    raise HTTPException(
-        status_code=status.HTTP_501_NOT_IMPLEMENTED,
-        detail="Employer statistics not implemented yet"
-    )
+    return {
+        "total_verified": current_employer.certificates_verified_count,
+        "last_verification": current_employer.last_verification_at,
+        "company_name": current_employer.company_name,
+        "api_requests_count": current_employer.api_requests_count,
+    }

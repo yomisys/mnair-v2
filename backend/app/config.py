@@ -38,8 +38,8 @@ class Settings(BaseSettings):
     MINIO_BUCKET: str = "mnair-certificates"
     MINIO_SECURE: bool = False
 
-    # JWT Authentication
-    JWT_SECRET_KEY: str = "your-super-secret-jwt-key-change-this-in-production"
+    # JWT Authentication — no default; startup fails loudly if unset in production
+    JWT_SECRET_KEY: str
     JWT_ALGORITHM: str = "HS256"
     JWT_EXPIRATION_MINUTES: int = 10080
 
@@ -56,8 +56,8 @@ class Settings(BaseSettings):
     META_VERIFY_TOKEN: Optional[str] = None
     META_WEBHOOK_SECRET: Optional[str] = None
 
-    # Security
-    SESSION_SECRET: str = "your-session-secret-change-this"
+    # Security — no default; startup fails loudly if unset in production
+    SESSION_SECRET: str
     RATE_LIMIT_PER_MINUTE: int = 60
     CORS_ORIGINS: str = "http://localhost:3000,http://localhost:5173"
 
