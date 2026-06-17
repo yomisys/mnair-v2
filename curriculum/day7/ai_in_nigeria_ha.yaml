@@ -1,0 +1,65 @@
+id: day7_ai_in_nigeria_ha
+day: 7
+topic: ai_in_nigeria
+language: ha
+title: "Gaban AI na Najeriya: Kai Wani Ɓangare Ne na Ciki"
+content: |
+  Najeriya ba kasuwa kawai ba ce ga kayan aikin AI da aka gina a wani wuri. Najeriya na zama mai gina AI. Kuma giɓi tsakanin inda muke yanzu da inda muke bukatar kasancewa shine damamarka.
+
+  YANAYIN MANUFOFIN AI NA NAJERIYA:
+  NITDA (Hukumar Raya Fasahar Bayanan Ƙasa) ta buga Manufofin AI na Ƙasa na Najeriya a 2024, tana alƙawarin kayan aikin AI, raya baiwa, da tsare-tsare na ɗabi'a. Gwamnati ta gane AI a matsayin mai mahimmanci don cimma manufofin tattalin arzikin Najeriya. Wannan yana nufin tallafi, shirye-shirye, da damammaki suna zuwa.
+
+  MUHALLIN HUB YA GIRMA:
+  Lagos (rukunin fasaha na Yaba), Abuja, Port Harcourt, da Kano suna haɓaka tsakiyar AI da fasaha. Co-Création Hub (CCHub) a Yaba ya tallafa wa kamfanonin farawa na AI da yawa. Zindi, dandamali mafi girma na gasar AI a Afirka, yana gudanar da ƙalubale na yau da kullum tare da masu cin nasara na Najeriya.
+
+  BAIWAR AI NA NAJERIYA TA DUNIYA:
+  Masu binciken AI na Najeriya, injiniyoyi, da masu kafa sun yi aiki a Google DeepMind, Meta, Microsoft, da kamfanonin AI masu yawa a duniya. Wadannan sunaye suna a gaban AI na duniya — kuma sun fara daga inda kai yake yanzu.
+
+  GIƁIN BAIWAR AI = DAMAMARKA:
+  Najeriya tana bukatar ma'aikata masu ƙarfin AI sama da 100,000 a cikin shekaru 5 masu zuwa gwargwadon ƙiyasi. A halin yanzu akwai ƙasa da haka. Wannan giɓin shine damamar aikin karka. Ko fahimtar AI ta asali — irin ta da ka samu wannan mako — tana sanya ka da ƙima a cikin kusan kowace masana'anta.
+
+  ZAMA MAI NINKA TASIRI:
+  Tasiri na gaske ba abin da kai ka yi da AI kawai ba ne — shi ne wanda kake koya. Kowace mutumin da ya fahimci AI kuma ya raba wannan ilimi yana ƙirƙirar ripple. Gaban AI na Najeriya za a gina shi ne ta hanyar Najeriyawa da suka koyi, suka yi, sannan suka koya wa wasu.
+
+  KAMMALAWAR KA FARAWA NE, BA ƘARSHEWA BA.
+
+quiz:
+  - question: "Me Manufofin AI na Ƙasa da NITDA ta buga suka alƙawarta?"
+    options:
+      - "A. Kayan aikin AI, raya baiwa, da tsare-tsare na ɗabi'a"
+      - "B. Haramta duk amfani da AI a Najeriya"
+      - "C. Barin kamfanonin AI na waje kawai"
+      - "D. Maye gurbin duk ma'aikatan gwamnati da AI"
+    correct: 0
+
+  - question: "Me CCHub a Yaba aka fi sani da shi?"
+    options:
+      - "A. Tallafa wa kamfanonin farawa na AI da fasaha da yawa"
+      - "B. Kasancewa gidan rikodi na kiɗa"
+      - "C. Kera wayoyi"
+      - "D. Ofishin haraji na gwamnati"
+    correct: 0
+
+  - question: "A ina masu binciken AI na Najeriya ke aiki a duniya?"
+    options:
+      - "A. Google DeepMind, Meta, Microsoft da manyan kamfanonin AI"
+      - "B. A Najeriya kawai"
+      - "C. Ba a yarda su yi aiki a waje ba"
+      - "D. A China kawai"
+    correct: 0
+
+  - question: "Menene giɓin baiwar AI a Najeriya?"
+    options:
+      - "A. Najeriya na bukatar ma'aikata masu ƙarfin AI sama da 100,000 tare da ƙasa da haka a yanzu"
+      - "B. Akwai masana AI da yawa riga"
+      - "C. Najeriya ba ta da sha'awar AI"
+      - "D. Giɓin yana a Lagos kawai"
+    correct: 0
+
+  - question: "Menene 'zama mai ninka tasiri' yana nufi a AI?"
+    options:
+      - "A. Koya wa wasu abin da ka koyi kuma ƙirƙirar ripple na ilimi"
+      - "B. Amfani da AI a na'urori da yawa a lokaci guda"
+      - "C. Samun kuɗi daga AI a dandamali da yawa"
+      - "D. Gudanar da kasuwancin AI da yawa a lokaci ɗaya"
+    correct: 0

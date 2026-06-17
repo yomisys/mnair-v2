@@ -1,0 +1,75 @@
+id: day6_ai_tools_pid
+day: 6
+topic: ai_tools
+language: pid
+title: "Your Business AI Toolkit: Start Earn Money with AI"
+content: |
+  You don learn tools for creating. Today: tools specifically for running and growing business.
+
+  CUSTOMER SERVICE (reply 24/7 without staying awake):
+  - WhatsApp Business: auto-reply for common questions, product catalog, quick-reply buttons — FREE
+  - Tidio: live chat plus AI chatbot for your website, e get free plan
+  - ManyChat: WhatsApp and Instagram DM automation — very popular among Naija sellers
+
+  MARKETING (write, design, post — for minutes):
+  - ChatGPT: product descriptions, sales copy, email campaigns, SMS content
+  - Canva Magic Studio: social media posts, flyers, banners — all matching your brand
+  - Buffer AI: e go suggest the best time to post your content per platform
+
+  FINANCIAL MANAGEMENT (know your numbers):
+  - Wave (free accounting): invoices, expense tracking, AI-powered categorization
+  - Google Sheets plus formula AI: ask Gemini analyze your sales spreadsheet
+  - Receipt scanning: use your phone camera digitize paper receipts
+
+  SALES INTELLIGENCE (find and keep customers):
+  - LinkedIn Sales Navigator AI: find B2B customers if you dey sell to companies
+  - Apollo.io free tier: prospect list building for service businesses
+  - Simple CRM: even Google Sheet with customer names, last purchase, and next follow-up date better pass nothing
+
+  BUILD YOUR OWN AI TOOL (zero code):
+  - Google Forms plus ChatGPT: customer fill form → you paste responses → AI give you quote or recommendation
+  - WhatsApp plus Zapier plus Sheets: every WhatsApp inquiry go log automatically
+
+  THE ₦0 BUSINESS TOOLKIT:
+  WhatsApp Business plus Canva plus ChatGPT free tier plus Google Sheets = complete business operation. Many successful Naija businesses dey run on exactly this stack.
+
+quiz:
+  - question: "Wetin ManyChat dey automate for Naija sellers?"
+    options:
+      - "A. WhatsApp and Instagram DM responses"
+      - "B. Physical delivery routes"
+      - "C. Tax filing"
+      - "D. Staff payroll"
+    correct: 0
+
+  - question: "Wetin Wave free accounting dey do with AI?"
+    options:
+      - "A. E dey categorize expenses automatically"
+      - "B. E dey predict stock market prices"
+      - "C. E dey pay suppliers directly"
+      - "D. E dey book flight tickets"
+    correct: 0
+
+  - question: "Wetin be the ₦0 business toolkit combination?"
+    options:
+      - "A. WhatsApp Business plus Canva plus ChatGPT free plus Google Sheets"
+      - "B. Expensive SAP software only"
+      - "C. Foreign bank accounts"
+      - "D. Physical office for Lagos"
+    correct: 0
+
+  - question: "Wetin Buffer AI dey suggest?"
+    options:
+      - "A. The best time to post content on each platform"
+      - "B. Which products to sell"
+      - "C. Which customers to avoid"
+      - "D. The safest bank to use"
+    correct: 0
+
+  - question: "How you fit build zero-code customer quote tool?"
+    options:
+      - "A. Google Forms for input plus ChatGPT to generate the quote"
+      - "B. You must hire developer"
+      - "C. Only possible with computer science degree"
+      - "D. Not possible yet"
+    correct: 0

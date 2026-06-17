@@ -1,0 +1,65 @@
+id: day6_ai_in_nigeria_pid
+day: 6
+topic: ai_in_nigeria
+language: pid
+title: "Naija Businesses Wey Don Dey Win with AI"
+content: |
+  AI for Naija business no be future story — e dey happen today, from Eko Atlantic to Onitsha Main Market.
+
+  THE BIG PLAYERS LEADING THE WAY:
+  Jumia im recommendation engine — the "You might also like" suggestions — na AI. E don increase average order value plenty. Kuda Bank im fraud detection AI block ₦2 billion fraudulent transactions for im first year. Flutterwave dey use AI decide for milliseconds whether payment suppose go through or them go flag am.
+
+  FARMING DON GET SMARTER:
+  Farmcrowdy and Hello Tractor dey use AI match farmers with equipment, predict harvest yields, and advise on planting schedules based on satellite weather data. Rice farmer for Kebbi state now fit get the same quality advice like big commercial farm.
+
+  SMALL BUSINESSES DEY INNOVATE QUIETLY:
+  The most exciting AI stories no dey for news. Tailor for Aba wey dey use ChatGPT design im collections and Canva market dem. Plantain chips seller for Ibadan wey dey track sales patterns to know which flavours to make each day. POS agent for Enugu wey dey use WhatsApp chatbot answer customer balance questions.
+
+  THE EDTECH OPPORTUNITY:
+  Naija EdTech companies like uLesson and Tuteria dey use AI personalize learning — the same approach wey dey behind this very course wey you dey take.
+
+  HEALTHCARE DEY CATCH UP:
+  MDaaS Global dey use AI improve diagnostics for clinics wey never have doctor before. AI dey read medical images and flag conditions for review, extending specialist care reach underserved areas.
+
+  YOU BE THE NEXT STORY.
+
+quiz:
+  - question: "Wetin Kuda Bank fraud detection AI achieve?"
+    options:
+      - "A. E block ₦2 billion fraudulent transactions"
+      - "B. E predict football scores"
+      - "C. E replace all human staff"
+      - "D. E build new headquarters"
+    correct: 0
+
+  - question: "How Hello Tractor dey use AI?"
+    options:
+      - "A. E dey match farmers with equipment and predict harvest yields"
+      - "B. E only dey sell tractors online"
+      - "C. E dey track truck GPS positions"
+      - "D. E dey teach English to farmers"
+    correct: 0
+
+  - question: "Wetin be the small business AI example from Aba?"
+    options:
+      - "A. Tailor wey dey use ChatGPT for designs and Canva for marketing"
+      - "B. Factory wey dey replace workers with robots"
+      - "C. Government office wey dey go digital"
+      - "D. Bank wey dey open new branch"
+    correct: 0
+
+  - question: "How MDaaS Global dey use AI for healthcare?"
+    options:
+      - "A. AI dey read medical images and flag conditions for underserved clinics"
+      - "B. AI dey prescribe medicine"
+      - "C. AI dey replace all nurses"
+      - "D. AI only dey work for Lagos hospitals"
+    correct: 0
+
+  - question: "Wetin Flutterwave AI dey do?"
+    options:
+      - "A. E dey decide in milliseconds whether payment should go through or be flagged"
+      - "B. E dey design company website"
+      - "C. E dey translate transactions to English"
+      - "D. E dey print receipts"
+    correct: 0

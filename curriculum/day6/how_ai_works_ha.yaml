@@ -1,0 +1,69 @@
+id: day6_how_ai_works_ha
+day: 6
+topic: how_ai_works
+language: ha
+title: "Yadda AI Ke Taimaka wa Kasuwanci: Daga Bayanai Zuwa Yanke Shawara"
+content: |
+  Yau bari mu haɗa ra'ayoyin fasaha da ka koyi da sakamakon kasuwanci da suka fi muhimmanci.
+
+  ZAGAYEN BAYANAI NA KASUWANCI:
+  Kowace kasuwanci tana samar da bayanai: Wane ya saya me? Yaushe? Sau nawa suke dawowa? Me suke tambaya kafin saya? AI na mai da wannan bayanai mara ganuwa zuwa yanke shawara masu ganuwa.
+
+  MATAKI 1 — TATTARA:
+  Kowace sayarwa, kowace saƙon WhatsApp, kowace ziyarar gidan yanar gizo bayanai ne. Ko rikodin littafi mai sauƙi na tallace-tallace na yau da kullum bayanai ne da AI za su iya amfani da su. Ba ka bukata tsarukan da suka yi tsada — Google Sheet yana isa don farawa.
+
+  MATAKI 2 — TSARI:
+  AI na samo tsare-tsare da mutane suka rasa: "Tallace-tallace na faɗuwa duk Litinin safe amma yana ƙaruwa Juma'a ranar biyan albashi." "Abokan ciniki da suke sayan auduga mai sauƙi suma suna sayan zare kashi 80 na lokaci." Mutum zai iya gano wannan — AI yana gano shi a cikin dakika cikin dubunnan rekododi.
+
+  MATAKI 3 — HASASHE:
+  Daga tsare-tsare sai hasashe ya zo: me za a sake siyan, wa za a bi bayan, wane abokin ciniki yana kan watsi da saya. Wannan ne injunan shawarar ke yi — "abokan ciniki irin kai ma sun saya..."
+
+  MATAKI 4 — ATOMATIK:
+  Da zarar an san tsare-tsare, ana iya yin aiyukan ta atomatik: aika saƙo mai rangwame ga abokan ciniki da ba su saya cikin kwanaki 30; sake biyan kaya idan haja ta faɗo ƙasa da raka'a 10; nuna ma'amala mai ban mamaki don dubawa.
+
+  JUYIN JUYA HALIN NAJERIYA:
+  Yawancin horon kasuwancin AI yana ɗauka akwai intanet mai aminci da tsarin biyan kuɗi na yau da kullum. Gaskiyar Najeriya ta bambanta. Mafi kyawun aiwatar da kasuwancin AI a nan yana aiki ba tare da intanet ba idan ya zama dole, yana karɓar rekododdin biyan kuɗi na cash, kuma yana sadarwa ta WhatsApp — ba ta imel ba.
+
+  BAYANANKU NA GASA:
+  Fara yin rikodi tallace-tallacenka yau a Google Sheet. A cikin watanni 3, za ka sami bayanai don nemo TSARE-TSAKENKA.
+
+quiz:
+  - question: "Menene Mataki 1 a Zagayen Bayanai na Kasuwanci?"
+    options:
+      - "A. Tattara bayanai daga tallace-tallace, saƙonni, da ziyarori"
+      - "B. Yin komai ta atomatik nan take"
+      - "C. Saya software mai tsada"
+      - "D. Ɗauki masanin bayanai"
+    correct: 0
+
+  - question: "Wane tsari AI zai iya gano a kasuwancin Najeriya?"
+    options:
+      - "A. Tallace-tallace na ƙaruwa Juma'a ranar albashi kuma na faɗuwa Litinin safe"
+      - "B. Babu - bayanan Najeriya sun yi rikitarwa sosai"
+      - "C. Tsare-tsare a cikin kuɗin waje kawai"
+      - "D. Tsare-tsare suna bukatar shekaru 10 na bayanan mafi ƙaranci"
+    correct: 0
+
+  - question: "Menene injin shawarar?"
+    options:
+      - "A. Tsari da ke ba da shawarar 'abokan ciniki irin kai ma sun saya...'"
+      - "B. Mutum da ke ba da shawarar abinci"
+      - "C. Injin da ke gudana akan shawarwari"
+      - "D. Tsarin amincewa na gwamnati"
+    correct: 0
+
+  - question: "Wane kayan aiki ya isa don fara tattara bayanai na kasuwanci?"
+    options:
+      - "A. Google Sheet mai sauƙi"
+      - "B. Software na kamfanoni mai tsada kawai"
+      - "C. Tsarin bayanai na waje"
+      - "D. Babu abin da ke aiki a Najeriya"
+    correct: 0
+
+  - question: "Menene juyin juya halin Najeriya a aiwatar da kasuwancin AI?"
+    options:
+      - "A. Mafi kyawun aiwatar yana aiki ba tare da layi ba, yana karɓar rekododdin cash, kuma yana amfani da WhatsApp"
+      - "B. Najeriya ba za ta iya amfani da AI don kasuwanci ba"
+      - "C. Komai dole ya kasance cikin Turanci kawai"
+      - "D. Dole ka sami adireshin Lagos"
+    correct: 0

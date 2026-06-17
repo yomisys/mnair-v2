@@ -1,0 +1,66 @@
+id: day6_what_is_ai_yo
+day: 6
+topic: what_is_ai
+language: yo
+title: "AI Jẹ Alabaṣepọ Iṣowo Rẹ"
+content: |
+  Ọjọ kẹfa: Jẹ ka sọrọ nipa owo. AI kii ṣe imọ-ẹrọ ti o dara nikan — o jẹ anfaani iṣowo ti o nla ti o fẹrẹ jẹ pe o na owo pupọ tẹlẹ. Bayi o wa fun ọ fun iye kekere tabi ọfẹ.
+
+  IYIPADA IṢOWO KEKERE:
+  Awon ile-iṣẹ nla bi Jumia ati Konga ti n lo AI lati fi ogun ọja han, wa ẹtan, ati saami iṣẹ onibaara fun ọdun. Agbara kanna bayi wa fun obinrin ọja, alagbẹdẹ, olugbẹdẹ aṣọ, tabi oniwọn ẹru — nipasẹ awon irinse ti ko ni iye tabi ti iye kekere.
+
+  OHUN TI AI N ṢE FUN IṢOWO:
+  - Iṣẹ onibaara: AI chatbots n dahun ibeere ni wakati 2 owurọ nigba ti o n sun
+  - Tita: AI n kọ apejuwe ọja rẹ, awon ifiranṣẹ media awujọ, ati awon ipolowo SMS
+  - Iṣẹ: AI n sọtẹlẹ iru ọja ti yoo ta ni ipari ose yi da lori awon ilana ti o ti kọja
+  - Owo: AI n pin inawo silẹ ati n samisi inawo ajeji laifọwọyi
+  - Imọ asọmọlẹ: AI n wo ohun ti awon asọmọlẹ rẹ n ṣe lori ayelujara
+
+  OGE DỌGBA ANFAANI:
+  Ṣaaju AI, alara asọ kekere lati Aba ko le sanwo fun ẹgbẹ tita, olukọ-ẹda, ati oṣiṣẹ iṣẹ onibaara. Bayi eniyan kan ti n lo awon irinse AI le ṣe mẹtẹta naa — ti o si dije pẹlu awon alara ti o tobi 10× wọn.
+
+  APẸẸRẸ GIDI:
+  Chidi n ta awon ohun elo foonu ni Onitsha. O lo ChatGPT kọ apejuwe ọja 30, Canva AI fun gbogbo awon aworan ile itaja rẹ, ati WhatsApp Business auto-reply fun awon ibeere lẹhin wakati iṣẹ. O bayi n gba ibeere 40% diẹ sii laisi sisẹ awon wakati diẹ sii.
+
+  IṢOWO RẸ + AI = OTE ASỌMỌLẸ RẸ.
+
+quiz:
+  - question: "Kini anfaani iṣowo ti AI n fun awon iṣowo kekere Naijiria?"
+    options:
+      - "A. Wiwọle si agbara ti o fẹrẹ jẹ pe o na owo pupọ tẹlẹ, bayi fẹrẹ jẹ ọfẹ"
+      - "B. O rọpo iwulo fun iṣẹ eyikeyi"
+      - "C. O nilo awon amoye ajeji ti o gbowolori"
+      - "D. O ṣiṣẹ fun awon ile-iṣẹ nla nikan"
+    correct: 0
+
+  - question: "Kini Chidi lo ChatGPT fun ninu ile itaja rẹ ni Onitsha?"
+    options:
+      - "A. Kikọ apejuwe ọja 30"
+      - "B. Rọpo gbogbo oṣiṣẹ rẹ"
+      - "C. Firanṣẹ owo ori rẹ laifọwọyi"
+      - "D. Kọ ile-iṣelọpọ"
+    correct: 0
+
+  - question: "Kini AI chatbots le ṣe fun iṣowo rẹ ni wakati 2 owurọ?"
+    options:
+      - "A. Dahun awon ibeere onibaara nigba ti o n sun"
+      - "B. Ṣi ile itaja gidi rẹ"
+      - "C. Tẹ awon iwe-ẹri"
+      - "D. Kokan - wọn n ṣiṣẹ nikan lakoko awon wakati iṣẹ"
+    correct: 0
+
+  - question: "Kini o jẹ ki eyi jẹ 'oge dọgba anfaani' fun awon iṣowo kekere?"
+    options:
+      - "A. Eniyan kan ti n lo AI bayi le ṣe tita, apẹrẹ, ati iṣẹ onibaara"
+      - "B. Awon iṣowo kekere bayi ko san owo ori"
+      - "C. Ayelujara kan de Naijiria bayi"
+      - "D. Awon ile-iṣẹ nla ti dẹkun dije"
+    correct: 0
+
+  - question: "Iṣẹ iṣowo wo ni AI le ṣe iranlọwọ lati sọtẹlẹ?"
+    options:
+      - "A. Iru ọja ti yoo ta da lori awon ilana ti o ti kọja"
+      - "B. Ojo fun ọdun 10 to nbọ"
+      - "C. Awon abajade ere bọọlu"
+      - "D. Awon iyipada eto imulo ijọba"
+    correct: 0

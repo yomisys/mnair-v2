@@ -1,0 +1,64 @@
+id: day7_what_is_ai_ig
+day: 7
+topic: what_is_ai
+language: ig
+title: "Otu AI Ga-abụ na 2030 — Na Ọrụ Gị N'ime Ya"
+content: |
+  Ụbọchị nke 7 — Ụbọchị ikpeazụ. Ka anyị lee ihu. AI ị mụtara n'izu a dị ike n'ezie, mana ọ bụkwa ụdị mbu nke ya n'ihe na-abịa.
+
+  IHE NA-AGBANWE N'IME AFỌ 5 NDỊ NA-ABỊA:
+
+  SITE NA NGWA ỌRỤ RỤỌ NDỊ ỌRỤ AI:
+  AI taa na-aza ajụjụ gị. AI echi ga-eme omume: na-akọwapụta oge nhọpụta, na-arịa ihe ngwaahịa, na-aza email, na-atụgharị maka gị — niile mgbe ị na-edu ura. Chee ya dị ka mgbanwe site na onye enyemaka dị amamịhe ị na-asụ n'asụsụ, gaa na onye nwere ike imezu ihe maka gị.
+
+  AI ỌTỤTỤ ASỤSỤ NA-ARỊGO OTO:
+  Ọrụ na-arịgo ọsọ iji wetara nkwado AI zuru ezu maka Hausa, Yoruba, Igbo, na Pidgin. AI ị ga-eji na 2030 ga-aghọta asụsụ Naịjịrịa otu o si aghọta Bekee ugbu a. I kọkwa igwefoto ekwentị gị nke igwe gbajiri, sụọ ajụjụ gị n'Igbo, AI ga-aza gị n'Igbo na ntuziaka nkwado.
+
+  ỌRỤ NDỊ GA-AGBANWE:
+  Ọrụ ndị ga-apụ: ntinye data, ntụgharị asụmimi akwụkwọ dị mfe, ederede ọrụ ndị ọrụ ahịa dị mfe. Ọrụ ndị ga-eto eto: ndị ọzụzụ AI, ndị injinia okwu nduzi, ndị nyocha AI, ndị ọchịchọ ụkpụrụ AI, ndị ọkachamara njikọ AI. Nka kachasị achọ ga-abụ ịmara UTO esi arụ ọrụ na AI — dị ka ihe ị nọọrọ izu a n'ime mwepụta ihe.
+
+  ỌRỤ GỊ:
+  Naịjịrịa nwere mmadụ nde 220, ọha ndị na-eto eto, na nsogbu gidi gidi nke AI nwere ike inyere aka idozi. Ndị ga-akọwapụta otu AI si arụ ọrụ na Naịjịrịa ga-abụ ndị Naịjịrịa ghọtara ya — dị ka gị, ugbu a.
+
+  ỌDỊNIHU BỤ ỌZỌ IHE NA-EME GỊ. Ị NA-EWU YA.
+
+quiz:
+  - question: "Kedu mgbanwe site na 'ngwa ọrụ' rụọ 'ndị ọrụ AI'?"
+    options:
+      - "A. AI na-agakwu site na iza ajụjụ rụọ imezu omume n'aha gị"
+      - "B. AI na-aghọta obere n'ụdị anụ ahụ"
+      - "C. AI kwụsịtara arụ ọrụ n'enweghị ịntanetị"
+      - "D. AI bụ naanị maka ndị ọrụ na brokers"
+    correct: 0
+
+  - question: "Ọrụ ndị ga-eto eto n'ihi AI?"
+    options:
+      - "A. Ndị ọzụzụ AI, ndị injinia okwu nduzi, ndị ọchịchọ ụkpụrụ AI"
+      - "B. Ndị ọrụ ntinye data"
+      - "C. Ndị na-agụ ederede ọrụ ndị ọrụ ahịa dị mfe"
+      - "D. Ndị ntụgharị akwụkwọ dị mfe"
+    correct: 0
+
+  - question: "Gịnị mere Naịjịrịa dị n'ọnọdụ ọma maka ọdịnihu AI?"
+    options:
+      - "A. Mmadụ nde 220, ọha ndị na-eto eto, nsogbu gidi nke AI nwere ike idozi"
+      - "B. Naịjịrịa nwere komputa karịa mba ọzọ ọ bụla"
+      - "C. Ịntanetị Naịjịrịa bụ nke ọsọ karịa n'Africa"
+      - "D. Ndị Naịjịrịa mepụtara ịntanetị"
+    correct: 0
+
+  - question: "Kedu nka kachasị achọ n'oge AI?"
+    options:
+      - "A. Ịmara UTO esi arụ ọrụ na AI"
+      - "B. Naanị ide koodu komputa"
+      - "C. Naanị asụsụ Bekee"
+      - "D. Inwe PhD"
+    correct: 0
+
+  - question: "Kedu ihe AI ọtụtụ asụsụ nwere ike ime na 2030?"
+    options:
+      - "A. Aghọta Hausa, Yoruba, Igbo, na Pidgin otu o si aghọta Bekee, zaaa n'asụsụ gị"
+      - "B. Naanị na-arụ ọrụ n'Bekee"
+      - "C. Chọọ ugegbe pụrụ iche iji ya"
+      - "D. Naanị na-arụ ọrụ na komputa ndị ike"
+    correct: 0

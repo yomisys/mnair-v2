@@ -1,0 +1,65 @@
+id: day7_ai_in_nigeria_ig
+day: 7
+topic: ai_in_nigeria
+language: ig
+title: "Ọdịnihu AI Naịjịrịa: Ị Bụ Akụkụ Ya"
+content: |
+  Naịjịrịa abụghị naanị ahịa maka ngwa AI ndị ewuwo n'ebe ọzọ. Naịjịrịa na-aghọta onye na-ewu AI. Na ohere dị n'etiti ebe anyị nọ ugbu a na ebe anyị chọọ ịbụ bụ ohere gị.
+
+  ỌNỌDỤ IWU AI NAỊJỊRỊA:
+  NITDA (National Information Technology Development Agency) bipụtara Iwu AI Naịjịrịa n'afọ 2024, na-akwa nkwa maka ihe ngwa AI, eto nka, na usoro ụkpụrụ. Gọọmentị ghọtara AI dị mkpa maka ịrụ amụma ego Naịjịrịa. Nke a pụtara ego, mmemme, na ohere na-abịa.
+
+  ONYONYO HUB NA-ETOLITE:
+  Lagos (otu teknụzụ Yaba), Abuja, Port Harcourt, na Kano na-emepụta ebe ndị AI na teknụzụ. Co-Création Hub (CCHub) na Yaba kwadoro ọtụtụ ụlọ ọrụ mbido AI. Zindi, ikpo okwu asọmpi AI kachasị na Africa, na-agba ọsọ asọmpi mgbe niile na ndị mmeri Naịjịrịa.
+
+  NKA AI NAỊJỊRỊA BỤ NKA ỤLỤ OYI:
+  Ndị nyocha AI Naịjịrịa, ndị injinia, na ndị ọrụ mkpado na-arụ ọrụ na Google DeepMind, Meta, Microsoft, na ọtụtụ nnukwu ụlọ ọrụ AI n'ụlụ oyi. Aha ndị a nọ n'ọnọdụ mbu nke AI ụlụ oyi — ma ha bidoro ebe ị nọ ugbu a.
+
+  OKE AI NKA = OHERE GỊ:
+  Naịjịrịa chọọ ndị ọrụ nwere nka AI karịa 100,000 n'ime afọ 5 na-abịa dị ka ọkọlọtọ. Ugbu a ndị dị n'ọnọdụ ya dị ntakịrị. Oke ahụ bụ ohere ọrụ gị. Ọbụna ọmụmụ AI dị mfe — ụdị nke ị nwetara n'izu a — na-eme gị ùgwù n'ọtụtụ ụzụ ọ bụla.
+
+  BỤ ONYE NA-EMENYE ỤBỌCHỊ:
+  Mmetụta ezigbo abụghị naanị ihe ị na-eme na AI — ọ bụ onye ị na-akụzi. Onye ọ bụla ghọtara AI ma keta ihe ọmụmụ ahụ na-emepụta ohiri. Ọdịnihu AI Naịjịrịa ga-ewuwe ya ndị Naịjịrịa mụtara, kpayere, wee kụziere ndị ọzọ.
+
+  NKWỤSỌ GỊ BỤ MMALITE, Ọ BỤGHỊ NJEDEBE.
+
+quiz:
+  - question: "Kedu ihe Iwu AI Naịjịrịa nke NITDA bipụtara kwadoro?"
+    options:
+      - "A. Ihe ngwa AI, eto nka, na usoro ụkpụrụ"
+      - "B. Ikwụsị iji AI niile na Naịjịrịa"
+      - "C. Naanị ikwe ka ụlọ ọrụ AI mba ọzọ"
+      - "D. Anọchi anya ndị ọrụ gọọmentị niile na AI"
+    correct: 0
+
+  - question: "Gịnị bụ ihe CCHub na Yaba a maara maka ya?"
+    options:
+      - "A. Kwado ọtụtụ ụlọ ọrụ mbido AI na teknụzụ"
+      - "B. Ọ bụ ụlọ ọrụ ndepụta egwu"
+      - "C. Na-emepụta ekwentị"
+      - "D. Ụlọ ọrụ ụtụ ego gọọmentị"
+    correct: 0
+
+  - question: "Ebee ndị nyocha AI Naịjịrịa si arụ ọrụ n'ụlụ oyi?"
+    options:
+      - "A. Google DeepMind, Meta, Microsoft na nnukwu ụlọ ọrụ AI"
+      - "B. Naanị na Naịjịrịa"
+      - "C. Ọ dịghị ikwe ka ha rụọ ọrụ n'ebe ọzọ"
+      - "D. Naanị na China"
+    correct: 0
+
+  - question: "Kedu oke nka AI na Naịjịrịa?"
+    options:
+      - "A. Naịjịrịa chọọ ndị ọrụ nwere nka AI karịa 100,000 na ndị dị ugbu a dị ntakịrị"
+      - "B. Ọdịkwa ọtụtụ ndị ọkachamara AI"
+      - "C. Naịjịrịa enweghị mmasị na AI"
+      - "D. Oke dị naanị na Lagos"
+    correct: 0
+
+  - question: "Gịnị bụ ihe 'abụ onye na-emenye ụbọchị' pụtara na AI?"
+    options:
+      - "A. Kụziere ndị ọzọ ihe ị mụtara ma mepụta ohiri ihe ọmụmụ"
+      - "B. Iji AI na ngwa ọrụ dị iche iche n'otu oge"
+      - "C. Inweta ego site na AI n'ikpo okwu dị iche iche"
+      - "D. Igba ọsọ ọtụtụ azụmahịa AI n'otu oge"
+    correct: 0

@@ -1,0 +1,69 @@
+id: day7_ai_ethics_yo
+day: 7
+topic: ai_ethics
+language: yo
+title: "Jẹ Iyipada: Itọsọna AI Iwa Rere ni Naijiria"
+content: |
+  O ti pari ọjọ 7 ti ikẹkọ AI. Pẹlu imo yẹn wa ojuse ti o kọja iṣowo tabi iṣẹ tirẹ.
+
+  JẸJẸ FUN IWU AI DI MMA:
+  Imulo AI Naijiria tun n ṣe apẹrẹ. Awon ofin nipa AI ninu igbanisiṣẹ, yiyawo, ilera, ati ẹkọ yoo ni ipa lori awon miliọnu Nigerians — pupọ ninu wọn ko mọ pe AI wa tẹlẹ. Awon eniyan ti o loye AI (bi iwọ bayi) nilo lati jẹ apakan awon ijiroro wọnyẹn. Kan si awon aṣoju ijọba agbegbe rẹ. Dahun si awon ijumọsọrọ imulo. Ohun rẹ ṣe pataki.
+
+  JABO AI TI N ṢE IPALARA NIGBA TI O RI I:
+  Awon iroyin irọ ti AI ṣe n tan kaakiri lori WhatsApp. Awon fidio deepfake ti awon oloselu n sọ awon nkan ti wọn ko sọ. Awon algorithm yiyawo ti o ni aibikita n kọ awon ti o yẹ. AI idanimọ oju ti ko ṣiṣẹ fun awon ohun orin awọ dudu. Nigba ti o ba ri ipalara, jabo rẹ — si ikpo, si FCCPC, tabi ni gbangba.
+
+  DARUKỌ ẸNIKAN:
+  Ohun kan ti o ṣe pataki julọ ti o le ṣe lẹhin ẹkọ yii ni lati kọ eniyan miiran ohun ti o kọ. Kii ṣe ikẹkọ nla ibile — naanị ibaraẹnisọrọ: "Hey, mo ti n kọ nipa AI ati fẹ fi nkan to wulo han ọ." Eniyan yẹn yoo kọ ẹnikan miiran. Iyẹn ni bi imo ṣe n tobi.
+
+  BEERE IṢIRO:
+  Nigba ti ile-iṣẹ tabi ijọba ba lo AI lati ṣe awon ipinnu nipa rẹ — ipo kirẹditi, ìbéèrè iṣẹ, iwadii aisan — o ni ẹtọ lati beere: Bawo ni eyi ṣe n ṣiṣẹ? Ṣe mo le rawọ? Tani oniduro ti o ba jẹ aṣiṣe? Iwọnyi jẹ awon ibeere ti o tọ. Beere wọn.
+
+  IBANILẸRI AI RẸ:
+  Emi yoo lo AI lati ṣẹda, kii ṣe lati tan jẹda.
+  Emi yoo pin ohun ti mo kọ, kii yoo pa a mọ.
+  Emi yoo beere awon abajade AI, kii yoo gba wọn ni ìfọjúsọná.
+  Emi yoo kọ fun agbegbe mi, kii ṣe fun ara mi nikan.
+  Emi yoo jẹ iru olumulo AI ti Naijiria nilo.
+
+  ORIIRE. O TI PARI.
+
+quiz:
+  - question: "Kini o jẹ ki awon ara Naijiria to mọ AI yẹ ki o kopa ninu imulo AI?"
+    options:
+      - "A. Nitori awon ofin AI ni ipa lori awon miliọnu ti ko tii mọ AI"
+      - "B. Nitori wọn yoo san wọn lati ṣe bẹ"
+      - "C. Ofin beere rẹ"
+      - "D. Ko ṣe pataki tani o kopa ninu imulo"
+    correct: 0
+
+  - question: "Kini o yẹ ki o ṣe nigba ti o ba ri AI ti n ṣe ipalara bi awon fidio deepfake?"
+    options:
+      - "A. Jabo rẹ si ikpo, FCCPC, tabi ni gbangba"
+      - "B. Gbagbe rẹ — awon ile-iṣẹ AI n mu gbogbo nkan"
+      - "C. Pin rẹ lati kilọ awon omiiran laisi ijabọ"
+      - "D. Jabo nikan ti o ba ṣe fidio naa funra rẹ"
+    correct: 0
+
+  - question: "Kini opo 'darukọ ẹnikan'?"
+    options:
+      - "A. Kọ eniyan kan n ṣẹda igbi ti o n tobi imo"
+      - "B. O gbọdọ di olukọ ibile akọkọ"
+      - "C. Kọ awon eniyan ti o ti mọ AI nikan"
+      - "D. Duro titi di igba ti o jẹ amoye ṣaaju ki o to kọni"
+    correct: 0
+
+  - question: "Kini ẹtọ ti o ni nigba ti AI ṣe awon ipinnu nipa rẹ?"
+    options:
+      - "A. Lati beere bi o ṣe n ṣiṣẹ, boya o le rawọ, ati tani oniduro"
+      - "B. Ko si ẹtọ — awon ipinnu AI jẹ ikẹhin"
+      - "C. Awon ọlọrọ nikan le beere AI lẹsẹsẹ"
+      - "D. O gbọdọ gba gbogbo awon ipinnu AI"
+    correct: 0
+
+  - question: "Kini Ibanilẹri AI n ṣe adehun rẹ si?"
+    options:
+      - "A. Ṣiṣẹda kii ṣe tan jẹda, pinpin kii ṣe kiko, ibeere awon abajade, ikọni fun agbegbe"
+      - "B. Naanị lilo awon irinse AI to gbowolori julọ"
+      - "C. Maṣe beere AI rara"
+      - "D. Ṣiṣọ imo AI ni aṣiri"
+    correct: 0

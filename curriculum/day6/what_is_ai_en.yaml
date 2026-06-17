@@ -1,0 +1,66 @@
+id: day6_what_is_ai_en
+day: 6
+topic: what_is_ai
+language: en
+title: "AI Is Your Business Partner"
+content: |
+  Day 6: Let's talk money. AI isn't just a cool technology — it's an unfair business advantage that used to cost millions. Now it's available to you for nearly free.
+
+  THE SMALL BUSINESS REVOLUTION:
+  Big companies like Jumia and Konga have used AI to recommend products, detect fraud, and automate customer service for years. That same power is now available to a market woman, a tailor, a fashion designer, or a provision store owner — through tools that cost nothing or very little.
+
+  WHAT AI DOES FOR BUSINESS:
+  - Customer service: AI chatbots answer questions at 2am when you're sleeping
+  - Marketing: AI writes your product descriptions, social media posts, and SMS campaigns
+  - Operations: AI predicts which products will sell this weekend based on past patterns
+  - Finance: AI categorizes expenses and flags unusual spending automatically
+  - Competitive intelligence: AI monitors what competitors are doing online
+
+  THE LEVEL PLAYING FIELD MOMENT:
+  Before AI, a small Aba fashion brand couldn't afford a marketing team, graphic designer, and customer service rep. Now one person using AI tools can do all three — and compete with brands 10× their size.
+
+  A REAL EXAMPLE:
+  Chidi sells phone accessories in Onitsha. He used ChatGPT to write 30 product descriptions, Canva AI for all his shop images, and WhatsApp Business auto-reply for after-hours questions. He now gets 40% more inquiries without working more hours.
+
+  YOUR BUSINESS + AI = YOUR COMPETITIVE EDGE.
+
+quiz:
+  - question: "What business advantage does AI give small Nigerian businesses?"
+    options:
+      - "A. Access to capabilities that used to cost millions, now nearly free"
+      - "B. It replaces the need for any work"
+      - "C. It requires expensive foreign consultants"
+      - "D. Only works for big companies"
+    correct: 0
+
+  - question: "What did Chidi use ChatGPT for in his Onitsha shop?"
+    options:
+      - "A. Writing 30 product descriptions"
+      - "B. Replacing all his staff"
+      - "C. Filing his taxes automatically"
+      - "D. Building a factory"
+    correct: 0
+
+  - question: "What can AI chatbots do for your business at 2am?"
+    options:
+      - "A. Answer customer questions while you sleep"
+      - "B. Open your physical shop"
+      - "C. Print receipts"
+      - "D. Nothing - they only work during business hours"
+    correct: 0
+
+  - question: "What makes this the 'level playing field moment' for small businesses?"
+    options:
+      - "A. One person using AI can now do marketing, design, and customer service"
+      - "B. Small businesses now pay zero taxes"
+      - "C. The internet just arrived in Nigeria"
+      - "D. Big companies stopped competing"
+    correct: 0
+
+  - question: "Which business function can AI help predict?"
+    options:
+      - "A. Which products will sell based on past patterns"
+      - "B. The weather for the next 10 years"
+      - "C. Football match results"
+      - "D. Government policy changes"
+    correct: 0

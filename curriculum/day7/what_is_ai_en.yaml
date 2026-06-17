@@ -1,0 +1,67 @@
+id: day7_what_is_ai_en
+day: 7
+topic: what_is_ai
+language: en
+title: "What AI Will Be in 2030 — And Your Role in It"
+content: |
+  Day 7 — Final day. Let's look ahead. The AI you've learned this week is already powerful, but it's also a very early version of what's coming.
+
+  WHAT'S CHANGING IN THE NEXT 5 YEARS:
+
+  FROM TOOLS TO AGENTS:
+  Today's AI answers your questions. Tomorrow's AI takes actions: books appointments, orders supplies, replies to emails, negotiates on your behalf — all while you sleep. Think of it as moving from a very smart assistant you talk to, to one that can act for you.
+
+  MULTIMODAL AI GETS BETTER:
+  Current AI already handles text, images, and voice. By 2030, the experience will be seamless: you show your phone camera at a broken machine, speak your question in Yoruba, and AI answers in voice with step-by-step repair instructions. No typing. No waiting.
+
+  AI SPEAKS MORE LANGUAGES:
+  Work is accelerating to bring proper AI support for Hausa, Yoruba, Igbo, and Pidgin. The AI you use in 2030 will understand Nigerian languages as well as it currently understands English.
+
+  WHAT JOBS WILL CHANGE:
+  Jobs that disappear: data entry, basic document translation, simple customer service scripts. Jobs that grow: AI trainers, prompt engineers, AI auditors, AI ethics officers, AI integration specialists. The most in-demand skill will be knowing HOW to work with AI — exactly what you've spent this week learning.
+
+  YOUR ROLE:
+  Nigeria has 220 million people, a young population, and urgent real-world problems that AI can help solve. The people who shape how AI works in Nigeria will be Nigerians who understand it — like you, now.
+
+  THE FUTURE IS NOT SOMETHING THAT HAPPENS TO YOU. YOU ARE BUILDING IT.
+
+quiz:
+  - question: "What is the shift from 'tools' to 'agents' in AI?"
+    options:
+      - "A. AI moves from answering questions to taking actions on your behalf"
+      - "B. AI becomes physically smaller"
+      - "C. AI stops working without internet"
+      - "D. AI is only for agents and brokers"
+    correct: 0
+
+  - question: "What does multimodal AI in 2030 look like?"
+    options:
+      - "A. Seamlessly handling text, image, voice — answering in your language"
+      - "B. Only text, no images"
+      - "C. Only works in English"
+      - "D. Requires expensive hardware"
+    correct: 0
+
+  - question: "Which jobs will GROW because of AI?"
+    options:
+      - "A. AI trainers, prompt engineers, AI ethics officers"
+      - "B. Data entry clerks"
+      - "C. Simple customer service script readers"
+      - "D. Basic document translators"
+    correct: 0
+
+  - question: "Why is Nigeria well-positioned for the AI future?"
+    options:
+      - "A. 220 million people, young population, real-world problems AI can solve"
+      - "B. Nigeria has more computers than any other country"
+      - "C. Nigerian internet is the fastest in Africa"
+      - "D. Nigerians invented the internet"
+    correct: 0
+
+  - question: "What is the most in-demand skill in the AI era?"
+    options:
+      - "A. Knowing HOW to work with AI"
+      - "B. Writing computer code only"
+      - "C. Speaking only English"
+      - "D. Having a PhD"
+    correct: 0

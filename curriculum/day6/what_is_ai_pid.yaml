@@ -1,0 +1,66 @@
+id: day6_what_is_ai_pid
+day: 6
+topic: what_is_ai
+language: pid
+title: "AI Na Be Your Business Partner"
+content: |
+  Day 6: Make we talk money. AI no be just cool technology — e be one unfair business advantage wey use to cost millions. Now e dey available for you for almost free.
+
+  THE SMALL BUSINESS REVOLUTION:
+  Big companies like Jumia and Konga don use AI to recommend products, detect fraud, and automate customer service for years. That same power now dey available for market woman, tailor, fashion designer, or provision store owner — through tools wey cost nothing or very little.
+
+  WETIN AI DEY DO FOR BUSINESS:
+  - Customer service: AI chatbots dey answer questions at 2am when you don sleep
+  - Marketing: AI dey write your product descriptions, social media posts, and SMS campaigns
+  - Operations: AI dey predict which products go sell this weekend based on past patterns
+  - Finance: AI dey categorize expenses and flag unusual spending automatically
+  - Competitive intelligence: AI dey monitor wetin your competitors dey do online
+
+  THE LEVEL PLAYING FIELD MOMENT:
+  Before AI, small Aba fashion brand no fit afford marketing team, graphic designer, and customer service rep. Now one person wey dey use AI tools fit do all three — and compete with brands 10× their size.
+
+  ONE REAL EXAMPLE:
+  Chidi dey sell phone accessories for Onitsha. E use ChatGPT write 30 product descriptions, Canva AI for all im shop images, and WhatsApp Business auto-reply for after-hours questions. E now dey get 40% more inquiries without working more hours.
+
+  YOUR BUSINESS + AI = YOUR COMPETITIVE EDGE.
+
+quiz:
+  - question: "Which business advantage AI give small Naija businesses?"
+    options:
+      - "A. Access to capabilities wey use to cost millions, now almost free"
+      - "B. E replace the need for any work"
+      - "C. E need expensive foreign consultants"
+      - "D. E only work for big companies"
+    correct: 0
+
+  - question: "Wetin Chidi use ChatGPT for for im Onitsha shop?"
+    options:
+      - "A. To write 30 product descriptions"
+      - "B. To replace all im staff"
+      - "C. To file im taxes automatically"
+      - "D. To build factory"
+    correct: 0
+
+  - question: "Wetin AI chatbots fit do for your business at 2am?"
+    options:
+      - "A. Answer customer questions while you dey sleep"
+      - "B. Open your physical shop"
+      - "C. Print receipts"
+      - "D. Nothing - dem only work during business hours"
+    correct: 0
+
+  - question: "Wetin make this the 'level playing field moment' for small businesses?"
+    options:
+      - "A. One person wey use AI now fit do marketing, design, and customer service"
+      - "B. Small businesses now no dey pay tax"
+      - "C. Internet just reach Naija"
+      - "D. Big companies don stop competing"
+    correct: 0
+
+  - question: "Which business function AI fit help predict?"
+    options:
+      - "A. Which products go sell based on past patterns"
+      - "B. Weather for next 10 years"
+      - "C. Football match results"
+      - "D. Government policy changes"
+    correct: 0

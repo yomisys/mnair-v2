@@ -1,0 +1,65 @@
+id: day6_ai_in_nigeria_en
+day: 6
+topic: ai_in_nigeria
+language: en
+title: "Nigerian Businesses Already Winning with AI"
+content: |
+  AI in Nigerian business isn't a future story — it's happening today, from Eko Atlantic to Onitsha Main Market.
+
+  THE BIG PLAYERS LEADING THE WAY:
+  Jumia's recommendation engine — the "You might also like" suggestions — is AI. It's increased average order value significantly. Kuda Bank's fraud detection AI blocked ₦2 billion in fraudulent transactions in its first year. Flutterwave uses AI to decide in milliseconds whether a payment should go through or be flagged.
+
+  AGRICULTURE GETTING SMARTER:
+  Farmcrowdy and Hello Tractor use AI to match farmers with equipment, predict harvest yields, and advise on planting schedules based on satellite weather data. A rice farmer in Kebbi state can now get the same quality advice as a large commercial farm.
+
+  SMALL BUSINESSES INNOVATING QUIETLY:
+  The most exciting AI stories aren't in the news. A tailor in Aba who uses ChatGPT to design her collections and Canva to market them. A plantain chips seller in Ibadan who tracks sales patterns to know which flavors to make each day. A POS agent in Enugu who uses a WhatsApp chatbot to answer customer balance questions.
+
+  THE EDTECH OPPORTUNITY:
+  Nigerian EdTech companies like uLesson and Tuteria are using AI to personalize learning — the same approach behind this very course you're taking.
+
+  HEALTHCARE CATCHES UP:
+  MDaaS Global uses AI to improve diagnostics in clinics that have never had a doctor. AI reads medical images and flags conditions for review, extending specialist care to underserved areas.
+
+  YOU ARE THE NEXT STORY.
+
+quiz:
+  - question: "What did Kuda Bank's fraud detection AI achieve?"
+    options:
+      - "A. Blocked ₦2 billion in fraudulent transactions"
+      - "B. Predicted football scores"
+      - "C. Replaced all human staff"
+      - "D. Built a new headquarters"
+    correct: 0
+
+  - question: "How does Hello Tractor use AI?"
+    options:
+      - "A. Matches farmers with equipment and predicts harvest yields"
+      - "B. Sells tractors online only"
+      - "C. Tracks truck GPS positions"
+      - "D. Teaches English to farmers"
+    correct: 0
+
+  - question: "What is the 'small business AI story' example from Aba?"
+    options:
+      - "A. A tailor using ChatGPT for designs and Canva for marketing"
+      - "B. A factory replacing workers with robots"
+      - "C. A government office going digital"
+      - "D. A bank opening a new branch"
+    correct: 0
+
+  - question: "How does MDaaS Global use AI in healthcare?"
+    options:
+      - "A. AI reads medical images and flags conditions in underserved clinics"
+      - "B. AI prescribes medicines"
+      - "C. AI replaces all nurses"
+      - "D. AI only works in Lagos hospitals"
+    correct: 0
+
+  - question: "What does Flutterwave's AI do?"
+    options:
+      - "A. Decides in milliseconds whether a payment should go through or be flagged"
+      - "B. Designs the company's website"
+      - "C. Translates transactions into English"
+      - "D. Prints receipts"
+    correct: 0

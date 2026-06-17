@@ -1,0 +1,75 @@
+id: day6_ai_tools_ha
+day: 6
+topic: ai_tools
+language: ha
+title: "Kayan Aikin AI na Kasuwancinka: Fara Samun Kuɗi da AI"
+content: |
+  Ka koyi kayan aiki don ƙirƙirar abubuwa. Yau: kayan aiki musamman don gudanar da kasuwanci da girma.
+
+  HIDIMAR ABOKIN CINIKI (amsa 24/7 ba tare da farkawa ba):
+  - WhatsApp Business: auto-reply don tambayoyin da ake yi kullum, jerin kaya, maɓallan amsa mai sauri — KYAUTA
+  - Tidio: zaman hira kai tsaye + AI chatbot don gidanku na yanar gizo, yana da tsarin kyauta
+  - ManyChat: atomatik na WhatsApp da Instagram DM — shahararren sosai a tsakanin 'yan kasuwar Najeriya
+
+  TALLA (rubuta, zana, buga — a mintuna):
+  - ChatGPT: bayanan kayan masarufi, rubutun sayarwa, kamfen ɗin email, abun cikin SMS
+  - Canva Magic Studio: ayyukan kafar sada zumunta, furoci, gyansen — duka sun dace da alama ka
+  - Buffer AI: yana ba da shawarar mafi kyawun lokacin buga abun cikinka kowane dandali
+
+  GUDANAR DA KUƊI (san lambobin ka):
+  - Wave (lissafin kyauta): takardar biya, bin diddigin kashe kuɗi, rarrabe da AI
+  - Google Sheets + AI formula: tambayi Gemini don nazarin takardar tallace-tallace ka
+  - Duba takardar karba: yi amfani da kyamara ta wayar hannu don adana takardar karba ta takarda
+
+  LEKEN ASIRIN SAYARWA (nemo da kiyaye abokan ciniki):
+  - LinkedIn Sales Navigator AI: nemo abokan ciniki na B2B idan kana sayar wa kamfanoni
+  - Matakin kyauta na Apollo.io: gina jerin abokan ciniki don kasuwancin sabis
+  - CRM mai sauƙi: ko Google Sheet tare da sunaye, sayan ƙarshe, da ranar bin biya na abokan ciniki ya fi komai
+
+  GINA KAYAN AIKIN AI NAKA (ba code):
+  - Google Forms + ChatGPT: abokin ciniki ya cike fom → ka liƙa amsoshi → AI ya ba da kasuwar farashi ko shawarar
+  - WhatsApp + Zapier + Sheets: kowace tambayar WhatsApp an yi musu rajista ta atomatik
+
+  KAYAN AIKIN KASUWANCI NA ₦0:
+  WhatsApp Business + Canva + ChatGPT matakin kyauta + Google Sheets = cikakkiyar gudanar da kasuwanci. Kasuwancin Najeriya masu nasara da yawa suna gudanar da kasuwanci ta wannan tsari.
+
+quiz:
+  - question: "Menene ManyChat ke yin atomatik ga 'yan kasuwa na Najeriya?"
+    options:
+      - "A. Amsar WhatsApp da Instagram DM"
+      - "B. Hanyoyin isar da kayan"
+      - "C. Fitar da haraji"
+      - "D. Biyan albashin ma'aikata"
+    correct: 0
+
+  - question: "Menene Wave (lissafin kyauta) ke yi da AI?"
+    options:
+      - "A. Rarrabe kashe-kashe ta atomatik"
+      - "B. Hasashen farashin kasuwar hannayen jari"
+      - "C. Biyan masu samarwa kai tsaye"
+      - "D. Kama tikiti na jirgin sama"
+    correct: 0
+
+  - question: "Menene haɗin kayan aikin kasuwanci na ₦0?"
+    options:
+      - "A. WhatsApp Business + Canva + ChatGPT kyauta + Google Sheets"
+      - "B. Software na SAP mai tsada kawai"
+      - "C. Asusun banki na waje"
+      - "D. Ofishi na zahiri a Lagos"
+    correct: 0
+
+  - question: "Menene Buffer AI ke ba da shawarar?"
+    options:
+      - "A. Mafi kyawun lokacin buga abun ciki a kowane dandali"
+      - "B. Wane kayayyaki za a sayar"
+      - "C. Wane abokin ciniki za a guji"
+      - "D. Mafi amintaccen banki don amfani"
+    correct: 0
+
+  - question: "Ta yaya za ka gina kayan aiki na farashin abokin ciniki ba tare da code ba?"
+    options:
+      - "A. Google Forms don shigarwa + ChatGPT don samar da farashin"
+      - "B. Dole ka dauki mai shirye-shirye"
+      - "C. Yiwuwa kawai tare da digirin kimiyyar kwamfuta"
+      - "D. Har yanzu ba yiwuwa ba"
+    correct: 0

@@ -1,0 +1,64 @@
+id: day7_what_is_ai_pid
+day: 7
+topic: what_is_ai
+language: pid
+title: "Wetin AI Go Be for 2030 — And Your Role for Am"
+content: |
+  Day 7 — Last day. Make we look ahead. The AI wey you don learn this week already powerful, but e also na very early version of wetin dey come.
+
+  WETIN DEY CHANGE FOR THE NEXT 5 YEARS:
+
+  FROM TOOLS TO AGENTS:
+  Today AI dey answer your questions. Tomorrow AI go take actions: book appointments, order supplies, reply emails, negotiate on your behalf — all while you dey sleep. Think am like moving from very smart assistant wey you dey talk to, to one wey fit act for you.
+
+  AI DEY SPEAK MORE LANGUAGES:
+  Work dey speed up to bring proper AI support for Hausa, Yoruba, Igbo, and Pidgin. The AI wey you go use for 2030 go understand Naija languages as well as e currently understand English. You point your phone camera at broken machine, speak your question in Pidgin, AI go answer you in Pidgin with repair instructions.
+
+  WHICH JOBS GO CHANGE:
+  Jobs wey go disappear: data entry, basic document translation, simple customer service scripts. Jobs wey go grow: AI trainers, prompt engineers, AI auditors, AI ethics officers, AI integration specialists. The most in-demand skill go be knowing HOW to work with AI — exactly wetin you don spend this week learning.
+
+  YOUR ROLE:
+  Naija get 220 million people, young population, and urgent real-world problems wey AI fit help solve. The people wey go shape how AI work for Naija go be Nigerians wey understand am — like you, now.
+
+  THE FUTURE NO BE SOMETHING WEY GO HAPPEN TO YOU. YOU DEY BUILD AM.
+
+quiz:
+  - question: "Wetin be the shift from 'tools' to 'agents' for AI?"
+    options:
+      - "A. AI move from answering questions to taking actions on your behalf"
+      - "B. AI become physically smaller"
+      - "C. AI stop working without internet"
+      - "D. AI na only for agents and brokers"
+    correct: 0
+
+  - question: "Which jobs go GROW because of AI?"
+    options:
+      - "A. AI trainers, prompt engineers, AI ethics officers"
+      - "B. Data entry clerks"
+      - "C. Simple customer service script readers"
+      - "D. Basic document translators"
+    correct: 0
+
+  - question: "Why Naija dey well positioned for the AI future?"
+    options:
+      - "A. 220 million people, young population, real-world problems AI fit solve"
+      - "B. Naija get more computers than any other country"
+      - "C. Naija internet na the fastest for Africa"
+      - "D. Nigerians invent the internet"
+    correct: 0
+
+  - question: "Wetin be the most in-demand skill for AI era?"
+    options:
+      - "A. Knowing HOW to work with AI"
+      - "B. Writing computer code only"
+      - "C. Speaking only English"
+      - "D. Having PhD"
+    correct: 0
+
+  - question: "Wetin AI go fit do for multiple languages for 2030?"
+    options:
+      - "A. Understand Hausa, Yoruba, Igbo, Pidgin as well as English, answer in your language"
+      - "B. Only work in English"
+      - "C. Need special glasses to use"
+      - "D. Only work on powerful computers"
+    correct: 0

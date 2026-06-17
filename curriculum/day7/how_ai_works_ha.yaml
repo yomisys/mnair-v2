@@ -1,0 +1,62 @@
+id: day7_how_ai_works_ha
+day: 7
+topic: how_ai_works
+language: ha
+title: "Ginin Gaba: AI Da Ke Ɗaukar Ayyuka, Ba Amsa Tambayoyi Kawai"
+content: |
+  Ka koyi yadda AI na yanzu ke aiki. Yau: abin da ke zuwa gaba, da abin da yake nufi ga Najeriya.
+
+  WAKILAN AI — BABBAN CANJI:
+  AI na yanzu: ka yi tambaya, ya amsa, kai ka ɗauki aiki.
+  Wakilan AI: ka ba da manufa, AI yana tsara matakai, yana amfani da kayan aiki, yana ɗaukar ayyuka, kuma yana ba da rahoton sakamako.
+  Misali: "Ka kama tikitin jirgin sama zuwa Abuja na Alhamis, a cikin ₦80,000, da luggage na kilo 20." Wakilin AI yana nemo jirgin sama, yana kwatanta farashi, yana duba jadawalinka, yana sayan tikiti, kuma yana tabbatarwa — ba tare da ka ɗauki kowane mataki ba.
+
+  AI BA TARE DA INTANET (EDGE AI):
+  Samfuran suna raguwa don gudana a wayoyi da na'urori ƙanana ba tare da haɗin girgije ba. Wannan yana da matuƙar muhimmanci ga Najeriya: a wuraren da haɗin gwiwa ba shi da ɗorewa, AI har yanzu yana iya aiki. Ma'aikacin lafiya a ƙauyen nesa na iya amfani da binciken AI da ke aiki gaba ɗaya ba tare da layi ba.
+
+  BUƊE SOURCE YA CANZA KOMAI:
+  Manyan samfuran AI da aka yi amfani da su a da suna farashi biliyan don ginawa kuma manyan kamfanoni kawai suna da su. Yanzu samfuran buɗe tushe da kowa zai iya saukewa da gudana gida suna ɗaya ƙarfi. Mai shirye-shirye na Najeriya na iya gudanar da samfurin AI mai iya aiki a kwamfutar tebur mai kyau.
+
+  ABIN DA YAK E NUFI GARE KA:
+  Rikitarwar fasaha na aiki tare da AI na raguwa kowace shekara. Ƙwarewar ɗan adam — hukunci, ƙirƙira, ilimin gida, amana — suna zama mafi daraja, ba ƙasa ba. Fahimtarka na yanayin Najeriya, harsuna, da matsaloli shine gefen gasa ka da babu AI da zai iya kwaikwaya shi.
+
+quiz:
+  - question: "Menene wakilin AI?"
+    options:
+      - "A. AI da ke ɗaukar manufa, tsara matakai, ɗaukar ayyuka, da ba da rahoto"
+      - "B. Mutum da ke aiki ga kamfanin AI"
+      - "C. Robot mai kama da mutum"
+      - "D. Chatbot mai sauƙi na AI"
+    correct: 0
+
+  - question: "Menene Edge AI ke nufi ga karkara ta Najeriya?"
+    options:
+      - "A. AI na iya aiki ba tare da layi ba a wuraren da haɗin gwiwa ba shi da ɗorewa"
+      - "B. AI yana aiki a gefen birni kawai"
+      - "C. AI na bukatar intanet mafi sauri don aiki"
+      - "D. Karkara ta Najeriya ba za ta amfana da AI ba"
+    correct: 0
+
+  - question: "Menene buɗe tushe AI ya canza?"
+    options:
+      - "A. Kowa yanzu na iya gudanar da samfuran AI masu iya aiki ba tare da saka biliyan ba"
+      - "B. AI yanzu haramun ne don amfani ba tare da lasisi ba"
+      - "C. Hukumomi na gwamnati kawai suna iya samun AI"
+      - "D. Samfuran AI sun zama mara iya aiki"
+    correct: 0
+
+  - question: "Wane ƙwarewar ɗan adam ta zama MAS mahimmanci yayin da AI ke inganta?"
+    options:
+      - "A. Hukunci, ƙirƙira, da ilimin gida"
+      - "B. Iya buga rubutu da sauri"
+      - "C. Haddace ƙayyadaddun fasaha"
+      - "D. Shigar bayanai mai sauƙi"
+    correct: 0
+
+  - question: "Menene iya yaren AI da aka yi alkawari ta 2028?"
+    options:
+      - "A. AI da ke sarrafa rubutu, murya, hoto, da bidiyo da kyau cikin harsuna na gida"
+      - "B. AI da ke aiki cikin Turanci kawai"
+      - "C. AI da ke bukatar gilashin musamman don amfani"
+      - "D. AI da ke aiki a kwamfutoci masu ƙarfi kawai"
+    correct: 0

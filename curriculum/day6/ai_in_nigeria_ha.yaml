@@ -1,0 +1,65 @@
+id: day6_ai_in_nigeria_ha
+day: 6
+topic: ai_in_nigeria
+language: ha
+title: "Kasuwancin Najeriya Da Ke Cin Nasara da AI"
+content: |
+  AI a kasuwancin Najeriya ba labari ne na gaba ba — yana faruwa yau, daga Eko Atlantic zuwa Kasuwar Main ta Onitsha.
+
+  MANYAN 'YAN WASA NA JAGORANCI:
+  Injin shawarar Jumia — shawarwarin "Kuma za ka son" — AI ne. Ya ƙara ƙimar oda ta matsakaici sosai. AI na gano zamba na Kuda Bank ya toshe zabe mara gaskiya da ₦2 biliyon a shekarar farko. Flutterwave yana amfani da AI don yanke shawara a dakika ko biyan kuɗi ya wuce ko a toshe.
+
+  NOMA YA ZAMA WAYO:
+  Farmcrowdy da Hello Tractor suna amfani da AI wajen haɗa manoma da kayan aiki, hasashen amfanin gona, da ba da shawara kan jadawalin noma bisa bayanin yanayi na tauraron dan adam. Manomi shinkafa a jihar Kebbi yanzu yana iya samun shawarar inganci iri ɗaya da gonar kasuwanci mai girma.
+
+  KASUWANCIN KANANA SUNA ƘIRƘIRAR BAYAN FAGE:
+  Mafi daɗaɗɗun labaran AI ba su a cikin labarai ba. Mai dinki a Aba da ke amfani da ChatGPT don zana tarin sa da Canva don tallata su. Mai sayar da chips na ayaba a Ibadan da ke kula da tsare-tsaren sayarwa don sanin wane dandano za ta yi kowace rana. Mai POS a Enugu da ke amfani da chatbot na WhatsApp don amsa tambayoyin ma'auni na abokan ciniki.
+
+  DAMAMA NA EDTECH:
+  Kamfanonin EdTech na Najeriya kamar uLesson da Tuteria suna amfani da AI don keɓance koyo — irin wannan tsari da ke bayan wannan darasin da kake ɗauka yanzu.
+
+  KIWON LAFIYA YA TARE:
+  MDaaS Global yana amfani da AI don inganta gano cututtuka a asibitoci da ba su taɓa samun likita ba. AI na karanta hotunan likita kuma yana nuna yanayi don dubawa, yana shimfiɗa kulawa ta ƙwararru zuwa yankunan da ba su wadatu ba.
+
+  KAI NE LABARIN GABA.
+
+quiz:
+  - question: "Me AI na gano zamba na Kuda Bank ya samu?"
+    options:
+      - "A. Toshe zabe mara gaskiya da ₦2 biliyon"
+      - "B. Hasashen sakamakon wasan kwallon kafa"
+      - "C. Maye gurbin dukkan ma'aikata"
+      - "D. Gina sabon hedikwata"
+    correct: 0
+
+  - question: "Ta yaya Hello Tractor ke amfani da AI?"
+    options:
+      - "A. Haɗa manoma da kayan aiki kuma hasashen amfanin gona"
+      - "B. Sayar da tractors akan layi kawai"
+      - "C. Kula da matsayin GPS na motoci"
+      - "D. Koyar da Turanci ga manoma"
+    correct: 0
+
+  - question: "Menene misalin 'labarin kasuwancin AI na ƙarami' daga Aba?"
+    options:
+      - "A. Mai dinki da ke amfani da ChatGPT don zane da Canva don talla"
+      - "B. Masana'anta da ke maye gurbin ma'aikata da robots"
+      - "C. Ofishin gwamnati da ke zama na dijital"
+      - "D. Banki da ke buɗe reshe sabon"
+    correct: 0
+
+  - question: "Ta yaya MDaaS Global ke amfani da AI a kiwon lafiya?"
+    options:
+      - "A. AI na karanta hotunan likita kuma yana nuna yanayi a asibitocin da ba su wadatu ba"
+      - "B. AI na rubuta magunguna"
+      - "C. AI na maye gurbin dukkan jiragen rami"
+      - "D. AI yana aiki a asibitan Lagos kawai"
+    correct: 0
+
+  - question: "Me AI na Flutterwave ke yi?"
+    options:
+      - "A. Yanke shawara a dakika ko biyan kuɗi ya wuce ko a toshe"
+      - "B. Zana gidan yanar gizon kamfanin"
+      - "C. Fassara ma'amaloli zuwa Turanci"
+      - "D. Buga takardar karba"
+    correct: 0

@@ -1,0 +1,65 @@
+id: day6_ai_ethics_en
+day: 6
+topic: ai_ethics
+language: en
+title: "Ethical Business in the AI Age: Trust Is Your Currency"
+content: |
+  AI can help you win more customers. It can also help you deceive them — and destroy your reputation permanently. Today's lesson: how to build AI-powered businesses that last.
+
+  THE SHORTCUTS THAT BACKFIRE:
+
+  FAKE REVIEWS: AI can generate hundreds of fake positive reviews in minutes. But platforms detect them now, and being caught destroys trust permanently. Worse — fake reviews hurt the customer who bought based on lies. Build real reputation through real service.
+
+  FAKE PRODUCT IMAGES: AI image generation can make ₦500 shoes look like ₦50,000 luxury items. When customers receive the real product, the damage is irreversible. Nigerian consumer culture runs on trust and word of mouth — destroying it costs more than any short-term gain.
+
+  MISLEADING AI CHATBOTS: A chatbot that promises delivery in "2-3 days" when it's actually 2-3 weeks, or claims "100% natural" for a product that isn't, is a liability. You are legally responsible for what your chatbot says.
+
+  PRICING DISCRIMINATION: AI can charge different customers different prices for the same thing based on their perceived income or location. This is legal in many places but deeply unfair. In close-knit Nigerian communities, word spreads fast.
+
+  CUSTOMER DATA: If you collect customer phone numbers and purchase history to power your AI tools, those customers trusted you with personal information. Selling it, sharing it, or losing it to a breach is a betrayal.
+
+  THE TRUST EQUATION:
+  Every honest transaction builds compound trust. One deception unravels it all. The businesses that will dominate Nigerian commerce with AI are the ones customers can rely on completely.
+
+  BUILD TRUST. BUILD LONG.
+
+quiz:
+  - question: "Why do fake AI-generated reviews backfire?"
+    options:
+      - "A. Platforms detect them and they destroy trust permanently"
+      - "B. They always work forever"
+      - "C. Customers cannot read reviews"
+      - "D. Only negative reviews matter"
+    correct: 0
+
+  - question: "What happens when customers receive a product that looks nothing like the AI-enhanced photo?"
+    options:
+      - "A. Trust is irreversibly damaged, especially via word of mouth"
+      - "B. Customers forget quickly"
+      - "C. They always come back"
+      - "D. Nothing happens"
+    correct: 0
+
+  - question: "Who is legally responsible for what a business chatbot says?"
+    options:
+      - "A. The business owner who deployed it"
+      - "B. The AI company only"
+      - "C. Nobody"
+      - "D. The customer's phone network"
+    correct: 0
+
+  - question: "What is pricing discrimination via AI?"
+    options:
+      - "A. Charging different customers different prices for the same product based on perceived income"
+      - "B. Giving discounts to loyal customers"
+      - "C. Charging more for premium products"
+      - "D. Running seasonal sales"
+    correct: 0
+
+  - question: "What is the Trust Equation in AI business?"
+    options:
+      - "A. Honest transactions build compound trust; one deception unravels it all"
+      - "B. Speed of delivery matters most"
+      - "C. Price is the only factor"
+      - "D. Trust cannot be built online"
+    correct: 0

@@ -1,0 +1,65 @@
+id: day6_ai_ethics_pid
+day: 6
+topic: ai_ethics
+language: pid
+title: "Honest Business for AI Age: Trust Na Your Currency"
+content: |
+  AI fit help you win more customers. E fit also help you deceive dem — and destroy your reputation forever. Today lesson: how to build AI-powered businesses wey go last.
+
+  THE SHORTCUTS WEY DEY BACKFIRE:
+
+  FAKE REVIEWS: AI fit generate hundreds of fake positive reviews for minutes. But platforms dey detect dem now, and if dem catch you e go destroy trust forever. Worse — fake reviews dey hurt the customer wey buy based on lies. Build real reputation through real service.
+
+  FAKE PRODUCT IMAGES: AI image generation fit make ₦500 shoes look like ₦50,000 luxury items. When customers receive the real product, the damage no fit be undone. Naija consumer culture dey run on trust and word of mouth — destroying am go cost more than any short-term gain.
+
+  MISLEADING AI CHATBOTS: Chatbot wey dey promise delivery in "2-3 days" when e really na 2-3 weeks, or wey dey claim "100% natural" for product wey no be so, na liability. You be legally responsible for wetin your chatbot dey say.
+
+  PRICING DISCRIMINATION: AI fit charge different customers different prices for the same thing based on their perceived income or location. This one dey legal plenty places but e dey deeply unfair. For close-knit Naija communities, word dey spread fast.
+
+  CUSTOMER DATA: If you dey collect customer phone numbers and purchase history to power your AI tools, those customers don trust you with personal information. To sell am, share am, or lose am to breach na betrayal.
+
+  THE TRUST EQUATION:
+  Every honest transaction dey build compound trust. One deception go unravel everything. The businesses wey go dominate Naija commerce with AI na the ones wey customers fit fully rely on.
+
+  BUILD TRUST. BUILD LONG.
+
+quiz:
+  - question: "Why fake AI reviews dey backfire?"
+    options:
+      - "A. Platforms dey detect dem and dem dey destroy trust forever"
+      - "B. Dem always dey work forever"
+      - "C. Customers no fit read reviews"
+      - "D. Only negative reviews matter"
+    correct: 0
+
+  - question: "Wetin happen when customers receive product wey no look like the AI-enhanced photo?"
+    options:
+      - "A. Trust go irreversibly damage, especially through word of mouth"
+      - "B. Customers dey forget quick"
+      - "C. Dem always dey come back"
+      - "D. Nothing happen"
+    correct: 0
+
+  - question: "Who be legally responsible for wetin business chatbot dey say?"
+    options:
+      - "A. The business owner wey deploy am"
+      - "B. The AI company only"
+      - "C. Nobody"
+      - "D. The customer network provider"
+    correct: 0
+
+  - question: "Wetin be pricing discrimination through AI?"
+    options:
+      - "A. To charge different customers different prices for same product based on perceived income"
+      - "B. To give discounts to loyal customers"
+      - "C. To charge more for premium products"
+      - "D. To run seasonal sales"
+    correct: 0
+
+  - question: "Wetin be the Trust Equation for AI business?"
+    options:
+      - "A. Honest transactions dey build compound trust; one deception go unravel everything"
+      - "B. Speed of delivery matter most"
+      - "C. Price na the only factor"
+      - "D. Trust no fit be built online"
+    correct: 0

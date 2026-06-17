@@ -1,0 +1,69 @@
+id: day7_ai_ethics_ha
+day: 7
+topic: ai_ethics
+language: ha
+title: "Kasance Canjin: Jagorancin AI mai Ɗabi'a a Najeriya"
+content: |
+  Ka kammala koyon AI na kwanaki 7. Tare da wannan ilimi ya zo alhakin da ya wuce kasuwancinka ko aikin kanka.
+
+  BAYAR DA SHAWARA DON MANUFOFIN AI MASU KYAU:
+  Manufofin AI na Najeriya har yanzu ana tsarawa. Dokokin AI a cikin daukar aiki, bashi, kiwon lafiya, da ilimi za su shafi Najeriyawa miliyan da yawa — mafi yawansu ba su san AI yana wanzu ba tukuna. Mutanen da suka fahimci AI (kamar kai yanzu) suna bukatar kasancewa wani ɓangare na waɗannan tattaunawa. Tuntuɓi wakilanku na gwamnatin gida. Ka amsa shawarwari na manufofi. Muryarku tana da muhimmanci.
+
+  BAYYANA AI CUTARWA LOKACIN DA KA GANI:
+  Labarai na ƙarya da AI ke samarwa yana yaɗuwa akan WhatsApp. Bidiyon deepfake na 'yan siyasa suna faɗin abubuwan da ba su faɗa ba. Algorithms na bashi masu nuna son kai na ƙin cancantattu. Gane fuska da AI wanda ba ya aiki ga launin fata mai duhu. Lokacin da ka ga cutarwa, ba da rahoton ta — zuwa dandali, zuwa FCCPC, ko a bainar jama'a.
+
+  TAIMAKA WA MUTUMIN ɗAYA:
+  Abu ɗaya mafi tasirin da za ka yi bayan wannan kwas shi ne koyar da wani mutumin abin da ka koyi. Ba babban horon yau da kullum ba — kawai tattaunawa: "Hey, na yi koyon AI kuma ina son nuna maka wani abu mai amfani." Wannan mutumin ya koya wa wani. Haka ilimi ke girma.
+
+  BUKATAR LISSAFI:
+  Lokacin da kamfani ko gwamnati ta yi amfani da AI don yanke shawara game da kai — maki bashi, neman aiki, gano cuta — kana da 'yancin tambaya: Ta yaya wannan ke aiki? Zan iya yin ƙara? Wa ke da alhakin idan ya yi kuskure? Waɗannan tambayoyi ne masu ma'ana. Ka tambayi su.
+
+  ALKAWARIN AI NAKA:
+  Zan yi amfani da AI don ƙirƙira, ba yaudara ba.
+  Zan raba abin da na koyi, ba ɓoye shi ba.
+  Zan tambaya sakamakon AI, ba karɓarsu makantu ba.
+  Zan gina don al'ummata, ba kaina kawai ba.
+  Zan kasance irin mai amfani da AI da Najeriya take bukata.
+
+  TAYA MURNA. KA KAMMALA.
+
+quiz:
+  - question: "Me ya sa Najeriyawa masu karatu da rubutu AI suke shiga manufofin AI?"
+    options:
+      - "A. Saboda dokokin AI suna shafar miliyoyi da ba sa fahimtar AI tukuna"
+      - "B. Saboda za a biya su don haka"
+      - "C. Doka tana bukata"
+      - "D. Ba shi da muhimmanci wanda ya shiga manufofi"
+    correct: 0
+
+  - question: "Me ya kamata ka yi lokacin da ka ga AI cutarwa kamar bidiyon deepfake?"
+    options:
+      - "A. Ba da rahoton ta ga dandali, FCCPC, ko a bainar jama'a"
+      - "B. Yi 見ta — kamfanonin AI suna kula da komai"
+      - "C. Raba ta don gargadi wasu ba tare da ba da rahoton ba"
+      - "D. Ba da rahoton kawai idan ka yi bidiyon da kanka"
+    correct: 0
+
+  - question: "Menene ƙa'idar 'taimaka wa mutumin ɗaya'?"
+    options:
+      - "A. Koyar da mutumin ɗaya yana ƙirƙirar ripple da ke girma ilimi"
+      - "B. Dole ka zama malami na yau da kullum da farko"
+      - "C. Koyar da mutanen da suka riga sun san AI kawai"
+      - "D. Jira har ka zama ƙwararre kafin ka koya"
+    correct: 0
+
+  - question: "Wane 'yancin kana da shi lokacin da AI ya yanke shawara game da kai?"
+    options:
+      - "A. Tambaya yadda yake aiki, ko za ka iya yin ƙara, da wa ke da alhakin"
+      - "B. Babu 'yancin — shawarwarin AI na ƙarshe ne"
+      - "C. Masu arziki kawai za su iya tambaya AI"
+      - "D. Dole ka karɓi duk shawarwarin AI"
+    correct: 0
+
+  - question: "Me Alkawarin AI ke alƙawarta?"
+    options:
+      - "A. Ƙirƙira ba yaudara, raba ba ɓoye, tambaya sakamakon, gina don al'umma"
+      - "B. Amfani da kayan aikin AI mafi tsada kawai"
+      - "C. Kada ka taɓa tambaya AI"
+      - "D. Ɓoye ilimin AI sir"
+    correct: 0

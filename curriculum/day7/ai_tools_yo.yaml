@@ -1,0 +1,80 @@
+id: day7_ai_tools_yo
+day: 7
+topic: ai_tools
+language: yo
+title: "Tẹsiwaju Kiko: Maapụ AI Rẹ Lẹhin Ẹkọ Yii"
+content: |
+  Loni ni opin Ọsẹ 1. O tun jẹ ibẹrẹ ohun gbogbo miiran. Eyi ni gangan ibiti o lọ ni atẹle.
+
+  AWON ỌNÀ IKẸKỌ OFE:
+
+  ELEWE-ỌMỌ (bẹrẹ nibi ti o ba fẹ jinle):
+  - Ẹkọ "AI Essentials" Google (ọfẹ, iwe-ẹri wa) — bo awon ipilẹ AI ati awon irinse AI Google Workspace
+  - "AI Skills Challenge" Microsoft — ọfẹ, kukuru, to wulo
+  - Ẹkọ AI Khan Academy — ọfẹ, ti o nfihan, rọrun fun elewe-ọmọ
+
+  AGBEDEMEJI (nigba ti o ti ṣetan lati kọ):
+  - Awon ẹkọ kukuru DeepLearning.AI (Andrew Ng) — ọpọlọpọ ọfẹ, wakati 1-2 kọọkan
+  - fast.ai — ọfẹ, ẹkọ ẹrọ to wulo, n ṣiṣẹ lori Google Colab ọfẹ
+  - Kaggle Learn — awon micro-ẹkọ ọfẹ lori data, AI, ati Python
+
+  AWON AGBEGBE AI AFRICA (sopọ ati dagba):
+  - AI Saturdays Lagos (AISatLagos) — awon igba ikẹkọ AI ọfẹ lọsẹọsẹ ni Lagos
+  - Zindi.africa — awon asọmọlẹ AI Africa pẹlu awon ẹbun owo, lati elewe-ọmọ si amoye
+  - Deep Learning Indaba — apejọ AI Africa lododun, awon eto iwe-ẹkọ
+  - Awon ẹgbẹ WhatsApp AI/ML Africa — awon agbegbe ikẹkọ ti n ṣiṣẹ
+
+  GBAANU OWO FUN AWON OGBON AI (awon ibẹrẹ):
+  - Upwork/Fiverr: pese awon iṣẹ AI-atilẹyin (kikọ ohun elo, apẹrẹ, iwadi)
+  - Awon iṣowo agbegbe: pese lati ṣeto auto-reply AI WhatsApp Business wọn
+  - Ikọni: ṣiṣẹ ẹgbẹ imọ-AI WhatsApp agbegbe — gbọ ₦500 fun eniyan kọọkan
+  - Injinia okwu freelance: awon ile-iṣẹ n san owo fun awon eniyan ti n gba awon abajade lati AI
+
+  OGO ỌJỌ 30 RẸ:
+  Ọsẹ 1: Lo irinse AI tuntun kan ni gbogbo ọjọ
+  Ọsẹ 2: Ṣẹda nkan gidi ki o pin rẹ
+  Ọsẹ 3: Kọ ẹnikan miiran ohun ti o mọ
+  Ọsẹ 4: Ṣe idanimọ iṣoro kan ninu agbegbe rẹ ti AI le ṣe iranlọwọ lati yanju, daba ojutu
+
+  IKẸ́KỌ AI TI O DARA JULỌ NI SISE.
+
+quiz:
+  - question: "Kini ẹkọ 'AI Essentials' Google n pese?"
+    options:
+      - "A. Ẹkọ ipilẹ AI ọfẹ pẹlu iwe-ẹri"
+      - "B. Oye isanwo ni AI"
+      - "C. Wiwọle si awon awoṣe AI aladani Google nikan"
+      - "D. Ijẹrisi ijọba"
+    correct: 0
+
+  - question: "Kini Zindi.africa jẹ olokiki fun?"
+    options:
+      - "A. Awon asọmọlẹ AI Africa pẹlu awon ẹbun owo lati elewe-ọmọ si amoye"
+      - "B. Ikpo media awujọ fun awon injinia"
+      - "C. Pọtịọl iṣẹ ijọba"
+      - "D. Ipasilẹ owo oni-nọmba"
+    correct: 0
+
+  - question: "Bawo ni o ṣe le jere owo lati awon ogbon AI lori Upwork tabi Fiverr?"
+    options:
+      - "A. Pese awon iṣẹ AI-atilẹyin bi kikọ ohun elo, apẹrẹ, ati iwadi"
+      - "B. Awon ile-iṣẹ nla nikan le ta awon iṣẹ AI"
+      - "C. O nilo oye giga akọkọ"
+      - "D. O gbọdọ duro ọdun 5"
+    correct: 0
+
+  - question: "Kini Ọsẹ 3 ti Ogo Ọjọ 30?"
+    options:
+      - "A. Kọ ẹnikan miiran ohun ti o mọ"
+      - "B. Ra awon irinse AI diẹ sii"
+      - "C. Beere fun ẹkọ ile-iwe giga"
+      - "D. Dẹkun lilo AI"
+    correct: 0
+
+  - question: "Kini ẹkọ AI ti o dara julọ gẹgẹ bi ẹkọ naa?"
+    options:
+      - "A. Ṣiṣe — lilo AI, ṣiṣẹda, kikọni, ati yiyanju awon iṣoro gidi"
+      - "B. Kika awon iwe nikan"
+      - "C. Wiwo awon fidio laisi adaṣe"
+      - "D. Duro fun eto oye giga ibile"
+    correct: 0

@@ -1,0 +1,65 @@
+id: day7_ai_in_nigeria_yo
+day: 7
+topic: ai_in_nigeria
+language: yo
+title: "Ọjọ Iwaju AI Naijiria: Iwọ Jẹ Apakan Rẹ"
+content: |
+  Naijiria kii ṣe ọja nikan fun awon ọja AI ti a kọ ibomiiran. Naijiria n di olupilẹṣẹ AI. Ati pe ela laarin ibiti a wa bayi ati ibiti a nilo lati wa jẹ anfaani rẹ.
+
+  IBO IMULO AI NAIJIRIA:
+  NITDA (National Information Technology Development Agency) ṣe atẹjade Imulo AI Naijiria ni ọdun 2024, n ṣe adehun fun amayederun AI, idagbasoke talenti, ati awon ilana iwa. Ijọba mọ AI bi pataki fun ṣiṣẹ awon ibi-afẹde eto-ọrọ Naijiria. Eyi tumọ si pe igbeowosile, awon eto, ati awon anfaani n bọ.
+
+  ONIṢẸṢẸ HUB N DAGBA:
+  Lagos (ọpọlọpọ imọ-ẹrọ Yaba), Abuja, Port Harcourt, ati Kano n ṣe agbekalẹ awon ile-iṣẹ AI ati imọ-ẹrọ. Co-Création Hub (CCHub) ni Yaba ti ṣe atilẹyin fun ọpọlọpọ awon ile-iṣẹ ibẹrẹ AI. Zindi, ikpo asọmọlẹ AI ti o tobi julọ ni Africa, n ṣiṣẹ awon ija deede pẹlu awon olubori Naijiria.
+
+  TALENTI AI NAIJIRIA JẸ AGBAYE:
+  Awon oniwadi AI Naijiria, awon injinia, ati awon oludasile n ṣiṣẹ ni Google DeepMind, Meta, Microsoft, ati ọpọlọpọ awon ile-iṣẹ AI pataki ni agbaye. Awon orukọ wọnyi wa ni iwaju AI agbaye — wọn si bẹrẹ ni ibiti o wa bayi.
+
+  ELA TALENTI AI = ANFAANI RẸ:
+  Naijiria nilo awon oṣiṣẹ to ni ogbon AI 100,000+ ni ọdun 5 to nbọ. Awon ti o wa ni kere pupọ lọwọlọwọ. Ela yẹn jẹ anfaani iṣẹ rẹ. Paapaa imọ AI ipilẹ — iru eyiti o gba ni ọsẹ yii — mu ọ jẹ iye diẹ sii ni fere eyikeyi ile-iṣẹ.
+
+  JẸ APỌJUWE:
+  Ipa gidi kii ṣe nkan ti o ṣe pẹlu AI nikan — o jẹ ẹni ti o n kọ. Ẹni kọọkan ti o loye AI ati pin imo yẹn n ṣẹda igbi. Ọjọ iwaju AI Naijiria yoo kọ nipasẹ awon ara Naijiria ti o kọ, ṣe, ati lẹhinna kọ awon omiiran.
+
+  IJẸ MẸẸDỌGBỌN RẸ JẸ IBẸRẸ, KII ṢE OPIN.
+
+quiz:
+  - question: "Kini Imulo AI Naijiria ti NITDA ṣe atẹjade ṣe adehun fun?"
+    options:
+      - "A. Amayederun AI, idagbasoke talenti, ati awon ilana iwa"
+      - "B. Gbigbesẹle gbogbo lilo AI ni Naijiria"
+      - "C. Laaye fun awon ile-iṣẹ AI ajeji nikan"
+      - "D. Rọpo gbogbo awon oṣiṣẹ ijọba pẹlu AI"
+    correct: 0
+
+  - question: "Kini CCHub ni Yaba jẹ olokiki fun?"
+    options:
+      - "A. Atilẹyin fun ọpọlọpọ awon ile-iṣẹ ibẹrẹ AI ati imọ-ẹrọ"
+      - "B. Ile-igbọnsẹ orin"
+      - "C. Ṣiṣe awon foonu"
+      - "D. Ọfiisi owo ori ijọba"
+    correct: 0
+
+  - question: "Ibo ni awon oniwadi AI Naijiria n ṣiṣẹ ni agbaye?"
+    options:
+      - "A. Google DeepMind, Meta, Microsoft ati awon ile-iṣẹ AI pataki"
+      - "B. Ni Naijiria nikan"
+      - "C. Wọn ko gba laaye lati ṣiṣẹ ni okeokun"
+      - "D. Ni China nikan"
+    correct: 0
+
+  - question: "Kini ela talenti AI ni Naijiria?"
+    options:
+      - "A. Naijiria nilo awon oṣiṣẹ to ni ogbon AI 100,000+ pẹlu diẹ ti o wa bayi"
+      - "B. Awon amoye AI pọ tẹlẹ"
+      - "C. Naijiria ko ni ifẹ si AI"
+      - "D. Ela naa wa ni Lagos nikan"
+    correct: 0
+
+  - question: "Kini 'jẹ apọjuwe' tumọ si ninu AI?"
+    options:
+      - "A. Kọ awon omiiran ohun ti o kọ ati ṣẹda igbi imo"
+      - "B. Lo AI lori awon ẹrọ pupọ ni ẹẹkan"
+      - "C. Jere owo lati AI lori awon ikpo pupọ"
+      - "D. Ṣiṣe awon iṣowo AI pupọ ni akoko kanna"
+    correct: 0

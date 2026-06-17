@@ -1,0 +1,65 @@
+id: day6_ai_ethics_yo
+day: 6
+topic: ai_ethics
+language: yo
+title: "Iṣowo Olotitọ ni Ode Oni AI: Igbẹkẹle Jẹ Owo Rẹ"
+content: |
+  AI le ran ọ lọwọ lati bori awon onibara diẹ sii. O tun le ran ọ lọwọ lati tan wọn jẹ — ti o si pa orukọ rẹ run titilai. Ẹkọ loni: bi o ṣe le kọ awon iṣowo AI ti yoo wa pẹlu wa.
+
+  AWON ỌNÀ ABAWỌLE TI N YIPADA:
+
+  AWON ATUNWO IRỌ: AI le ṣe awon atunwo rere irọ ọgọọgọrun ni iṣẹju. Ṣugbọn awon ikpo n wa wọn bayi, ati pe ti wọn ba mu ọ o yoo pa igbẹkẹle run titilai. Paapaa — awon atunwo irọ n ṣe ipalara si onibara ti ra da lori irọ. Kọ orukọ gidi nipasẹ iṣẹ gidi.
+
+  AWON AWORAN ỌJA IRỌ: Ẹda aworan AI le jẹ ki bata ₦500 dabi ẹru igbadun ₦50,000. Nigba ti awon onibara ba gba ọja gidi, ibajẹ naa ko le yipadà. Aṣa onibara Naijiria n ṣiṣẹ lori igbẹkẹle ati ọrọ ẹnu — iparun rẹ yoo na owo diẹ sii ju ere eyikeyi igba kukuru lọ.
+
+  AI CHATBOTS TI N TAN JẸDA: Chatbot ti n ṣe adehun ifijiṣẹ "ni ọjọ 2-3" nigba ti o jẹ ọsẹ 2-3 ni otitọ, tabi ti n sọ pe "100% ti ara" fun ọja ti kii ṣe bẹ, jẹ eewu. O jẹ oniduro ni ofin fun ohun ti chatbot rẹ sọ.
+
+  IYATỌ IDI OWO: AI le ṣe iṣiro idiyele oriṣiriṣi fun awon onibara oriṣiriṣi fun ohun kanna da lori owo wọn ti a ṣe ipinnu tabi ipo. Eyi jẹ ofin ni ọpọlọpọ awon ibi ṣugbọn o jẹ aiṣododo pupọ. Ni awon agbegbe Naijiria to sunmọ ara wọn, ọrọ n tan kaakiri kiakia.
+
+  DATA ONIBARA: Ti o ba n gba awon nomba foonu ati akọsilẹ rira awon onibara lati mu awon irinse AI rẹ ṣiṣẹ, awon onibara wọnyẹn ti gbekele rẹ pẹlu alaye ti ara ẹni. Tita rẹ, pinpin rẹ, tabi sisọnu rẹ si irufin jẹ ẹtan.
+
+  IṢIRO IGBẸKẸLE:
+  Gbogbo iṣowo olotitọ n kọ igbẹkẹle iṣọkan. Ẹtan kan yoo tuka gbogbo rẹ. Awon iṣowo ti yoo ṣakoso iṣowo Naijiria pẹlu AI ni awon ti awon onibara le gbẹkẹle ni kikun.
+
+  KO IGBẸKẸLE. KO PẸLÚ OGO.
+
+quiz:
+  - question: "Kini o jẹ ki awon atunwo AI irọ ṣubu pada?"
+    options:
+      - "A. Awon ikpo n wa wọn ati pe wọn n pa igbẹkẹle run titilai"
+      - "B. Wọn n ṣiṣẹ nigbagbogbo titilai"
+      - "C. Awon onibara ko le ka awon atunwo"
+      - "D. Awon atunwo odi nikan ni o ṣe pataki"
+    correct: 0
+
+  - question: "Kini o ṣẹlẹ nigba ti awon onibara ba gba ọja ti ko dabi aworan AI?"
+    options:
+      - "A. Igbẹkẹle n bajẹ patapata, paapaa nipasẹ ọrọ ẹnu"
+      - "B. Awon onibara n gbagbe kiakia"
+      - "C. Wọn n pada nigbagbogbo"
+      - "D. Kokan n ṣẹlẹ"
+    correct: 0
+
+  - question: "Tani o jẹ oniduro ni ofin fun ohun ti chatbot iṣowo sọ?"
+    options:
+      - "A. Oniwun iṣowo ti o fi ṣiṣẹ"
+      - "B. Ile-iṣẹ AI nikan"
+      - "C. Ẹnikẹni"
+      - "D. Olupese nẹtiwọki foonu onibara"
+    correct: 0
+
+  - question: "Kini iyatọ idi owo nipasẹ AI?"
+    options:
+      - "A. Ṣiṣe iṣiro idiyele oriṣiriṣi fun awon onibara oriṣiriṣi fun ohun kanna da lori owo ti a ṣe ipinnu"
+      - "B. Fifun awon onibara olododo ni ẹdinwo"
+      - "C. Ṣiṣe iṣiro diẹ sii fun awon ọja igbadun"
+      - "D. Ṣiṣe awon tita igba"
+    correct: 0
+
+  - question: "Kini Iṣiro Igbẹkẹle ninu iṣowo AI?"
+    options:
+      - "A. Awon iṣowo olotitọ n kọ igbẹkẹle iṣọkan; ẹtan kan yoo tuka gbogbo rẹ"
+      - "B. Iyara ifijiṣẹ n ṣe pataki julọ"
+      - "C. Idiyele ni ifosiwewe nikan"
+      - "D. Igbẹkẹle ko le kọ lori ayelujara"
+    correct: 0

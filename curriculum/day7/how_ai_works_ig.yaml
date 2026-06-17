@@ -1,0 +1,62 @@
+id: day7_how_ai_works_ig
+day: 7
+topic: how_ai_works
+language: ig
+title: "Oke Ọhụọ: AI Na-eme Omume, Ọ Bụghị Naanị Na-aza Ajụjụ"
+content: |
+  Ị mụtala otu AI si arụ ọrụ ugbu a. Taa: ihe na-abịa n'ihu, na ihe ọ pụtara maka Naịjịrịa.
+
+  NDỊ ỌRỤ AI — MGBANWE UKWU:
+  AI ugbu a: ị jụọ, ya aza, ị mezie.
+  Ndị ọrụ AI: ị nye ebumnobi, AI na-atọ ụzọ, na-eji ngwa ọrụ, na-eme omume, ma ọ bụ na-akọọ gbasị ọ bụla.
+  Ihe atụ: "Tụọ m tikịtị ụgbọ elu gaa Abuja n'Ọjọ ụka nke atọ, n'ime ₦80,000, na luggage nke kilo 20." Onye ọrụ AI na-achọ ụgbọ elu, na-atụ ọnụ ahịa ntụnyere, na-lelee oge nrụọrụ gị, na-azụta ya, ma na-akwado — n'enweghị gị ime nzọụkwụ ọ bụla n'ime ya.
+
+  AI NA-AṚỤ ỌRỤ N'ENWEGHỊ ỊNTANETỊ (EDGE AI):
+  Ihe ọmụmụ ndị na-adịkachasị nta iji gba ọsọ na ekwentị na ngwa obere n'enweghị njikọ chmud. Nke a bara ụba nke ukwuu maka Naịjịrịa: n'ọnọdụ ndị njikọ adịghị ọma, AI nwere ike isi rụọ ọrụ. Onye ọrụ ahụike n'ime obodo dị anya nwere ike iji nyocha AI ndị na-arụ ọrụ n'ozuzu n'enweghị ịntanetị.
+
+  SOURCE MEPERE EMEPE NA-AGBANWE IHING NIILE:
+  Ihe ọmụmụ AI ndị ukwu ndị a na-eji tọọ ọnụ ahịa biliọn iji wuo ma naanị nnukwu ụlọ ọrụ nwere ya. Ugbu a ihe ọmụmụ source mepere emepe ndị onye ọ bụla nwere ike ibudata ma gbaasa n'oge ibe nna na-arịigo ọsọ ike. Onye mmepụta ngwanrọ Naịjịrịa nwere ike agba ọsọ ihe ọmụmụ AI nke nwere ike arụ ọrụ na laptop nke ọma.
+
+  IHE Ọ PỤTARA MAKA GỊ:
+  Mgbagwoju anya teknụzụ nke ịrụ ọrụ na AI na-ada n'afọ ọ bụla. Nka mmadụ — ikpe, ikike mmepụta, ọmụmụ mpaghara, ntụkwasị obi — na-abụrịrị ndị bara ụba karị, ọ bụghị obere. Nghọta gị maka ọnọdụ Naịjịrịa, asụsụ, na nsogbu bụ ihe otu ndị asọmpi gị nke ọ dịghị AI nwere ike ịnnochite anya.
+
+quiz:
+  - question: "Gịnị bụ onye ọrụ AI?"
+    options:
+      - "A. AI nke na-eweta ebumnobi, na-atọ ụzọ, na-eme omume, ma na-akọọ ihe gbasị ọ bụla"
+      - "B. Mmadụ na-arụ ọrụ maka ụlọ ọrụ AI"
+      - "C. Robot yiri mmadụ"
+      - "D. Chatbot AI dị mfe"
+    correct: 0
+
+  - question: "Kedu ihe Edge AI pụtara maka ime obodo Naịjịrịa?"
+    options:
+      - "A. AI nwere ike arụ ọrụ n'enweghị ịntanetị n'ọnọdụ njikọ adịghị ọma"
+      - "B. AI na-arụ ọrụ naanị n'ọnọdụ na nkịtị obodo"
+      - "C. AI chọọ ịntanetị kachasị ọsọ iji rụọ ọrụ"
+      - "D. Ime obodo Naịjịrịa enweghị ike isi nweta uru AI"
+    correct: 0
+
+  - question: "Gịnị bụ ihe source mepere emepe AI gbanwere?"
+    options:
+      - "A. Onye ọ bụla ugbu a nwere ike agba ọsọ ihe ọmụmụ AI nke nwere ike arụ ọrụ n'ebe obibi n'enweghị biliọn"
+      - "B. Iji AI ugbu a ọ dị n'iwu n'enweghị ikike"
+      - "C. Naanị ụlọ ọrụ gọọmentị nwere ike enweta AI"
+      - "D. Ihe ọmụmụ AI ghọtara obere ike"
+    correct: 0
+
+  - question: "Nka mmadụ ole na ole na-abụrịrị ndị bara ỤBA karị mgbe AI na-arịgo ọsọ?"
+    options:
+      - "A. Ikpe, ikike mmepụta, na ọmụmụ mpaghara"
+      - "B. Ikike iti ntinye ngwa ngwa karị"
+      - "C. Ịchekwa nkọwa ọrụ teknụzụ"
+      - "D. Ntinye data dị mfe"
+    correct: 0
+
+  - question: "Kedu ike AI ọtụtụ asụsụ a kwadoro ruo 2028?"
+    options:
+      - "A. AI na-ejikwa ederede, olu, onyonyo, na vidiyo nke ọma n'asụsụ obodo"
+      - "B. AI na-arụ ọrụ naanị n'Bekee"
+      - "C. AI chọọ ugegbe pụrụ iche iji ya"
+      - "D. AI na-arụ ọrụ naanị na komputa ndị ike"
+    correct: 0

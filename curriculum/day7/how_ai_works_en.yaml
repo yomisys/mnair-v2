@@ -1,0 +1,65 @@
+id: day7_how_ai_works_en
+day: 7
+topic: how_ai_works
+language: en
+title: "The Next Wave: AI That Acts, Not Just Answers"
+content: |
+  You've learned how current AI works. Today: what's coming next, and what it means for Nigeria.
+
+  AI AGENTS — THE BIG SHIFT:
+  Current AI: you ask, it answers, you act.
+  AI Agents: you give a goal, the AI plans steps, uses tools, takes actions, and reports back.
+  Example: "Book me a flight to Abuja for Thursday, within ₦80,000, with 20kg luggage." An AI agent searches flights, compares prices, checks your calendar, books it, and confirms — without you doing each step.
+
+  MULTIMODAL GETS REAL:
+  Today's models handle text well. Tomorrow's handle text, voice, image, and video equally well. You'll point your camera at a crop disease, speak in Hausa, and the AI will respond in Hausa with treatment advice. This is happening now — it will be mainstream by 2028.
+
+  EDGE AI — WORKS WITHOUT INTERNET:
+  Models are shrinking to run on phones and small devices without cloud connection. This matters enormously for Nigeria: in areas with unreliable connectivity, AI can still work. A health worker in a remote village could use AI diagnostics that run entirely offline.
+
+  OPEN SOURCE CHANGES EVERYTHING:
+  The biggest AI models used to cost billions to build and only big companies had them. Now open-source models that anyone can download and run locally are increasingly powerful. A Nigerian developer can run a capable AI model on a decent laptop. This democratizes AI completely.
+
+  WHAT THIS MEANS FOR YOU:
+  The technical complexity of working with AI is decreasing every year. The human skills — judgment, creativity, local knowledge, trust — are becoming more valuable, not less. Your understanding of Nigerian contexts, languages, and problems is your competitive advantage that no AI can replicate.
+
+quiz:
+  - question: "What is an AI agent?"
+    options:
+      - "A. AI that takes a goal, plans steps, takes actions, and reports back"
+      - "B. A human who works for an AI company"
+      - "C. A robot that looks like a person"
+      - "D. A simple AI chatbot"
+    correct: 0
+
+  - question: "What does edge AI mean for rural Nigeria?"
+    options:
+      - "A. AI can work offline in areas with unreliable connectivity"
+      - "B. AI only works at the edge of cities"
+      - "C. AI needs the fastest internet to work"
+      - "D. Rural Nigeria cannot benefit from AI"
+    correct: 0
+
+  - question: "What has open-source AI changed?"
+    options:
+      - "A. Anyone can now run capable AI models locally without billions in investment"
+      - "B. AI is now illegal to use without a licence"
+      - "C. Only government agencies can access AI"
+      - "D. AI models have become less capable"
+    correct: 0
+
+  - question: "What human skill becomes MORE valuable as AI gets better?"
+    options:
+      - "A. Judgment, creativity, and local knowledge"
+      - "B. Ability to type faster"
+      - "C. Memorizing technical specifications"
+      - "D. Simple data entry"
+    correct: 0
+
+  - question: "What is the multimodal AI capability coming by 2028?"
+    options:
+      - "A. AI that handles text, voice, image, and video equally well in local languages"
+      - "B. AI that only works in English"
+      - "C. AI that requires special glasses to use"
+      - "D. AI that only works on powerful computers"
+    correct: 0

@@ -1,0 +1,65 @@
+id: day6_ai_ethics_ig
+day: 6
+topic: ai_ethics
+language: ig
+title: "Azụmahịa Nke Ezi Omume n'Oge AI: Ntụkwasị Obi Bụ Ego Gị"
+content: |
+  AI nwere ike inyere gị aka ịnweta ndị ọrụ ahịa ọzọ. Ọ nwekwara ike inyere gị aka ịtọgharia ha — ma mebie aha gị ruo mgbe ebighi ebi. Ihe ọmụmụ taa: otu esi ewu azụmahịa ndị AI na-akwalite ndị na-adịru.
+
+  ỤZỌ MKPIRISI NDỊ NA-ALỌGHACHI:
+
+  NYOCHA ASỌ: AI nwere ike imepụta narị nyocha dị mma na asọ n'ime nkeji. Mana ikpo okwu na-achọpụta ha ugbu a, na ịchụ a na-ebibi ntụkwasị obi ruo mgbe ebighi ebi. Karịa ya — nyocha asọ na-emetụta onye ọrụ ahịa zụtara dabere n'ụgha. Wuo aha ezigbo site na ọrụ ezigbo.
+
+  FOTO NGWA ASỌ: Emepụta foto AI nwere ike ime akpụkpọ ụkwụ ₦500 dị ka ihe ịchọ mma ₦50,000. Mgbe ndị ọrụ ahịa natara ngwa nke ezigbo, ọgụ ahụ enweghị ihe ị ga-eme. Omenala ndị oriri Naịjịrịa na-aga n'ihe ntụkwasị obi na okwu mmadụ — imebi ya koroma karịa uru ọ bụla n'oge oge dị mkpirikpi.
+
+  AI CHATBOTS NA-ATỌGHARIA: Chatbot nke na-akwa nkwa nnyefe "n'ime ụbọchị 2-3" mgbe ọ bụ n'ezie izu 2-3, ma ọ bụ na-ada ọkwa "100% ọ bụ nke ọmụmụ" maka ngwa bụghị ya, bụ ihe ọ ga-ejide gị. Ị bụ onye na-adị n'ọrụ maka ihe chatbot gị na-ekwu n'ọkpụrụkpụ iwu.
+
+  OGO AHỌ N'ỌNỤ AHỌ: AI nwere ike ịkwụ ndị ọrụ ahịa dị iche iche ọnụ ahịa dị iche iche maka ihe otu a dabere na ego a tụrụ anya ma ọ bụ ebe obibi. Nke a dị n'iwu n'ọtụtụ ebe mana ọ dị njọ nke ukwuu. N'obodo ndị Naịjịrịa ndị nọ nso nso ha, okwu na-agbasa ngwa ngwa.
+
+  DATA NDỊ ỌRỤ AHỊA: Ọ bụrụ na ị na-anakọta nọmba ekwentị na akụkọ azụmahịa ndị ọrụ ahịa gị iji kwalite ngwa AI gị, ndị ọrụ ahịa ahụ tụkwasịrị obi gị na ozi nkeonwe. Ire ya, kesaa ya, ma ọ bụ ilufu ya n'oge ntụpọ bụ ịghọgbu ntụkwasị obi.
+
+  NHATA NTỤKWASỊ OBI:
+  Azụmahịa ọ bụla nke ezi omume na-ewu ntụkwasị obi na-ejikọ onu. Ịtọgharia otu na-ebugharị ya niile. Azụmahịa ndị ga-achị azụmahịa Naịjịrịa na AI bụ ndị ndị ọrụ ahịa nwere ike ịdabere na ha niile n'ozuzu.
+
+  WUO NTỤKWASỊ OBI. WUO ỌDỤ OGOLOGO OGE.
+
+quiz:
+  - question: "Gịnị mere nyocha AI asọ na-alọghachi?"
+    options:
+      - "A. Ikpo okwu na-achọpụta ha ma ha na-ebibi ntụkwasị obi ruo mgbe ebighi ebi"
+      - "B. Ha na-arụ ọrụ ruo mgbe ebighi ebi"
+      - "C. Ndị ọrụ ahịa enweghị ike igụ nyocha"
+      - "D. Naanị nyocha na-adọ aka ọjọọ na-dị mkpa"
+    correct: 0
+
+  - question: "Gịnị na-emekwu mgbe ndị ọrụ ahịa natara ngwa dị iche nke ukwuu na foto AI?"
+    options:
+      - "A. Ntụkwasị obi na-apụsị n'ike n'oge, karịsịa site na okwu mmadụ"
+      - "B. Ndị ọrụ ahịa na-echefuo ngwa ngwa"
+      - "C. Ha na-alọghachị mgbe niile"
+      - "D. Ọ bụ ihe ọ bụla na-eme"
+    correct: 0
+
+  - question: "Onye dị n'ọrụ n'ọkpụrụkpụ iwu maka ihe chatbot azụmahịa na-ekwu?"
+    options:
+      - "A. Onye nwe azụmahịa wunyere ya"
+      - "B. Naanị ụlọ ọrụ AI"
+      - "C. Ọ dịghị onye"
+      - "D. Netwọk ekwentị onye ọrụ ahịa"
+    correct: 0
+
+  - question: "Gịnị bụ ogo ahọ n'ọnụ ahọ na AI?"
+    options:
+      - "A. Ịkwụ ndị ọrụ ahịa dị iche iche ọnụ ahịa dị iche iche maka ihe otu a dabere na ego a tụrụ anya"
+      - "B. Inye ndị ọrụ ahịa ndị na-adịru ntụnye ọnụ ahịa"
+      - "C. Ịkwụ ọnụ ahịa karịa maka ngwa ịtọ ụtọ"
+      - "D. Ịgba mgbasa ọrụ oge"
+    correct: 0
+
+  - question: "Kedu Nhata Ntụkwasị Obi na azụmahịa AI?"
+    options:
+      - "A. Azụmahịa ezi omume na-ewu ntụkwasị obi na-ejikọ onu; ịtọgharia otu na-ebugharị ya niile"
+      - "B. Ọsọ nnyefe bụ ihe kachasị mkpa"
+      - "C. Ọnụ ahịa naanị bụ ihe bara ụba"
+      - "D. Enweghị ike iwu ntụkwasị obi n'ịntanetị"
+    correct: 0

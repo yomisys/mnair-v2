@@ -1,0 +1,64 @@
+id: day7_what_is_ai_ha
+day: 7
+topic: what_is_ai
+language: ha
+title: "Menene AI Zai Kasance a 2030 — Da Rôlinka a Ciki"
+content: |
+  Rana ta 7 — Ranar ƙarshe. Bari mu duba gaba. AI da ka koyi wannan mako yana da ƙarfi ƙwarai, amma kuma yana cikin sigar farko-farko na abin da ke zuwa.
+
+  ABIN DA KE CANZAWA A CIKIN SHEKARU 5 MASU ZUWA:
+
+  DAGA KAYAN AIKI ZUWA WAKILAN AI:
+  AI na yau yana amsa tambayoyinka. AI na gobe yana ɗaukar ayyuka: yana kama alkawura, yana oda kayayyaki, yana amsa e-mail, yana tattaunawa a madadinka — duk yayin da kake barci. Ka yi tunanin cewa yana tafiya daga mataimaki mai wayo da kake tattaunawa da shi, zuwa wanda zai iya aiki a madadinka.
+
+  AI NA YARE DA YAWA YA INGANTA:
+  Yana iya yin aiki da harsuna da yawa. Zuwa 2030, AI zai fahimci Hausa, Yoruba, Igbo, da Pidgin kamar yadda yake fahimci Turanci yanzu. Ka nuna kwamfuta wayarka zuwa injin da ya karye, ka yi magana cikin Hausa, AI kuma zai amsa cikin Hausa da umarnin gyarawa.
+
+  WANE AYYUKA ZA SU CANZA:
+  Ayyukan da za su ɓace: shigar bayanai, fassarar takardun yau da kullum, rubutun hidimar abokin ciniki mai sauƙi. Ayyukan da za su girma: masu horar da AI, injiniyoyin bayar da umarnin AI, masu binciken AI, jami'an ɗabi'ar AI, ƙwararrun haɗawa da AI. Ƙwarewa da ake bukata a fili ita ce sanin YADDA ake aiki tare da AI — daidai abin da ka yi wannan mako.
+
+  RÔLINKA:
+  Najeriya tana da mutane miliyan 220, al'ummar matasa, da matsaloli na gaske da AI zai iya taimakawa wajen warware su. Mutanen da za su tsara yadda AI ke aiki a Najeriya za su kasance Najeriyawa da suka fahimta — kamar kai yanzu.
+
+  GABA BA WANI ABU NE DA ZAI FARU MAKA BA. KAI NE KE GINASHI.
+
+quiz:
+  - question: "Menene canjin daga 'kayan aiki' zuwa 'wakilan AI'?"
+    options:
+      - "A. AI ya tafi daga amsa tambayoyi zuwa ɗaukar ayyuka a madadinka"
+      - "B. AI ya zama ƙarami na zahiri"
+      - "C. AI ya daina aiki ba tare da intanet ba"
+      - "D. AI na wakilan da masu broker kawai"
+    correct: 0
+
+  - question: "Wane ayyuka za su GIRMA saboda AI?"
+    options:
+      - "A. Masu horar da AI, injiniyoyin bayar da umarnin AI, jami'an ɗabi'ar AI"
+      - "B. Ma'aikatan shigar bayanai"
+      - "C. Masu karanta rubutun hidimar abokin ciniki mai sauƙi"
+      - "D. Masu fassarar takardun yau da kullum"
+    correct: 0
+
+  - question: "Menene ya sa Najeriya ke cikin halin da ya dace don gaban AI?"
+    options:
+      - "A. Mutane miliyan 220, al'ummar matasa, matsaloli na gaske da AI za ta warware"
+      - "B. Najeriya na da kwamfutoci fiye da kowace ƙasa"
+      - "C. Intanet na Najeriya mafi sauri a Afirka"
+      - "D. Najeriyawa ne suka ƙirƙira intanet"
+    correct: 0
+
+  - question: "Menene ƙwarew da ake bukata a zamanin AI?"
+    options:
+      - "A. Sanin YADDA ake aiki tare da AI"
+      - "B. Rubuta lambar kwamfuta kawai"
+      - "C. Magana da Turanci kawai"
+      - "D. Samun PhD"
+    correct: 0
+
+  - question: "Menene za AI na yare da yawa iya yi a 2030?"
+    options:
+      - "A. Fahimci Hausa, Yoruba, Igbo, da Pidgin kamar Turanci, amsa cikin harshinka"
+      - "B. Aiki a Turanci kawai"
+      - "C. Bukatar gilashin musamman don amfani da shi"
+      - "D. Aiki a kwamfutoci masu ƙarfi kawai"
+    correct: 0

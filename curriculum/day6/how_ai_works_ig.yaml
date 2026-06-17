@@ -1,0 +1,69 @@
+id: day6_how_ai_works_ig
+day: 6
+topic: how_ai_works
+language: ig
+title: "Otu AI Si Enyere Azụmahịa Aka: Site na Data Ruo Mkpebi"
+content: |
+  Taa ka anyị jikọọ echiche teknụzụ ị mụtara na ihe azụmahịa ndị bara ụba n'ezie.
+
+  OKIRIKIRI DATA AZỤMAHỊA:
+  Azụmahịa ọ bụla na-emepụta data: Onye zụtara gịnị? Mgbe ole? Ọ maanụ ugboro ole ha na-alọghachi? Gịnị ka ha na-ajụ tupu ha azụta? AI na-atụgharị data a nke adịghị ahụ anya ka mkpebi ndị enwere ike ịhụ.
+
+  NZỌỤKWỤ 1 — NCHỊKỌTA:
+  Ahịa ọ bụla, ozi WhatsApp ọ bụla, nleta weebụsaịtị ọ bụla bụ data. Ọbụna ndekọ deftị nke ọ dị mfe nke ahịa kwa ụbọchị bụ data nke AI nwere ike iji. Ọ dịghị mkpa gị iji usoro ndị dị ọnụ ala — Google Sheet na-ezuru iji bido.
+
+  NZỌỤKWỤ 2 — USORO:
+  AI na-achọta usoro ndị mmadụ hapụrụ: "Ahịa na-ada kwa Mọnde n'ụtụtụ mana na-arị elu Fraịdee ụbọchị ụgwọ." "Ndị ọrụ ahịa ndị na-azụta akwa dị larịị na-azụkwa ọjị 80% n'oge." Mmadụ nwere ike ichọta nke a — AI na-achọta ya n'ime sekọnd na ọtụtụ puku ndekọ.
+
+  NZỌỤKWỤ 3 — AMỤMA:
+  Site na usoro na amụma na-abịa: gịnị ka a ga-aza ọzọ, onye ga-esote, ndị ọrụ ahịa ndị na-achị ahụhụ ịkwụ ụgwọ. Nke a bụ ihe usoro ntụaka na-eme — "ndị ọrụ ahịa dị ka gị zụtakwa..."
+
+  NZỌỤKWỤ 4 — AKỌWA:
+  Ozugbo a maara usoro, enwere ike ime omume n'ozuzu: zipu ozi ntụnye ọnụ ahịa maka ndị ọrụ ahịa ndị ọ bụghị ha azụtara n'ime ụbọchị 30; mezie ọzọ ngwa mgbe ngwunye daa n'okpuru ngwa 10; kọọ omume aghụghọ maka nlelee.
+
+  MGBANWE NAỊJỊRỊA:
+  Ọtụtụ ọzụzụ azụmahịa AI na-eche na ịntanetị a na-emetụta adị ọcha na usoro ịkwụ ụgwọ ndị ọdịnala. Eziokwu Naịjịrịa dị iche. Mmejuputa azụmahịa AI kachasị mma ebe a na-arụ ọrụ n'oge enweghị ịntanetị mgbe ihe na-achọ ya, na-anabata ndekọ ụgwọ ego, ma na-ekwurịta ozi site na WhatsApp — ọ bụghị email.
+
+  DATA ASỌMPI GỊ:
+  Bido ide ndekọ ahịa gị taa na Google Sheet. N'ime ọnwa 3, ị ga-enwe data iji chọta USORO GỊ.
+
+quiz:
+  - question: "Kedu Nzọụkwụ 1 na Okirikiri Data Azụmahịa?"
+    options:
+      - "A. Nchịkọta data site na ahịa, ozi, na nleta"
+      - "B. Ime ihe niile n'ozuzu ozugbo"
+      - "C. Zụta ngwanrọ dị ọnụ ala"
+      - "D. Weta onye ọkachamara data"
+    correct: 0
+
+  - question: "Kedu usoro AI nwere ike ichọta na azụmahịa Naịjịrịa?"
+    options:
+      - "A. Ahịa na-arị elu Fraịdee ụbọchị ụgwọ ma na-ada Mọnde n'ụtụtụ"
+      - "B. Ọdịghị — data Naịjịrịa dị mgbagwoju anya karịa"
+      - "C. Naanị usoro n'ụgwọ ego mba ọzọ"
+      - "D. Usoro chọrọ ihe ọchie karịa afọ 10"
+    correct: 0
+
+  - question: "Gịnị bụ usoro ntụaka?"
+    options:
+      - "A. Usoro na-atụ aka 'ndị ọrụ ahịa dị ka gị zụtakwa...'"
+      - "B. Mmadụ na-atụ aka ụlọ oriri na oriri"
+      - "C. Injin na-agba ọsọ site na ntụaka"
+      - "D. Usoro nkwado gọọmentị"
+    correct: 0
+
+  - question: "Kedu ngwa ọrụ zuru ezu iji bido nchịkọta data azụmahịa?"
+    options:
+      - "A. Google Sheet dị mfe"
+      - "B. Naanị ngwanrọ ụlọ ọrụ dị ọnụ ala"
+      - "C. Usoro data mba ọzọ"
+      - "D. Ọdịghị ihe na-arụ ọrụ na Naịjịrịa"
+    correct: 0
+
+  - question: "Kedu mgbanwe Naịjịrịa na mmejuputa azụmahịa AI?"
+    options:
+      - "A. Mmejuputa kachasị mma na-arụ ọrụ n'enweghị ịntanetị, na-anabata ụgwọ ego, na-eji WhatsApp"
+      - "B. Naịjịrịa enweghị ike iji AI maka azụmahịa"
+      - "C. Ihe niile ga-abụrịrị n'Bekee naanị"
+      - "D. Ị ga-enwerịrị adreesị Lagos"
+    correct: 0

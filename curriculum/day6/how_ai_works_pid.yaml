@@ -1,0 +1,69 @@
+id: day6_how_ai_works_pid
+day: 6
+topic: how_ai_works
+language: pid
+title: "How AI Dey Power Business: From Data to Decisions"
+content: |
+  Today make we connect the technical things wey you don learn to the business results wey really matter.
+
+  THE BUSINESS DATA LOOP:
+  Every business dey generate data: Who buy wetin? When? How often dem dey come back? Wetin dem dey ask before dem buy? AI dey turn this invisible data into visible decisions.
+
+  STEP 1 — COLLECT:
+  Every sale, every WhatsApp message, every website visit na data. Even simple notebook record of daily sales na data wey AI fit use. You no need expensive systems — Google Sheet dey enough to start.
+
+  STEP 2 — PATTERN:
+  AI dey find patterns wey humans miss: "Sales dey drop every Monday morning but e dey spike on payday Fridays." "Customers wey dey buy plain fabric also dey buy thread 80% of the time." Human fit find this — AI go find am in seconds across thousands of records.
+
+  STEP 3 — PREDICT:
+  From patterns come predictions: wetin to restock, who to follow up, which customers dey about to stop buying. This na wetin recommendation engines dey do — "customers like you also bought..."
+
+  STEP 4 — AUTOMATE:
+  Once dem know the patterns, actions fit be automated: send discount message to customers wey no buy in 30 days; reorder stock when inventory drop below 10 units; flag unusual transaction for review.
+
+  THE NAIJA TWIST:
+  Most AI business training dey assume reliable internet and formal payment systems. Naija reality different. The best AI business setups here dey work offline when needed, dey accept cash payment records, and dey communicate through WhatsApp — no be email.
+
+  YOUR COMPETITIVE DATA:
+  Start recording your sales today for Google Sheet. In 3 months you go get the data to find YOUR patterns.
+
+quiz:
+  - question: "Wetin be Step 1 in the Business Data Loop?"
+    options:
+      - "A. Collect data from sales, messages, and visits"
+      - "B. Immediately automate everything"
+      - "C. Buy expensive software"
+      - "D. Hire data scientist"
+    correct: 0
+
+  - question: "Which kind pattern AI fit find for Naija business?"
+    options:
+      - "A. Sales dey spike on payday Fridays and drop on Monday mornings"
+      - "B. Nothing — Naija data too complex"
+      - "C. Only patterns in foreign currencies"
+      - "D. Patterns need minimum 10 years data"
+    correct: 0
+
+  - question: "Wetin be recommendation engine?"
+    options:
+      - "A. System wey dey suggest 'customers like you also bought...'"
+      - "B. Person wey dey recommend restaurants"
+      - "C. Engine wey dey run on recommendations"
+      - "D. Government approval process"
+    correct: 0
+
+  - question: "Which tool dey good enough to start collecting business data?"
+    options:
+      - "A. Simple Google Sheet"
+      - "B. Only expensive enterprise software"
+      - "C. Foreign database system"
+      - "D. Nothing dey work for Naija"
+    correct: 0
+
+  - question: "Wetin be the Naija twist for AI business?"
+    options:
+      - "A. Best setups work offline, accept cash records, and use WhatsApp"
+      - "B. Naija no fit use AI for business"
+      - "C. Everything must be in English only"
+      - "D. You must get Lagos address"
+    correct: 0

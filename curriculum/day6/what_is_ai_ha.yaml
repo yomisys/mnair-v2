@@ -1,0 +1,66 @@
+id: day6_what_is_ai_ha
+day: 6
+topic: what_is_ai
+language: ha
+title: "AI Abokin Kasuwancin Ka Ne"
+content: |
+  Rana ta 6: Bari mu yi magana kan kudi. AI ba fasaha mai ban sha'awa kawai ba — fa'idar kasuwanci ce mai ban mamaki wanda a da yake farashi miliyoyi. Yanzu yana samuwa a hannunka kusan kyauta.
+
+  JUYIN JUYA HALIN KASUWANCIN KANANA:
+  Manyan kamfanoni kamar Jumia da Konga sun yi amfani da AI wajen ba da shawarar kayan masarufi, gano zamba, da sarrafa hidimar abokin ciniki na shekaru da yawa. Wannan iko yanzu yana samuwa ga mai sayarwa a kasuwa, mai dinki, mai zane-zanen tufafi, ko mai kanti — ta hanyar kayan aiki masu tsada kadan ko kyauta.
+
+  ABIN DA AI YA YI GAME DA KASUWANCI:
+  - Hidimar abokin ciniki: AI chatbots na amsa tambayoyi da karfe 2 na dare yayin da kake barci
+  - Talla: AI na rubuta bayanin kayayyakinka, ayyukan kafar sada zumunta, da kamfen din SMS
+  - Gudanarwa: AI na hasashen wane kaya za su sayu wannan karshen mako dangane da tsarin da ya gabata
+  - Kudi: AI na rarrabe kashe-kashen kudi kuma yana gano kashe-kashe masu ban mamaki ta atomatik
+  - Leken asiri kan gasa: AI na kula da abin da masu gasa ke yi akan layi
+
+  LOKACIN DAIDAITA FA'IDA:
+  Kafin AI, ƙaramin alama na Aba na tufafi ba za ta iya biyan ɓangaren talla, mai zane, da wakilin hidimar abokin ciniki ba. Yanzu mutum ɗaya yana amfani da kayan aikin AI zai iya yi duka uku — kuma ya yi gasa da alamomi sau 10 da girmansu.
+
+  MISALI NA GASKE:
+  Chidi yana saya kayan wayoyi a Onitsha. Ya yi amfani da ChatGPT wajen rubuta bayanin kaya 30, Canva AI don dukkan hotunansa na shago, da WhatsApp Business auto-reply don tambayoyin bayan sa'o'i aiki. Yanzu yana samun karin tambayoyi da kashi 40 ba tare da ƙarin sa'o'in aiki ba.
+
+  KASUWANCINKA + AI = GEFEN GASA.
+
+quiz:
+  - question: "Wace fa'idar kasuwanci AI ke ba kasuwancin kanana na Najeriya?"
+    options:
+      - "A. Damar iyawa wanda a da yake farashi miliyoyi, yanzu kusan kyauta"
+      - "B. Yana maye gurbin bukatar kowane aiki"
+      - "C. Yana bukatar masu ba da shawara na waje masu tsada"
+      - "D. Yana aiki ga manyan kamfanoni kawai"
+    correct: 0
+
+  - question: "Me Chidi ya yi amfani da ChatGPT a shagonsa na Onitsha?"
+    options:
+      - "A. Rubuta bayanin kaya 30"
+      - "B. Maye gurbin dukkan ma'aikatansa"
+      - "C. Fitar da haraji ta atomatik"
+      - "D. Gina masana'anta"
+    correct: 0
+
+  - question: "Menene AI chatbots ke iya yi wa kasuwancinka da karfe 2 na dare?"
+    options:
+      - "A. Amsa tambayoyin abokan ciniki yayin da kake barci"
+      - "B. Buɗe shagonka na zahiri"
+      - "C. Buga takardar karba"
+      - "D. Babu - suna aiki a cikin sa'o'in aiki kawai"
+    correct: 0
+
+  - question: "Menene ya sa wannan 'lokacin daidaita fa'ida' ga kasuwancin kanana?"
+    options:
+      - "A. Mutum ɗaya yana amfani da AI yanzu zai iya yin talla, zane, da hidimar abokin ciniki"
+      - "B. Kasuwancin kanana yanzu ba su biya haraji"
+      - "C. Intanet ya zo Najeriya yanzu kawai"
+      - "D. Manyan kamfanoni sun daina gasa"
+    correct: 0
+
+  - question: "Wace aikin kasuwanci AI zai iya taimaka wajen hasashe?"
+    options:
+      - "A. Wane kaya za su sayika dangane da tsarin da ya gabata"
+      - "B. Yanayin shekaru 10 masu zuwa"
+      - "C. Sakamakon wasan kwallon kafa"
+      - "D. Canje-canjen manufofin gwamnati"
+    correct: 0

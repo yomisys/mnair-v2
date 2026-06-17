@@ -1,0 +1,80 @@
+id: day7_ai_tools_en
+day: 7
+topic: ai_tools
+language: en
+title: "Keep Learning: Your AI Roadmap After This Course"
+content: |
+  Today is the end of Week 1. It's also the start of everything else. Here's exactly where to go next.
+
+  FREE LEARNING PATHWAYS:
+
+  BEGINNER (start here if you want to go deeper):
+  - Google's "AI Essentials" course (free, certificate included) — covers AI fundamentals and Google Workspace AI tools
+  - Microsoft's "AI Skills Challenge" — free, short, practical
+  - Khan Academy AI course — free, visual, beginner-friendly
+
+  INTERMEDIATE (when you're ready to build):
+  - DeepLearning.AI short courses (Andrew Ng) — many are free, 1-2 hours each
+  - fast.ai — free, practical machine learning, runs on free Google Colab
+  - Kaggle Learn — free micro-courses on data, AI, and Python
+
+  AFRICAN AI COMMUNITIES (connect and grow):
+  - AI Saturdays Lagos (AISatLagos) — free weekly AI learning sessions in Lagos
+  - Zindi.africa — African AI competitions with cash prizes, beginner to advanced
+  - Deep Learning Indaba — annual African AI conference, scholarship programs
+  - AI/ML Africa WhatsApp groups — active learning communities
+
+  GET PAID FOR AI SKILLS (starting points):
+  - Upwork/Fiverr: offer AI-assisted services (content writing, design, research)
+  - Local businesses: offer to set up their WhatsApp Business AI auto-reply
+  - Teaching: run a local WhatsApp AI literacy group — charge ₦500 per person
+  - Freelance prompt engineering: companies pay for people who get results from AI
+
+  YOUR 30-DAY CHALLENGE:
+  Week 1: Use one new AI tool every day
+  Week 2: Create something real and share it
+  Week 3: Teach someone else what you know
+  Week 4: Identify one problem in your community that AI could help solve, and propose a solution
+
+  THE BEST AI EDUCATION IS DOING.
+
+quiz:
+  - question: "What does Google's 'AI Essentials' course offer?"
+    options:
+      - "A. Free AI fundamentals course with a certificate"
+      - "B. A paid degree in AI"
+      - "C. Access to Google's private AI models only"
+      - "D. A government certification"
+    correct: 0
+
+  - question: "What is Zindi.africa known for?"
+    options:
+      - "A. African AI competitions with cash prizes from beginner to advanced"
+      - "B. A social media platform for engineers"
+      - "C. A government job portal"
+      - "D. A cryptocurrency exchange"
+    correct: 0
+
+  - question: "How can you earn money from AI skills on Upwork or Fiverr?"
+    options:
+      - "A. Offer AI-assisted services like content writing, design, and research"
+      - "B. Only large companies can sell AI services"
+      - "C. You need a master's degree first"
+      - "D. You must wait 5 years"
+    correct: 0
+
+  - question: "What is Week 3 of the 30-Day Challenge?"
+    options:
+      - "A. Teach someone else what you know"
+      - "B. Buy more AI tools"
+      - "C. Apply for a university course"
+      - "D. Stop using AI"
+    correct: 0
+
+  - question: "What is the best AI education according to the lesson?"
+    options:
+      - "A. Doing — using AI, creating, teaching, and solving real problems"
+      - "B. Reading textbooks only"
+      - "C. Watching videos without practicing"
+      - "D. Waiting for a formal degree program"
+    correct: 0

@@ -1,0 +1,65 @@
+id: day6_ai_in_nigeria_ig
+day: 6
+topic: ai_in_nigeria
+language: ig
+title: "Azụmahịa Naịjịrịa Ndị Na-eriwo Ọsọ Site na AI"
+content: |
+  AI na azụmahịa Naịjịrịa abụghị akụkọ ihe mere eme nke ọdịnihu — ọ na-eme taa, site na Eko Atlantic ruo Ahịa Main Onitsha.
+
+  NDỊ EGWU UKWU NDỊ NA-EDUZI:
+  Usoro ntụaka Jumia — ntụaka "Ị nwekwara ike ịhụ n'anya" — bụ AI. Ọ bawanyela uru iwu nkezi nke ọpụrụ ụfọ. AI na-achọpụta aghụghọ nke Kuda Bank chere ₦2 biliọn n'oge ezigbo omume n'afọ nke ya mbụ. Flutterwave na-eji AI mee mkpebi n'ime sekọnd ma ịkwụ ụgwọ ga-agafe ma ọ bụ achọpụtakwa.
+
+  ỌRỤ UGO NA-AGHARA:
+  Farmcrowdy na Hello Tractor na-eji AI jikọọ ndị ọrụ ugbo na ngwa ọrụ, were amụma ihe ọ bụla ugbo, na nyea ndụmọdụ n'oge ọrụ ugbo dabere na data ihu igwe nke satẹlaịtị. Onye ọrụ ugbo osikapa na steeti Kebbi ugbu a nwere ike enweta ndụmọdụ dị ka nke ugbo azụmahịa nnukwu.
+
+  OBERE AZỤMAHỊA NA-EMEPỤTA N'ỌNỌ ỤLỌ:
+  Akụkọ AI ndị kachasị dị ụtọ abụghị ndị dị na akụkọ ozi. Onye ndụ akwa na Aba na-eji ChatGPT ese ụdị ya na Canva izipụ ya. Onye na-ere chịps otele na Ibadan na-eso usoro ahịa iji mara ụdị ntụntụ ga-emepụta kwa ụbọchị. Onye ọrụ POS na Enugu na-eji chatbot WhatsApp za ajụjụ oke ụgwọ ndị ọrụ ahịa.
+
+  OHERE EDTECH:
+  Ụlọ ọrụ EdTech Naịjịrịa dị ka uLesson na Tuteria na-eji AI mee mmụta ka ọ metụtara onye nke ya — otu usoro ahụ dị n'azụ ihe ọmụmụ a ị na-ewere ugbu a.
+
+  AHỤIKE NA-AGBAṄA:
+  MDaaS Global na-eji AI meziwanye nchọpụta ọrịa na ụlọ ọgwụ ndị na-enwekwụghị dọkịta. AI na-agụ foto ọgwụ ma kọọ ọnọdụ maka nlelee, na-agbatị nlekọta ndị ọkachamara ruo mpaghara ndị enweghị ike.
+
+  Ị BỤ AKỤKỌ ỌZỌ.
+
+quiz:
+  - question: "Kedu ihe AI na-achọpụta aghụghọ nke Kuda Bank nwetara?"
+    options:
+      - "A. Chere ₦2 biliọn n'oge ezigbo omume"
+      - "B. Were amụma nsonaazụ egwuregwu bọọlụ"
+      - "C. Anọchi anya ndị ọrụ niile"
+      - "D. Wuo ụlọ isi ọrụ ọhụụ"
+    correct: 0
+
+  - question: "Otu Hello Tractor si eji AI?"
+    options:
+      - "A. Jikọọ ndị ọrụ ugbo na ngwa ọrụ ma were amụma ihe ọ bụla ugbo"
+      - "B. Naanị ree traaktọ n'ịntanetị"
+      - "C. Eso ọnọdụ GPS ụgbọ mmiri"
+      - "D. Kụziri ndị ọrụ ugbo Bekee"
+    correct: 0
+
+  - question: "Kedu ihe atụ akụkọ AI obere azụmahịa si Aba?"
+    options:
+      - "A. Onye ndụ akwa na-eji ChatGPT ese ụdị na Canva zịpụ ya"
+      - "B. Ụlọ ọrụ ihe na-anọchi anya ndị ọrụ na robot"
+      - "C. Ụlọ ọrụ gọọmentị na-abanye na dijitalị"
+      - "D. Ụlọ akụ na-emepee alaka ọhụọ"
+    correct: 0
+
+  - question: "Otu MDaaS Global si eji AI na ahụike?"
+    options:
+      - "A. AI na-agụ foto ọgwụ ma kọọ ọnọdụ na ụlọ ọgwụ ndị enweghị ike"
+      - "B. AI na-edekọ ọgwụ"
+      - "C. AI na-anọchi anya ndị nọọsụ niile"
+      - "D. AI naanị na-arụ ọrụ na ụlọ ọgwụ Lagos"
+    correct: 0
+
+  - question: "Gịnị bụ ihe AI Flutterwave na-eme?"
+    options:
+      - "A. Na-emee mkpebi n'ime sekọnd ma ịkwụ ụgwọ ga-agafe ma ọ bụ achọpụtakwa"
+      - "B. Na-ese weebụsaịtị ụlọ ọrụ"
+      - "C. Na-atụgharị omume n'Bekee"
+      - "D. Na-ebipụta rịsịt"
+    correct: 0

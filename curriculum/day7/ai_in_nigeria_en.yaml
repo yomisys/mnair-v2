@@ -1,0 +1,65 @@
+id: day7_ai_in_nigeria_en
+day: 7
+topic: ai_in_nigeria
+language: en
+title: "Nigeria's AI Future: You Are Part of It"
+content: |
+  Nigeria is not just a market for AI products built elsewhere. Nigeria is becoming an AI builder. And the gap between where we are now and where we need to be is your opportunity.
+
+  NIGERIA'S AI POLICY LANDSCAPE:
+  NITDA (National Information Technology Development Agency) published Nigeria's National AI Policy in 2024, committing to AI infrastructure, talent development, and ethical frameworks. The government recognizes AI as critical for achieving Nigeria's economic goals. This means funding, programs, and opportunities are coming.
+
+  THE HUB ECOSYSTEM GROWING:
+  Lagos (Yaba tech cluster), Abuja, Port Harcourt, and Kano are developing AI and tech hubs. Co-Création Hub (CCHub) in Yaba has supported dozens of AI startups. Zindi, Africa's leading AI competition platform, runs regular challenges with Nigerian winners. These are your entry points into the AI ecosystem.
+
+  NIGERIAN AI TALENT IS GLOBAL:
+  Nigerian AI researchers, engineers, and founders work at Google DeepMind, Meta, Microsoft, and dozens of major AI companies worldwide. Pelumi Aboluwarin. Tobi Olatunji. Emeka Eze. These names are at the frontier of global AI — and they started where you are now.
+
+  THE AI TALENT GAP = YOUR OPPORTUNITY:
+  Nigeria needs 100,000+ AI-skilled workers in the next 5 years according to estimates. There are currently far fewer. That gap is your career opportunity. Even basic AI literacy — the kind you've gained this week — makes you more valuable in almost any industry.
+
+  BE A MULTIPLIER:
+  The real impact isn't just what you do with AI — it's who you teach. Each person who understands AI and shares that knowledge creates a ripple. Nigeria's AI future will be built by Nigerians who learned, practiced, and then taught others.
+
+  YOUR GRADUATION IS A BEGINNING, NOT AN END.
+
+quiz:
+  - question: "What did Nigeria's National AI Policy published by NITDA commit to?"
+    options:
+      - "A. AI infrastructure, talent development, and ethical frameworks"
+      - "B. Banning all AI use in Nigeria"
+      - "C. Only allowing foreign AI companies"
+      - "D. Replacing all government workers with AI"
+    correct: 0
+
+  - question: "What is CCHub in Yaba known for?"
+    options:
+      - "A. Supporting dozens of AI and tech startups"
+      - "B. Being a music recording studio"
+      - "C. Manufacturing phones"
+      - "D. A government tax office"
+    correct: 0
+
+  - question: "Where do Nigerian AI researchers work globally?"
+    options:
+      - "A. Google DeepMind, Meta, Microsoft and major AI companies"
+      - "B. Only in Nigeria"
+      - "C. They are not allowed to work abroad"
+      - "D. Only in China"
+    correct: 0
+
+  - question: "What is the AI talent gap in Nigeria?"
+    options:
+      - "A. Nigeria needs 100,000+ AI-skilled workers with far fewer available now"
+      - "B. There are too many AI experts already"
+      - "C. Nigeria has no interest in AI"
+      - "D. The gap only exists in Lagos"
+    correct: 0
+
+  - question: "What does 'being a multiplier' mean in AI?"
+    options:
+      - "A. Teaching others what you've learned and creating a ripple effect"
+      - "B. Using AI on multiple devices at once"
+      - "C. Earning money from AI on multiple platforms"
+      - "D. Running multiple AI businesses simultaneously"
+    correct: 0

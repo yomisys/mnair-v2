@@ -1,0 +1,75 @@
+id: day6_ai_tools_yo
+day: 6
+topic: ai_tools
+language: yo
+title: "Apoti Irinse AI Iṣowo Rẹ: Bẹrẹ Jere Owo pelu AI"
+content: |
+  O ti kọ awon irinse fun ṣiṣẹda. Loni: awon irinse pataki fun ṣiṣe ati idagbasoke iṣowo.
+
+  IṢẸ ONIBAARA (dahun 24/7 laisi jidide):
+  - WhatsApp Business: auto-reply fun awon ibeere igbagbogbo, atokun ọja, awon bọtini idahun kiakia — OFE
+  - Tidio: sọrọ taara pẹlu AI chatbot fun oju opo wẹẹbu rẹ, ni eto ọfẹ
+  - ManyChat: aifọwọyi WhatsApp ati Instagram DM — olokiki pupọ laarin awon olutita Naijiria
+
+  TITA (kọ, ṣe apẹrẹ, firanṣẹ — ni iṣẹju):
+  - ChatGPT: apejuwe ọja, ọrọ tita, awon ipolowo imeeli, ohun elo SMS
+  - Canva Magic Studio: awon ifiranṣẹ media awujọ, iwe ikede, awon asia — gbogbo wọn baramu ami rẹ
+  - Buffer AI: n daba akoko ti o dara julọ lati firanṣẹ ohun elo rẹ lori ikpo kọọkan
+
+  IṢAKOSO OWO (mọ awon nomba rẹ):
+  - Wave (iṣiro ọfẹ): awon iwe-ẹri, tọpinpin inawo, ẹka AI
+  - Google Sheets plus formula AI: beere Gemini lati ṣe atupale iwe-iṣiro tita rẹ
+  - Ṣayẹwo iwe-ẹri: lo kamẹra foonu rẹ lati digi awon iwe-ẹri iwe
+
+  ỌGỌ TITA (wa ati mu awon onibara duro):
+  - LinkedIn Sales Navigator AI: wa awon onibara B2B ti o ba ta fun awon ile-iṣẹ
+  - Ipele ọfẹ Apollo.io: kọ atokun awon afẹkufẹ fun awon iṣowo iṣẹ
+  - CRM rọrun: paapaa Google Sheet pẹlu awon orukọ, rira to koja, ati ọjọ esote n bọ dara ju kokan lọ
+
+  KO IRINSE AI TI O TI (koodu odo):
+  - Google Forms plus ChatGPT: onibara kun fọmu → o gbe awon idahun lẹ → AI fun ọ ni iye tabi igbanilaoran
+  - WhatsApp plus Zapier plus Sheets: gbogbo ibeere WhatsApp yoo wọle laifọwọyi
+
+  APOTI IRINSE IṢOWO ₦0:
+  WhatsApp Business plus Canva plus ChatGPT ọfẹ plus Google Sheets = iṣiṣẹ iṣowo pipe. Ọpọlọpọ awon iṣowo Naijiria aṣeyori n ṣiṣẹ gangan lori akopọ yii.
+
+quiz:
+  - question: "Kini ManyChat n ṣe laifọwọyi fun awon olutita Naijiria?"
+    options:
+      - "A. Awon idahun WhatsApp ati Instagram DM"
+      - "B. Awon ọna ifijiṣẹ ti ara"
+      - "C. Fifin owo ori"
+      - "D. Owo oya oṣiṣẹ"
+    correct: 0
+
+  - question: "Kini Wave iṣiro ọfẹ n ṣe pẹlu AI?"
+    options:
+      - "A. O n pin inawo laifọwọyi"
+      - "B. O n sọtẹlẹ awon iye ọja ọja ṣẹẹbu"
+      - "C. O n sanwo awon alatuta taara"
+      - "D. O n mu tikẹti ọkọ ofurufu"
+    correct: 0
+
+  - question: "Kini apapọ apoti irinse iṣowo ₦0?"
+    options:
+      - "A. WhatsApp Business plus Canva plus ChatGPT ọfẹ plus Google Sheets"
+      - "B. Sọfitiwia SAP gbowolori nikan"
+      - "C. Awon akanti banki ajeji"
+      - "D. Ọfiisi ti ara ni Lagos"
+    correct: 0
+
+  - question: "Kini Buffer AI n daba?"
+    options:
+      - "A. Akoko ti o dara julọ lati firanṣẹ ohun elo lori ikpo kọọkan"
+      - "B. Iru ọja wo ni lati ta"
+      - "C. Awon onibara wo ni lati yago fun"
+      - "D. Banki ti o lailewu julọ fun lilo"
+    correct: 0
+
+  - question: "Bawo ni o ṣe le kọ irinse iye onibara laisi koodu?"
+    options:
+      - "A. Google Forms fun titẹ sii plus ChatGPT lati ṣe iye"
+      - "B. O gbọdọ gba olupilẹṣẹ"
+      - "C. Ṣee ṣe nikan pẹlu oye kimputa sayensi"
+      - "D. Ko ṣee ṣe sibẹsibẹ"
+    correct: 0

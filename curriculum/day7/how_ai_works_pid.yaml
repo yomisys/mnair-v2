@@ -1,0 +1,62 @@
+id: day7_how_ai_works_pid
+day: 7
+topic: how_ai_works
+language: pid
+title: "The Next Wave: AI Wey Dey Act, No Be Just Answer Questions"
+content: |
+  You don learn how current AI dey work. Today: wetin dey come next, and wetin e mean for Naija.
+
+  AI AGENTS — THE BIG SHIFT:
+  Current AI: you ask, e answer, you act.
+  AI Agents: you give goal, AI go plan steps, use tools, take actions, and report back.
+  Example: "Book me flight to Abuja for Thursday, within ₦80,000, with 20kg luggage." AI agent go search flights, compare prices, check your calendar, book am, and confirm — without you doing each step.
+
+  EDGE AI — DEY WORK WITHOUT INTERNET:
+  Models dey shrink to run on phones and small devices without cloud connection. This matter plenty for Naija: in areas where connectivity no reliable, AI fit still work. Health worker for remote village fit use AI diagnostics wey run completely offline.
+
+  OPEN SOURCE CHANGE EVERYTHING:
+  The biggest AI models use to cost billions to build and only big companies get dem. Now open-source models wey anybody fit download and run locally dey increasingly powerful. Naija developer fit run capable AI model on decent laptop. This one democratize AI completely.
+
+  WETIN THIS MEAN FOR YOU:
+  The technical complexity of working with AI dey decrease every year. The human skills — judgment, creativity, local knowledge, trust — dey become more valuable, not less. Your understanding of Naija contexts, languages, and problems na your competitive advantage wey no AI fit replicate.
+
+quiz:
+  - question: "Wetin be AI agent?"
+    options:
+      - "A. AI wey take goal, plan steps, take actions, and report back"
+      - "B. Human wey work for AI company"
+      - "C. Robot wey look like person"
+      - "D. Simple AI chatbot"
+    correct: 0
+
+  - question: "Wetin Edge AI mean for rural Naija?"
+    options:
+      - "A. AI fit work offline for areas wey no get reliable connectivity"
+      - "B. AI only work at the edge of cities"
+      - "C. AI need the fastest internet to work"
+      - "D. Rural Naija no fit benefit from AI"
+    correct: 0
+
+  - question: "Wetin open-source AI don change?"
+    options:
+      - "A. Anybody now fit run capable AI models locally without billions in investment"
+      - "B. AI now dey illegal to use without licence"
+      - "C. Only government agencies fit access AI"
+      - "D. AI models don become less capable"
+    correct: 0
+
+  - question: "Which human skill dey become MORE valuable as AI dey improve?"
+    options:
+      - "A. Judgment, creativity, and local knowledge"
+      - "B. Ability to type faster"
+      - "C. Memorizing technical specifications"
+      - "D. Simple data entry"
+    correct: 0
+
+  - question: "Wetin be the multimodal AI capability wey dey come by 2028?"
+    options:
+      - "A. AI wey fit handle text, voice, image, and video equally for local languages"
+      - "B. AI wey only work for English"
+      - "C. AI wey need special glasses"
+      - "D. AI wey only work on powerful computers"
+    correct: 0

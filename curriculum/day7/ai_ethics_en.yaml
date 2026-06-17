@@ -1,0 +1,69 @@
+id: day7_ai_ethics_en
+day: 7
+topic: ai_ethics
+language: en
+title: "Be the Change: Ethical AI Leadership in Nigeria"
+content: |
+  You've completed 7 days of AI learning. With that knowledge comes a responsibility that goes beyond your own business or career.
+
+  ADVOCATE FOR GOOD AI POLICY:
+  Nigeria's AI policy is still being shaped. Laws about AI in hiring, lending, healthcare, and education will affect millions of Nigerians — most of whom don't know AI exists yet. People who understand AI (like you now) need to be part of those conversations. Contact your local government representatives. Respond to policy consultations. Your voice matters.
+
+  REPORT HARMFUL AI WHEN YOU SEE IT:
+  AI-generated fake news spreading on WhatsApp. Deepfake videos of politicians saying things they didn't say. Biased loan algorithms rejecting qualified borrowers. AI facial recognition that doesn't work for dark skin tones. When you see harm, report it — to the platform, to FCCPC (Federal Competition and Consumer Protection Commission), or publicly.
+
+  MENTOR ONE PERSON:
+  The single most impactful thing you can do after this course is teach one other person what you've learned. Not a big formal training — just a conversation: "Hey, I've been learning about AI and want to show you something useful." That person teaches someone else. That's how knowledge scales.
+
+  DEMAND ACCOUNTABILITY:
+  When a company or government uses AI to make decisions about you — credit score, job application, medical diagnosis — you have the right to ask: How does this work? Can I appeal? Who is responsible if it's wrong? These are reasonable questions. Ask them.
+
+  YOUR AI OATH:
+  I will use AI to create, not to deceive.
+  I will share what I learn, not hoard it.
+  I will question AI outcomes, not accept them blindly.
+  I will build for my community, not just for myself.
+  I will be the kind of AI user Nigeria needs.
+
+  CONGRATULATIONS. YOU HAVE GRADUATED.
+
+quiz:
+  - question: "Why should AI-literate Nigerians engage with AI policy?"
+    options:
+      - "A. Because AI laws affect millions who don't yet understand AI"
+      - "B. Because they will be paid to do so"
+      - "C. It's required by law"
+      - "D. It doesn't matter who engages with policy"
+    correct: 0
+
+  - question: "What should you do when you see harmful AI like deepfake videos?"
+    options:
+      - "A. Report it to the platform, FCCPC, or publicly"
+      - "B. Ignore it — AI companies handle everything"
+      - "C. Share it to warn others without reporting"
+      - "D. Only report if you made the video yourself"
+    correct: 0
+
+  - question: "What is the 'mentor one person' principle?"
+    options:
+      - "A. Teaching one person creates a ripple that scales knowledge"
+      - "B. You must become a formal teacher first"
+      - "C. Only teach people who already know AI"
+      - "D. Wait until you are an expert before teaching"
+    correct: 0
+
+  - question: "What right do you have when AI makes decisions about you?"
+    options:
+      - "A. To ask how it works, whether you can appeal, and who is responsible"
+      - "B. No rights — AI decisions are final"
+      - "C. Only rich people can question AI"
+      - "D. You must accept all AI decisions"
+    correct: 0
+
+  - question: "What does the AI Oath commit you to?"
+    options:
+      - "A. Creating not deceiving, sharing not hoarding, questioning outcomes, building for community"
+      - "B. Only using the most expensive AI tools"
+      - "C. Never questioning AI"
+      - "D. Keeping AI knowledge secret"
+    correct: 0

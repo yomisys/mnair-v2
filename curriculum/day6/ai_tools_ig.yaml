@@ -1,0 +1,75 @@
+id: day6_ai_tools_ig
+day: 6
+topic: ai_tools
+language: ig
+title: "Igbe Ngwa Ọrụ AI Azụmahịa Gị: Bido Inweta Ego na AI"
+content: |
+  Ị mụtala ngwa ọrụ maka ịmepụta ihe. Taa: ngwa ọrụ ndị akọwapụtara maka ịgba ọsọ na ịto ūlọ azụmahịa.
+
+  ỌRỤ NDỊ ỌRỤ AHỊA (zaaa 24/7 na-eche mgbochi ụra):
+  - WhatsApp Business: auto-reply maka ajụjụ ndị na-abịa mgbe niile, ndepụta ngwa, bọtọn nzaaza ngwa — N'EFU
+  - Tidio: mkparịta ụka dị ndụ + AI chatbot maka weebụsaịtị gị, nwere atụmatụ n'efu
+  - ManyChat: akọwa WhatsApp na Instagram DM — a ma ama nke ukwuu n'etiti ndị na-ere ahịa Naịjịrịa
+
+  NZACHA AHỊA (dee, ese, pọstịa — n'ime nkeji):
+  - ChatGPT: nkọwa ngwa, ọdịdị mgbazinye ahịa, ọchịchọ email, ọdịdị SMS
+  - Canva Magic Studio: ọrụ media ọha, akwụkwọ, banner — niile dabara na akara gị
+  - Buffer AI: na-atụ aka oge kachasị mma iji pọstịa ọdịdị gị n'ikpo okwu ọ bụla
+
+  NJIKWA EGO (mara ọnụọgụ gị):
+  - Wave (ọrụ ego n'efu): akwụkwọ ego, eso ụgwọ, nkewa na AI
+  - Google Sheets + AI formula: jụọ Gemini ka ya nyochaa akwụkwọ ahịa gị
+  - Nyocha ịkwụ ụgwọ: jiri igwefoto ekwentị gị dobe ịkwụ ụgwọ akwụkwọ
+
+  ỌGỤGỤ ISI AHỊA (chọta ma jide ndị ọrụ ahịa):
+  - LinkedIn Sales Navigator AI: chọta ndị ọrụ ahịa B2B ma ọ bụrụ na ị na-ere maka ụlọ ọrụ
+  - Apollo.io layer n'efu: wuo ndepụta ndị yie atụmatụ maka azụmahịa ọrụ
+  - CRM dị mfe: ọbụna Google Sheet nwere aha, izute ọ kacha oge, na ụbọchị esote na-abịa ka ọ karịa ihe ọ bụla
+
+  WUO NGWA ỌRỤ AI GỊ ONWE GỊ (ọdịghị koodu):
+  - Google Forms + ChatGPT: onye ọrụ ahịa jupụta fọm → ị matụọ azịza → AI na-enye okwu ma ọ bụ atụmatụ
+  - WhatsApp + Zapier + Sheets: ajụjụ WhatsApp ọ bụla edere ozugbo
+
+  IGBE NGWA ỌRỤ AZỤMAHỊA ₦0:
+  WhatsApp Business + Canva + ChatGPT n'efu + Google Sheets = arụmọrụ azụmahịa zuru ezu. Ọtụtụ azụmahịa Naịjịrịa ndị nwere ihe ịga nke ọma na-agba ọsọ n'elu usoro a.
+
+quiz:
+  - question: "Gịnị bụ ihe ManyChat na-akọwa maka ndị na-ere ahịa Naịjịrịa?"
+    options:
+      - "A. Nzaaza WhatsApp na Instagram DM"
+      - "B. Uzo nnyefe ihe"
+      - "C. Iwepụ ụtụ ego"
+      - "D. Ịkwụ ụgwọ ndị ọrụ"
+    correct: 0
+
+  - question: "Gịnị bụ ihe Wave (ọrụ ego n'efu) na-eme na AI?"
+    options:
+      - "A. Na-akewa ụgwọ a na-eji ozugbo"
+      - "B. Na-amụ amụma ọnụ ahịa ahịa ọlaọcha"
+      - "C. Na-akwụ ụgwọ ndị na-enye ihe ozugbo"
+      - "D. Na-azụta tikịtị ụgbọ elu"
+    correct: 0
+
+  - question: "Kedu njikọ igbe ngwa ọrụ ₦0?"
+    options:
+      - "A. WhatsApp Business + Canva + ChatGPT n'efu + Google Sheets"
+      - "B. Naanị ngwanrọ SAP dị ọnụ ala"
+      - "C. Akaụntị ụlọ akụ mba ọzọ"
+      - "D. Ụlọ ọrụ dị n'ụzọ na Lagos"
+    correct: 0
+
+  - question: "Gịnị bụ ihe Buffer AI na-atụ aka?"
+    options:
+      - "A. Oge kachasị mma iji pọstịa ọdịdị n'ikpo okwu ọ bụla"
+      - "B. Ngwa ndị a ga-ere"
+      - "C. Ndị ọrụ ahịa ndị a ga-ezere"
+      - "D. Ụlọ akụ kachasị nchekwa maka iji"
+    correct: 0
+
+  - question: "Otu ị si wuo ngwa ọrụ okwu ndị ọrụ ahịa na-enweghị koodu?"
+    options:
+      - "A. Google Forms maka ntinye + ChatGPT iji mepụta okwu"
+      - "B. Ị ga-arịa onye mmepe"
+      - "C. Ọga-ekwe isi naanị na oye kimputaa sayensi"
+      - "D. Ọ nweghị ike ugbu a"
+    correct: 0

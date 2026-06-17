@@ -1,0 +1,62 @@
+id: day7_how_ai_works_yo
+day: 7
+topic: how_ai_works
+language: yo
+title: "Igbi Ti N Bọ: AI Ti N Gba Awon Iṣe, Kii Ṣe Idahun Ibeere Nikan"
+content: |
+  O ti kọ bi AI lọwọlọwọ ṣe n ṣiṣẹ. Loni: ohun ti n bọ nigbamii, ati ohun ti o tumọ si fun Naijiria.
+
+  AWON AṢOJU AI — IYIPADA NLANLA:
+  AI lọwọlọwọ: o beere, o dahun, o gba iṣe.
+  Awon Aṣoju AI: o fun ni ibi-afẹde, AI n gbero awon igbese, n lo awon irinse, n gba awon iṣe, o si n jabo.
+  Apẹẹrẹ: "Mu tikẹti ọkọ ofurufu fun mi si Abuja ni Ọjọbọ, laarin ₦80,000, pẹlu luggage 20kg." Aṣoju AI n wa awon ọkọ ofurufu, n ṣe afiwe awon iye, n ṣayẹwo kalẹnda rẹ, n ra tikẹti, o si n jẹrisi — laisi rẹ ṣe igbese kọọkan.
+
+  EDGE AI — N ṢIṢẸ LAISI AYELUJARA:
+  Awon awoṣe n din ku lati ṣiṣẹ lori awon foonu ati awon ẹrọ kekere laisi asopọ awọsanma. Eyi ṣe pataki pupọ fun Naijiria: ni awon agbegbe ti asopọ ko gbẹkẹle, AI le tun ṣiṣẹ. Oṣiṣẹ ilera ni abule jijinna le lo awon iwadii AI ti o n ṣiṣẹ patapata laisi ayelujara.
+
+  OPEN SOURCE N YIPADA OHUN GBOGBO:
+  Awon awoṣe AI nla ti a lo tẹlẹ na owo biliọnu lati kọ ati pe awon ile-iṣẹ nla nikan ni wọn. Bayi awon awoṣe open-source ti ẹnikẹni le gba silẹ ati ṣiṣẹ ni agbegbe n di alagbara siwaju sii. Olupilẹṣẹ Naijiria le ṣiṣẹ awoṣe AI ti o lagbara lori laptop to dara. Eyi ni ijọba tiwantiwa AI patapata.
+
+  OHUN TI EYI TI PỌ SI FUN Ọ:
+  Idiju imọ-ẹrọ ti ṣiṣẹ pẹlu AI n dinku ni gbogbo ọdun. Awon ogbon eniyan — idajọ, ẹda, imo agbegbe, igbẹkẹle — n di iye diẹ sii, kii ṣe kere. Oye rẹ ti awon ipo Naijiria, awon ede, ati awon iṣoro jẹ anfaani asọmọlẹ rẹ ti ko si AI ti o le rọpo.
+
+quiz:
+  - question: "Kini aṣoju AI?"
+    options:
+      - "A. AI ti o gba ibi-afẹde, gbero awon igbese, gba awon iṣe, o si jabo"
+      - "B. Eniyan ti n ṣiṣẹ fun ile-iṣẹ AI"
+      - "C. Roboti ti o dabi eniyan"
+      - "D. Chatbot AI ti o rọrun"
+    correct: 0
+
+  - question: "Kini Edge AI tumọ si fun igberiko Naijiria?"
+    options:
+      - "A. AI le ṣiṣẹ laisi ayelujara ni awon agbegbe ti asopọ ko gbẹkẹle"
+      - "B. AI n ṣiṣẹ ni egbegbe awon ilu nikan"
+      - "C. AI nilo ayelujara iyara julọ lati ṣiṣẹ"
+      - "D. Igberiko Naijiria ko le ni anfaani lati AI"
+    correct: 0
+
+  - question: "Kini open-source AI ti yipada?"
+    options:
+      - "A. Ẹnikẹni bayi le ṣiṣẹ awon awoṣe AI to lagbara ni agbegbe laisi biliọnu"
+      - "B. AI bayi jẹ arufin lati lo laisi iwe-aṣẹ"
+      - "C. Awon ile-iṣẹ ijọba nikan le wọle si AI"
+      - "D. Awon awoṣe AI ti di alalagbara"
+    correct: 0
+
+  - question: "Kini ogbon eniyan ti n di IYE DIẸ SII bi AI ṣe n dara si?"
+    options:
+      - "A. Idajọ, ẹda, ati imo agbegbe"
+      - "B. Agbara lati tẹ kiakia"
+      - "C. Ikoowe awon pato imọ-ẹrọ"
+      - "D. Titẹ data ti o rọrun"
+    correct: 0
+
+  - question: "Kini agbara AI ede pupọ ti n bọ ni ọdun 2028?"
+    options:
+      - "A. AI ti o n mu ọrọ, ohun, aworan, ati fidio daradara ni awon ede agbegbe"
+      - "B. AI ti o ṣiṣẹ ni Gẹẹsi nikan"
+      - "C. AI ti o nilo awon gilaasi pataki"
+      - "D. AI ti o ṣiṣẹ lori awon kọmputa to lagbara nikan"
+    correct: 0

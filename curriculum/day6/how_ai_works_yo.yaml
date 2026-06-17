@@ -1,0 +1,69 @@
+id: day6_how_ai_works_yo
+day: 6
+topic: how_ai_works
+language: yo
+title: "Bawo AI Ṣe N Ṣe Iranlọwọ Iṣowo: Lati Data si Awon Ipinnu"
+content: |
+  Loni jẹ ka so awon imọran imọ-ẹrọ ti o kọ po pẹlu awon abajade iṣowo ti o ṣe pataki gidi.
+
+  YIPO DATA IṢOWO:
+  Gbogbo iṣowo n ṣe agbejade data: Tani ra kini? Nigbawo? Igba melo ni wọn n pada? Kini wọn n beere ṣaaju ki wọn to ra? AI n yi data alaimọ yii pada si awon ipinnu to han gbangba.
+
+  IGBESE 1 — GBIGBA:
+  Gbogbo tita, gbogbo ifiranṣẹ WhatsApp, gbogbo ibẹwo oju opo wẹẹbu jẹ data. Paapaa igbasilẹ deftị ti o rọrun ti awon tita ojoojumọ jẹ data ti AI le lo. O ko nilo awon eto gbowolori — Google Sheet to to lati bẹrẹ.
+
+  IGBESE 2 — ILANA:
+  AI n wa awon ilana ti awon eniyan padanu: "Awon tita n ṣubu ni owurọ Ọjọ Mọnde ṣugbọn wọn n dide ni Ọjọ Jimọ ọjọ osu." "Awon onibara ti n ra aṣọ taara tun ra okun ni 80% akoko." Eniyan le wa eyi — AI yoo wa a ni iṣẹju kan kọja ẹgbẹẹgbẹrun awon igbasilẹ.
+
+  IGBESE 3 — ASỌTẸLẸ:
+  Lati awon ilana ni awon asọtẹlẹ ti n bọ: kini lati tun ra, tani lati tẹle, awon onibara wo ni o fẹrẹ dẹkun rira. Eyi ni ohun ti awon ẹrọ igbanilaoran n ṣe — "awon onibara bi ẹ tun ra..."
+
+  IGBESE 4 — AIFỌWỌYI:
+  Ni kete ti awon ilana ba ti mọ, awon iṣe le ṣe laifọwọyi: fi ifiranṣẹ ẹdinwo ranṣẹ si awon onibara ti ko ti ra ni ọjọ 30; ra ọja pada nigba ti ọja ba ṣubu ni isalẹ awon ohun 10; samisi iṣowo ti ko ṣe deede fun atunyẹwo.
+
+  IYIPADA NAIJIRIA:
+  Ọpọlọpọ ikẹkọ iṣowo AI n ro pe ayelujara gbẹkẹle ati awon eto isanwo ipe. Otitọ Naijiria yatọ. Awon imuse iṣowo AI ti o dara julo nibi n ṣiṣẹ laisi ayelujara nigba ti o nilo, n gba awon igbasilẹ isanwo owo, ati n sọrọ nipasẹ WhatsApp — kii ṣe imeeli.
+
+  DATA ASỌMỌLẸ RẸ:
+  Bẹrẹ igbasilẹ awon tita rẹ loni ninu Google Sheet. Ni oṣu 3, iwọ yoo ni data lati wa AWON ILANA RẸ.
+
+quiz:
+  - question: "Kini Igbese 1 ninu Yipo Data Iṣowo?"
+    options:
+      - "A. Gbigba data lati awon tita, ifiranṣẹ, ati ibẹwo"
+      - "B. Sise laifọwọyi ohun gbogbo lẹsẹkẹsẹ"
+      - "C. Rira sọfitiwia gbowolori"
+      - "D. Gba onimọ data"
+    correct: 0
+
+  - question: "Iru ilana wo ni AI le ri ninu iṣowo Naijiria?"
+    options:
+      - "A. Awon tita n dide ni Ọjọ Jimọ ọjọ osu ati ṣubu ni owurọ Ọjọ Mọnde"
+      - "B. Kokan — data Naijiria dara ju lọ"
+      - "C. Awon ilana ninu awon owo ajeji nikan"
+      - "D. Awon ilana nilo o kere ju ọdun 10 data"
+    correct: 0
+
+  - question: "Kini ẹrọ igbanilaoran?"
+    options:
+      - "A. Eto ti n daba 'awon onibara bi ẹ tun ra...'"
+      - "B. Eniyan ti n daba awon ile onje"
+      - "C. Ẹrọ ti n ṣiṣẹ lori awon imọran"
+      - "D. Ilana ifọwọsi ijọba"
+    correct: 0
+
+  - question: "Kini irinse to to lati bẹrẹ gbigba data iṣowo?"
+    options:
+      - "A. Google Sheet ti o rọrun"
+      - "B. Naanị sọfitiwia ile-iṣẹ gbowolori"
+      - "C. Eto database ajeji"
+      - "D. Kokan ti o ṣiṣẹ ni Naijiria"
+    correct: 0
+
+  - question: "Kini iyipada Naijiria ninu iṣowo AI?"
+    options:
+      - "A. Awon imuse ti o dara julo n ṣiṣẹ laisi ayelujara, gba owo, lo WhatsApp"
+      - "B. Naijiria ko le lo AI fun iṣowo"
+      - "C. Ohun gbogbo gbọdọ jẹ ni Gẹẹsi nikan"
+      - "D. O gbọdọ ni adirẹsi Lagos"
+    correct: 0

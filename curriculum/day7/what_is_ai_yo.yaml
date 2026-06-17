@@ -1,0 +1,64 @@
+id: day7_what_is_ai_yo
+day: 7
+topic: what_is_ai
+language: yo
+title: "Kini AI Yoo Jẹ ni 2030 — Ati Ipa Rẹ Ninu Rẹ"
+content: |
+  Ọjọ keje — Ọjọ ikẹhin. Jẹ ka wo iwaju. AI ti o kọ ni ọsẹ yii ti lagbara tẹlẹ, ṣugbọn o tun jẹ ẹya ibẹrẹ pupọ ti ohun ti n bọ.
+
+  OHUN TI N YIPADA NI ỌDUN 5 TO NBỌ:
+
+  LATI AWON IRINSE SI AWON AṢOJU AI:
+  AI loni n dahun awon ibeere rẹ. AI ọla yoo gba awon iṣe: pè awon ipinnu, paṣẹ awon ohun elo, dahun imeeli, dọwọ fun ẹ — gbogbo rẹ nigba ti o n sun. Ronu rẹ bi gbigbe lati oluranlọwọ ọlọgbọn pupọ ti o n sọrọ pẹlu, si ẹni ti o le ṣiṣẹ fun ọ.
+
+  AI N ṢE ATILẸYIN FUN ỌPỌ ÈDE:
+  Iṣẹ n yara lati mu atilẹyin AI to dara fun Hausa, Yoruba, Igbo, ati Pidgin. AI ti o n lo ni 2030 yoo loye awon ede Naijiria gẹgẹ bi o ti loye Gẹẹsi loni. O tọka kamẹra foonu rẹ si ẹrọ ti bajẹ, sọ ibeere rẹ ni Yoruba, AI yoo dahun ni Yoruba pẹlu awon itọnisọna atunṣe.
+
+  AWON IṢẸ TI YOO YIPADA:
+  Awon iṣẹ ti yoo parẹ: titẹ data, itumọ akọsilẹ ipilẹ, awon iwe afọwọkọ iṣẹ onibaara ti o rọrun. Awon iṣẹ ti yoo dagba: awon olukọ AI, awon injinia okwu, awon oluyẹwo AI, awon oṣiṣẹ iwa AI, awon amoye isọpọ AI. Ogbon ti a n wa julọ yoo jẹ mimọ BÀWO lati ṣiṣẹ pẹlu AI — gangan ohun ti o ti lo ọsẹ yii lati kọ.
+
+  IPA RẸ:
+  Naijiria ni awon eniyan 220 miliọnu, awon ọdọ, ati awon iṣoro gidi gidi ti AI le ṣe iranlọwọ lati yanju. Awon eniyan ti yoo ṣe apẹrẹ bi AI ṣe n ṣiṣẹ ni Naijiria yoo jẹ awon ara Naijiria ti o loye rẹ — bi iwọ, bayi.
+
+  OJỌ IWAjU KII ṢE NKAN TI YOO ṢẸlẸ SI Ọ. IWỌ N KO RẸ.
+
+quiz:
+  - question: "Kini iyipada lati 'awon irinse' si 'awon aṣoju AI'?"
+    options:
+      - "A. AI n gbe lati dahun ibeere si gbigba awon iṣe fun ọ"
+      - "B. AI di kekere ni ti ara"
+      - "C. AI dẹkun ṣiṣẹ laisi ayelujara"
+      - "D. AI jẹ fun awon aṣoju ati awon alagbata nikan"
+    correct: 0
+
+  - question: "Awon iṣẹ wo ni yoo DAGBA nitori AI?"
+    options:
+      - "A. Awon olukọ AI, awon injinia okwu, awon oṣiṣẹ iwa AI"
+      - "B. Awon oṣiṣẹ titẹ data"
+      - "C. Awon oluka iwe afọwọkọ iṣẹ onibaara ti o rọrun"
+      - "D. Awon olumọ akọsilẹ ipilẹ"
+    correct: 0
+
+  - question: "Kini o jẹ ki Naijiria dara fun ọjọ iwaju AI?"
+    options:
+      - "A. Awon eniyan 220 miliọnu, awon ọdọ, awon iṣoro gidi AI le yanju"
+      - "B. Naijiria ni awon kọmputa diẹ sii ju orilẹ-ede eyikeyi"
+      - "C. Ayelujara Naijiria ni iyara julọ ni Africa"
+      - "D. Awon ara Naijiria ni wọn ṣẹda ayelujara"
+    correct: 0
+
+  - question: "Kini ogbon ti a n wa julọ ni akoko AI?"
+    options:
+      - "A. Mimọ BÀWO lati ṣiṣẹ pẹlu AI"
+      - "B. Kikọ koodu kọmputa nikan"
+      - "C. Sisọ Gẹẹsi nikan"
+      - "D. Ni PhD"
+    correct: 0
+
+  - question: "Kini AI ede pupọ le ṣe ni 2030?"
+    options:
+      - "A. Loye Hausa, Yoruba, Igbo, Pidgin bi Gẹẹsi, dahun ni ede rẹ"
+      - "B. Ṣiṣẹ ni Gẹẹsi nikan"
+      - "C. Nilo awon gilaasi pataki lati lo"
+      - "D. Ṣiṣẹ lori awon kọmputa to lagbara nikan"
+    correct: 0

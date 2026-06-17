@@ -1,0 +1,80 @@
+id: day7_ai_tools_ha
+day: 7
+topic: ai_tools
+language: ha
+title: "Ci Gaba da Koyo: Taswirarka ta AI Bayan Wannan Kwas"
+content: |
+  Yau shine ƙarshen Mako 1. Shi ne kuma farkon duk sauran abubuwa. Ga inda ake zuwa gaba.
+
+  HANYOYIN KOYO KYAUTA:
+
+  MAFARA (fara a nan idan kana son zurfafawa):
+  - Kwas ɗin "AI Essentials" na Google (kyauta, tare da takaddun shaida) — yana rufe ginshiƙan AI da kayan aikin AI na Google Workspace
+  - "AI Skills Challenge" na Microsoft — kyauta, gajere, mai amfani
+  - Kwas ɗin AI na Khan Academy — kyauta, mai hoto, mai sauƙin farawa
+
+  MATSAKAICI (lokacin da kake shirye don gini):
+  - Kwasoshin gajere na DeepLearning.AI (Andrew Ng) — da yawa kyauta ne, sa'a 1-2 kowanne
+  - fast.ai — kyauta, ƙwarewar koyon injin, yana gudana akan Google Colab kyauta
+  - Kaggle Learn — kwasoshin micro kyauta akan bayanai, AI, da Python
+
+  AL'UMMOMIN AI NA AFIRKA (haɗa kai da girma):
+  - AI Saturdays Lagos (AISatLagos) — zaman koyon AI na kyauta mako-mako a Lagos
+  - Zindi.africa — gasar AI ta Afirka tare da kyaututtuka na cash, daga mafara zuwa ci gaba
+  - Deep Learning Indaba — taron AI na Afirka na shekara-shekara, shirye-shiryen karo
+  - Ƙungiyoyin WhatsApp AI/ML na Afirka — al'ummomin koyo masu aiki
+
+  SAMUN BIYAN KUƊI DON ƘWAREWAR AI (farawa):
+  - Upwork/Fiverr: miƙa ayyukan da AI ke taimakawa (rubutun abun ciki, zane, bincike)
+  - Kasuwancin gida: miƙa don sanya auto-reply na AI na WhatsApp Business nasu
+  - Koyarwa: gudanar da ƙungiyar koyon AI ta WhatsApp ta gida — caji ₦500 a kowanne
+  - Injiniyan bayar da umarnin freelance: kamfanoni suna biyan mutane waɗanda ke samun sakamako daga AI
+
+  ƘALUBALENKA NA KWANAKI 30:
+  Mako 1: Yi amfani da kayan aikin AI sabon ɗaya kowace rana
+  Mako 2: Ƙirƙiri wani abu na gaske ka kuma rabashi
+  Mako 3: Koya wa wani abin da ka sani
+  Mako 4: Gano matsala ɗaya a al'ummarka da AI zai iya taimakawa wajen warwarewa, ka miƙa mafita
+
+  MAFI KYAWUN ILIMI NA AI YANA AIKI.
+
+quiz:
+  - question: "Me kwas ɗin 'AI Essentials' na Google ke ba da?"
+    options:
+      - "A. Kwas ɗin ginshiƙan AI kyauta tare da takaddun shaida"
+      - "B. Digirin biyan kuɗi a AI"
+      - "C. Samun damar samfuran AI masu zaman kansu na Google kawai"
+      - "D. Takaddun shaida na gwamnati"
+    correct: 0
+
+  - question: "Me Zindi.africa aka fi sani da shi?"
+    options:
+      - "A. Gasar AI ta Afirka tare da kyaututtuka na cash daga mafara zuwa ci gaba"
+      - "B. Dandamali na kafar sada zumunta don injiniyoyi"
+      - "C. Portal aikin gwamnati"
+      - "D. Musayar kuɗin dijital"
+    correct: 0
+
+  - question: "Ta yaya za ka samu kuɗi daga ƙwarewar AI a Upwork ko Fiverr?"
+    options:
+      - "A. Miƙa ayyukan da AI ke taimakawa kamar rubutun abun ciki, zane, da bincike"
+      - "B. Manyan kamfanoni kawai za su iya sayar da ayyukan AI"
+      - "C. Kana bukatar digiri na biyu da farko"
+      - "D. Dole ka jira shekaru 5"
+    correct: 0
+
+  - question: "Menene Mako 3 na Ƙalubalenka na Kwanaki 30?"
+    options:
+      - "A. Koya wa wani abin da ka sani"
+      - "B. Saya kayan aikin AI ƙarin"
+      - "C. Nema kwas ɗin jami'a"
+      - "D. Daina amfani da AI"
+    correct: 0
+
+  - question: "Menene mafi kyawun ilimi na AI gwargwadon darasi?"
+    options:
+      - "A. Aiki — amfani da AI, ƙirƙira, koyarwa, da warware matsaloli na gaske"
+      - "B. Karanta littattafai kawai"
+      - "C. Kallon bidiyo ba tare da yin aiki ba"
+      - "D. Jira shirin digiri na yau da kullum"
+    correct: 0

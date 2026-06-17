@@ -1,0 +1,69 @@
+id: day7_ai_ethics_pid
+day: 7
+topic: ai_ethics
+language: pid
+title: "Be the Change: Ethical AI Leadership for Naija"
+content: |
+  You don complete 7 days of AI learning. With that knowledge come responsibility wey go pass your own business or career.
+
+  ADVOCATE FOR GOOD AI POLICY:
+  Naija AI policy still dey be shaped. Laws about AI for hiring, lending, healthcare, and education go affect millions of Nigerians — most of dem no know AI dey exist yet. People wey understand AI (like you now) need to be part of those conversations. Contact your local government reps. Respond to policy consultations. Your voice matter.
+
+  REPORT HARMFUL AI WHEN YOU SEE AM:
+  AI-generated fake news dey spread on WhatsApp. Deepfake videos of politicians saying things wey dem no say. Biased loan algorithms wey dey reject qualified borrowers. AI facial recognition wey no dey work for dark skin tones. When you see harm, report am — to the platform, to FCCPC, or publicly.
+
+  MENTOR ONE PERSON:
+  The single most impactful thing you fit do after this course na to teach one other person wetin you learn. No be big formal training — just conversation: "Hey, I don dey learn about AI and I want show you something useful." That person go teach somebody else. That na how knowledge go scale.
+
+  DEMAND ACCOUNTABILITY:
+  When company or government use AI to make decisions about you — credit score, job application, medical diagnosis — you get right to ask: How this one dey work? I fit appeal? Who dey responsible if e dey wrong? These na reasonable questions. Ask dem.
+
+  YOUR AI OATH:
+  I go use AI to create, not to deceive.
+  I go share wetin I learn, not hoard am.
+  I go question AI outcomes, not accept dem blind.
+  I go build for my community, not just for myself.
+  I go be the kind of AI user wey Naija need.
+
+  CONGRATULATIONS. YOU DON GRADUATE.
+
+quiz:
+  - question: "Why AI-literate Nigerians suppose engage with AI policy?"
+    options:
+      - "A. Because AI laws affect millions wey no yet understand AI"
+      - "B. Because dem go pay dem to do am"
+      - "C. Na law require am"
+      - "D. E no matter who engage with policy"
+    correct: 0
+
+  - question: "Wetin you suppose do when you see harmful AI like deepfake videos?"
+    options:
+      - "A. Report am to the platform, FCCPC, or publicly"
+      - "B. Ignore am — AI companies handle everything"
+      - "C. Share am to warn others without reporting"
+      - "D. Only report if you make the video yourself"
+    correct: 0
+
+  - question: "Wetin be the 'mentor one person' principle?"
+    options:
+      - "A. Teaching one person dey create ripple wey dey scale knowledge"
+      - "B. You must become formal teacher first"
+      - "C. Only teach people wey already know AI"
+      - "D. Wait until you be expert before teaching"
+    correct: 0
+
+  - question: "Wetin right you get when AI make decisions about you?"
+    options:
+      - "A. To ask how e work, whether you fit appeal, and who dey responsible"
+      - "B. No rights — AI decisions na final"
+      - "C. Only rich people fit question AI"
+      - "D. You must accept all AI decisions"
+    correct: 0
+
+  - question: "Wetin the AI Oath dey commit you to?"
+    options:
+      - "A. Creating not deceiving, sharing not hoarding, questioning outcomes, building for community"
+      - "B. Only using the most expensive AI tools"
+      - "C. Never questioning AI"
+      - "D. Keeping AI knowledge secret"
+    correct: 0

@@ -1,0 +1,69 @@
+id: day7_ai_ethics_ig
+day: 7
+topic: ai_ethics
+language: ig
+title: "Bụ Mgbanwe: Ndu Ụkpụrụ AI na Naịjịrịa"
+content: |
+  Ị mechara ụbọchị 7 nke ịmụta AI. Na ihe ọmụmụ ahụ na-abịa ọrụ nke na-agafe azụmahịa ma ọ bụ ọrụ gị.
+
+  NYE NDỤMỌDỤ MKA IWU AI DỊ MMA:
+  Iwu AI Naịjịrịa ka a na-emepụta ya. Iwu banyere AI n'ịhazi ọrụ, ịkwụ ụgwọ ego, ahụike, na agụmakwụkwo ga-emetụta ọtụtụ nde ndị Naịjịrịa — ndị ọtụtụ ha amaghị na AI dị tukwasị ugbu a. Ndị ghọtara AI (dị ka gị ugbu a) kwesịrị ịbụ akụkụ nke mkparịta ụka ndị ahụ. Kpọtụrụ ndị nnọchi anya gọọmentị mpaghara gị. Zaaa ụdị ntụkwasị obi iwu. Olu gị bara ụba.
+
+  KỌỌ AI NA-EMERỤ IHE MGBE Ị HỤ YA:
+  Akụkọ ụgha ndị AI mepụtara na-agbasa na WhatsApp. Vidiyo deepfake nke ndị ndọrọ ndọrọ ọchịchọ na-ekwu ihe ha ekwurụghị. Algọridim ego ndị na-egosi mmasị na-ajụ ndị ọ kwesịrị. AI ịchọpụta ihu ndị na-arụghị ọrụ maka akpụkpọ anụ ojii. Mgbe ị hụ ọgụ, kọọ ya — nye ikpo okwu, FCCPC, ma ọ bụ n'ọha.
+
+  KỤzIEE OTU MMADỤ:
+  Ihe ọ bara ụba nke kachasị i nwere ike ime mgbe ọzụzụ a gasịrị bụ ikụzị onye ọzọ ihe ị mụtara. Ọ bụghị ọzụzụ nnukwu ọdịnala — naanị mkparịta ụka: "Hey, ana m amụta banyere AI ma achọ igosi gị ihe bara ụba." Onye ahụ na-akụzị onye ọzọ. Otu ahụ ka ihe ọmụmụ si eto eto.
+
+  CHỌỌ IWEGHACHI AZỊZA:
+  Mgbe ụlọ ọrụ ma ọ bụ gọọmentị jiri AI mee mkpebi banyere gị — ihe ọmụmụ ego, arịọ ọrụ, nchọpụta ọrịa — ị nwere ikike ịjụ: Otu nke a si arụ ọrụ? Enwere m ike isi wee dere arịọ? Onye dị n'ọrụ ma ọ bụrụ na ọ dị njọ? Ọ bụ ajụjụ ndị kwesịrị ịjụ. Jụọ ha.
+
+  AKWA NKA AI GỊ:
+  Ga-eji AI mepụta, ọ bụghị ịtọgharia.
+  Ga-eketa ihe m mụtara, ọ bụghị ichekwa ya.
+  Ga-ajụ nsonaazụ AI, ọ bụghị ịnarọ ha n'ìhè.
+  Ga-ewu maka obodo m, ọ bụghị naanị maka onwe m.
+  Ga-abụ ụdị onye na-eji AI nke Naịjịrịa chọọ.
+
+  CONGRATULATIONS. Ị MECHARA.
+
+quiz:
+  - question: "Gịnị mere ndị Naịjịrịa ghọtara AI kwesịrị itinye aka na iwu AI?"
+    options:
+      - "A. N'ihi na iwu AI na-emetụta ọtụtụ nde ndị amaghị AI tukwasị"
+      - "B. N'ihi na a ga-akwụ ha ụgwọ maka nke ahụ"
+      - "C. Iwu chọọ ya"
+      - "D. Ọ dịghị mkpa onye tinye aka na iwu"
+    correct: 0
+
+  - question: "Gịnị ka ị ga-eme mgbe ị hụ AI na-emerụ ihe dị ka vidiyo deepfake?"
+    options:
+      - "A. Kọọ ya nye ikpo okwu, FCCPC, ma ọ bụ n'ọha"
+      - "B. Hapụ ya — ụlọ ọrụ AI na-elekọta ihe niile"
+      - "C. Keta ya iji dọ ndị ọzọ ọchịchọ n'enweghị ịkọọ"
+      - "D. Kọọ naanị ma ọ bụrụ na ị mepụtara vidiyo n'onwe gị"
+    correct: 0
+
+  - question: "Gịnị bụ ihe ụkpụrụ 'kụziere otu mmadụ'?"
+    options:
+      - "A. Ikụzị otu mmadụ na-emepụta ohiri na-eto eto ihe ọmụmụ"
+      - "B. Ị ga-aghọta onye nkụzi ọdịnala mbụ"
+      - "C. Kụziere naanị ndị maara AI tukwasị"
+      - "D. Chere ruo mgbe ị bụrụ ọkachamara tupu ịkụzị"
+    correct: 0
+
+  - question: "Kedu ikike ị nwere mgbe AI mee mkpebi banyere gị?"
+    options:
+      - "A. Ịjụ otu o si arụ ọrụ, ma ị nwere ike isi dere arịọ, na onye dị n'ọrụ"
+      - "B. Ọ dịghị ikike — mkpebi AI bụ nke ikpeazụ"
+      - "C. Naanị ndị bara ọgaranya nwere ike ịjụ AI"
+      - "D. Ị ga-anabata mkpebi AI niile"
+    correct: 0
+
+  - question: "Gịnị bụ ihe Akwa Nka AI na-akwa nkwa?"
+    options:
+      - "A. Imepụta ọ bụghị ịtọgharia, iketa ọ bụghị ichekwa, ịjụ nsonaazụ, iwu maka obodo"
+      - "B. Naanị iji ngwa AI dị ọnụ ala karịa"
+      - "C. Ọ bụghị ịjụ AI mgbe ọ bụla"
+      - "D. Ichekwa ihe ọmụmụ AI nzuzo"
+    correct: 0

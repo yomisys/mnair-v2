@@ -1,0 +1,65 @@
+id: day6_ai_ethics_ha
+day: 6
+topic: ai_ethics
+language: ha
+title: "Kasuwanci Mai Gaskiya a Zamanin AI: Amana Kuɗin Ka Ne"
+content: |
+  AI zai iya taimaka maka lashe abokan ciniki. Zai kuma iya taimaka maka yaudara su — kuma lalata suna ka har abada. Darasi na yau: yadda za a gina kasuwancin AI da ke dawwama.
+
+  GAJERUN HANYOYI DA KE JUYAWA:
+
+  SHARHOHIN KARYA: AI na iya samar da ɗaruruwan sharhohi masu kyau na karya a cikin mintuna. Amma dandamali na gano su yanzu, kuma kamawa yana lalata amana har abada. Mafi munana — sharhohi na karya suna cutar da abokin ciniki da ya saya bisa ƙarya. Gina suna na gaske ta hanyar sabis na gaske.
+
+  HOTUNA NA KAY AYA NA KARYA: Ƙirƙirar hoton AI na iya sa takalmin ₦500 ya zama kamar kayan alatu na ₦50,000. Lokacin da abokan ciniki suka karɓi kayan aiki na gaske, lalacewa ba za a iya warware shi ba. Al'adun mabukaci na Najeriya suna gudana akan amana da baki da bakin — lalata shi yana farashi fiye da kowane riba na ɗan lokaci.
+
+  AI CHATBOTS MAI YAUDARAR: Chatbot da ke alƙawarin isar da kaya a "kwanaki 2-3" lokacin da ya zama makonni 2-3 na gaske, ko da'awar "100% na zahiri" ga kayan da ba haka yake ba, laifi ne. Kai ne mai alhakin abin da chatbot ka ke fada daga mahangar doka.
+
+  NUNA BAMBANCI A FARASHI: AI na iya cajin abokan ciniki daban-daban farashin daban-daban don abu ɗaya bisa kuɗin da aka ƙiyasta ko wurin zama. Wannan shari'a ce a wurare da yawa amma ta zalunta sosai. A al'ummomin Najeriya masu kusantar juna, labari yana yaɗuwa da sauri.
+
+  BAYANAI NA ABOKAN CINIKI: Idan ka tattara lambobin waya da tarihin sayan abokan ciniki don isar da kayan aikin AI ka, waɗancan abokan ciniki sun amince maka da bayanan sirri. Sayar da shi, raba shi, ko asarar sa ga nakasawa cin amana ne.
+
+  LISSAFIN AMANA:
+  Kowace ma'amala mai gaskiya tana gina amana mai haɗawa. Yaudara ɗaya na tarwatsa duk. Kasuwancin da za su mamaye ciniki na Najeriya da AI su ne waɗanda abokan ciniki za su iya dogaro da su gaba ɗaya.
+
+  GINA AMANA. GINA DOAURE.
+
+quiz:
+  - question: "Me yasa sharhohin AI na karya suke juyawa?"
+    options:
+      - "A. Dandamali na gano su kuma suna lalata amana har abada"
+      - "B. Suna aiki har abada koyaushe"
+      - "C. Abokan ciniki ba za su iya karanta sharhohi ba"
+      - "D. Sharhohi mara kyau kawai suna da muhimmanci"
+    correct: 0
+
+  - question: "Me ya faru idan abokan ciniki suka karɓi kayan da ya sha bambam da hoton AI?"
+    options:
+      - "A. Amana ta lalace har abada, musamman ta hanyar baki da bakin"
+      - "B. Abokan ciniki suna mantawa da sauri"
+      - "C. Koyaushe suna dawowa"
+      - "D. Babu abin da ya faru"
+    correct: 0
+
+  - question: "Wa ke da alhakin doka kan abin da chatbot na kasuwanci ke fada?"
+    options:
+      - "A. Mai kasuwancin da ya tura shi"
+      - "B. Kamfanin AI kawai"
+      - "C. Babu kowa"
+      - "D. Hanyar sadarwa ta wayar abokin ciniki"
+    correct: 0
+
+  - question: "Menene nuna bambanci a farashi ta AI?"
+    options:
+      - "A. Caji abokan ciniki daban-daban farashin daban-daban don abu ɗaya bisa kuɗi da aka ƙiyasta"
+      - "B. Bai wa abokan ciniki masu aminci rangwame"
+      - "C. Caji karin don kayan alatu"
+      - "D. Gudanar da tallace-tallace na lokaci"
+    correct: 0
+
+  - question: "Menene Lissafin Amana a kasuwancin AI?"
+    options:
+      - "A. Ma'amaloli masu gaskiya suna gina amana mai haɗawa; yaudara ɗaya na tarwatsa duk"
+      - "B. Sauri na isar da kaya shi ne mafi muhimmanci"
+      - "C. Farashi shi ne kawai abin da ya shafi"
+      - "D. Ba za a iya gina amana akan layi ba"
+    correct: 0

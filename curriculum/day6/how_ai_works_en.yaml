@@ -1,0 +1,69 @@
+id: day6_how_ai_works_en
+day: 6
+topic: how_ai_works
+language: en
+title: "How AI Powers Business: From Data to Decisions"
+content: |
+  Today let's connect the technical concepts you've learned to the business outcomes that actually matter.
+
+  THE BUSINESS DATA LOOP:
+  Every business generates data: Who bought what? When? How often do they return? What do they ask before buying? AI turns this invisible data into visible decisions.
+
+  STEP 1 — COLLECT:
+  Every sale, every WhatsApp message, every website visit is data. Even a simple notebook record of daily sales is data that AI can use. You don't need expensive systems — a Google Sheet is enough to start.
+
+  STEP 2 — PATTERN:
+  AI finds patterns humans miss: "Sales drop every Monday morning but spike on payday Fridays." "Customers who buy plain fabric also buy thread 80% of the time." A human could find this — AI finds it in seconds across thousands of records.
+
+  STEP 3 — PREDICT:
+  From patterns come predictions: what to restock, who to follow up, which customers are about to stop buying. This is what recommendation engines do — "customers like you also bought..."
+
+  STEP 4 — AUTOMATE:
+  Once patterns are known, actions can be automated: send a discount message to customers who haven't bought in 30 days; reorder stock when inventory drops below 10 units; flag an unusual transaction for review.
+
+  THE NIGERIAN TWIST:
+  Most AI business training assumes reliable internet and formal payment systems. Nigeria's reality is different. The best AI business implementations here work offline when needed, accept cash payment records, and communicate via WhatsApp — not email.
+
+  YOUR COMPETITIVE DATA:
+  Start recording your sales today in a Google Sheet. In 3 months, you'll have the data to find YOUR patterns.
+
+quiz:
+  - question: "What is Step 1 in the Business Data Loop?"
+    options:
+      - "A. Collect data from sales, messages, and visits"
+      - "B. Immediately automate everything"
+      - "C. Buy expensive software"
+      - "D. Hire a data scientist"
+    correct: 0
+
+  - question: "What kind of pattern might AI find in a Nigerian business?"
+    options:
+      - "A. Sales spike on payday Fridays and drop on Monday mornings"
+      - "B. Nothing - Nigerian data is too complex"
+      - "C. Only patterns in foreign currencies"
+      - "D. Patterns require 10 years of data minimum"
+    correct: 0
+
+  - question: "What is a recommendation engine?"
+    options:
+      - "A. System that suggests 'customers like you also bought...'"
+      - "B. A person who recommends restaurants"
+      - "C. An engine that runs on recommendations"
+      - "D. A government approval process"
+    correct: 0
+
+  - question: "What tool is good enough to start collecting business data?"
+    options:
+      - "A. A simple Google Sheet"
+      - "B. Only expensive enterprise software"
+      - "C. A foreign database system"
+      - "D. Nothing works in Nigeria"
+    correct: 0
+
+  - question: "What is the Nigerian twist on AI business implementation?"
+    options:
+      - "A. Best implementations work offline, accept cash records, and use WhatsApp"
+      - "B. Nigeria cannot use AI for business"
+      - "C. Everything must be in English only"
+      - "D. You must have a Lagos address"
+    correct: 0

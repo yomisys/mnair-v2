@@ -1,0 +1,65 @@
+id: day7_ai_in_nigeria_pid
+day: 7
+topic: ai_in_nigeria
+language: pid
+title: "Naija AI Future: You Be Part of Am"
+content: |
+  Naija no be just market for AI products wey dem build somewhere else. Naija dey become AI builder. And the gap between where we dey now and where we need to be na your opportunity.
+
+  NAIJA AI POLICY LANDSCAPE:
+  NITDA (National Information Technology Development Agency) publish Nigeria National AI Policy for 2024, committing to AI infrastructure, talent development, and ethical frameworks. Government don recognize AI as critical for achieving Naija economic goals. This mean funding, programs, and opportunities dey come.
+
+  THE HUB ECOSYSTEM DEY GROW:
+  Lagos (Yaba tech cluster), Abuja, Port Harcourt, and Kano dey develop AI and tech hubs. Co-Création Hub (CCHub) for Yaba don support dozens of AI startups. Zindi, Africa leading AI competition platform, dey run regular challenges with Naija winners. These na your entry points.
+
+  NAIJA AI TALENT NA GLOBAL:
+  Naija AI researchers, engineers, and founders dey work for Google DeepMind, Meta, Microsoft, and dozens of major AI companies worldwide. These names dey at the frontier of global AI — and dem start from where you dey now.
+
+  THE AI TALENT GAP = YOUR OPPORTUNITY:
+  Naija need 100,000+ AI-skilled workers for the next 5 years. There dey far fewer right now. That gap na your career opportunity. Even basic AI literacy — the kind wey you get this week — make you more valuable for almost any industry.
+
+  BE A MULTIPLIER:
+  The real impact no be just wetin you do with AI — e be who you teach. Each person wey understand AI and share that knowledge dey create ripple. Naija AI future go be built by Nigerians wey learn, practice, and then teach others.
+
+  YOUR GRADUATION NA BEGINNING, NO BE END.
+
+quiz:
+  - question: "Wetin Nigeria National AI Policy wey NITDA publish commit to?"
+    options:
+      - "A. AI infrastructure, talent development, and ethical frameworks"
+      - "B. To ban all AI use for Naija"
+      - "C. To only allow foreign AI companies"
+      - "D. To replace all government workers with AI"
+    correct: 0
+
+  - question: "Wetin CCHub for Yaba dey known for?"
+    options:
+      - "A. Supporting dozens of AI and tech startups"
+      - "B. Being music recording studio"
+      - "C. Manufacturing phones"
+      - "D. Government tax office"
+    correct: 0
+
+  - question: "Where Naija AI researchers dey work globally?"
+    options:
+      - "A. Google DeepMind, Meta, Microsoft and major AI companies"
+      - "B. Only for Naija"
+      - "C. Dem no allowed to work abroad"
+      - "D. Only for China"
+    correct: 0
+
+  - question: "Wetin be the AI talent gap for Naija?"
+    options:
+      - "A. Naija need 100,000+ AI-skilled workers with far fewer dey available now"
+      - "B. There dey too many AI experts already"
+      - "C. Naija no get interest for AI"
+      - "D. The gap only exist for Lagos"
+    correct: 0
+
+  - question: "Wetin 'being a multiplier' mean for AI?"
+    options:
+      - "A. To teach others wetin you learn and create ripple effect"
+      - "B. To use AI on multiple devices at once"
+      - "C. To earn money from AI on multiple platforms"
+      - "D. To run multiple AI businesses at same time"
+    correct: 0

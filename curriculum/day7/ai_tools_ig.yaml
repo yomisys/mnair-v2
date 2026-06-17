@@ -1,0 +1,80 @@
+id: day7_ai_tools_ig
+day: 7
+topic: ai_tools
+language: ig
+title: "Gaa n'ihu N'ịmụ: Maapụ AI Gị Mgbe Ọzụzụ a Gasịrị"
+content: |
+  Taa bụ njedebe nke Izu 1. Ọ bụkwa mmalite ihe niile ọzọ. Lee ebe a ga-agakwasị.
+
+  ỤZỌ ỊMỤTA N'EFU:
+
+  ONYE MBIDO (bido ebe a ma ọ bụrụ na ị chọọ ịzuru oke):
+  - Ọzụzụ "AI Essentials" nke Google (n'efu, nwere asambodo) — na-ekpuchi ntọala AI na ngwa AI Google Workspace
+  - "AI Skills Challenge" nke Microsoft — n'efu, dị mkpirikpi, bara ụba
+  - Ọzụzụ AI nke Khan Academy — n'efu, nwere onyonyo, dị mfe maka onye mbido
+
+  OKE ETITI (mgbe ị dị njikere ịwu):
+  - Ọzụzụ dị mkpirikpi nke DeepLearning.AI (Andrew Ng) — ọtụtụ bụ n'efu, elekere 1-2 nke ọ bụla
+  - fast.ai — n'efu, ọmụmụ igwe bara ụba, na-agba ọsọ na Google Colab n'efu
+  - Kaggle Learn — micro-ọzụzụ n'efu maka data, AI, na Python
+
+  OBODO AI AFRICA (jikọọ ma to eto):
+  - AI Saturdays Lagos (AISatLagos) — oge ịmụta AI n'efu kwa izu n'ime Lagos
+  - Zindi.africa — asọmpi AI Africa nwere onyinye ego, site n'onye mbido ruo ọkachamara
+  - Deep Learning Indaba — nzukọ AI Africa kwa afọ, mmemme ụlọ akwụkwọ
+  - Otu WhatsApp AI/ML Africa — obodo ịmụta ndị na-arụ ọrụ
+
+  NWETA ỤGWỌ MAKA NKA AI (ebe mbido):
+  - Upwork/Fiverr: nye ọrụ ndị AI nyere aka (ide ọdịdị, ihe ọchịchọ, nyocha)
+  - Azụmahịa mpaghara: nye iji weere auto-reply AI WhatsApp Business ha
+  - Ịkụzị: gbaa otu ịmụta AI WhatsApp mpaghara — jụọ ₦500 maka onye ọ bụla
+  - Injinia okwu nduzi freelance: ụlọ ọrụ na-akwụ ụgwọ ndị na-enweta nsonaazụ site na AI
+
+  ỌGỤ ỤBỌCHỊ 30 GỊ:
+  Izu 1: Jiri ngwa AI ọhụọ otu kwa ụbọchị
+  Izu 2: Mepụta ihe ezigbo ma keta ya
+  Izu 3: Kụziere onye ọzọ ihe ị maara
+  Izu 4: Chọta nsogbu otu n'obodo gị nke AI nwere ike inyere aka idozi, ma tụnye ngọngọ
+
+  ỌZỤZỤ AI KACHASỊ MMA BỤ IGE GẠ.
+
+quiz:
+  - question: "Gịnị bụ ihe ọzụzụ 'AI Essentials' nke Google na-enye?"
+    options:
+      - "A. Ọzụzụ ntọala AI n'efu nwere asambodo"
+      - "B. Nzere ugwo na AI"
+      - "C. Nweeta ihe ọmụmụ AI nzuzo Google naanị"
+      - "D. Asambodo gọọmentị"
+    correct: 0
+
+  - question: "Gịnị bụ ihe Zindi.africa a maara maka ya?"
+    options:
+      - "A. Asọmpi AI Africa nwere onyinye ego site n'onye mbido ruo ọkachamara"
+      - "B. Ikpo okwu media ọha maka ndị injinia"
+      - "C. Pọtịọl ọrụ gọọmentị"
+      - "D. Ụlọ mgbanwe ụgwọ dijitalị"
+    correct: 0
+
+  - question: "Otu ị si enweta ego site na nka AI na Upwork ma ọ bụ Fiverr?"
+    options:
+      - "A. Nye ọrụ ndị AI nyere aka dị ka ide ọdịdị, ihe ọchịchọ, na nyocha"
+      - "B. Naanị nnukwu ụlọ ọrụ nwere ike ire ọrụ AI"
+      - "C. Ị chọọ nzere nke abụọ mbụ"
+      - "D. Ị ga-echere afọ 5"
+    correct: 0
+
+  - question: "Kedu Izu 3 nke Ọgụ Ụbọchị 30?"
+    options:
+      - "A. Kụziere onye ọzọ ihe ị maara"
+      - "B. Zụta ngwa AI ọzọ"
+      - "C. Rịọ ọzụzụ mahadum"
+      - "D. Kwụsị iji AI"
+    correct: 0
+
+  - question: "Gịnị bụ ọzụzụ AI kachasị mma dị ka ihe ọmụmụ kwuru?"
+    options:
+      - "A. Ige gạ — iji AI, imepụta, ikụzị, na idozi nsogbu gidi gidi"
+      - "B. Naanị ọgụgụ akwụkwọ"
+      - "C. Ilele vidiyo n'enweghị omume"
+      - "D. Ịchere mmemme nzere ọdịnala"
+    correct: 0

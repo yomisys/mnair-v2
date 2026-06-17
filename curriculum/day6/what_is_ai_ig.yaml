@@ -1,0 +1,66 @@
+id: day6_what_is_ai_ig
+day: 6
+topic: what_is_ai
+language: ig
+title: "AI Bu Onye Mmekọ Azụmahịa Gị"
+content: |
+  Ụbọchị nke 6: Ka anyị kwuo maka ego. AI abughị naanị teknụzụ dị mma — ọ bụ uru azụmahịa nke jiri ike nke mmụọ nwuo nke tooro uto nke ọma. Ugbu a ọ dịkwa maka gị, fọrọ nke nta ka ọ bụrụ n'efu.
+
+  MGBANWE AZỤMAHỊA OBERE:
+  Nnukwu ụlọ ọrụ dị ka Jumia na Konga ejirila AI tụọ akwụkwọ ngwa ahịa, chọpụta aghụghọ, ma tozuo ọrụ ndị ọrụ ahịa ruo ọtụtụ afọ. Ike ahụ ugbu a dịkwa maka nwanyị ọchịta ahịa, onye ndụ akwa, onye na-ese ụdị akwa, ma ọ bụ onye na-ere ahịa — site na ngwa ọrụ ndị dị ọnụ ala ma ọ bụ n'efu.
+
+  IHE AI NA-EME MỌ AZỤMAHỊA:
+  - Ọrụ ndị ọrụ ahịa: AI chatbots na-aza ajụjụ n'elekere 2 nke abalị mgbe ị na-edu ura
+  - Nzacha ahịa: AI na-edee nkọwa ngwa achị gị, ozi ka media ọha, na mkpọsa SMS
+  - Ọrụ: AI na-akanụ ngwa ndị ga-ere n'izu nke a dabere na usoro gara aga
+  - Ego: AI na-ahazi ọnụ ego a na-eji ma ọ bụ ngwa ndị bara ụba na-achọpụta nzuzu ọnụ ahịa
+  - Ọhụụ ihe ndị asọmpi: AI na-elekọta ihe ndị asọmpi gị na-eme n'ịntanetị
+
+  OGE IKESA IKE:
+  Tupu AI, obere alaka akwa nke Aba enweghị ike ịkwụ ụgwọ otu ndị ọrụ nzacha ahịa, onye na-ese ụdị, na onye nnọọ ọrụ ndị ọrụ ahịa. Ugbu a otu onye ọ jiri ngwa AI nwere ike ime ha atọ niile — ma asọmpi ndị alaka ndị ka ukwuu 10× nke ha.
+
+  IHE ATỤ EZIGBO:
+  Chidi na-ere ihe ngwọta ekwentị na Onitsha. Ọ jiri ChatGPT dee nkọwa ngwa 30, Canva AI maka foto ụlọ ahịa ya niile, na WhatsApp Business auto-reply maka ajụjụ mgbe emechara oge ọrụ. Ugbu a ọ na-enweta ajụjụ karịa 40% na-arụghị ọrụ karịa.
+
+  AZỤMAHỊA GỊ + AI = OTU NDỊ ASỌMPI GỊ.
+
+quiz:
+  - question: "Kedu uru azụmahịa AI na-enye obere azụmahịa Naịjịrịa?"
+    options:
+      - "A. Ịnweta ike nke tooro uto nke ọma nke sitere na nde ego, ugbu a fọrọ nke nta ka ọ bụrụ n'efu"
+      - "B. Ọ na-anọchi anya mkpa ọrụ ọ bụla"
+      - "C. Ọ chọọ ndị ụka si mba ọzọ dị ọnụ ala"
+      - "D. Ọ naanị na-arụ ọrụ maka nnukwu ụlọ ọrụ"
+    correct: 0
+
+  - question: "Kedu ihe Chidi ji ChatGPT maka ụlọ ahịa ya na Onitsha?"
+    options:
+      - "A. Ide nkọwa ngwa 30"
+      - "B. Anọchi anya ndị ọrụ ya niile"
+      - "C. Iji wepụ ụtụ ego ya ozugbo"
+      - "D. Wuo ulo oru"
+    correct: 0
+
+  - question: "Kedu ihe AI chatbots nwere ike ime maka azụmahịa gị n'elekere 2 nke abalị?"
+    options:
+      - "A. Iza ajụjụ ndị ọrụ ahịa mgbe ị na-edu ura"
+      - "B. Mepee ụlọ ahịa gị nke dị n'ụzọ"
+      - "C. Bipụta rịsịt"
+      - "D. Ọdịghị ihe - ha naanị na-arụ ọrụ n'oge ọrụ"
+    correct: 0
+
+  - question: "Gịnị mere nke a bụ 'oge ikesa ike' maka obere azụmahịa?"
+    options:
+      - "A. Otu onye ọ jiri AI ugbu a nwere ike eme nzacha ahịa, ụdị, na ọrụ ndị ọrụ ahịa"
+      - "B. Obere azụmahịa ugbu a adịghị akwụ ụtụ ego"
+      - "C. Ịntanetị abịala Naịjịrịa ugbu a"
+      - "D. Nnukwu ụlọ ọrụ kwụsịla ịsọmpi"
+    correct: 0
+
+  - question: "Kedu ọrụ azụmahịa AI nwere ike inyere aka ikwupụta?"
+    options:
+      - "A. Ngwa ndị ga-ere dabere na usoro gara aga"
+      - "B. Ihu igwe maka afọ 10 na-abịa"
+      - "C. Nsonaazụ egwuregwu bọọlụ"
+      - "D. Mgbanwe iwu gọọmentị"
+    correct: 0

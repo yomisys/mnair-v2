@@ -1,0 +1,65 @@
+id: day6_ai_in_nigeria_yo
+day: 6
+topic: ai_in_nigeria
+language: yo
+title: "Awon Iṣowo Naijiria Ti N Ṣegun Pelu AI"
+content: |
+  AI ninu iṣowo Naijiria kii ṣe itan ọjọ iwaju — o n ṣẹlẹ loni, lati Eko Atlantic de Ọja Main Onitsha.
+
+  AWON ẸRỌ NLANLA TI N DARI:
+  Ẹrọ igbanilaoran Jumia — awon igbanilaoran "O le tun fẹran" — jẹ AI. O ti mu ki iye aṣẹ apapọ pọ si ni pataki. AI wiwa ẹtan Kuda Bank dina awon iṣowo ti ko ni otitọ ti ₦2 biliọnu ni ọdun akọkọ rẹ. Flutterwave n lo AI lati pinnu ni aaya koya boya isanwo yẹ ki o kọja tabi ko yẹ.
+
+  OGBIN N GBA ỌGỌ:
+  Farmcrowdy ati Hello Tractor n lo AI lati so awon agbẹ po pẹlu awon ohun elo, sọtẹlẹ awon eso ikore, ati gba ọran lori awon akoko gbingbin da lori data ojo oju ojo satẹlaiti. Agbẹ iresi ni ipinle Kebbi le bayi gba imọran didara kanna bi oko iṣowo nla kan.
+
+  AWON IṢOWO KEKERE N ṢE IMỌ-INI:
+  Awon itan AI ti o dara julọ ko si ninu awon iroyin. Alagbẹdẹ ni Aba ti n lo ChatGPT ṣe apẹrẹ awon akolekito rẹ ati Canva ṣe tita wọn. Onta sisun ogede ti Ibadan ti n tọpinpin awon ilana tita lati mọ awon adun wo ni lati ṣe ni gbogbo ọjọ. Oṣiṣẹ POS ni Enugu ti n lo chatbot WhatsApp dahun awon ibeere owo onibara.
+
+  ANFAANI EDTECH:
+  Awon ile-iṣẹ EdTech Naijiria bi uLesson ati Tuteria n lo AI jẹ ki ikẹkọ jẹ ti ara ẹni — ọna kanna ti o wa lẹhin ẹkọ yii ti o n gba.
+
+  ILERA N BORI:
+  MDaaS Global n lo AI mu awon iwadii aisan dara si ni awon ile-iwosan ti ko tii ri dokita rara. AI n ka awon aworan iṣoogun o si n samisi awon ipo fun atunyẹwo, n fa iṣẹ awon amoye di awon agbegbe ti ko ni.
+
+  IWỌ NI ITAN ATI TỌ.
+
+quiz:
+  - question: "Kini AI wiwa ẹtan Kuda Bank ṣepọ?"
+    options:
+      - "A. O dina awon iṣowo ti ko ni otitọ ti ₦2 biliọnu"
+      - "B. O sọtẹlẹ awon abajade bọọlu"
+      - "C. O rọpo gbogbo oṣiṣẹ eniyan"
+      - "D. O kọ ile-iṣẹ oke tuntun"
+    correct: 0
+
+  - question: "Bawo ni Hello Tractor ṣe n lo AI?"
+    options:
+      - "A. O n so awon agbẹ po pẹlu ohun elo ati sọtẹlẹ awon eso ikore"
+      - "B. O n ta awon tira nikan lori ayelujara"
+      - "C. O n tọpinpin awon ipo GPS ti oko"
+      - "D. O n kọ Gẹẹsi fun awon agbẹ"
+    correct: 0
+
+  - question: "Kini itan AI iṣowo kekere lati Aba?"
+    options:
+      - "A. Alagbẹdẹ ti n lo ChatGPT fun awon apẹrẹ ati Canva fun tita"
+      - "B. Ile-iṣẹ ti n rọpo awon oṣiṣẹ pẹlu awon roboti"
+      - "C. Ọfiisi ijọba ti n lọ si dijiti"
+      - "D. Banki ti n ṣi ẹka tuntun"
+    correct: 0
+
+  - question: "Bawo ni MDaaS Global ṣe n lo AI ninu ilera?"
+    options:
+      - "A. AI n ka awon aworan iṣoogun o si n samisi awon ipo ni awon ile-iwosan ti ko ni"
+      - "B. AI n paṣẹ oogun"
+      - "C. AI n rọpo gbogbo awon nọọsi"
+      - "D. AI n ṣiṣẹ fun awon ile-iwosan Lagos nikan"
+    correct: 0
+
+  - question: "Kini AI Flutterwave n ṣe?"
+    options:
+      - "A. O n pinnu ni aaya koya boya isanwo yẹ ki o kọja tabi samisi"
+      - "B. O n ṣe apẹrẹ oju opo wẹẹbu ile-iṣẹ"
+      - "C. O n tumọ awon iṣowo si Gẹẹsi"
+      - "D. O n tẹ awon iwe-ẹri"
+    correct: 0
