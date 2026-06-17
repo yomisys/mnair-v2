@@ -105,3 +105,4 @@ reports/*.xlsx
 # User uploads
 uploads/
 user_data/
+.gstack/
