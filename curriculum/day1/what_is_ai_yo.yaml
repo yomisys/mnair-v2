@@ -2,61 +2,59 @@ id: day1_what_is_ai_yo
 day: 1
 topic: what_is_ai
 language: yo
-title: 'Day 1: What Is Ai (Yoruba)'
-content: 'This is Day 1 lesson on what is ai.
+title: "Ki Ni Artificial Intelligence (AI)?"
+content: |
+  Artificial Intelligence (AI) ni nigba ti komputa ati ero le se awon nkan ti o maa n nilo ogbon eniyan. Ronu re bi kiko komputa lati ko eko, ronu, ati se ipinnu.
 
+  Ni Naijiria, AI ti wa ni ayika re tele! Nigbati app banki re ba ri jibiti, nigbati Google ba tumo Yoruba si Geesi, tabi nigbati foonu re ba da oju re mo - AI ni o n sise.
 
-  Focus: Introduction to AI
+  Ohun ti AI le se:
+  - Da awon ilana mo (bi mimo owo naira ayederu)
+  - So asotele (bi asotele oju-ojo fun awon agbe)
+  - Loye ede (bi chatbot ti o n dahun ibeere)
+  - Ri ati da nkan mo (bi kamera ti o n ka nomba oko)
 
+  AI kii se idan tabi roboti ti o dabi eniyan. Eto komputa ni ti o n ko eko lati inu data lati yanju isoro kan pato. Gege bi o ti ko bi a se n gun okada nipase adase, bee ni AI n ko eko nipa riri opolopo apeere.
 
-  [In production, this would be 250-300 words of properly translated content]
+  Naijiria nilo imo AI! Lati oko de ile-iwosan, banki de ile-iwe - AI le ran wa lowo lati yanju awon isoro wa. Idi niyen ti o fi n ko eyi!
 
-
-  Key points:
-
-  - Understanding what is ai
-
-  - Nigerian context and examples
-
-  - Practical applications
-
-  - How this helps you
-
-
-  Remember: AI is a tool to solve problems. Learn, practice, and build!'
 quiz:
-- question: What is the main focus of Day 1?
-  options:
-  - A. Introduction to AI
-  - B. Something else
-  - C. Random topic
-  - D. Not related
-  correct: 0
-- question: 'This lesson is about:'
-  options:
-  - A. Cooking
-  - B. What Is Ai
-  - C. Sports
-  - D. Music
-  correct: 1
-- question: Can AI help solve Nigerian problems?
-  options:
-  - A. Yes, definitely
-  - B. No, never
-  - C. Only in cities
-  - D. Maybe not
-  correct: 0
-- question: What should you do after this lesson?
-  options:
-  - A. Forget everything
-  - B. Practice and apply what you learned
-  - C. Do nothing
-  - D. Give up
-  correct: 1
-- question: Is what is ai important for Nigeria?
-  options:
-  - A. Yes, very important
-  - B. No value
-  - C. Only for foreigners
-  - D. Not relevant
-  correct: 0
+  - question: "Ki ni Artificial Intelligence?"
+    options:
+      - "A. Komputa ti o le ko eko ati se ipinnu"
+      - "B. Roboti ti o dabi eniyan nikan"
+      - "C. Idan ti o n mu komputa gbon"
+      - "D. Iru app foonu kan"
+    correct: 0
+
+  - question: "Apeere Naijiria wo lo n fi AI han bi o se n sise?"
+    options:
+      - "A. Lilo foonu Nokia 3310"
+      - "B. App banki ti o n ri jibiti"
+      - "C. Kiko pelu biro ati iwe"
+      - "D. Sise iresi jollof"
+    correct: 1
+
+  - question: "Bawo ni AI se n ko eko?"
+    options:
+      - "A. Nipase idan"
+      - "B. Nipa riri opolopo apeere ati ilana"
+      - "C. Lati inu iwe-eko nikan"
+      - "D. Ko nilo lati ko eko"
+    correct: 1
+
+  - question: "Kilode ti AI fi se pataki fun Naijiria?"
+    options:
+      - "A. Ni Amerika nikan lo wulo"
+      - "B. O le ran wa lowo lati yanju awon isoro wa"
+      - "C. A ko nilo re nibi"
+      - "D. Ile-ise nla nikan lo le lo o"
+    correct: 1
+
+  - question: "Ki ni AI KO le se lowolowo?"
+    options:
+      - "A. Da oju re mo"
+      - "B. Tumo ede"
+      - "C. Ronu gege bi opolo eniyan gan-an"
+      - "D. Ri ilana ninu data"
+    correct: 2

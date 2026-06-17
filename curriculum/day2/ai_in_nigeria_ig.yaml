@@ -2,61 +2,61 @@ id: day2_ai_in_nigeria_ig
 day: 2
 topic: ai_in_nigeria
 language: ig
-title: 'Day 2: Ai In Nigeria (Igbo)'
-content: 'This is Day 2 lesson on ai in nigeria.
+title: "Machine Learning Na-Edozi Nsogbu Naijiria"
+content: |
+  Ugbu a i matara na machine learning na-amuta site n'ihe atu, ka anyi hu otu ulo oru Naijiria si eji ya eme ihe kwa ubochi.
 
+  MBINYE EGO NA-ENWEGHI IHE MGBACHI:
+  Ulo aku odinala na-acho akwukwo ala ma o bu akaunt ugwo onwa. Mana app fintech di ka Carbon na FairMoney na-eji ML e ji otutu puku ndi gbaziri ego n'oge gara aga zuo. Model ahu mutara usoro: otu ha si azu kaadi, akuko nkwughachi ugwo, obuna otu i si edeju fom. Nsoputa? Nwanyi na-ere ahia n'Onitsha nwere ike inweta mbinye ego n'ime nkeji 5 na-agaghi ulo aku obula.
 
-  Focus: Machine Learning Basics
+  ICHOPUTA AGHUGHO:
+  Model ML na ulo aku Naijiria na-ele otutu nde azumahia anya. Ha mutara ihe NKITI di ka o di maka gi. O buru na kaadi gi zuru ngwa eletroniki na elekere ato nke abali na mba ozo, model ahu ga-achoputa ya ozugbo. Iwu siri ike enweghi ike ime nke a - ndi aghugho na-agbanwe uzo ha, mana ML na-anogide na-amuta usoro ohuru.
 
+  ICHOPUTA ORIA IHE OKUKU:
+  Ndi nyocha ji otutu puku foto akwukwo akpu di mma na ndi na-aria oria zuo model ML. Ugbu a app nwere ike igwa onye oru ugbo na steeti Ogun ma akpu ya o nwere oria mosaic - naani site na foto ekwenti. Model ahu mutara site n'ihe atu, kpomkwem ka i si muta mango!
 
-  [In production, this would be 250-300 words of properly translated content]
+  OMUMU NKE ONWE:
+  ML nke uLesson na-ele ajuju ndi nwa akwukwo na-ada anya ma na-edozi ihe omumu ndi na-esote. Umu akwukwo abuo anaghi ahu otu uzo ahu - onye obula na-enweta ihe o choro.
 
+  USORO AHU: N'onodu obula, ndi Naijiria chikotara ihe atu OBODO ma jiri ha zuo model. AI mba ozo nke e ji data mba ozo zuo na-adakari ebe a. Odiniru AI Naijiria dabere na data Naijiria - na ndi mmadu di ka gi ndi ghotara ya.
 
-  Key points:
-
-  - Understanding ai in nigeria
-
-  - Nigerian context and examples
-
-  - Practical applications
-
-  - How this helps you
-
-
-  Remember: AI is a tool to solve problems. Learn, practice, and build!'
 quiz:
-- question: What is the main focus of Day 2?
-  options:
-  - A. Machine Learning Basics
-  - B. Something else
-  - C. Random topic
-  - D. Not related
-  correct: 0
-- question: 'This lesson is about:'
-  options:
-  - A. Cooking
-  - B. Ai In Nigeria
-  - C. Sports
-  - D. Music
-  correct: 1
-- question: Can AI help solve Nigerian problems?
-  options:
-  - A. Yes, definitely
-  - B. No, never
-  - C. Only in cities
-  - D. Maybe not
-  correct: 0
-- question: What should you do after this lesson?
-  options:
-  - A. Forget everything
-  - B. Practice and apply what you learned
-  - C. Do nothing
-  - D. Give up
-  correct: 1
-- question: Is ai in nigeria important for Nigeria?
-  options:
-  - A. Yes, very important
-  - B. No value
-  - C. Only for foreigners
-  - D. Not relevant
-  correct: 0
+  - question: "Kedu ka app fintech si enye mbinye ego na-enweghi ihe mgbachi?"
+    options:
+      - "A. Ha anaghi enyocha ihe obula"
+      - "B. Model ML na-amuta usoro site n'otutu puku ndi gbaziri ego n'oge gara aga"
+      - "C. Ha na-akpo onye isi obodo gi"
+      - "D. Naani ndi oru gọọmenti ka ha na-enye mbinye ego"
+    correct: 1
+
+  - question: "Gini mere ML ji ka iwu siri ike mma maka ichoputa aghugho?"
+    options:
+      - "A. ML di onu ala ide"
+      - "B. Ndi aghugho na-agbanwe uzo ha, ML na-anogide na-amuta usoro ohuru"
+      - "C. Iwu siri ike megidere iwu"
+      - "D. ML anaghi emehie mgbe obula"
+    correct: 1
+
+  - question: "Kedu ka e si zuo model ichoputa oria ihe okuku?"
+    options:
+      - "A. Site n'otutu puku foto akwukwo di mma na ndi na-aria oria"
+      - "B. Site n'igu akwukwo oru ugbo"
+      - "C. Site n'igba ndi oru ugbo ajuju"
+      - "D. E zughi ha ma oli"
+    correct: 0
+
+  - question: "Gini mere AI mba ozo ji adakari na Naijiria?"
+    options:
+      - "A. Netwok Naijiria na-egbochi ya"
+      - "B. E ji data mba ozo zuo ya, o bughi ihe atu Naijiria"
+      - "C. O di onu ala nke ukwuu"
+      - "D. AI mba ozo anaghi ada mgbe obula"
+    correct: 1
+
+  - question: "Gini ka ML uLesson na-ahazi maka nwa akwukwo obula?"
+    options:
+      - "A. Uwe akwukwo"
+      - "B. Ihe omumu e gosiri, dabere n'ajuju ndi o na-ada"
+      - "C. Ubochi ule"
+      - "D. Ugwo akwukwo"
+    correct: 1

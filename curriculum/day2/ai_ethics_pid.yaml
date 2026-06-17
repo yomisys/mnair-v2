@@ -2,61 +2,68 @@ id: day2_ai_ethics_pid
 day: 2
 topic: ai_ethics
 language: pid
-title: 'Day 2: Ai Ethics (Pidgin)'
-content: 'This is Day 2 lesson on ai ethics.
+title: "Garbage In, Garbage Out: Bias for Training Data"
+content: |
+  Yesterday you learn say AI must dey fair. Today, make we understand WHERE the unfairness dey come from: the training data.
 
+  Remember: machine learning dey learn from examples. So wetin go happen if the examples themselves no fair? The AI go learn the unfairness too! Computer scientists dey call this one "Garbage In, Garbage Out."
 
-  Focus: Machine Learning Basics
+  REAL EXAMPLES:
 
+  1. THE RECRUITMENT TOOL:
+     One famous company build AI to screen job applications. Dem train am with 10 years of past hires - mostly men. The AI come learn to reject women CVs! The data carry bias, so the AI come carry bias. Dem gats scrap am.
 
-  [In production, this would be 250-300 words of properly translated content]
+  2. FACIAL RECOGNITION:
+     Early face recognition systems - dem train them mostly with light-skinned faces. Result: dem dey fail up to 35% of the time for dark-skinned women, but less than 1% for light-skinned men. Imagine if police for Naija dey use this one for identification!
 
+  3. LOAN SCORING:
+     If dem train loan model only with data from Lagos salary earners, e fit unfairly reject hardworking traders from Kano or farmers from Benue - no be say dem no go pay back, but the model never learn their patterns.
 
-  Key points:
+  WETIN WE FIT DO?
+  - Gather different different data: all genders, all regions, all languages, town AND village
+  - Test AI on different groups before launch
+  - Keep human beings inside the loop for important decisions (loans, jobs, justice)
+  - Ask questions! When AI deny you something, you fit ask why
 
-  - Understanding ai ethics
+  As future AI user or builder for Naija, remember: fair data dey make fair AI. Our diversity - 250+ ethnic groups - must show inside our datasets.
 
-  - Nigerian context and examples
-
-  - Practical applications
-
-  - How this helps you
-
-
-  Remember: AI is a tool to solve problems. Learn, practice, and build!'
 quiz:
-- question: What is the main focus of Day 2?
-  options:
-  - A. Machine Learning Basics
-  - B. Something else
-  - C. Random topic
-  - D. Not related
-  correct: 0
-- question: 'This lesson is about:'
-  options:
-  - A. Cooking
-  - B. Ai Ethics
-  - C. Sports
-  - D. Music
-  correct: 1
-- question: Can AI help solve Nigerian problems?
-  options:
-  - A. Yes, definitely
-  - B. No, never
-  - C. Only in cities
-  - D. Maybe not
-  correct: 0
-- question: What should you do after this lesson?
-  options:
-  - A. Forget everything
-  - B. Practice and apply what you learned
-  - C. Do nothing
-  - D. Give up
-  correct: 1
-- question: Is ai ethics important for Nigeria?
-  options:
-  - A. Yes, very important
-  - B. No value
-  - C. Only for foreigners
-  - D. Not relevant
-  correct: 0
+  - question: "Wetin 'Garbage In, Garbage Out' mean?"
+    options:
+      - "A. Computers need cleaning"
+      - "B. Biased training data dey produce biased AI"
+      - "C. We suppose throw old phones away"
+      - "D. AI dey create waste"
+    correct: 1
+
+  - question: "Why the recruitment AI reject women CVs?"
+    options:
+      - "A. Dem train am with past hires wey be mostly men"
+      - "B. Women write bad CVs"
+      - "C. The computer spoil"
+      - "D. Dem program am like that on purpose"
+    correct: 0
+
+  - question: "Why early facial recognition dey fail more for dark-skinned faces?"
+    options:
+      - "A. Dark skin no fit show for photo"
+      - "B. Training data carry mostly light-skinned faces"
+      - "C. The cameras cheap"
+      - "D. E no possible to fix"
+    correct: 1
+
+  - question: "How we fit reduce bias for Naija loan-scoring AI?"
+    options:
+      - "A. Train am with data from all regions and occupations"
+      - "B. Use only Lagos data"
+      - "C. Remove all data"
+      - "D. Make e decide everything alone"
+    correct: 0
+
+  - question: "Wetin suppose happen with important AI decisions like loans and jobs?"
+    options:
+      - "A. AI go decide alone, no appeal"
+      - "B. Human beings suppose remain inside the loop"
+      - "C. Dem suppose dey random"
+      - "D. Na only foreigners suppose decide"
+    correct: 1

@@ -2,61 +2,65 @@ id: day3_how_ai_works_yo
 day: 3
 topic: how_ai_works
 language: yo
-title: 'Day 3: How Ai Works (Yoruba)'
-content: 'This is Day 3 lesson on how ai works.
+title: "Lati Data Aise de AI Ologbon: Irin-ajo Data"
+content: |
+  Lana o ko nipa ikeko. Sugbon ki ikeko to le bere, data gbodo rin irin-ajo. Je ki a tele e!
 
+  IGBESE 1 - GBIGBA:
+  A n ko data jo lati orisirisi orisun: kamera, fọọmu, awon ero, app, iwadii. Apeere: ile-ise ogbin kan n wako koja awon oko ni Kaduna, o n ya foto agbado - eyi to ni ilera ati eyi to n saisan.
 
-  Focus: Data and AI
+  IGBESE 2 - MIMỌ:
+  Data aise maa n daru! Foto ti ko dan, akosile ti o tun ara re se, asise kikọ ("Lagos", "Lagoss", "LAGOS"). Awon onimo sayensi data n lo opolopo akoko won nibi - to 80%! Data idoti n da AI ru, bi kiko omode lati inu iwe ti o ya ti o si ni abawon.
 
+  IGBESE 3 - FIFI AAMI SI:
+  Awon eniyan n fi aami si apeere kookan: "ewe yii ni ilera", "eyi ni arun". Ise gidi ni ti awon eniyan gidi n se - ise fifi aami si n gba egbegberun odo Afrika sise loni. Awon aami naa ni "idahun" ti AI yoo ko lati ara won.
 
-  [In production, this would be 250-300 words of properly translated content]
+  IGBESE 4 - IKEKO:
+  Data ti a ti mọ ti a si fi aami si yoo bo ilana kiko eko ti o ko nipa re lana. Modeli yoo ko o ni miliọnu igba.
 
+  IGBESE 5 - IDANWO:
+  Ki a to gbe e jade, a o dan modeli naa wo pelu data ti KO ti ri ri. Ti o ba se daradara, o ti setan. Ti ko ba se daradara, a o pada si ikeko - nigba miiran a o pada lo ko data to dara ju jo!
 
-  Key points:
+  IDI TI EYI FI KAN O:
+  Nigbati app ba beere "Nje itumo yii wulo? 👍👎" - o n FI AAMI SI data niyen. Nigbati o ba n te ni ede re, o le je pe o n ran AI ojo iwaju lowo lati ko o. Gbogbo ara Naijiria ti n lo imo-ero n da AI ola lara ni idakeje. Ibeere naa ni: nje awon ede wa ati oju wa yoo ni asoju to dara? O da lori data lati odo awon eniyan bi iwo.
 
-  - Understanding how ai works
-
-  - Nigerian context and examples
-
-  - Practical applications
-
-  - How this helps you
-
-
-  Remember: AI is a tool to solve problems. Learn, practice, and build!'
 quiz:
-- question: What is the main focus of Day 3?
-  options:
-  - A. Data and AI
-  - B. Something else
-  - C. Random topic
-  - D. Not related
-  correct: 0
-- question: 'This lesson is about:'
-  options:
-  - A. Cooking
-  - B. How Ai Works
-  - C. Sports
-  - D. Music
-  correct: 1
-- question: Can AI help solve Nigerian problems?
-  options:
-  - A. Yes, definitely
-  - B. No, never
-  - C. Only in cities
-  - D. Maybe not
-  correct: 0
-- question: What should you do after this lesson?
-  options:
-  - A. Forget everything
-  - B. Practice and apply what you learned
-  - C. Do nothing
-  - D. Give up
-  correct: 1
-- question: Is how ai works important for Nigeria?
-  options:
-  - A. Yes, very important
-  - B. No value
-  - C. Only for foreigners
-  - D. Not relevant
-  correct: 0
+  - question: "Ki ni telentele irin-ajo data to tọ?"
+    options:
+      - "A. Gbigba → Mimọ → Fifi Aami Si → Ikeko → Idanwo"
+      - "B. Idanwo → Ikeko → Gbigba"
+      - "C. Fifi Aami Si → Gbigba → Sisun"
+      - "D. Ikeko nikan, ko si nkan miiran"
+    correct: 0
+
+  - question: "Nibo ni awon onimo sayensi data ti n lo opolopo akoko won?"
+    options:
+      - "A. Rira komputa"
+      - "B. Mimọ data ti o daru"
+      - "C. Wiwo fidio"
+      - "D. Kikọ imeeli"
+    correct: 1
+
+  - question: "Ki ni fifi aami si data?"
+    options:
+      - "A. Awon eniyan n fi aami idahun to tọ si awon apeere"
+      - "B. Titẹ sitika jade"
+      - "C. Fifun foonu re ni oruko"
+      - "D. Pipa faili atijo re"
+    correct: 0
+
+  - question: "Kilode ti a fi n dan modeli wo pelu data ti ko ti ri ri?"
+    options:
+      - "A. Lati fi akoko sofo"
+      - "B. Lati ri daju pe o ko eko nitooto, kii se pe o kan ha a sori"
+      - "C. Nitori data titun din owo"
+      - "D. Idanwo ko se pataki"
+    correct: 1
+
+  - question: "Nigbati o ba te 👍 lori itumo kan, ki ni o n se?"
+    options:
+      - "A. Ko si ohun ti o wulo"
+      - "B. O n ran lowo lati fi aami si data ti o le mu AI dara si"
+      - "C. O n ra app naa"
+      - "D. O n pa itumo naa re"
+    correct: 1

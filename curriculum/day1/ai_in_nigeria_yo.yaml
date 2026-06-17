@@ -2,61 +2,73 @@ id: day1_ai_in_nigeria_yo
 day: 1
 topic: ai_in_nigeria
 language: yo
-title: 'Day 1: Ai In Nigeria (Yoruba)'
-content: 'This is Day 1 lesson on ai in nigeria.
+title: "AI ni Naijiria Loni"
+content: |
+  AI kii se ti Silicon Valley nikan - o ti n yanju awon isoro Naijiria nibi ile wa!
 
+  ISUNA & BANKI:
+  - Kuda, OPay, ati PalmPay n lo AI lati ri jibiti ati fi owo awin sile kiakia
+  - AI n se ayewo boya isowo kan ni ifura ki o to koja
+  - Iwon kirediti laisi ohun idogo - AI n se ayewo bi o se n lo foonu re
 
-  Focus: Introduction to AI
+  OGBIN:
+  - FarmCrowdy n lo AI lati so asotele ikore oko
+  - Awon app asotele oju-ojo n ran awon agbe lowo lati mo igba gbingbin
+  - Didamo aworan n ri arun eweko lati inu foto foonu
 
+  ILERA:
+  - Awon ile-iwosan Naijiria kan n lo AI lati ka X-ray ati ri aisan
+  - Awon chatbot n dahun ibeere ilera ni awon ede ibile
+  - AI n ran wa lowo lati so asotele ibesile iba ki o to tan kale
 
-  [In production, this would be 250-300 words of properly translated content]
+  IRINNA:
+  - Google Maps n so asotele ijabọ Eko (AI ko eko lati miliọnu irin-ajo)
+  - Awon app pipe oko bi Bolt n so awakọ po mo awon ero daradara
+  - Awon ile-ise kan n dan AI wo fun riri koto oju-ona ni Naijiria
 
+  EKO:
+  - Awon app bi uLesson n se eko ni ibamu si akeko kookan
+  - Awon oluko AI le dahun ibeere ni Yoruba, Igbo, tabi Hausa
 
-  Key points:
+  Awon anfaani po gidigidi! Naijiria ni awon isoro pataki ti AI le ran wa lowo lati yanju - lati pinpin ina mona de itoju idoti.
 
-  - Understanding ai in nigeria
-
-  - Nigerian context and examples
-
-  - Practical applications
-
-  - How this helps you
-
-
-  Remember: AI is a tool to solve problems. Learn, practice, and build!'
 quiz:
-- question: What is the main focus of Day 1?
-  options:
-  - A. Introduction to AI
-  - B. Something else
-  - C. Random topic
-  - D. Not related
-  correct: 0
-- question: 'This lesson is about:'
-  options:
-  - A. Cooking
-  - B. Ai In Nigeria
-  - C. Sports
-  - D. Music
-  correct: 1
-- question: Can AI help solve Nigerian problems?
-  options:
-  - A. Yes, definitely
-  - B. No, never
-  - C. Only in cities
-  - D. Maybe not
-  correct: 0
-- question: What should you do after this lesson?
-  options:
-  - A. Forget everything
-  - B. Practice and apply what you learned
-  - C. Do nothing
-  - D. Give up
-  correct: 1
-- question: Is ai in nigeria important for Nigeria?
-  options:
-  - A. Yes, very important
-  - B. No value
-  - C. Only for foreigners
-  - D. Not relevant
-  correct: 0
+  - question: "Eka Naijiria wo lo n lo AI fun riri jibiti?"
+    options:
+      - "A. Awon oja ibile nikan"
+      - "B. Banki ati fintech"
+      - "C. Awon ile-ise telo"
+      - "D. Awon egbe bọọlu"
+    correct: 1
+
+  - question: "Bawo ni AI se le ran awon agbe Naijiria lowo?"
+    options:
+      - "A. Nipa sise oko fun won"
+      - "B. Sise asotele oju-ojo ati riri arun eweko"
+      - "C. Ikore pelu owo"
+      - "D. Ko le ran awon agbe lowo"
+    correct: 1
+
+  - question: "Ki ni Google Maps n lo AI fun ni Eko?"
+    options:
+      - "A. Lati ko ona titun"
+      - "B. Lati so asotele ilana ijabọ"
+      - "C. Lati so oruko awon opopona"
+      - "D. Lati ka awon ile"
+    correct: 1
+
+  - question: "Gbolohun wo nipa AI ni Naijiria lo je OTITỌ?"
+    options:
+      - "A. AI n sise ni Amerika nikan"
+      - "B. Naijiria ko ni ile-ise AI kankan"
+      - "C. AI ti n yanju awon isoro Naijiria"
+      - "D. AI ti won ju fun Naijiria"
+    correct: 2
+
+  - question: "Bawo ni AI se le ran ilera Naijiria lowo?"
+    options:
+      - "A. Nipa gbigba ipo gbogbo dokita"
+      - "B. Kika X-ray ati sise asotele ibesile arun"
+      - "C. Kiko ile-iwosan"
+      - "D. Sise oogun"
+    correct: 1

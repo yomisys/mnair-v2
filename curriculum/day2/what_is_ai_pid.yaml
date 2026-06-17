@@ -2,61 +2,61 @@ id: day2_what_is_ai_pid
 day: 2
 topic: what_is_ai
 language: pid
-title: 'Day 2: What Is Ai (Pidgin)'
-content: 'This is Day 2 lesson on what is ai.
+title: "AI vs Machine Learning: Wetin Be the Difference?"
+content: |
+  Yesterday you learn wetin be AI. Today, make we understand the engine wey dey inside AI: Machine Learning (ML).
 
+  ORDINARY PROGRAMS dey follow fixed rules. Calculator go always give 2 + 2 = 4 because na programmer write that rule. If new thing happen, the program no fit adjust.
 
-  Focus: Machine Learning Basics
+  MACHINE LEARNING different. Instead make we write rules, we go show the computer examples and e go discover the rules by imself. Nobody fit write rules to recognize every face for Naija - but ML fit learn faces from photos.
 
+  Think am like this:
+  - Ordinary program: Recipe card - follow the steps exactly, same result every time
+  - Machine learning: Market trader sense - after years of customers, she sabi who go price seriously and who just dey look
 
-  [In production, this would be 250-300 words of properly translated content]
+  AI na the big goal (machines wey dey act with sense). Machine Learning na the main method wey we dey use today to reach that goal. Almost every AI wey you use yesterday - fraud detection, face unlock, word prediction - na machine learning.
 
+  E still get DEEP LEARNING - one powerful type of ML wey dem copy from human brain. Na im dey power ChatGPT, voice assistants, and photo recognition. Deep learning need plenty data and computing power.
 
-  Key points:
+  Simple summary: AI na the dream, Machine Learning na the engine, Deep Learning na the turbo version of that engine. You no need mathematics to understand this one - just remember: ML dey learn from examples, no be from fixed rules.
 
-  - Understanding what is ai
-
-  - Nigerian context and examples
-
-  - Practical applications
-
-  - How this helps you
-
-
-  Remember: AI is a tool to solve problems. Learn, practice, and build!'
 quiz:
-- question: What is the main focus of Day 2?
-  options:
-  - A. Machine Learning Basics
-  - B. Something else
-  - C. Random topic
-  - D. Not related
-  correct: 0
-- question: 'This lesson is about:'
-  options:
-  - A. Cooking
-  - B. What Is Ai
-  - C. Sports
-  - D. Music
-  correct: 1
-- question: Can AI help solve Nigerian problems?
-  options:
-  - A. Yes, definitely
-  - B. No, never
-  - C. Only in cities
-  - D. Maybe not
-  correct: 0
-- question: What should you do after this lesson?
-  options:
-  - A. Forget everything
-  - B. Practice and apply what you learned
-  - C. Do nothing
-  - D. Give up
-  correct: 1
-- question: Is what is ai important for Nigeria?
-  options:
-  - A. Yes, very important
-  - B. No value
-  - C. Only for foreigners
-  - D. Not relevant
-  correct: 0
+  - question: "How machine learning take different from ordinary program?"
+    options:
+      - "A. E dey learn rules from examples instead of fixed rules"
+      - "B. E dey always slow pass"
+      - "C. E dey only work for big computers"
+      - "D. No difference at all"
+    correct: 0
+
+  - question: "Wetin be the relationship between AI and Machine Learning?"
+    options:
+      - "A. Dem be enemies"
+      - "B. ML na the main method wey we dey use achieve AI today"
+      - "C. AI na type of ML"
+      - "D. Dem no relate at all"
+    correct: 1
+
+  - question: "Which one be example of fixed-rule program (NO be machine learning)?"
+    options:
+      - "A. Face unlock for your phone"
+      - "B. Calculator wey dey add numbers"
+      - "C. Fraud detection for banking apps"
+      - "D. Word prediction when you dey type"
+    correct: 1
+
+  - question: "Wetin be deep learning?"
+    options:
+      - "A. To read book late for night"
+      - "B. Powerful type of ML wey dem copy from human brain"
+      - "C. To learn under water"
+      - "D. One type of phone battery"
+    correct: 1
+
+  - question: "Wetin machine learning need to discover rules?"
+    options:
+      - "A. Plenty examples (data)"
+      - "B. Bigger screen"
+      - "C. Only more light"
+      - "D. Human being wey go write every rule"
+    correct: 0

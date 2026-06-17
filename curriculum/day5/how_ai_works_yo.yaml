@@ -2,61 +2,68 @@ id: day5_how_ai_works_yo
 day: 5
 topic: how_ai_works
 language: yo
-title: 'Day 5: How Ai Works (Yoruba)'
-content: 'This is Day 5 lesson on how ai works.
+title: "Prompt Engineering: Eto Komputa ni Ede Lasan"
+content: |
+  Asiri to lewa niyi: prompting JE iru eto komputa kan. Awon onimo eto komputa ibile n kọ itọsọna ni Python; iwo n kọ itọsọna ni Geesi (tabi Yoruba!). Loni, goke lati prompt to dara si awon ETO prompt nla.
 
+  OGBON 1 - IRONU IGBESE-IGBESE:
+  Fun isoro ti o nira, so fun AI pe ki o "ronu igbese-igbese ki o to dahun." Eyi n mu didara po gidigidi ninu isiro, eto, ati ironu. Dan an wo: "Ronu igbese-igbese: ti mo ba n fi naira 500 pamọ lojoojumo sugbon mo n na naira 2,000 ni gbogbo ọjọ Aiku, elo ni n o fi pamọ ni ose 4?"
 
-  Focus: Building with AI
+  OGBON 2 - APEERE DIE (FEW-SHOT):
+  Fi ilana ti o fe han:
+  "Yi ẹdun pada si idahun onitẹriba.
+  Ẹdun: 'Ifijiṣẹ yin pẹ!' → Idahun: 'A tọrọ gafara gidigidi...'
+  Ẹdun: 'Iwon ko tọ!' → Idahun:"
+  AI yoo pari ilana naa. Gangan bi ikeko se n sise niyen - o n kọ pelu apeere!
 
+  OGBON 3 - ABAJADE ALETO:
+  Beere fun ilana: "Dahun NIKAN pelu tabili: Nkan | Owo | Ibi ti a ti le ra ni Eko." Abajade aleto n wọ inu spreadsheets ati iwe taara.
 
-  [In production, this would be 250-300 words of properly translated content]
+  OGBON 4 - SYSTEM PROMPT:
+  Seto iwa leekan: "Iwo ni alabaṣiṣẹpọ ikẹkọ mi fun WAEC Physics. Maa beere ibeere lowo mi leyin alaye. Lo apeere Naijiria. Je ki idahun wa labe ọrọ 200." Gbogbo idahun yoo tele ofin re bayii!
 
+  OGBON 5 - AYEWO ARA ENI:
+  Leyin idahun: "Bayii se ayewo idahun re fun asise ki o si se atunse eyikeyii ti o ba ri." AI n ri opolopo asise ara re nigbati a ba beere.
 
-  Key points:
+  Awon ogbon marun-un wonyi papo yoo mu o munadoko pelu AI ju 95% awon olumulo lo. Se adaṣe ọkan loni - ise "eto komputa" re ti bere!
 
-  - Understanding how ai works
-
-  - Nigerian context and examples
-
-  - Practical applications
-
-  - How this helps you
-
-
-  Remember: AI is a tool to solve problems. Learn, practice, and build!'
 quiz:
-- question: What is the main focus of Day 5?
-  options:
-  - A. Building with AI
-  - B. Something else
-  - C. Random topic
-  - D. Not related
-  correct: 0
-- question: 'This lesson is about:'
-  options:
-  - A. Cooking
-  - B. How Ai Works
-  - C. Sports
-  - D. Music
-  correct: 1
-- question: Can AI help solve Nigerian problems?
-  options:
-  - A. Yes, definitely
-  - B. No, never
-  - C. Only in cities
-  - D. Maybe not
-  correct: 0
-- question: What should you do after this lesson?
-  options:
-  - A. Forget everything
-  - B. Practice and apply what you learned
-  - C. Do nothing
-  - D. Give up
-  correct: 1
-- question: Is how ai works important for Nigeria?
-  options:
-  - A. Yes, very important
-  - B. No value
-  - C. Only for foreigners
-  - D. Not relevant
-  correct: 0
+  - question: "Kilode ti prompting fi dabi eto komputa?"
+    options:
+      - "A. O n kọ itọsọna, sugbon ni ede lasan dipo koodu"
+      - "B. O nilo oye kimputa sayensi"
+      - "C. O n sise lori komputa nla nikan"
+      - "D. Won ko jọra rara"
+    correct: 0
+
+  - question: "Ki ni 'ronu igbese-igbese' n mu dara si?"
+    options:
+      - "A. Didara ninu isiro, eto, ati isoro ironu"
+      - "B. Igbesi aye batiri foonu"
+      - "C. Iyara intaneti"
+      - "D. Ko si nkan"
+    correct: 0
+
+  - question: "Ki ni few-shot prompting?"
+    options:
+      - "A. Fifi apeere ilana ti o fe ki o pari han"
+      - "B. Bibeere ibeere kukuru pupo"
+      - "C. Lilo app naa kiakia"
+      - "D. Yiya foto"
+    correct: 0
+
+  - question: "Ki ni system prompt n se?"
+    options:
+      - "A. O n seto ofin iwa ti gbogbo idahun yoo tele"
+      - "B. O n pa AI"
+      - "C. O n gba agbara foonu re"
+      - "D. O n pa itan re"
+    correct: 0
+
+  - question: "Ki ni o n sele nigbati o ba so fun AI pe ki o se ayewo idahun re?"
+    options:
+      - "A. O maa n ri ati se atunse opolopo asise ara re"
+      - "B. O n binu"
+      - "C. O n ko lati dahun"
+      - "D. O n daku"
+    correct: 0

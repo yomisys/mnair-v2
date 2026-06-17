@@ -2,61 +2,78 @@ id: day1_ai_tools_ig
 day: 1
 topic: ai_tools
 language: ig
-title: 'Day 1: Ai Tools (Igbo)'
-content: 'This is Day 1 lesson on ai tools.
+title: "Ngwa AI I Nwere Ike Iji Taa"
+content: |
+  I kwesighi ibu onye mmemme tupu i jiri AI! Lee ngwa AI efu ndi i nwere ike ibido iji na ekwenti gi ugbu a:
 
+  CHATGPT (chat.openai.com):
+  - Juo ajuju ma nweta aziza
+  - Dee imel, edemede, ma o bu atumatu azumahia
+  - Sugharia n'etiti asusu
+  - O na-aru oru na browser ekwenti obula, obuna na obere data
 
-  Focus: Introduction to AI
+  GOOGLE LENS:
+  - Tuo igwefoto gi n'ihe edere iji sugharia ya
+  - Mata ahihia, anumanu, ma o bu ngwaahia
+  - Nyochaa ma detuo ihe edere site na foto
+  - Efu na ekwenti Android
 
+  GRAMMARLY:
+  - O na-enyocha nsupe na utoasusu Bekee gi
+  - O na-enyere gi aka ide imel na ozi ka mma
+  - Udi efu na-aru oru nke oma maka mkpa ndi di mfe
 
-  [In production, this would be 250-300 words of properly translated content]
+  CANVA AI:
+  - Mee atumatu posta, akara, na ihe nkesa social media
+  - AI na-atu aro atumatu dabere n'ihe i choro
+  - O di mma nke ukwuu maka ndi nwe obere azumahia
 
+  GOOGLE TRANSLATE:
+  - Sugharia n'etiti asusu 100+ tinyere Yoruba, Igbo, Hausa
+  - O na-aru oru na-enweghi intaneti ma i budata ngwugwu asusu
+  - O nwere ike isughari ihe edere n'ime foto
 
-  Key points:
+  Ngwa ndi a bu EFU ma o bu nwee udi efu. I nwere ike iji ha na ekwenti Android di onu ala na obere data. Isi ihe bu ibido inwale na imuta!
 
-  - Understanding ai tools
+  Cheta: Uzo kacha mma isi muta AI bu iji ya. Bido taa!
 
-  - Nigerian context and examples
-
-  - Practical applications
-
-  - How this helps you
-
-
-  Remember: AI is a tool to solve problems. Learn, practice, and build!'
 quiz:
-- question: What is the main focus of Day 1?
-  options:
-  - A. Introduction to AI
-  - B. Something else
-  - C. Random topic
-  - D. Not related
-  correct: 0
-- question: 'This lesson is about:'
-  options:
-  - A. Cooking
-  - B. Ai Tools
-  - C. Sports
-  - D. Music
-  correct: 1
-- question: Can AI help solve Nigerian problems?
-  options:
-  - A. Yes, definitely
-  - B. No, never
-  - C. Only in cities
-  - D. Maybe not
-  correct: 0
-- question: What should you do after this lesson?
-  options:
-  - A. Forget everything
-  - B. Practice and apply what you learned
-  - C. Do nothing
-  - D. Give up
-  correct: 1
-- question: Is ai tools important for Nigeria?
-  options:
-  - A. Yes, very important
-  - B. No value
-  - C. Only for foreigners
-  - D. Not relevant
-  correct: 0
+  - question: "Gini ka ChatGPT nwere ike inyere gi aka ime?"
+    options:
+      - "A. Isi nri jollof"
+      - "B. Iza ajuju na ide ihe"
+      - "C. Idozi jenereto gi"
+      - "D. Izipu ego"
+    correct: 1
+
+  - question: "Kedu ngwa AI nwere ike isughari ihe edere n'ime foto?"
+    options:
+      - "A. Ihe mgbako"
+      - "B. Google Lens"
+      - "C. App elekere"
+      - "D. Ndi kontakt"
+    correct: 1
+
+  - question: "I choro ekwenti di oke onu iji jiri ngwa AI ndi a?"
+    options:
+      - "A. Ee, naani iPhone"
+      - "B. Ee, naani nnukwu Android"
+      - "C. Mba, otutu na-aru oru na ekwenti Android di onu ala"
+      - "D. I choro laptop"
+    correct: 2
+
+  - question: "Gini ka Grammarly na-enye aka na ya?"
+    options:
+      - "A. Mgbako onuogugu"
+      - "B. Inyocha nsupe na utoasusu"
+      - "C. Igba egwu"
+      - "D. Ikpo oku ekwenti"
+    correct: 1
+
+  - question: "Google Translate o nwere ike iru oru na-enweghi intaneti?"
+    options:
+      - "A. Mba, o nweghi ike ma oli"
+      - "B. Ee, ma i budata ngwugwu asusu"
+      - "C. Naani n'Amerika"
+      - "D. Naani ma i kwuo ugwo premium"
+    correct: 1

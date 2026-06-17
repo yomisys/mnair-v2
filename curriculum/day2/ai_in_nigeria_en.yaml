@@ -2,61 +2,61 @@ id: day2_ai_in_nigeria_en
 day: 2
 topic: ai_in_nigeria
 language: en
-title: 'Day 2: Ai In Nigeria (English)'
-content: 'This is Day 2 lesson on ai in nigeria.
+title: "Machine Learning Solving Nigerian Problems"
+content: |
+  Now that you know machine learning learns from examples, let's see how Nigerian companies use it every day.
 
+  LOAN DECISIONS WITHOUT COLLATERAL:
+  Traditional banks demand land documents or salary accounts. But fintech apps like Carbon and FairMoney use ML trained on thousands of past borrowers. The model learns patterns: airtime habits, repayment history, even how you fill the form. Result? A market woman in Onitsha can get a loan in 5 minutes without visiting any bank.
 
-  Focus: Machine Learning Basics
+  FRAUD DETECTION:
+  ML models at Nigerian banks watch millions of transactions. They learned what NORMAL looks like for you. If your card suddenly buys electronics at 3am in another country, the model flags it instantly. Fixed rules can't do this - fraudsters change tactics, but ML keeps learning new patterns.
 
+  CROP DISEASE DETECTION:
+  Researchers trained ML models with thousands of photos of healthy and sick cassava leaves. Now apps can tell a farmer in Ogun State if his cassava has mosaic disease - just from a phone photo. The model learned from examples, exactly like you learned mangoes!
 
-  [In production, this would be 250-300 words of properly translated content]
+  PERSONALIZED LEARNING:
+  uLesson's ML watches which questions a student fails and adjusts the next lessons. Two students never see exactly the same path - each gets what they need.
 
+  THE PATTERN: In every case, Nigerians collected LOCAL examples and trained models on them. Foreign AI trained on foreign data often fails here. Nigeria's AI future depends on Nigerian data - and people like you who understand it.
 
-  Key points:
-
-  - Understanding ai in nigeria
-
-  - Nigerian context and examples
-
-  - Practical applications
-
-  - How this helps you
-
-
-  Remember: AI is a tool to solve problems. Learn, practice, and build!'
 quiz:
-- question: What is the main focus of Day 2?
-  options:
-  - A. Machine Learning Basics
-  - B. Something else
-  - C. Random topic
-  - D. Not related
-  correct: 0
-- question: 'This lesson is about:'
-  options:
-  - A. Cooking
-  - B. Ai In Nigeria
-  - C. Sports
-  - D. Music
-  correct: 1
-- question: Can AI help solve Nigerian problems?
-  options:
-  - A. Yes, definitely
-  - B. No, never
-  - C. Only in cities
-  - D. Maybe not
-  correct: 0
-- question: What should you do after this lesson?
-  options:
-  - A. Forget everything
-  - B. Practice and apply what you learned
-  - C. Do nothing
-  - D. Give up
-  correct: 1
-- question: Is ai in nigeria important for Nigeria?
-  options:
-  - A. Yes, very important
-  - B. No value
-  - C. Only for foreigners
-  - D. Not relevant
-  correct: 0
+  - question: "How do fintech apps give loans without collateral?"
+    options:
+      - "A. They don't check anything"
+      - "B. ML models learn patterns from thousands of past borrowers"
+      - "C. They call your village head"
+      - "D. They only give loans to civil servants"
+    correct: 1
+
+  - question: "Why is ML better than fixed rules for fraud detection?"
+    options:
+      - "A. ML is cheaper to write"
+      - "B. Fraudsters change tactics, and ML keeps learning new patterns"
+      - "C. Fixed rules are illegal"
+      - "D. ML never makes mistakes"
+    correct: 1
+
+  - question: "How were crop disease detection models trained?"
+    options:
+      - "A. With thousands of photos of healthy and sick leaves"
+      - "B. By reading agriculture textbooks"
+      - "C. By interviewing farmers"
+      - "D. They were not trained at all"
+    correct: 0
+
+  - question: "Why does foreign AI often fail in Nigeria?"
+    options:
+      - "A. Nigerian networks block it"
+      - "B. It was trained on foreign data, not Nigerian examples"
+      - "C. It is too cheap"
+      - "D. Foreign AI never fails"
+    correct: 1
+
+  - question: "What does uLesson's ML personalize for each student?"
+    options:
+      - "A. School uniforms"
+      - "B. The lessons shown, based on which questions they fail"
+      - "C. Exam dates"
+      - "D. School fees"
+    correct: 1

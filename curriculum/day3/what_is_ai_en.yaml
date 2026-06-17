@@ -2,61 +2,70 @@ id: day3_what_is_ai_en
 day: 3
 topic: what_is_ai
 language: en
-title: 'Day 3: What Is Ai (English)'
-content: 'This is Day 3 lesson on what is ai.
+title: "Data: The Food That Feeds AI"
+content: |
+  You've learned that AI learns from examples. Today we go deeper: those examples are called DATA, and data is the single most important ingredient in AI.
 
+  WHAT IS DATA?
+  Data is simply recorded information. Every time something is written down, photographed, or measured, data is created:
+  - A photo of your face = image data
+  - Your voice note = audio data
+  - "Sold 50 baskets of tomatoes today" = sales data
+  - Your location when using Maps = location data
 
-  Focus: Data and AI
+  Without data, AI is like a student with no books, no teacher, and no examples - it can learn nothing.
 
+  HOW MUCH DATA DOES AI NEED?
+  A LOT. ChatGPT read more text than any human could read in 1,000 lifetimes. A face recognition model may study millions of faces. This is why companies collect so much data - data is the new oil, and Nigeria knows about oil!
 
-  [In production, this would be 250-300 words of properly translated content]
+  TYPES OF DATA AI USES:
+  1. TEXT: messages, books, websites (powers chatbots and translation)
+  2. IMAGES: photos, scans (powers face unlock, disease detection)
+  3. AUDIO: speech, sounds (powers voice assistants)
+  4. NUMBERS: prices, weather records, transactions (powers predictions)
 
+  QUALITY BEATS QUANTITY:
+  One million blurry photos teach less than 100,000 clear, well-labeled ones. Remember Garbage In, Garbage Out from yesterday? Good AI starts with good data.
 
-  Key points:
+  Here's the exciting part: every WhatsApp message you type in Pidgin, every Hausa voice note - that's the kind of data Nigerian languages NEED to be part of the AI future. More on that in the next lesson!
 
-  - Understanding what is ai
-
-  - Nigerian context and examples
-
-  - Practical applications
-
-  - How this helps you
-
-
-  Remember: AI is a tool to solve problems. Learn, practice, and build!'
 quiz:
-- question: What is the main focus of Day 3?
-  options:
-  - A. Data and AI
-  - B. Something else
-  - C. Random topic
-  - D. Not related
-  correct: 0
-- question: 'This lesson is about:'
-  options:
-  - A. Cooking
-  - B. What Is Ai
-  - C. Sports
-  - D. Music
-  correct: 1
-- question: Can AI help solve Nigerian problems?
-  options:
-  - A. Yes, definitely
-  - B. No, never
-  - C. Only in cities
-  - D. Maybe not
-  correct: 0
-- question: What should you do after this lesson?
-  options:
-  - A. Forget everything
-  - B. Practice and apply what you learned
-  - C. Do nothing
-  - D. Give up
-  correct: 1
-- question: Is what is ai important for Nigeria?
-  options:
-  - A. Yes, very important
-  - B. No value
-  - C. Only for foreigners
-  - D. Not relevant
-  correct: 0
+  - question: "What is data?"
+    options:
+      - "A. Recorded information like photos, text, and numbers"
+      - "B. Only internet subscription"
+      - "C. A type of computer"
+      - "D. Money in the bank"
+    correct: 0
+
+  - question: "What happens to AI without data?"
+    options:
+      - "A. It works faster"
+      - "B. It can learn nothing"
+      - "C. It becomes cheaper"
+      - "D. Nothing changes"
+    correct: 1
+
+  - question: "Which type of data powers voice assistants?"
+    options:
+      - "A. Audio data"
+      - "B. Location data only"
+      - "C. Sales data"
+      - "D. No data needed"
+    correct: 0
+
+  - question: "Why is data called 'the new oil'?"
+    options:
+      - "A. It is black and liquid"
+      - "B. It is a valuable resource that powers modern technology"
+      - "C. It comes from the ground"
+      - "D. It is used in generators"
+    correct: 1
+
+  - question: "Which is more valuable for training AI?"
+    options:
+      - "A. One million blurry photos"
+      - "B. 100,000 clear, well-labeled photos"
+      - "C. No photos at all"
+      - "D. Quality doesn't matter"
+    correct: 1

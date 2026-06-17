@@ -2,61 +2,69 @@ id: day3_ai_tools_en
 day: 3
 topic: ai_tools
 language: en
-title: 'Day 3: Ai Tools (English)'
-content: 'This is Day 3 lesson on ai tools.
+title: "Simple Tools for Working with Data"
+content: |
+  You don't need to be a data scientist to start working with data. Today, let's learn free tools that turn you into a data-smart Nigerian - useful for business, school, or your first tech job.
 
+  GOOGLE FORMS (free):
+  Create surveys and collect data easily. A shop owner can ask customers: "Which products should we stock?" Responses collect automatically into a spreadsheet. This is DATA COLLECTION - step 1 of the AI journey you learned!
 
-  Focus: Data and AI
+  GOOGLE SHEETS / EXCEL (free):
+  The most important data tool in the world. You can:
+  - Record daily sales and see monthly patterns
+  - Sort and filter (show only customers from Abuja)
+  - Make charts that reveal trends instantly
+  - Clean data (remove duplicates with two clicks)
+  Many data careers start with strong spreadsheet skills!
 
+  CHATGPT AS DATA ASSISTANT:
+  Paste in your sales numbers and ask: "Which day of the week do I sell most?" or "Summarize this customer feedback into 3 main complaints." AI tools can analyze small datasets conversationally - no coding needed.
 
-  [In production, this would be 250-300 words of properly translated content]
+  GOOGLE TRENDS (trends.google.com):
+  See what Nigerians are searching for - free market research! A fashion seller can compare searches for "ankara styles" vs "lace styles" by state and month.
 
+  PRACTICE TASK FOR TODAY:
+  Open Google Forms. Create a 3-question survey about anything (your business, your community). Share it with 5 friends on WhatsApp. Congratulations - you just collected your first dataset!
 
-  Key points:
+  Remember: AI is built on data, and now YOU can collect, organize, and analyze it. That skill alone makes you valuable.
 
-  - Understanding ai tools
-
-  - Nigerian context and examples
-
-  - Practical applications
-
-  - How this helps you
-
-
-  Remember: AI is a tool to solve problems. Learn, practice, and build!'
 quiz:
-- question: What is the main focus of Day 3?
-  options:
-  - A. Data and AI
-  - B. Something else
-  - C. Random topic
-  - D. Not related
-  correct: 0
-- question: 'This lesson is about:'
-  options:
-  - A. Cooking
-  - B. Ai Tools
-  - C. Sports
-  - D. Music
-  correct: 1
-- question: Can AI help solve Nigerian problems?
-  options:
-  - A. Yes, definitely
-  - B. No, never
-  - C. Only in cities
-  - D. Maybe not
-  correct: 0
-- question: What should you do after this lesson?
-  options:
-  - A. Forget everything
-  - B. Practice and apply what you learned
-  - C. Do nothing
-  - D. Give up
-  correct: 1
-- question: Is ai tools important for Nigeria?
-  options:
-  - A. Yes, very important
-  - B. No value
-  - C. Only for foreigners
-  - D. Not relevant
-  correct: 0
+  - question: "Which free tool collects survey data automatically into a spreadsheet?"
+    options:
+      - "A. Google Forms"
+      - "B. Calculator"
+      - "C. Flashlight app"
+      - "D. Video player"
+    correct: 0
+
+  - question: "What can Google Sheets help you do with sales data?"
+    options:
+      - "A. Sort, filter, chart, and find patterns"
+      - "B. Cook food"
+      - "C. Charge your phone"
+      - "D. Nothing useful"
+    correct: 0
+
+  - question: "How can ChatGPT help with a small dataset?"
+    options:
+      - "A. It can summarize and answer questions about it conversationally"
+      - "B. It refuses to read data"
+      - "C. It only works with images"
+      - "D. It deletes the data"
+    correct: 0
+
+  - question: "What is Google Trends useful for?"
+    options:
+      - "A. Free market research on what people search for"
+      - "B. Making phone calls"
+      - "C. Sending money"
+      - "D. Playing games"
+    correct: 0
+
+  - question: "Why are spreadsheet skills valuable?"
+    options:
+      - "A. Many data careers start with them"
+      - "B. They are completely useless"
+      - "C. Only foreigners use spreadsheets"
+      - "D. Spreadsheets are being banned"
+    correct: 0

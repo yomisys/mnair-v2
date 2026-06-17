@@ -2,61 +2,73 @@ id: day1_ai_in_nigeria_pid
 day: 1
 topic: ai_in_nigeria
 language: pid
-title: 'Day 1: Ai In Nigeria (Pidgin)'
-content: 'This is Day 1 lesson on ai in nigeria.
+title: "AI for Naija Today"
+content: |
+  AI no be only for Silicon Valley - e don already dey solve Naija problems right here for home!
 
+  FINANCE & BANKING:
+  - Kuda, OPay, and PalmPay dey use AI catch fraud and approve loans sharp sharp
+  - AI dey check if transaction dey suspicious before e go through
+  - Credit scoring without collateral - AI dey analyze how you dey use your phone
 
-  Focus: Introduction to AI
+  AGRICULTURE:
+  - FarmCrowdy dey use AI predict crop harvest
+  - Weather prediction apps dey help farmers know when to plant
+  - Image recognition dey spot crop disease from phone photos
 
+  HEALTHCARE:
+  - Some Naija hospitals dey use AI read X-rays and detect sickness
+  - Chatbots dey answer basic health questions for local languages
+  - AI dey help predict malaria outbreak before e spread
 
-  [In production, this would be 250-300 words of properly translated content]
+  TRANSPORTATION:
+  - Google Maps dey predict Lagos traffic (AI learn from millions of trips)
+  - Ride-hailing apps like Bolt dey match drivers to passengers well well
+  - Some companies dey test AI for pothole detection for Naija roads
 
+  EDUCATION:
+  - Apps like uLesson dey personalize learning for each student
+  - AI tutors fit answer questions for Yoruba, Igbo, or Hausa
 
-  Key points:
+  The opportunities plenty no be small! Naija get unique problems wey AI fit help solve - from power distribution to waste management.
 
-  - Understanding ai in nigeria
-
-  - Nigerian context and examples
-
-  - Practical applications
-
-  - How this helps you
-
-
-  Remember: AI is a tool to solve problems. Learn, practice, and build!'
 quiz:
-- question: What is the main focus of Day 1?
-  options:
-  - A. Introduction to AI
-  - B. Something else
-  - C. Random topic
-  - D. Not related
-  correct: 0
-- question: 'This lesson is about:'
-  options:
-  - A. Cooking
-  - B. Ai In Nigeria
-  - C. Sports
-  - D. Music
-  correct: 1
-- question: Can AI help solve Nigerian problems?
-  options:
-  - A. Yes, definitely
-  - B. No, never
-  - C. Only in cities
-  - D. Maybe not
-  correct: 0
-- question: What should you do after this lesson?
-  options:
-  - A. Forget everything
-  - B. Practice and apply what you learned
-  - C. Do nothing
-  - D. Give up
-  correct: 1
-- question: Is ai in nigeria important for Nigeria?
-  options:
-  - A. Yes, very important
-  - B. No value
-  - C. Only for foreigners
-  - D. Not relevant
-  correct: 0
+  - question: "Which Naija sector dey use AI for fraud detection?"
+    options:
+      - "A. Only traditional markets"
+      - "B. Banking and fintech"
+      - "C. Tailor shops"
+      - "D. Football clubs"
+    correct: 1
+
+  - question: "How AI fit help Naija farmers?"
+    options:
+      - "A. By doing the farm work for them"
+      - "B. To predict weather and detect crop disease"
+      - "C. To harvest crops by hand"
+      - "D. E no fit help farmers"
+    correct: 1
+
+  - question: "Wetin Google Maps dey use AI do for Lagos?"
+    options:
+      - "A. To build new roads"
+      - "B. To predict traffic patterns"
+      - "C. To give streets name"
+      - "D. To count houses"
+    correct: 1
+
+  - question: "Which statement about AI for Naija na TRUE?"
+    options:
+      - "A. AI dey only work for America"
+      - "B. Naija no get AI companies"
+      - "C. AI don already dey solve Naija problems"
+      - "D. AI too cost for Naija"
+    correct: 2
+
+  - question: "How AI fit help Naija healthcare?"
+    options:
+      - "A. By replacing all doctors"
+      - "B. To read X-rays and predict disease outbreak"
+      - "C. To build hospitals"
+      - "D. To manufacture drugs"
+    correct: 1

@@ -2,61 +2,65 @@ id: day5_ai_ethics_en
 day: 5
 topic: ai_ethics
 language: en
-title: 'Day 5: Ai Ethics (English)'
-content: 'This is Day 5 lesson on ai ethics.
+title: "Building Responsibly: The Honest Creator's Code"
+content: |
+  With great building power comes great responsibility. As you start creating with AI, adopt the Honest Creator's Code - it protects your reputation, your users, and your community.
 
+  RULE 1 - DISCLOSE WHEN IT MATTERS:
+  School essay written by AI and submitted as your own work? That's cheating, and schools increasingly detect it. Job application claiming skills you don't have? It collapses at the interview. Use AI to LEARN and DRAFT - the final understanding must be yours.
 
-  Focus: Building with AI
+  RULE 2 - VERIFY BEFORE YOU PUBLISH:
+  You are responsible for what you post - even if AI wrote it. If your AI-generated health post spreads false medicine advice, the harm (and blame) is yours. Check facts, especially health, legal, and financial claims.
 
+  RULE 3 - RESPECT OWNERSHIP:
+  Don't generate fake images of real people. Don't clone a musician's voice for your jingle without permission. Don't pass off AI copies of another designer's style as original commissioned work. Nigerian creatives are fighting for fair credit - be on the right side.
 
-  [In production, this would be 250-300 words of properly translated content]
+  RULE 4 - PROTECT OTHER PEOPLE'S DATA:
+  Building that tailor measurement bot? Those measurements are personal data under NDPA. Collect only what you need, keep it secure, delete when asked. Your users' trust is your real capital.
 
+  RULE 5 - BUILD FOR GOOD:
+  The same AI that writes marketing copy can write scam messages. The same voice cloning that dubs Nollywood films can power fraud calls. Every Nigerian builder choosing the honest path strengthens our tech reputation globally - and that reputation brings investment and jobs for everyone.
 
-  Key points:
+  THE SIMPLE TEST:
+  "Would I be comfortable if everyone knew exactly how I made this?" If yes - build on!
 
-  - Understanding ai ethics
-
-  - Nigerian context and examples
-
-  - Practical applications
-
-  - How this helps you
-
-
-  Remember: AI is a tool to solve problems. Learn, practice, and build!'
 quiz:
-- question: What is the main focus of Day 5?
-  options:
-  - A. Building with AI
-  - B. Something else
-  - C. Random topic
-  - D. Not related
-  correct: 0
-- question: 'This lesson is about:'
-  options:
-  - A. Cooking
-  - B. Ai Ethics
-  - C. Sports
-  - D. Music
-  correct: 1
-- question: Can AI help solve Nigerian problems?
-  options:
-  - A. Yes, definitely
-  - B. No, never
-  - C. Only in cities
-  - D. Maybe not
-  correct: 0
-- question: What should you do after this lesson?
-  options:
-  - A. Forget everything
-  - B. Practice and apply what you learned
-  - C. Do nothing
-  - D. Give up
-  correct: 1
-- question: Is ai ethics important for Nigeria?
-  options:
-  - A. Yes, very important
-  - B. No value
-  - C. Only for foreigners
-  - D. Not relevant
-  correct: 0
+  - question: "Is submitting an AI-written essay as your own work acceptable?"
+    options:
+      - "A. No - it's cheating and increasingly detectable"
+      - "B. Yes, always"
+      - "C. Only on Fridays"
+      - "D. Only in university"
+    correct: 0
+
+  - question: "Who is responsible when you publish AI-generated content?"
+    options:
+      - "A. You are responsible for what you post"
+      - "B. The AI company only"
+      - "C. Nobody"
+      - "D. Your network provider"
+    correct: 0
+
+  - question: "What does NDPA mean for the tailor measurement bot?"
+    options:
+      - "A. Measurements are personal data - collect minimally and keep secure"
+      - "B. Bots are illegal"
+      - "C. Tailors cannot use phones"
+      - "D. Nothing applies"
+    correct: 0
+
+  - question: "Why does building honestly matter beyond yourself?"
+    options:
+      - "A. Nigeria's tech reputation brings investment and jobs for everyone"
+      - "B. It doesn't matter"
+      - "C. Only foreigners care"
+      - "D. Honesty slows everything"
+    correct: 0
+
+  - question: "What is the simple test for responsible building?"
+    options:
+      - "A. 'Would I be comfortable if everyone knew how I made this?'"
+      - "B. 'Can I make money fast?'"
+      - "C. 'Will anyone find out?'"
+      - "D. 'Is it complicated enough?'"
+    correct: 0

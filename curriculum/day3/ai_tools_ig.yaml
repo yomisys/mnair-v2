@@ -2,61 +2,69 @@ id: day3_ai_tools_ig
 day: 3
 topic: ai_tools
 language: ig
-title: 'Day 3: Ai Tools (Igbo)'
-content: 'This is Day 3 lesson on ai tools.
+title: "Ngwa Di Mfe Maka Iji Data Aru Oru"
+content: |
+  I kwesighi ibu onye sayensi data tupu i bido iji data aru oru. Taa, ka anyi muta ngwa efu ndi ga-eme gi onye Naijiria maara data - o bara uru maka azumahia, akwukwo, ma o bu oru teknuzu mbu gi.
 
+  GOOGLE FORMS (efu):
+  Mepu nyocha ma chikota data n'uzo di mfe. Onye nwe ulo ahia nwere ike iju ndi ahia: "Kedu ngwaahia anyi kwesiri ire?" Aziza na-achikota onwe ha n'ime spreadsheet. Nke a bu ICHIKOTA DATA - nzoputa 1 nke njem AI i mutara!
 
-  Focus: Data and AI
+  GOOGLE SHEETS / EXCEL (efu):
+  Ngwa data kacha mkpa n'uwa. I nwere ike:
+  - Dekota ahia kwa ubochi ma hu usoro kwa onwa
+  - Hazie ma nyochaa (gosi naani ndi ahia si Abuja)
+  - Mee chaatu na-egosi usoro ozugbo
+  - Hichaa data (wepu ihe ugboro abuo site n'ipi ugboro abuo)
+  Otutu oru data na-ebido site n'ezigbo nka spreadsheet!
 
+  CHATGPT DI KA ONYE INYEAKA DATA:
+  Tinye onuogugu ahia gi ma juo: "Kedu ubochi n'izu ka m na-erekarị?" ma o bu "Chikota nzaghachi ndi ahia a ka o buru isi mkpesa 3." Ngwa AI nwere ike inyocha obere dataset di ka mkparita uka - o dighi mkpa ide koodu.
 
-  [In production, this would be 250-300 words of properly translated content]
+  GOOGLE TRENDS (trends.google.com):
+  Hu ihe ndi Naijiria na-acho - nyocha ahia efu! Onye na-ere uwe nwere ike iji ochucho "ankara styles" tunyere "lace styles" site na steeti na onwa.
 
+  ORU OMUME MAKA TAA:
+  Meghee Google Forms. Mepu nyocha ajuju 3 banyere ihe obula (azumahia gi, obodo gi). Kesaa ya na ndi enyi 5 na WhatsApp. Ekele - i chikotala dataset mbu gi!
 
-  Key points:
+  Cheta: data ka e ji ewu AI, ugbu a kwa GI nwere ike ichikota, hazie, ma nyochaa ya. Naani nka ahu emeela ka i baa uru.
 
-  - Understanding ai tools
-
-  - Nigerian context and examples
-
-  - Practical applications
-
-  - How this helps you
-
-
-  Remember: AI is a tool to solve problems. Learn, practice, and build!'
 quiz:
-- question: What is the main focus of Day 3?
-  options:
-  - A. Data and AI
-  - B. Something else
-  - C. Random topic
-  - D. Not related
-  correct: 0
-- question: 'This lesson is about:'
-  options:
-  - A. Cooking
-  - B. Ai Tools
-  - C. Sports
-  - D. Music
-  correct: 1
-- question: Can AI help solve Nigerian problems?
-  options:
-  - A. Yes, definitely
-  - B. No, never
-  - C. Only in cities
-  - D. Maybe not
-  correct: 0
-- question: What should you do after this lesson?
-  options:
-  - A. Forget everything
-  - B. Practice and apply what you learned
-  - C. Do nothing
-  - D. Give up
-  correct: 1
-- question: Is ai tools important for Nigeria?
-  options:
-  - A. Yes, very important
-  - B. No value
-  - C. Only for foreigners
-  - D. Not relevant
-  correct: 0
+  - question: "Kedu ngwa efu na-achikota data nyocha n'onwe ya banye na spreadsheet?"
+    options:
+      - "A. Google Forms"
+      - "B. Ihe mgbako"
+      - "C. App oku flashlight"
+      - "D. Ihe nkiri vidiyo"
+    correct: 0
+
+  - question: "Gini ka Google Sheets nwere ike inyere gi aka ime na data ahia?"
+    options:
+      - "A. Ihazi, inyocha, ime chaatu, na ichota usoro"
+      - "B. Isi nri"
+      - "C. Ichaji ekwenti gi"
+      - "D. O dighi ihe bara uru"
+    correct: 0
+
+  - question: "Kedu ka ChatGPT ga-esi nye aka na obere dataset?"
+    options:
+      - "A. O nwere ike ichikota ya ma zaa ajuju banyere ya di ka mkparita uka"
+      - "B. O na-aju igu data"
+      - "C. O na-aru oru naani na foto"
+      - "D. O na-ehichapu data ahu"
+    correct: 0
+
+  - question: "Gini ka Google Trends bara uru maka ya?"
+    options:
+      - "A. Nyocha ahia efu banyere ihe ndi mmadu na-acho"
+      - "B. Ikpo oku ekwenti"
+      - "C. Izipu ego"
+      - "D. Igwu egwuregwu"
+    correct: 0
+
+  - question: "Gini mere nka spreadsheet ji baa uru?"
+    options:
+      - "A. Otutu oru data na-ebido site na ya"
+      - "B. O baghi uru ma oli"
+      - "C. Naani ndi mba ozo na-eji spreadsheets"
+      - "D. A ga-amachibido spreadsheets iwu"
+    correct: 0

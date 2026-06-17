@@ -52,16 +52,18 @@ async def load_lessons():
                     skipped_count += 1
                     continue
 
-                # Extract quiz data
-                quiz_questions = []
-                quiz_options = []
-                quiz_correct = []
-
+                # Build quiz list (normalize correct_answer → correct)
+                quiz_data = []
                 if 'quiz' in data and data['quiz']:
                     for q in data['quiz']:
-                        quiz_questions.append(q['question'])
-                        quiz_options.append(q['options'])
-                        quiz_correct.append(q['correct_answer'])
+                        quiz_data.append({
+                            'question': q['question'],
+                            'options': q['options'],
+                            'correct': q.get('correct', q.get('correct_answer', 0)),
+                        })
+
+                content = data['content']
+                word_count = len(content.split())
 
                 # Create lesson
                 lesson = Lesson(
@@ -70,10 +72,9 @@ async def load_lessons():
                     topic=data['topic'],
                     language=data['language'],
                     title=data['title'],
-                    content=data['content'],
-                    quiz_questions=quiz_questions,
-                    quiz_options=quiz_options,
-                    quiz_correct_answers=quiz_correct
+                    content=content,
+                    quiz=quiz_data,
+                    word_count=word_count,
                 )
 
                 db.add(lesson)

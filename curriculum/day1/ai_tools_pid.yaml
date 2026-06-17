@@ -2,61 +2,78 @@ id: day1_ai_tools_pid
 day: 1
 topic: ai_tools
 language: pid
-title: 'Day 1: Ai Tools (Pidgin)'
-content: 'This is Day 1 lesson on ai tools.
+title: "AI Tools Wey You Fit Use Today"
+content: |
+  You no need to be programmer before you fit use AI! See free AI tools wey you fit start to use for your phone right now:
 
+  CHATGPT (chat.openai.com):
+  - Ask questions and get answers
+  - Write emails, essays, or business plans
+  - Translate between languages
+  - E dey work for any phone browser, even with small data
 
-  Focus: Introduction to AI
+  GOOGLE LENS:
+  - Point your camera to text make e translate am
+  - Identify plants, animals, or products
+  - Scan and copy text from photos
+  - Free for Android phones
 
+  GRAMMARLY:
+  - E dey check your English spelling and grammar
+  - E dey help you write better emails and messages
+  - Free version dey work well for basic needs
 
-  [In production, this would be 250-300 words of properly translated content]
+  CANVA AI:
+  - Design posters, logos, and social media posts
+  - AI dey suggest designs based on wetin you need
+  - E good well well for small business owners
 
+  GOOGLE TRANSLATE:
+  - Translate between 100+ languages including Yoruba, Igbo, Hausa
+  - E dey work offline if you download the language pack
+  - E fit translate text wey dey inside photos
 
-  Key points:
+  These tools na FREE or dem get free versions. You fit use them for cheap Android phones with small data. The main thing na to start to experiment and learn!
 
-  - Understanding ai tools
+  Remember: The best way to learn AI na to use am. Start today!
 
-  - Nigerian context and examples
-
-  - Practical applications
-
-  - How this helps you
-
-
-  Remember: AI is a tool to solve problems. Learn, practice, and build!'
 quiz:
-- question: What is the main focus of Day 1?
-  options:
-  - A. Introduction to AI
-  - B. Something else
-  - C. Random topic
-  - D. Not related
-  correct: 0
-- question: 'This lesson is about:'
-  options:
-  - A. Cooking
-  - B. Ai Tools
-  - C. Sports
-  - D. Music
-  correct: 1
-- question: Can AI help solve Nigerian problems?
-  options:
-  - A. Yes, definitely
-  - B. No, never
-  - C. Only in cities
-  - D. Maybe not
-  correct: 0
-- question: What should you do after this lesson?
-  options:
-  - A. Forget everything
-  - B. Practice and apply what you learned
-  - C. Do nothing
-  - D. Give up
-  correct: 1
-- question: Is ai tools important for Nigeria?
-  options:
-  - A. Yes, very important
-  - B. No value
-  - C. Only for foreigners
-  - D. Not relevant
-  correct: 0
+  - question: "Wetin ChatGPT fit help you do?"
+    options:
+      - "A. Cook jollof rice"
+      - "B. Answer questions and write text"
+      - "C. Fix your gen"
+      - "D. Send money"
+    correct: 1
+
+  - question: "Which AI tool fit translate text wey dey inside photo?"
+    options:
+      - "A. Calculator"
+      - "B. Google Lens"
+      - "C. Clock app"
+      - "D. Contacts"
+    correct: 1
+
+  - question: "You need expensive phone before you fit use these AI tools?"
+    options:
+      - "A. Yes, na only iPhone"
+      - "B. Yes, na only big Android"
+      - "C. No, most of them dey work for cheap Android phones"
+      - "D. You need laptop"
+    correct: 2
+
+  - question: "Wetin Grammarly dey help with?"
+    options:
+      - "A. Maths calculation"
+      - "B. To check spelling and grammar"
+      - "C. To play music"
+      - "D. To make phone calls"
+    correct: 1
+
+  - question: "Google Translate fit work offline?"
+    options:
+      - "A. No, e no fit at all"
+      - "B. Yes, if you download the language pack"
+      - "C. Na only for America"
+      - "D. Na only with premium subscription"
+    correct: 1

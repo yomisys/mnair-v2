@@ -2,61 +2,77 @@ id: day4_ai_tools_ig
 day: 4
 topic: ai_tools
 language: ig
-title: 'Day 4: Ai Tools (Igbo)'
-content: 'This is Day 4 lesson on ai tools.
+title: "Oru Aka: Inweta Ezigbo Aziza Site na Ngwa AI"
+content: |
+  I maara na ngwa ndi ahu di. Taa, muta iji ha eme ihe NKE OMA. Ihe di iche n'etiti aziza AI adighi mma na nke kacha mma bu otu i si aju - "prompt" gi.
 
+  PROMPT NA-ADIGHI IKE:
+  "Gwa m banyere azumahia" → aziza efu, na-abaghi uru.
 
-  Focus: AI Applications
+  PROMPT SIRI IKE - IHE 4:
+  1. ORU: "I bu onye ndumodu azumahia maka obere azumahia Naijiria"
+  2. ORU A GA-ARU: "Mepu atumatu mgbasa ozi otu izu"
+  3. GBURUGBURU: "maka ebe suya m na Ibadan, ego naira 20,000, ndi ahia m bu umu akwukwo"
+  4. USORO: "di ka ndeko onuogugu nwere ugwo kwa ubochi"
 
+  Jikota ha niile: atumatu kpomkwem bara uru ga-aputa! Nwalee ya taa.
 
-  [In production, this would be 250-300 words of properly translated content]
+  AGHUGHO PROMPT NDI OZO:
+  - RIO MAKA NZOPUTA: "Kowaa ka onye mbido kpamkpam, nzoputa na nzoputa"
+  - NYE IHE ATU: "Lee ozi m dere na mbu... dee nke yiri ya maka X"
+  - MEGHARIA: O buru na aziza ezughi oke, zaa "Mee ka o di mkpirikpi" ma o bu "Tinye ihe atu Naijiria"
+  - SUGHARIA: "Kowaa nke a n'asusu Igbo di mfe" na-aru oru nke oma!
 
+  ORU NDI I NWERE IKE IME TAA:
+  - Umu akwukwo: "Mepu ajuju omume 10 na [isiokwu] nwere aziza a kowara"
+  - Ndi na-acho oru: "Meziwanye nchikota CV a maka oru ire ahia: [tinye nke gi]"
+  - Ndi nwe azumahia: "Dee aziza di nsopuru nye mkpesa onye ahia a: [tinye ya]"
+  - Ndi nne na nna: "Tuo aro atumatu nri kwa izu site na nri Naijiria n'okpuru naira 15,000"
 
-  Key points:
+  NCHETA NCHEKWA:
+  - Etinyela paswọd, BVN, ma o bu akwukwo nzuzo n'ime ngwa AI ma oli
+  - Nyochaa eziokwu tupu i jiri ha mee ihe (cheta hallucination!)
+  - AI na-ede ihe odide, GI na-ekpebi. Na-enyocha mgbe niile tupu izipu.
 
-  - Understanding ai tools
+  Muta prompting nke oma, i nwetala nka ndi na-ewe mmadu n'oru na-edeputa na mgbasa ozi oru ugbu a!
 
-  - Nigerian context and examples
-
-  - Practical applications
-
-  - How this helps you
-
-
-  Remember: AI is a tool to solve problems. Learn, practice, and build!'
 quiz:
-- question: What is the main focus of Day 4?
-  options:
-  - A. AI Applications
-  - B. Something else
-  - C. Random topic
-  - D. Not related
-  correct: 0
-- question: 'This lesson is about:'
-  options:
-  - A. Cooking
-  - B. Ai Tools
-  - C. Sports
-  - D. Music
-  correct: 1
-- question: Can AI help solve Nigerian problems?
-  options:
-  - A. Yes, definitely
-  - B. No, never
-  - C. Only in cities
-  - D. Maybe not
-  correct: 0
-- question: What should you do after this lesson?
-  options:
-  - A. Forget everything
-  - B. Practice and apply what you learned
-  - C. Do nothing
-  - D. Give up
-  correct: 1
-- question: Is ai tools important for Nigeria?
-  options:
-  - A. Yes, very important
-  - B. No value
-  - C. Only for foreigners
-  - D. Not relevant
-  correct: 0
+  - question: "Gini bu ihe 4 nke prompt siri ike?"
+    options:
+      - "A. Oru, Oru A Ga-Aru, Gburugburu, Usoro"
+      - "B. Osooso, Uda, Agba, Nha"
+      - "C. Aha, Afo, Steeti, Okpukpe"
+      - "D. Detuo, Tinye, Zipu, Hichapu"
+    correct: 0
+
+  - question: "Gini ka i ga-eme ma aziza AI ezughi oke?"
+    options:
+      - "A. Hapu ozugbo"
+      - "B. Zaa ya ndozi di ka 'Mee ka o di mkpirikpi'"
+      - "C. Gbajie ekwenti gi"
+      - "D. Nabata aziza ojoo ahu"
+    correct: 1
+
+  - question: "Gini ka I NA-AGAGHI etinye n'ime ngwa AI ma oli?"
+    options:
+      - "A. Paswọd, BVN, ma o bu akwukwo nzuzo"
+      - "B. Ajuju azumahia"
+      - "C. Aririo usoro nri"
+      - "D. Isiokwu omumu"
+    correct: 0
+
+  - question: "Kedu prompt KA SIRI IKE?"
+    options:
+      - "A. 'Gwa m banyere azumahia'"
+      - "B. 'Mepu atumatu mgbasa ozi otu izu maka ebe suya m na Ibadan, ego naira 20,000'"
+      - "C. 'Azumahia'"
+      - "D. 'Nyere m aka'"
+    correct: 1
+
+  - question: "Onye na-eme mkpebi ikpeazu na ihe AI dere?"
+    options:
+      - "A. AI n'onwe ya"
+      - "B. Gi - na-enyocha mgbe niile tupu izipu"
+      - "C. O nweghi onye"
+      - "D. Ulo oru ekwenti"
+    correct: 1

@@ -2,61 +2,68 @@ id: day2_ai_ethics_ig
 day: 2
 topic: ai_ethics
 language: ig
-title: 'Day 2: Ai Ethics (Igbo)'
-content: 'This is Day 2 lesson on ai ethics.
+title: "Ihe Ruru Unyi Banye, Ihe Ruru Unyi Puta: Ele Mmadu Anya N'ihu na Data Ozuzu"
+content: |
+  Unyaahu i mutara na AI ga-eme ihe n'ikpe ziri ezi. Taa, ka anyi ghota EBE ikpe na-ezighi ezi si abia: data ozuzu.
 
+  Cheta: machine learning na-amuta site n'ihe atu. Gini ga-eme ma ihe atu ndi ahu n'onwe ha ezighi ezi? AI ga-amutakwa ikpe na-ezighi ezi ahu! Ndi sayensi komputa na-akpo nke a "Garbage In, Garbage Out."
 
-  Focus: Machine Learning Basics
+  IHE ATU NDI MERE EME:
 
+  1. NGWA IWE MMADU N'ORU:
+     Otu ulo oru a ma ama wuru AI iji nyochaa akwukwo aririo oru. E ji ndekorita iwe mmadu n'oru nke afo 10 zuo ya - ndi nwoke ka otutu n'ime ha. AI ahu mutara iju CV ndi nwanyi! Data ahu nwere ele mmadu anya n'ihu, ya mere AI ahu nwekwara ya. Ha kwusiri iji ya eme ihe.
 
-  [In production, this would be 250-300 words of properly translated content]
+  2. IMATA IHU:
+     Sistem imata ihu mbu - e ji ihu ndi na-acha ocha zuo ha nke ukwuu. Nsoputa: ha dara ihe ruru 35% n'ihu umu nwanyi nwere akpukpo ojii, mana ihe na-erughi 1% n'ihu ndi nwoke na-acha ocha. Chee ma ndi uwe ojii Naijiria o na-eji nke a achoputa ndi mmadu!
 
+  3. IKIMANYE MBINYE EGO:
+     O buru na e ji naani data ndi Lagos na-enweta ugwo onwa zuo model mbinye ego, o nwere ike iju ndi ahia na-aru oru ike si Kano ma o bu ndi oru ugbo si Benue n'uzo na-ezighi ezi - o bughi na ha agaghi akwughachi, kama model ahu amutabeghi usoro ha.
 
-  Key points:
+  GINI KA A GA-EME?
+  - Chikota data di iche iche: nwoke na nwanyi, mpaghara niile, asusu niile, obodo ukwu NA ime obodo
+  - Nwalee AI n'otu di iche iche tupu mwepta
+  - Debe mmadu n'ime mkpebi ndi di mkpa (mbinye ego, oru, ikpe)
+  - Juo ajuju! Mgbe AI juru gi ihe, i nwere ike iju gini kpatara ya
 
-  - Understanding ai ethics
+  Di ka onye ga-eji ma o bu wuo AI na Naijiria n'odiniru, cheta: data ziri ezi na-eme AI ziri ezi. Iche iche anyi - agburu 250+ - ga-aputariri na dataset anyi.
 
-  - Nigerian context and examples
-
-  - Practical applications
-
-  - How this helps you
-
-
-  Remember: AI is a tool to solve problems. Learn, practice, and build!'
 quiz:
-- question: What is the main focus of Day 2?
-  options:
-  - A. Machine Learning Basics
-  - B. Something else
-  - C. Random topic
-  - D. Not related
-  correct: 0
-- question: 'This lesson is about:'
-  options:
-  - A. Cooking
-  - B. Ai Ethics
-  - C. Sports
-  - D. Music
-  correct: 1
-- question: Can AI help solve Nigerian problems?
-  options:
-  - A. Yes, definitely
-  - B. No, never
-  - C. Only in cities
-  - D. Maybe not
-  correct: 0
-- question: What should you do after this lesson?
-  options:
-  - A. Forget everything
-  - B. Practice and apply what you learned
-  - C. Do nothing
-  - D. Give up
-  correct: 1
-- question: Is ai ethics important for Nigeria?
-  options:
-  - A. Yes, very important
-  - B. No value
-  - C. Only for foreigners
-  - D. Not relevant
-  correct: 0
+  - question: "Gini bu nkowa 'Garbage In, Garbage Out'?"
+    options:
+      - "A. Komputa choro nhicha"
+      - "B. Data ozuzu nwere ele mmadu anya n'ihu na-emeputa AI nwere ya"
+      - "C. E kwesiri itufu ekwenti ochie"
+      - "D. AI na-emeputa ihe mkpofu"
+    correct: 1
+
+  - question: "Gini mere AI iwe mmadu n'oru ji ju CV ndi nwanyi?"
+    options:
+      - "A. E ji ndi e were n'oru n'oge gara aga zuo ya, ndi nwoke ka otutu"
+      - "B. Ndi nwanyi dere CV ojoo"
+      - "C. Komputa ahu mebiri"
+      - "D. E mere ya kpachara anya ka o mee otu ahu"
+    correct: 0
+
+  - question: "Gini mere imata ihu mbu ji adakari n'ihu ndi nwere akpukpo ojii?"
+    options:
+      - "A. A naghi ese foto akpukpo ojii"
+      - "B. Data ozuzu nwere otutu ihu ndi na-acha ocha"
+      - "C. Igwefoto ndi ahu di onu ala"
+      - "D. O nweghi ike idozi ya"
+    correct: 1
+
+  - question: "Kedu ka anyi ga-esi belata ele mmadu anya n'ihu na AI ikimanye mbinye ego Naijiria?"
+    options:
+      - "A. Jiri data si mpaghara niile na oru niile zuo ya"
+      - "B. Jiri naani data Lagos"
+      - "C. Wepu data niile"
+      - "D. Hapu ya ka o kpebie ihe niile naani ya"
+    correct: 0
+
+  - question: "Gini kwesiri ime na mkpebi AI ndi di mkpa di ka mbinye ego na oru?"
+    options:
+      - "A. AI ga-ekpebi naani ya, enweghi mkpegharia"
+      - "B. Mmadu kwesiri ino n'ime usoro ahu"
+      - "C. Ha kwesiri ibu nke a na-eme na-enweghi usoro"
+      - "D. Naani ndi mba ozo ga-ekpebi"
+    correct: 1

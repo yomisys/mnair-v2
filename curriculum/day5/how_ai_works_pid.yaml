@@ -2,61 +2,68 @@ id: day5_how_ai_works_pid
 day: 5
 topic: how_ai_works
 language: pid
-title: 'Day 5: How Ai Works (Pidgin)'
-content: 'This is Day 5 lesson on how ai works.
+title: "Prompt Engineering: Programming for Plain Language"
+content: |
+  See better secret: prompting NA form of programming. Traditional programmers dey write instructions for Python; you dey write instructions for English (or Pidgin!). Today, level up from good prompts to great SYSTEMS of prompts.
 
+  TECHNIQUE 1 - CHAIN OF THOUGHT:
+  For complex problems, ask AI make e "think step by step before e answer." This one dey seriously improve accuracy for maths, planning, and logic. Try am: "Think step by step: if I dey save 500 naira daily but I dey spend 2,000 naira every Sunday, how much I go save for 4 weeks?"
 
-  Focus: Building with AI
+  TECHNIQUE 2 - FEW-SHOT EXAMPLES:
+  Show the pattern wey you want:
+  "Convert complaints to polite responses.
+  Complaint: 'Your delivery late!' → Response: 'We dey sincerely apologize...'
+  Complaint: 'Wrong size!' → Response:"
+  The AI go complete the pattern. Na exactly how training dey work - you dey teach with examples!
 
+  TECHNIQUE 3 - STRUCTURED OUTPUT:
+  Demand format: "Reply ONLY with table: Item | Cost | Where to buy am for Lagos." Structured outputs dey enter spreadsheets and documents directly.
 
-  [In production, this would be 250-300 words of properly translated content]
+  TECHNIQUE 4 - THE SYSTEM PROMPT:
+  Set behaviour once: "You be my study partner for WAEC Physics. Always quiz me after you explain. Use Naija examples. Keep answers under 200 words." Every reply go now follow your rules!
 
+  TECHNIQUE 5 - SELF-CHECKING:
+  After answer: "Now check your answer for errors and correct any one wey you find." AI dey catch many of e own mistakes when you ask am.
 
-  Key points:
+  These five techniques together go make you more effective with AI pass 95% of users. Practice one today - your "programming" career don start!
 
-  - Understanding how ai works
-
-  - Nigerian context and examples
-
-  - Practical applications
-
-  - How this helps you
-
-
-  Remember: AI is a tool to solve problems. Learn, practice, and build!'
 quiz:
-- question: What is the main focus of Day 5?
-  options:
-  - A. Building with AI
-  - B. Something else
-  - C. Random topic
-  - D. Not related
-  correct: 0
-- question: 'This lesson is about:'
-  options:
-  - A. Cooking
-  - B. How Ai Works
-  - C. Sports
-  - D. Music
-  correct: 1
-- question: Can AI help solve Nigerian problems?
-  options:
-  - A. Yes, definitely
-  - B. No, never
-  - C. Only in cities
-  - D. Maybe not
-  correct: 0
-- question: What should you do after this lesson?
-  options:
-  - A. Forget everything
-  - B. Practice and apply what you learned
-  - C. Do nothing
-  - D. Give up
-  correct: 1
-- question: Is how ai works important for Nigeria?
-  options:
-  - A. Yes, very important
-  - B. No value
-  - C. Only for foreigners
-  - D. Not relevant
-  correct: 0
+  - question: "Why prompting be like programming?"
+    options:
+      - "A. You dey write instructions, just for plain language instead of code"
+      - "B. E require computer science degree"
+      - "C. E dey only work for big computers"
+      - "D. Dem no similar at all"
+    correct: 0
+
+  - question: "Wetin 'think step by step' dey improve?"
+    options:
+      - "A. Accuracy for maths, planning, and logic problems"
+      - "B. Phone battery life"
+      - "C. Internet speed"
+      - "D. Nothing"
+    correct: 0
+
+  - question: "Wetin be few-shot prompting?"
+    options:
+      - "A. To show examples of the pattern wey you want make e complete"
+      - "B. To ask very short questions"
+      - "C. To use the app quickly"
+      - "D. To snap photos"
+    correct: 0
+
+  - question: "Wetin system prompt dey do?"
+    options:
+      - "A. E dey set behaviour rules wey every reply go follow"
+      - "B. E dey off the AI"
+      - "C. E dey charge your phone"
+      - "D. E dey delete history"
+    correct: 0
+
+  - question: "Wetin dey happen when you ask AI to check e own answer?"
+    options:
+      - "A. E dey often catch and correct e own mistakes"
+      - "B. E dey vex"
+      - "C. E dey refuse to answer"
+      - "D. E dey crash"
+    correct: 0

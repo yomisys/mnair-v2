@@ -2,61 +2,76 @@ id: day1_ai_ethics_ha
 day: 1
 topic: ai_ethics
 language: ha
-title: 'Day 1: Ai Ethics (Hausa)'
-content: 'This is Day 1 lesson on ai ethics.
+title: "Da'ar AI da Alhakinta"
+content: |
+  AI yana da karfi, amma karfi na zuwa da alhaki! A matsayinmu na 'yan Najeriya masu ginawa da amfani da AI, dole ne mu yi tunani game da da'a - yin abin da ya dace.
 
+  MUHIMMAN BATUTUWAN DA'A:
 
-  Focus: Introduction to AI
+  1. NUNA BAMBANCI DA ADALCI:
+     - Idan AI ya yi horo da sunayen Igbo kawai, ba zai iya gane sunayen Hausa ba
+     - Gane fuska da aka horar da fuskokin turawa kawai zai iya kasawa a fuskokin 'yan Najeriya
+     - Mafita: Yi amfani da bayanan Najeriya iri-iri yayin gina AI
 
+  2. SIRRI:
+     - AI na bukatar bayanai, amma dole a kare bayanan mutane
+     - Ka tuna da Dokar Kare Bayanan Najeriya (NDPA)
+     - Kada ka taba raba bayanan mutum ba tare da izini ba
 
-  [In production, this would be 250-300 words of properly translated content]
+  3. AYYUKA DA SAUYI:
+     - AI na iya maye gurbin wasu ayyuka (kamar kofofin toll na atomatik da suka maye gurbin masu karba)
+     - Amma AI yana kuma samar da SABBIN ayyuka (masu horar da AI, masu nazarin bayanai)
+     - Mafita: Koyi kwarewar AI don ci gaba da zama mai amfani!
 
+  4. LABARAN KARYA:
+     - AI na iya kirkirar bidiyon karya ("deepfakes") ko labaran karya
+     - ChatGPT na iya kirkirar "gaskiya" da ba ta wanzu - tabbatar koyaushe!
+     - Yi tunani kafin raba abubuwan da AI ya kirkira
 
-  Key points:
+  5. YANAYIN NAJERIYA:
+     - Gina AI da ya fahimci harsunanmu da al'adunmu
+     - Kada ka kwafi mafitar Amurka kawai - magance matsalolin Najeriya
+     - Hada da mutane daga dukkan jihohi 36 a ci gaban AI
 
-  - Understanding ai ethics
+  Yayin da kake koyon AI, tambayi kanka: "Wannan adalci ne? Yana taimakawa? Gaskiya ne?" Wannan shi ne AI mai da'a!
 
-  - Nigerian context and examples
-
-  - Practical applications
-
-  - How this helps you
-
-
-  Remember: AI is a tool to solve problems. Learn, practice, and build!'
 quiz:
-- question: What is the main focus of Day 1?
-  options:
-  - A. Introduction to AI
-  - B. Something else
-  - C. Random topic
-  - D. Not related
-  correct: 0
-- question: 'This lesson is about:'
-  options:
-  - A. Cooking
-  - B. Ai Ethics
-  - C. Sports
-  - D. Music
-  correct: 1
-- question: Can AI help solve Nigerian problems?
-  options:
-  - A. Yes, definitely
-  - B. No, never
-  - C. Only in cities
-  - D. Maybe not
-  correct: 0
-- question: What should you do after this lesson?
-  options:
-  - A. Forget everything
-  - B. Practice and apply what you learned
-  - C. Do nothing
-  - D. Give up
-  correct: 1
-- question: Is ai ethics important for Nigeria?
-  options:
-  - A. Yes, very important
-  - B. No value
-  - C. Only for foreigners
-  - D. Not relevant
-  correct: 0
+  - question: "Menene nuna bambancin AI (bias)?"
+    options:
+      - "A. Lokacin da AI ke aiki daidai ga kowa"
+      - "B. Lokacin da AI ke fifita wani rukuni ba bisa adalci ba"
+      - "C. Lokacin da AI ya yi tsada"
+      - "D. Lokacin da AI ke tafiya a hankali"
+    correct: 1
+
+  - question: "Yaya ake kiran dokar kare bayanan Najeriya?"
+    options:
+      - "A. USA Privacy Act"
+      - "B. Dokar Bayanan Lagos"
+      - "C. Nigeria Data Protection Act (NDPA)"
+      - "D. Dokar Tsaron Intanet"
+    correct: 2
+
+  - question: "Me ya kamata ka yi da bayanan da AI ya kirkira?"
+    options:
+      - "A. Gaskata komai nan take"
+      - "B. Tabbatar kafin rabawa"
+      - "C. Rabawa da sauri-sauri"
+      - "D. Watsi da komai"
+    correct: 1
+
+  - question: "Ta yaya za mu rage nuna bambancin AI a Najeriya?"
+    options:
+      - "A. Amfani da AI na kasashen waje kawai"
+      - "B. Amfani da bayanan Najeriya iri-iri daga dukkan kabilu"
+      - "C. Gina AI a Lagos kawai"
+      - "D. Watsi da matsalar"
+    correct: 1
+
+  - question: "Menene 'deepfake'?"
+    options:
+      - "A. Bidiyo na gaskiya"
+      - "B. Bidiyon karya ko sauti da AI ya kirkira"
+      - "C. Wani nau'in waya"
+      - "D. Sabon rawan zamani"
+    correct: 1

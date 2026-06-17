@@ -2,61 +2,65 @@ id: day3_how_ai_works_ig
 day: 3
 topic: how_ai_works
 language: ig
-title: 'Day 3: How Ai Works (Igbo)'
-content: 'This is Day 3 lesson on how ai works.
+title: "Site na Data Nkiti ruo AI Maara Ihe: Njem Data"
+content: |
+  Unyaahu i mutara banyere ozuzu. Mana tupu ozuzu ebido, data ga-agariri njem. Ka anyi soro ya!
 
+  NZOPUTA 1 - ICHIKOTA:
+  A na-achikota data site n'otutu ebe: igwefoto, fom, sensọ, app, nyocha. Ihe atu: otu ulo oru ugbo na-anya ugboala gafee ubi ndi di na Kaduna na-ese foto oka - ndi di mma na ndi na-aria oria.
 
-  Focus: Data and AI
+  NZOPUTA 2 - NHICHA:
+  Data nkiti na-agbaru agbaru! Foto na-edoghi anya, ndekorita ugboro abuo, nsupe ezighi ezi ("Lagos", "Lagoss", "LAGOS"). Ndi sayensi data na-eji otutu oge ha ebe a - ruo 80%! Data ruru unyi na-agbagwoju AI anya, di ka iji akwukwo dokara adoka nke nwere ntupo kuziri nwata ihe.
 
+  NZOPUTA 3 - IDE AKARA:
+  Ndi mmadu na-ede akara n'ihe atu obula: "akwukwo a di mma", "nke a nwere oria". Nke a bu ezigbo oru ndi mmadu n'ezie na-aru - oru ide akara na-ewe otutu puku ndi ntorobia Afrika n'oru taa. Akara ndi ahu bu "aziza" AI na-amuta site na ha.
 
-  [In production, this would be 250-300 words of properly translated content]
+  NZOPUTA 4 - OZUZU:
+  Data a hichara nke e dere akara na-azu usoro omumu ahu i mutara unyaahu. Model na-amu ya otutu nde ugboro.
 
+  NZOPUTA 5 - NNWALE:
+  Tupu mwepta, a na-anwale model ahu na data o NA-AHUBEGHI mbu. O buru na o mere nke oma, o dila njikere. O buru na o meghi, a ga-alaghachi n'ozuzu - mgbe ufodu laghachi n'ichikota data ka mma!
 
-  Key points:
+  GINI MERE NKE A JI METUTA GI:
+  Mgbe app juru "Nsughari a o bara uru? 👍👎" - i na-EDE AKARA na data. Mgbe i na-ede n'asusu gi, i nwere ike na-enyere AI odiniru aka imuta ya. Onye Naijiria obula na-eji teknuzu na-akpu AI echi na nwayoo. Ajuju bu: asusu anyi na ihu anyi o ga-enwe nnochite anya oma? O dabere na data si n'aka ndi mmadu di ka gi.
 
-  - Understanding how ai works
-
-  - Nigerian context and examples
-
-  - Practical applications
-
-  - How this helps you
-
-
-  Remember: AI is a tool to solve problems. Learn, practice, and build!'
 quiz:
-- question: What is the main focus of Day 3?
-  options:
-  - A. Data and AI
-  - B. Something else
-  - C. Random topic
-  - D. Not related
-  correct: 0
-- question: 'This lesson is about:'
-  options:
-  - A. Cooking
-  - B. How Ai Works
-  - C. Sports
-  - D. Music
-  correct: 1
-- question: Can AI help solve Nigerian problems?
-  options:
-  - A. Yes, definitely
-  - B. No, never
-  - C. Only in cities
-  - D. Maybe not
-  correct: 0
-- question: What should you do after this lesson?
-  options:
-  - A. Forget everything
-  - B. Practice and apply what you learned
-  - C. Do nothing
-  - D. Give up
-  correct: 1
-- question: Is how ai works important for Nigeria?
-  options:
-  - A. Yes, very important
-  - B. No value
-  - C. Only for foreigners
-  - D. Not relevant
-  correct: 0
+  - question: "Gini bu usoro njem data ziri ezi?"
+    options:
+      - "A. Ichikota → Nhicha → Ide Akara → Ozuzu → Nnwale"
+      - "B. Nnwale → Ozuzu → Ichikota"
+      - "C. Ide Akara → Ichikota → Ihi Ura"
+      - "D. Naani ozuzu, o dighi ihe ozo"
+    correct: 0
+
+  - question: "Ebee ka ndi sayensi data na-eji otutu oge ha?"
+    options:
+      - "A. Izu komputa"
+      - "B. Ihicha data gbaru agbaru"
+      - "C. Ikiri vidiyo"
+      - "D. Ide imel"
+    correct: 1
+
+  - question: "Gini bu ide akara na data?"
+    options:
+      - "A. Ndi mmadu na-ede akara aziza ziri ezi n'ihe atu"
+      - "B. Ibiputa sitika"
+      - "C. Inye ekwenti gi aha"
+      - "D. Ihichapu faili ochie"
+    correct: 0
+
+  - question: "Gini mere e ji anwale model na data o na-ahubeghi mbu?"
+    options:
+      - "A. Iji tufuo oge"
+      - "B. Iji choputa na o mutara n'ezie, o bughi naani ida n'isi"
+      - "C. N'ihi na data ohuru di onu ala"
+      - "D. Nnwale adighi mkpa"
+    correct: 1
+
+  - question: "Mgbe i piri 👍 na nsughari, gini ka i na-eme?"
+    options:
+      - "A. O dighi ihe bara uru"
+      - "B. I na-enye aka ide akara data nwere ike imeziwanye AI"
+      - "C. I na-azu app ahu"
+      - "D. I na-ehichapu nsughari ahu"
+    correct: 1

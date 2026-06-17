@@ -2,61 +2,69 @@ id: day2_ai_tools_ig
 day: 2
 topic: ai_tools
 language: ig
-title: 'Day 2: Ai Tools (Igbo)'
-content: 'This is Day 2 lesson on ai tools.
+title: "Ngwa ML I Na-Ejilarị Eme Ihe"
+content: |
+  Ihe ijuanya: i na-eji machine learning eme ihe otutu afo n'amaghi ama! Taa, ka anyi chota ML zoro ezo n'ime app gi kwa ubochi - ma muta iji ha eme ihe nke oma.
 
+  KEYBOARD GI:
+  Mgbe i dere "kedu" ekwenti gi atuo aro "ka i mere", nke ahu bu ML model e ji otutu ijeri ahiriokwu zuo. Ndumodu: keyboard gi na-amuta uzo NKE GI ka oge na-aga - o ga-amutadi asusu Igbo gi!
 
-  Focus: Machine Learning Basics
+  WHATSAPP & SOCIAL MEDIA:
+  - Nhazi status na feed: ML na-ebu amuma posts ndi ga-amasi gi
+  - Idegharia ozi olu na ufodu ekwenti: ML na-agbanwe okwu ka o buru ihe edere
+  - Imeziwanye foto: ML na-eme ka foto gbara ochichiri na-enwu n'onwe ya
 
+  YOUTUBE & APP EGWU:
+  Injin ntu aro bu ML kpamkpam. O mutara site n'otutu nde ndi na-ekiri: "Ndi kiriri A masikwara B." Ndumodu: ntu aro gi ga-aka mma ma i pia "Not interested" na vidiyo ndi na-adighi amasi gi - i na-enye model ahu akara ozuzu ka mma!
 
-  [In production, this would be 250-300 words of properly translated content]
+  APP IGWEFOTO:
+  Portrait mode (azu gbaru agbaru), night mode, na ime ka ihu maa mma - ha niile bu ML models. Ekwenti naira 80,000 gi na-eme ihe ndi choro ngwa oru ndi oka mmuta afo 10 gara aga.
 
+  MAP:
+  Google Maps na-ebu amuma na Third Mainland Bridge ga-eju na elekere ise nke mgbede n'ihi na ML mutara site n'otutu nde njem gara aga.
 
-  Key points:
+  IHE OMUMU: ML abughi teknuzu odiniru - o dilarị n'akpa gi. Ugbu a i nwere ike IHU ya, i nwere ike iji ya eme ihe n'uzo amamihe:
+  1. Nye app nzaghachi eziokwu (masi/amasighi) iji meziwanye ntu aro
+  2. Jiri idekwu olu na Bekee - o di mma nke ukwuu ugbu a
+  3. Nwalee ochucho Google Photos: dee "food" o ga-achota foto nri gi site na ML!
 
-  - Understanding ai tools
-
-  - Nigerian context and examples
-
-  - Practical applications
-
-  - How this helps you
-
-
-  Remember: AI is a tool to solve problems. Learn, practice, and build!'
 quiz:
-- question: What is the main focus of Day 2?
-  options:
-  - A. Machine Learning Basics
-  - B. Something else
-  - C. Random topic
-  - D. Not related
-  correct: 0
-- question: 'This lesson is about:'
-  options:
-  - A. Cooking
-  - B. Ai Tools
-  - C. Sports
-  - D. Music
-  correct: 1
-- question: Can AI help solve Nigerian problems?
-  options:
-  - A. Yes, definitely
-  - B. No, never
-  - C. Only in cities
-  - D. Maybe not
-  correct: 0
-- question: What should you do after this lesson?
-  options:
-  - A. Forget everything
-  - B. Practice and apply what you learned
-  - C. Do nothing
-  - D. Give up
-  correct: 1
-- question: Is ai tools important for Nigeria?
-  options:
-  - A. Yes, very important
-  - B. No value
-  - C. Only for foreigners
-  - D. Not relevant
-  correct: 0
+  - question: "Gini na-akwado ntu aro okwu ozo nke keyboard gi?"
+    options:
+      - "A. Akwukwo okowa okwu e ji aka mee"
+      - "B. ML model e ji otutu ijeri ahiriokwu zuo"
+      - "C. Iche nche nkiti"
+      - "D. Ulo oru netwok gi"
+    correct: 1
+
+  - question: "Kedu ka YouTube si ekpebi ihe o ga-atu aro gi?"
+    options:
+      - "A. ML mutara usoro site n'otutu nde ndi na-ekiri"
+      - "B. Ndi oru na-ahoro vidiyo maka onye obula"
+      - "C. O na-egosi vidiyo n'usoro mkpuru edemede"
+      - "D. Gọọmenti na-ahoro"
+    correct: 0
+
+  - question: "Kedu ka i ga-esi meziwanye ntu aro app gi?"
+    options:
+      - "A. Zuo ekwenti ohuru kwa afo"
+      - "B. Nye nzaghachi eziokwu di ka ipi 'Not interested'"
+      - "C. Kiri ihe niile iji gbagwojuo ya anya"
+      - "D. I nweghi ike imetuta ha"
+    correct: 1
+
+  - question: "Kedu njirimara igwefoto na-eji machine learning?"
+    options:
+      - "A. Portrait mode nke azu gbaru agbaru"
+      - "B. Lens anya nke igwefoto"
+      - "C. Botinu uda"
+      - "D. Oghere ichaji"
+    correct: 0
+
+  - question: "Kedu ka Google Maps si mara na okporo uzo ga-eju na elekere ise?"
+    options:
+      - "A. O na-eche site na ihu igwe"
+      - "B. ML mutara site n'otutu nde njem gara aga"
+      - "C. Ndi uwe ojii na-akoro ya"
+      - "D. O nweghi ike ibu amuma mkpọchi uzo"
+    correct: 1

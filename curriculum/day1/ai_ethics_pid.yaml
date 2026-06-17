@@ -2,61 +2,76 @@ id: day1_ai_ethics_pid
 day: 1
 topic: ai_ethics
 language: pid
-title: 'Day 1: Ai Ethics (Pidgin)'
-content: 'This is Day 1 lesson on ai ethics.
+title: "AI Ethics and Responsibility"
+content: |
+  AI get power, but power dey come with responsibility! As Naija people wey dey build and use AI, we must think about ethics - to do wetin dey right.
 
+  KEY ETHICAL ISSUES:
 
-  Focus: Introduction to AI
+  1. BIAS AND FAIRNESS:
+     - If AI train only with Igbo names, e fit no recognize Hausa names
+     - Facial recognition wey train only with oyinbo faces fit fail for Naija faces
+     - Solution: Use different different Naija data when you dey build AI
 
+  2. PRIVACY:
+     - AI need data, but we must protect people information
+     - Remember the Nigeria Data Protection Act (NDPA)
+     - No ever share person personal data without permission
 
-  [In production, this would be 250-300 words of properly translated content]
+  3. JOBS AND DISPLACEMENT:
+     - AI fit replace some jobs (like automatic toll gates wey replace collectors)
+     - But AI dey also create NEW jobs (AI trainers, data analysts)
+     - Solution: Learn AI skills make you remain relevant!
 
+  4. MISINFORMATION:
+     - AI fit create fake videos ("deepfakes") or fake news
+     - ChatGPT fit create "facts" wey no true - always verify!
+     - Think well before you share AI-generated content
 
-  Key points:
+  5. NAIJA CONTEXT:
+     - Build AI wey understand our languages and culture
+     - No just copy American solutions - solve Naija problems
+     - Include people from all 36 states for AI development
 
-  - Understanding ai ethics
+  As you dey learn AI, ask yourself: "This thing fair? E dey helpful? E dey honest?" Na that one be ethical AI!
 
-  - Nigerian context and examples
-
-  - Practical applications
-
-  - How this helps you
-
-
-  Remember: AI is a tool to solve problems. Learn, practice, and build!'
 quiz:
-- question: What is the main focus of Day 1?
-  options:
-  - A. Introduction to AI
-  - B. Something else
-  - C. Random topic
-  - D. Not related
-  correct: 0
-- question: 'This lesson is about:'
-  options:
-  - A. Cooking
-  - B. Ai Ethics
-  - C. Sports
-  - D. Music
-  correct: 1
-- question: Can AI help solve Nigerian problems?
-  options:
-  - A. Yes, definitely
-  - B. No, never
-  - C. Only in cities
-  - D. Maybe not
-  correct: 0
-- question: What should you do after this lesson?
-  options:
-  - A. Forget everything
-  - B. Practice and apply what you learned
-  - C. Do nothing
-  - D. Give up
-  correct: 1
-- question: Is ai ethics important for Nigeria?
-  options:
-  - A. Yes, very important
-  - B. No value
-  - C. Only for foreigners
-  - D. Not relevant
-  correct: 0
+  - question: "Wetin be AI bias?"
+    options:
+      - "A. When AI dey work perfectly for everybody"
+      - "B. When AI dey favour one group pass another unfairly"
+      - "C. When AI too cost"
+      - "D. When AI dey slow"
+    correct: 1
+
+  - question: "Wetin be the name of Naija data protection law?"
+    options:
+      - "A. USA Privacy Act"
+      - "B. Lagos Data Law"
+      - "C. Nigeria Data Protection Act (NDPA)"
+      - "D. Internet Safety Law"
+    correct: 2
+
+  - question: "Wetin you suppose do with AI-generated information?"
+    options:
+      - "A. Believe everything immediately"
+      - "B. Verify am before you share"
+      - "C. Share am sharp sharp"
+      - "D. Ignore everything"
+    correct: 1
+
+  - question: "How we fit reduce AI bias for Naija?"
+    options:
+      - "A. Use only foreign AI"
+      - "B. Use different Naija data from all tribes"
+      - "C. Build AI only for Lagos"
+      - "D. Ignore the problem"
+    correct: 1
+
+  - question: "Wetin be 'deepfake'?"
+    options:
+      - "A. Real video"
+      - "B. Fake video or audio wey AI create"
+      - "C. One kind phone"
+      - "D. New dance move"
+    correct: 1

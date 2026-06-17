@@ -2,61 +2,70 @@ id: day3_ai_ethics_yo
 day: 3
 topic: ai_ethics
 language: yo
-title: 'Day 3: Ai Ethics (Yoruba)'
-content: 'This is Day 3 lesson on ai ethics.
+title: "Data Re, Eto Re: Asiri ati NDPA"
+content: |
+  A ti ri pe AI n je data - opolopo igba data RE ni. Loni, ko awon eto re ati bi o se le dabobo ara re.
 
+  DATA WO NI O N FI SILE?
+  Lojoojumo, awon app n gba: ipo re, awon olubasọrọ re, foto re, ifiranse re, itan lilo intaneti re, igbasile ohun re, ati bi o se n na owo. Gbigba kan se pataki (Maps nilo ipo re). Omiiran ti poju (kilode ti app ina filaṣi yoo fi nilo awon olubasọrọ re?).
 
-  Focus: Data and AI
+  AWON ETO RE LABE NDPA:
+  Ofin Idabobo Data Naijiria (2023) fun gbogbo ara Naijiria ni eto:
+  1. IGBANILAAYE: Awon ile-ise gbodo beere fun igbanilaaye ki won to gba data re
+  2. ANFAANI: O le beere lowo ile-ise eyikeyii iru data ti won ni nipa re
+  3. ATUNSE: O le beere ki won se atunse alaye ti ko tọ
+  4. PIPA RE: O le beere ki won pa data re re
+  5. ẸDUN: Fi esun irufin ranse si Igbimo Idabobo Data Naijiria (NDPC)
 
+  DABOBO ARA RE - IWA 5:
+  1. Se ayewo igbanilaaye app: Settings → Apps → Permissions. Yo eyi ti ko se pataki kuro
+  2. Ronu ki o to pin: BVN, NIN, ati koodu OTP re - "customer care" lori WhatsApp KO nilo won LAILAI - jibiti ni!
+  3. Lo PIN to lagbara ki o si tan ijerisi igbese meji lori WhatsApp
+  4. Ka a ki o to te "I Agree" - o kere ju wo iru data ti won n gba
+  5. Sọra pelu awon ere idanwo ti n beere fun alaye ara eni
 
-  [In production, this would be 250-300 words of properly translated content]
+  DATA ATI IWA RERE AI:
+  Awon ile-ise ti n ko AI pelu data re ye ki won so fun o. Nigbati eko yii ba n gba ilosiwaju re, a n so fun o idi (lati fun o ni iwe eri) ati bi a o se pamọ re pẹ to (ojo 90 fun data ibanisọrọ). Iyen ni titele NDPA - eto re si ni lati reti re nibikibi.
 
+  Data re niyelori. Sọ o gege bi o se n sọ owo re.
 
-  Key points:
-
-  - Understanding ai ethics
-
-  - Nigerian context and examples
-
-  - Practical applications
-
-  - How this helps you
-
-
-  Remember: AI is a tool to solve problems. Learn, practice, and build!'
 quiz:
-- question: What is the main focus of Day 3?
-  options:
-  - A. Data and AI
-  - B. Something else
-  - C. Random topic
-  - D. Not related
-  correct: 0
-- question: 'This lesson is about:'
-  options:
-  - A. Cooking
-  - B. Ai Ethics
-  - C. Sports
-  - D. Music
-  correct: 1
-- question: Can AI help solve Nigerian problems?
-  options:
-  - A. Yes, definitely
-  - B. No, never
-  - C. Only in cities
-  - D. Maybe not
-  correct: 0
-- question: What should you do after this lesson?
-  options:
-  - A. Forget everything
-  - B. Practice and apply what you learned
-  - C. Do nothing
-  - D. Give up
-  correct: 1
-- question: Is ai ethics important for Nigeria?
-  options:
-  - A. Yes, very important
-  - B. No value
-  - C. Only for foreigners
-  - D. Not relevant
-  correct: 0
+  - question: "Ki ni NDPA beere ki awon ile-ise to gba data re?"
+    options:
+      - "A. Ko si ohunkohun"
+      - "B. Igbanilaaye re"
+      - "C. Sisanwo"
+      - "D. Ase ile-ejo nikan"
+    correct: 1
+
+  - question: "Ta ni o ye ki o fun ni koodu OTP re?"
+    options:
+      - "A. Enikeni ti o so pe customer care ni oun"
+      - "B. Ko si eni kankan - ile-ise gidi ki i beere fun un"
+      - "C. Awon egbe WhatsApp"
+      - "D. Enikeni ti o pe o"
+    correct: 1
+
+  - question: "Eto wo ni NDPA fun o?"
+    options:
+      - "A. Lati beere ki awon ile-ise pa data re re"
+      - "B. Data intaneti ofe ni osu kookan"
+      - "C. Foonu ofe"
+      - "D. Awin banki lailopin"
+    correct: 0
+
+  - question: "Nibo ni o ti n fi esun irufin idabobo data sun ni Naijiria?"
+    options:
+      - "A. Igbimo Idabobo Data Naijiria (NDPC)"
+      - "B. Mekaniki agbegbe re"
+      - "C. Ile-iso redio nikan"
+      - "D. Ko si ibikan - a ko le fi esun sun"
+    correct: 0
+
+  - question: "Kilode ti o ye ki o se ayewo igbanilaaye app?"
+    options:
+      - "A. Lati mu ki app lora"
+      - "B. Lati yo anfaani ti ko se pataki si data asiri re kuro"
+      - "C. Igbanilaaye ko se pataki"
+      - "D. Lati lo batiri diẹ sii"
+    correct: 1

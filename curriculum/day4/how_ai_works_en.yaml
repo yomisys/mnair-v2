@@ -2,61 +2,64 @@ id: day4_how_ai_works_en
 day: 4
 topic: how_ai_works
 language: en
-title: 'Day 4: How Ai Works (English)'
-content: 'This is Day 4 lesson on how ai works.
+title: "Inside a Chatbot: How ChatGPT Answers You"
+content: |
+  You ask ChatGPT "How do I start a poultry business in Nigeria?" and seconds later, a full answer appears. What happened in those seconds? Let's open the bonnet!
 
+  STEP 1 - BREAKING YOUR WORDS INTO TOKENS:
+  The AI splits your message into small pieces called tokens (roughly word-parts). "Poultry" might become "poul" + "try". Computers work with numbers, so each token becomes a number.
 
-  Focus: AI Applications
+  STEP 2 - UNDERSTANDING CONTEXT:
+  The model compares your tokens against patterns from its training - trillions of words from books, websites, and articles. It recognizes: this is a question + about business + specifically poultry + location Nigeria. Context matters: "start" here means establishing, not starting a car!
 
+  STEP 3 - PREDICTING THE ANSWER, ONE TOKEN AT A TIME:
+  Here's the secret: ChatGPT writes by predicting the next token, over and over. Like your keyboard's word suggestion, but trained on so much data that the predictions form intelligent, complete answers. It writes "To start a poultry..." then predicts "business", then "in", then "Nigeria"...
 
-  [In production, this would be 250-300 words of properly translated content]
+  STEP 4 - SAFETY CHECKS:
+  Good AI systems filter harmful or false content before showing the answer.
 
+  THE BIG LIMITATION - "HALLUCINATION":
+  Because the AI predicts likely-sounding words, it sometimes generates confident-sounding but FALSE information - like quoting a Nigerian law that doesn't exist! It's not lying - it's predicting patterns without truly "knowing" facts.
 
-  Key points:
+  RULE: Use chatbots for ideas, drafts, and explanations. Verify important facts (laws, medical advice, prices) from official sources. The AI is your assistant, not your final authority.
 
-  - Understanding how ai works
-
-  - Nigerian context and examples
-
-  - Practical applications
-
-  - How this helps you
-
-
-  Remember: AI is a tool to solve problems. Learn, practice, and build!'
 quiz:
-- question: What is the main focus of Day 4?
-  options:
-  - A. AI Applications
-  - B. Something else
-  - C. Random topic
-  - D. Not related
-  correct: 0
-- question: 'This lesson is about:'
-  options:
-  - A. Cooking
-  - B. How Ai Works
-  - C. Sports
-  - D. Music
-  correct: 1
-- question: Can AI help solve Nigerian problems?
-  options:
-  - A. Yes, definitely
-  - B. No, never
-  - C. Only in cities
-  - D. Maybe not
-  correct: 0
-- question: What should you do after this lesson?
-  options:
-  - A. Forget everything
-  - B. Practice and apply what you learned
-  - C. Do nothing
-  - D. Give up
-  correct: 1
-- question: Is how ai works important for Nigeria?
-  options:
-  - A. Yes, very important
-  - B. No value
-  - C. Only for foreigners
-  - D. Not relevant
-  correct: 0
+  - question: "What are tokens?"
+    options:
+      - "A. Small pieces of text the AI processes"
+      - "B. Coins for buying AI"
+      - "C. Phone chargers"
+      - "D. Bus tickets"
+    correct: 0
+
+  - question: "How does ChatGPT write its answer?"
+    options:
+      - "A. It copies from one website"
+      - "B. By predicting the next token over and over"
+      - "C. A human types it secretly"
+      - "D. It picks from saved answers only"
+    correct: 1
+
+  - question: "What is AI 'hallucination'?"
+    options:
+      - "A. When AI generates confident but false information"
+      - "B. When AI sleeps"
+      - "C. When the screen flickers"
+      - "D. When AI works too fast"
+    correct: 0
+
+  - question: "What should you do with important facts from a chatbot?"
+    options:
+      - "A. Believe them instantly"
+      - "B. Verify them from official sources"
+      - "C. Share them immediately"
+      - "D. Never use chatbots at all"
+    correct: 1
+
+  - question: "How should you treat AI chatbots?"
+    options:
+      - "A. As your final authority on everything"
+      - "B. As an assistant for ideas and drafts"
+      - "C. As useless toys"
+      - "D. As a replacement for all doctors"
+    correct: 1

@@ -2,61 +2,64 @@ id: day4_how_ai_works_yo
 day: 4
 topic: how_ai_works
 language: yo
-title: 'Day 4: How Ai Works (Yoruba)'
-content: 'This is Day 4 lesson on how ai works.
+title: "Inu Chatbot: Bi ChatGPT Se N Dahun Re"
+content: |
+  O beere lowo ChatGPT "Bawo ni mo se le bere isowo adie ni Naijiria?" laarin iseju diẹ, idahun kikun yoo farahan. Ki lo sele ninu awon iseju yen? Je ki a si ideri ero naa!
 
+  IGBESE 1 - PIPIN ỌRỌ RE SI TOKENS:
+  AI yoo pin ifiranse re si awon ege kekere ti a n pe ni tokens (bii awon apa ọrọ). "Poultry" le di "poul" + "try". Komputa n sise pelu nomba, nitorina token kookan yoo di nomba.
 
-  Focus: AI Applications
+  IGBESE 2 - LILOYE ITUMỌ AYIKA:
+  Modeli yoo fi tokens re we awon ilana lati inu ikeko re - tiriliọnu ọrọ lati inu iwe, oju opo wẹẹbu, ati akọle. Yoo da a mo: ibeere ni eyi + nipa isowo + adie ni pato + ibi Naijiria. Itumọ ayika se pataki: "bere" nibi tumo si fifi idi mule, kii se bibere oko ayokele!
 
+  IGBESE 3 - SISO ASOTELE IDAHUN, TOKEN KOOKAN LEKOOKAN:
+  Asiri niyi: ChatGPT n kọ nipa siso asotele token ti o kan, leralera. Bi idaba ọrọ keyboard re, sugbon a ko o pelu data pupo tobẹẹ ti awon asotele fi n di idahun ologbon ti o pe.
 
-  [In production, this would be 250-300 words of properly translated content]
+  IGBESE 4 - AYEWO AABO:
+  Awon eto AI to dara n se ase ohun ti o lewu tabi iro ki won to fi idahun han.
 
+  IDIWO NLA - "HALLUCINATION":
+  Nitori AI n so asotele ọrọ ti o dabi otito, nigba miiran o n da alaye IRO sile ti o dun bi eni pe o daju - bi piparọ ofin Naijiria ti ko si! Ko puro - o kan n so asotele ilana laisi "mimo" otito nitooto.
 
-  Key points:
+  OFIN: Lo chatbots fun ero, akọsilẹ, ati alaye. Se idaniloju awon otito pataki (ofin, imoran isegun, owo oja) lati awon orisun ijoba. AI je oluranlowo re, kii se aṣẹ ikẹhin re.
 
-  - Understanding how ai works
-
-  - Nigerian context and examples
-
-  - Practical applications
-
-  - How this helps you
-
-
-  Remember: AI is a tool to solve problems. Learn, practice, and build!'
 quiz:
-- question: What is the main focus of Day 4?
-  options:
-  - A. AI Applications
-  - B. Something else
-  - C. Random topic
-  - D. Not related
-  correct: 0
-- question: 'This lesson is about:'
-  options:
-  - A. Cooking
-  - B. How Ai Works
-  - C. Sports
-  - D. Music
-  correct: 1
-- question: Can AI help solve Nigerian problems?
-  options:
-  - A. Yes, definitely
-  - B. No, never
-  - C. Only in cities
-  - D. Maybe not
-  correct: 0
-- question: What should you do after this lesson?
-  options:
-  - A. Forget everything
-  - B. Practice and apply what you learned
-  - C. Do nothing
-  - D. Give up
-  correct: 1
-- question: Is how ai works important for Nigeria?
-  options:
-  - A. Yes, very important
-  - B. No value
-  - C. Only for foreigners
-  - D. Not relevant
-  correct: 0
+  - question: "Ki ni tokens?"
+    options:
+      - "A. Awon ege ọrọ kekere ti AI n se ise lori"
+      - "B. Owo fun rira AI"
+      - "C. Ero gbigba agbara foonu"
+      - "D. Tiketi bọọsi"
+    correct: 0
+
+  - question: "Bawo ni ChatGPT se n kọ idahun re?"
+    options:
+      - "A. O n daako lati oju opo kan"
+      - "B. Nipa siso asotele token ti o kan leralera"
+      - "C. Eniyan lo n te e ni ikọkọ"
+      - "D. O n mu lati inu idahun ti a fi pamọ nikan"
+    correct: 1
+
+  - question: "Ki ni 'hallucination' ti AI?"
+    options:
+      - "A. Nigbati AI ba da alaye iro sile ti o dun bi otito"
+      - "B. Nigbati AI ba n sun"
+      - "C. Nigbati iboju ba n seju"
+      - "D. Nigbati AI ba n sise yara ju"
+    correct: 0
+
+  - question: "Ki ni o ye ki o se pelu otito pataki lati chatbot?"
+    options:
+      - "A. Gba won gbo lesekese"
+      - "B. Se idaniloju won lati awon orisun ijoba"
+      - "C. Pin won lesekese"
+      - "D. Ma lo chatbots rara"
+    correct: 1
+
+  - question: "Bawo ni o ye ki o wo AI chatbots?"
+    options:
+      - "A. Gege bi aṣẹ ikẹhin re lori ohun gbogbo"
+      - "B. Gege bi oluranlowo fun ero ati akọsilẹ"
+      - "C. Gege bi ohun isere ti ko wulo"
+      - "D. Gege bi aropo fun gbogbo dokita"
+    correct: 1

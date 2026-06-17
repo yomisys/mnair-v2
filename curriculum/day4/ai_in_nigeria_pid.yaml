@@ -2,61 +2,70 @@ id: day4_ai_in_nigeria_pid
 day: 4
 topic: ai_in_nigeria
 language: pid
-title: 'Day 4: Ai In Nigeria (Pidgin)'
-content: 'This is Day 4 lesson on ai in nigeria.
+title: "AI Applications Wey Dey Change Naija Lives"
+content: |
+  Today, real stories of AI applications wey dey work across Naija right now - and the jobs wey dey grow around them.
 
+  HEALTHCARE - UBENWA:
+  One Naija startup build AI wey dey analyze baby cry to detect birth asphyxia - one major cause of infant death. Dem train the AI with recordings of newborn cries. Nurse wey get phone fit now screen babies for rural clinics without expensive equipment.
 
-  Focus: AI Applications
+  AGRICULTURE - AIRSMAT & FRIENDS:
+  Drones with vision AI dey map farms, count plants, and spot problem areas. Soil sensors dey feed prediction models wey dey tell farmers exactly when to water their crops. Hello Tractor (the "Uber for tractors") dey use AI to match tractor owners with farmers wey need them.
 
+  FINANCE - EVERYWHERE:
+  Beyond fraud detection, AI now dey power: instant loan apps, stock trading advice, insurance pricing, and chatbots wey dey resolve bank complaints for minutes instead of branch queue.
 
-  [In production, this would be 250-300 words of properly translated content]
+  EDUCATION:
+  AI grading assistants dey help teachers mark faster. Literacy apps dey adapt to each pikin reading level. JAMB dey use computer-based testing with AI monitoring for exam malpractice.
 
+  ENTERTAINMENT - NOLLYWOOD:
+  Editors dey use AI to clean audio, color-grade footage, and generate subtitles for multiple languages - e dey help Naija films reach global audiences.
 
-  Key points:
+  NEW JOBS WEY DEY APPEAR:
+  - AI trainers and data labelers
+  - Prompt engineers (people wey sabi instruct AI well)
+  - AI support specialists for banks and telcos
+  - Drone operators for agriculture
 
-  - Understanding ai in nigeria
+  Notice am: AI no remove the nurse, farmer, teacher, or editor - e make them more powerful. The Nigerians wey dey win with AI na those wey learn to USE am. Na exactly wetin you dey do be that!
 
-  - Nigerian context and examples
-
-  - Practical applications
-
-  - How this helps you
-
-
-  Remember: AI is a tool to solve problems. Learn, practice, and build!'
 quiz:
-- question: What is the main focus of Day 4?
-  options:
-  - A. AI Applications
-  - B. Something else
-  - C. Random topic
-  - D. Not related
-  correct: 0
-- question: 'This lesson is about:'
-  options:
-  - A. Cooking
-  - B. Ai In Nigeria
-  - C. Sports
-  - D. Music
-  correct: 1
-- question: Can AI help solve Nigerian problems?
-  options:
-  - A. Yes, definitely
-  - B. No, never
-  - C. Only in cities
-  - D. Maybe not
-  correct: 0
-- question: What should you do after this lesson?
-  options:
-  - A. Forget everything
-  - B. Practice and apply what you learned
-  - C. Do nothing
-  - D. Give up
-  correct: 1
-- question: Is ai in nigeria important for Nigeria?
-  options:
-  - A. Yes, very important
-  - B. No value
-  - C. Only for foreigners
-  - D. Not relevant
-  correct: 0
+  - question: "Wetin Ubenwa AI dey analyze to detect birth asphyxia?"
+    options:
+      - "A. Baby cry"
+      - "B. Only blood samples"
+      - "C. The mother age"
+      - "D. Hospital bills"
+    correct: 0
+
+  - question: "Wetin be Hello Tractor?"
+    options:
+      - "A. Cartoon show"
+      - "B. AI service wey dey match tractor owners with farmers"
+      - "C. Phone brand"
+      - "D. Fuel station"
+    correct: 1
+
+  - question: "How AI dey help Nollywood?"
+    options:
+      - "A. Cleaning audio, color-grading, and generating subtitles"
+      - "B. Acting inside all the films"
+      - "C. Building cinemas"
+      - "D. E no dey help at all"
+    correct: 0
+
+  - question: "Which one be NEW job wey AI create?"
+    options:
+      - "A. Prompt engineer"
+      - "B. Vulcanizer"
+      - "C. Town crier"
+      - "D. Petrol attendant"
+    correct: 0
+
+  - question: "Wetin happen to nurses, farmers, and teachers wey dey use AI?"
+    options:
+      - "A. All of them lose their jobs"
+      - "B. AI make them more powerful for their work"
+      - "C. Robots replace them"
+      - "D. Nothing change for anybody"
+    correct: 1

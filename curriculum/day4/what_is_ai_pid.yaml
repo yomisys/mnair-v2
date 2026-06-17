@@ -2,61 +2,65 @@ id: day4_what_is_ai_pid
 day: 4
 topic: what_is_ai
 language: pid
-title: 'Day 4: What Is Ai (Pidgin)'
-content: 'This is Day 4 lesson on what is ai.
+title: "The Four Families of AI Wey You Dey Meet Every Day"
+content: |
+  By now you know say AI dey learn from data. Today, meet the four big FAMILIES of AI - so you go fit recognize which one you dey deal with anywhere.
 
+  1. VISION AI (AI wey dey see):
+  E dey understand images and video. Examples: face unlock, reading vehicle plates, detecting crop diseases from photos, doctors wey dey use AI read X-rays. If machine "look" something and understand am - na vision AI be that.
 
-  Focus: AI Applications
+  2. SPEECH AI (AI wey dey hear and talk):
+  E dey convert speech to text and text to speech. Examples: voice typing, Siri and Google Assistant, automatic subtitles for videos, call-center bots. Speech AI for Naija accents dey improve every year as more of our voice data dey available.
 
+  3. LANGUAGE AI (AI wey dey read and write):
+  E dey understand and generate text. Examples: ChatGPT, Google Translate, email spam filters, autocomplete. This family blow after 2022 - na the famous "Large Language Models" (LLMs) be this.
 
-  [In production, this would be 250-300 words of properly translated content]
+  4. PREDICTION AI (AI wey dey forecast):
+  E dey find patterns inside numbers to predict the future. Examples: credit scoring, fraud detection, weather forecasts, Lagos traffic predictions, recommending the next video.
 
+  MIXING FAMILIES:
+  Modern AI dey often combine families. WhatsApp voice assistant wey hear your Hausa question (speech), understand am (language), check your account (prediction), and reply you out loud (speech again)!
 
-  Key points:
+  WHY E MATTER:
+  When you hear about new AI product, ask: "Which family be this? Which data train am?" You go understand technology news pass most people - after just 4 days of learning!
 
-  - Understanding what is ai
-
-  - Nigerian context and examples
-
-  - Practical applications
-
-  - How this helps you
-
-
-  Remember: AI is a tool to solve problems. Learn, practice, and build!'
 quiz:
-- question: What is the main focus of Day 4?
-  options:
-  - A. AI Applications
-  - B. Something else
-  - C. Random topic
-  - D. Not related
-  correct: 0
-- question: 'This lesson is about:'
-  options:
-  - A. Cooking
-  - B. What Is Ai
-  - C. Sports
-  - D. Music
-  correct: 1
-- question: Can AI help solve Nigerian problems?
-  options:
-  - A. Yes, definitely
-  - B. No, never
-  - C. Only in cities
-  - D. Maybe not
-  correct: 0
-- question: What should you do after this lesson?
-  options:
-  - A. Forget everything
-  - B. Practice and apply what you learned
-  - C. Do nothing
-  - D. Give up
-  correct: 1
-- question: Is what is ai important for Nigeria?
-  options:
-  - A. Yes, very important
-  - B. No value
-  - C. Only for foreigners
-  - D. Not relevant
-  correct: 0
+  - question: "Which AI family face unlock belong to?"
+    options:
+      - "A. Vision AI"
+      - "B. Speech AI"
+      - "C. Prediction AI"
+      - "D. No family"
+    correct: 0
+
+  - question: "Wetin Speech AI dey do?"
+    options:
+      - "A. E dey only snap photos"
+      - "B. E dey convert speech to text and text to speech"
+      - "C. E dey predict weather"
+      - "D. E dey repair phones"
+    correct: 1
+
+  - question: "ChatGPT belong to which family?"
+    options:
+      - "A. Only Vision AI"
+      - "B. Language AI (Large Language Models)"
+      - "C. Weather AI"
+      - "D. E no be AI"
+    correct: 1
+
+  - question: "Credit scoring and fraud detection belong to which family?"
+    options:
+      - "A. Prediction AI"
+      - "B. Speech AI"
+      - "C. Music AI"
+      - "D. Cooking AI"
+    correct: 0
+
+  - question: "Modern AI fit combine multiple families?"
+    options:
+      - "A. No, never"
+      - "B. Yes - like voice assistant wey dey use speech, language, and prediction together"
+      - "C. Only for America"
+      - "D. Only with government permission"
+    correct: 1

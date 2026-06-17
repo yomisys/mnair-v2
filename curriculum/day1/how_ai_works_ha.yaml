@@ -2,61 +2,68 @@ id: day1_how_ai_works_ha
 day: 1
 topic: how_ai_works
 language: ha
-title: 'Day 1: How Ai Works (Hausa)'
-content: 'This is Day 1 lesson on how ai works.
+title: "Ta Yaya AI Ke Aiki?"
+content: |
+  AI yana aiki ta hanyar koyo daga bayanai - misalai masu yawan gaske. Ka yi tunanin koya wa yaro abin da mangwaro yake. Za ka nuna masa mangwaro da yawa har sai ya iya gane kowane mangwaro, har ma wadanda bai taba gani ba. Haka AI ke koyo!
 
+  Matakai Uku na AI:
 
-  Focus: Introduction to AI
+  1. TATTARA BAYANAI: Tara misalai masu yawa
+     - Don gane fuska: dubban hotunan fuska
+     - Don fassarar harshe: miliyoyin jimloli
+     - Don gano zamba: bayanan ma'amaloli na baya
 
+  2. HORO (TRAINING): AI yana nazarin alamu
+     - Kamar yadda ka koyi cewa kore da rawaya galibi na nufin "danfo na Lagos"
+     - AI yana samun alamun da mutane za su iya rasawa
+     - Wannan shi ake kira "machine learning"
 
-  [In production, this would be 250-300 words of properly translated content]
+  3. HASASHE (PREDICTION): AI yana amfani da abin da ya koya
+     - Wayarka tana hasashen kalma ta gaba lokacin rubutu
+     - YouTube yana ba da shawarar bidiyon da kake iya so
+     - Bankuna na hasashen ko ma'amala na da shakku
 
+  Ka dauki AI kamar agbero a tashar mota - bayan ya ga dubban fasinjoji, zai iya gane wanda ke tafiya nesa cikin sauri ta kayansa kawai!
 
-  Key points:
+  Yawan ingantattun bayanai da AI ke gani, shi ke kara masa kyau. Munanan bayanai na haifar da mummunan AI - shi ya sa inganci ke da muhimmanci.
 
-  - Understanding how ai works
-
-  - Nigerian context and examples
-
-  - Practical applications
-
-  - How this helps you
-
-
-  Remember: AI is a tool to solve problems. Learn, practice, and build!'
 quiz:
-- question: What is the main focus of Day 1?
-  options:
-  - A. Introduction to AI
-  - B. Something else
-  - C. Random topic
-  - D. Not related
-  correct: 0
-- question: 'This lesson is about:'
-  options:
-  - A. Cooking
-  - B. How Ai Works
-  - C. Sports
-  - D. Music
-  correct: 1
-- question: Can AI help solve Nigerian problems?
-  options:
-  - A. Yes, definitely
-  - B. No, never
-  - C. Only in cities
-  - D. Maybe not
-  correct: 0
-- question: What should you do after this lesson?
-  options:
-  - A. Forget everything
-  - B. Practice and apply what you learned
-  - C. Do nothing
-  - D. Give up
-  correct: 1
-- question: Is how ai works important for Nigeria?
-  options:
-  - A. Yes, very important
-  - B. No value
-  - C. Only for foreigners
-  - D. Not relevant
-  correct: 0
+  - question: "Me AI ya fi bukata don koyo?"
+    options:
+      - "A. Wutar lantarki kawai"
+      - "B. Bayanai da misalai masu yawa"
+      - "C. Ikon sihiri"
+      - "D. Shirye-shirye kawai"
+    correct: 1
+
+  - question: "Mene ne manyan matakai uku na AI?"
+    options:
+      - "A. Saya, Sayar, Riba"
+      - "B. Karanta, Rubuta, Goge"
+      - "C. Tattara Bayanai, Horo, Hasashe"
+      - "D. Sakawa, Gudanarwa, Rufewa"
+    correct: 2
+
+  - question: "Me zai faru idan AI ya yi horo da munanan bayanai?"
+    options:
+      - "A. Zai yi munanan hasashe"
+      - "B. Zai kara wayo duk da haka"
+      - "C. Babu abin da zai canza"
+      - "D. Zai gyara kansa"
+    correct: 0
+
+  - question: "Mene ne 'horo' (training) a AI?"
+    options:
+      - "A. Koya wa mutane rubuta shirye-shirye"
+      - "B. Gudu a kan treadmill"
+      - "C. AI na nazarin alamu a cikin bayanai"
+      - "D. Sakawa sabbin updates"
+    correct: 2
+
+  - question: "Wanne ne misalin hasashen AI?"
+    options:
+      - "A. Wayarka na ba da shawarar kalma ta gaba lokacin rubutu"
+      - "B. Danna maballin wuta"
+      - "C. Buga takarda"
+      - "D. Kunna janareta"
+    correct: 0

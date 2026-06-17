@@ -2,61 +2,75 @@ id: day5_ai_tools_en
 day: 5
 topic: ai_tools
 language: en
-title: 'Day 5: Ai Tools (English)'
-content: 'This is Day 5 lesson on ai tools.
+title: "The Builder's Toolbox: Create Real Things Today"
+content: |
+  Yesterday you learned to prompt like a pro. Today: tools that turn prompts into finished PRODUCTS - documents, designs, apps, and more.
 
+  CREATE DOCUMENTS & PRESENTATIONS:
+  - ChatGPT/Gemini: full business proposals, CVs, letters - then refine
+  - Canva Docs + AI: turns your outline into styled documents
+  - Gamma.app: type a topic, get a complete slide presentation. Students and trainers love this!
 
-  Focus: Building with AI
+  CREATE DESIGNS:
+  - Canva Magic Studio: "Instagram post for my restaurant's Friday special" → done
+  - Microsoft Designer (free): generates design options from one sentence
+  - Remove.bg: deletes photo backgrounds instantly for clean product photos
 
+  CREATE AUDIO & VIDEO:
+  - CapCut: AI-powered video editing on your phone - auto-captions in English (great for Nigerian creators!)
+  - Voice typing in WhatsApp/Google Docs: speak your first draft, edit after
 
-  [In production, this would be 250-300 words of properly translated content]
+  CREATE SIMPLE APPS & FORMS:
+  - Google Forms + Sheets: order forms, registrations, surveys
+  - Glide: convert that sheet into a phone app
+  - WhatsApp Business: catalog + auto-replies = a mini storefront (FREE)
 
+  A REAL COMBO ANYONE CAN DO:
+  1. ChatGPT: "Write 5 WhatsApp status posts promoting my weekend okrika sale"
+  2. Canva: design matching status images
+  3. WhatsApp Business: schedule and post
+  Total cost: ₦0. Total time: under 1 hour. That's BUILDING.
 
-  Key points:
+  PORTFOLIO TIP:
+  Save everything you create this week. Three good samples = a portfolio you can show employers or clients. "I made these with AI tools" is now a hireable sentence!
 
-  - Understanding ai tools
-
-  - Nigerian context and examples
-
-  - Practical applications
-
-  - How this helps you
-
-
-  Remember: AI is a tool to solve problems. Learn, practice, and build!'
 quiz:
-- question: What is the main focus of Day 5?
-  options:
-  - A. Building with AI
-  - B. Something else
-  - C. Random topic
-  - D. Not related
-  correct: 0
-- question: 'This lesson is about:'
-  options:
-  - A. Cooking
-  - B. Ai Tools
-  - C. Sports
-  - D. Music
-  correct: 1
-- question: Can AI help solve Nigerian problems?
-  options:
-  - A. Yes, definitely
-  - B. No, never
-  - C. Only in cities
-  - D. Maybe not
-  correct: 0
-- question: What should you do after this lesson?
-  options:
-  - A. Forget everything
-  - B. Practice and apply what you learned
-  - C. Do nothing
-  - D. Give up
-  correct: 1
-- question: Is ai tools important for Nigeria?
-  options:
-  - A. Yes, very important
-  - B. No value
-  - C. Only for foreigners
-  - D. Not relevant
-  correct: 0
+  - question: "What does Gamma.app create from a topic?"
+    options:
+      - "A. A complete slide presentation"
+      - "B. Phone cases"
+      - "C. Bank accounts"
+      - "D. Football predictions"
+    correct: 0
+
+  - question: "What does Remove.bg do?"
+    options:
+      - "A. Deletes photo backgrounds instantly"
+      - "B. Removes apps from your phone"
+      - "C. Blocks phone numbers"
+      - "D. Clears chat history"
+    correct: 0
+
+  - question: "What makes WhatsApp Business a 'mini storefront'?"
+    options:
+      - "A. Catalog plus auto-replies, for free"
+      - "B. It builds physical shops"
+      - "C. It requires a big loan"
+      - "D. Nothing - it can't sell"
+    correct: 0
+
+  - question: "What did the okrika sale combo cost?"
+    options:
+      - "A. Zero naira and under 1 hour"
+      - "B. 500,000 naira"
+      - "C. A full year of work"
+      - "D. It's impossible"
+    correct: 0
+
+  - question: "Why save your AI creations this week?"
+    options:
+      - "A. Three good samples become a portfolio for employers/clients"
+      - "B. To fill phone storage"
+      - "C. They expire after a day"
+      - "D. No reason"
+    correct: 0

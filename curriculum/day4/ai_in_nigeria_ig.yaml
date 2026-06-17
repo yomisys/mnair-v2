@@ -2,61 +2,70 @@ id: day4_ai_in_nigeria_ig
 day: 4
 topic: ai_in_nigeria
 language: ig
-title: 'Day 4: Ai In Nigeria (Igbo)'
-content: 'This is Day 4 lesson on ai in nigeria.
+title: "Oru AI Na-Agbanwe Ndu Ndi Naijiria"
+content: |
+  Taa, ezigbo akuko nke oru AI na-aru oru n'ofe Naijiria ugbu a - na oru ndi na-eto gburugburu ha.
 
+  AHUIKE - UBENWA:
+  Otu ulo oru mmalite Naijiria wuru AI na-enyocha akwa nwa ohuru iji choputa asphyxia omumu - nnukwu ihe na-akpata onwu umu ohuru. E ji ndekorita akwa umu ohuru zuo AI ahu. Nọọsu nwere ekwenti nwere ike inyocha umu ohuru n'ulo ogwu ime obodo na-enweghi ngwa oru di oke onu.
 
-  Focus: AI Applications
+  ORU UGBO - AIRSMAT NA NDI OZO:
+  Drone nwere vision AI na-ese map ubi, aguta ihe okuku, ma choputa ebe nsogbu di. Sensọ ala na-azu model amuma ndi na-agwa ndi oru ugbo kpomkwem mgbe ha ga-agba mmiri. Hello Tractor ("Uber maka traktọ") na-eji AI ejikota ndi nwe traktọ na ndi oru ugbo choro ha.
 
+  EGO - EBE NIILE:
+  E wezuga ichoputa aghugho, AI na-akwado ugbu a: app mbinye ego ozugbo, ndumodu azumahia stock, onu ahia inshọransi, na chatbots na-edozi mkpesa ulo aku n'ime nkeji kama ikwu n'ahiri ngalaba.
 
-  [In production, this would be 250-300 words of properly translated content]
+  AGUMAKWUKWO:
+  Ndi inyeaka AI na-enyere ndi nkuzi aka idetu akara ngwa ngwa. App ogugu na-agbanwe ka o daba na ogo ogugu nwata obula. JAMB na-eji ule komputa na nlele AI maka aghugho ule.
 
+  NTURUNDU - NOLLYWOOD:
+  Ndi editọ na-eji AI ehicha uda, edozi agba, ma na-emeputa ndepe okwu n'otutu asusu - na-enyere ihe nkiri Naijiria aka iru ndi na-ekiri uwa niile.
 
-  Key points:
+  ORU OHURU NA-APUTA:
+  - Ndi ozuzu AI na ndi na-ede akara data
+  - Ndi injinia prompt (ndi mara otu e si enye AI ntuziaka)
+  - Ndi oka AI na ulo aku na ulo oru ekwenti
+  - Ndi na-anya drone maka oru ugbo
 
-  - Understanding ai in nigeria
+  Mara nke a: AI ewepughi nọọsu, onye oru ugbo, onye nkuzi, ma o bu editọ - o mere ka ha di ike karia. Ndi Naijiria na-emeri site na AI bu ndi mutara IJI ya eme ihe. Nke ahu bu kpomkwem ihe i na-eme!
 
-  - Nigerian context and examples
-
-  - Practical applications
-
-  - How this helps you
-
-
-  Remember: AI is a tool to solve problems. Learn, practice, and build!'
 quiz:
-- question: What is the main focus of Day 4?
-  options:
-  - A. AI Applications
-  - B. Something else
-  - C. Random topic
-  - D. Not related
-  correct: 0
-- question: 'This lesson is about:'
-  options:
-  - A. Cooking
-  - B. Ai In Nigeria
-  - C. Sports
-  - D. Music
-  correct: 1
-- question: Can AI help solve Nigerian problems?
-  options:
-  - A. Yes, definitely
-  - B. No, never
-  - C. Only in cities
-  - D. Maybe not
-  correct: 0
-- question: What should you do after this lesson?
-  options:
-  - A. Forget everything
-  - B. Practice and apply what you learned
-  - C. Do nothing
-  - D. Give up
-  correct: 1
-- question: Is ai in nigeria important for Nigeria?
-  options:
-  - A. Yes, very important
-  - B. No value
-  - C. Only for foreigners
-  - D. Not relevant
-  correct: 0
+  - question: "Gini ka AI Ubenwa na-enyocha iji choputa asphyxia omumu?"
+    options:
+      - "A. Akwa nwa ohuru"
+      - "B. Naani obara"
+      - "C. Afo nne ya"
+      - "D. Ugwo ulo ogwu"
+    correct: 0
+
+  - question: "Gini bu Hello Tractor?"
+    options:
+      - "A. Ihe nkiri umuaka"
+      - "B. Oru AI na-ejikota ndi nwe traktọ na ndi oru ugbo"
+      - "C. Udi ekwenti"
+      - "D. Ulo mmanu"
+    correct: 1
+
+  - question: "Kedu ka AI si enyere Nollywood aka?"
+    options:
+      - "A. Ihicha uda, idozi agba, na imeputa ndepe okwu"
+      - "B. Ime ihe nkiri n'ime fim niile"
+      - "C. Iwu ulo sinima"
+      - "D. O naghi enye aka ma oli"
+    correct: 0
+
+  - question: "Kedu nke bu oru OHURU AI keputara?"
+    options:
+      - "A. Injinia prompt"
+      - "B. Onye na-edozi taya"
+      - "C. Onye mkposa obodo"
+      - "D. Onye na-ere mmanu ugboala"
+    correct: 0
+
+  - question: "Gini mere ndi nọọsu, ndi oru ugbo, na ndi nkuzi ji AI eme ihe?"
+    options:
+      - "A. Ha niile tufuru oru ha"
+      - "B. AI mere ka ha di ike karia n'oru ha"
+      - "C. Robots nochiri ha"
+      - "D. O dighi ihe gbanwere maka onye obula"
+    correct: 1

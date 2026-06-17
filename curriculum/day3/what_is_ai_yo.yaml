@@ -2,61 +2,70 @@ id: day3_what_is_ai_yo
 day: 3
 topic: what_is_ai
 language: yo
-title: 'Day 3: What Is Ai (Yoruba)'
-content: 'This is Day 3 lesson on what is ai.
+title: "Data: Ounje Ti N Bo AI"
+content: |
+  O ti ko pe AI n ko eko lati inu apeere. Loni a o lo jinle: DATA ni a n pe awon apeere yen, data si ni eroja pataki julo ninu AI.
 
+  KI NI DATA?
+  Data je alaye ti a ti kọ sile lasan. Igbakugba ti a ba ko nkan sile, ya foto re, tabi won on, a ti da data sile:
+  - Foto oju re = data aworan
+  - Akosile ohun re = data ohun
+  - "Mo ta agbon tomati 50 loni" = data tita
+  - Ibi ti o wa nigbati o n lo Maps = data ipo
 
-  Focus: Data and AI
+  Laisi data, AI dabi akeko ti ko ni iwe, ko ni oluko, ko si ni apeere - ko le ko ohunkohun.
 
+  DATA MELO NI AI NILO?
+  PUPO GAN-AN. ChatGPT ka iwe ju ohun ti eniyan kan le ka ni igbesi aye 1,000 lo. Modeli didamo oju le ko miliọnu oju. Idi niyen ti awon ile-ise fi n ko data pupo jo - data ni epo titun, Naijiria si mo nipa epo!
 
-  [In production, this would be 250-300 words of properly translated content]
+  IRU DATA TI AI N LO:
+  1. ỌRỌ KIKỌ: ifiranse, iwe, awon oju opo wẹẹbu (o n mu chatbots ati itumo sise)
+  2. AWORAN: foto, scans (o n mu sisi foonu pelu oju, riri arun sise)
+  3. OHUN: ọrọ sisọ, iro (o n mu awon oluranlowo ohun sise)
+  4. NOMBA: owo oja, akosile oju-ojo, isowo (o n mu asotele sise)
 
+  DIDARA JU OPO LO:
+  Miliọnu foto ti ko dan ko ni ko ni eko to 100,000 foto ti o dan ti a fi aami si daradara. Ranti Garbage In, Garbage Out lati ana? AI to dara n bere pelu data to dara.
 
-  Key points:
+  Eyi ni apa ti o dun: gbogbo ifiranse WhatsApp ti o te ni Yoruba, gbogbo akosile ohun - iru data yen ni awon ede Naijiria NILO lati wa ninu ojo iwaju AI. A o so siwaju sii ni eko ti o kan!
 
-  - Understanding what is ai
-
-  - Nigerian context and examples
-
-  - Practical applications
-
-  - How this helps you
-
-
-  Remember: AI is a tool to solve problems. Learn, practice, and build!'
 quiz:
-- question: What is the main focus of Day 3?
-  options:
-  - A. Data and AI
-  - B. Something else
-  - C. Random topic
-  - D. Not related
-  correct: 0
-- question: 'This lesson is about:'
-  options:
-  - A. Cooking
-  - B. What Is Ai
-  - C. Sports
-  - D. Music
-  correct: 1
-- question: Can AI help solve Nigerian problems?
-  options:
-  - A. Yes, definitely
-  - B. No, never
-  - C. Only in cities
-  - D. Maybe not
-  correct: 0
-- question: What should you do after this lesson?
-  options:
-  - A. Forget everything
-  - B. Practice and apply what you learned
-  - C. Do nothing
-  - D. Give up
-  correct: 1
-- question: Is what is ai important for Nigeria?
-  options:
-  - A. Yes, very important
-  - B. No value
-  - C. Only for foreigners
-  - D. Not relevant
-  correct: 0
+  - question: "Ki ni data?"
+    options:
+      - "A. Alaye ti a kọ sile bi foto, ọrọ, ati nomba"
+      - "B. Sisanwo intaneti nikan"
+      - "C. Iru komputa kan"
+      - "D. Owo ni banki"
+    correct: 0
+
+  - question: "Ki ni yoo sele si AI laisi data?"
+    options:
+      - "A. Yoo sise yara ju"
+      - "B. Ko le ko ohunkohun"
+      - "C. Yoo din owo"
+      - "D. Ko si ohun ti yoo yipada"
+    correct: 1
+
+  - question: "Iru data wo lo n mu awon oluranlowo ohun sise?"
+    options:
+      - "A. Data ohun"
+      - "B. Data ipo nikan"
+      - "C. Data tita"
+      - "D. Ko nilo data"
+    correct: 0
+
+  - question: "Kilode ti a fi n pe data ni 'epo titun'?"
+    options:
+      - "A. Nitori o dudu, omi si ni"
+      - "B. Ohun elo iyebiye ni ti n mu imo-ero ode oni sise"
+      - "C. O n jade lati inu ile"
+      - "D. A n lo o ninu jeneretọ"
+    correct: 1
+
+  - question: "Ewo lo ni iye diẹ sii fun kiko AI?"
+    options:
+      - "A. Miliọnu foto ti ko dan"
+      - "B. 100,000 foto to dan ti a fi aami si daradara"
+      - "C. Ko si foto rara"
+      - "D. Didara ko se pataki"
+    correct: 1

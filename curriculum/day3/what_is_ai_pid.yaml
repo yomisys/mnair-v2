@@ -2,61 +2,70 @@ id: day3_what_is_ai_pid
 day: 3
 topic: what_is_ai
 language: pid
-title: 'Day 3: What Is Ai (Pidgin)'
-content: 'This is Day 3 lesson on what is ai.
+title: "Data: The Food Wey Dey Feed AI"
+content: |
+  You don learn say AI dey learn from examples. Today we go enter deep: those examples na im dem dey call DATA, and data na the most important ingredient for AI.
 
+  WETIN BE DATA?
+  Data na simply information wey dem record. Anytime wey dem write something down, snap am, or measure am, data don dey created:
+  - Photo of your face = image data
+  - Your voice note = audio data
+  - "I sell 50 baskets of tomatoes today" = sales data
+  - Your location when you dey use Maps = location data
 
-  Focus: Data and AI
+  Without data, AI be like student wey no get book, no get teacher, no get examples - e no fit learn anything.
 
+  HOW MUCH DATA AI NEED?
+  PLENTY. ChatGPT read text pass wetin any human being fit read for 1,000 lifetimes. Face recognition model fit study millions of faces. Na why companies dey gather plenty data - data na the new oil, and Naija sabi about oil!
 
-  [In production, this would be 250-300 words of properly translated content]
+  TYPES OF DATA WEY AI DEY USE:
+  1. TEXT: messages, books, websites (e dey power chatbots and translation)
+  2. IMAGES: photos, scans (e dey power face unlock, disease detection)
+  3. AUDIO: speech, sounds (e dey power voice assistants)
+  4. NUMBERS: prices, weather records, transactions (e dey power predictions)
 
+  QUALITY PASS QUANTITY:
+  One million blurry photos dey teach less than 100,000 clear ones wey dem label well. You remember Garbage In, Garbage Out from yesterday? Good AI dey start with good data.
 
-  Key points:
+  Na the sweet part be this: every WhatsApp message wey you type for Pidgin, every Hausa voice note - na that kind data Naija languages NEED to enter the AI future. We go talk more for the next lesson!
 
-  - Understanding what is ai
-
-  - Nigerian context and examples
-
-  - Practical applications
-
-  - How this helps you
-
-
-  Remember: AI is a tool to solve problems. Learn, practice, and build!'
 quiz:
-- question: What is the main focus of Day 3?
-  options:
-  - A. Data and AI
-  - B. Something else
-  - C. Random topic
-  - D. Not related
-  correct: 0
-- question: 'This lesson is about:'
-  options:
-  - A. Cooking
-  - B. What Is Ai
-  - C. Sports
-  - D. Music
-  correct: 1
-- question: Can AI help solve Nigerian problems?
-  options:
-  - A. Yes, definitely
-  - B. No, never
-  - C. Only in cities
-  - D. Maybe not
-  correct: 0
-- question: What should you do after this lesson?
-  options:
-  - A. Forget everything
-  - B. Practice and apply what you learned
-  - C. Do nothing
-  - D. Give up
-  correct: 1
-- question: Is what is ai important for Nigeria?
-  options:
-  - A. Yes, very important
-  - B. No value
-  - C. Only for foreigners
-  - D. Not relevant
-  correct: 0
+  - question: "Wetin be data?"
+    options:
+      - "A. Information wey dem record like photos, text, and numbers"
+      - "B. Only internet subscription"
+      - "C. One type of computer"
+      - "D. Money for bank"
+    correct: 0
+
+  - question: "Wetin go happen to AI without data?"
+    options:
+      - "A. E go work faster"
+      - "B. E no fit learn anything"
+      - "C. E go cheap pass"
+      - "D. Nothing go change"
+    correct: 1
+
+  - question: "Which type of data dey power voice assistants?"
+    options:
+      - "A. Audio data"
+      - "B. Only location data"
+      - "C. Sales data"
+      - "D. E no need data"
+    correct: 0
+
+  - question: "Why dem dey call data 'the new oil'?"
+    options:
+      - "A. Because e black and e be liquid"
+      - "B. Na valuable resource wey dey power modern technology"
+      - "C. E dey come from ground"
+      - "D. Dem dey use am for generator"
+    correct: 1
+
+  - question: "Which one get more value for training AI?"
+    options:
+      - "A. One million blurry photos"
+      - "B. 100,000 clear photos wey dem label well"
+      - "C. No photos at all"
+      - "D. Quality no matter"
+    correct: 1

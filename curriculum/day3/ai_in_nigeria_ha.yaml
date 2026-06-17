@@ -2,61 +2,66 @@ id: day3_ai_in_nigeria_ha
 day: 3
 topic: ai_in_nigeria
 language: ha
-title: 'Day 3: Ai In Nigeria (Hausa)'
-content: 'This is Day 3 lesson on ai in nigeria.
+title: "Bayanan Najeriya: Harsunanmu, Makomarmu"
+content: |
+  Ga matsala: an horar da yawancin AI da bayanan Turanci da Sinanci. Idan AI bai fahimci karin maganar Hausa, sautin Yoruba, ko salon maganar Igbo ba, ba zai iya yi wa 'yan Najeriya miliyan 200 hidima yadda ya kamata ba. Yau, bari mu dubi labarin bayanan Najeriya.
 
+  GIBIN BAYANAI:
+  - Turanci na da tiriliyoyin kalmomi a yanar gizo don horar da AI
+  - Hausa, Yoruba, da Igbo - da mutane sama da miliyan 100 ke magana - suna da kaso kadan kwarai
+  - Sakamako: mataimakan murya da ba sa jin lafazinmu, masu fassara da ke rasa ma'anarmu
 
-  Focus: Data and AI
+  'YAN NAJERIYA MASU RUFE GIBIN:
+  1. Masu bincike da masu sa kai na gina bayanan harsunan Najeriya - suna rikodin magana, fassara jimloli, tattara rubutu
+  2. Kamfanonin Lagos na daukar masu yin lakabi ga bayanai - matasan Najeriya masu samun kudi ta koya wa AI
+  3. Ayyuka kamar Masakhane (ma'ana "Muna ginawa tare" a isiZulu) na hada masu binciken Afirka masu gina AI na fassara ga harsunan Afirka
+  4. Ma'ajiyar gidajen rediyo na shirye-shiryen harsunan gida na zama ma'adinan zinariya ga AI na murya
 
+  DALILIN DA BAYANAN GIDA KE NASARA:
+  Modelin hasashen ambaliya na bukatar bayanan ruwan sama na NAJERIYA. Modelin amfanin gona na bukatar bayanan kasarMU. Chatbot na lafiya na bukatar fahimtar yadda MU ke bayyana alamun rashin lafiya. Bayanan kasashen waje ba za su iya daukar hakikanin Najeriya ba.
 
-  [In production, this would be 250-300 words of properly translated content]
+  DAMAR DA KAKE DA ITA:
+  Tattara bayanai, tsaftacewa, da yin lakabi hanyoyi ne na farko zuwa sana'o'in AI - suna bukatar kulawa, ba manyan digiri ba. Kuma amfani da fasaha da harshenka kawai - sakonnin murya, posts, reviews - na kara muryoyin Najeriya a duniyar dijital.
 
+  Harshenka bayanai ne. Kwarewarka bayanai ce. Daga gare su ne za a gina makomar AI ta Najeriya.
 
-  Key points:
-
-  - Understanding ai in nigeria
-
-  - Nigerian context and examples
-
-  - Practical applications
-
-  - How this helps you
-
-
-  Remember: AI is a tool to solve problems. Learn, practice, and build!'
 quiz:
-- question: What is the main focus of Day 3?
-  options:
-  - A. Data and AI
-  - B. Something else
-  - C. Random topic
-  - D. Not related
-  correct: 0
-- question: 'This lesson is about:'
-  options:
-  - A. Cooking
-  - B. Ai In Nigeria
-  - C. Sports
-  - D. Music
-  correct: 1
-- question: Can AI help solve Nigerian problems?
-  options:
-  - A. Yes, definitely
-  - B. No, never
-  - C. Only in cities
-  - D. Maybe not
-  correct: 0
-- question: What should you do after this lesson?
-  options:
-  - A. Forget everything
-  - B. Practice and apply what you learned
-  - C. Do nothing
-  - D. Give up
-  correct: 1
-- question: Is ai in nigeria important for Nigeria?
-  options:
-  - A. Yes, very important
-  - B. No value
-  - C. Only for foreigners
-  - D. Not relevant
-  correct: 0
+  - question: "Menene 'gibin bayanai' ga harsunan Najeriya?"
+    options:
+      - "A. Harsunan Najeriya na da bayanan horo kasa da Turanci sosai"
+      - "B. Najeriya na da bayanai da yawa sosai"
+      - "C. Ba a iya rubuta harsunan Najeriya"
+      - "D. Babu gibi"
+    correct: 0
+
+  - question: "Me aikin Masakhane ke yi?"
+    options:
+      - "A. Gina tituna a Lagos"
+      - "B. Hada masu binciken Afirka masu gina AI ga harsunan Afirka"
+      - "C. Sayar da wayoyi"
+      - "D. Koyar da Turanci kawai"
+    correct: 1
+
+  - question: "Me ya sa modelin hasashen ambaliya na Najeriya ke bukatar bayanan Najeriya?"
+    options:
+      - "A. Bayanan ruwan sama na waje ba za su iya daukar hakikanin Najeriya ba"
+      - "B. Bayanan Najeriya sun fi rahusa"
+      - "C. Ba ya bukatar bayanai"
+      - "D. Bayanan waje haramun ne"
+    correct: 0
+
+  - question: "Wace ce hanya ta farko zuwa sana'o'in AI?"
+    options:
+      - "A. Yin lakabi da tsaftace bayanai"
+      - "B. Fara zama farfesa"
+      - "C. Sayen babbar kwamfuta"
+      - "D. Babu hanyar farko"
+    correct: 0
+
+  - question: "Ta yaya talakawan Najeriya za su kara harsunansu a makomar AI?"
+    options:
+      - "A. Ta amfani da fasaha da harsunansu - sakonnin murya, posts, reviews"
+      - "B. Ta guje wa fasaha gaba daya"
+      - "C. Ta magana da Turanci kawai"
+      - "D. Ba za su iya ba da gudummawa ba"
+    correct: 0

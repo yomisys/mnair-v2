@@ -2,61 +2,68 @@ id: day2_ai_ethics_en
 day: 2
 topic: ai_ethics
 language: en
-title: 'Day 2: Ai Ethics (English)'
-content: 'This is Day 2 lesson on ai ethics.
+title: "Garbage In, Garbage Out: Bias in Training Data"
+content: |
+  Yesterday you learned that AI must be fair. Today, let's understand WHERE unfairness comes from: the training data.
 
+  Remember: machine learning learns from examples. So what happens if the examples themselves are unfair? The AI learns the unfairness too! Computer scientists call this "Garbage In, Garbage Out."
 
-  Focus: Machine Learning Basics
+  REAL EXAMPLES:
 
+  1. THE RECRUITMENT TOOL:
+     A famous company built an AI to screen job applications. It was trained on 10 years of past hires - mostly men. The AI learned to reject women's CVs! The data was biased, so the AI became biased. They had to scrap it.
 
-  [In production, this would be 250-300 words of properly translated content]
+  2. FACIAL RECOGNITION:
+     Early face recognition systems were trained mostly on light-skinned faces. Result: they failed up to 35% of the time on dark-skinned women, but less than 1% on light-skinned men. Imagine this used for police identification in Nigeria!
 
+  3. LOAN SCORING:
+     If a loan model is trained only on data from Lagos salary earners, it may unfairly reject hardworking traders from Kano or farmers from Benue - not because they won't repay, but because the model never learned their patterns.
 
-  Key points:
+  WHAT CAN BE DONE?
+  - Collect diverse data: all genders, all regions, all languages, urban AND rural
+  - Test AI on different groups before launch
+  - Keep humans in the loop for important decisions (loans, jobs, justice)
+  - Ask questions! When AI denies you something, you can ask why
 
-  - Understanding ai ethics
+  As a future AI user or builder in Nigeria, remember: fair data makes fair AI. Our diversity - 250+ ethnic groups - must be reflected in our datasets.
 
-  - Nigerian context and examples
-
-  - Practical applications
-
-  - How this helps you
-
-
-  Remember: AI is a tool to solve problems. Learn, practice, and build!'
 quiz:
-- question: What is the main focus of Day 2?
-  options:
-  - A. Machine Learning Basics
-  - B. Something else
-  - C. Random topic
-  - D. Not related
-  correct: 0
-- question: 'This lesson is about:'
-  options:
-  - A. Cooking
-  - B. Ai Ethics
-  - C. Sports
-  - D. Music
-  correct: 1
-- question: Can AI help solve Nigerian problems?
-  options:
-  - A. Yes, definitely
-  - B. No, never
-  - C. Only in cities
-  - D. Maybe not
-  correct: 0
-- question: What should you do after this lesson?
-  options:
-  - A. Forget everything
-  - B. Practice and apply what you learned
-  - C. Do nothing
-  - D. Give up
-  correct: 1
-- question: Is ai ethics important for Nigeria?
-  options:
-  - A. Yes, very important
-  - B. No value
-  - C. Only for foreigners
-  - D. Not relevant
-  correct: 0
+  - question: "What does 'Garbage In, Garbage Out' mean?"
+    options:
+      - "A. Computers need cleaning"
+      - "B. Biased training data produces biased AI"
+      - "C. Old phones should be thrown away"
+      - "D. AI creates waste"
+    correct: 1
+
+  - question: "Why did the recruitment AI reject women's CVs?"
+    options:
+      - "A. It was trained on past hires that were mostly men"
+      - "B. Women wrote bad CVs"
+      - "C. The computer was broken"
+      - "D. It was programmed to do so deliberately"
+    correct: 0
+
+  - question: "Why did early facial recognition fail more on dark-skinned faces?"
+    options:
+      - "A. Dark skin cannot be photographed"
+      - "B. Training data had mostly light-skinned faces"
+      - "C. The cameras were cheap"
+      - "D. It's impossible to fix"
+    correct: 1
+
+  - question: "How can we reduce bias in a Nigerian loan-scoring AI?"
+    options:
+      - "A. Train it with data from all regions and occupations"
+      - "B. Only use Lagos data"
+      - "C. Remove all data"
+      - "D. Let it decide everything alone"
+    correct: 0
+
+  - question: "What should happen with important AI decisions like loans and jobs?"
+    options:
+      - "A. AI should decide alone with no appeal"
+      - "B. Humans should stay in the loop"
+      - "C. They should be random"
+      - "D. Only foreigners should decide"
+    correct: 1

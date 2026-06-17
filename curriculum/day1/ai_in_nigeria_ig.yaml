@@ -2,61 +2,73 @@ id: day1_ai_in_nigeria_ig
 day: 1
 topic: ai_in_nigeria
 language: ig
-title: 'Day 1: Ai In Nigeria (Igbo)'
-content: 'This is Day 1 lesson on ai in nigeria.
+title: "AI na Naijiria Taa"
+content: |
+  AI abughi naani maka Silicon Valley - o na-edozilarị nsogbu Naijiria ebe a n'ulo!
 
+  EGO & ULO AKU:
+  - Kuda, OPay, na PalmPay na-eji AI achoputa aghugho ma kwado mbinye ego ozugbo
+  - AI na-enyocha ma azumahia o na-enyo enyo tupu o gafee
+  - Ikimanye kredit na-enweghi ihe mgbachi - AI na-enyocha otu i si eji ekwenti gi
 
-  Focus: Introduction to AI
+  ORU UGBO:
+  - FarmCrowdy na-eji AI ebu amuma mkpuru ubi
+  - App amuma ihu igwe na-enyere ndi oru ugbo aka imata mgbe ha ga-aku ihe
+  - Imata foto na-achoputa oria ihe okuku site na foto ekwenti
 
+  AHUIKE:
+  - Ufodu ulo ogwu Naijiria na-eji AI agu X-ray ma choputa oria
+  - Chatbots na-aza ajuju ahuike di mfe n'asusu obodo
+  - AI na-enye aka ibu amuma ntiwapu iba tupu o gbasaa
 
-  [In production, this would be 250-300 words of properly translated content]
+  NJEM:
+  - Google Maps na-ebu amuma mkpọchi uzo Lagos (AI mutara site na otutu nde njem)
+  - App oru ugboala di ka Bolt na-ejikota ndi okwo ugboala na ndi njem nke oma
+  - Ufodu ulo oru na-anwale AI maka ichoputa oghere okporo uzo Naijiria
 
+  AGUMAKWUKWO:
+  - App di ka uLesson na-ahazi omumu maka nwa akwukwo obula
+  - Ndi nkuzi AI nwere ike iza ajuju n'asusu Yoruba, Igbo, ma o bu Hausa
 
-  Key points:
+  Ohere ndi a di ukwuu! Naijiria nwere nsogbu puru iche ndi AI nwere ike inye aka idozi - site na nkesa oku eletrik ruo nlekota ihe mkpofu.
 
-  - Understanding ai in nigeria
-
-  - Nigerian context and examples
-
-  - Practical applications
-
-  - How this helps you
-
-
-  Remember: AI is a tool to solve problems. Learn, practice, and build!'
 quiz:
-- question: What is the main focus of Day 1?
-  options:
-  - A. Introduction to AI
-  - B. Something else
-  - C. Random topic
-  - D. Not related
-  correct: 0
-- question: 'This lesson is about:'
-  options:
-  - A. Cooking
-  - B. Ai In Nigeria
-  - C. Sports
-  - D. Music
-  correct: 1
-- question: Can AI help solve Nigerian problems?
-  options:
-  - A. Yes, definitely
-  - B. No, never
-  - C. Only in cities
-  - D. Maybe not
-  correct: 0
-- question: What should you do after this lesson?
-  options:
-  - A. Forget everything
-  - B. Practice and apply what you learned
-  - C. Do nothing
-  - D. Give up
-  correct: 1
-- question: Is ai in nigeria important for Nigeria?
-  options:
-  - A. Yes, very important
-  - B. No value
-  - C. Only for foreigners
-  - D. Not relevant
-  correct: 0
+  - question: "Kedu ngalaba Naijiria na-eji AI achoputa aghugho?"
+    options:
+      - "A. Naani ahia odinala"
+      - "B. Ulo aku na fintech"
+      - "C. Ulo oru ndi na-akwa akwa"
+      - "D. Otu bọọlu"
+    correct: 1
+
+  - question: "Kedu ka AI ga-esi nyere ndi oru ugbo Naijiria aka?"
+    options:
+      - "A. Site n'iru oru ugbo ha"
+      - "B. Ibu amuma ihu igwe na ichoputa oria ihe okuku"
+      - "C. Iji aka aghota mkpuru ubi"
+      - "D. O nweghi ike inyere ndi oru ugbo aka"
+    correct: 1
+
+  - question: "Gini ka Google Maps na-eji AI eme na Lagos?"
+    options:
+      - "A. Iji wuo okporo uzo ohuru"
+      - "B. Iji buo amuma usoro mkpọchi uzo"
+      - "C. Iji nye okporo uzo aha"
+      - "D. Iji guo ulo"
+    correct: 1
+
+  - question: "Kedu okwu banyere AI na Naijiria bu EZIOKWU?"
+    options:
+      - "A. AI na-aru oru naani n'Amerika"
+      - "B. Naijiria enweghi ulo oru AI"
+      - "C. AI na-edozilarị nsogbu Naijiria"
+      - "D. AI di oke onu maka Naijiria"
+    correct: 2
+
+  - question: "Kedu ka AI ga-esi nyere ahuike Naijiria aka?"
+    options:
+      - "A. Site n'iwere onodu ndi dokita niile"
+      - "B. Igu X-ray na ibu amuma ntiwapu oria"
+      - "C. Iwu ulo ogwu"
+      - "D. Imeputa ogwu"
+    correct: 1

@@ -2,61 +2,61 @@ id: day2_ai_in_nigeria_pid
 day: 2
 topic: ai_in_nigeria
 language: pid
-title: 'Day 2: Ai In Nigeria (Pidgin)'
-content: 'This is Day 2 lesson on ai in nigeria.
+title: "Machine Learning Dey Solve Naija Problems"
+content: |
+  Now wey you know say machine learning dey learn from examples, make we see how Naija companies dey use am every day.
 
+  LOAN WITHOUT COLLATERAL:
+  Traditional banks dey demand land documents or salary account. But fintech apps like Carbon and FairMoney dey use ML wey dem train with thousands of past borrowers. The model learn patterns: airtime habits, repayment history, even how you take fill the form. Result? Market woman for Onitsha fit collect loan for 5 minutes without entering any bank.
 
-  Focus: Machine Learning Basics
+  FRAUD DETECTION:
+  ML models for Naija banks dey watch millions of transactions. Dem don learn wetin NORMAL be for you. If your card suddenly buy electronics for 3am for another country, the model go flag am immediately. Fixed rules no fit do this one - fraudsters dey change tactics, but ML dey keep learning new patterns.
 
+  CROP DISEASE DETECTION:
+  Researchers train ML models with thousands of photos of healthy and sick cassava leaves. Now apps fit tell farmer for Ogun State if e cassava get mosaic disease - just from phone photo. The model learn from examples, exactly like how you take learn mango!
 
-  [In production, this would be 250-300 words of properly translated content]
+  PERSONALIZED LEARNING:
+  uLesson ML dey watch which questions student dey fail and e dey adjust the next lessons. Two students no dey ever see exactly the same path - each person dey get wetin e need.
 
+  THE PATTERN: For every case, Naija people gather LOCAL examples and train models with them. Foreign AI wey dem train with foreign data dey often fail for here. Naija AI future depend on Naija data - and people like you wey understand am.
 
-  Key points:
-
-  - Understanding ai in nigeria
-
-  - Nigerian context and examples
-
-  - Practical applications
-
-  - How this helps you
-
-
-  Remember: AI is a tool to solve problems. Learn, practice, and build!'
 quiz:
-- question: What is the main focus of Day 2?
-  options:
-  - A. Machine Learning Basics
-  - B. Something else
-  - C. Random topic
-  - D. Not related
-  correct: 0
-- question: 'This lesson is about:'
-  options:
-  - A. Cooking
-  - B. Ai In Nigeria
-  - C. Sports
-  - D. Music
-  correct: 1
-- question: Can AI help solve Nigerian problems?
-  options:
-  - A. Yes, definitely
-  - B. No, never
-  - C. Only in cities
-  - D. Maybe not
-  correct: 0
-- question: What should you do after this lesson?
-  options:
-  - A. Forget everything
-  - B. Practice and apply what you learned
-  - C. Do nothing
-  - D. Give up
-  correct: 1
-- question: Is ai in nigeria important for Nigeria?
-  options:
-  - A. Yes, very important
-  - B. No value
-  - C. Only for foreigners
-  - D. Not relevant
-  correct: 0
+  - question: "How fintech apps dey give loan without collateral?"
+    options:
+      - "A. Dem no dey check anything"
+      - "B. ML models learn patterns from thousands of past borrowers"
+      - "C. Dem dey call your village head"
+      - "D. Na only civil servants dem dey give loan"
+    correct: 1
+
+  - question: "Why ML better pass fixed rules for fraud detection?"
+    options:
+      - "A. ML cheap to write"
+      - "B. Fraudsters dey change tactics, and ML dey keep learning new patterns"
+      - "C. Fixed rules na crime"
+      - "D. ML no dey ever make mistake"
+    correct: 1
+
+  - question: "How dem take train crop disease detection models?"
+    options:
+      - "A. With thousands of photos of healthy and sick leaves"
+      - "B. By reading agriculture textbooks"
+      - "C. By interviewing farmers"
+      - "D. Dem no train am at all"
+    correct: 0
+
+  - question: "Why foreign AI dey often fail for Naija?"
+    options:
+      - "A. Naija networks dey block am"
+      - "B. Dem train am with foreign data, no be Naija examples"
+      - "C. E too cheap"
+      - "D. Foreign AI no dey ever fail"
+    correct: 1
+
+  - question: "Wetin uLesson ML dey personalize for each student?"
+    options:
+      - "A. School uniforms"
+      - "B. The lessons wey dem dey show, based on which questions e fail"
+      - "C. Exam dates"
+      - "D. School fees"
+    correct: 1

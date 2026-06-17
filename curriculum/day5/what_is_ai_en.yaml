@@ -2,61 +2,67 @@ id: day5_what_is_ai_en
 day: 5
 topic: what_is_ai
 language: en
-title: 'Day 5: What Is Ai (English)'
-content: 'This is Day 5 lesson on what is ai.
+title: "You Can Build with AI (No Degree Required)"
+content: |
+  Day 5! Time to shift from understanding AI to BUILDING with it. Surprise: you don't need a computer science degree to start.
 
+  THE BUILDER'S LADDER - START WHERE YOU ARE:
 
-  Focus: Building with AI
+  LEVEL 1 - POWER USER (you can start today):
+  Using AI tools skillfully to produce real value: business plans, designs, lesson notes, marketing content. A tailor who uses AI to design flyers and reply customers professionally is already "building" her business with AI.
 
+  LEVEL 2 - WORKFLOW BUILDER (no code needed):
+  Connecting tools together. Example: customer fills a Google Form → answer lands in a spreadsheet → AI drafts a personalized reply → you approve and send. Tools like Zapier make these connections with clicks, not code.
 
-  [In production, this would be 250-300 words of properly translated content]
+  LEVEL 3 - NO-CODE APP BUILDER:
+  Platforms like Glide and Bubble turn spreadsheets into real apps. A provisions seller could build a simple ordering app for her street - without one line of code.
 
+  LEVEL 4 - CODER (if you enjoy it):
+  Learning Python opens the deepest level. And guess what? AI itself is the best programming teacher ever - it explains errors patiently at 11pm, for free!
 
-  Key points:
+  WHAT NIGERIAN BUILDERS PROVE:
+  Many successful Nigerian tech founders started with no programming background. They saw a local problem, started at Level 1, and climbed. The market woman who knows WHY customers complain understands the problem better than a coder who never visited the market.
 
-  - Understanding what is ai
+  YOUR PROBLEM + AI TOOLS = YOUR OPPORTUNITY.
+  Tomorrow we'll apply this to business specifically. For now, ask yourself: "What problem around me could technology help solve?"
 
-  - Nigerian context and examples
-
-  - Practical applications
-
-  - How this helps you
-
-
-  Remember: AI is a tool to solve problems. Learn, practice, and build!'
 quiz:
-- question: What is the main focus of Day 5?
-  options:
-  - A. Building with AI
-  - B. Something else
-  - C. Random topic
-  - D. Not related
-  correct: 0
-- question: 'This lesson is about:'
-  options:
-  - A. Cooking
-  - B. What Is Ai
-  - C. Sports
-  - D. Music
-  correct: 1
-- question: Can AI help solve Nigerian problems?
-  options:
-  - A. Yes, definitely
-  - B. No, never
-  - C. Only in cities
-  - D. Maybe not
-  correct: 0
-- question: What should you do after this lesson?
-  options:
-  - A. Forget everything
-  - B. Practice and apply what you learned
-  - C. Do nothing
-  - D. Give up
-  correct: 1
-- question: Is what is ai important for Nigeria?
-  options:
-  - A. Yes, very important
-  - B. No value
-  - C. Only for foreigners
-  - D. Not relevant
-  correct: 0
+  - question: "Do you need a computer science degree to start building with AI?"
+    options:
+      - "A. No - you can start as a power user today"
+      - "B. Yes, always"
+      - "C. Only foreigners can build"
+      - "D. You need a PhD"
+    correct: 0
+
+  - question: "What is Level 2 (workflow builder)?"
+    options:
+      - "A. Connecting tools together without code"
+      - "B. Writing advanced Python"
+      - "C. Building robots"
+      - "D. Selling computers"
+    correct: 0
+
+  - question: "What can no-code platforms like Glide do?"
+    options:
+      - "A. Turn spreadsheets into real apps"
+      - "B. Only play music"
+      - "C. Replace all programmers"
+      - "D. Nothing useful"
+    correct: 0
+
+  - question: "How can AI help someone learning to code?"
+    options:
+      - "A. It explains errors patiently like a free teacher"
+      - "B. It cannot help with coding"
+      - "C. It writes viruses"
+      - "D. It only works for experts"
+    correct: 0
+
+  - question: "What advantage does a market woman have over a coder who never visited the market?"
+    options:
+      - "A. She understands the real problem better"
+      - "B. She types faster"
+      - "C. She has more degrees"
+      - "D. No advantage at all"
+    correct: 0

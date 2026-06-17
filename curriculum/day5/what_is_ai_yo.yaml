@@ -2,61 +2,67 @@ id: day5_what_is_ai_yo
 day: 5
 topic: what_is_ai
 language: yo
-title: 'Day 5: What Is Ai (Yoruba)'
-content: 'This is Day 5 lesson on what is ai.
+title: "O Le Ko Nkan Pelu AI (Ko Nilo Oye Giga)"
+content: |
+  Ojo karun-un! Akoko ti to lati yi pada lati liloye AI si KIKO nkan pelu re. Iyalenu: o ko nilo oye kimputa sayensi lati bere.
 
+  AKABA AKOLE - BERE NIBI TI O WA:
 
-  Focus: Building with AI
+  IPELE 1 - OLUMULO ALAGBARA (o le bere loni):
+  Lilo awon irinse AI pelu ogbon lati se nkan to niye: eto isowo, apẹrẹ, akọsilẹ eko, ohun elo ipolowo. Telo ti n lo AI lati se apẹrẹ iwe ikede ti o si n dahun awon onibara daradara ti n "ko" isowo re pelu AI tẹlẹ.
 
+  IPELE 2 - AKOLE WORKFLOW (ko nilo koodu):
+  Siso awon irinse po. Apeere: onibara kun Google Form → idahun de inu spreadsheet → AI kọ idahun pataki → o fọwọsi, o si fi ranse. Awon irinse bi Zapier n se awon isopo wonyi pelu titẹ, kii se koodu.
 
-  [In production, this would be 250-300 words of properly translated content]
+  IPELE 3 - AKOLE APP LAISI KOODU:
+  Awon eto bi Glide ati Bubble n yi spreadsheets pada si app gidi. Onta ọja le ko app ibere oja ti o rọrun fun oju-ona re - laisi ila koodu kan.
 
+  IPELE 4 - AKỌWE KOODU (ti o ba gbadun re):
+  Kiko Python yoo si ipele ti o jinle julo. Ati pe se o mo? AI funra re ni oluko eto komputa to dara julo lailai - o n salaye asise pelu suuru ni aago 11 alẹ, lofe!
 
-  Key points:
+  OHUN TI AWON AKOLE NAIJIRIA TI FI HAN:
+  Opolopo awon oludasile imo-ero Naijiria ti o yege bere laisi imo eto komputa. Won ri isoro ibile, won bere lati Ipele 1, won si goke. Obinrin oloja ti o mo IDI ti awon onibara fi n ṣaroye loye isoro naa ju akọwe koodu ti ko de oja ri lo.
 
-  - Understanding what is ai
+  ISORO RE + IRINSE AI = ANFAANI RE.
+  Lola a o lo eyi fun isowo ni pataki. Fun bayii, beere lowo ara re: "Isoro wo ni ayika mi ni imo-ero le ran lowo lati yanju?"
 
-  - Nigerian context and examples
-
-  - Practical applications
-
-  - How this helps you
-
-
-  Remember: AI is a tool to solve problems. Learn, practice, and build!'
 quiz:
-- question: What is the main focus of Day 5?
-  options:
-  - A. Building with AI
-  - B. Something else
-  - C. Random topic
-  - D. Not related
-  correct: 0
-- question: 'This lesson is about:'
-  options:
-  - A. Cooking
-  - B. What Is Ai
-  - C. Sports
-  - D. Music
-  correct: 1
-- question: Can AI help solve Nigerian problems?
-  options:
-  - A. Yes, definitely
-  - B. No, never
-  - C. Only in cities
-  - D. Maybe not
-  correct: 0
-- question: What should you do after this lesson?
-  options:
-  - A. Forget everything
-  - B. Practice and apply what you learned
-  - C. Do nothing
-  - D. Give up
-  correct: 1
-- question: Is what is ai important for Nigeria?
-  options:
-  - A. Yes, very important
-  - B. No value
-  - C. Only for foreigners
-  - D. Not relevant
-  correct: 0
+  - question: "Nje o nilo oye kimputa sayensi lati bere kiko nkan pelu AI?"
+    options:
+      - "A. Rara - o le bere bi olumulo alagbara loni"
+      - "B. Beeni, nigbagbogbo"
+      - "C. Awon ajeji nikan lo le ko nkan"
+      - "D. O nilo PhD"
+    correct: 0
+
+  - question: "Ki ni Ipele 2 (akole workflow)?"
+    options:
+      - "A. Siso awon irinse po laisi koodu"
+      - "B. Kiko Python ti o jinle"
+      - "C. Kiko roboti"
+      - "D. Tita komputa"
+    correct: 0
+
+  - question: "Ki ni awon eto laisi koodu bi Glide le se?"
+    options:
+      - "A. Yi spreadsheets pada si app gidi"
+      - "B. Orin nikan ni won le ṣe"
+      - "C. Gba ipo gbogbo awon onimo eto komputa"
+      - "D. Ko si ohun to wulo"
+    correct: 0
+
+  - question: "Bawo ni AI se le ran eni ti n ko koodu lowo?"
+    options:
+      - "A. O n salaye asise pelu suuru bi oluko ofe"
+      - "B. Ko le ran lowo pelu koodu"
+      - "C. O n kọ virus"
+      - "D. O n sise fun awon amoye nikan"
+    correct: 0
+
+  - question: "Anfaani wo ni obinrin oloja ni lori akọwe koodu ti ko de oja ri?"
+    options:
+      - "A. O loye isoro gidi naa daradara ju"
+      - "B. O n te kiakia ju"
+      - "C. O ni oye giga ju"
+      - "D. Ko si anfaani rara"
+    correct: 0

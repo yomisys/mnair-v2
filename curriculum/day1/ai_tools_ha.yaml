@@ -2,61 +2,78 @@ id: day1_ai_tools_ha
 day: 1
 topic: ai_tools
 language: ha
-title: 'Day 1: Ai Tools (Hausa)'
-content: 'This is Day 1 lesson on ai tools.
+title: "Kayan Aikin AI da Za Ka Iya Amfani da Su Yau"
+content: |
+  Ba sai ka zama mai shirye-shirye ba kafin ka yi amfani da AI! Ga kayan aikin AI kyauta da za ka fara amfani da su a wayarka yanzu:
 
+  CHATGPT (chat.openai.com):
+  - Yi tambayoyi ka samu amsoshi
+  - Rubuta imel, makala, ko tsare-tsaren kasuwanci
+  - Fassara tsakanin harsuna
+  - Yana aiki a kowace burauzar waya, ko da karancin data
 
-  Focus: Introduction to AI
+  GOOGLE LENS:
+  - Nuna kyamararka ga rubutu don fassara shi
+  - Gane tsirrai, dabbobi, ko kayayyaki
+  - Duba da kwafe rubutu daga hotuna
+  - Kyauta a wayoyin Android
 
+  GRAMMARLY:
+  - Yana duba kuskuren rubutu da nahawun Turancinka
+  - Yana taimaka maka rubuta ingantattun imel da sakonni
+  - Sigar kyauta na aiki sosai don bukatun yau da kullum
 
-  [In production, this would be 250-300 words of properly translated content]
+  CANVA AI:
+  - Zana fosta, tambari, da hotunan social media
+  - AI na ba da shawarar zane bisa abin da kake bukata
+  - Yana da kyau ga masu kananan kasuwanci
 
+  GOOGLE TRANSLATE:
+  - Fassara tsakanin harsuna sama da 100 har da Yoruba, Igbo, Hausa
+  - Yana aiki ba tare da intanet ba idan ka sauke fakitin harshe
+  - Zai iya fassara rubutu a cikin hotuna
 
-  Key points:
+  Wadannan kayan aikin KYAUTA ne ko suna da sigar kyauta. Za ka iya amfani da su a wayoyin Android masu rahusa da karancin data. Babban abu shi ne ka fara gwadawa da koyo!
 
-  - Understanding ai tools
+  Ka tuna: Hanya mafi kyau ta koyon AI ita ce amfani da shi. Fara yau!
 
-  - Nigerian context and examples
-
-  - Practical applications
-
-  - How this helps you
-
-
-  Remember: AI is a tool to solve problems. Learn, practice, and build!'
 quiz:
-- question: What is the main focus of Day 1?
-  options:
-  - A. Introduction to AI
-  - B. Something else
-  - C. Random topic
-  - D. Not related
-  correct: 0
-- question: 'This lesson is about:'
-  options:
-  - A. Cooking
-  - B. Ai Tools
-  - C. Sports
-  - D. Music
-  correct: 1
-- question: Can AI help solve Nigerian problems?
-  options:
-  - A. Yes, definitely
-  - B. No, never
-  - C. Only in cities
-  - D. Maybe not
-  correct: 0
-- question: What should you do after this lesson?
-  options:
-  - A. Forget everything
-  - B. Practice and apply what you learned
-  - C. Do nothing
-  - D. Give up
-  correct: 1
-- question: Is ai tools important for Nigeria?
-  options:
-  - A. Yes, very important
-  - B. No value
-  - C. Only for foreigners
-  - D. Not relevant
-  correct: 0
+  - question: "Me ChatGPT zai iya taimaka maka yi?"
+    options:
+      - "A. Dafa shinkafar jollof"
+      - "B. Amsa tambayoyi da rubuta rubutu"
+      - "C. Gyara janareta"
+      - "D. Aika kudi"
+    correct: 1
+
+  - question: "Wane kayan aikin AI zai iya fassara rubutu a cikin hoto?"
+    options:
+      - "A. Calculator"
+      - "B. Google Lens"
+      - "C. Manhajar agogo"
+      - "D. Lambobin waya"
+    correct: 1
+
+  - question: "Kana bukatar waya mai tsada don amfani da wadannan kayan aikin AI?"
+    options:
+      - "A. Eh, iPhone kawai"
+      - "B. Eh, manyan Android kawai"
+      - "C. A'a, yawancinsu na aiki a wayoyin Android masu rahusa"
+      - "D. Kana bukatar laptop"
+    correct: 2
+
+  - question: "Me Grammarly ke taimakawa?"
+    options:
+      - "A. Lissafi"
+      - "B. Duba kuskuren rubutu da nahawu"
+      - "C. Kunna waka"
+      - "D. Kiran waya"
+    correct: 1
+
+  - question: "Shin Google Translate na iya aiki ba tare da intanet ba?"
+    options:
+      - "A. A'a, ko kadan"
+      - "B. Eh, idan ka sauke fakitin harshe"
+      - "C. A Amurka kawai"
+      - "D. Sai da biyan kudi kawai"
+    correct: 1

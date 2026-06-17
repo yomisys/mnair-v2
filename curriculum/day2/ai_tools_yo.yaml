@@ -2,61 +2,69 @@ id: day2_ai_tools_yo
 day: 2
 topic: ai_tools
 language: yo
-title: 'Day 2: Ai Tools (Yoruba)'
-content: 'This is Day 2 lesson on ai tools.
+title: "Awon Irinse ML Ti O Ti N Lo Teletele"
+content: |
+  Iyalenu: o ti n lo machine learning fun odun pupo laisi mimo! Loni, je ki a wa ML ti o farapamo sinu awon app re ojoojumo - ki a si ko bi a se le lo o daradara ju.
 
+  KEYBOARD RE:
+  Nigbati o ba te "bawo ni" ti foonu re si daba "o se", ML model ni ti a ko pelu biliọnu gbolohun. Imoran: keyboard re n ko ara RE bi akoko ti n lo - yoo tie ko ede Yoruba re!
 
-  Focus: Machine Learning Basics
+  WHATSAPP & SOCIAL MEDIA:
+  - Eto status ati feed: ML n so asotele awon ifiweranṣẹ ti yoo wu o
+  - Yiyi akosile ohun pada ni awon foonu kan: ML n yi ọrọ sisọ pada si kikọ
+  - Imudara foto: ML n tan imole si foto dudu funra re
 
+  YOUTUBE & AWON APP ORIN:
+  Ero imoran je ML patapata. O ko lati odo miliọnu awon oluwo: "Awon ti won wo A tun gbadun B." Imoran: awon imoran re yoo dara si ti o ba te "Not interested" lori fidio ti ko wu o - o n fun modeli ni ami ikeko to dara ju!
 
-  [In production, this would be 250-300 words of properly translated content]
+  AWON APP KAMERA:
+  Portrait mode (eyin ti o sé), night mode, ati imudara oju - gbogbo won je ML models. Foonu naira 80,000 re n se ise ti o nilo ero alamoja ni odun 10 seyin.
 
+  MAAPU:
+  Google Maps n so asotele pe Third Mainland Bridge yoo kun ni aago marun-un irole nitori ML ko lati miliọnu irin-ajo ti o koja.
 
-  Key points:
+  EKO NAA: ML kii se imo-ero ojo iwaju - o ti wa ninu apo re. Bayii ti o ti le RI i, o le lo o pelu ogbon:
+  1. Fun awon app ni esi otito (feran/ko feran) lati mu imoran dara si
+  2. Lo titẹ ohun ni Geesi - o ti dara gan-an bayii
+  3. Dan wiwa Google Photos wo: te "food" yoo si ri awon foto ounje re pelu ML!
 
-  - Understanding ai tools
-
-  - Nigerian context and examples
-
-  - Practical applications
-
-  - How this helps you
-
-
-  Remember: AI is a tool to solve problems. Learn, practice, and build!'
 quiz:
-- question: What is the main focus of Day 2?
-  options:
-  - A. Machine Learning Basics
-  - B. Something else
-  - C. Random topic
-  - D. Not related
-  correct: 0
-- question: 'This lesson is about:'
-  options:
-  - A. Cooking
-  - B. Ai Tools
-  - C. Sports
-  - D. Music
-  correct: 1
-- question: Can AI help solve Nigerian problems?
-  options:
-  - A. Yes, definitely
-  - B. No, never
-  - C. Only in cities
-  - D. Maybe not
-  correct: 0
-- question: What should you do after this lesson?
-  options:
-  - A. Forget everything
-  - B. Practice and apply what you learned
-  - C. Do nothing
-  - D. Give up
-  correct: 1
-- question: Is ai tools important for Nigeria?
-  options:
-  - A. Yes, very important
-  - B. No value
-  - C. Only for foreigners
-  - D. Not relevant
-  correct: 0
+  - question: "Ki ni o n mu ki keyboard re daba oro ti o kan?"
+    options:
+      - "A. Iwe atumo ede ti a fi owo se"
+      - "B. ML model ti a ko pelu biliọnu gbolohun"
+      - "C. Akiyesi lasan"
+      - "D. Ile-ise network re"
+    correct: 1
+
+  - question: "Bawo ni YouTube se n pinnu ohun ti yoo daba fun o?"
+    options:
+      - "A. ML ko awon ilana lati odo miliọnu awon oluwo"
+      - "B. Awon osise n yan fidio fun olukuluku"
+      - "C. O n fi fidio han ni telentele alifabeti"
+      - "D. Ijoba lo n yan"
+    correct: 0
+
+  - question: "Bawo ni o se le mu awon imoran app re dara si?"
+    options:
+      - "A. Ra foonu titun lodoodun"
+      - "B. Fun won ni esi otito bi titẹ 'Not interested'"
+      - "C. Wo ohun gbogbo lati da a ru"
+      - "D. O ko le ni ipa lori won"
+    correct: 1
+
+  - question: "Eya kamera wo lo n lo machine learning?"
+    options:
+      - "A. Portrait mode pelu eyin ti o sé"
+      - "B. Lẹnsi gidi"
+      - "C. Bọtini ohun"
+      - "D. Iho gbigba agbara"
+    correct: 0
+
+  - question: "Bawo ni Google Maps se mo pe ijabọ yoo po ni aago marun-un?"
+    options:
+      - "A. O n se akiyesi lati oju-ojo"
+      - "B. ML ko lati miliọnu irin-ajo ti o koja"
+      - "C. Olopa n royin re pelu owo"
+      - "D. Ko le so asotele ijabọ"
+    correct: 1

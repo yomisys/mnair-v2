@@ -2,61 +2,68 @@ id: day2_ai_ethics_ha
 day: 2
 topic: ai_ethics
 language: ha
-title: 'Day 2: Ai Ethics (Hausa)'
-content: 'This is Day 2 lesson on ai ethics.
+title: "Shara Ciki, Shara Waje: Nuna Bambanci a Bayanan Horo"
+content: |
+  Jiya ka koyi cewa dole AI ya zama mai adalci. Yau, bari mu fahimci INDA rashin adalci ke fitowa: bayanan horo.
 
+  Ka tuna: machine learning na koyo daga misalai. To me zai faru idan misalan da kansu ba su da adalci? AI zai koyi rashin adalcin ma! Masana kimiyyar kwamfuta na kiran wannan "Garbage In, Garbage Out" (Shara Ciki, Shara Waje).
 
-  Focus: Machine Learning Basics
+  MISALAI NA GASKIYA:
 
+  1. KAYAN AIKIN DAUKAR MA'AIKATA:
+     Wani shahararren kamfani ya gina AI don tantance takardun neman aiki. An horar da shi da bayanan daukar ma'aikata na shekaru 10 - galibi maza. AI ya koyi kin CV na mata! Bayanan na da son kai, don haka AI ya zama mai son kai. Sai da suka yi watsi da shi.
 
-  [In production, this would be 250-300 words of properly translated content]
+  2. GANE FUSKA:
+     Tsofaffin tsarin gane fuska an horar da su galibi da fuskoki masu haske. Sakamako: sun kasa har kashi 35% a fuskar mata masu duhun fata, amma kasa da kashi 1% a maza masu haske. Ka yi tunanin idan 'yan sandan Najeriya na amfani da wannan don tantancewa!
 
+  3. KIMANTA LAMUNI:
+     Idan an horar da modelin lamuni da bayanan masu albashi na Lagos kawai, zai iya kin 'yan kasuwa masu kokari na Kano ko manoman Benue ba bisa adalci ba - ba don ba za su biya ba, amma don modelin bai taba koyon alamunsu ba.
 
-  Key points:
+  ME ZA A IYA YI?
+  - Tattara bayanai iri-iri: dukkan jinsi, dukkan yankuna, dukkan harsuna, birni DA karkara
+  - Gwada AI a kan kungiyoyi daban-daban kafin kaddamarwa
+  - Rike mutane a cikin muhimman shawarwari (lamuni, ayyuka, shari'a)
+  - Yi tambayoyi! Idan AI ya hana ka wani abu, za ka iya tambayar dalili
 
-  - Understanding ai ethics
+  A matsayinka na mai amfani ko mai gina AI a Najeriya nan gaba, ka tuna: bayanai masu adalci na haifar da AI mai adalci. Bambancinmu - kabilu sama da 250 - dole ne ya bayyana a cikin bayanannmu.
 
-  - Nigerian context and examples
-
-  - Practical applications
-
-  - How this helps you
-
-
-  Remember: AI is a tool to solve problems. Learn, practice, and build!'
 quiz:
-- question: What is the main focus of Day 2?
-  options:
-  - A. Machine Learning Basics
-  - B. Something else
-  - C. Random topic
-  - D. Not related
-  correct: 0
-- question: 'This lesson is about:'
-  options:
-  - A. Cooking
-  - B. Ai Ethics
-  - C. Sports
-  - D. Music
-  correct: 1
-- question: Can AI help solve Nigerian problems?
-  options:
-  - A. Yes, definitely
-  - B. No, never
-  - C. Only in cities
-  - D. Maybe not
-  correct: 0
-- question: What should you do after this lesson?
-  options:
-  - A. Forget everything
-  - B. Practice and apply what you learned
-  - C. Do nothing
-  - D. Give up
-  correct: 1
-- question: Is ai ethics important for Nigeria?
-  options:
-  - A. Yes, very important
-  - B. No value
-  - C. Only for foreigners
-  - D. Not relevant
-  correct: 0
+  - question: "Menene ma'anar 'Garbage In, Garbage Out'?"
+    options:
+      - "A. Kwamfutoci na bukatar tsaftacewa"
+      - "B. Bayanan horo masu son kai na haifar da AI mai son kai"
+      - "C. Ya kamata a zubar da tsofaffin wayoyi"
+      - "D. AI na haifar da shara"
+    correct: 1
+
+  - question: "Me ya sa AI na daukar ma'aikata ya ki CV na mata?"
+    options:
+      - "A. An horar da shi da ma'aikatan baya wadanda galibi maza ne"
+      - "B. Mata sun rubuta munanan CV"
+      - "C. Kwamfutar ta lalace"
+      - "D. An shirya shi da gangan ya yi haka"
+    correct: 0
+
+  - question: "Me ya sa tsofaffin tsarin gane fuska suka fi kasawa a fuskoki masu duhu?"
+    options:
+      - "A. Ba a iya daukar hoton fata mai duhu"
+      - "B. Bayanan horo sun fi yawa da fuskoki masu haske"
+      - "C. Kyamarorin sun yi rahusa"
+      - "D. Ba a iya gyarawa"
+    correct: 1
+
+  - question: "Ta yaya za mu rage son kai a AI na kimanta lamuni na Najeriya?"
+    options:
+      - "A. Horar da shi da bayanai daga dukkan yankuna da sana'o'i"
+      - "B. Amfani da bayanan Lagos kawai"
+      - "C. Cire dukkan bayanai"
+      - "D. Bari ya yanke shawara shi kadai"
+    correct: 0
+
+  - question: "Me ya kamata ya faru da muhimman shawarwarin AI kamar lamuni da ayyuka?"
+    options:
+      - "A. AI ya yanke shawara shi kadai ba tare da daukaka kara ba"
+      - "B. Mutane su ci gaba da kasancewa a ciki"
+      - "C. Su zama bisa kuri'a"
+      - "D. Baki kawai za su yanke shawara"
+    correct: 1

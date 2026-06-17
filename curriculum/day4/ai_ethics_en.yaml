@@ -2,61 +2,72 @@ id: day4_ai_ethics_en
 day: 4
 topic: ai_ethics
 language: en
-title: 'Day 4: Ai Ethics (English)'
-content: 'This is Day 4 lesson on ai ethics.
+title: "Deepfakes and Fake News: Staying Sharp in the AI Age"
+content: |
+  AI can now create fake videos of real people saying things they never said. In an election season or a family WhatsApp group, this is dangerous. Today: how to protect yourself and others.
 
+  WHAT AI CAN FAKE TODAY:
+  - VIDEOS: A politician "confessing" to crimes - face and voice cloned
+  - AUDIO: A "kidnapper" using your relative's cloned voice demanding ransom
+  - IMAGES: Fake photos of events that never happened
+  - TEXT: Thousands of fake social media accounts spreading coordinated lies
 
-  Focus: AI Applications
+  REAL NIGERIAN RISKS:
+  - Election misinformation designed to cause unrest
+  - "Celebrity investment endorsements" - fake videos of famous Nigerians promoting fraud schemes
+  - Voice-clone scam calls to family members
+  - Fake "breaking news" images during emergencies
 
+  YOUR DEFENSE KIT - 6 CHECKS:
+  1. SOURCE: Who posted this first? Established news house or anonymous account?
+  2. CROSS-CHECK: Is ANY credible outlet reporting it? If only one source - wait
+  3. LOOK CLOSE: AI videos often have odd blinking, mismatched lip-sync, strange hands
+  4. EMOTION TEST: Content designed to make you VERY angry or VERY afraid is often manipulation
+  5. REVERSE SEARCH: Google Lens can show if an "event photo" is actually from 2015
+  6. FAMILY CODE WORD: Agree on a secret question with relatives to defeat voice-clone scams
 
-  [In production, this would be 250-300 words of properly translated content]
+  BEFORE YOU FORWARD:
+  That "share fast!" message in the family group? Check it first. Forwarding fake news makes YOU part of the problem - and Nigerian law now addresses spreading false information.
 
+  Be the person in your community who verifies. In the AI age, that's a superpower.
 
-  Key points:
-
-  - Understanding ai ethics
-
-  - Nigerian context and examples
-
-  - Practical applications
-
-  - How this helps you
-
-
-  Remember: AI is a tool to solve problems. Learn, practice, and build!'
 quiz:
-- question: What is the main focus of Day 4?
-  options:
-  - A. AI Applications
-  - B. Something else
-  - C. Random topic
-  - D. Not related
-  correct: 0
-- question: 'This lesson is about:'
-  options:
-  - A. Cooking
-  - B. Ai Ethics
-  - C. Sports
-  - D. Music
-  correct: 1
-- question: Can AI help solve Nigerian problems?
-  options:
-  - A. Yes, definitely
-  - B. No, never
-  - C. Only in cities
-  - D. Maybe not
-  correct: 0
-- question: What should you do after this lesson?
-  options:
-  - A. Forget everything
-  - B. Practice and apply what you learned
-  - C. Do nothing
-  - D. Give up
-  correct: 1
-- question: Is ai ethics important for Nigeria?
-  options:
-  - A. Yes, very important
-  - B. No value
-  - C. Only for foreigners
-  - D. Not relevant
-  correct: 0
+  - question: "What is a deepfake?"
+    options:
+      - "A. AI-generated fake video, audio, or images of real people"
+      - "B. A deep borehole"
+      - "C. A fishing technique"
+      - "D. A type of dance"
+    correct: 0
+
+  - question: "Which is a sign a video might be AI-generated?"
+    options:
+      - "A. Odd blinking and mismatched lip-sync"
+      - "B. Good lighting"
+      - "C. It has sound"
+      - "D. It is in color"
+    correct: 0
+
+  - question: "What is the 'emotion test'?"
+    options:
+      - "A. Content designed to make you very angry or afraid is often manipulation"
+      - "B. Crying during films"
+      - "C. A hospital test"
+      - "D. Testing your phone's speed"
+    correct: 0
+
+  - question: "How can a family code word protect you?"
+    options:
+      - "A. It defeats voice-clone scam calls pretending to be relatives"
+      - "B. It makes calls cheaper"
+      - "C. It improves network signal"
+      - "D. It cannot help"
+    correct: 0
+
+  - question: "What should you do before forwarding shocking news?"
+    options:
+      - "A. Forward it as fast as possible"
+      - "B. Verify it from credible sources first"
+      - "C. Add more exclamation marks"
+      - "D. Translate it first"
+    correct: 1

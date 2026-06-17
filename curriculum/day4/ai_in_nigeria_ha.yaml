@@ -2,61 +2,70 @@ id: day4_ai_in_nigeria_ha
 day: 4
 topic: ai_in_nigeria
 language: ha
-title: 'Day 4: Ai In Nigeria (Hausa)'
-content: 'This is Day 4 lesson on ai in nigeria.
+title: "Aikace-aikacen AI Masu Canza Rayuwar 'Yan Najeriya"
+content: |
+  Yau, labarai na gaske na aikace-aikacen AI da ke aiki a fadin Najeriya yanzu - da ayyukan da ke girma a kusa da su.
 
+  LAFIYA - UBENWA:
+  Wani kamfanin Najeriya ya gina AI da ke nazarin kukan jariri don gano matsalar shakar iska a haihuwa - babban dalilin mutuwar jarirai. An horar da AI da rikodin kukan jarirai. Yanzu ma'aikaciyar jinya mai waya za ta iya duba jarirai a asibitocin karkara ba tare da tsadar kayan aiki ba.
 
-  Focus: AI Applications
+  NOMA - AIRSMAT DA SAURANSU:
+  Jirage marasa matuka masu vision AI na zana taswirar gonaki, kirga tsirrai, da gano wuraren matsala. Na'urorin auna kasa na ciyar da modelolin hasashe da ke gaya wa manoma daidai lokacin ban ruwa. Hello Tractor ("Uber na tarakta") na amfani da AI don hada masu tarakta da manoman da ke bukatarsu.
 
+  KUDI - KO'INA:
+  Bayan gano zamba, AI yanzu na tafiyar da: manhajojin lamuni nan take, shawarwarin kasuwancin hannun jari, farashin inshora, da chatbots masu warware korafe-korafen banki cikin mintuna maimakon layin reshe.
 
-  [In production, this would be 250-300 words of properly translated content]
+  ILIMI:
+  Mataimakan gyaran jarrabawa na AI na taimaka wa malamai yin gyara da sauri. Manhajojin karatu na daidaitawa da matakin karatun kowane yaro. JAMB na amfani da jarrabawar kwamfuta tare da sa idon AI kan maguɗin jarrabawa.
 
+  NISHADI - NOLLYWOOD:
+  Editoci na amfani da AI don tsaftace sauti, gyara launi, da samar da rubutun kasa a harsuna da yawa - na taimaka wa fina-finan Najeriya kaiwa ga masu kallo na duniya.
 
-  Key points:
+  SABBIN AYYUKA MASU BAYYANA:
+  - Masu horar da AI da masu yin lakabi ga bayanai
+  - Injiniyoyin prompt (mutane gwanaye wajen umartar AI)
+  - Kwararrun tallafin AI a bankuna da kamfanonin sadarwa
+  - Matukan jirage marasa matuka na noma
 
-  - Understanding ai in nigeria
+  Lura: AI bai cire ma'aikaciyar jinya, manomi, malami, ko edita ba - ya kara musu karfi ne. 'Yan Najeriya masu nasara da AI su ne wadanda suka koyi AMFANI da shi. Daidai abin da kake yi ke nan!
 
-  - Nigerian context and examples
-
-  - Practical applications
-
-  - How this helps you
-
-
-  Remember: AI is a tool to solve problems. Learn, practice, and build!'
 quiz:
-- question: What is the main focus of Day 4?
-  options:
-  - A. AI Applications
-  - B. Something else
-  - C. Random topic
-  - D. Not related
-  correct: 0
-- question: 'This lesson is about:'
-  options:
-  - A. Cooking
-  - B. Ai In Nigeria
-  - C. Sports
-  - D. Music
-  correct: 1
-- question: Can AI help solve Nigerian problems?
-  options:
-  - A. Yes, definitely
-  - B. No, never
-  - C. Only in cities
-  - D. Maybe not
-  correct: 0
-- question: What should you do after this lesson?
-  options:
-  - A. Forget everything
-  - B. Practice and apply what you learned
-  - C. Do nothing
-  - D. Give up
-  correct: 1
-- question: Is ai in nigeria important for Nigeria?
-  options:
-  - A. Yes, very important
-  - B. No value
-  - C. Only for foreigners
-  - D. Not relevant
-  correct: 0
+  - question: "Me AI na Ubenwa ke nazari don gano matsalar shakar iska a haihuwa?"
+    options:
+      - "A. Kukan jariri"
+      - "B. Samfurin jini kawai"
+      - "C. Shekarun uwa"
+      - "D. Kudin asibiti"
+    correct: 0
+
+  - question: "Menene Hello Tractor?"
+    options:
+      - "A. Shirin yara"
+      - "B. Sabis na AI mai hada masu tarakta da manoma"
+      - "C. Nau'in waya"
+      - "D. Gidan mai"
+    correct: 1
+
+  - question: "Ta yaya AI ke taimaka wa Nollywood?"
+    options:
+      - "A. Tsaftace sauti, gyara launi, da samar da rubutun kasa"
+      - "B. Yin wasa a dukkan fina-finai"
+      - "C. Gina silima"
+      - "D. Ba ya taimakawa ko kadan"
+    correct: 0
+
+  - question: "Wanne SABON aiki ne AI ya kirkira?"
+    options:
+      - "A. Injiniyan prompt"
+      - "B. Mai gyaran taya"
+      - "C. Mai shela"
+      - "D. Mai sayar da mai"
+    correct: 0
+
+  - question: "Me ya faru da ma'aikatan jinya, manoma, da malaman da ke amfani da AI?"
+    options:
+      - "A. Duk sun rasa ayyukansu"
+      - "B. AI ya kara musu karfi a aikinsu"
+      - "C. Robots sun maye gurbinsu"
+      - "D. Babu abin da ya canza"
+    correct: 1

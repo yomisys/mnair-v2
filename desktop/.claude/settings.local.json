@@ -1,0 +1,22 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(docker info *)",
+      "Bash(docker compose *)",
+      "Bash(netstat -ano)",
+      "Bash(findstr \":9000\")",
+      "Bash(tasklist /FI \"PID eq 37328\")",
+      "Bash(tasklist /FI \"PID eq 20792\")",
+      "PowerShell(Get-Process *)",
+      "PowerShell(Get-NetTCPConnection *)",
+      "PowerShell(netstat *)",
+      "Bash(npm start *)",
+      "Bash(/c/Users/yomis/mnair/venv/Scripts/python.exe -m uvicorn app.main:app --host 0.0.0.0 --port 8000 --log-level info)",
+      "Bash(kill 12504)",
+      "Bash(/c/Users/yomis/mnair/venv/Scripts/python.exe -m uvicorn app.main:app --host 0.0.0.0 --port 8000 --log-level warning)",
+      "Bash(node -e \"const n=require\\('net'\\);const s=new n.Socket\\(\\);s.setTimeout\\(2000\\);s.on\\('connect',\\(\\)=>{console.log\\('IPv4 OK'\\);s.destroy\\(\\)}\\);s.on\\('error',e=>console.log\\('IPv4 FAIL:',e.message\\)\\);s.connect\\(8000,'localhost'\\)\")",
+      "PowerShell(Stop-Process *)",
+      "Bash(curl *)"
+    ]
+  }
+}

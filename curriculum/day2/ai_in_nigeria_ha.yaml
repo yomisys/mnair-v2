@@ -2,61 +2,61 @@ id: day2_ai_in_nigeria_ha
 day: 2
 topic: ai_in_nigeria
 language: ha
-title: 'Day 2: Ai In Nigeria (Hausa)'
-content: 'This is Day 2 lesson on ai in nigeria.
+title: "Machine Learning na Magance Matsalolin Najeriya"
+content: |
+  Yanzu da ka san machine learning na koyo daga misalai, bari mu ga yadda kamfanonin Najeriya ke amfani da shi kullum.
 
+  LAMUNI BA TARE DA JINGINA BA:
+  Bankunan gargajiya na neman takardun fili ko asusun albashi. Amma manhajojin fintech kamar Carbon da FairMoney na amfani da ML da aka horar da dubban masu karbar lamuni na baya. Modelin ya koyi alamu: dabi'ar sayen kati, tarihin biya, har ma da yadda kake cike fom. Sakamako? Mai sayarwa a kasuwar Onitsha za ta iya samun lamuni cikin minti 5 ba tare da zuwa banki ba.
 
-  Focus: Machine Learning Basics
+  GANO ZAMBA:
+  Modelolin ML a bankunan Najeriya na sa ido kan miliyoyin ma'amaloli. Sun koyi yadda al'ada take a gare ka. Idan katinka ya sayi kayan lantarki da karfe 3 na dare a wata kasa, modelin zai gano shi nan take. Tsayayyun dokoki ba za su iya yin haka ba - masu zamba na canza dabaru, amma ML na ci gaba da koyon sabbin alamu.
 
+  GANO CUTUTTUKAN AMFANIN GONA:
+  Masu bincike sun horar da modelolin ML da dubban hotunan ganyen rogo masu lafiya da marasa lafiya. Yanzu manhajoji za su iya gaya wa manomi a jihar Ogun ko rogonsa na da cutar mosaic - daga hoton waya kawai. Modelin ya koya daga misalai, daidai kamar yadda ka koyi mangwaro!
 
-  [In production, this would be 250-300 words of properly translated content]
+  KARATU NA MUSAMMAN:
+  ML na uLesson na lura da tambayoyin da dalibi ke kasawa sai ya daidaita darussan gaba. Dalibai biyu ba sa ganin hanya iri daya - kowanne na samun abin da yake bukata.
 
+  DARASIN: A kowane hali, 'yan Najeriya sun tattara misalan GIDA suka horar da modeloli da su. AI na kasashen waje da aka horar da bayanan waje yakan kasa a nan. Makomar AI ta Najeriya ta dogara da bayanan Najeriya - da mutane irinka da suka fahimce shi.
 
-  Key points:
-
-  - Understanding ai in nigeria
-
-  - Nigerian context and examples
-
-  - Practical applications
-
-  - How this helps you
-
-
-  Remember: AI is a tool to solve problems. Learn, practice, and build!'
 quiz:
-- question: What is the main focus of Day 2?
-  options:
-  - A. Machine Learning Basics
-  - B. Something else
-  - C. Random topic
-  - D. Not related
-  correct: 0
-- question: 'This lesson is about:'
-  options:
-  - A. Cooking
-  - B. Ai In Nigeria
-  - C. Sports
-  - D. Music
-  correct: 1
-- question: Can AI help solve Nigerian problems?
-  options:
-  - A. Yes, definitely
-  - B. No, never
-  - C. Only in cities
-  - D. Maybe not
-  correct: 0
-- question: What should you do after this lesson?
-  options:
-  - A. Forget everything
-  - B. Practice and apply what you learned
-  - C. Do nothing
-  - D. Give up
-  correct: 1
-- question: Is ai in nigeria important for Nigeria?
-  options:
-  - A. Yes, very important
-  - B. No value
-  - C. Only for foreigners
-  - D. Not relevant
-  correct: 0
+  - question: "Ta yaya manhajojin fintech ke ba da lamuni ba tare da jingina ba?"
+    options:
+      - "A. Ba sa duba komai"
+      - "B. Modelolin ML na koyon alamu daga dubban masu karbar lamuni na baya"
+      - "C. Suna kiran dattijon kauyenka"
+      - "D. Ma'aikatan gwamnati kawai suke ba lamuni"
+    correct: 1
+
+  - question: "Me ya sa ML ya fi tsayayyun dokoki wajen gano zamba?"
+    options:
+      - "A. ML ya fi rahusa wajen rubutawa"
+      - "B. Masu zamba na canza dabaru, ML kuma na ci gaba da koyon sabbin alamu"
+      - "C. Tsayayyun dokoki haramun ne"
+      - "D. ML ba ya taba kuskure"
+    correct: 1
+
+  - question: "Ta yaya aka horar da modelolin gano cututtukan amfanin gona?"
+    options:
+      - "A. Da dubban hotunan ganye masu lafiya da marasa lafiya"
+      - "B. Ta karanta littattafan noma"
+      - "C. Ta tattaunawa da manoma"
+      - "D. Ba a horar da su ba ko kadan"
+    correct: 0
+
+  - question: "Me ya sa AI na kasashen waje kan kasa a Najeriya?"
+    options:
+      - "A. Hanyoyin sadarwar Najeriya na toshe shi"
+      - "B. An horar da shi da bayanan waje, ba misalan Najeriya ba"
+      - "C. Ya yi rahusa sosai"
+      - "D. AI na waje ba ya taba kasawa"
+    correct: 1
+
+  - question: "Me ML na uLesson ke kebancewa ga kowane dalibi?"
+    options:
+      - "A. Kayan makaranta"
+      - "B. Darussan da ake nunawa, bisa tambayoyin da ya kasa"
+      - "C. Ranakun jarrabawa"
+      - "D. Kudin makaranta"
+    correct: 1

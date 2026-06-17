@@ -2,61 +2,70 @@ id: day3_ai_ethics_pid
 day: 3
 topic: ai_ethics
 language: pid
-title: 'Day 3: Ai Ethics (Pidgin)'
-content: 'This is Day 3 lesson on ai ethics.
+title: "Your Data, Your Rights: Privacy and the NDPA"
+content: |
+  We don see say AI dey chop data - many times na YOUR data. Today, learn your rights and how to protect yourself.
 
+  WHICH DATA YOU DEY GIVE AWAY?
+  Every day, apps dey collect your: location, contacts, photos, messages, browsing history, voice recordings, and how you dey spend money. Some collection necessary (Maps need your location). Some na too much (why torchlight app go need your contacts?).
 
-  Focus: Data and AI
+  YOUR RIGHTS UNDER THE NDPA:
+  The Nigeria Data Protection Act (2023) give every Nigerian rights:
+  1. CONSENT: Companies must ask permission before dem collect your personal data
+  2. ACCESS: You fit ask any company which data dem hold about you
+  3. CORRECTION: You fit demand make dem fix wrong information
+  4. DELETION: You fit ask them to delete your data
+  5. COMPLAINT: Report violations to the Nigeria Data Protection Commission (NDPC)
 
+  PROTECT YOURSELF - 5 HABITS:
+  1. Check app permissions: Settings → Apps → Permissions. Remove wetin no necessary
+  2. Think before you share: your BVN, NIN, and OTP codes - "customer care" for WhatsApp NO need them EVER - na fraud be that!
+  3. Use strong PINs and enable two-step verification for WhatsApp
+  4. Read before you click "I Agree" - at least check which data dem dey take
+  5. Take care with quizzes and games wey dey ask for personal details
 
-  [In production, this would be 250-300 words of properly translated content]
+  DATA AND AI ETHICS:
+  Companies wey dey train AI with your data suppose tell you. When this course dey collect your progress, we dey tell you why (to issue your certificate) and how long we go keep am (90 days for conversation data). Na NDPA compliance be that - and na your right to expect am everywhere.
 
+  Your data get value. Guard am like you dey guard your money.
 
-  Key points:
-
-  - Understanding ai ethics
-
-  - Nigerian context and examples
-
-  - Practical applications
-
-  - How this helps you
-
-
-  Remember: AI is a tool to solve problems. Learn, practice, and build!'
 quiz:
-- question: What is the main focus of Day 3?
-  options:
-  - A. Data and AI
-  - B. Something else
-  - C. Random topic
-  - D. Not related
-  correct: 0
-- question: 'This lesson is about:'
-  options:
-  - A. Cooking
-  - B. Ai Ethics
-  - C. Sports
-  - D. Music
-  correct: 1
-- question: Can AI help solve Nigerian problems?
-  options:
-  - A. Yes, definitely
-  - B. No, never
-  - C. Only in cities
-  - D. Maybe not
-  correct: 0
-- question: What should you do after this lesson?
-  options:
-  - A. Forget everything
-  - B. Practice and apply what you learned
-  - C. Do nothing
-  - D. Give up
-  correct: 1
-- question: Is ai ethics important for Nigeria?
-  options:
-  - A. Yes, very important
-  - B. No value
-  - C. Only for foreigners
-  - D. Not relevant
-  correct: 0
+  - question: "Wetin NDPA require before companies collect your personal data?"
+    options:
+      - "A. Nothing at all"
+      - "B. Your consent (permission)"
+      - "C. Payment of fee"
+      - "D. Only court order"
+    correct: 1
+
+  - question: "Who you suppose give your OTP code?"
+    options:
+      - "A. Anybody wey claim say na customer care"
+      - "B. Nobody - real companies no dey ever ask for am"
+      - "C. WhatsApp groups"
+      - "D. Anybody wey call you"
+    correct: 1
+
+  - question: "Which right NDPA give you?"
+    options:
+      - "A. To ask companies make dem delete your data"
+      - "B. Free internet data every month"
+      - "C. Free smartphones"
+      - "D. Unlimited bank loans"
+    correct: 0
+
+  - question: "Where you dey report data protection violations for Naija?"
+    options:
+      - "A. The Nigeria Data Protection Commission (NDPC)"
+      - "B. Your local mechanic"
+      - "C. Only radio station"
+      - "D. Nowhere - you no fit report violations"
+    correct: 0
+
+  - question: "Why you suppose check app permissions?"
+    options:
+      - "A. To make apps run slower"
+      - "B. To remove unnecessary access to your private data"
+      - "C. Permissions no matter"
+      - "D. To use more battery"
+    correct: 1

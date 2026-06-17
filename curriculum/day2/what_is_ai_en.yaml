@@ -2,61 +2,61 @@ id: day2_what_is_ai_en
 day: 2
 topic: what_is_ai
 language: en
-title: 'Day 2: What Is Ai (English)'
-content: 'This is Day 2 lesson on what is ai.
+title: "AI vs Machine Learning: What's the Difference?"
+content: |
+  Yesterday you learned what AI is. Today, let's understand the engine inside AI: Machine Learning (ML).
 
+  ORDINARY PROGRAMS follow fixed rules. A calculator always gives 2 + 2 = 4 because a programmer wrote that rule. If something new happens, the program cannot adapt.
 
-  Focus: Machine Learning Basics
+  MACHINE LEARNING is different. Instead of writing rules, we show the computer examples and it discovers the rules by itself. Nobody can write rules for recognizing every face in Nigeria - but ML can learn faces from photos.
 
+  Think of it like this:
+  - Ordinary program: A recipe card - follow steps exactly, same result every time
+  - Machine learning: A market trader's instinct - after years of customers, she knows who will price seriously and who is just looking
 
-  [In production, this would be 250-300 words of properly translated content]
+  AI is the big goal (machines that act intelligently). Machine Learning is the main method we use today to reach that goal. Almost every AI you used yesterday - fraud detection, face unlock, word prediction - is machine learning.
 
+  There is also DEEP LEARNING - a powerful type of ML inspired by the human brain. It powers ChatGPT, voice assistants, and photo recognition. Deep learning needs lots of data and computing power.
 
-  Key points:
+  Simple summary: AI is the dream, Machine Learning is the engine, Deep Learning is the turbo version of that engine. You don't need mathematics to understand this - you just need to remember: ML learns from examples, not fixed rules.
 
-  - Understanding what is ai
-
-  - Nigerian context and examples
-
-  - Practical applications
-
-  - How this helps you
-
-
-  Remember: AI is a tool to solve problems. Learn, practice, and build!'
 quiz:
-- question: What is the main focus of Day 2?
-  options:
-  - A. Machine Learning Basics
-  - B. Something else
-  - C. Random topic
-  - D. Not related
-  correct: 0
-- question: 'This lesson is about:'
-  options:
-  - A. Cooking
-  - B. What Is Ai
-  - C. Sports
-  - D. Music
-  correct: 1
-- question: Can AI help solve Nigerian problems?
-  options:
-  - A. Yes, definitely
-  - B. No, never
-  - C. Only in cities
-  - D. Maybe not
-  correct: 0
-- question: What should you do after this lesson?
-  options:
-  - A. Forget everything
-  - B. Practice and apply what you learned
-  - C. Do nothing
-  - D. Give up
-  correct: 1
-- question: Is what is ai important for Nigeria?
-  options:
-  - A. Yes, very important
-  - B. No value
-  - C. Only for foreigners
-  - D. Not relevant
-  correct: 0
+  - question: "How is machine learning different from an ordinary program?"
+    options:
+      - "A. It learns rules from examples instead of following fixed rules"
+      - "B. It is always slower"
+      - "C. It only works on big computers"
+      - "D. There is no difference"
+    correct: 0
+
+  - question: "What is the relationship between AI and Machine Learning?"
+    options:
+      - "A. They are enemies"
+      - "B. ML is the main method used to achieve AI today"
+      - "C. AI is a type of ML"
+      - "D. They are completely unrelated"
+    correct: 1
+
+  - question: "Which is an example of a fixed-rule program (NOT machine learning)?"
+    options:
+      - "A. Face unlock on your phone"
+      - "B. A calculator adding numbers"
+      - "C. Fraud detection in banking apps"
+      - "D. Word prediction while typing"
+    correct: 1
+
+  - question: "What is deep learning?"
+    options:
+      - "A. Studying late at night"
+      - "B. A powerful type of ML inspired by the human brain"
+      - "C. Learning underwater"
+      - "D. A type of phone battery"
+    correct: 1
+
+  - question: "What does machine learning need to discover rules?"
+    options:
+      - "A. Many examples (data)"
+      - "B. A bigger screen"
+      - "C. More electricity only"
+      - "D. A human writing every rule"
+    correct: 0

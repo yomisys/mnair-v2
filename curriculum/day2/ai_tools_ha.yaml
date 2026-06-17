@@ -2,61 +2,69 @@ id: day2_ai_tools_ha
 day: 2
 topic: ai_tools
 language: ha
-title: 'Day 2: Ai Tools (Hausa)'
-content: 'This is Day 2 lesson on ai tools.
+title: "Kayan Aikin ML da Kake Riga Kana Amfani da Su"
+content: |
+  Abin mamaki: kana amfani da machine learning tsawon shekaru ba tare da saninka ba! Yau, bari mu gano ML da ke boye a cikin manhajojinka na yau da kullum - mu kuma koyi amfani da su yadda ya kamata.
 
+  MABALLAN RUBUTUNKA (KEYBOARD):
+  Lokacin da ka rubuta "sannu" wayarka ta ba da shawarar "da zuwa", wannan ML model ne da aka horar da biliyoyin jimloli. Shawara: keyboard dinka na koyon salonKA da lokaci - har ma zai koyi Hausarka!
 
-  Focus: Machine Learning Basics
+  WHATSAPP & SOCIAL MEDIA:
+  - Tsarin status da feed: ML na hasashen wadanne posts za ka fi sha'awa
+  - Rubuta sakon murya a wasu wayoyi: ML na mai da magana zuwa rubutu
+  - Inganta hoto: ML na haskaka hotuna masu duhu kai tsaye
 
+  YOUTUBE & MANHAJOJIN WAKA:
+  Injin ba da shawara ML ne tsantsa. Ya koya daga miliyoyin masu kallo: "Mutanen da suka kalli A su ma sun ji dadin B." Shawara: shawarwarinka na ingantuwa idan ka danna "Not interested" a bidiyon da ba ka so - kana ba modelin ingantattun alamun horo!
 
-  [In production, this would be 250-300 words of properly translated content]
+  MANHAJOJIN KYAMARA:
+  Portrait mode (bango mai dushewa), night mode, da kawata fuska duk ML models ne. Wayarka ta naira 80,000 na yin abubuwan da suka bukaci kayan aiki na kwararru shekaru 10 da suka wuce.
 
+  TASWIRA (MAPS):
+  Google Maps na hasashen cewa Third Mainland Bridge za ta cika da karfe 5 na yamma saboda ML ya koya daga miliyoyin tafiye-tafiye na baya.
 
-  Key points:
+  DARASIN: ML ba fasahar gaba ba ce - tana riga tana aljihunka. Yanzu da za ka iya GANIN ta, za ka iya amfani da ita cikin wayo:
+  1. Ba manhajoji ra'ayinka na gaskiya (so/kin so) don inganta shawarwari
+  2. Yi amfani da rubutu da murya a Turanci - ya inganta sosai yanzu
+  3. Gwada binciken Google Photos: rubuta "food" zai samo hotunan abincinka da ML!
 
-  - Understanding ai tools
-
-  - Nigerian context and examples
-
-  - Practical applications
-
-  - How this helps you
-
-
-  Remember: AI is a tool to solve problems. Learn, practice, and build!'
 quiz:
-- question: What is the main focus of Day 2?
-  options:
-  - A. Machine Learning Basics
-  - B. Something else
-  - C. Random topic
-  - D. Not related
-  correct: 0
-- question: 'This lesson is about:'
-  options:
-  - A. Cooking
-  - B. Ai Tools
-  - C. Sports
-  - D. Music
-  correct: 1
-- question: Can AI help solve Nigerian problems?
-  options:
-  - A. Yes, definitely
-  - B. No, never
-  - C. Only in cities
-  - D. Maybe not
-  correct: 0
-- question: What should you do after this lesson?
-  options:
-  - A. Forget everything
-  - B. Practice and apply what you learned
-  - C. Do nothing
-  - D. Give up
-  correct: 1
-- question: Is ai tools important for Nigeria?
-  options:
-  - A. Yes, very important
-  - B. No value
-  - C. Only for foreigners
-  - D. Not relevant
-  correct: 0
+  - question: "Me ke tafiyar da shawarwarin kalma ta gaba na keyboard dinka?"
+    options:
+      - "A. Kamus da aka yi da hannu"
+      - "B. ML model da aka horar da biliyoyin jimloli"
+      - "C. Zato kawai"
+      - "D. Kamfanin sadarwarka"
+    correct: 1
+
+  - question: "Ta yaya YouTube ke zaben abin da zai ba ka shawara?"
+    options:
+      - "A. ML ya koyi alamu daga miliyoyin masu kallo"
+      - "B. Ma'aikata na zaben bidiyo ga kowane mai amfani"
+      - "C. Yana nuna bidiyo bisa haruffa"
+      - "D. Gwamnati ce ke zabe"
+    correct: 0
+
+  - question: "Ta yaya za ka inganta shawarwarin manhajojinka?"
+    options:
+      - "A. Sayen sabuwar waya kowace shekara"
+      - "B. Ba da ra'ayin gaskiya kamar danna 'Not interested'"
+      - "C. Kallon komai don rikitar da shi"
+      - "D. Ba za ka iya shafar su ba"
+    correct: 1
+
+  - question: "Wane fasalin kyamara ke amfani da machine learning?"
+    options:
+      - "A. Portrait mode mai dushe bango"
+      - "B. Ruwan tabarau na zahiri"
+      - "C. Maballin sauti"
+      - "D. Mahadar caji"
+    correct: 0
+
+  - question: "Ta yaya Google Maps ya san cunkoso zai yi yawa da karfe 5?"
+    options:
+      - "A. Yana zato bisa yanayi"
+      - "B. ML ya koya daga miliyoyin tafiye-tafiye na baya"
+      - "C. 'Yan sanda na bayar da rahoto da hannu"
+      - "D. Ba zai iya hasashen cunkoso ba"
+    correct: 1

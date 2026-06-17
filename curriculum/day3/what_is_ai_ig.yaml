@@ -2,61 +2,70 @@ id: day3_what_is_ai_ig
 day: 3
 topic: what_is_ai
 language: ig
-title: 'Day 3: What Is Ai (Igbo)'
-content: 'This is Day 3 lesson on what is ai.
+title: "Data: Nri Na-Azu AI"
+content: |
+  I mutara na AI na-amuta site n'ihe atu. Taa anyi ga-abanye omimi: ihe atu ndi ahu ka a na-akpo DATA, data bukwa ihe kacha mkpa na AI.
 
+  GINI BU DATA?
+  Data bu naani ozi e dekotara. Mgbe obula e dere ihe, see foto ya, ma o bu tuo ya, e meputala data:
+  - Foto ihu gi = data foto
+  - Ozi olu gi = data uda
+  - "M rere nkata tomato 50 taa" = data ahia
+  - Ebe i no mgbe i na-eji Maps = data ebe
 
-  Focus: Data and AI
+  Na-enweghi data, AI di ka nwa akwukwo na-enweghi akwukwo, enweghi onye nkuzi, enweghi ihe atu - o nweghi ike imuta ihe obula.
 
+  DATA OLE KA AI CHORO?
+  OTUTU NKE UKWUU. ChatGPT guru ihe edere karia ihe mmadu nwere ike igu na ndu 1,000. Model imata ihu nwere ike imu otutu nde ihu. O bu ya mere ulo oru ji achikota otutu data - data bu mmanu ohuru, Naijiria makwaara banyere mmanu!
 
-  [In production, this would be 250-300 words of properly translated content]
+  UDI DATA AI NA-EJI:
+  1. IHE EDERE: ozi, akwukwo, weebusaiti (na-akwado chatbots na nsughari)
+  2. FOTO: foto, scans (na-akwado imeghe ekwenti n'ihu, ichoputa oria)
+  3. UDA: okwu, uda (na-akwado ndi inyeaka olu)
+  4. ONUOGUGU: onu ahia, ndekorita ihu igwe, azumahia (na-akwado ibu amuma)
 
+  IDI MMA KA UBA MMA:
+  Otu nde foto gbaru agbaru na-akuzi ihe na-eru 100,000 foto doro anya nke e dere akara nke oma. Cheta Garbage In, Garbage Out nke unyaahu? Ezigbo AI na-ebido na ezigbo data.
 
-  Key points:
+  Lee ihe na-ato uto: ozi WhatsApp obula i dere n'asusu Igbo, ozi olu obula - udi data ahu ka asusu Naijiria CHORO ka ha banye n'odiniru AI. Anyi ga-ekwukwu na ihe omumu ozo!
 
-  - Understanding what is ai
-
-  - Nigerian context and examples
-
-  - Practical applications
-
-  - How this helps you
-
-
-  Remember: AI is a tool to solve problems. Learn, practice, and build!'
 quiz:
-- question: What is the main focus of Day 3?
-  options:
-  - A. Data and AI
-  - B. Something else
-  - C. Random topic
-  - D. Not related
-  correct: 0
-- question: 'This lesson is about:'
-  options:
-  - A. Cooking
-  - B. What Is Ai
-  - C. Sports
-  - D. Music
-  correct: 1
-- question: Can AI help solve Nigerian problems?
-  options:
-  - A. Yes, definitely
-  - B. No, never
-  - C. Only in cities
-  - D. Maybe not
-  correct: 0
-- question: What should you do after this lesson?
-  options:
-  - A. Forget everything
-  - B. Practice and apply what you learned
-  - C. Do nothing
-  - D. Give up
-  correct: 1
-- question: Is what is ai important for Nigeria?
-  options:
-  - A. Yes, very important
-  - B. No value
-  - C. Only for foreigners
-  - D. Not relevant
-  correct: 0
+  - question: "Gini bu data?"
+    options:
+      - "A. Ozi e dekotara di ka foto, ihe edere, na onuogugu"
+      - "B. Naani ikwu ugwo intaneti"
+      - "C. Udi komputa"
+      - "D. Ego n'ulo aku"
+    correct: 0
+
+  - question: "Gini ga-eme AI ma data adighi?"
+    options:
+      - "A. O ga-aru oru ngwa ngwa"
+      - "B. O nweghi ike imuta ihe obula"
+      - "C. O ga-adi onu ala"
+      - "D. O dighi ihe ga-agbanwe"
+    correct: 1
+
+  - question: "Kedu udi data na-akwado ndi inyeaka olu?"
+    options:
+      - "A. Data uda"
+      - "B. Naani data ebe"
+      - "C. Data ahia"
+      - "D. O choghi data"
+    correct: 0
+
+  - question: "Gini mere e ji akpo data 'mmanu ohuru'?"
+    options:
+      - "A. N'ihi na o di oji ma buru mmiri"
+      - "B. O bu aku bara uru nke na-akwado teknuzu oge a"
+      - "C. O na-esi n'ala aputa"
+      - "D. A na-eji ya na jenereto"
+    correct: 1
+
+  - question: "Kedu nke ka baa uru maka ozuzu AI?"
+    options:
+      - "A. Otu nde foto gbaru agbaru"
+      - "B. 100,000 foto doro anya nke e dere akara nke oma"
+      - "C. Enweghi foto ma oli"
+      - "D. Idi mma adighi mkpa"
+    correct: 1

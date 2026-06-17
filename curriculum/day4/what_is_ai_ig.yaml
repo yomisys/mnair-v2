@@ -2,61 +2,65 @@ id: day4_what_is_ai_ig
 day: 4
 topic: what_is_ai
 language: ig
-title: 'Day 4: What Is Ai (Igbo)'
-content: 'This is Day 4 lesson on what is ai.
+title: "Ezinaulo Ano nke AI I Na-Ezute Kwa Ubochi"
+content: |
+  Ugbu a i maara na AI na-amuta site na data. Taa, zute nnukwu EZINAULO ano nke AI - ka i wee mata nke i na-emekorita ya ebe obula.
 
+  1. VISION AI (AI na-ahu uzo):
+  O na-aghota foto na vidiyo. Ihe atu: imeghe ekwenti n'ihu, igu nomba ugboala, ichoputa oria ihe okuku site na foto, ndi dokita ji AI agu X-ray. O buru na igwe "lere" ihe anya ma ghota ya - nke ahu bu vision AI.
 
-  Focus: AI Applications
+  2. SPEECH AI (AI na-anu ma na-ekwu okwu):
+  O na-agbanwe okwu ka o buru ihe edere na ihe edere ka o buru okwu. Ihe atu: idekwu olu, Siri na Google Assistant, ndepe okwu na vidiyo, bots ulo oru oku. Speech AI maka olu Naijiria na-akawanye mma kwa afo ka data olu anyi na-amubawanye.
 
+  3. LANGUAGE AI (AI na-agu ma na-ede):
+  O na-aghota ma na-emeputa ihe edere. Ihe atu: ChatGPT, Google Translate, nzacha spam imel, ndeju okwu n'onwe ya. Ezinaulo a gbawara agbawa mgbe 2022 gachara - ndi a bu "Large Language Models" (LLMs) a ma ama.
 
-  [In production, this would be 250-300 words of properly translated content]
+  4. PREDICTION AI (AI na-ebu amuma):
+  O na-achota usoro n'onuogugu iji buo amuma odiniru. Ihe atu: ikimanye kredit, ichoputa aghugho, amuma ihu igwe, amuma mkpọchi uzo Lagos, itu aro vidiyo ozo.
 
+  IJIKOTA EZINAULO:
+  AI oge a na-ejikotakari ezinaulo. Onye inyeaka olu WhatsApp nke nuru ajuju Igbo gi (okwu), ghota ya (asusu), lelee akaunt gi (amuma), ma zaa gi n'olu dara uda (okwu ozo)!
 
-  Key points:
+  GINI MERE O JI DI MKPA:
+  Mgbe i nuru banyere ngwaahia AI ohuru, juo: "Kedu ezinaulo bu nke a? Kedu data zuru ya?" I ga-aghota akuko teknuzu karia otutu mmadu - mgbe naani ubochi 4 nke omumu gachara!
 
-  - Understanding what is ai
-
-  - Nigerian context and examples
-
-  - Practical applications
-
-  - How this helps you
-
-
-  Remember: AI is a tool to solve problems. Learn, practice, and build!'
 quiz:
-- question: What is the main focus of Day 4?
-  options:
-  - A. AI Applications
-  - B. Something else
-  - C. Random topic
-  - D. Not related
-  correct: 0
-- question: 'This lesson is about:'
-  options:
-  - A. Cooking
-  - B. What Is Ai
-  - C. Sports
-  - D. Music
-  correct: 1
-- question: Can AI help solve Nigerian problems?
-  options:
-  - A. Yes, definitely
-  - B. No, never
-  - C. Only in cities
-  - D. Maybe not
-  correct: 0
-- question: What should you do after this lesson?
-  options:
-  - A. Forget everything
-  - B. Practice and apply what you learned
-  - C. Do nothing
-  - D. Give up
-  correct: 1
-- question: Is what is ai important for Nigeria?
-  options:
-  - A. Yes, very important
-  - B. No value
-  - C. Only for foreigners
-  - D. Not relevant
-  correct: 0
+  - question: "Kedu ezinaulo AI ka imeghe ekwenti n'ihu no?"
+    options:
+      - "A. Vision AI"
+      - "B. Speech AI"
+      - "C. Prediction AI"
+      - "D. O nweghi ezinaulo"
+    correct: 0
+
+  - question: "Gini ka Speech AI na-eme?"
+    options:
+      - "A. O na-ese naani foto"
+      - "B. O na-agbanwe okwu ka o buru ihe edere na ihe edere ka o buru okwu"
+      - "C. O na-ebu amuma ihu igwe"
+      - "D. O na-edozi ekwenti"
+    correct: 1
+
+  - question: "Kedu ezinaulo ka ChatGPT no?"
+    options:
+      - "A. Naani Vision AI"
+      - "B. Language AI (Large Language Models)"
+      - "C. AI ihu igwe"
+      - "D. O bughi AI"
+    correct: 1
+
+  - question: "Kedu ezinaulo ka ikimanye kredit na ichoputa aghugho no?"
+    options:
+      - "A. Prediction AI"
+      - "B. Speech AI"
+      - "C. AI egwu"
+      - "D. AI isi nri"
+    correct: 0
+
+  - question: "AI oge a o nwere ike ijikota otutu ezinaulo?"
+    options:
+      - "A. Mba, ma oli"
+      - "B. Ee - di ka onye inyeaka olu ji okwu, asusu, na amuma eme ihe onu"
+      - "C. Naani n'Amerika"
+      - "D. Naani site n'ikike gọọmenti"
+    correct: 1

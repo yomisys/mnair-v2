@@ -2,61 +2,66 @@ id: day3_ai_in_nigeria_ig
 day: 3
 topic: ai_in_nigeria
 language: ig
-title: 'Day 3: Ai In Nigeria (Igbo)'
-content: 'This is Day 3 lesson on ai in nigeria.
+title: "Data Naijiria: Asusu Anyi, Odiniru Anyi"
+content: |
+  Lee nsogbu: e ji data Bekee na Chinese zuo otutu AI. Mgbe AI aghotaghi ilu Hausa, uda olu Yoruba, ma o bu akpaalaokwu Igbo, o nweghi ike ijere nde mmadu 200 Naijiria ozi nke oma. Taa, ka anyi leba anya n'akuko data Naijiria.
 
+  OGHERE DATA:
+  - Bekee nwere otutu ijeri ijeri okwu n'intaneti maka ozuzu AI
+  - Hausa, Yoruba, na Igbo - nke ihe karia nde mmadu 100 na-asu - nwere naani obere oke
+  - Nsoputa: ndi inyeaka olu na-apughi inu olu anyi, ndi nsughari na-efunari nkowa anyi
 
-  Focus: Data and AI
+  NDI NAIJIRIA NA-EMECHI OGHERE AHU:
+  1. Ndi nyocha na ndi oru afo ofuma na-ewu dataset maka asusu Naijiria - ha na-edekota okwu, na-asughari ahiriokwu, na-achikota ihe edere
+  2. Ulo oru ndi di na Lagos na-ewe ndi na-ede akara data n'oru - ndi ntorobia Naijiria na-enweta ego site n'ikuzi AI ihe
+  3. Oru ngo di ka Masakhane (nke putara "Anyi na-ewuko onu" na isiZulu) na-ejikota ndi nyocha Afrika na-ewu AI nsughari maka asusu Afrika
+  4. Ebe nchekwa ulo oru redio nke mgbasa ozi asusu obodo na-aghoro ebe ngwuputa olaedo maka AI olu
 
+  GINI MERE DATA OBODO JI EMERI:
+  Model ibu amuma idei mmiri choro ndekorita mmiri ozuzo NAIJIRIA. Model ihe okuku choro data ala ANYI. Chatbot ahuike choro ighota otu ANYI si akowa oria ("ahu na-akpa m"). Data mba ozo enweghi ike ijide eziokwu Naijiria.
 
-  [In production, this would be 250-300 words of properly translated content]
+  OHERE DIRI GI:
+  Ichikota data, ihicha ya, na ide akara bu uzo mbido banye n'oru AI - ha choro ilezi anya, o bughi nnukwu akara mmuta. Ozokwa, naani iji teknuzu n'asusu gi - ozi olu, posts, nyocha - na-etinye olu Naijiria n'uwa dijital.
 
+  Asusu gi bu data. Ahumihe gi bu data. Site na ya ka a ga-esi wuo odiniru AI Naijiria.
 
-  Key points:
-
-  - Understanding ai in nigeria
-
-  - Nigerian context and examples
-
-  - Practical applications
-
-  - How this helps you
-
-
-  Remember: AI is a tool to solve problems. Learn, practice, and build!'
 quiz:
-- question: What is the main focus of Day 3?
-  options:
-  - A. Data and AI
-  - B. Something else
-  - C. Random topic
-  - D. Not related
-  correct: 0
-- question: 'This lesson is about:'
-  options:
-  - A. Cooking
-  - B. Ai In Nigeria
-  - C. Sports
-  - D. Music
-  correct: 1
-- question: Can AI help solve Nigerian problems?
-  options:
-  - A. Yes, definitely
-  - B. No, never
-  - C. Only in cities
-  - D. Maybe not
-  correct: 0
-- question: What should you do after this lesson?
-  options:
-  - A. Forget everything
-  - B. Practice and apply what you learned
-  - C. Do nothing
-  - D. Give up
-  correct: 1
-- question: Is ai in nigeria important for Nigeria?
-  options:
-  - A. Yes, very important
-  - B. No value
-  - C. Only for foreigners
-  - D. Not relevant
-  correct: 0
+  - question: "Gini bu 'oghere data' maka asusu Naijiria?"
+    options:
+      - "A. Asusu Naijiria nwere data ozuzu di ukwuu ala karia Bekee"
+      - "B. Naijiria nwere data hiri nne"
+      - "C. A naghi ede asusu Naijiria ede"
+      - "D. O nweghi oghere obula"
+    correct: 0
+
+  - question: "Gini ka oru ngo Masakhane na-eme?"
+    options:
+      - "A. O na-ewu okporo uzo na Lagos"
+      - "B. O na-ejikota ndi nyocha Afrika na-ewu AI maka asusu Afrika"
+      - "C. O na-ere ekwenti"
+      - "D. O na-akuzi naani Bekee"
+    correct: 1
+
+  - question: "Gini mere model ibu amuma idei mmiri Naijiria ji acho data Naijiria?"
+    options:
+      - "A. Data mmiri ozuzo mba ozo enweghi ike ijide eziokwu Naijiria"
+      - "B. Data Naijiria di onu ala"
+      - "C. O choghi data"
+      - "D. Data mba ozo megidere iwu"
+    correct: 0
+
+  - question: "Kedu nke bu uzo mbido banye n'oru AI?"
+    options:
+      - "A. Ide akara data na ihicha ya"
+      - "B. Ibu uzo buru profeso"
+      - "C. Izu nnukwu komputa"
+      - "D. O nweghi uzo mbido"
+    correct: 0
+
+  - question: "Kedu ka ndi Naijiria nkiti ga-esi tinye asusu ha n'odiniru AI?"
+    options:
+      - "A. Site n'iji teknuzu n'asusu ha - ozi olu, posts, nyocha"
+      - "B. Site n'izere teknuzu kpamkpam"
+      - "C. Site n'isu naani Bekee"
+      - "D. Ha enweghi ike itinye aka"
+    correct: 0

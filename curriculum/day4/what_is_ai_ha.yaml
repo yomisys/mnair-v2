@@ -2,61 +2,65 @@ id: day4_what_is_ai_ha
 day: 4
 topic: what_is_ai
 language: ha
-title: 'Day 4: What Is Ai (Hausa)'
-content: 'This is Day 4 lesson on what is ai.
+title: "Iyalai Hudu na AI da Kake Haduwa da Su Kullum"
+content: |
+  Yanzu ka san AI na koyo daga bayanai. Yau, ka hadu da manyan IYALAI hudu na AI - don ka iya gane wanda kake mu'amala da shi a ko'ina.
 
+  1. VISION AI (AI mai gani):
+  Yana fahimtar hotuna da bidiyo. Misalai: bude waya da fuska, karanta lambar mota, gano cututtukan amfanin gona daga hotuna, likitoci masu amfani da AI don karanta X-ray. Idan inji ya "kalli" wani abu ya fahimce shi - vision AI ke nan.
 
-  Focus: AI Applications
+  2. SPEECH AI (AI mai ji da magana):
+  Yana mai da magana zuwa rubutu da rubutu zuwa magana. Misalai: rubutu da murya, Siri da Google Assistant, rubutun kasa na bidiyo kai tsaye, bots na cibiyar kira. Speech AI na lafazin Najeriya na ingantuwa kowace shekara yayin da bayanan muryarmu ke karuwa.
 
+  3. LANGUAGE AI (AI mai karatu da rubutu):
+  Yana fahimta da samar da rubutu. Misalai: ChatGPT, Google Translate, tace spam na imel, cika kalmomi kai tsaye. Wannan iyali ya fashe bayan 2022 - wadannan su ne shahararrun "Large Language Models" (LLMs).
 
-  [In production, this would be 250-300 words of properly translated content]
+  4. PREDICTION AI (AI mai hasashe):
+  Yana samun alamu a cikin lambobi don hasashen gaba. Misalai: kimanta bashi, gano zamba, hasashen yanayi, hasashen cunkoson Lagos, ba da shawarar bidiyo na gaba.
 
+  HADA IYALAI:
+  AI na zamani yakan hada iyalai. Mataimakin muryar WhatsApp da ke jin tambayarka ta Hausa (magana), ya fahimce ta (harshe), ya duba asusunka (hasashe), ya amsa maka da babbar murya (magana kuma)!
 
-  Key points:
+  DALILIN MUHIMMANCI:
+  Idan ka ji labarin sabon kayan AI, tambaya: "Wane iyali ne wannan? Wadanne bayanai suka horar da shi?" Za ka fahimci labaran fasaha fiye da yawancin mutane - bayan kwanaki 4 kawai na koyo!
 
-  - Understanding what is ai
-
-  - Nigerian context and examples
-
-  - Practical applications
-
-  - How this helps you
-
-
-  Remember: AI is a tool to solve problems. Learn, practice, and build!'
 quiz:
-- question: What is the main focus of Day 4?
-  options:
-  - A. AI Applications
-  - B. Something else
-  - C. Random topic
-  - D. Not related
-  correct: 0
-- question: 'This lesson is about:'
-  options:
-  - A. Cooking
-  - B. What Is Ai
-  - C. Sports
-  - D. Music
-  correct: 1
-- question: Can AI help solve Nigerian problems?
-  options:
-  - A. Yes, definitely
-  - B. No, never
-  - C. Only in cities
-  - D. Maybe not
-  correct: 0
-- question: What should you do after this lesson?
-  options:
-  - A. Forget everything
-  - B. Practice and apply what you learned
-  - C. Do nothing
-  - D. Give up
-  correct: 1
-- question: Is what is ai important for Nigeria?
-  options:
-  - A. Yes, very important
-  - B. No value
-  - C. Only for foreigners
-  - D. Not relevant
-  correct: 0
+  - question: "Wane iyalin AI ne bude waya da fuska yake?"
+    options:
+      - "A. Vision AI"
+      - "B. Speech AI"
+      - "C. Prediction AI"
+      - "D. Babu iyali"
+    correct: 0
+
+  - question: "Me Speech AI ke yi?"
+    options:
+      - "A. Daukar hotuna kawai"
+      - "B. Mai da magana zuwa rubutu da rubutu zuwa magana"
+      - "C. Hasashen yanayi"
+      - "D. Gyaran wayoyi"
+    correct: 1
+
+  - question: "ChatGPT na wane iyali ne?"
+    options:
+      - "A. Vision AI kawai"
+      - "B. Language AI (Large Language Models)"
+      - "C. AI na yanayi"
+      - "D. Ba AI ba ne"
+    correct: 1
+
+  - question: "Kimanta bashi da gano zamba na wane iyali ne?"
+    options:
+      - "A. Prediction AI"
+      - "B. Speech AI"
+      - "C. AI na waka"
+      - "D. AI na girki"
+    correct: 0
+
+  - question: "Shin AI na zamani na iya hada iyalai da yawa?"
+    options:
+      - "A. A'a, ko kadan"
+      - "B. Eh - kamar mataimakin murya mai amfani da magana, harshe, da hasashe tare"
+      - "C. A Amurka kawai"
+      - "D. Sai da izinin gwamnati"
+    correct: 1

@@ -2,61 +2,69 @@ id: day2_how_ai_works_ig
 day: 2
 topic: how_ai_works
 language: ig
-title: 'Day 2: How Ai Works (Igbo)'
-content: 'This is Day 2 lesson on how ai works.
+title: "Ozuzu na Ibu Amuma: Ndu Abuo nke AI"
+content: |
+  Sistem machine learning obula nwere ndu abuo: OZUZU (oge akwukwo) na IBU AMUMA (oge oru). Ighota nke a ga-enyere gi aka ighota AI niile.
 
+  NDU 1 - OZUZU (Imuta):
+  Chee na i na-akuzi nwata na-amu akwa akwa. I gosiri ya uwe 500 emechara: "Nke a bu agbada, nke a bu kaftan, nke a bu senator." O na-amu ha, na-emehie, a na-edozi ya, nwayoo nwayoo o na-aka mma. Nke ahu bu ozuzu!
 
-  Focus: Machine Learning Basics
+  N'oge ozuzu, AI na-eme:
+  1. Nata otutu ihe atu nwere akara (foto + "nke a bu mango")
+  2. Mee atumatu ya
+  3. Lelee ma atumatu ahu o ziri ezi
+  4. Dozie onwe ya ntakiri ma o mehie
+  5. Megharia ya otutu nde ugboro ruo mgbe o ziri ezi
 
+  NDU 2 - IBU AMUMA (Oru):
+  Mgbe ozuzu gachara, nwata ahu meghere ulo ahia nke ya. Ugbu a ndi ahia na-ebute akwa ohuru o na-ahubeghi mbu, ma o ka nwere ike ikwa ha nke oma. Otu ahu ka AI a zuru azu si aru oru - o na-edozi onodu OHURU site n'ihe o mutara.
 
-  [In production, this would be 250-300 words of properly translated content]
+  Mgbe app ulo aku gi na-enyocha azumahia n'ime otu sekond, nke ahu bu ibu amuma. Onwa ndi e ji muta site na otutu nde azumahia gara aga emelarị n'oge ozuzu.
 
+  ISI IHE NDI DI MKPA:
+  - Ozuzu na-ewe oge ma na-efu ego; ibu amuma di ngwa ma di onu ala
+  - AI maara naani ihe o huru n'ozuzu - o buru na o hubeghi foto nri Naijiria, o nwere ike ikpo moi moi "muffin"!
+  - O bu ya mere data obodo ji di mkpa maka AI Naijiria
 
-  Key points:
+  Echi anyi ga-amu banyere mmanu nke ihe a niile: DATA.
 
-  - Understanding how ai works
-
-  - Nigerian context and examples
-
-  - Practical applications
-
-  - How this helps you
-
-
-  Remember: AI is a tool to solve problems. Learn, practice, and build!'
 quiz:
-- question: What is the main focus of Day 2?
-  options:
-  - A. Machine Learning Basics
-  - B. Something else
-  - C. Random topic
-  - D. Not related
-  correct: 0
-- question: 'This lesson is about:'
-  options:
-  - A. Cooking
-  - B. How Ai Works
-  - C. Sports
-  - D. Music
-  correct: 1
-- question: Can AI help solve Nigerian problems?
-  options:
-  - A. Yes, definitely
-  - B. No, never
-  - C. Only in cities
-  - D. Maybe not
-  correct: 0
-- question: What should you do after this lesson?
-  options:
-  - A. Forget everything
-  - B. Practice and apply what you learned
-  - C. Do nothing
-  - D. Give up
-  correct: 1
-- question: Is how ai works important for Nigeria?
-  options:
-  - A. Yes, very important
-  - B. No value
-  - C. Only for foreigners
-  - D. Not relevant
-  correct: 0
+  - question: "Gini bu 'ndu abuo' nke sistem machine learning?"
+    options:
+      - "A. Ehihie na abali"
+      - "B. Ozuzu na ibu amuma"
+      - "C. Ichaji na iji ike"
+      - "D. Online na offline"
+    correct: 1
+
+  - question: "Gini na-eme n'oge ozuzu?"
+    options:
+      - "A. AI na-amu ihe atu nwere akara ma na-edozi onwe ya ma o mehie"
+      - "B. AI na-ezu ike ma na-echekwa ike"
+      - "C. AI na-ehichapu data ya"
+      - "D. AI na-ebiputa akuko"
+    correct: 0
+
+  - question: "Gini mere AI ga-eji kpoo moi moi 'muffin'?"
+    options:
+      - "A. N'ihi na o hubeghi nri Naijiria n'oge ozuzu"
+      - "B. N'ihi na moi moi bu muffin"
+      - "C. N'ihi na AI kporo nri Naijiria asi"
+      - "D. N'ihi na ekwenti ahu emeela ochie"
+    correct: 0
+
+  - question: "Kedu okwu bu EZIOKWU?"
+    options:
+      - "A. Ozuzu di ngwa, ibu amuma na-eje nwayoo"
+      - "B. Ozuzu na-ewe oge ma na-efu ego, ibu amuma di ngwa"
+      - "C. Ha abuo na-eme n'otu oge mgbe niile"
+      - "D. Ibu amuma na-abia tupu ozuzu"
+    correct: 1
+
+  - question: "Mgbe app ulo aku gi na-enyocha azumahia n'ime otu sekond, gini na-eme?"
+    options:
+      - "A. Ozuzu"
+      - "B. Ibu amuma site n'ihe a mutalarị"
+      - "C. App ahu na-eche nche nkiti"
+      - "D. Mmadu na-enyocha ya"
+    correct: 1

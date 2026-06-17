@@ -2,61 +2,65 @@ id: day4_what_is_ai_yo
 day: 4
 topic: what_is_ai
 language: yo
-title: 'Day 4: What Is Ai (Yoruba)'
-content: 'This is Day 4 lesson on what is ai.
+title: "Idile Merin ti AI Ti O N Pade Lojoojumo"
+content: |
+  Bayii o ti mo pe AI n ko eko lati inu data. Loni, pade awon IDILE nla merin ti AI - ki o le mo eyi ti o n ba lo nibikibi.
 
+  1. VISION AI (AI ti n riran):
+  O n loye aworan ati fidio. Apeere: sisi foonu pelu oju, kika nomba oko, riri arun eweko lati inu foto, awon dokita ti n lo AI lati ka X-ray. Ti ero ba "wo" nkan ti o si loye re - vision AI niyen.
 
-  Focus: AI Applications
+  2. SPEECH AI (AI ti n gbo ti o si n sọrọ):
+  O n yi ọrọ sisọ pada si kikọ ati kikọ pada si ọrọ sisọ. Apeere: titẹ pelu ohun, Siri ati Google Assistant, akọle fidio laifowoyi, bots ile-ise ipe. Speech AI fun ohun Naijiria n dara si lodoodun bi data ohun wa se n po si.
 
+  3. LANGUAGE AI (AI ti n ka ti o si n kọ):
+  O n loye, o si n da ọrọ sile. Apeere: ChatGPT, Google Translate, ase spam imeeli, ipari ọrọ laifowoyi. Idile yii gbamu leyin 2022 - awon wonyi ni awon gbajumo "Large Language Models" (LLMs).
 
-  [In production, this would be 250-300 words of properly translated content]
+  4. PREDICTION AI (AI ti n so asotele):
+  O n ri awon ilana ninu nomba lati so asotele ojo iwaju. Apeere: iwon kirediti, riri jibiti, asotele oju-ojo, asotele ijabọ Eko, didaba fidio ti o kan.
 
+  DIDAPO AWON IDILE:
+  AI ode oni maa n da awon idile po. Oluranlowo ohun WhatsApp ti o gbo ibeere Yoruba re (ọrọ sisọ), loye re (ede), wo akaunti re (asotele), ti o si dahun soke (ọrọ sisọ leekan si)!
 
-  Key points:
+  IDI TI O FI SE PATAKI:
+  Nigbati o ba gbo nipa oja AI titun, beere: "Idile wo ni eyi? Data wo lo ko o?" Iwo yoo loye iroyin imo-ero ju opolopo eniyan lo - leyin ojo 4 pere ti kiko eko!
 
-  - Understanding what is ai
-
-  - Nigerian context and examples
-
-  - Practical applications
-
-  - How this helps you
-
-
-  Remember: AI is a tool to solve problems. Learn, practice, and build!'
 quiz:
-- question: What is the main focus of Day 4?
-  options:
-  - A. AI Applications
-  - B. Something else
-  - C. Random topic
-  - D. Not related
-  correct: 0
-- question: 'This lesson is about:'
-  options:
-  - A. Cooking
-  - B. What Is Ai
-  - C. Sports
-  - D. Music
-  correct: 1
-- question: Can AI help solve Nigerian problems?
-  options:
-  - A. Yes, definitely
-  - B. No, never
-  - C. Only in cities
-  - D. Maybe not
-  correct: 0
-- question: What should you do after this lesson?
-  options:
-  - A. Forget everything
-  - B. Practice and apply what you learned
-  - C. Do nothing
-  - D. Give up
-  correct: 1
-- question: Is what is ai important for Nigeria?
-  options:
-  - A. Yes, very important
-  - B. No value
-  - C. Only for foreigners
-  - D. Not relevant
-  correct: 0
+  - question: "Idile AI wo ni sisi foonu pelu oju wa?"
+    options:
+      - "A. Vision AI"
+      - "B. Speech AI"
+      - "C. Prediction AI"
+      - "D. Ko si idile"
+    correct: 0
+
+  - question: "Ki ni Speech AI n se?"
+    options:
+      - "A. O n ya foto nikan"
+      - "B. O n yi ọrọ sisọ pada si kikọ ati kikọ pada si ọrọ sisọ"
+      - "C. O n so asotele oju-ojo"
+      - "D. O n tun foonu se"
+    correct: 1
+
+  - question: "Idile wo ni ChatGPT wa?"
+    options:
+      - "A. Vision AI nikan"
+      - "B. Language AI (Large Language Models)"
+      - "C. AI oju-ojo"
+      - "D. Kii se AI"
+    correct: 1
+
+  - question: "Idile wo ni iwon kirediti ati riri jibiti wa?"
+    options:
+      - "A. Prediction AI"
+      - "B. Speech AI"
+      - "C. AI orin"
+      - "D. AI idana"
+    correct: 0
+
+  - question: "Nje AI ode oni le da awon idile pupo po?"
+    options:
+      - "A. Rara, lailai"
+      - "B. Beeni - bi oluranlowo ohun ti n lo ọrọ sisọ, ede, ati asotele papo"
+      - "C. Ni Amerika nikan"
+      - "D. Pelu igbanilaaye ijoba nikan"
+    correct: 1

@@ -2,61 +2,72 @@ id: day4_ai_ethics_pid
 day: 4
 topic: ai_ethics
 language: pid
-title: 'Day 4: Ai Ethics (Pidgin)'
-content: 'This is Day 4 lesson on ai ethics.
+title: "Deepfakes and Fake News: How to Stay Sharp for AI Age"
+content: |
+  AI fit now create fake videos of real people wey dey talk things wey dem never talk. For election season or family WhatsApp group, this one dangerous. Today: how to protect yourself and others.
 
+  WETIN AI FIT FAKE TODAY:
+  - VIDEOS: Politician wey dey "confess" crimes - face and voice wey dem clone
+  - AUDIO: "Kidnapper" wey dey use your relative cloned voice demand ransom
+  - IMAGES: Fake photos of events wey never happen
+  - TEXT: Thousands of fake social media accounts wey dey spread coordinated lies
 
-  Focus: AI Applications
+  REAL NAIJA RISKS:
+  - Election misinformation wey dem design to cause wahala
+  - "Celebrity investment endorsements" - fake videos of famous Nigerians wey dey promote fraud schemes
+  - Voice-clone scam calls to family members
+  - Fake "breaking news" images during emergencies
 
+  YOUR DEFENSE KIT - 6 CHECKS:
+  1. SOURCE: Who post am first? Established news house or anonymous account?
+  2. CROSS-CHECK: Any credible outlet dey report am? If na only one source - wait first
+  3. LOOK CLOSE: AI videos dey often get strange blinking, lip-sync wey no match, strange hands
+  4. EMOTION TEST: Content wey dem design to make you VERY angry or VERY afraid na often manipulation
+  5. REVERSE SEARCH: Google Lens fit show you if "event photo" na actually from 2015
+  6. FAMILY CODE WORD: Agree secret question with your relatives to defeat voice-clone scams
 
-  [In production, this would be 250-300 words of properly translated content]
+  BEFORE YOU FORWARD:
+  That "share fast!" message for family group? Check am first. If you forward fake news, YOU don become part of the problem - and Naija law now dey address spreading false information.
 
+  Be the person for your community wey dey verify. For the AI age, na superpower be that.
 
-  Key points:
-
-  - Understanding ai ethics
-
-  - Nigerian context and examples
-
-  - Practical applications
-
-  - How this helps you
-
-
-  Remember: AI is a tool to solve problems. Learn, practice, and build!'
 quiz:
-- question: What is the main focus of Day 4?
-  options:
-  - A. AI Applications
-  - B. Something else
-  - C. Random topic
-  - D. Not related
-  correct: 0
-- question: 'This lesson is about:'
-  options:
-  - A. Cooking
-  - B. Ai Ethics
-  - C. Sports
-  - D. Music
-  correct: 1
-- question: Can AI help solve Nigerian problems?
-  options:
-  - A. Yes, definitely
-  - B. No, never
-  - C. Only in cities
-  - D. Maybe not
-  correct: 0
-- question: What should you do after this lesson?
-  options:
-  - A. Forget everything
-  - B. Practice and apply what you learned
-  - C. Do nothing
-  - D. Give up
-  correct: 1
-- question: Is ai ethics important for Nigeria?
-  options:
-  - A. Yes, very important
-  - B. No value
-  - C. Only for foreigners
-  - D. Not relevant
-  correct: 0
+  - question: "Wetin be deepfake?"
+    options:
+      - "A. Fake video, audio, or images of real people wey AI generate"
+      - "B. Deep borehole"
+      - "C. Fishing technique"
+      - "D. One type of dance"
+    correct: 0
+
+  - question: "Which one be sign say video fit be AI-generated?"
+    options:
+      - "A. Strange blinking and lip-sync wey no match"
+      - "B. Good lighting"
+      - "C. E get sound"
+      - "D. E dey in color"
+    correct: 0
+
+  - question: "Wetin be the 'emotion test'?"
+    options:
+      - "A. Content wey dem design to make you very angry or afraid na often manipulation"
+      - "B. To cry during films"
+      - "C. Hospital test"
+      - "D. To test your phone speed"
+    correct: 0
+
+  - question: "How family code word fit protect you?"
+    options:
+      - "A. E dey defeat voice-clone scam calls wey dey pretend to be relatives"
+      - "B. E dey make calls cheaper"
+      - "C. E dey improve network signal"
+      - "D. E no fit help"
+    correct: 0
+
+  - question: "Wetin you suppose do before you forward shocking news?"
+    options:
+      - "A. Forward am as fast as possible"
+      - "B. Verify am from credible sources first"
+      - "C. Add more exclamation marks"
+      - "D. Translate am first"
+    correct: 1

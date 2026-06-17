@@ -2,61 +2,59 @@ id: day1_what_is_ai_pid
 day: 1
 topic: what_is_ai
 language: pid
-title: 'Day 1: What Is Ai (Pidgin)'
-content: 'This is Day 1 lesson on what is ai.
+title: "Wetin Be Artificial Intelligence?"
+content: |
+  Artificial Intelligence (AI) na when computer and machine fit do things wey normally need human sense. Think am like say you dey teach computer to learn, reason, and take decision.
 
+  For Naija, AI don already dey around you! When your bank app catch fraud, when Google translate Yoruba go English, or when your phone recognize your face - na AI dey work be that.
 
-  Focus: Introduction to AI
+  Wetin AI fit do:
+  - Recognize pattern (like to spot fake naira note)
+  - Predict things (like weather forecast for farmers)
+  - Understand language (like chatbot wey dey answer question)
+  - See and identify things (like camera wey dey read plate number)
 
+  AI no be magic or robot wey resemble human being. Na computer program wey dey learn from data to solve particular problem. Just as you take learn how to ride okada by practice, na so AI dey learn by seeing plenty examples.
 
-  [In production, this would be 250-300 words of properly translated content]
+  Naija need AI skills! From farming to hospital, bank to school - AI fit help solve our local problems. Na why you dey learn this thing!
 
-
-  Key points:
-
-  - Understanding what is ai
-
-  - Nigerian context and examples
-
-  - Practical applications
-
-  - How this helps you
-
-
-  Remember: AI is a tool to solve problems. Learn, practice, and build!'
 quiz:
-- question: What is the main focus of Day 1?
-  options:
-  - A. Introduction to AI
-  - B. Something else
-  - C. Random topic
-  - D. Not related
-  correct: 0
-- question: 'This lesson is about:'
-  options:
-  - A. Cooking
-  - B. What Is Ai
-  - C. Sports
-  - D. Music
-  correct: 1
-- question: Can AI help solve Nigerian problems?
-  options:
-  - A. Yes, definitely
-  - B. No, never
-  - C. Only in cities
-  - D. Maybe not
-  correct: 0
-- question: What should you do after this lesson?
-  options:
-  - A. Forget everything
-  - B. Practice and apply what you learned
-  - C. Do nothing
-  - D. Give up
-  correct: 1
-- question: Is what is ai important for Nigeria?
-  options:
-  - A. Yes, very important
-  - B. No value
-  - C. Only for foreigners
-  - D. Not relevant
-  correct: 0
+  - question: "Wetin be Artificial Intelligence?"
+    options:
+      - "A. Computer wey fit learn and take decision"
+      - "B. Na only robot wey resemble human being"
+      - "C. Magic wey dey make computer sharp"
+      - "D. One kind phone app"
+    correct: 0
+
+  - question: "Which Naija example show AI as e dey work?"
+    options:
+      - "A. To use Nokia 3310 phone"
+      - "B. Bank app wey dey catch fraud"
+      - "C. To write with biro and paper"
+      - "D. To cook jollof rice"
+    correct: 1
+
+  - question: "How AI dey learn?"
+    options:
+      - "A. By magic"
+      - "B. By seeing plenty examples and patterns"
+      - "C. Only from textbook"
+      - "D. E no need to learn"
+    correct: 1
+
+  - question: "Why AI important for Naija?"
+    options:
+      - "A. Na only for America e useful"
+      - "B. E fit help solve our local problems"
+      - "C. We no need am here"
+      - "D. Na only big company fit use am"
+    correct: 1
+
+  - question: "Wetin AI NO fit do for now?"
+    options:
+      - "A. Recognize your face"
+      - "B. Translate language"
+      - "C. Think exactly like human brain"
+      - "D. Find pattern for data"
+    correct: 2

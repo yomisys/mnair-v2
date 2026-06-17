@@ -2,61 +2,69 @@ id: day3_ai_tools_ha
 day: 3
 topic: ai_tools
 language: ha
-title: 'Day 3: Ai Tools (Hausa)'
-content: 'This is Day 3 lesson on ai tools.
+title: "Kayan Aiki Masu Saukin Aiki da Bayanai"
+content: |
+  Ba sai ka zama masanin kimiyyar bayanai ba kafin ka fara aiki da bayanai. Yau, bari mu koyi kayan aiki kyauta da za su mai da kai dan Najeriya mai wayo da bayanai - mai amfani ga kasuwanci, makaranta, ko aikinka na farko a fannin fasaha.
 
+  GOOGLE FORMS (kyauta):
+  Kirkiri bincike ka tattara bayanai cikin sauki. Mai shago zai iya tambayar abokan ciniki: "Wadanne kayayyaki ya kamata mu saya?" Amsoshin na taruwa kai tsaye cikin spreadsheet. Wannan TATTARA BAYANAI ne - mataki na 1 na tafiyar AI da ka koya!
 
-  Focus: Data and AI
+  GOOGLE SHEETS / EXCEL (kyauta):
+  Mafi muhimmancin kayan aikin bayanai a duniya. Za ka iya:
+  - Rikodin sayarwar yau da kullum ka ga alamun wata-wata
+  - Tsarawa da tacewa (nuna abokan ciniki na Abuja kawai)
+  - Yin zane-zanen da ke nuna yanayi nan take
+  - Tsaftace bayanai (cire maimaitattun abubuwa da danna sau biyu)
+  Yawancin sana'o'in bayanai na farawa da kwarewar spreadsheet!
 
+  CHATGPT A MATSAYIN MATAIMAKIN BAYANAI:
+  Liƙa lambobin sayarwarka ka tambaya: "Wace rana ce a mako nake sayarwa fiye?" ko "Takaita wadannan ra'ayoyin abokan ciniki zuwa manyan korafe-korafe 3." Kayan aikin AI na iya nazarin kananan bayanai ta tattaunawa - ba a bukatar rubuta shirye-shirye.
 
-  [In production, this would be 250-300 words of properly translated content]
+  GOOGLE TRENDS (trends.google.com):
+  Duba abin da 'yan Najeriya ke nema - binciken kasuwa kyauta! Mai sayar da tufafi zai iya kwatanta neman "ankara styles" da "lace styles" bisa jiha da wata.
 
+  AIKIN GWAJI NA YAU:
+  Bude Google Forms. Kirkiri bincike mai tambayoyi 3 game da kowane abu (kasuwancinka, al'ummarka). Raba shi da abokai 5 a WhatsApp. Barka - ka tattara bayananka na farko ke nan!
 
-  Key points:
+  Ka tuna: da bayanai ake gina AI, kuma yanzu KAI za ka iya tattarawa, tsarawa, da nazarin su. Wannan kwarewar kadai ta sa ka da daraja.
 
-  - Understanding ai tools
-
-  - Nigerian context and examples
-
-  - Practical applications
-
-  - How this helps you
-
-
-  Remember: AI is a tool to solve problems. Learn, practice, and build!'
 quiz:
-- question: What is the main focus of Day 3?
-  options:
-  - A. Data and AI
-  - B. Something else
-  - C. Random topic
-  - D. Not related
-  correct: 0
-- question: 'This lesson is about:'
-  options:
-  - A. Cooking
-  - B. Ai Tools
-  - C. Sports
-  - D. Music
-  correct: 1
-- question: Can AI help solve Nigerian problems?
-  options:
-  - A. Yes, definitely
-  - B. No, never
-  - C. Only in cities
-  - D. Maybe not
-  correct: 0
-- question: What should you do after this lesson?
-  options:
-  - A. Forget everything
-  - B. Practice and apply what you learned
-  - C. Do nothing
-  - D. Give up
-  correct: 1
-- question: Is ai tools important for Nigeria?
-  options:
-  - A. Yes, very important
-  - B. No value
-  - C. Only for foreigners
-  - D. Not relevant
-  correct: 0
+  - question: "Wane kayan aiki kyauta ke tattara bayanan bincike kai tsaye cikin spreadsheet?"
+    options:
+      - "A. Google Forms"
+      - "B. Calculator"
+      - "C. Manhajar fitila"
+      - "D. Mai kunna bidiyo"
+    correct: 0
+
+  - question: "Me Google Sheets zai iya taimaka maka yi da bayanan sayarwa?"
+    options:
+      - "A. Tsarawa, tacewa, zane, da gano alamu"
+      - "B. Dafa abinci"
+      - "C. Cajin wayarka"
+      - "D. Babu wani abu mai amfani"
+    correct: 0
+
+  - question: "Ta yaya ChatGPT zai iya taimaka da karamin bayanai?"
+    options:
+      - "A. Zai iya takaitawa da amsa tambayoyi game da su ta tattaunawa"
+      - "B. Yana kin karanta bayanai"
+      - "C. Yana aiki da hotuna kawai"
+      - "D. Yana goge bayanan"
+    correct: 0
+
+  - question: "Me Google Trends ke da amfani?"
+    options:
+      - "A. Binciken kasuwa kyauta kan abin da mutane ke nema"
+      - "B. Kiran waya"
+      - "C. Aika kudi"
+      - "D. Wasanni"
+    correct: 0
+
+  - question: "Me ya sa kwarewar spreadsheet ke da daraja?"
+    options:
+      - "A. Yawancin sana'o'in bayanai na farawa da ita"
+      - "B. Ba ta da amfani ko kadan"
+      - "C. Baki kawai ke amfani da spreadsheets"
+      - "D. Za a haramta spreadsheets"
+    correct: 0

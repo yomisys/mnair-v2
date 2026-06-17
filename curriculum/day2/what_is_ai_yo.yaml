@@ -2,61 +2,61 @@ id: day2_what_is_ai_yo
 day: 2
 topic: what_is_ai
 language: yo
-title: 'Day 2: What Is Ai (Yoruba)'
-content: 'This is Day 2 lesson on what is ai.
+title: "AI ati Machine Learning: Ki Ni Iyato?"
+content: |
+  Lana o ko ohun ti AI je. Loni, je ki a loye ero ti o wa ninu AI: Machine Learning (ML).
 
+  AWON ETO LASAN n tele ofin ti o duro sinsin. Ero isiro yoo ma fun wa ni 2 + 2 = 4 nigbagbogbo nitori onimo eto lo ko ofin yen. Ti nkan titun ba sele, eto naa ko le yipada.
 
-  Focus: Machine Learning Basics
+  MACHINE LEARNING yato. Dipo kiko ofin, a n fi apeere han komputa, oun naa yoo si wa awari awon ofin funra re. Ko si eni ti o le ko ofin lati da gbogbo oju mo ni Naijiria - sugbon ML le ko awon oju lati inu foto.
 
+  Ronu re bayii:
+  - Eto lasan: Iwe ilana ounje - tele igbese ni pato, abajade kanna ni gbogbo igba
+  - Machine learning: Ogbon oniṣowo oja - leyin odun pupo pelu awon onibara, o mo eni ti yoo ra nitooto ati eni ti o kan n wo
 
-  [In production, this would be 250-300 words of properly translated content]
+  AI ni erongba nla (awon ero ti n huwa pelu ogbon). Machine Learning ni ona pataki ti a n lo loni lati de ibi erongba yen. O fere je gbogbo AI ti o lo lana - riri jibiti, sisi foonu pelu oju, asotele oro - machine learning ni.
 
+  O tun wa DEEP LEARNING - iru ML alagbara ti a se afarawe lati opolo eniyan. Oun lo n mu ChatGPT, awon oluranlowo ohun, ati didamo foto sise. Deep learning nilo opolopo data ati agbara komputa.
 
-  Key points:
+  Akotan ni soki: AI ni ala, Machine Learning ni ero, Deep Learning ni eya turbo ti ero yen. O ko nilo mathimatiki lati loye eyi - kan ranti: ML n ko eko lati inu apeere, kii se lati ofin ti o duro sinsin.
 
-  - Understanding what is ai
-
-  - Nigerian context and examples
-
-  - Practical applications
-
-  - How this helps you
-
-
-  Remember: AI is a tool to solve problems. Learn, practice, and build!'
 quiz:
-- question: What is the main focus of Day 2?
-  options:
-  - A. Machine Learning Basics
-  - B. Something else
-  - C. Random topic
-  - D. Not related
-  correct: 0
-- question: 'This lesson is about:'
-  options:
-  - A. Cooking
-  - B. What Is Ai
-  - C. Sports
-  - D. Music
-  correct: 1
-- question: Can AI help solve Nigerian problems?
-  options:
-  - A. Yes, definitely
-  - B. No, never
-  - C. Only in cities
-  - D. Maybe not
-  correct: 0
-- question: What should you do after this lesson?
-  options:
-  - A. Forget everything
-  - B. Practice and apply what you learned
-  - C. Do nothing
-  - D. Give up
-  correct: 1
-- question: Is what is ai important for Nigeria?
-  options:
-  - A. Yes, very important
-  - B. No value
-  - C. Only for foreigners
-  - D. Not relevant
-  correct: 0
+  - question: "Bawo ni machine learning se yato si eto lasan?"
+    options:
+      - "A. O n ko ofin lati inu apeere dipo titele ofin ti o duro sinsin"
+      - "B. O maa n lora nigbagbogbo"
+      - "C. O n sise lori komputa nla nikan"
+      - "D. Ko si iyato"
+    correct: 0
+
+  - question: "Ki ni ibasepo laarin AI ati Machine Learning?"
+    options:
+      - "A. Ota ni won"
+      - "B. ML ni ona pataki ti a n lo lati se aseyori AI loni"
+      - "C. AI je iru ML kan"
+      - "D. Won ko ni ibasepo rara"
+    correct: 1
+
+  - question: "Ewo ni apeere eto ofin ti o duro sinsin (KII se machine learning)?"
+    options:
+      - "A. Sisi foonu pelu oju"
+      - "B. Ero isiro ti n se afikun nomba"
+      - "C. Riri jibiti ninu app banki"
+      - "D. Asotele oro nigbati o n te nkan"
+    correct: 1
+
+  - question: "Ki ni deep learning?"
+    options:
+      - "A. Kika iwe ni alẹ"
+      - "B. Iru ML alagbara ti a se afarawe lati opolo eniyan"
+      - "C. Kiko eko labe omi"
+      - "D. Iru batiri foonu kan"
+    correct: 1
+
+  - question: "Ki ni machine learning nilo lati wa awari ofin?"
+    options:
+      - "A. Opolopo apeere (data)"
+      - "B. Iboju ti o tobi ju"
+      - "C. Ina mona diẹ sii nikan"
+      - "D. Eniyan ti yoo ko gbogbo ofin"
+    correct: 0

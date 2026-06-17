@@ -2,61 +2,72 @@ id: day4_ai_ethics_ig
 day: 4
 topic: ai_ethics
 language: ig
-title: 'Day 4: Ai Ethics (Igbo)'
-content: 'This is Day 4 lesson on ai ethics.
+title: "Deepfakes na Akuko Ugha: Imuru Anya n'Oge AI"
+content: |
+  AI nwere ike imeputa ugbu a vidiyo ugha nke ezigbo mmadu na-ekwu ihe ha na-ekwughi mbu. N'oge ntuli aka ma o bu n'otu WhatsApp ezinaulo, nke a di ize ndu. Taa: otu i ga-esi chebe onwe gi na ndi ozo.
 
+  IHE AI NWERE IKE IME UGHA TAA:
+  - VIDIYO: Onye ndoro ndoro ochichi na-"ekwuputa" mpu - ihu na olu e depughachiri
+  - UDA: "Onye ntori" ji olu onye ezinaulo gi e depughachiri acho ego mgbaputa
+  - FOTO: Foto ugha nke ihe omume na-emebeghi
+  - IHE EDERE: Otutu puku akaunt social media ugha na-agbasa ugha a haziri ahazi
 
-  Focus: AI Applications
+  IHE IZE NDU NAIJIRIA N'EZIE:
+  - Ozi ugha ntuli aka e mere ka o kpata ogbaaghara
+  - "Nkwado itinye ego nke ndi a ma ama" - vidiyo ugha nke ndi Naijiria a ma ama na-akwalite aghugho
+  - Oku aghugho olu e depughachiri nye ndi ezinaulo
+  - Foto "akuko di oku" ugha n'oge ihe mberede
 
+  NGWA NCHEBE GI - NLELE 6:
+  1. ISI MMALITE: Onye bu uzo biputa ya? Ulo oru akuko a maara ama ma o bu akaunt zoro ezo?
+  2. NYOCHAA OZO: O nwere ulo oru akuko a kwesiri ntukwasi obi na-ako ya? O buru naani otu isi mmalite - chere
+  3. LELEE NKE OMA: Vidiyo AI na-enwekari imehi anya di iche, egbugbere onu na-adabaghi n'okwu, aka di iche
+  4. NNWALE MMETUTA: Ihe e mere ka o were gi IWE nke ukwuu ma o bu UJO nke ukwuu na-abukari aghugho
+  5. OCHUCHO FOTO: Google Lens nwere ike igosi ma "foto ihe omume" o bu n'ezie nke 2015
+  6. OKWU NZUZO EZINAULO: Kwekorita ajuju nzuzo na ndi ezinaulo iji merie aghugho olu e depughachiri
 
-  [In production, this would be 250-300 words of properly translated content]
+  TUPU I ZIGHARIA:
+  Ozi ahu "kesaa ngwa ngwa!" n'otu ezinaulo? Buru uzo lelee ya. Izigharia akuko ugha na-eme ka GI buru akuku nke nsogbu ahu - iwu Naijiria na-elebakwa anya ugbu a n'ikesa ozi ugha.
 
+  Buru onye na-enyocha n'obodo gi. N'oge AI, nke ahu bu nnukwu ike.
 
-  Key points:
-
-  - Understanding ai ethics
-
-  - Nigerian context and examples
-
-  - Practical applications
-
-  - How this helps you
-
-
-  Remember: AI is a tool to solve problems. Learn, practice, and build!'
 quiz:
-- question: What is the main focus of Day 4?
-  options:
-  - A. AI Applications
-  - B. Something else
-  - C. Random topic
-  - D. Not related
-  correct: 0
-- question: 'This lesson is about:'
-  options:
-  - A. Cooking
-  - B. Ai Ethics
-  - C. Sports
-  - D. Music
-  correct: 1
-- question: Can AI help solve Nigerian problems?
-  options:
-  - A. Yes, definitely
-  - B. No, never
-  - C. Only in cities
-  - D. Maybe not
-  correct: 0
-- question: What should you do after this lesson?
-  options:
-  - A. Forget everything
-  - B. Practice and apply what you learned
-  - C. Do nothing
-  - D. Give up
-  correct: 1
-- question: Is ai ethics important for Nigeria?
-  options:
-  - A. Yes, very important
-  - B. No value
-  - C. Only for foreigners
-  - D. Not relevant
-  correct: 0
+  - question: "Gini bu deepfake?"
+    options:
+      - "A. Vidiyo, uda, ma o bu foto ugha nke AI meputara banyere ezigbo mmadu"
+      - "B. Olulu mmiri di omimi"
+      - "C. Uzo iku azu"
+      - "D. Udi egwu"
+    correct: 0
+
+  - question: "Kedu ihe na-egosi na vidiyo nwere ike ibu nke AI meputara?"
+    options:
+      - "A. Imehi anya di iche na egbugbere onu na-adabaghi n'okwu"
+      - "B. Ihe oma"
+      - "C. O nwere uda"
+      - "D. O nwere agba"
+    correct: 0
+
+  - question: "Gini bu 'nnwale mmetuta'?"
+    options:
+      - "A. Ihe e mere ka o were gi iwe ma o bu ujo nke ukwuu na-abukari aghugho"
+      - "B. Ibe akwa n'oge ihe nkiri"
+      - "C. Nnwale ulo ogwu"
+      - "D. Inwale osooso ekwenti gi"
+    correct: 0
+
+  - question: "Kedu ka okwu nzuzo ezinaulo ga-esi chebe gi?"
+    options:
+      - "A. O na-emeri oku aghugho olu e depughachiri nke na-eme ka ndi ezinaulo"
+      - "B. O na-eme ka oku di onu ala"
+      - "C. O na-emeziwanye netwok"
+      - "D. O nweghi ike inye aka"
+    correct: 0
+
+  - question: "Gini ka i kwesiri ime tupu izigharia akuko di egwu?"
+    options:
+      - "A. Zigharia ya ngwa ngwa ka i nwere ike"
+      - "B. Buru uzo nyochaa ya site n'isi mmalite kwesiri ntukwasi obi"
+      - "C. Tinye akara mmetuta ndi ozo"
+      - "D. Buru uzo sugharia ya"
+    correct: 1

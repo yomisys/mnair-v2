@@ -2,61 +2,68 @@ id: day1_how_ai_works_pid
 day: 1
 topic: how_ai_works
 language: pid
-title: 'Day 1: How Ai Works (Pidgin)'
-content: 'This is Day 1 lesson on how ai works.
+title: "How AI Dey Work?"
+content: |
+  AI dey work by learning from data - plenty plenty examples. Imagine say you wan teach pikin wetin be mango. You go show am plenty mango until e fit recognize any mango, even the ones wey e never see before. Na so AI dey learn!
 
+  The Three Steps of AI:
 
-  Focus: Introduction to AI
+  1. DATA COLLECTION: Gather plenty examples
+     - For face recognition: thousands of face photos
+     - For language translation: millions of sentences
+     - For fraud detection: records of past transactions
 
+  2. TRAINING: AI go study the patterns
+     - Like how you learn say green and yellow many times mean "Lagos danfo"
+     - AI dey find patterns wey human being fit miss
+     - Na this one dem dey call "machine learning"
 
-  [In production, this would be 250-300 words of properly translated content]
+  3. PREDICTION: AI go use wetin e learn
+     - Your phone dey predict the next word when you dey type
+     - YouTube dey recommend videos wey you fit like
+     - Banks dey predict if transaction dey suspicious
 
+  Think of AI like agbero for motor park - after e don see thousands of passengers, e fit quickly spot who dey travel far just by their load!
 
-  Key points:
+  The more good data AI see, the better e go become. Bad data dey create bad AI - na why quality matter.
 
-  - Understanding how ai works
-
-  - Nigerian context and examples
-
-  - Practical applications
-
-  - How this helps you
-
-
-  Remember: AI is a tool to solve problems. Learn, practice, and build!'
 quiz:
-- question: What is the main focus of Day 1?
-  options:
-  - A. Introduction to AI
-  - B. Something else
-  - C. Random topic
-  - D. Not related
-  correct: 0
-- question: 'This lesson is about:'
-  options:
-  - A. Cooking
-  - B. How Ai Works
-  - C. Sports
-  - D. Music
-  correct: 1
-- question: Can AI help solve Nigerian problems?
-  options:
-  - A. Yes, definitely
-  - B. No, never
-  - C. Only in cities
-  - D. Maybe not
-  correct: 0
-- question: What should you do after this lesson?
-  options:
-  - A. Forget everything
-  - B. Practice and apply what you learned
-  - C. Do nothing
-  - D. Give up
-  correct: 1
-- question: Is how ai works important for Nigeria?
-  options:
-  - A. Yes, very important
-  - B. No value
-  - C. Only for foreigners
-  - D. Not relevant
-  correct: 0
+  - question: "Wetin AI need pass to learn?"
+    options:
+      - "A. Only light"
+      - "B. Plenty data and examples"
+      - "C. Magic power"
+      - "D. Just programming"
+    correct: 1
+
+  - question: "Wetin be the three main steps of AI?"
+    options:
+      - "A. Buy, Sell, Profit"
+      - "B. Read, Write, Delete"
+      - "C. Data Collection, Training, Prediction"
+      - "D. Install, Run, Close"
+    correct: 2
+
+  - question: "Wetin go happen if AI train with bad data?"
+    options:
+      - "A. E go make bad predictions"
+      - "B. E go still sharp anyway"
+      - "C. Nothing go change"
+      - "D. E go fix imself"
+    correct: 0
+
+  - question: "Wetin be 'training' for AI?"
+    options:
+      - "A. To teach human being to code"
+      - "B. To run for treadmill"
+      - "C. AI dey study patterns inside data"
+      - "D. To install updates"
+    correct: 2
+
+  - question: "Which one be example of AI prediction?"
+    options:
+      - "A. Your phone wey dey suggest next word when you dey type"
+      - "B. To press power button"
+      - "C. To print document"
+      - "D. To on your gen"
+    correct: 0

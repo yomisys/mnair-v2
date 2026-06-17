@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MNAIR — Starting</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      background: #0A0E1A;
+      color: #e2e8f0;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      user-select: none;
+      -webkit-app-region: drag;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 8px;
+    }
+
+    .logo-flag {
+      font-size: 32px;
+      line-height: 1;
+    }
+
+    .logo-text {
+      font-size: 28px;
+      font-weight: 800;
+      color: #008751;
+      letter-spacing: -0.5px;
+    }
+
+    .tagline {
+      font-size: 13px;
+      color: #64748b;
+      margin-bottom: 36px;
+      letter-spacing: 0.3px;
+    }
+
+    .steps {
+      width: 320px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-bottom: 28px;
+    }
+
+    .step {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .step-icon {
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      font-size: 12px;
+      transition: all 0.3s ease;
+    }
+
+    .step-icon.pending {
+      background: #1e293b;
+      border: 2px solid #334155;
+      color: #475569;
+    }
+
+    .step-icon.loading {
+      background: #008751/15;
+      border: 2px solid #008751;
+      animation: spin 1s linear infinite;
+    }
+
+    .step-icon.done {
+      background: #008751;
+      border: 2px solid #008751;
+      color: #fff;
+      animation: pop 0.2s ease;
+    }
+
+    .step-icon.error {
+      background: #dc2626;
+      border: 2px solid #dc2626;
+      color: #fff;
+    }
+
+    .step-label {
+      font-size: 13px;
+      transition: color 0.3s;
+    }
+
+    .step-label.pending { color: #475569; }
+    .step-label.loading { color: #e2e8f0; }
+    .step-label.done    { color: #008751; }
+    .step-label.error   { color: #f87171; }
+
+    .step-badge {
+      margin-left: auto;
+      font-size: 11px;
+      padding: 2px 8px;
+      border-radius: 999px;
+      font-weight: 600;
+    }
+
+    .step-badge.loading { background: #008751/10; color: #008751; }
+    .step-badge.done    { background: #008751/15; color: #008751; }
+    .step-badge.error   { background: #dc262615; color: #f87171; }
+
+    .status-msg {
+      font-size: 12px;
+      color: #475569;
+      min-height: 18px;
+      text-align: center;
+    }
+
+    .progress-bar {
+      width: 320px;
+      height: 2px;
+      background: #1e293b;
+      border-radius: 2px;
+      margin-top: 20px;
+      overflow: hidden;
+    }
+
+    .progress-fill {
+      height: 100%;
+      background: #008751;
+      border-radius: 2px;
+      width: 0%;
+      transition: width 0.5s ease;
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
+    @keyframes pop {
+      0%   { transform: scale(0.7); }
+      60%  { transform: scale(1.15); }
+      100% { transform: scale(1); }
+    }
+  </style>
+</head>
+<body>
+  <div class="logo">
+    <span class="logo-flag">🇳🇬</span>
+    <span class="logo-text">MNAIR</span>
+  </div>
+  <p class="tagline">Make Nigeria AI Ready</p>
+
+  <div class="steps">
+    <div class="step" id="step-docker">
+      <div class="step-icon pending" id="icon-docker">○</div>
+      <span class="step-label pending" id="label-docker">Infrastructure (Docker)</span>
+      <span class="step-badge" id="badge-docker"></span>
+    </div>
+    <div class="step" id="step-backend">
+      <div class="step-icon pending" id="icon-backend">○</div>
+      <span class="step-label pending" id="label-backend">API Server</span>
+      <span class="step-badge" id="badge-backend"></span>
+    </div>
+    <div class="step" id="step-frontend">
+      <div class="step-icon pending" id="icon-frontend">○</div>
+      <span class="step-label pending" id="label-frontend">Dashboard</span>
+      <span class="step-badge" id="badge-frontend"></span>
+    </div>
+    <div class="step" id="step-launch">
+      <div class="step-icon pending" id="icon-launch">○</div>
+      <span class="step-label pending" id="label-launch">Launching</span>
+      <span class="step-badge" id="badge-launch"></span>
+    </div>
+  </div>
+
+  <p class="status-msg" id="status-msg">Initialising…</p>
+
+  <div class="progress-bar">
+    <div class="progress-fill" id="progress"></div>
+  </div>
+
+  <script>
+    const PROGRESS = { docker: 25, backend: 50, frontend: 80, launch: 100 };
+    const ICONS = { pending: '○', loading: '◌', done: '✓', error: '✕' };
+
+    function update({ step, state, message }) {
+      const icon  = document.getElementById('icon-'  + step);
+      const label = document.getElementById('label-' + step);
+      const badge = document.getElementById('badge-' + step);
+      const msg   = document.getElementById('status-msg');
+      const fill  = document.getElementById('progress');
+
+      if (!icon) return;
+
+      icon.className  = 'step-icon '  + state;
+      label.className = 'step-label ' + state;
+      icon.textContent = ICONS[state] || '○';
+
+      if (badge) {
+        badge.className = 'step-badge ' + state;
+        badge.textContent = state === 'loading' ? '…'
+                          : state === 'done'    ? 'Ready'
+                          : state === 'error'   ? 'Failed'
+                          : '';
+      }
+
+      if (message) msg.textContent = message;
+
+      if (state === 'done' || state === 'loading') {
+        fill.style.width = PROGRESS[step] + '%';
+      }
+    }
+
+    if (window.mnair) {
+      window.mnair.onStatus(update);
+      window.mnair.onError((msg) => {
+        document.getElementById('status-msg').style.color = '#f87171';
+        document.getElementById('status-msg').textContent = msg;
+      });
+    }
+  </script>
+</body>
+</html>

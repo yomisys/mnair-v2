@@ -2,61 +2,77 @@ id: day4_ai_tools_pid
 day: 4
 topic: ai_tools
 language: pid
-title: 'Day 4: Ai Tools (Pidgin)'
-content: 'This is Day 4 lesson on ai tools.
+title: "Hands-On: How to Get Better Answers from AI Tools"
+content: |
+  You know say the tools dey exist. Today, learn to use them WELL. The difference between poor AI answer and excellent one na usually how you take ask - your "prompt".
 
+  THE WEAK PROMPT:
+  "Tell me about business" → generic, useless answer.
 
-  Focus: AI Applications
+  THE STRONG PROMPT - 4 INGREDIENTS:
+  1. ROLE: "You be business advisor for small Naija businesses"
+  2. TASK: "Create one-week marketing plan"
+  3. CONTEXT: "for my suya spot for Ibadan, budget 20,000 naira, my customers na students"
+  4. FORMAT: "as numbered list with daily costs"
 
+  Put everything together: specific, useful plan go appear! Try am today.
 
-  [In production, this would be 250-300 words of properly translated content]
+  MORE PROMPT TRICKS:
+  - ASK FOR STEPS: "Explain am like say I be complete beginner, step by step"
+  - GIVE EXAMPLES: "See message wey I write before... write similar one for X"
+  - ITERATE: If the answer miss road, reply "Make am shorter" or "Add more Naija examples"
+  - TRANSLATE: "Explain this thing for simple Pidgin" dey work well well!
 
+  PRACTICAL TASKS WEY YOU FIT DO TODAY:
+  - Students: "Create 10 practice questions on [topic] with answers wey dem explain"
+  - Job seekers: "Improve this CV summary for sales role: [paste your own]"
+  - Business owners: "Write polite reply to this customer complaint: [paste am]"
+  - Parents: "Suggest weekly meal plan with common Naija foods under 15,000 naira"
 
-  Key points:
+  SAFETY REMINDERS:
+  - Never paste passwords, BVN, or private documents inside AI tools
+  - Verify facts before you act on them (remember hallucination!)
+  - AI dey draft, YOU dey decide. Always review before you send.
 
-  - Understanding ai tools
+  Master prompting and you don gain skill wey employers now dey list for job adverts!
 
-  - Nigerian context and examples
-
-  - Practical applications
-
-  - How this helps you
-
-
-  Remember: AI is a tool to solve problems. Learn, practice, and build!'
 quiz:
-- question: What is the main focus of Day 4?
-  options:
-  - A. AI Applications
-  - B. Something else
-  - C. Random topic
-  - D. Not related
-  correct: 0
-- question: 'This lesson is about:'
-  options:
-  - A. Cooking
-  - B. Ai Tools
-  - C. Sports
-  - D. Music
-  correct: 1
-- question: Can AI help solve Nigerian problems?
-  options:
-  - A. Yes, definitely
-  - B. No, never
-  - C. Only in cities
-  - D. Maybe not
-  correct: 0
-- question: What should you do after this lesson?
-  options:
-  - A. Forget everything
-  - B. Practice and apply what you learned
-  - C. Do nothing
-  - D. Give up
-  correct: 1
-- question: Is ai tools important for Nigeria?
-  options:
-  - A. Yes, very important
-  - B. No value
-  - C. Only for foreigners
-  - D. Not relevant
-  correct: 0
+  - question: "Wetin be the 4 ingredients of strong prompt?"
+    options:
+      - "A. Role, Task, Context, Format"
+      - "B. Speed, Volume, Color, Size"
+      - "C. Name, Age, State, Religion"
+      - "D. Copy, Paste, Send, Delete"
+    correct: 0
+
+  - question: "Wetin you go do if the AI answer miss road?"
+    options:
+      - "A. Give up immediately"
+      - "B. Reply with corrections like 'Make am shorter'"
+      - "C. Break your phone"
+      - "D. Accept the bad answer"
+    correct: 1
+
+  - question: "Wetin you NO suppose ever paste inside AI tools?"
+    options:
+      - "A. Passwords, BVN, or private documents"
+      - "B. Business questions"
+      - "C. Recipe requests"
+      - "D. Study topics"
+    correct: 0
+
+  - question: "Which prompt STRONG pass?"
+    options:
+      - "A. 'Tell me about business'"
+      - "B. 'Create one-week marketing plan for my suya spot for Ibadan, budget 20,000 naira'"
+      - "C. 'Business'"
+      - "D. 'Help me'"
+    correct: 1
+
+  - question: "Who dey make the final decision on AI-drafted content?"
+    options:
+      - "A. The AI itself"
+      - "B. You - always review before you send"
+      - "C. Nobody"
+      - "D. The phone manufacturer"
+    correct: 1

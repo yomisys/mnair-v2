@@ -2,61 +2,70 @@ id: day3_ai_ethics_ha
 day: 3
 topic: ai_ethics
 language: ha
-title: 'Day 3: Ai Ethics (Hausa)'
-content: 'This is Day 3 lesson on ai ethics.
+title: "Bayananka, Hakkokinka: Sirri da NDPA"
+content: |
+  Mun ga cewa AI na cin bayanai - galibi BAYANANKA. Yau, koyi hakkokinka da yadda za ka kare kanka.
 
+  WADANNE BAYANAI KAKE BAYARWA?
+  Kowace rana, manhajoji na tattara: wurinka, lambobinka, hotunanka, sakonninka, tarihin bincikenka, rikodin muryarka, da yadda kake kashe kudi. Wasu tattarawar sun zama dole (Maps na bukatar wurinka). Wasu sun wuce kima (me ya sa manhajar fitila ke bukatar lambobinka?).
 
-  Focus: Data and AI
+  HAKKOKINKA A KARKASHIN NDPA:
+  Dokar Kare Bayanan Najeriya (2023) ta ba kowane dan Najeriya hakkoki:
+  1. IZINI: Dole kamfanoni su nemi izini kafin tattara bayananka
+  2. SAMUN DAMA: Za ka iya tambayar kowane kamfani wadanne bayanai suke rike game da kai
+  3. GYARA: Za ka iya bukatar su gyara bayanan da ba daidai ba
+  4. GOGEWA: Za ka iya neman su goge bayananka
+  5. KORAFI: Kai rahoton keta doka ga Hukumar Kare Bayanan Najeriya (NDPC)
 
+  KARE KANKA - HALAYE 5:
+  1. Duba izinin manhajoji: Settings → Apps → Permissions. Cire wadanda ba dole ba
+  2. Yi tunani kafin rabawa: BVN, NIN, da lambobin OTP - "customer care" a WhatsApp BA SA bukatarsu KO KADAN - zamba ce!
+  3. Yi amfani da PIN mai karfi ka kunna tabbatarwa mataki biyu a WhatsApp
+  4. Karanta kafin danna "I Agree" - akalla duba wadanne bayanai suke dauka
+  5. Yi hankali da wasanni da tambayoyin da ke neman bayanan kanka
 
-  [In production, this would be 250-300 words of properly translated content]
+  BAYANAI DA DA'AR AI:
+  Kamfanonin da ke horar da AI da bayananka ya kamata su gaya maka. Lokacin da wannan kwas ke tattara ci gabanka, muna gaya maka dalili (don ba ka takardar shaida) da tsawon lokacin da za mu rike shi (kwanaki 90 ga bayanan tattaunawa). Wannan bin NDPA ne - kuma hakkinka ne ka sa ran haka a ko'ina.
 
+  Bayananka na da daraja. Ka kiyaye su kamar yadda kake kiyaye kudinka.
 
-  Key points:
-
-  - Understanding ai ethics
-
-  - Nigerian context and examples
-
-  - Practical applications
-
-  - How this helps you
-
-
-  Remember: AI is a tool to solve problems. Learn, practice, and build!'
 quiz:
-- question: What is the main focus of Day 3?
-  options:
-  - A. Data and AI
-  - B. Something else
-  - C. Random topic
-  - D. Not related
-  correct: 0
-- question: 'This lesson is about:'
-  options:
-  - A. Cooking
-  - B. Ai Ethics
-  - C. Sports
-  - D. Music
-  correct: 1
-- question: Can AI help solve Nigerian problems?
-  options:
-  - A. Yes, definitely
-  - B. No, never
-  - C. Only in cities
-  - D. Maybe not
-  correct: 0
-- question: What should you do after this lesson?
-  options:
-  - A. Forget everything
-  - B. Practice and apply what you learned
-  - C. Do nothing
-  - D. Give up
-  correct: 1
-- question: Is ai ethics important for Nigeria?
-  options:
-  - A. Yes, very important
-  - B. No value
-  - C. Only for foreigners
-  - D. Not relevant
-  correct: 0
+  - question: "Me NDPA ke bukata kafin kamfanoni su tattara bayananka?"
+    options:
+      - "A. Babu komai"
+      - "B. Izininka (yarda)"
+      - "C. Biyan kudi"
+      - "D. Umarnin kotu kawai"
+    correct: 1
+
+  - question: "Wa ya kamata ka ba lambar OTP dinka?"
+    options:
+      - "A. Duk wanda ya ce shi customer care ne"
+      - "B. Babu kowa - kamfanoni na gaske ba sa neman ta"
+      - "C. Kungiyoyin WhatsApp"
+      - "D. Duk wanda ya kira ka"
+    correct: 1
+
+  - question: "Wane hakki NDPA ta ba ka?"
+    options:
+      - "A. Neman kamfanoni su goge bayananka"
+      - "B. Datar intanet kyauta kowane wata"
+      - "C. Wayoyi kyauta"
+      - "D. Lamuni mara iyaka"
+    correct: 0
+
+  - question: "A ina ake kai rahoton keta kare bayanai a Najeriya?"
+    options:
+      - "A. Hukumar Kare Bayanan Najeriya (NDPC)"
+      - "B. Makanikin unguwarku"
+      - "C. Gidan rediyo kawai"
+      - "D. Babu inda - ba a iya kai rahoto"
+    correct: 0
+
+  - question: "Me ya sa ya kamata ka duba izinin manhajoji?"
+    options:
+      - "A. Don manhajoji su yi jinkiri"
+      - "B. Don cire damar shiga bayanan sirrinka da ba dole ba"
+      - "C. Izini ba shi da muhimmanci"
+      - "D. Don amfani da karin batir"
+    correct: 1

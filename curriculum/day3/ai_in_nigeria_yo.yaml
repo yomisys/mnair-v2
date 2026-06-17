@@ -2,61 +2,66 @@ id: day3_ai_in_nigeria_yo
 day: 3
 topic: ai_in_nigeria
 language: yo
-title: 'Day 3: Ai In Nigeria (Yoruba)'
-content: 'This is Day 3 lesson on ai in nigeria.
+title: "Data Naijiria: Ede Wa, Ojo Iwaju Wa"
+content: |
+  Isoro kan niyi: data Geesi ati ti Saina ni a fi ko opolopo AI. Nigbati AI ko ba loye owe Hausa, ohun Yoruba, tabi akanlo ede Igbo, ko le sin miliọnu 200 ara Naijiria daradara. Loni, je ki a wo itan data Naijiria.
 
+  ALAFO DATA:
+  - Geesi ni tiriliọnu ọrọ lori intaneti fun kiko AI
+  - Hausa, Yoruba, ati Igbo - ti o ju miliọnu 100 eniyan n so - ni ida kekere pere
+  - Abajade: awon oluranlowo ohun ti ko gbo ohun wa, awon atumọ ti ko ri itumo wa
 
-  Focus: Data and AI
+  AWON ARA NAIJIRIA TI N DI ALAFO NAA:
+  1. Awon oluwadi ati awon oluyọnda ara eni n ko dataset jo fun awon ede Naijiria - won n gba ohun sile, won n tumo gbolohun, won n ko ọrọ jo
+  2. Awon ile-ise Eko n gba awon ti n fi aami si data sise - awon odo Naijiria ti n ri owo nipa kiko AI
+  3. Awon ise agbese bi Masakhane (itumo re ni "A jo n ko papo" ni isiZulu) n so awon oluwadi Afrika po ti won n ko AI itumo fun awon ede Afrika
+  4. Ibi ipamọ awon ile-iso redio ti igbohunsafefe ede ibile ti n di ibi iwakusa wura fun AI ohun
 
+  IDI TI DATA IBILE FI N BORI:
+  Modeli asotele ikun-omi nilo akosile ojo NAIJIRIA. Modeli eweko nilo data ile WA. Chatbot ilera nilo lati loye bi AWA se n se apejuwe aisan ("ara mi n ta mi"). Data ajeji ko le gba otito Naijiria rara.
 
-  [In production, this would be 250-300 words of properly translated content]
+  ANFAANI FUN O:
+  Gbigba data, mimọ re, ati fifi aami si je ona ipele akoko sinu ise AI - won nilo isọra, kii se oye giga. Ati pe lilo imo-ero ni ede re lasan - akosile ohun, ifiweranṣẹ, atunyẹwo - n fi ohun Naijiria kun aye dijitali.
 
+  Ede re je data. Iriri re je data. Lati ara re ni a o ti ko ojo iwaju AI Naijiria.
 
-  Key points:
-
-  - Understanding ai in nigeria
-
-  - Nigerian context and examples
-
-  - Practical applications
-
-  - How this helps you
-
-
-  Remember: AI is a tool to solve problems. Learn, practice, and build!'
 quiz:
-- question: What is the main focus of Day 3?
-  options:
-  - A. Data and AI
-  - B. Something else
-  - C. Random topic
-  - D. Not related
-  correct: 0
-- question: 'This lesson is about:'
-  options:
-  - A. Cooking
-  - B. Ai In Nigeria
-  - C. Sports
-  - D. Music
-  correct: 1
-- question: Can AI help solve Nigerian problems?
-  options:
-  - A. Yes, definitely
-  - B. No, never
-  - C. Only in cities
-  - D. Maybe not
-  correct: 0
-- question: What should you do after this lesson?
-  options:
-  - A. Forget everything
-  - B. Practice and apply what you learned
-  - C. Do nothing
-  - D. Give up
-  correct: 1
-- question: Is ai in nigeria important for Nigeria?
-  options:
-  - A. Yes, very important
-  - B. No value
-  - C. Only for foreigners
-  - D. Not relevant
-  correct: 0
+  - question: "Ki ni 'alafo data' fun awon ede Naijiria?"
+    options:
+      - "A. Awon ede Naijiria ni data ikeko ti o kere ju ti Geesi lo pupo"
+      - "B. Naijiria ni data ti o po ju"
+      - "C. A ko le ko awon ede Naijiria sile"
+      - "D. Ko si alafo kankan"
+    correct: 0
+
+  - question: "Ki ni ise agbese Masakhane n se?"
+    options:
+      - "A. O n ko ona ni Eko"
+      - "B. O n so awon oluwadi Afrika po ti won n ko AI fun awon ede Afrika"
+      - "C. O n ta foonu"
+      - "D. O n ko Geesi nikan"
+    correct: 1
+
+  - question: "Kilode ti modeli asotele ikun-omi Naijiria fi nilo data Naijiria?"
+    options:
+      - "A. Data ojo ajeji ko le gba otito Naijiria"
+      - "B. Data Naijiria din owo"
+      - "C. Ko nilo data"
+      - "D. Data ajeji lodi si ofin"
+    correct: 0
+
+  - question: "Ewo ni ona ipele akoko sinu ise AI?"
+    options:
+      - "A. Fifi aami si data ati mimọ re"
+      - "B. Ki o koko di ọjọgbọn"
+      - "C. Rira komputa nla"
+      - "D. Ko si ona ipele akoko"
+    correct: 0
+
+  - question: "Bawo ni awon ara Naijiria lasan se le fi ede won kun ojo iwaju AI?"
+    options:
+      - "A. Nipa lilo imo-ero ni ede won - akosile ohun, ifiweranṣẹ, atunyẹwo"
+      - "B. Nipa yiyera fun imo-ero patapata"
+      - "C. Nipa siso Geesi nikan"
+      - "D. Won ko le se alabapin"
+    correct: 0

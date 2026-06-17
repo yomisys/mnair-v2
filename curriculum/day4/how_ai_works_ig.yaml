@@ -2,61 +2,64 @@ id: day4_how_ai_works_ig
 day: 4
 topic: how_ai_works
 language: ig
-title: 'Day 4: How Ai Works (Igbo)'
-content: 'This is Day 4 lesson on how ai works.
+title: "Ime Chatbot: Otu ChatGPT Si Aza Gi"
+content: |
+  I juru ChatGPT "Kedu ka m ga-esi bido azumahia okuko na Naijiria?" n'ime sekond ole na ole, aziza zuru oke putara. Gini mere n'ime sekond ndi ahu? Ka anyi meghee injin ya!
 
+  NZOPUTA 1 - IKEWA OKWU GI KA HA BURU TOKENS:
+  AI na-ekewa ozi gi ka o buru obere iberibe a na-akpo tokens (ihe di ka akuku okwu). "Poultry" nwere ike ighö "poul" + "try". Komputa na-eji onuogugu aru oru, ya mere token obula na-aghö onuogugu.
 
-  Focus: AI Applications
+  NZOPUTA 2 - IGHOTA GBURUGBURU OKWU:
+  Model na-atunyere tokens gi na usoro si n'ozuzu ya - otutu ijeri ijeri okwu si n'akwukwo, weebusaiti, na edemede. O na-amata: nke a bu ajuju + banyere azumahia + kpomkwem okuko + ebe Naijiria. Gburugburu okwu di mkpa: "bido" ebe a putara ihiwe, o bughi ibido ugboala!
 
+  NZOPUTA 3 - IBU AMUMA AZIZA, OTU TOKEN N'OTU OGE:
+  Lee ihe nzuzo: ChatGPT na-ede site n'ibu amuma token ozo, ugboro ugboro. Di ka ntu aro okwu nke keyboard gi, mana e ji nnukwu data zuo ya nke na amuma ndi ahu na-aghö aziza nwere ogugu isi ma zuru oke.
 
-  [In production, this would be 250-300 words of properly translated content]
+  NZOPUTA 4 - NLELE NCHEKWA:
+  Ezigbo sistem AI na-azacha ihe na-emeru ahu ma o bu ihe ugha tupu ha egosi aziza.
 
+  NNUKWU MMACHI - "HALLUCINATION":
+  N'ihi na AI na-ebu amuma okwu ndi yiri eziokwu, mgbe ufodu o na-emeputa ozi UGHA nke na-ada ka eziokwu - di ka ikwuputa iwu Naijiria nke na-adighi adi! O naghi agha ugha - o na-ebu amuma usoro na-enweghi "imata" eziokwu n'ezie.
 
-  Key points:
+  IWU: Jiri chatbots maka echiche, ihe odide, na nkowa. Nyochaa eziokwu ndi di mkpa (iwu, ndumodu ahuike, onu ahia) site n'isi mmalite gọọmenti. AI bu onye inyeaka gi, o bughi ikike ikpeazu gi.
 
-  - Understanding how ai works
-
-  - Nigerian context and examples
-
-  - Practical applications
-
-  - How this helps you
-
-
-  Remember: AI is a tool to solve problems. Learn, practice, and build!'
 quiz:
-- question: What is the main focus of Day 4?
-  options:
-  - A. AI Applications
-  - B. Something else
-  - C. Random topic
-  - D. Not related
-  correct: 0
-- question: 'This lesson is about:'
-  options:
-  - A. Cooking
-  - B. How Ai Works
-  - C. Sports
-  - D. Music
-  correct: 1
-- question: Can AI help solve Nigerian problems?
-  options:
-  - A. Yes, definitely
-  - B. No, never
-  - C. Only in cities
-  - D. Maybe not
-  correct: 0
-- question: What should you do after this lesson?
-  options:
-  - A. Forget everything
-  - B. Practice and apply what you learned
-  - C. Do nothing
-  - D. Give up
-  correct: 1
-- question: Is how ai works important for Nigeria?
-  options:
-  - A. Yes, very important
-  - B. No value
-  - C. Only for foreigners
-  - D. Not relevant
-  correct: 0
+  - question: "Gini bu tokens?"
+    options:
+      - "A. Obere iberibe ihe edere AI na-aru oru na ha"
+      - "B. Mkpuru ego maka izu AI"
+      - "C. Ihe ichaji ekwenti"
+      - "D. Tiketi bos"
+    correct: 0
+
+  - question: "Kedu ka ChatGPT si ede aziza ya?"
+    options:
+      - "A. O na-edetu site n'otu weebusaiti"
+      - "B. Site n'ibu amuma token ozo ugboro ugboro"
+      - "C. Mmadu na-ede ya na nzuzo"
+      - "D. O na-ewere naani site n'aziza echekwara"
+    correct: 1
+
+  - question: "Gini bu 'hallucination' nke AI?"
+    options:
+      - "A. Mgbe AI na-emeputa ozi ugha nke na-ada ka eziokwu"
+      - "B. Mgbe AI na-ehi ura"
+      - "C. Mgbe ihuenyo na-egbuke egbuke"
+      - "D. Mgbe AI na-aru oru oke osooso"
+    correct: 0
+
+  - question: "Gini ka i kwesiri ime na eziokwu ndi di mkpa si na chatbot?"
+    options:
+      - "A. Kwere ha ozugbo"
+      - "B. Nyochaa ha site n'isi mmalite gọọmenti"
+      - "C. Kesaa ha ozugbo"
+      - "D. Ejila chatbots ma oli"
+    correct: 1
+
+  - question: "Kedu ka i kwesiri isi were AI chatbots?"
+    options:
+      - "A. Di ka ikike ikpeazu gi n'ihe niile"
+      - "B. Di ka onye inyeaka maka echiche na ihe odide"
+      - "C. Di ka ihe egwuregwu na-abaghi uru"
+      - "D. Di ka onye nochiri ndi dokita niile"
+    correct: 1

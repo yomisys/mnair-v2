@@ -2,61 +2,70 @@ id: day3_ai_ethics_ig
 day: 3
 topic: ai_ethics
 language: ig
-title: 'Day 3: Ai Ethics (Igbo)'
-content: 'This is Day 3 lesson on ai ethics.
+title: "Data Gi, Ikike Gi: Nzuzo na NDPA"
+content: |
+  Anyi ahula na AI na-eri data - otutu mgbe DATA GI. Taa, muta ikike gi na otu i ga-esi chebe onwe gi.
 
+  KEDU DATA I NA-ENYE?
+  Kwa ubochi, app na-achikota: ebe i no, ndi kontakt gi, foto gi, ozi gi, akuko ihe i lere n'intaneti, ndekorita olu gi, na otu i si emefu ego. Ufodu nchikota di mkpa (Maps choro ebe i no). Ufodu kariri oke (gini mere app oku flashlight ji acho ndi kontakt gi?).
 
-  Focus: Data and AI
+  IKIKE GI N'OKPURU NDPA:
+  Iwu Nchebe Data Naijiria (2023) nyere onye Naijiria obula ikike:
+  1. NKWENYE: Ulo oru ga-arioriri ikike tupu ha achikota data gi
+  2. INWETA: I nwere ike iju ulo oru obula kedu data ha ji banyere gi
+  3. NDOZI: I nwere ike icho ka ha dozie ozi na-ezighi ezi
+  4. IHICHAPU: I nwere ike icho ka ha hichapu data gi
+  5. MKPESA: Kpesaa mmebi iwu na Nigeria Data Protection Commission (NDPC)
 
+  CHEBE ONWE GI - OMUME 5:
+  1. Lelee ikike app: Settings → Apps → Permissions. Wepu nke na-adighi mkpa
+  2. Chee echiche tupu i kesaa: BVN, NIN, na koodu OTP gi - "customer care" na WhatsApp ACHOGHI ha MA OLI - nke ahu bu aghugho!
+  3. Jiri PIN siri ike ma gbanye nkwenye nzoputa abuo na WhatsApp
+  4. Guo tupu i pia "I Agree" - ma o dikarịa ala lelee data ha na-ewere
+  5. Kpachara anya na egwuregwu na ajuju ndi na-acho ozi nzuzo gi
 
-  [In production, this would be 250-300 words of properly translated content]
+  DATA NA UKPURU OMA AI:
+  Ulo oru ndi ji data gi azu AI kwesiri igwa gi. Mgbe ihe omumu a na-achikota oganihu gi, anyi na-agwa gi ihe kpatara ya (inye gi asambodo gi) na ogologo oge anyi ga-edebe ya (ubochi 90 maka data mkparita uka). Nke ahu bu irube isi na NDPA - o bukwa ikike gi icho ya ebe niile.
 
+  Data gi bara uru. Chebe ya ka i si echebe ego gi.
 
-  Key points:
-
-  - Understanding ai ethics
-
-  - Nigerian context and examples
-
-  - Practical applications
-
-  - How this helps you
-
-
-  Remember: AI is a tool to solve problems. Learn, practice, and build!'
 quiz:
-- question: What is the main focus of Day 3?
-  options:
-  - A. Data and AI
-  - B. Something else
-  - C. Random topic
-  - D. Not related
-  correct: 0
-- question: 'This lesson is about:'
-  options:
-  - A. Cooking
-  - B. Ai Ethics
-  - C. Sports
-  - D. Music
-  correct: 1
-- question: Can AI help solve Nigerian problems?
-  options:
-  - A. Yes, definitely
-  - B. No, never
-  - C. Only in cities
-  - D. Maybe not
-  correct: 0
-- question: What should you do after this lesson?
-  options:
-  - A. Forget everything
-  - B. Practice and apply what you learned
-  - C. Do nothing
-  - D. Give up
-  correct: 1
-- question: Is ai ethics important for Nigeria?
-  options:
-  - A. Yes, very important
-  - B. No value
-  - C. Only for foreigners
-  - D. Not relevant
-  correct: 0
+  - question: "Gini ka NDPA choro tupu ulo oru achikota data gi?"
+    options:
+      - "A. O dighi ihe obula"
+      - "B. Nkwenye gi (ikike)"
+      - "C. Ikwu ugwo"
+      - "D. Naani iwu ulo ikpe"
+    correct: 1
+
+  - question: "Onye ka i kwesiri inye koodu OTP gi?"
+    options:
+      - "A. Onye obula kwuru na ya bu customer care"
+      - "B. O nweghi onye - ezigbo ulo oru anaghi ario ya"
+      - "C. Otu WhatsApp"
+      - "D. Onye obula kpoturu gi"
+    correct: 1
+
+  - question: "Kedu ikike NDPA nyere gi?"
+    options:
+      - "A. Icho ka ulo oru hichapu data gi"
+      - "B. Data intaneti efu kwa onwa"
+      - "C. Ekwenti efu"
+      - "D. Mbinye ego ulo aku na-enweghi oke"
+    correct: 0
+
+  - question: "Ebee ka i na-akpesa mmebi iwu nchebe data na Naijiria?"
+    options:
+      - "A. Nigeria Data Protection Commission (NDPC)"
+      - "B. Onye mekanik obodo gi"
+      - "C. Naani ulo oru redio"
+      - "D. O nweghi ebe - a naghi akpesa mmebi iwu"
+    correct: 0
+
+  - question: "Gini mere i ji kwesi ilele ikike app?"
+    options:
+      - "A. Ime ka app na-eje nwayoo"
+      - "B. Iwepu ohere na-adighi mkpa nke ibanye na data nzuzo gi"
+      - "C. Ikike adighi mkpa"
+      - "D. Iji batiri ka ukwuu"
+    correct: 1

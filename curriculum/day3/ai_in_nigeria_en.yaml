@@ -2,61 +2,66 @@ id: day3_ai_in_nigeria_en
 day: 3
 topic: ai_in_nigeria
 language: en
-title: 'Day 3: Ai In Nigeria (English)'
-content: 'This is Day 3 lesson on ai in nigeria.
+title: "Nigerian Data: Our Languages, Our Future"
+content: |
+  Here's a problem: most AI was trained on English and Chinese data. When AI doesn't understand Hausa proverbs, Yoruba tones, or Igbo idioms, it cannot serve 200 million Nigerians properly. Today, let's look at the Nigerian data story.
 
+  THE DATA GAP:
+  - English has trillions of words online for AI training
+  - Hausa, Yoruba, and Igbo - spoken by over 100 million people - have a tiny fraction
+  - Result: voice assistants that can't hear our accents, translators that miss our meaning
 
-  Focus: Data and AI
+  NIGERIANS CLOSING THE GAP:
+  1. Researchers and volunteers are building datasets for Nigerian languages - recording speech, translating sentences, collecting text
+  2. Lagos-based companies hire data labelers - young Nigerians earning income by teaching AI
+  3. Projects like Masakhane (meaning "We build together" in isiZulu) unite African researchers building translation AI for African languages
+  4. Radio stations' archives of local-language broadcasts are becoming gold mines for voice AI
 
+  WHY LOCAL DATA WINS:
+  A flood prediction model needs NIGERIAN rainfall records. A crop model needs OUR soil data. A health chatbot needs to understand how WE describe symptoms ("my body is scratching me"). Foreign data simply cannot capture Nigerian reality.
 
-  [In production, this would be 250-300 words of properly translated content]
+  THE OPPORTUNITY FOR YOU:
+  Data collection, cleaning, and labeling are entry-level paths into AI careers - they need carefulness, not advanced degrees. And simply using technology in your language - voice notes, posts, reviews - adds Nigerian voices to the digital world.
 
+  Your language is data. Your experience is data. Nigeria's AI future will be built from it.
 
-  Key points:
-
-  - Understanding ai in nigeria
-
-  - Nigerian context and examples
-
-  - Practical applications
-
-  - How this helps you
-
-
-  Remember: AI is a tool to solve problems. Learn, practice, and build!'
 quiz:
-- question: What is the main focus of Day 3?
-  options:
-  - A. Data and AI
-  - B. Something else
-  - C. Random topic
-  - D. Not related
-  correct: 0
-- question: 'This lesson is about:'
-  options:
-  - A. Cooking
-  - B. Ai In Nigeria
-  - C. Sports
-  - D. Music
-  correct: 1
-- question: Can AI help solve Nigerian problems?
-  options:
-  - A. Yes, definitely
-  - B. No, never
-  - C. Only in cities
-  - D. Maybe not
-  correct: 0
-- question: What should you do after this lesson?
-  options:
-  - A. Forget everything
-  - B. Practice and apply what you learned
-  - C. Do nothing
-  - D. Give up
-  correct: 1
-- question: Is ai in nigeria important for Nigeria?
-  options:
-  - A. Yes, very important
-  - B. No value
-  - C. Only for foreigners
-  - D. Not relevant
-  correct: 0
+  - question: "What is the 'data gap' for Nigerian languages?"
+    options:
+      - "A. Nigerian languages have far less training data than English"
+      - "B. Nigeria has too much data"
+      - "C. Nigerian languages cannot be written"
+      - "D. There is no gap"
+    correct: 0
+
+  - question: "What does the Masakhane project do?"
+    options:
+      - "A. Builds roads in Lagos"
+      - "B. Unites African researchers building AI for African languages"
+      - "C. Sells phones"
+      - "D. Teaches only English"
+    correct: 1
+
+  - question: "Why does a Nigerian flood prediction model need Nigerian data?"
+    options:
+      - "A. Foreign rainfall data cannot capture Nigerian reality"
+      - "B. Nigerian data is cheaper"
+      - "C. It doesn't need data"
+      - "D. Foreign data is illegal"
+    correct: 0
+
+  - question: "Which is an entry-level path into AI careers?"
+    options:
+      - "A. Data labeling and cleaning"
+      - "B. Becoming a professor first"
+      - "C. Buying a supercomputer"
+      - "D. There is no entry-level path"
+    correct: 0
+
+  - question: "How can ordinary Nigerians add their languages to the AI future?"
+    options:
+      - "A. By using technology in their languages - voice notes, posts, reviews"
+      - "B. By avoiding technology completely"
+      - "C. By only speaking English"
+      - "D. They cannot contribute"
+    correct: 0

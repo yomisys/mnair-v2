@@ -2,61 +2,59 @@ id: day1_what_is_ai_ha
 day: 1
 topic: what_is_ai
 language: ha
-title: 'Day 1: What Is Ai (Hausa)'
-content: 'This is Day 1 lesson on what is ai.
+title: "Menene Artificial Intelligence (AI)?"
+content: |
+  Artificial Intelligence (AI) na nufin lokacin da kwamfuta da na'urori za su iya yin abubuwan da a da sai da hankalin dan Adam ake yin su. Ka dauke shi kamar koya wa kwamfuta ta yi koyo, tunani, da yanke shawara.
 
+  A Najeriya, AI yana kewaye da kai tuni! Idan manhajar bankinka ta gano zamba, idan Google ya fassara Hausa zuwa Turanci, ko kuma idan wayarka ta gane fuskarka - AI ne ke aiki.
 
-  Focus: Introduction to AI
+  Abin da AI zai iya yi:
+  - Gane alamu (kamar gano takardar naira ta jabu)
+  - Yin hasashe (kamar hasashen yanayi ga manoma)
+  - Fahimtar harshe (kamar chatbot da ke amsa tambayoyi)
+  - Gani da gane abubuwa (kamar kyamarar da ke karanta lambar mota)
 
+  AI ba sihiri ba ne, ba kuma mutum-mutumi mai kama da dan Adam ba. Shirye-shiryen kwamfuta ne da ke koyo daga bayanai don magance takamaiman matsaloli. Kamar yadda ka koyi hawan babur ta hanyar atisaye, haka AI ke koyo ta ganin misalai masu yawa.
 
-  [In production, this would be 250-300 words of properly translated content]
+  Najeriya na bukatar kwarewar AI! Daga noma zuwa lafiya, banki zuwa ilimi - AI zai iya taimakawa wajen magance matsalolinmu na gida. Shi ya sa kake koyon wannan!
 
-
-  Key points:
-
-  - Understanding what is ai
-
-  - Nigerian context and examples
-
-  - Practical applications
-
-  - How this helps you
-
-
-  Remember: AI is a tool to solve problems. Learn, practice, and build!'
 quiz:
-- question: What is the main focus of Day 1?
-  options:
-  - A. Introduction to AI
-  - B. Something else
-  - C. Random topic
-  - D. Not related
-  correct: 0
-- question: 'This lesson is about:'
-  options:
-  - A. Cooking
-  - B. What Is Ai
-  - C. Sports
-  - D. Music
-  correct: 1
-- question: Can AI help solve Nigerian problems?
-  options:
-  - A. Yes, definitely
-  - B. No, never
-  - C. Only in cities
-  - D. Maybe not
-  correct: 0
-- question: What should you do after this lesson?
-  options:
-  - A. Forget everything
-  - B. Practice and apply what you learned
-  - C. Do nothing
-  - D. Give up
-  correct: 1
-- question: Is what is ai important for Nigeria?
-  options:
-  - A. Yes, very important
-  - B. No value
-  - C. Only for foreigners
-  - D. Not relevant
-  correct: 0
+  - question: "Menene Artificial Intelligence?"
+    options:
+      - "A. Kwamfutoci da za su iya koyo da yanke shawara"
+      - "B. Mutum-mutumi masu kama da mutane kawai"
+      - "C. Sihirin da ke sa kwamfuta wayo"
+      - "D. Wani nau'in manhajar waya"
+    correct: 0
+
+  - question: "Wane misali na Najeriya ke nuna aikin AI?"
+    options:
+      - "A. Amfani da wayar Nokia 3310"
+      - "B. Manhajojin banki da ke gano zamba"
+      - "C. Rubutu da alkalami da takarda"
+      - "D. Dafa shinkafar jollof"
+    correct: 1
+
+  - question: "Ta yaya AI ke koyo?"
+    options:
+      - "A. Ta hanyar sihiri"
+      - "B. Ta ganin misalai da alamu masu yawa"
+      - "C. Daga littattafai kawai"
+      - "D. Ba ya bukatar koyo"
+    correct: 1
+
+  - question: "Me ya sa AI ke da muhimmanci ga Najeriya?"
+    options:
+      - "A. A Amurka kawai yake da amfani"
+      - "B. Zai iya taimakawa magance matsalolin gida"
+      - "C. Ba ma bukatarsa a nan"
+      - "D. Manyan kamfanoni kawai za su iya amfani da shi"
+    correct: 1
+
+  - question: "Me AI BA zai iya yi ba a yanzu?"
+    options:
+      - "A. Gane fuskarka"
+      - "B. Fassara harsuna"
+      - "C. Tunani daidai kamar kwakwalwar dan Adam"
+      - "D. Gano alamu a cikin bayanai"
+    correct: 2

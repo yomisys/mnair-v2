@@ -2,61 +2,77 @@ id: day4_ai_tools_ha
 day: 4
 topic: ai_tools
 language: ha
-title: 'Day 4: Ai Tools (Hausa)'
-content: 'This is Day 4 lesson on ai tools.
+title: "Aiki Kai Tsaye: Samun Kyawawan Amsoshi daga Kayan Aikin AI"
+content: |
+  Ka san kayan aikin suna nan. Yau, koyi amfani da su YADDA YA KAMATA. Bambanci tsakanin amsar AI mara kyau da mai kyau galibi yadda ka tambaya ne - "prompt" dinka.
 
+  PROMPT MAI RAUNI:
+  "Gaya mini game da kasuwanci" → amsa ta gama-gari, mara amfani.
 
-  Focus: AI Applications
+  PROMPT MAI KARFI - SINADARAI 4:
+  1. MATSAYI: "Kai mai ba da shawarar kasuwanci ne ga kananan kasuwancin Najeriya"
+  2. AIKI: "Kirkiri tsarin talla na mako daya"
+  3. MAHALLI: "don wurin suya na a Ibadan, kasafin naira 20,000, abokan ciniki dalibai ne"
+  4. TSARI: "a matsayin jerin lambobi tare da kudin yau da kullum"
 
+  Hada su wuri daya: tsari na musamman mai amfani zai bayyana! Gwada yau.
 
-  [In production, this would be 250-300 words of properly translated content]
+  KARIN DABARUN PROMPT:
+  - NEMI MATAKAI: "Bayyana kamar ni sabon mai koyo ne, mataki-mataki"
+  - BA DA MISALAI: "Ga sakon da na rubuta a baya... rubuta makamancinsa don X"
+  - MAIMAITA: Idan amsar ba ta yi daidai ba, amsa "Takaita shi" ko "Karin misalan Najeriya"
+  - FASSARA: "Bayyana wannan da Hausa mai sauki" na aiki sosai!
 
+  AYYUKAN GASKE DA ZA KA IYA YI YAU:
+  - Dalibai: "Kirkiri tambayoyin gwaji 10 kan [batu] tare da amsoshi da bayani"
+  - Masu neman aiki: "Inganta wannan takaitaccen CV don aikin sayarwa: [lika naka]"
+  - Masu kasuwanci: "Rubuta amsa mai ladabi ga wannan korafin abokin ciniki: [lika shi]"
+  - Iyaye: "Ba da shawarar tsarin abinci na mako da abincin Najeriya kasa da naira 15,000"
 
-  Key points:
+  TUNATARWAR TSARO:
+  - Kada ka taba lika kalmomin sirri, BVN, ko takardun sirri a kayan aikin AI
+  - Tabbatar da gaskiya kafin aiki da su (ka tuna hallucination!)
+  - AI na rubuta daftari, KAI ke yanke shawara. Duba koyaushe kafin aikawa.
 
-  - Understanding ai tools
+  Kware a prompting ka sami kwarewar da masu daukar ma'aikata ke lissafawa a tallace-tallacen ayyuka yanzu!
 
-  - Nigerian context and examples
-
-  - Practical applications
-
-  - How this helps you
-
-
-  Remember: AI is a tool to solve problems. Learn, practice, and build!'
 quiz:
-- question: What is the main focus of Day 4?
-  options:
-  - A. AI Applications
-  - B. Something else
-  - C. Random topic
-  - D. Not related
-  correct: 0
-- question: 'This lesson is about:'
-  options:
-  - A. Cooking
-  - B. Ai Tools
-  - C. Sports
-  - D. Music
-  correct: 1
-- question: Can AI help solve Nigerian problems?
-  options:
-  - A. Yes, definitely
-  - B. No, never
-  - C. Only in cities
-  - D. Maybe not
-  correct: 0
-- question: What should you do after this lesson?
-  options:
-  - A. Forget everything
-  - B. Practice and apply what you learned
-  - C. Do nothing
-  - D. Give up
-  correct: 1
-- question: Is ai tools important for Nigeria?
-  options:
-  - A. Yes, very important
-  - B. No value
-  - C. Only for foreigners
-  - D. Not relevant
-  correct: 0
+  - question: "Mene ne sinadarai 4 na prompt mai karfi?"
+    options:
+      - "A. Matsayi, Aiki, Mahalli, Tsari"
+      - "B. Sauri, Kara, Launi, Girma"
+      - "C. Suna, Shekaru, Jiha, Addini"
+      - "D. Kwafa, Lika, Aika, Goge"
+    correct: 0
+
+  - question: "Me za ka yi idan amsar AI ba ta yi daidai ba?"
+    options:
+      - "A. Daina nan take"
+      - "B. Amsa da gyara kamar 'Takaita shi'"
+      - "C. Karya wayarka"
+      - "D. Karbi amsar mara kyau"
+    correct: 1
+
+  - question: "Me BA za ka taba likawa a kayan aikin AI ba?"
+    options:
+      - "A. Kalmomin sirri, BVN, ko takardun sirri"
+      - "B. Tambayoyin kasuwanci"
+      - "C. Neman girke-girke"
+      - "D. Batutuwan karatu"
+    correct: 0
+
+  - question: "Wane prompt ya FI karfi?"
+    options:
+      - "A. 'Gaya mini game da kasuwanci'"
+      - "B. 'Kirkiri tsarin talla na mako daya don wurin suya na a Ibadan, kasafin naira 20,000'"
+      - "C. 'Kasuwanci'"
+      - "D. 'Taimake ni'"
+    correct: 1
+
+  - question: "Wa ke yanke shawara ta karshe kan abin da AI ya rubuta?"
+    options:
+      - "A. AI da kansa"
+      - "B. Kai - duba koyaushe kafin aikawa"
+      - "C. Babu kowa"
+      - "D. Kamfanin wayar"
+    correct: 1

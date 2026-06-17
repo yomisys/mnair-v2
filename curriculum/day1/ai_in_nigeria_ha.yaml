@@ -2,61 +2,73 @@ id: day1_ai_in_nigeria_ha
 day: 1
 topic: ai_in_nigeria
 language: ha
-title: 'Day 1: Ai In Nigeria (Hausa)'
-content: 'This is Day 1 lesson on ai in nigeria.
+title: "AI a Najeriya a Yau"
+content: |
+  AI ba na Silicon Valley kadai ba ne - yana riga yana magance matsalolin Najeriya a nan gida!
 
+  KUDI & BANKI:
+  - Kuda, OPay, da PalmPay suna amfani da AI don gano zamba da amincewa da lamuni nan take
+  - AI yana duba ko ma'amala na da shakku kafin ta wuce
+  - Kimanta bashi ba tare da jingina ba - AI yana nazarin yadda kake amfani da wayarka
 
-  Focus: Introduction to AI
+  NOMA:
+  - FarmCrowdy yana amfani da AI don hasashen yawan amfanin gona
+  - Manhajojin hasashen yanayi na taimaka wa manoma sanin lokacin shuka
+  - Gane hoto na gano cututtukan amfanin gona daga hotunan waya
 
+  LAFIYA:
+  - Wasu asibitocin Najeriya na amfani da AI don karanta X-ray da gano cututtuka
+  - Chatbots na amsa tambayoyin lafiya na asali a harsunan gida
+  - AI na taimakawa hasashen barkewar zazzabin cizon sauro kafin ta yadu
 
-  [In production, this would be 250-300 words of properly translated content]
+  SUFURI:
+  - Google Maps na hasashen cunkoson Lagos (AI ya koya daga miliyoyin tafiye-tafiye)
+  - Manhajojin hawa kamar Bolt na hada direbobi da fasinjoji yadda ya kamata
+  - Wasu kamfanoni na gwada AI don gano ramukan tituna a Najeriya
 
+  ILIMI:
+  - Manhajoji kamar uLesson na keɓance karatu ga kowane dalibi
+  - Malaman AI za su iya amsa tambayoyi a Yoruba, Igbo, ko Hausa
 
-  Key points:
+  Damar suna da yawa kwarai! Najeriya na da matsaloli na musamman da AI zai iya taimakawa wajen magancewa - daga rabon wutar lantarki zuwa kula da shara.
 
-  - Understanding ai in nigeria
-
-  - Nigerian context and examples
-
-  - Practical applications
-
-  - How this helps you
-
-
-  Remember: AI is a tool to solve problems. Learn, practice, and build!'
 quiz:
-- question: What is the main focus of Day 1?
-  options:
-  - A. Introduction to AI
-  - B. Something else
-  - C. Random topic
-  - D. Not related
-  correct: 0
-- question: 'This lesson is about:'
-  options:
-  - A. Cooking
-  - B. Ai In Nigeria
-  - C. Sports
-  - D. Music
-  correct: 1
-- question: Can AI help solve Nigerian problems?
-  options:
-  - A. Yes, definitely
-  - B. No, never
-  - C. Only in cities
-  - D. Maybe not
-  correct: 0
-- question: What should you do after this lesson?
-  options:
-  - A. Forget everything
-  - B. Practice and apply what you learned
-  - C. Do nothing
-  - D. Give up
-  correct: 1
-- question: Is ai in nigeria important for Nigeria?
-  options:
-  - A. Yes, very important
-  - B. No value
-  - C. Only for foreigners
-  - D. Not relevant
-  correct: 0
+  - question: "Wane bangare na Najeriya ke amfani da AI don gano zamba?"
+    options:
+      - "A. Kasuwannin gargajiya kawai"
+      - "B. Banki da fintech"
+      - "C. Shagunan dinki"
+      - "D. Kungiyoyin kwallon kafa"
+    correct: 1
+
+  - question: "Ta yaya AI zai iya taimaka wa manoman Najeriya?"
+    options:
+      - "A. Ta yin noma musu"
+      - "B. Hasashen yanayi da gano cututtukan amfanin gona"
+      - "C. Girbin amfanin gona da hannu"
+      - "D. Ba zai iya taimaka wa manoma ba"
+    correct: 1
+
+  - question: "Me Google Maps ke amfani da AI a Lagos?"
+    options:
+      - "A. Don gina sabbin tituna"
+      - "B. Don hasashen yanayin cunkoso"
+      - "C. Don sanya wa tituna suna"
+      - "D. Don kirga gidaje"
+    correct: 1
+
+  - question: "Wace magana game da AI a Najeriya ce GASKIYA?"
+    options:
+      - "A. AI na aiki a Amurka kawai"
+      - "B. Najeriya ba ta da kamfanonin AI"
+      - "C. AI yana riga yana magance matsalolin Najeriya"
+      - "D. AI ya yi tsada ga Najeriya"
+    correct: 2
+
+  - question: "Ta yaya AI zai iya taimaka wa lafiyar Najeriya?"
+    options:
+      - "A. Ta maye gurbin dukkan likitoci"
+      - "B. Karanta X-ray da hasashen barkewar cututtuka"
+      - "C. Gina asibitoci"
+      - "D. Kera magunguna"
+    correct: 1

@@ -2,61 +2,64 @@ id: day4_how_ai_works_ha
 day: 4
 topic: how_ai_works
 language: ha
-title: 'Day 4: How Ai Works (Hausa)'
-content: 'This is Day 4 lesson on how ai works.
+title: "Cikin Chatbot: Yadda ChatGPT Ke Amsa Maka"
+content: |
+  Ka tambayi ChatGPT "Ta yaya zan fara kasuwancin kaji a Najeriya?" cikin dakikoki, cikakkiyar amsa ta bayyana. Me ya faru a cikin wadancan dakikokin? Bari mu bude injin!
 
+  MATAKI 1 - RABA KALMOMINKA ZUWA TOKENS:
+  AI na raba sakonka zuwa kananan guda da ake kira tokens (kamar sassan kalmomi). "Poultry" na iya zama "poul" + "try". Kwamfutoci na aiki da lambobi, don haka kowane token ya zama lamba.
 
-  Focus: AI Applications
+  MATAKI 2 - FAHIMTAR MAHALLI:
+  Modelin na kwatanta tokens dinka da alamu daga horonsa - tiriliyoyin kalmomi daga littattafai, shafukan yanar gizo, da makaloli. Yana ganewa: wannan tambaya ce + game da kasuwanci + musamman kaji + wuri Najeriya. Mahalli na da muhimmanci: "fara" a nan na nufin kafawa, ba tada mota ba!
 
+  MATAKI 3 - HASASHEN AMSA, TOKEN DAYA BAYAN DAYA:
+  Ga sirrin: ChatGPT na rubutu ta hasashen token na gaba, akai-akai. Kamar shawarar kalmar keyboard dinka, amma an horar da shi da bayanai masu yawa har hasashen na zama amsoshi masu hankali da cikakku.
 
-  [In production, this would be 250-300 words of properly translated content]
+  MATAKI 4 - DUBAN TSARO:
+  Kyawawan tsarin AI na tace abubuwa masu cutarwa ko karya kafin nuna amsar.
 
+  BABBAN IYAKA - "HALLUCINATION":
+  Saboda AI na hasashen kalmomin da suka yi kama da gaskiya, wani lokaci yana samar da bayanan KARYA da suka yi kama da tabbaci - kamar ambaton dokar Najeriya da ba ta wanzu! Ba karya yake yi ba - yana hasashen alamu ne kawai ba tare da "sanin" gaskiya da gaske ba.
 
-  Key points:
+  DOKA: Yi amfani da chatbots don ra'ayoyi, daftari, da bayani. Tabbatar da muhimman bayanai (dokoki, shawarwarin lafiya, farashi) daga tushe na hukuma. AI mataimakinka ne, ba hukuncinka na karshe ba.
 
-  - Understanding how ai works
-
-  - Nigerian context and examples
-
-  - Practical applications
-
-  - How this helps you
-
-
-  Remember: AI is a tool to solve problems. Learn, practice, and build!'
 quiz:
-- question: What is the main focus of Day 4?
-  options:
-  - A. AI Applications
-  - B. Something else
-  - C. Random topic
-  - D. Not related
-  correct: 0
-- question: 'This lesson is about:'
-  options:
-  - A. Cooking
-  - B. How Ai Works
-  - C. Sports
-  - D. Music
-  correct: 1
-- question: Can AI help solve Nigerian problems?
-  options:
-  - A. Yes, definitely
-  - B. No, never
-  - C. Only in cities
-  - D. Maybe not
-  correct: 0
-- question: What should you do after this lesson?
-  options:
-  - A. Forget everything
-  - B. Practice and apply what you learned
-  - C. Do nothing
-  - D. Give up
-  correct: 1
-- question: Is how ai works important for Nigeria?
-  options:
-  - A. Yes, very important
-  - B. No value
-  - C. Only for foreigners
-  - D. Not relevant
-  correct: 0
+  - question: "Menene tokens?"
+    options:
+      - "A. Kananan gudan rubutu da AI ke sarrafawa"
+      - "B. Kudin sayen AI"
+      - "C. Na'urorin cajin waya"
+      - "D. Tikitin bas"
+    correct: 0
+
+  - question: "Ta yaya ChatGPT ke rubuta amsarsa?"
+    options:
+      - "A. Yana kwafe daga shafi daya"
+      - "B. Ta hasashen token na gaba akai-akai"
+      - "C. Mutum ne ke rubutawa a boye"
+      - "D. Yana dauko daga ajiyayyun amsoshi kawai"
+    correct: 1
+
+  - question: "Menene 'hallucination' na AI?"
+    options:
+      - "A. Lokacin da AI ya samar da bayanan karya masu kama da tabbaci"
+      - "B. Lokacin da AI ke barci"
+      - "C. Lokacin da allo ke kyafta"
+      - "D. Lokacin da AI ke aiki da sauri"
+    correct: 0
+
+  - question: "Me ya kamata ka yi da muhimman bayanai daga chatbot?"
+    options:
+      - "A. Gaskata su nan take"
+      - "B. Tabbatar da su daga tushe na hukuma"
+      - "C. Raba su nan take"
+      - "D. Kada ka taba amfani da chatbots"
+    correct: 1
+
+  - question: "Yaya ya kamata ka dauki AI chatbots?"
+    options:
+      - "A. A matsayin hukuncinka na karshe a komai"
+      - "B. A matsayin mataimaki don ra'ayoyi da daftari"
+      - "C. A matsayin kayan wasa marasa amfani"
+      - "D. A matsayin maye gurbin dukkan likitoci"
+    correct: 1

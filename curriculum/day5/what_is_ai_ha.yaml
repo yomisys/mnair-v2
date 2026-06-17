@@ -2,61 +2,67 @@ id: day5_what_is_ai_ha
 day: 5
 topic: what_is_ai
 language: ha
-title: 'Day 5: What Is Ai (Hausa)'
-content: 'This is Day 5 lesson on what is ai.
+title: "Za Ka Iya Ginawa da AI (Ba Sai da Digiri Ba)"
+content: |
+  Rana ta 5! Lokaci ya yi da za mu sauya daga fahimtar AI zuwa GINAWA da shi. Abin mamaki: ba ka bukatar digirin kimiyyar kwamfuta don farawa.
 
+  TSANIN MAI GINAWA - FARA INDA KAKE:
 
-  Focus: Building with AI
+  MATAKI 1 - GWANIN MAI AMFANI (za ka iya farawa yau):
+  Amfani da kayan aikin AI da kwarewa don samar da kima na gaske: tsare-tsaren kasuwanci, zane-zane, bayanan darasi, abubuwan talla. Mai dinki da ke amfani da AI don zana fosta da amsa wa abokan ciniki cikin kwarewa tana riga tana "ginawa" da AI.
 
+  MATAKI 2 - MAI GINA WORKFLOW (ba a bukatar code):
+  Hada kayan aiki wuri daya. Misali: abokin ciniki ya cike Google Form → amsar ta sauka cikin spreadsheet → AI ya rubuta amsa ta musamman → ka amince ka aika. Kayan aiki kamar Zapier na yin wadannan hadin da dannawa, ba code ba.
 
-  [In production, this would be 250-300 words of properly translated content]
+  MATAKI 3 - MAI GINA APP BA TARE DA CODE BA:
+  Dandamali kamar Glide da Bubble na mai da spreadsheets zuwa manhajoji na gaske. Mai sayar da kayan abinci za ta iya gina manhajar oda mai sauki don titinta - ba tare da layin code daya ba.
 
+  MATAKI 4 - MAI RUBUTA CODE (idan kana jin dadinsa):
+  Koyon Python na bude mataki mafi zurfi. Kuma ka san me? AI da kansa shi ne malamin shirye-shirye mafi kyau - yana bayyana kurakurai cikin hakuri da karfe 11 na dare, kyauta!
 
-  Key points:
+  ABIN DA MASU GINAWA NA NAJERIYA SUKA TABBATAR:
+  Yawancin shahararrun masu kafa kamfanonin fasaha na Najeriya sun fara ba tare da ilimin shirye-shirye ba. Sun ga matsalar gida, sun fara daga Mataki 1, suka hau. Mai sayarwa a kasuwa da ta san DALILIN da abokan ciniki ke korafi ta fi fahimtar matsalar fiye da mai rubuta code da bai taba zuwa kasuwa ba.
 
-  - Understanding what is ai
+  MATSALARKA + KAYAN AIKIN AI = DAMARKA.
+  Gobe za mu yi amfani da wannan ga kasuwanci musamman. Yanzu, tambayi kanka: "Wace matsala a kusa da ni fasaha za ta iya taimakawa warwarewa?"
 
-  - Nigerian context and examples
-
-  - Practical applications
-
-  - How this helps you
-
-
-  Remember: AI is a tool to solve problems. Learn, practice, and build!'
 quiz:
-- question: What is the main focus of Day 5?
-  options:
-  - A. Building with AI
-  - B. Something else
-  - C. Random topic
-  - D. Not related
-  correct: 0
-- question: 'This lesson is about:'
-  options:
-  - A. Cooking
-  - B. What Is Ai
-  - C. Sports
-  - D. Music
-  correct: 1
-- question: Can AI help solve Nigerian problems?
-  options:
-  - A. Yes, definitely
-  - B. No, never
-  - C. Only in cities
-  - D. Maybe not
-  correct: 0
-- question: What should you do after this lesson?
-  options:
-  - A. Forget everything
-  - B. Practice and apply what you learned
-  - C. Do nothing
-  - D. Give up
-  correct: 1
-- question: Is what is ai important for Nigeria?
-  options:
-  - A. Yes, very important
-  - B. No value
-  - C. Only for foreigners
-  - D. Not relevant
-  correct: 0
+  - question: "Shin kana bukatar digirin kimiyyar kwamfuta don fara ginawa da AI?"
+    options:
+      - "A. A'a - za ka iya farawa a matsayin gwanin mai amfani yau"
+      - "B. Eh, koyaushe"
+      - "C. Baki kawai za su iya ginawa"
+      - "D. Kana bukatar PhD"
+    correct: 0
+
+  - question: "Menene Mataki 2 (mai gina workflow)?"
+    options:
+      - "A. Hada kayan aiki wuri daya ba tare da code ba"
+      - "B. Rubuta Python mai zurfi"
+      - "C. Gina robots"
+      - "D. Sayar da kwamfutoci"
+    correct: 0
+
+  - question: "Me dandamali marasa code kamar Glide za su iya yi?"
+    options:
+      - "A. Mai da spreadsheets zuwa manhajoji na gaske"
+      - "B. Kunna waka kawai"
+      - "C. Maye gurbin dukkan masu shirye-shirye"
+      - "D. Babu wani abu mai amfani"
+    correct: 0
+
+  - question: "Ta yaya AI zai iya taimaka wa mai koyon rubuta code?"
+    options:
+      - "A. Yana bayyana kurakurai cikin hakuri kamar malami kyauta"
+      - "B. Ba zai iya taimakawa da coding ba"
+      - "C. Yana rubuta viruses"
+      - "D. Yana aiki ga kwararru kawai"
+    correct: 0
+
+  - question: "Wace fa'ida mai sayarwa a kasuwa take da ita fiye da mai code da bai taba zuwa kasuwa ba?"
+    options:
+      - "A. Ta fi fahimtar matsalar ta gaske"
+      - "B. Tana rubutu da sauri"
+      - "C. Tana da karin digiri"
+      - "D. Babu wata fa'ida"
+    correct: 0

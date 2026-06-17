@@ -2,61 +2,69 @@ id: day2_how_ai_works_yo
 day: 2
 topic: how_ai_works
 language: yo
-title: 'Day 2: How Ai Works (Yoruba)'
-content: 'This is Day 2 lesson on how ai works.
+title: "Ikeko ati Asotele: Aye Meji ti AI"
+content: |
+  Gbogbo eto machine learning ni aye meji: IKEKO (akoko ile-iwe) ati ASOTELE (akoko ise). Loye eyi yoo ran o lowo lati loye gbogbo AI.
 
+  AYE 1 - IKEKO (Kiko Eko):
+  Foju inu wo kiko omo-ise telo. O fi aso 500 ti a ti pari han an: "Eyi ni agbada, eyi ni kaftan, eyi ni senator." O n ko won, o n se asise, a n se atunse fun un, die die o si n dara si. Iyen ni ikeko!
 
-  Focus: Machine Learning Basics
+  Lasiko ikeko, AI yoo:
+  1. Gba opolopo apeere ti a ti fi aami si (foto + "mangoro ni eyi")
+  2. Se akiyesi tire
+  3. Se ayewo boya akiyesi naa to
+  4. Se atunse ara re die ti o ba se asise
+  5. Tun se ni miliọnu igba titi yoo fi pe
 
+  AYE 2 - ASOTELE (Sise):
+  Leyin ikeko, omo-ise naa yoo si ile-itaja tire. Bayii awon onibara n mu aso titun wa ti ko ti ri ri, sibe o le ran won daradara. Bee ni AI ti a ti ko se n sise - o n koju ipo TITUN pelu ohun ti o ti ko.
 
-  [In production, this would be 250-300 words of properly translated content]
+  Nigbati app banki re ba se ayewo isowo ni iseju kan, asotele ni yen. Awon osu kiko eko lati miliọnu isowo ti o koja ti sele teletele ni ikeko.
 
+  AWON KOKO PATAKI:
+  - Ikeko n gba akoko o si n na owo; asotele yara o si din owo
+  - AI mo ohun ti o ri ni ikeko nikan - ti ko ba ti ri foto ounje Naijiria ri, o le pe moi moi ni "muffin"!
+  - Idi niyen ti data ibile fi se pataki fun AI Naijiria
 
-  Key points:
+  Lola a o ko nipa epo fun gbogbo eyi: DATA.
 
-  - Understanding how ai works
-
-  - Nigerian context and examples
-
-  - Practical applications
-
-  - How this helps you
-
-
-  Remember: AI is a tool to solve problems. Learn, practice, and build!'
 quiz:
-- question: What is the main focus of Day 2?
-  options:
-  - A. Machine Learning Basics
-  - B. Something else
-  - C. Random topic
-  - D. Not related
-  correct: 0
-- question: 'This lesson is about:'
-  options:
-  - A. Cooking
-  - B. How Ai Works
-  - C. Sports
-  - D. Music
-  correct: 1
-- question: Can AI help solve Nigerian problems?
-  options:
-  - A. Yes, definitely
-  - B. No, never
-  - C. Only in cities
-  - D. Maybe not
-  correct: 0
-- question: What should you do after this lesson?
-  options:
-  - A. Forget everything
-  - B. Practice and apply what you learned
-  - C. Do nothing
-  - D. Give up
-  correct: 1
-- question: Is how ai works important for Nigeria?
-  options:
-  - A. Yes, very important
-  - B. No value
-  - C. Only for foreigners
-  - D. Not relevant
-  correct: 0
+  - question: "Ki ni 'aye meji' ti eto machine learning?"
+    options:
+      - "A. Osan ati oru"
+      - "B. Ikeko ati asotele"
+      - "C. Gbigba agbara ati lilo agbara"
+      - "D. Online ati offline"
+    correct: 1
+
+  - question: "Ki ni o n sele lasiko ikeko?"
+    options:
+      - "A. AI n ko awon apeere ti a fi aami si, o si n se atunse ara re ti o ba se asise"
+      - "B. AI n simi, o n fi agbara pamo"
+      - "C. AI n pa data re re"
+      - "D. AI n te iroyin jade"
+    correct: 0
+
+  - question: "Kilode ti AI le pe moi moi ni 'muffin'?"
+    options:
+      - "A. Nitori ko ri ounje Naijiria ri lasiko ikeko"
+      - "B. Nitori muffin ni moi moi"
+      - "C. Nitori AI korira ounje Naijiria"
+      - "D. Nitori foonu naa ti gbo"
+    correct: 0
+
+  - question: "Gbolohun wo lo je OTITỌ?"
+    options:
+      - "A. Ikeko yara, asotele lora"
+      - "B. Ikeko n gba akoko o si n na owo, asotele yara"
+      - "C. Awon mejeji n sele papo nigbagbogbo"
+      - "D. Asotele n waju ikeko"
+    correct: 1
+
+  - question: "Nigbati app banki re ba se ayewo isowo ni iseju kan, ki ni o n sele?"
+    options:
+      - "A. Ikeko"
+      - "B. Asotele pelu ohun ti o ti ko teletele"
+      - "C. App naa kan n se akiyesi lasan"
+      - "D. Eniyan lo n se ayewo re"
+    correct: 1

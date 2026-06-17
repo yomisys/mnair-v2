@@ -2,61 +2,69 @@ id: day2_ai_tools_en
 day: 2
 topic: ai_tools
 language: en
-title: 'Day 2: Ai Tools (English)'
-content: 'This is Day 2 lesson on ai tools.
+title: "ML-Powered Tools You Already Use"
+content: |
+  Surprise: you've been using machine learning for years without knowing! Today, let's spot the ML hiding in your everyday apps - and learn to use it better.
 
+  YOUR KEYBOARD:
+  When you type "how far" and your phone suggests "now?", that's an ML model trained on billions of sentences. Tip: your keyboard learns YOUR style over time - it will even learn your pidgin!
 
-  Focus: Machine Learning Basics
+  WHATSAPP & SOCIAL MEDIA:
+  - Status and feed ordering: ML predicts which posts you'll engage with
+  - Voice note transcription on some phones: ML converts speech to text
+  - Photo enhancement: ML brightens dark photos automatically
 
+  YOUTUBE & MUSIC APPS:
+  The recommendation engine is pure ML. It learned from millions of viewers: "People who watched A also enjoyed B." Tip: your recommendations improve when you click "Not interested" on videos you dislike - you're giving the model better training signals!
 
-  [In production, this would be 250-300 words of properly translated content]
+  CAMERA APPS:
+  Portrait mode (blurred background), night mode, and face beautification are all ML models. Your ₦80,000 phone does tricks that needed professional equipment 10 years ago.
 
+  MAPS:
+  Google Maps predicts that Third Mainland Bridge will be heavy at 5pm because ML learned from millions of past trips.
 
-  Key points:
+  THE LESSON: ML is not future technology - it's already in your pocket. Now that you can SEE it, you can use it smarter:
+  1. Give apps honest feedback (like/dislike) to improve recommendations
+  2. Use voice typing in English - it's surprisingly good now
+  3. Try Google Photos search: type "food" and it finds your food photos using ML!
 
-  - Understanding ai tools
-
-  - Nigerian context and examples
-
-  - Practical applications
-
-  - How this helps you
-
-
-  Remember: AI is a tool to solve problems. Learn, practice, and build!'
 quiz:
-- question: What is the main focus of Day 2?
-  options:
-  - A. Machine Learning Basics
-  - B. Something else
-  - C. Random topic
-  - D. Not related
-  correct: 0
-- question: 'This lesson is about:'
-  options:
-  - A. Cooking
-  - B. Ai Tools
-  - C. Sports
-  - D. Music
-  correct: 1
-- question: Can AI help solve Nigerian problems?
-  options:
-  - A. Yes, definitely
-  - B. No, never
-  - C. Only in cities
-  - D. Maybe not
-  correct: 0
-- question: What should you do after this lesson?
-  options:
-  - A. Forget everything
-  - B. Practice and apply what you learned
-  - C. Do nothing
-  - D. Give up
-  correct: 1
-- question: Is ai tools important for Nigeria?
-  options:
-  - A. Yes, very important
-  - B. No value
-  - C. Only for foreigners
-  - D. Not relevant
-  correct: 0
+  - question: "What powers your keyboard's next-word suggestions?"
+    options:
+      - "A. A dictionary made by hand"
+      - "B. An ML model trained on billions of sentences"
+      - "C. Random guessing"
+      - "D. Your network provider"
+    correct: 1
+
+  - question: "How does YouTube decide what to recommend to you?"
+    options:
+      - "A. ML learned patterns from millions of viewers"
+      - "B. Staff pick videos for each user"
+      - "C. It shows videos alphabetically"
+      - "D. The government chooses"
+    correct: 0
+
+  - question: "How can you improve your app recommendations?"
+    options:
+      - "A. Buy a new phone every year"
+      - "B. Give honest feedback like clicking 'Not interested'"
+      - "C. Watch everything to confuse it"
+      - "D. You cannot influence them"
+    correct: 1
+
+  - question: "Which camera feature uses machine learning?"
+    options:
+      - "A. Portrait mode with blurred background"
+      - "B. The physical lens"
+      - "C. The volume button"
+      - "D. The charging port"
+    correct: 0
+
+  - question: "How does Google Maps know traffic will be heavy at 5pm?"
+    options:
+      - "A. It guesses based on the weather"
+      - "B. ML learned from millions of past trips"
+      - "C. Police report it manually"
+      - "D. It cannot predict traffic"
+    correct: 1

@@ -2,61 +2,61 @@ id: day2_what_is_ai_ha
 day: 2
 topic: what_is_ai
 language: ha
-title: 'Day 2: What Is Ai (Hausa)'
-content: 'This is Day 2 lesson on what is ai.
+title: "AI da Machine Learning: Menene Bambanci?"
+content: |
+  Jiya ka koyi menene AI. Yau, bari mu fahimci injin da ke cikin AI: Machine Learning (ML).
 
+  SHIRYE-SHIRYE NA YAU DA KULLUM suna bin tsayayyun dokoki. Calculator koyaushe zai ba da 2 + 2 = 4 saboda mai shirye-shirye ne ya rubuta wannan doka. Idan sabon abu ya faru, shirin ba zai iya daidaitawa ba.
 
-  Focus: Machine Learning Basics
+  MACHINE LEARNING ya bambanta. Maimakon rubuta dokoki, muna nuna wa kwamfutar misalai sai ta gano dokokin da kanta. Babu wanda zai iya rubuta dokokin gane kowace fuska a Najeriya - amma ML na iya koyon fuskoki daga hotuna.
 
+  Ka yi tunaninsa haka:
+  - Shiri na yau da kullum: Takardar girki - bi matakan daidai, sakamako iri daya kowane lokaci
+  - Machine learning: Basirar mai sayarwa a kasuwa - bayan shekaru na abokan ciniki, ta san wanda zai saya da gaske da wanda kallo kawai yake yi
 
-  [In production, this would be 250-300 words of properly translated content]
+  AI shi ne babban buri (inji masu aiki da hankali). Machine Learning ita ce babbar hanyar da muke amfani da ita yau don cimma wannan buri. Kusan kowane AI da ka yi amfani da shi jiya - gano zamba, bude waya da fuska, hasashen kalma - machine learning ne.
 
+  Akwai kuma DEEP LEARNING - wani nau'in ML mai karfi da aka kwaikwayi daga kwakwalwar dan Adam. Shi ke tafiyar da ChatGPT, mataimakan murya, da gane hotuna. Deep learning na bukatar bayanai masu yawa da karfin kwamfuta.
 
-  Key points:
+  Takaitawa: AI shi ne mafarki, Machine Learning shi ne injin, Deep Learning shi ne ingantaccen sigar wannan injin. Ba ka bukatar lissafi don fahimtar wannan - ka tuna kawai: ML na koyo daga misalai, ba tsayayyun dokoki ba.
 
-  - Understanding what is ai
-
-  - Nigerian context and examples
-
-  - Practical applications
-
-  - How this helps you
-
-
-  Remember: AI is a tool to solve problems. Learn, practice, and build!'
 quiz:
-- question: What is the main focus of Day 2?
-  options:
-  - A. Machine Learning Basics
-  - B. Something else
-  - C. Random topic
-  - D. Not related
-  correct: 0
-- question: 'This lesson is about:'
-  options:
-  - A. Cooking
-  - B. What Is Ai
-  - C. Sports
-  - D. Music
-  correct: 1
-- question: Can AI help solve Nigerian problems?
-  options:
-  - A. Yes, definitely
-  - B. No, never
-  - C. Only in cities
-  - D. Maybe not
-  correct: 0
-- question: What should you do after this lesson?
-  options:
-  - A. Forget everything
-  - B. Practice and apply what you learned
-  - C. Do nothing
-  - D. Give up
-  correct: 1
-- question: Is what is ai important for Nigeria?
-  options:
-  - A. Yes, very important
-  - B. No value
-  - C. Only for foreigners
-  - D. Not relevant
-  correct: 0
+  - question: "Ta yaya machine learning ya bambanta da shiri na yau da kullum?"
+    options:
+      - "A. Yana koyon dokoki daga misalai maimakon bin tsayayyun dokoki"
+      - "B. Koyaushe yana tafiya a hankali"
+      - "C. Yana aiki a manyan kwamfutoci kawai"
+      - "D. Babu bambanci"
+    correct: 0
+
+  - question: "Mene ne alakar AI da Machine Learning?"
+    options:
+      - "A. Makiya ne"
+      - "B. ML ita ce babbar hanyar cimma AI a yau"
+      - "C. AI wani nau'in ML ne"
+      - "D. Ba su da alaka ko kadan"
+    correct: 1
+
+  - question: "Wanne ne misalin shiri mai tsayayyun dokoki (BA machine learning ba)?"
+    options:
+      - "A. Bude waya da fuska"
+      - "B. Calculator da ke hada lambobi"
+      - "C. Gano zamba a manhajojin banki"
+      - "D. Hasashen kalma lokacin rubutu"
+    correct: 1
+
+  - question: "Menene deep learning?"
+    options:
+      - "A. Karatu da dare"
+      - "B. Nau'in ML mai karfi da aka kwaikwayi daga kwakwalwar dan Adam"
+      - "C. Koyo a karkashin ruwa"
+      - "D. Wani nau'in batirin waya"
+    correct: 1
+
+  - question: "Me machine learning ke bukata don gano dokoki?"
+    options:
+      - "A. Misalai masu yawa (bayanai)"
+      - "B. Babban allo"
+      - "C. Karin wutar lantarki kawai"
+      - "D. Mutum da zai rubuta kowace doka"
+    correct: 0

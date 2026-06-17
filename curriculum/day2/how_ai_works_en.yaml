@@ -2,61 +2,69 @@ id: day2_how_ai_works_en
 day: 2
 topic: how_ai_works
 language: en
-title: 'Day 2: How Ai Works (English)'
-content: 'This is Day 2 lesson on how ai works.
+title: "Training and Prediction: The Two Lives of AI"
+content: |
+  Every machine learning system lives two lives: TRAINING (school time) and PREDICTION (work time). Understanding this helps you understand all of AI.
 
+  LIFE 1 - TRAINING (Learning):
+  Imagine teaching a young apprentice tailor. You show her 500 finished garments: "This is agbada, this is kaftan, this is senator wear." She studies them, makes mistakes, gets corrected, and slowly improves. That's training!
 
-  Focus: Machine Learning Basics
+  During training, the AI:
+  1. Receives many labeled examples (photo + "this is a mango")
+  2. Makes a guess
+  3. Checks if the guess was right
+  4. Adjusts itself slightly when wrong
+  5. Repeats millions of times until accurate
 
+  LIFE 2 - PREDICTION (Working):
+  After training, the apprentice opens her own shop. Now customers bring new fabrics she has never seen, and she can still sew correctly. The trained AI works the same way - it handles NEW situations using what it learned.
 
-  [In production, this would be 250-300 words of properly translated content]
+  When your bank app checks a transaction in 1 second, that's prediction. The months of learning from millions of past transactions already happened in training.
 
+  IMPORTANT POINTS:
+  - Training is slow and expensive; prediction is fast and cheap
+  - An AI only knows what it saw in training - if it never saw Nigerian food photos, it may call moi moi a "muffin"!
+  - This is why local data matters for Nigerian AI
 
-  Key points:
+  Tomorrow we'll learn about the fuel for all this: DATA.
 
-  - Understanding how ai works
-
-  - Nigerian context and examples
-
-  - Practical applications
-
-  - How this helps you
-
-
-  Remember: AI is a tool to solve problems. Learn, practice, and build!'
 quiz:
-- question: What is the main focus of Day 2?
-  options:
-  - A. Machine Learning Basics
-  - B. Something else
-  - C. Random topic
-  - D. Not related
-  correct: 0
-- question: 'This lesson is about:'
-  options:
-  - A. Cooking
-  - B. How Ai Works
-  - C. Sports
-  - D. Music
-  correct: 1
-- question: Can AI help solve Nigerian problems?
-  options:
-  - A. Yes, definitely
-  - B. No, never
-  - C. Only in cities
-  - D. Maybe not
-  correct: 0
-- question: What should you do after this lesson?
-  options:
-  - A. Forget everything
-  - B. Practice and apply what you learned
-  - C. Do nothing
-  - D. Give up
-  correct: 1
-- question: Is how ai works important for Nigeria?
-  options:
-  - A. Yes, very important
-  - B. No value
-  - C. Only for foreigners
-  - D. Not relevant
-  correct: 0
+  - question: "What are the two 'lives' of a machine learning system?"
+    options:
+      - "A. Day and night"
+      - "B. Training and prediction"
+      - "C. Charging and discharging"
+      - "D. Online and offline"
+    correct: 1
+
+  - question: "What happens during training?"
+    options:
+      - "A. AI studies labeled examples and adjusts itself when wrong"
+      - "B. AI rests and saves power"
+      - "C. AI deletes its data"
+      - "D. AI prints reports"
+    correct: 0
+
+  - question: "Why might an AI call moi moi a 'muffin'?"
+    options:
+      - "A. Because it never saw Nigerian food during training"
+      - "B. Because moi moi is a muffin"
+      - "C. Because AI hates Nigerian food"
+      - "D. Because the phone is old"
+    correct: 0
+
+  - question: "Which statement is TRUE?"
+    options:
+      - "A. Training is fast, prediction is slow"
+      - "B. Training is slow and expensive, prediction is fast"
+      - "C. Both happen at the same time always"
+      - "D. Prediction comes before training"
+    correct: 1
+
+  - question: "When your bank app checks a transaction in 1 second, what is happening?"
+    options:
+      - "A. Training"
+      - "B. Prediction using what was already learned"
+      - "C. The app is guessing randomly"
+      - "D. A human is checking it"
+    correct: 1

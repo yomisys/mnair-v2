@@ -2,61 +2,68 @@ id: day5_how_ai_works_ha
 day: 5
 topic: how_ai_works
 language: ha
-title: 'Day 5: How Ai Works (Hausa)'
-content: 'This is Day 5 lesson on how ai works.
+title: "Prompt Engineering: Shirye-shirye da Harshe Mai Sauki"
+content: |
+  Ga kyakkyawan sirri: prompting WANI nau'in shirye-shirye ne. Masu shirye-shirye na gargajiya na rubuta umarni da Python; kai kana rubuta umarni da Turanci (ko Hausa!). Yau, daga kyawawan prompts zuwa manyan TSARIN prompts.
 
+  DABARA 1 - TUNANI MATAKI-MATAKI:
+  Ga matsaloli masu wuya, ka ce wa AI ya "yi tunani mataki-mataki kafin amsawa." Wannan na inganta daidaito sosai a lissafi, tsari, da tunani. Gwada: "Yi tunani mataki-mataki: idan ina ajiye naira 500 kullum amma ina kashe naira 2,000 kowace Lahadi, nawa zan ajiye a makonni 4?"
 
-  Focus: Building with AI
+  DABARA 2 - MISALAI KADAN (FEW-SHOT):
+  Nuna tsarin da kake so:
+  "Mai da korafe-korafe zuwa amsoshi masu ladabi.
+  Korafi: 'Kayanku sun makara!' → Amsa: 'Muna ba da hakuri sosai...'
+  Korafi: 'Girman ba daidai ba!' → Amsa:"
+  AI zai cika tsarin. Haka horo ke aiki daidai - kana koyarwa da misalai!
 
+  DABARA 3 - TSARIN FITARWA:
+  Bukaci tsari: "Amsa KAWAI da tebur: Kaya | Farashi | Inda ake saya a Lagos." Fitarwa mai tsari na shiga spreadsheets da takardu kai tsaye.
 
-  [In production, this would be 250-300 words of properly translated content]
+  DABARA 4 - SYSTEM PROMPT:
+  Saita hali sau daya: "Kai abokin karatuna ne na WAEC Physics. Koyaushe ka yi mini tambayoyi bayan bayani. Yi amfani da misalan Najeriya. Rike amsoshi kasa da kalmomi 200." Kowace amsa yanzu za ta bi dokokinka!
 
+  DABARA 5 - DUBA KAI:
+  Bayan amsa: "Yanzu duba amsarka ko akwai kurakurai ka gyara duk wanda ka samu." AI na kama yawancin kurakuransa idan aka tambaye shi.
 
-  Key points:
+  Wadannan dabaru biyar tare za su sa ka fi kashi 95% na masu amfani inganci da AI. Yi atisayen daya yau - sana'ar "shirye-shirye" naka ta fara!
 
-  - Understanding how ai works
-
-  - Nigerian context and examples
-
-  - Practical applications
-
-  - How this helps you
-
-
-  Remember: AI is a tool to solve problems. Learn, practice, and build!'
 quiz:
-- question: What is the main focus of Day 5?
-  options:
-  - A. Building with AI
-  - B. Something else
-  - C. Random topic
-  - D. Not related
-  correct: 0
-- question: 'This lesson is about:'
-  options:
-  - A. Cooking
-  - B. How Ai Works
-  - C. Sports
-  - D. Music
-  correct: 1
-- question: Can AI help solve Nigerian problems?
-  options:
-  - A. Yes, definitely
-  - B. No, never
-  - C. Only in cities
-  - D. Maybe not
-  correct: 0
-- question: What should you do after this lesson?
-  options:
-  - A. Forget everything
-  - B. Practice and apply what you learned
-  - C. Do nothing
-  - D. Give up
-  correct: 1
-- question: Is how ai works important for Nigeria?
-  options:
-  - A. Yes, very important
-  - B. No value
-  - C. Only for foreigners
-  - D. Not relevant
-  correct: 0
+  - question: "Me ya sa prompting ke kama da shirye-shirye?"
+    options:
+      - "A. Kana rubuta umarni, sai dai da harshe mai sauki maimakon code"
+      - "B. Yana bukatar digirin kimiyyar kwamfuta"
+      - "C. Yana aiki a manyan kwamfutoci kawai"
+      - "D. Ba su da kamanceceniya ko kadan"
+    correct: 0
+
+  - question: "Me 'tunani mataki-mataki' ke ingantawa?"
+    options:
+      - "A. Daidaito a lissafi, tsari, da matsalolin tunani"
+      - "B. Rayuwar batirin waya"
+      - "C. Saurin intanet"
+      - "D. Babu komai"
+    correct: 0
+
+  - question: "Menene few-shot prompting?"
+    options:
+      - "A. Nuna misalan tsarin da kake son a cika"
+      - "B. Yin gajerun tambayoyi"
+      - "C. Amfani da manhaja da sauri"
+      - "D. Daukar hotuna"
+    correct: 0
+
+  - question: "Me system prompt ke yi?"
+    options:
+      - "A. Yana saita dokokin hali da kowace amsa za ta bi"
+      - "B. Yana kashe AI"
+      - "C. Yana cajin wayarka"
+      - "D. Yana goge tarihi"
+    correct: 0
+
+  - question: "Me ke faruwa idan ka ce AI ya duba amsarsa?"
+    options:
+      - "A. Yakan kama ya gyara yawancin kurakuransa"
+      - "B. Yana fushi"
+      - "C. Yana kin amsawa"
+      - "D. Yana lalacewa"
+    correct: 0

@@ -2,61 +2,69 @@ id: day3_ai_tools_yo
 day: 3
 topic: ai_tools
 language: yo
-title: 'Day 3: Ai Tools (Yoruba)'
-content: 'This is Day 3 lesson on ai tools.
+title: "Awon Irinse Rọrun Fun Sise Pelu Data"
+content: |
+  O ko nilo lati je onimo sayensi data ki o to bere si sise pelu data. Loni, je ki a ko awon irinse ofe ti yoo so o di ara Naijiria ti o gbon ninu data - o wulo fun isowo, ile-iwe, tabi ise imo-ero akoko re.
 
+  GOOGLE FORMS (ofe):
+  Da iwadii sile ki o si ko data jo ni irorun. Oniṣowo le beere lowo awon onibara: "Awon oja wo ni ki a maa ta?" Awon idahun yoo ko ara won jo si inu spreadsheet laifowoyi. Eyi ni GBIGBA DATA - igbese 1 ti irin-ajo AI ti o ko!
 
-  Focus: Data and AI
+  GOOGLE SHEETS / EXCEL (ofe):
+  Irinse data pataki julo ni agbaye. O le:
+  - Ko tita ojoojumo sile ki o si ri ilana osu
+  - To won lẹsẹẹsẹ ki o si yan (fi awon onibara Abuja han nikan)
+  - Se awon aworan atẹ ti yoo fi awon ilana han lesekese
+  - Mọ data (yo awon adakọ kuro pelu titẹ leemeji)
+  Opolopo ise data n bere pelu imo spreadsheet to lagbara!
 
+  CHATGPT GEGE BI OLURANLOWO DATA:
+  Le awon nomba tita re sibe ki o beere: "Ojo wo ninu ose ni mo n ta ju?" tabi "Akotan esi awon onibara yii si awon ẹdun pataki 3." Awon irinse AI le se ayewo dataset kekere bi ibanisọrọ - ko nilo kikọ koodu.
 
-  [In production, this would be 250-300 words of properly translated content]
+  GOOGLE TRENDS (trends.google.com):
+  Wo ohun ti awon ara Naijiria n wa - iwadii oja ofe! Oniṣowo aso le fi wiwa "ankara styles" we "lace styles" ni ibamu si ipinle ati osu.
 
+  ISE IDANRAWO FUN ONI:
+  Si Google Forms. Da iwadii ibeere 3 sile nipa ohunkohun (isowo re, agbegbe re). Pin in pelu ore 5 lori WhatsApp. Ku oriire - o ti ko dataset akoko re jo!
 
-  Key points:
+  Ranti: data ni a fi n ko AI, bayii si IWO le gba a jo, to o lẹsẹẹsẹ, ki o si se ayewo re. Imo yen nikan ti so o di eni iyebiye.
 
-  - Understanding ai tools
-
-  - Nigerian context and examples
-
-  - Practical applications
-
-  - How this helps you
-
-
-  Remember: AI is a tool to solve problems. Learn, practice, and build!'
 quiz:
-- question: What is the main focus of Day 3?
-  options:
-  - A. Data and AI
-  - B. Something else
-  - C. Random topic
-  - D. Not related
-  correct: 0
-- question: 'This lesson is about:'
-  options:
-  - A. Cooking
-  - B. Ai Tools
-  - C. Sports
-  - D. Music
-  correct: 1
-- question: Can AI help solve Nigerian problems?
-  options:
-  - A. Yes, definitely
-  - B. No, never
-  - C. Only in cities
-  - D. Maybe not
-  correct: 0
-- question: What should you do after this lesson?
-  options:
-  - A. Forget everything
-  - B. Practice and apply what you learned
-  - C. Do nothing
-  - D. Give up
-  correct: 1
-- question: Is ai tools important for Nigeria?
-  options:
-  - A. Yes, very important
-  - B. No value
-  - C. Only for foreigners
-  - D. Not relevant
-  correct: 0
+  - question: "Irinse ofe wo lo n ko data iwadii jo laifowoyi sinu spreadsheet?"
+    options:
+      - "A. Google Forms"
+      - "B. Ero isiro"
+      - "C. App ina filaṣi"
+      - "D. Ero fidio"
+    correct: 0
+
+  - question: "Ki ni Google Sheets le ran o lowo lati se pelu data tita?"
+    options:
+      - "A. To lẹsẹẹsẹ, yan, se aworan atẹ, ki o si ri awon ilana"
+      - "B. Se ounje"
+      - "C. Gba agbara foonu re"
+      - "D. Ko si ohun to wulo"
+    correct: 0
+
+  - question: "Bawo ni ChatGPT se le ran lowo pelu dataset kekere?"
+    options:
+      - "A. O le se akotan re ki o si dahun ibeere nipa re bi ibanisọrọ"
+      - "B. O ko lati ka data"
+      - "C. O n sise pelu aworan nikan"
+      - "D. O n pa data naa re"
+    correct: 0
+
+  - question: "Ki ni Google Trends wulo fun?"
+    options:
+      - "A. Iwadii oja ofe lori ohun ti awon eniyan n wa"
+      - "B. Pipe foonu"
+      - "C. Fifi owo ranse"
+      - "D. Sise ere"
+    correct: 0
+
+  - question: "Kilode ti imo spreadsheet fi niyelori?"
+    options:
+      - "A. Opolopo ise data n bere pelu re"
+      - "B. Ko wulo rara"
+      - "C. Awon ajeji nikan lo n lo spreadsheets"
+      - "D. Won fe fi ofin de spreadsheets"
+    correct: 0

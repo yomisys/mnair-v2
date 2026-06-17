@@ -2,61 +2,70 @@ id: day4_ai_in_nigeria_en
 day: 4
 topic: ai_in_nigeria
 language: en
-title: 'Day 4: Ai In Nigeria (English)'
-content: 'This is Day 4 lesson on ai in nigeria.
+title: "AI Applications Changing Nigerian Lives"
+content: |
+  Today, real stories of AI applications working across Nigeria right now - and the jobs growing around them.
 
+  HEALTHCARE - UBENWA:
+  A Nigerian startup built AI that analyzes a baby's cry to detect birth asphyxia - a major cause of infant death. The AI was trained on recordings of newborn cries. A nurse with a phone can now screen babies in rural clinics without expensive equipment.
 
-  Focus: AI Applications
+  AGRICULTURE - AIRSMAT & FRIENDS:
+  Drones with vision AI map farms, count plants, and spot problem areas. Soil sensors feed prediction models that tell farmers exactly when to irrigate. Hello Tractor (the "Uber for tractors") uses AI to match tractor owners with farmers who need them.
 
+  FINANCE - EVERYWHERE:
+  Beyond fraud detection, AI now powers: instant loan apps, stock trading advice, insurance pricing, and chatbots resolving bank complaints in minutes instead of branch queues.
 
-  [In production, this would be 250-300 words of properly translated content]
+  EDUCATION:
+  AI grading assistants help teachers mark faster. Literacy apps adapt to each child's reading level. JAMB uses computer-based testing with AI monitoring for exam malpractice.
 
+  ENTERTAINMENT - NOLLYWOOD:
+  Editors use AI to clean audio, color-grade footage, and generate subtitles in multiple languages - helping Nigerian films reach global audiences.
 
-  Key points:
+  NEW JOBS APPEARING:
+  - AI trainers and data labelers
+  - Prompt engineers (people skilled at instructing AI)
+  - AI support specialists at banks and telcos
+  - Drone operators for agriculture
 
-  - Understanding ai in nigeria
+  Notice: AI didn't remove the nurse, farmer, teacher, or editor - it made them more powerful. The Nigerians winning with AI are those who learned to USE it. That's exactly what you're doing!
 
-  - Nigerian context and examples
-
-  - Practical applications
-
-  - How this helps you
-
-
-  Remember: AI is a tool to solve problems. Learn, practice, and build!'
 quiz:
-- question: What is the main focus of Day 4?
-  options:
-  - A. AI Applications
-  - B. Something else
-  - C. Random topic
-  - D. Not related
-  correct: 0
-- question: 'This lesson is about:'
-  options:
-  - A. Cooking
-  - B. Ai In Nigeria
-  - C. Sports
-  - D. Music
-  correct: 1
-- question: Can AI help solve Nigerian problems?
-  options:
-  - A. Yes, definitely
-  - B. No, never
-  - C. Only in cities
-  - D. Maybe not
-  correct: 0
-- question: What should you do after this lesson?
-  options:
-  - A. Forget everything
-  - B. Practice and apply what you learned
-  - C. Do nothing
-  - D. Give up
-  correct: 1
-- question: Is ai in nigeria important for Nigeria?
-  options:
-  - A. Yes, very important
-  - B. No value
-  - C. Only for foreigners
-  - D. Not relevant
-  correct: 0
+  - question: "What does Ubenwa's AI analyze to detect birth asphyxia?"
+    options:
+      - "A. A baby's cry"
+      - "B. Blood samples only"
+      - "C. The mother's age"
+      - "D. Hospital bills"
+    correct: 0
+
+  - question: "What is Hello Tractor?"
+    options:
+      - "A. A cartoon show"
+      - "B. An AI service matching tractor owners with farmers"
+      - "C. A phone brand"
+      - "D. A fuel station"
+    correct: 1
+
+  - question: "How does AI help Nollywood?"
+    options:
+      - "A. Cleaning audio, color-grading, and generating subtitles"
+      - "B. Acting in all the films"
+      - "C. Building cinemas"
+      - "D. It doesn't help at all"
+    correct: 0
+
+  - question: "Which is a NEW job created by AI?"
+    options:
+      - "A. Prompt engineer"
+      - "B. Vulcanizer"
+      - "C. Town crier"
+      - "D. Petrol attendant"
+    correct: 0
+
+  - question: "What happened to nurses, farmers, and teachers who use AI?"
+    options:
+      - "A. They all lost their jobs"
+      - "B. AI made them more powerful at their work"
+      - "C. They were replaced by robots"
+      - "D. Nothing changed for anyone"
+    correct: 1

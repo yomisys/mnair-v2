@@ -2,61 +2,78 @@ id: day1_ai_tools_yo
 day: 1
 topic: ai_tools
 language: yo
-title: 'Day 1: Ai Tools (Yoruba)'
-content: 'This is Day 1 lesson on ai tools.
+title: "Awon Irinse AI Ti O Le Lo Loni"
+content: |
+  O ko nilo lati je onimo eto komputa ki o to le lo AI! Eyi ni awon irinse AI ofe ti o le bere si lo lori foonu re lesekese:
 
+  CHATGPT (chat.openai.com):
+  - Beere ibeere ki o si gba idahun
+  - Ko imeeli, arokọ, tabi eto isowo
+  - Tumo laarin awon ede
+  - O n sise lori browser foonu eyikeyii, koda pelu data kekere
 
-  Focus: Introduction to AI
+  GOOGLE LENS:
+  - Da kamera re ko si ọrọ lati tumo re
+  - Da eweko, eranko, tabi oja mo
+  - Sayan ki o si daako ọrọ lati inu foto
+  - Ofe lori foonu Android
 
+  GRAMMARLY:
+  - O n se ayewo sipeli ati girama Geesi re
+  - O n ran o lowo lati ko imeeli ati ifiranse to dara ju
+  - Eya ofe n sise daradara fun awon ibeere ipilẹ
 
-  [In production, this would be 250-300 words of properly translated content]
+  CANVA AI:
+  - Se apẹrẹ posita, aami, ati ifiweranṣẹ social media
+  - AI n daba awon apẹrẹ da lori ohun ti o nilo
+  - O dara pupo fun awon oniwun isowo kekere
 
+  GOOGLE TRANSLATE:
+  - Tumo laarin ede 100+ pelu Yoruba, Igbo, Hausa
+  - O n sise laisi intaneti ti o ba gba idii ede sile
+  - O le tumo ọrọ inu foto
 
-  Key points:
+  Awon irinse wonyi je OFE tabi won ni eya ofe. O le lo won lori foonu Android olowo poku pelu data kekere. Ohun pataki ni lati bere si dan won wo ati ko eko!
 
-  - Understanding ai tools
+  Ranti: Ona ti o dara ju lati ko AI ni lati lo o. Bere loni!
 
-  - Nigerian context and examples
-
-  - Practical applications
-
-  - How this helps you
-
-
-  Remember: AI is a tool to solve problems. Learn, practice, and build!'
 quiz:
-- question: What is the main focus of Day 1?
-  options:
-  - A. Introduction to AI
-  - B. Something else
-  - C. Random topic
-  - D. Not related
-  correct: 0
-- question: 'This lesson is about:'
-  options:
-  - A. Cooking
-  - B. Ai Tools
-  - C. Sports
-  - D. Music
-  correct: 1
-- question: Can AI help solve Nigerian problems?
-  options:
-  - A. Yes, definitely
-  - B. No, never
-  - C. Only in cities
-  - D. Maybe not
-  correct: 0
-- question: What should you do after this lesson?
-  options:
-  - A. Forget everything
-  - B. Practice and apply what you learned
-  - C. Do nothing
-  - D. Give up
-  correct: 1
-- question: Is ai tools important for Nigeria?
-  options:
-  - A. Yes, very important
-  - B. No value
-  - C. Only for foreigners
-  - D. Not relevant
-  correct: 0
+  - question: "Ki ni ChatGPT le ran o lowo lati se?"
+    options:
+      - "A. Se iresi jollof"
+      - "B. Dahun ibeere ati ko ọrọ"
+      - "C. Tun jeneretọ re se"
+      - "D. Fi owo ranse"
+    correct: 1
+
+  - question: "Irinse AI wo lo le tumo ọrọ inu foto?"
+    options:
+      - "A. Ero isiro"
+      - "B. Google Lens"
+      - "C. App aago"
+      - "D. Awon olubasọrọ"
+    correct: 1
+
+  - question: "Nje o nilo foonu olowo nla lati lo awon irinse AI wonyi?"
+    options:
+      - "A. Beeni, iPhone nikan"
+      - "B. Beeni, Android nla nikan"
+      - "C. Rara, opolopo n sise lori foonu Android olowo poku"
+      - "D. O nilo laptop"
+    correct: 2
+
+  - question: "Ki ni Grammarly n ran ni lowo pelu?"
+    options:
+      - "A. Isiro mathimatiki"
+      - "B. Ayewo sipeli ati girama"
+      - "C. Orin sise"
+      - "D. Pipe foonu"
+    correct: 1
+
+  - question: "Nje Google Translate le sise laisi intaneti?"
+    options:
+      - "A. Rara, lailai"
+      - "B. Beeni, ti o ba gba idii ede sile"
+      - "C. Ni Amerika nikan"
+      - "D. Pelu sisanwo nikan"
+    correct: 1

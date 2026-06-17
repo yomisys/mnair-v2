@@ -2,61 +2,72 @@ id: day4_ai_ethics_ha
 day: 4
 topic: ai_ethics
 language: ha
-title: 'Day 4: Ai Ethics (Hausa)'
-content: 'This is Day 4 lesson on ai ethics.
+title: "Deepfakes da Labaran Karya: Zama Mai Hankali a Zamanin AI"
+content: |
+  AI yanzu na iya kirkirar bidiyon karya na mutane na gaske suna fadin abubuwan da ba su taba fada ba. A lokacin zabe ko a kungiyar WhatsApp ta iyali, wannan yana da hadari. Yau: yadda za ka kare kanka da sauran mutane.
 
+  ABIN DA AI ZAI IYA KIRKIRA YAU:
+  - BIDIYO: Dan siyasa yana "ikirari" da laifuka - fuska da murya da aka kwaikwaya
+  - SAUTI: "Dan garkuwa" mai amfani da muryar dan uwanka da aka kwaikwaya don neman kudin fansa
+  - HOTUNA: Hotunan karya na abubuwan da ba su taba faruwa ba
+  - RUBUTU: Dubban asusun social media na karya masu yada karairayi
 
-  Focus: AI Applications
+  HADURRAN NAJERIYA NA GASKE:
+  - Labaran karya na zabe da aka tsara don haifar da tashin hankali
+  - "Tabbacin saka hannun jari na shahararru" - bidiyon karya na shahararrun 'yan Najeriya masu tallata zamba
+  - Kiran zamba da muryar da aka kwaikwaya zuwa 'yan uwa
+  - Hotunan "labari mai zafi" na karya yayin gaggawa
 
+  KAYAN KARIYARKA - DUBA 6:
+  1. TUSHE: Wa ya fara wallafawa? Gidan labarai sananne ko asusun boye?
+  2. TANTANCEWA: Shin wani sanannen kafofin yada labarai na bayar da rahoto? Idan tushe daya ne kawai - jira
+  3. DUBA SOSAI: Bidiyon AI yakan samu kyaftawa mara kyau, lebba da ba su dace da magana ba, hannaye masu ban mamaki
+  4. GWAJIN MOTSIN RAI: Abun da aka tsara don sa ka FUSHI sosai ko TSORO sosai galibi yaudara ce
+  5. BINCIKEN HOTO: Google Lens na iya nuna ko "hoton wani lamari" daga 2015 ne
+  6. KALMAR SIRRI TA IYALI: Ku amince da tambayar sirri da 'yan uwa don kayar da zambar muryar da aka kwaikwaya
 
-  [In production, this would be 250-300 words of properly translated content]
+  KAFIN KA TURA:
+  Sakon nan na "raba da sauri!" a kungiyar iyali? Duba shi tukuna. Tura labaran karya na mai da KAI cikin matsalar - kuma dokar Najeriya yanzu ta shafi yada labaran karya.
 
+  Zama mutumin da ke tantancewa a al'ummarka. A zamanin AI, wannan babban karfi ne.
 
-  Key points:
-
-  - Understanding ai ethics
-
-  - Nigerian context and examples
-
-  - Practical applications
-
-  - How this helps you
-
-
-  Remember: AI is a tool to solve problems. Learn, practice, and build!'
 quiz:
-- question: What is the main focus of Day 4?
-  options:
-  - A. AI Applications
-  - B. Something else
-  - C. Random topic
-  - D. Not related
-  correct: 0
-- question: 'This lesson is about:'
-  options:
-  - A. Cooking
-  - B. Ai Ethics
-  - C. Sports
-  - D. Music
-  correct: 1
-- question: Can AI help solve Nigerian problems?
-  options:
-  - A. Yes, definitely
-  - B. No, never
-  - C. Only in cities
-  - D. Maybe not
-  correct: 0
-- question: What should you do after this lesson?
-  options:
-  - A. Forget everything
-  - B. Practice and apply what you learned
-  - C. Do nothing
-  - D. Give up
-  correct: 1
-- question: Is ai ethics important for Nigeria?
-  options:
-  - A. Yes, very important
-  - B. No value
-  - C. Only for foreigners
-  - D. Not relevant
-  correct: 0
+  - question: "Menene deepfake?"
+    options:
+      - "A. Bidiyo, sauti, ko hotunan karya na mutane na gaske da AI ya kirkira"
+      - "B. Rijiya mai zurfi"
+      - "C. Dabarar kamun kifi"
+      - "D. Wani nau'in rawa"
+    correct: 0
+
+  - question: "Wace ce alamar cewa bidiyo na iya zama na AI?"
+    options:
+      - "A. Kyaftawa mara kyau da lebba da ba su dace da magana ba"
+      - "B. Haske mai kyau"
+      - "C. Yana da sauti"
+      - "D. Yana da launi"
+    correct: 0
+
+  - question: "Menene 'gwajin motsin rai'?"
+    options:
+      - "A. Abun da aka tsara don sa ka fushi ko tsoro sosai galibi yaudara ce"
+      - "B. Kuka yayin kallon fina-finai"
+      - "C. Gwajin asibiti"
+      - "D. Gwajin saurin wayarka"
+    correct: 0
+
+  - question: "Ta yaya kalmar sirri ta iyali za ta kare ka?"
+    options:
+      - "A. Tana kayar da kiran zamba na muryar da aka kwaikwaya"
+      - "B. Tana rage kudin kira"
+      - "C. Tana inganta siginar network"
+      - "D. Ba za ta iya taimakawa ba"
+    correct: 0
+
+  - question: "Me ya kamata ka yi kafin tura labari mai ban mamaki?"
+    options:
+      - "A. Tura shi da sauri-sauri"
+      - "B. Tabbatar da shi daga sahihan tushe tukuna"
+      - "C. Kara alamomin motsin rai"
+      - "D. Fassara shi tukuna"
+    correct: 1

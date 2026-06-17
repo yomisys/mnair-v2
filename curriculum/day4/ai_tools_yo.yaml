@@ -2,61 +2,77 @@ id: day4_ai_tools_yo
 day: 4
 topic: ai_tools
 language: yo
-title: 'Day 4: Ai Tools (Yoruba)'
-content: 'This is Day 4 lesson on ai tools.
+title: "Ise Gangan: Gbigba Idahun To Dara Lati Awon Irinse AI"
+content: |
+  O mo pe awon irinse naa wa. Loni, ko bi a se n lo won DARADARA. Iyato laarin idahun AI ti ko dara ati eyi to dara julo ni bi o se beere - "prompt" re.
 
+  PROMPT ALAILAGBARA:
+  "So fun mi nipa isowo" → idahun lasan, ti ko wulo.
 
-  Focus: AI Applications
+  PROMPT ALAGBARA - EROJA 4:
+  1. IPA: "Iwo je oludamoran isowo fun awon isowo kekere Naijiria"
+  2. ISE: "Da eto ipolowo ose kan sile"
+  3. AYIKA: "fun ibi suya mi ni Ibadan, isuna naira 20,000, awon onibara mi je akeko"
+  4. ILANA: "gege bi akojọ nomba pelu owo ojoojumo"
 
+  Da gbogbo re po: eto pataki to wulo yoo farahan! Dan an wo loni.
 
-  [In production, this would be 250-300 words of properly translated content]
+  AWON OGBON PROMPT MIIRAN:
+  - BEERE FUN IGBESE: "Salaye bi eni pe alakọbẹrẹ patapata ni mi, ni igbese-igbese"
+  - FUN NI APEERE: "Eyi ni ifiranse ti mo ko teletele... ko iru re fun X"
+  - TUNSE: Ti idahun ko ba pe, dahun "Mu ki o kuru" tabi "Fi apeere Naijiria kun"
+  - TUMO: "Salaye eyi ni ede Yoruba ti o rọrun" n sise daradara!
 
+  AWON ISE GIDI TI O LE SE LONI:
+  - Awon akeko: "Da ibeere idanrawo 10 sile lori [koko] pelu idahun ti a salaye"
+  - Awon ti n wa ise: "Mu akotan CV yii dara si fun ipo titaja: [le tire sibe]"
+  - Awon oniṣowo: "Ko idahun onitẹriba si ẹdun onibara yii: [le e sibe]"
+  - Awon obi: "Daba eto ounje ọsọọsẹ pelu ounje Naijiria ti o wọpọ labe naira 15,000"
 
-  Key points:
+  IRANTI AABO:
+  - Ma se le ọrọ igbaniwole, BVN, tabi iwe asiri sinu irinse AI lailai
+  - Se idaniloju otito ki o to gbe igbese lori won (ranti hallucination!)
+  - AI n kọ akọsilẹ, IWO lo n pinnu. Maa se atunyẹwo nigbagbogbo ki o to fi ranse.
 
-  - Understanding ai tools
+  Mo prompting daradara, o si ti ni imo ti awon agbanisise n ko sinu ipolowo ise bayii!
 
-  - Nigerian context and examples
-
-  - Practical applications
-
-  - How this helps you
-
-
-  Remember: AI is a tool to solve problems. Learn, practice, and build!'
 quiz:
-- question: What is the main focus of Day 4?
-  options:
-  - A. AI Applications
-  - B. Something else
-  - C. Random topic
-  - D. Not related
-  correct: 0
-- question: 'This lesson is about:'
-  options:
-  - A. Cooking
-  - B. Ai Tools
-  - C. Sports
-  - D. Music
-  correct: 1
-- question: Can AI help solve Nigerian problems?
-  options:
-  - A. Yes, definitely
-  - B. No, never
-  - C. Only in cities
-  - D. Maybe not
-  correct: 0
-- question: What should you do after this lesson?
-  options:
-  - A. Forget everything
-  - B. Practice and apply what you learned
-  - C. Do nothing
-  - D. Give up
-  correct: 1
-- question: Is ai tools important for Nigeria?
-  options:
-  - A. Yes, very important
-  - B. No value
-  - C. Only for foreigners
-  - D. Not relevant
-  correct: 0
+  - question: "Ki ni awon eroja 4 ti prompt alagbara?"
+    options:
+      - "A. Ipa, Ise, Ayika, Ilana"
+      - "B. Iyara, Ohun, Awọ, Iwon"
+      - "C. Oruko, Ojo ori, Ipinle, Esin"
+      - "D. Daako, Le, Fi ranse, Pa re"
+    correct: 0
+
+  - question: "Ki ni o ye ki o se ti idahun AI ko ba pe?"
+    options:
+      - "A. Juwo sile lesekese"
+      - "B. Dahun pelu atunse bi 'Mu ki o kuru'"
+      - "C. Fọ foonu re"
+      - "D. Gba idahun buburu naa"
+    correct: 1
+
+  - question: "Ki ni o KO gbodo le sinu irinse AI lailai?"
+    options:
+      - "A. Ọrọ igbaniwole, BVN, tabi iwe asiri"
+      - "B. Ibeere isowo"
+      - "C. Ibeere ilana ounje"
+      - "D. Koko eko"
+    correct: 0
+
+  - question: "Prompt wo lo LAGBARA ju?"
+    options:
+      - "A. 'So fun mi nipa isowo'"
+      - "B. 'Da eto ipolowo ose kan sile fun ibi suya mi ni Ibadan, isuna naira 20,000'"
+      - "C. 'Isowo'"
+      - "D. 'Ran mi lowo'"
+    correct: 1
+
+  - question: "Ta lo n se ipinnu ikẹhin lori ohun ti AI kọ?"
+    options:
+      - "A. AI funra re"
+      - "B. Iwo - maa se atunyẹwo ki o to fi ranse"
+      - "C. Ko si eni kankan"
+      - "D. Ile-ise foonu"
+    correct: 1

@@ -2,61 +2,76 @@ id: day1_ai_ethics_yo
 day: 1
 topic: ai_ethics
 language: yo
-title: 'Day 1: Ai Ethics (Yoruba)'
-content: 'This is Day 1 lesson on ai ethics.
+title: "Iwa Rere AI ati Ojuse"
+content: |
+  AI lagbara, sugbon agbara wa pelu ojuse! Gege bi awon ara Naijiria ti n ko ati lo AI, a gbodo ronu nipa iwa rere - sise ohun ti o to.
 
+  AWON ORO IWA PATAKI:
 
-  Focus: Introduction to AI
+  1. OJUSAJU ATI ODODO:
+     - Ti AI ba ko eko pelu oruko Igbo nikan, o le ma da oruko Hausa mo
+     - Didamo oju ti a ko pelu oju oyinbo nikan le kuna lori oju awon ara Naijiria
+     - Ojutu: Lo data Naijiria orisirisi nigbati o ba n ko AI
 
+  2. ASIRI:
+     - AI nilo data, sugbon a gbodo dabobo alaye awon eniyan
+     - Ranti Ofin Idabobo Data Naijiria (NDPA)
+     - Ma se pin alaye ara eni laisi igbanilaaye
 
-  [In production, this would be 250-300 words of properly translated content]
+  3. ISE ATI IYIPADA:
+     - AI le gba ipo awon ise kan (bi ẹnu-ọna toll adase ti o gba ipo awon agbowo)
+     - Sugbon AI tun n da ise TITUN sile (awon oluko AI, awon asayewo data)
+     - Ojutu: Ko imo AI ki o le wulo sibe!
 
+  4. IRO ITANKALE:
+     - AI le da fidio iro sile ("deepfakes") tabi iroyin iro
+     - ChatGPT le da "otito" ti ko si - se ayewo nigbagbogbo!
+     - Ronu ki o to pin ohun ti AI da sile
 
-  Key points:
+  5. IPO NAIJIRIA:
+     - Ko AI ti o loye ede ati asa wa
+     - Ma se daako ojutu Amerika nikan - yanju isoro Naijiria
+     - Fi awon eniyan lati gbogbo ipinle 36 kun idagbasoke AI
 
-  - Understanding ai ethics
+  Bi o se n ko AI, beere lowo ara re: "Nje eyi to? Nje o wulo? Nje o je otito?" Iyen ni AI oniwa rere!
 
-  - Nigerian context and examples
-
-  - Practical applications
-
-  - How this helps you
-
-
-  Remember: AI is a tool to solve problems. Learn, practice, and build!'
 quiz:
-- question: What is the main focus of Day 1?
-  options:
-  - A. Introduction to AI
-  - B. Something else
-  - C. Random topic
-  - D. Not related
-  correct: 0
-- question: 'This lesson is about:'
-  options:
-  - A. Cooking
-  - B. Ai Ethics
-  - C. Sports
-  - D. Music
-  correct: 1
-- question: Can AI help solve Nigerian problems?
-  options:
-  - A. Yes, definitely
-  - B. No, never
-  - C. Only in cities
-  - D. Maybe not
-  correct: 0
-- question: What should you do after this lesson?
-  options:
-  - A. Forget everything
-  - B. Practice and apply what you learned
-  - C. Do nothing
-  - D. Give up
-  correct: 1
-- question: Is ai ethics important for Nigeria?
-  options:
-  - A. Yes, very important
-  - B. No value
-  - C. Only for foreigners
-  - D. Not relevant
-  correct: 0
+  - question: "Ki ni ojusaju AI (bias)?"
+    options:
+      - "A. Nigbati AI n sise daradara fun gbogbo eniyan"
+      - "B. Nigbati AI n se ojusaju fun awujo kan ju omiran lo"
+      - "C. Nigbati AI ti won ju"
+      - "D. Nigbati AI n lo laiyara"
+    correct: 1
+
+  - question: "Ki ni oruko ofin idabobo data Naijiria?"
+    options:
+      - "A. USA Privacy Act"
+      - "B. Ofin Data Eko"
+      - "C. Nigeria Data Protection Act (NDPA)"
+      - "D. Ofin Aabo Intaneti"
+    correct: 2
+
+  - question: "Ki ni o ye ki o se pelu alaye ti AI da sile?"
+    options:
+      - "A. Gba gbogbo re gbo lesekese"
+      - "B. Se ayewo ki o to pin"
+      - "C. Pin kiakia bi o ti le se"
+      - "D. Ko gbogbo re sile"
+    correct: 1
+
+  - question: "Bawo ni a se le din ojusaju AI ku ni Naijiria?"
+    options:
+      - "A. Lo AI ajeji nikan"
+      - "B. Lo data Naijiria orisirisi lati gbogbo eya"
+      - "C. Ko AI ni Eko nikan"
+      - "D. Ko isoro naa sile"
+    correct: 1
+
+  - question: "Ki ni 'deepfake'?"
+    options:
+      - "A. Fidio gidi"
+      - "B. Fidio tabi ohun iro ti AI da sile"
+      - "C. Iru foonu kan"
+      - "D. Ijo tuntun"
+    correct: 1

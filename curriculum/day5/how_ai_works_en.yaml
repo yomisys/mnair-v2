@@ -2,61 +2,68 @@ id: day5_how_ai_works_en
 day: 5
 topic: how_ai_works
 language: en
-title: 'Day 5: How Ai Works (English)'
-content: 'This is Day 5 lesson on how ai works.
+title: "Prompt Engineering: Programming in Plain Language"
+content: |
+  Here's a beautiful secret: prompting IS a form of programming. Traditional programmers write instructions in Python; you write instructions in English (or Pidgin!). Today, level up from good prompts to great SYSTEMS of prompts.
 
+  TECHNIQUE 1 - CHAIN OF THOUGHT:
+  For complex problems, ask AI to "think step by step before answering." This dramatically improves accuracy on maths, planning, and logic. Try: "Think step by step: if I save ₦500 daily but spend ₦2,000 every Sunday, how much do I save in 4 weeks?"
 
-  Focus: Building with AI
+  TECHNIQUE 2 - FEW-SHOT EXAMPLES:
+  Show the pattern you want:
+  "Convert complaints to polite responses.
+  Complaint: 'Your delivery is late!' → Response: 'We sincerely apologize...'
+  Complaint: 'Wrong size!' → Response:"
+  The AI completes the pattern. This is exactly how training works - you're teaching with examples!
 
+  TECHNIQUE 3 - STRUCTURED OUTPUT:
+  Demand format: "Reply ONLY with a table: Item | Cost | Where to buy in Lagos." Structured outputs plug into spreadsheets and documents directly.
 
-  [In production, this would be 250-300 words of properly translated content]
+  TECHNIQUE 4 - THE SYSTEM PROMPT:
+  Set behavior once: "You are my study partner for WAEC Physics. Always quiz me after explaining. Use Nigerian examples. Keep answers under 200 words." Every reply now follows your rules!
 
+  TECHNIQUE 5 - SELF-CHECKING:
+  After an answer: "Now check your answer for errors and correct any you find." AI catches many of its own mistakes when asked.
 
-  Key points:
+  These five techniques together make you more effective with AI than 95% of users. Practice one today - your "programming" career just started!
 
-  - Understanding how ai works
-
-  - Nigerian context and examples
-
-  - Practical applications
-
-  - How this helps you
-
-
-  Remember: AI is a tool to solve problems. Learn, practice, and build!'
 quiz:
-- question: What is the main focus of Day 5?
-  options:
-  - A. Building with AI
-  - B. Something else
-  - C. Random topic
-  - D. Not related
-  correct: 0
-- question: 'This lesson is about:'
-  options:
-  - A. Cooking
-  - B. How Ai Works
-  - C. Sports
-  - D. Music
-  correct: 1
-- question: Can AI help solve Nigerian problems?
-  options:
-  - A. Yes, definitely
-  - B. No, never
-  - C. Only in cities
-  - D. Maybe not
-  correct: 0
-- question: What should you do after this lesson?
-  options:
-  - A. Forget everything
-  - B. Practice and apply what you learned
-  - C. Do nothing
-  - D. Give up
-  correct: 1
-- question: Is how ai works important for Nigeria?
-  options:
-  - A. Yes, very important
-  - B. No value
-  - C. Only for foreigners
-  - D. Not relevant
-  correct: 0
+  - question: "Why is prompting like programming?"
+    options:
+      - "A. You write instructions, just in plain language instead of code"
+      - "B. It requires a computer science degree"
+      - "C. It only works on big computers"
+      - "D. It is not similar at all"
+    correct: 0
+
+  - question: "What does 'think step by step' improve?"
+    options:
+      - "A. Accuracy on maths, planning, and logic problems"
+      - "B. Phone battery life"
+      - "C. Internet speed"
+      - "D. Nothing"
+    correct: 0
+
+  - question: "What is few-shot prompting?"
+    options:
+      - "A. Showing examples of the pattern you want completed"
+      - "B. Asking very short questions"
+      - "C. Using the app quickly"
+      - "D. Shooting photos"
+    correct: 0
+
+  - question: "What does a system prompt do?"
+    options:
+      - "A. Sets behavior rules that every reply follows"
+      - "B. Turns off the AI"
+      - "C. Charges your phone"
+      - "D. Deletes history"
+    correct: 0
+
+  - question: "What happens when you ask AI to check its own answer?"
+    options:
+      - "A. It often catches and corrects its own mistakes"
+      - "B. It gets angry"
+      - "C. It refuses to answer"
+      - "D. It crashes"
+    correct: 0

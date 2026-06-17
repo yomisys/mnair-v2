@@ -2,61 +2,68 @@ id: day2_ai_ethics_yo
 day: 2
 topic: ai_ethics
 language: yo
-title: 'Day 2: Ai Ethics (Yoruba)'
-content: 'This is Day 2 lesson on ai ethics.
+title: "Idoti Wole, Idoti Jade: Ojusaju ninu Data Ikeko"
+content: |
+  Lana o ko pe AI gbodo se ododo. Loni, je ki a loye IBI ti aisedeede ti n wa: data ikeko.
 
+  Ranti: machine learning n ko eko lati inu apeere. Ki lo ma sele ti awon apeere funra won ko ba se deede? AI yoo ko aisedeede naa pelu! Awon onimo sayensi komputa n pe eyi ni "Garbage In, Garbage Out" (Idoti Wole, Idoti Jade).
 
-  Focus: Machine Learning Basics
+  AWON APEERE GIDI:
 
+  1. IRINSE IGBANISISE:
+     Ile-ise olokiki kan ko AI lati se ayewo iwe ibere ise. A ko o pelu igbanisise odun 10 seyin - okunrin lo po julo. AI naa ko lati ko CV awon obinrin sile! Data naa ni ojusaju, AI naa si di olojusaju. Won ni lati pa a re.
 
-  [In production, this would be 250-300 words of properly translated content]
+  2. DIDAMO OJU:
+     Awon eto didamo oju akoko - a ko won pelu oju awon alawo funfun julo. Abajade: won kuna to 35% lori oju awon obinrin alawo dudu, sugbon ko to 1% lori okunrin alawo funfun. Foju inu wo ti olopa Naijiria ba n lo eyi fun idanimo!
 
+  3. IWON AWIN:
+     Ti a ba ko modeli awin pelu data awon to n gba osu ni Eko nikan, o le ko awon oniṣowo akinkanju lati Kano tabi awon agbe lati Benue sile lai tọ - kii se pe won ko ni san pada, sugbon modeli naa ko ko ilana won ri.
 
-  Key points:
+  KI NI A LE SE?
+  - Ko data orisirisi jo: gbogbo akọ-abo, gbogbo agbegbe, gbogbo ede, ilu ATI abule
+  - Dan AI wo lori awujo orisirisi ki a to gbe e jade
+  - Je ki eniyan wa ninu awon ipinnu pataki (awin, ise, idajo)
+  - Beere ibeere! Ti AI ba ko nkan fun o, o le beere idi
 
-  - Understanding ai ethics
+  Gege bi olumulo tabi akoda AI ni Naijiria lojo iwaju, ranti: data ododo ni n da AI ododo. Oniruuru wa - eya 250+ - gbodo han ninu awon dataset wa.
 
-  - Nigerian context and examples
-
-  - Practical applications
-
-  - How this helps you
-
-
-  Remember: AI is a tool to solve problems. Learn, practice, and build!'
 quiz:
-- question: What is the main focus of Day 2?
-  options:
-  - A. Machine Learning Basics
-  - B. Something else
-  - C. Random topic
-  - D. Not related
-  correct: 0
-- question: 'This lesson is about:'
-  options:
-  - A. Cooking
-  - B. Ai Ethics
-  - C. Sports
-  - D. Music
-  correct: 1
-- question: Can AI help solve Nigerian problems?
-  options:
-  - A. Yes, definitely
-  - B. No, never
-  - C. Only in cities
-  - D. Maybe not
-  correct: 0
-- question: What should you do after this lesson?
-  options:
-  - A. Forget everything
-  - B. Practice and apply what you learned
-  - C. Do nothing
-  - D. Give up
-  correct: 1
-- question: Is ai ethics important for Nigeria?
-  options:
-  - A. Yes, very important
-  - B. No value
-  - C. Only for foreigners
-  - D. Not relevant
-  correct: 0
+  - question: "Ki ni itumo 'Garbage In, Garbage Out'?"
+    options:
+      - "A. Komputa nilo mimọ"
+      - "B. Data ikeko olojusaju n da AI olojusaju"
+      - "C. Ki a ju foonu atijo nu"
+      - "D. AI n da idoti sile"
+    correct: 1
+
+  - question: "Kilode ti AI igbanisise fi ko CV awon obinrin sile?"
+    options:
+      - "A. A ko o pelu igbanisise atijo ti okunrin po ju ninu won"
+      - "B. Awon obinrin ko CV buburu"
+      - "C. Komputa naa bajẹ"
+      - "D. A mọ ọn mọ lati se bee"
+    correct: 0
+
+  - question: "Kilode ti didamo oju akoko fi kuna ju lori oju alawo dudu?"
+    options:
+      - "A. A ko le ya foto awo dudu"
+      - "B. Data ikeko ni oju alawo funfun julo"
+      - "C. Awon kamera din owo"
+      - "D. Ko se atunse"
+    correct: 1
+
+  - question: "Bawo ni a se le din ojusaju ku ninu AI iwon awin Naijiria?"
+    options:
+      - "A. Ko o pelu data lati gbogbo agbegbe ati ise"
+      - "B. Lo data Eko nikan"
+      - "C. Yo gbogbo data kuro"
+      - "D. Je ki o pinnu ohun gbogbo funra re"
+    correct: 0
+
+  - question: "Ki ni o ye ki o sele pelu ipinnu AI pataki bi awin ati ise?"
+    options:
+      - "A. AI yoo pinnu funra re laisi ẹjọ"
+      - "B. Ki eniyan wa ninu eto naa"
+      - "C. Ki won je airotele"
+      - "D. Awon ajeji nikan ni ki won pinnu"
+    correct: 1

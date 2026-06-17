@@ -2,61 +2,61 @@ id: day2_what_is_ai_ig
 day: 2
 topic: what_is_ai
 language: ig
-title: 'Day 2: What Is Ai (Igbo)'
-content: 'This is Day 2 lesson on what is ai.
+title: "AI na Machine Learning: Gini Bu Ihe Di Iche?"
+content: |
+  Unyaahu i mutara ihe AI bu. Taa, ka anyi ghota injin di n'ime AI: Machine Learning (ML).
 
+  MMEMME NKITI na-agbaso iwu siri ike. Ihe mgbako ga-enye 2 + 2 = 4 mgbe niile n'ihi na onye mmemme dere iwu ahu. O buru na ihe ohuru emee, mmemme ahu enweghi ike igbanwe.
 
-  Focus: Machine Learning Basics
+  MACHINE LEARNING di iche. Kama ide iwu, anyi na-egosi komputa ihe atu ma ya achoputa iwu n'onwe ya. O nweghi onye nwere ike ide iwu maka imata ihu mmadu niile na Naijiria - mana ML nwere ike imuta ihu site na foto.
 
+  Chee ya otu a:
+  - Mmemme nkiti: Akwukwo usoro nri - soro usoro kpomkwem, otu nsoputa mgbe niile
+  - Machine learning: Ako onye ahia - mgbe otutu afo nke ndi ahia gachara, o maara onye ga-azu n'ezie na onye na-ele anya nkiti
 
-  [In production, this would be 250-300 words of properly translated content]
+  AI bu nnukwu ebumnuche (igwe na-eme ihe n'ogugu isi). Machine Learning bu isi uzo anyi ji eru ebumnuche ahu taa. O foduru ntakiri ka AI niile i jiri unyaahu - ichoputa aghugho, imeghe ekwenti n'ihu, ibu amuma okwu - bu machine learning.
 
+  E nwekwara DEEP LEARNING - udi ML siri ike nke e si n'uburu mmadu nweta echiche ya. O bu ya na-akwado ChatGPT, ndi inyeaka olu, na imata foto. Deep learning choro otutu data na ike komputa.
 
-  Key points:
+  Nchikota di mfe: AI bu nro ahu, Machine Learning bu injin, Deep Learning bu udi turbo nke injin ahu. I choghi mgbako iji ghota nke a - naani cheta: ML na-amuta site n'ihe atu, o bughi site n'iwu siri ike.
 
-  - Understanding what is ai
-
-  - Nigerian context and examples
-
-  - Practical applications
-
-  - How this helps you
-
-
-  Remember: AI is a tool to solve problems. Learn, practice, and build!'
 quiz:
-- question: What is the main focus of Day 2?
-  options:
-  - A. Machine Learning Basics
-  - B. Something else
-  - C. Random topic
-  - D. Not related
-  correct: 0
-- question: 'This lesson is about:'
-  options:
-  - A. Cooking
-  - B. What Is Ai
-  - C. Sports
-  - D. Music
-  correct: 1
-- question: Can AI help solve Nigerian problems?
-  options:
-  - A. Yes, definitely
-  - B. No, never
-  - C. Only in cities
-  - D. Maybe not
-  correct: 0
-- question: What should you do after this lesson?
-  options:
-  - A. Forget everything
-  - B. Practice and apply what you learned
-  - C. Do nothing
-  - D. Give up
-  correct: 1
-- question: Is what is ai important for Nigeria?
-  options:
-  - A. Yes, very important
-  - B. No value
-  - C. Only for foreigners
-  - D. Not relevant
-  correct: 0
+  - question: "Kedu ka machine learning si di iche na mmemme nkiti?"
+    options:
+      - "A. O na-amuta iwu site n'ihe atu kama igbaso iwu siri ike"
+      - "B. O na-eje nwayoo mgbe niile"
+      - "C. O na-aru oru naani na nnukwu komputa"
+      - "D. O nweghi ihe di iche"
+    correct: 0
+
+  - question: "Gini bu mmekorita di n'etiti AI na Machine Learning?"
+    options:
+      - "A. Ha bu ndi iro"
+      - "B. ML bu isi uzo anyi ji enweta AI taa"
+      - "C. AI bu udi ML"
+      - "D. Ha enweghi mmekorita ma oli"
+    correct: 1
+
+  - question: "Kedu nke bu ihe atu mmemme iwu siri ike (O BUGHI machine learning)?"
+    options:
+      - "A. Imeghe ekwenti n'ihu"
+      - "B. Ihe mgbako na-agbakota onuogugu"
+      - "C. Ichoputa aghugho na app ulo aku"
+      - "D. Ibu amuma okwu mgbe i na-ede ihe"
+    correct: 1
+
+  - question: "Gini bu deep learning?"
+    options:
+      - "A. Igu akwukwo n'abali"
+      - "B. Udi ML siri ike nke e si n'uburu mmadu nweta echiche ya"
+      - "C. Imuta ihe n'okpuru mmiri"
+      - "D. Udi batiri ekwenti"
+    correct: 1
+
+  - question: "Gini ka machine learning choro iji choputa iwu?"
+    options:
+      - "A. Otutu ihe atu (data)"
+      - "B. Ihuenyo ka ukwuu"
+      - "C. Naani oku eletrik ka ukwuu"
+      - "D. Mmadu ga-ede iwu obula"
+    correct: 0

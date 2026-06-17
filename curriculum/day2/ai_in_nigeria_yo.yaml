@@ -2,61 +2,61 @@ id: day2_ai_in_nigeria_yo
 day: 2
 topic: ai_in_nigeria
 language: yo
-title: 'Day 2: Ai In Nigeria (Yoruba)'
-content: 'This is Day 2 lesson on ai in nigeria.
+title: "Machine Learning N Yanju Isoro Naijiria"
+content: |
+  Bayii ti o ti mo pe machine learning n ko eko lati inu apeere, je ki a wo bi awon ile-ise Naijiria se n lo o lojoojumo.
 
+  AWIN LAISI OHUN IDOGO:
+  Awon banki ibile n beere iwe ile tabi akaunti osu. Sugbon awon app fintech bi Carbon ati FairMoney n lo ML ti a ko pelu egbegberun awon to ti gba awin teletele. Modeli naa ko awon ilana: bi won se n ra kaadi, itan isanpada, ati bi won se n ko fọọmu. Abajade? Obinrin oloja ni Onitsha le gba awin ni iseju 5 laisi lilo si banki kankan.
 
-  Focus: Machine Learning Basics
+  RIRI JIBITI:
+  Awon modeli ML ni awon banki Naijiria n wo miliọnu isowo. Won ti ko ohun ti o je DEEDE fun o. Ti kaadi re ba lojiji ra ero elektroniki ni aago meta oru ni orile-ede miiran, modeli naa yoo gbe asia re lesekese. Ofin ti o duro sinsin ko le se eyi - awon onijibiti n yi ogbon won pada, sugbon ML n tesiwaju lati ko ilana titun.
 
+  RIRI ARUN EWEKO:
+  Awon oluwadi ko awon modeli ML pelu egbegberun foto ewe ege ti o ni ilera ati eyi ti o ni arun. Bayii awon app le so fun agbe ni ipinle Ogun boya ege re ni arun mosaic - lati inu foto foonu nikan. Modeli naa ko lati inu apeere, gege bi o se ko mangoro!
 
-  [In production, this would be 250-300 words of properly translated content]
+  EKO TI ARA ENI:
+  ML ti uLesson n wo awon ibeere ti akeko n kuna, o si n se atunse awon eko ti o kan. Akeko meji ki i ri ona kanna rara - eni kookan n gba ohun ti o nilo.
 
+  ILANA NAA: Ni gbogbo igba, awon ara Naijiria ko apeere IBILE jo, won si ko awon modeli pelu won. AI ajeji ti a ko pelu data ajeji maa n kuna nibi. Ojo iwaju AI Naijiria da lori data Naijiria - ati awon eniyan bi iwo ti o loye re.
 
-  Key points:
-
-  - Understanding ai in nigeria
-
-  - Nigerian context and examples
-
-  - Practical applications
-
-  - How this helps you
-
-
-  Remember: AI is a tool to solve problems. Learn, practice, and build!'
 quiz:
-- question: What is the main focus of Day 2?
-  options:
-  - A. Machine Learning Basics
-  - B. Something else
-  - C. Random topic
-  - D. Not related
-  correct: 0
-- question: 'This lesson is about:'
-  options:
-  - A. Cooking
-  - B. Ai In Nigeria
-  - C. Sports
-  - D. Music
-  correct: 1
-- question: Can AI help solve Nigerian problems?
-  options:
-  - A. Yes, definitely
-  - B. No, never
-  - C. Only in cities
-  - D. Maybe not
-  correct: 0
-- question: What should you do after this lesson?
-  options:
-  - A. Forget everything
-  - B. Practice and apply what you learned
-  - C. Do nothing
-  - D. Give up
-  correct: 1
-- question: Is ai in nigeria important for Nigeria?
-  options:
-  - A. Yes, very important
-  - B. No value
-  - C. Only for foreigners
-  - D. Not relevant
-  correct: 0
+  - question: "Bawo ni awon app fintech se n fun ni awin laisi ohun idogo?"
+    options:
+      - "A. Won ki i se ayewo ohunkohun"
+      - "B. Awon modeli ML n ko ilana lati odo egbegberun awon to gba awin teletele"
+      - "C. Won n pe baale abule re"
+      - "D. Awon osise ijoba nikan ni won n fun ni awin"
+    correct: 1
+
+  - question: "Kilode ti ML fi dara ju ofin ti o duro sinsin fun riri jibiti?"
+    options:
+      - "A. ML din owo lati ko"
+      - "B. Awon onijibiti n yi ogbon pada, ML si n tesiwaju lati ko ilana titun"
+      - "C. Ofin ti o duro sinsin lodi si ofin"
+      - "D. ML ki i se asise rara"
+    correct: 1
+
+  - question: "Bawo ni a se ko awon modeli riri arun eweko?"
+    options:
+      - "A. Pelu egbegberun foto ewe to ni ilera ati eyi to ni arun"
+      - "B. Nipa kika iwe eko ogbin"
+      - "C. Nipa ibere lowo awon agbe"
+      - "D. A ko ko won rara"
+    correct: 0
+
+  - question: "Kilode ti AI ajeji fi maa n kuna ni Naijiria?"
+    options:
+      - "A. Awon network Naijiria n di i lona"
+      - "B. A ko o pelu data ajeji, kii se apeere Naijiria"
+      - "C. O din owo ju"
+      - "D. AI ajeji ki i kuna rara"
+    correct: 1
+
+  - question: "Ki ni ML uLesson n se ni ibamu si akeko kookan?"
+    options:
+      - "A. Aso ile-iwe"
+      - "B. Awon eko ti a n fi han, da lori ibeere ti o kuna"
+      - "C. Ojo idanwo"
+      - "D. Owo ile-iwe"
+    correct: 1

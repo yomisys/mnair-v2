@@ -2,61 +2,68 @@ id: day5_how_ai_works_ig
 day: 5
 topic: how_ai_works
 language: ig
-title: 'Day 5: How Ai Works (Igbo)'
-content: 'This is Day 5 lesson on how ai works.
+title: "Prompt Engineering: Mmemme n'Asusu Di Mfe"
+content: |
+  Lee ihe nzuzo mara mma: prompting BU udi mmemme. Ndi mmemme odinala na-ede ntuziaka na Python; gi na-ede ntuziaka na Bekee (ma o bu Igbo!). Taa, si na ezigbo prompts rigoro na nnukwu USORO prompts.
 
+  USORO 1 - ICHE ECHICHE NZOPUTA NA NZOPUTA:
+  Maka nsogbu siri ike, gwa AI ka o "chee echiche nzoputa na nzoputa tupu o zaa." Nke a na-emeziwanye izi ezi na mgbako, atumatu, na ilogharia uche. Nwalee: "Chee echiche nzoputa na nzoputa: o buru na m na-echekwa naira 500 kwa ubochi mana m na-emefu naira 2,000 kwa Sonde, ego ole ka m ga-echekwa n'izu 4?"
 
-  Focus: Building with AI
+  USORO 2 - IHE ATU OLE NA OLE (FEW-SHOT):
+  Gosi usoro i choro:
+  "Gbanwee mkpesa ka ha buru aziza di nsopuru.
+  Mkpesa: 'Nnyefe unu adila anya!' → Aziza: 'Anyi na-ario mgbaghara n'ezie...'
+  Mkpesa: 'Nha ezighi ezi!' → Aziza:"
+  AI ga-emecha usoro ahu. Nke a bu kpomkwem ka ozuzu si aru oru - i na-eji ihe atu akuzi!
 
+  USORO 3 - MWEPUTA A HAZIRI AHAZI:
+  Chosie usoro ike: "Zaa NAANI site na tebul: Ihe | Onu Ahia | Ebe a ga-azu ya na Lagos." Mweputa a haziri ahazi na-abanye na spreadsheets na akwukwo ozugbo.
 
-  [In production, this would be 250-300 words of properly translated content]
+  USORO 4 - SYSTEM PROMPT:
+  Hazie omume otu ugboro: "I bu onye mmuko m maka WAEC Physics. Na-aju m ajuju mgbe obula i kowachara. Jiri ihe atu Naijiria. Debe aziza n'okpuru okwu 200." Aziza obula ga-eso iwu gi ugbu a!
 
+  USORO 5 - INYOCHA ONWE:
+  Mgbe aziza gachara: "Ugbu a nyochaa aziza gi maka njehie ma dozie nke obula i chotara." AI na-achota otutu njehie nke ya ma a juo ya.
 
-  Key points:
+  Usoro ise ndi a onu ga-eme ka i di ire na AI karia 95% nke ndi oji ya. Mee otu omume taa - oru "mmemme" gi ebidola!
 
-  - Understanding how ai works
-
-  - Nigerian context and examples
-
-  - Practical applications
-
-  - How this helps you
-
-
-  Remember: AI is a tool to solve problems. Learn, practice, and build!'
 quiz:
-- question: What is the main focus of Day 5?
-  options:
-  - A. Building with AI
-  - B. Something else
-  - C. Random topic
-  - D. Not related
-  correct: 0
-- question: 'This lesson is about:'
-  options:
-  - A. Cooking
-  - B. How Ai Works
-  - C. Sports
-  - D. Music
-  correct: 1
-- question: Can AI help solve Nigerian problems?
-  options:
-  - A. Yes, definitely
-  - B. No, never
-  - C. Only in cities
-  - D. Maybe not
-  correct: 0
-- question: What should you do after this lesson?
-  options:
-  - A. Forget everything
-  - B. Practice and apply what you learned
-  - C. Do nothing
-  - D. Give up
-  correct: 1
-- question: Is how ai works important for Nigeria?
-  options:
-  - A. Yes, very important
-  - B. No value
-  - C. Only for foreigners
-  - D. Not relevant
-  correct: 0
+  - question: "Gini mere prompting ji yie mmemme?"
+    options:
+      - "A. I na-ede ntuziaka, naani n'asusu di mfe kama koodu"
+      - "B. O choro akara mmuta sayensi komputa"
+      - "C. O na-aru oru naani na nnukwu komputa"
+      - "D. Ha adighi yi ma oli"
+    correct: 0
+
+  - question: "Gini ka 'chee echiche nzoputa na nzoputa' na-emeziwanye?"
+    options:
+      - "A. Izi ezi na mgbako, atumatu, na nsogbu ilogharia uche"
+      - "B. Ndu batiri ekwenti"
+      - "C. Osooso intaneti"
+      - "D. O dighi ihe obula"
+    correct: 0
+
+  - question: "Gini bu few-shot prompting?"
+    options:
+      - "A. Igosi ihe atu nke usoro i choro ka e mechaa"
+      - "B. Iju ajuju di mkpirikpi"
+      - "C. Iji app ngwa ngwa"
+      - "D. Ise foto"
+    correct: 0
+
+  - question: "Gini ka system prompt na-eme?"
+    options:
+      - "A. O na-ahazi iwu omume nke aziza obula ga-eso"
+      - "B. O na-agbanyu AI"
+      - "C. O na-achaji ekwenti gi"
+      - "D. O na-ehichapu akuko"
+    correct: 0
+
+  - question: "Gini na-eme mgbe i gwara AI ka o nyochaa aziza nke ya?"
+    options:
+      - "A. O na-achotakari ma dozie otutu njehie nke ya"
+      - "B. O na-ewe iwe"
+      - "C. O na-aju iza"
+      - "D. O na-ada"
+    correct: 0

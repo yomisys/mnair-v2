@@ -2,61 +2,69 @@ id: day2_how_ai_works_pid
 day: 2
 topic: how_ai_works
 language: pid
-title: 'Day 2: How Ai Works (Pidgin)'
-content: 'This is Day 2 lesson on how ai works.
+title: "Training and Prediction: The Two Lives of AI"
+content: |
+  Every machine learning system get two lives: TRAINING (school time) and PREDICTION (work time). If you understand this one, you don understand all of AI.
 
+  LIFE 1 - TRAINING (Learning):
+  Imagine say you dey teach young apprentice tailor. You show her 500 finished clothes: "This na agbada, this na kaftan, this na senator wear." She go study them, make mistakes, collect correction, and slowly slowly she go improve. Na that one be training!
 
-  Focus: Machine Learning Basics
+  During training, the AI go:
+  1. Receive plenty labeled examples (photo + "this na mango")
+  2. Make e own guess
+  3. Check if the guess correct
+  4. Adjust imself small when e wrong
+  5. Repeat am millions of times until e accurate
 
+  LIFE 2 - PREDICTION (Working):
+  After training, the apprentice go open her own shop. Now customers go bring new fabrics wey she never see before, and she go still sew am correct. Na so trained AI dey work - e dey handle NEW situations with wetin e don learn.
 
-  [In production, this would be 250-300 words of properly translated content]
+  When your bank app check transaction for 1 second, na prediction be that. The months of learning from millions of past transactions don already happen for training.
 
+  IMPORTANT POINTS:
+  - Training dey slow and e dey cost; prediction dey fast and cheap
+  - AI only know wetin e see for training - if e never see Naija food photos, e fit call moi moi "muffin"!
+  - Na why local data matter for Naija AI
 
-  Key points:
+  Tomorrow we go learn about the fuel for all this thing: DATA.
 
-  - Understanding how ai works
-
-  - Nigerian context and examples
-
-  - Practical applications
-
-  - How this helps you
-
-
-  Remember: AI is a tool to solve problems. Learn, practice, and build!'
 quiz:
-- question: What is the main focus of Day 2?
-  options:
-  - A. Machine Learning Basics
-  - B. Something else
-  - C. Random topic
-  - D. Not related
-  correct: 0
-- question: 'This lesson is about:'
-  options:
-  - A. Cooking
-  - B. How Ai Works
-  - C. Sports
-  - D. Music
-  correct: 1
-- question: Can AI help solve Nigerian problems?
-  options:
-  - A. Yes, definitely
-  - B. No, never
-  - C. Only in cities
-  - D. Maybe not
-  correct: 0
-- question: What should you do after this lesson?
-  options:
-  - A. Forget everything
-  - B. Practice and apply what you learned
-  - C. Do nothing
-  - D. Give up
-  correct: 1
-- question: Is how ai works important for Nigeria?
-  options:
-  - A. Yes, very important
-  - B. No value
-  - C. Only for foreigners
-  - D. Not relevant
-  correct: 0
+  - question: "Wetin be the two 'lives' of machine learning system?"
+    options:
+      - "A. Day and night"
+      - "B. Training and prediction"
+      - "C. Charging and discharging"
+      - "D. Online and offline"
+    correct: 1
+
+  - question: "Wetin dey happen during training?"
+    options:
+      - "A. AI dey study labeled examples and adjust imself when e wrong"
+      - "B. AI dey rest and save power"
+      - "C. AI dey delete e own data"
+      - "D. AI dey print reports"
+    correct: 0
+
+  - question: "Why AI fit call moi moi 'muffin'?"
+    options:
+      - "A. Because e never see Naija food during training"
+      - "B. Because moi moi na muffin"
+      - "C. Because AI hate Naija food"
+      - "D. Because the phone don old"
+    correct: 0
+
+  - question: "Which statement na TRUE?"
+    options:
+      - "A. Training dey fast, prediction dey slow"
+      - "B. Training dey slow and e dey cost, prediction dey fast"
+      - "C. The two dey always happen together"
+      - "D. Prediction dey come before training"
+    correct: 1
+
+  - question: "When your bank app check transaction for 1 second, wetin dey happen?"
+    options:
+      - "A. Training"
+      - "B. Prediction with wetin e don already learn"
+      - "C. The app just dey guess anyhow"
+      - "D. Na human being dey check am"
+    correct: 1

@@ -2,61 +2,72 @@ id: day5_ai_in_nigeria_ha
 day: 5
 topic: ai_in_nigeria
 language: ha
-title: 'Day 5: Ai In Nigeria (Hausa)'
-content: 'This is Day 5 lesson on ai in nigeria.
+title: "Masu Ginawa na Najeriya: Daga Ra'ayi zuwa Kamfanin AI"
+content: |
+  Yau, ka hadu da yanayin AI na Najeriya - ka sami kofar shigarka.
 
+  YANAYIN DA KE KEWAYE DA KAI:
 
-  Focus: Building with AI
+  CIBIYOYI DA AL'UMMOMI:
+  - Lagos: CcHub (Yaba) - babbar cibiyar kirkire-kirkire ta Najeriya, ta tallafa wa manyan kamfanoni
+  - Abuja, Port Harcourt, Kano, Enugu: cibiyoyin fasaha masu girma da abubuwan kyauta
+  - Yanar gizo: Data Science Nigeria (DSN) na gudanar da horon AI KYAUTA kuma ta horar da dubban daruruwan 'yan Najeriya
+  - Google, Microsoft, da AWS duk suna da shirye-shiryen Afirka da kyautar horo
 
+  HANYAR BASIRA:
+  Hangen Data Science Nigeria: horar da basirar AI na Najeriya miliyan 1. Albarkatunsu na kyauta sun hada da kwasa-kwasan yanar gizo, bootcamp na shekara, da taron al'umma a jihohi da yawa. ALX da makamantansu na ba da horon injiniyancin software kyauta tare da alawus.
 
-  [In production, this would be 250-300 words of properly translated content]
+  HANYOYIN KAMFANI NA GASKE (a takaice):
+  1. GANO MATSALA: "Masu dinki na rasa ma'aunin abokan ciniki"
+  2. MAFITA MAFI KANKANTA: Bot na WhatsApp mai adana ma'auni ga kowane abokin ciniki
+  3. GWAJI: Masu dinki 10 su yi amfani da shi kyauta na wata daya
+  4. SAURARA KA INGANTA: Suna son hotunan salo a manne? Kara shi
+  5. KARBI KUDI: Naira 1,000/wata. Masu dinki 100 = naira 100,000/wata
+  6. GIRMA: Nemi shiga CcHub accelerator da lambobin amfani na gaske
 
+  KUDADEN TALLAFI SUNA NAN:
+  Kamfanonin AI na Najeriya sun tara miliyoyin daloli. Shirye-shiryen gwamnati (kamar na NITDA), tallafin kasashen waje, da masu zuba jari na gida na neman mafitar AI ta Afirka.
 
-  Key points:
+  MATAKINKA A WANNAN MAKO:
+  Shiga al'umma daya (DSN kyauta ce!). Halarci taron yanar gizo daya. Gaya wa aboki daya ra'ayinka na warware matsala. Yanayi na saka wa wadanda suka bayyana.
 
-  - Understanding ai in nigeria
-
-  - Nigerian context and examples
-
-  - Practical applications
-
-  - How this helps you
-
-
-  Remember: AI is a tool to solve problems. Learn, practice, and build!'
 quiz:
-- question: What is the main focus of Day 5?
-  options:
-  - A. Building with AI
-  - B. Something else
-  - C. Random topic
-  - D. Not related
-  correct: 0
-- question: 'This lesson is about:'
-  options:
-  - A. Cooking
-  - B. Ai In Nigeria
-  - C. Sports
-  - D. Music
-  correct: 1
-- question: Can AI help solve Nigerian problems?
-  options:
-  - A. Yes, definitely
-  - B. No, never
-  - C. Only in cities
-  - D. Maybe not
-  correct: 0
-- question: What should you do after this lesson?
-  options:
-  - A. Forget everything
-  - B. Practice and apply what you learned
-  - C. Do nothing
-  - D. Give up
-  correct: 1
-- question: Is ai in nigeria important for Nigeria?
-  options:
-  - A. Yes, very important
-  - B. No value
-  - C. Only for foreigners
-  - D. Not relevant
-  correct: 0
+  - question: "Menene hangen Data Science Nigeria?"
+    options:
+      - "A. Horar da basirar AI na Najeriya miliyan 1"
+      - "B. Sayar da wayoyi"
+      - "C. Maye gurbin dukkan jami'o'i"
+      - "D. Gina tituna"
+    correct: 0
+
+  - question: "Mene ne mataki na FARKO a hanyar kamfani?"
+    options:
+      - "A. Gano matsala ta gaske da mutane ke da ita"
+      - "B. Tara miliyoyi nan take"
+      - "C. Sayen ofis"
+      - "D. Daukar ma'aikata 50"
+    correct: 0
+
+  - question: "Menene CcHub?"
+    options:
+      - "A. Babbar cibiyar kirkire-kirkire ta Najeriya, a Yaba, Lagos"
+      - "B. Gidan abinci"
+      - "C. Banki"
+      - "D. Filin kwallon kafa"
+    correct: 0
+
+  - question: "Ta yaya ya kamata ka gwada ra'ayin kamfani?"
+    options:
+      - "A. Bari karamin rukuni ya yi amfani da mafita mafi kankanta kyauta, sa'an nan ka saurara"
+      - "B. Kashe dukkan ajiyarka tukuna"
+      - "C. Boye shi shekaru"
+      - "D. Kada ka taba gwada ra'ayoyi"
+    correct: 0
+
+  - question: "Me za ka iya yi A WANNAN MAKO don shiga yanayin?"
+    options:
+      - "A. Shiga al'umma kyauta kamar DSN ka halarci taro daya"
+      - "B. Jiran gwamnati ta kira ka"
+      - "C. Babu komai - ba zai yiwu ba"
+      - "D. Fara tafiya kasashen waje"
+    correct: 0

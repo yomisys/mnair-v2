@@ -2,61 +2,65 @@ id: day3_how_ai_works_ha
 day: 3
 topic: how_ai_works
 language: ha
-title: 'Day 3: How Ai Works (Hausa)'
-content: 'This is Day 3 lesson on how ai works.
+title: "Daga Danyen Bayanai zuwa AI Mai Wayo: Tafiyar Bayanai"
+content: |
+  Jiya ka koyi game da horo. Amma kafin horo ya fara, dole bayanai su yi tafiya. Bari mu bi su!
 
+  MATAKI 1 - TATTARAWA:
+  Ana tattara bayanai daga wurare da yawa: kyamarori, fom, na'urori, manhajoji, bincike. Misali: wani kamfanin noma na tafiya cikin gonaki a Kaduna yana daukar hotunan masara - masu lafiya da marasa lafiya.
 
-  Focus: Data and AI
+  MATAKI 2 - TSAFTACEWA:
+  Danyen bayanai na da rikici! Hotuna marasa kyau, maimaitattun shigarwa, kuskuren rubutu ("Lagos", "Lagoss", "LAGOS"). Masana kimiyyar bayanai na kashe mafi yawan lokacinsu a nan - har kashi 80%! Datti a bayanai na rikitar da AI, kamar koya wa yaro daga littafin da ya yage da tabo.
 
+  MATAKI 3 - YIN LAKABI:
+  Mutane na sa wa kowane misali alama: "wannan ganye yana da lafiya", "wannan yana da cuta". Wannan aiki ne na gaske da mutane na gaske ke yi - ayyukan yin lakabi na daukar dubban matasan Afirka yau. Lakabin su ne "amsoshin" da AI ke koyo daga gare su.
 
-  [In production, this would be 250-300 words of properly translated content]
+  MATAKI 4 - HORO:
+  Bayanan da aka tsaftace aka yi wa lakabi na ciyar da tsarin koyon da ka koya jiya. Modelin na nazarinsu miliyoyin lokuta.
 
+  MATAKI 5 - GWAJI:
+  Kafin fitarwa, ana gwada modelin da bayanan da BAI taba gani ba. Idan ya ci nasara, ya shirya. Idan ba haka ba, sai a koma horo - wani lokaci ma a koma tattara ingantattun bayanai!
 
-  Key points:
+  DALILIN DA YA SHAFE KA:
+  Lokacin da manhaja ta tambaya "Shin wannan fassarar ta taimaka? 👍👎" - kana YIN LAKABI ga bayanai ke nan. Lokacin da ka rubuta da harshenka, kana iya taimaka wa AI na gaba ya koye shi. Kowane dan Najeriya mai amfani da fasaha na tsara AI na gobe a hankali. Tambayar ita ce: shin harsunanmu da fuskokinmu za su samu wakilci mai kyau? Ya dogara da bayanai daga mutane irinka.
 
-  - Understanding how ai works
-
-  - Nigerian context and examples
-
-  - Practical applications
-
-  - How this helps you
-
-
-  Remember: AI is a tool to solve problems. Learn, practice, and build!'
 quiz:
-- question: What is the main focus of Day 3?
-  options:
-  - A. Data and AI
-  - B. Something else
-  - C. Random topic
-  - D. Not related
-  correct: 0
-- question: 'This lesson is about:'
-  options:
-  - A. Cooking
-  - B. How Ai Works
-  - C. Sports
-  - D. Music
-  correct: 1
-- question: Can AI help solve Nigerian problems?
-  options:
-  - A. Yes, definitely
-  - B. No, never
-  - C. Only in cities
-  - D. Maybe not
-  correct: 0
-- question: What should you do after this lesson?
-  options:
-  - A. Forget everything
-  - B. Practice and apply what you learned
-  - C. Do nothing
-  - D. Give up
-  correct: 1
-- question: Is how ai works important for Nigeria?
-  options:
-  - A. Yes, very important
-  - B. No value
-  - C. Only for foreigners
-  - D. Not relevant
-  correct: 0
+  - question: "Mene ne tsarin tafiyar bayanai daidai?"
+    options:
+      - "A. Tattarawa → Tsaftacewa → Yin Lakabi → Horo → Gwaji"
+      - "B. Gwaji → Horo → Tattarawa"
+      - "C. Yin Lakabi → Tattarawa → Barci"
+      - "D. Horo kawai, babu wani abu"
+    correct: 0
+
+  - question: "A ina masana kimiyyar bayanai ke kashe mafi yawan lokacinsu?"
+    options:
+      - "A. Sayen kwamfutoci"
+      - "B. Tsaftace bayanai masu rikici"
+      - "C. Kallon bidiyo"
+      - "D. Rubuta imel"
+    correct: 1
+
+  - question: "Menene yin lakabi ga bayanai?"
+    options:
+      - "A. Mutane na sa wa misalai alamun amsoshi daidai"
+      - "B. Buga sitika"
+      - "C. Sa wa wayarka suna"
+      - "D. Goge tsofaffin fayiloli"
+    correct: 0
+
+  - question: "Me ya sa ake gwada modelin da bayanan da bai taba gani ba?"
+    options:
+      - "A. Don bata lokaci"
+      - "B. Don tabbatar ya koya da gaske, ba haddace kawai ba"
+      - "C. Saboda sabbin bayanai sun fi rahusa"
+      - "D. Gwaji ba dole ba ne"
+    correct: 1
+
+  - question: "Lokacin da ka danna 👍 a kan fassara, me kake yi?"
+    options:
+      - "A. Babu wani abu mai amfani"
+      - "B. Kana taimakawa yin lakabi ga bayanan da za su inganta AI"
+      - "C. Kana sayen manhajar"
+      - "D. Kana goge fassarar"
+    correct: 1

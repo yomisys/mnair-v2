@@ -2,61 +2,68 @@ id: day1_how_ai_works_ig
 day: 1
 topic: how_ai_works
 language: ig
-title: 'Day 1: How Ai Works (Igbo)'
-content: 'This is Day 1 lesson on how ai works.
+title: "Kedu Ka AI Si Aru Oru?"
+content: |
+  AI na-aru oru site n'imuta ihe site na data - otutu otutu ihe atu. Chee na i na-akuziri nwata ihe mango bu. I ga-egosi ya otutu mango ruo mgbe o ga-amata mango obula, obuna ndi o na-ahubeghi mbu. Otu ahu ka AI si amuta ihe!
 
+  Usoro Ato nke AI:
 
-  Focus: Introduction to AI
+  1. ICHIKOTA DATA: Chikota otutu ihe atu
+     - Maka imata ihu: otutu puku foto ihu
+     - Maka isughari asusu: otutu nde ahiriokwu
+     - Maka ichoputa aghugho: ndekorita azumahia gara aga
 
+  2. OZUZU (TRAINING): AI na-amu usoro ndi ahu
+     - Di ka i si muta na akwukwo ndu na edo edo na-aputakari "danfo Lagos"
+     - AI na-achota usoro ndi mmadu nwere ike ighara ihu
+     - Nke a ka a na-akpo "machine learning"
 
-  [In production, this would be 250-300 words of properly translated content]
+  3. IBU AMUMA (PREDICTION): AI na-eji ihe o mutara eme ihe
+     - Ekwenti gi na-ebu amuma okwu ozo mgbe i na-ede ihe
+     - YouTube na-atu aro vidiyo ndi i nwere ike imasi
+     - Ulo aku na-ebu amuma ma azumahia o bu ihe na-enyo enyo
 
+  Chee AI di ka agbero n'ogige ugboala - mgbe o hutachara otutu puku ndi njem, o nwere ike imata ngwa ngwa onye na-aga ebe di anya naani site n'ibu ya!
 
-  Key points:
+  Ka data oma AI na-ahu na-aba uba, ka o na-aka mma. Data ojoo na-emeputa AI ojoo - o bu ya mere idi mma ji di mkpa.
 
-  - Understanding how ai works
-
-  - Nigerian context and examples
-
-  - Practical applications
-
-  - How this helps you
-
-
-  Remember: AI is a tool to solve problems. Learn, practice, and build!'
 quiz:
-- question: What is the main focus of Day 1?
-  options:
-  - A. Introduction to AI
-  - B. Something else
-  - C. Random topic
-  - D. Not related
-  correct: 0
-- question: 'This lesson is about:'
-  options:
-  - A. Cooking
-  - B. How Ai Works
-  - C. Sports
-  - D. Music
-  correct: 1
-- question: Can AI help solve Nigerian problems?
-  options:
-  - A. Yes, definitely
-  - B. No, never
-  - C. Only in cities
-  - D. Maybe not
-  correct: 0
-- question: What should you do after this lesson?
-  options:
-  - A. Forget everything
-  - B. Practice and apply what you learned
-  - C. Do nothing
-  - D. Give up
-  correct: 1
-- question: Is how ai works important for Nigeria?
-  options:
-  - A. Yes, very important
-  - B. No value
-  - C. Only for foreigners
-  - D. Not relevant
-  correct: 0
+  - question: "Gini ka AI kacha cho iji muta ihe?"
+    options:
+      - "A. Naani oku eletrik"
+      - "B. Otutu data na ihe atu"
+      - "C. Ike anwansi"
+      - "D. Naani mmemme"
+    correct: 1
+
+  - question: "Gini bu usoro ato bu isi nke AI?"
+    options:
+      - "A. Zuo, Ree, Uru"
+      - "B. Guo, Dee, Hichapu"
+      - "C. Ichikota Data, Ozuzu, Ibu Amuma"
+      - "D. Wunye, Gbaa, Mechie"
+    correct: 2
+
+  - question: "Gini ga-eme ma AI jiri data ojoo zuo onwe ya?"
+    options:
+      - "A. O ga-ebu amuma ojoo"
+      - "B. O ga-aka nko otu o sila di"
+      - "C. O dighi ihe ga-agbanwe"
+      - "D. O ga-edozi onwe ya"
+    correct: 0
+
+  - question: "Gini bu 'ozuzu' (training) na AI?"
+    options:
+      - "A. Ikuziri mmadu ide koodu"
+      - "B. Igba oso na treadmill"
+      - "C. AI na-amu usoro di na data"
+      - "D. Iwunye updates ohuru"
+    correct: 2
+
+  - question: "Kedu nke bu ihe atu nke ibu amuma AI?"
+    options:
+      - "A. Ekwenti gi na-atu aro okwu ozo mgbe i na-ede ihe"
+      - "B. Ipi botinu ike"
+      - "C. Ibiputa akwukwo"
+      - "D. Igbanye jenereto gi"
+    correct: 0

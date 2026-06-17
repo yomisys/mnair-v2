@@ -2,61 +2,72 @@ id: day5_ai_in_nigeria_pid
 day: 5
 topic: ai_in_nigeria
 language: pid
-title: 'Day 5: Ai In Nigeria (Pidgin)'
-content: 'This is Day 5 lesson on ai in nigeria.
+title: "Naija Builders: From Idea to AI Startup"
+content: |
+  Today, meet the Naija AI ecosystem - and find your entry point enter am.
 
+  THE ECOSYSTEM AROUND YOU:
 
-  Focus: Building with AI
+  HUBS & COMMUNITIES:
+  - Lagos: CcHub (Yaba) - Naija biggest innovation hub, e don back major startups
+  - Abuja, Port Harcourt, Kano, Enugu: tech hubs wey dey grow with free events
+  - Online: Data Science Nigeria (DSN) dey run FREE AI bootcamps and dem don train hundreds of thousands of Nigerians
+  - Google, Microsoft, and AWS all dey run Africa-focused programs with free credits and training
 
+  THE TALENT PIPELINE:
+  Data Science Nigeria vision: to train 1 million Naija AI talents. Their free resources include online courses, annual bootcamp, and community meetups for many states. ALX and similar programs dey offer free software engineering training with stipends.
 
-  [In production, this would be 250-300 words of properly translated content]
+  REAL STARTUP PATHS (simplified):
+  1. SPOT A PAIN: "Tailors dey lose customer measurements"
+  2. SMALLEST SOLUTION: WhatsApp bot wey dey store measurements per customer
+  3. TEST: 10 tailors use am free for one month
+  4. LISTEN & IMPROVE: Dem want style photos attached? Add am
+  5. CHARGE: 1,000 naira/month. 100 tailors = 100,000 naira/month
+  6. GROW: Apply to CcHub accelerator with real usage numbers
 
+  FUNDING DEY EXIST:
+  Naija AI startups don raise millions of dollars. Government programs (like NITDA initiatives), international grants, and local angel investors dey actively look for African AI solutions.
 
-  Key points:
+  YOUR MOVE THIS WEEK:
+  Join one community (DSN free!). Attend one virtual event. Tell one friend your problem-solving idea. Ecosystems dey reward people wey show up.
 
-  - Understanding ai in nigeria
-
-  - Nigerian context and examples
-
-  - Practical applications
-
-  - How this helps you
-
-
-  Remember: AI is a tool to solve problems. Learn, practice, and build!'
 quiz:
-- question: What is the main focus of Day 5?
-  options:
-  - A. Building with AI
-  - B. Something else
-  - C. Random topic
-  - D. Not related
-  correct: 0
-- question: 'This lesson is about:'
-  options:
-  - A. Cooking
-  - B. Ai In Nigeria
-  - C. Sports
-  - D. Music
-  correct: 1
-- question: Can AI help solve Nigerian problems?
-  options:
-  - A. Yes, definitely
-  - B. No, never
-  - C. Only in cities
-  - D. Maybe not
-  correct: 0
-- question: What should you do after this lesson?
-  options:
-  - A. Forget everything
-  - B. Practice and apply what you learned
-  - C. Do nothing
-  - D. Give up
-  correct: 1
-- question: Is ai in nigeria important for Nigeria?
-  options:
-  - A. Yes, very important
-  - B. No value
-  - C. Only for foreigners
-  - D. Not relevant
-  correct: 0
+  - question: "Wetin be Data Science Nigeria vision?"
+    options:
+      - "A. To train 1 million Naija AI talents"
+      - "B. To sell phones"
+      - "C. To replace all universities"
+      - "D. To build roads"
+    correct: 0
+
+  - question: "Wetin be the FIRST step for the startup path?"
+    options:
+      - "A. Spot real pain/problem wey people get"
+      - "B. Raise millions immediately"
+      - "C. Buy office"
+      - "D. Hire 50 staff"
+    correct: 0
+
+  - question: "Wetin be CcHub?"
+    options:
+      - "A. Naija biggest innovation hub, for Yaba, Lagos"
+      - "B. Restaurant chain"
+      - "C. Bank"
+      - "D. Football stadium"
+    correct: 0
+
+  - question: "How you suppose test startup idea?"
+    options:
+      - "A. Make small group use the smallest solution free, then listen"
+      - "B. Spend all your savings first"
+      - "C. Keep am secret for years"
+      - "D. Never test ideas"
+    correct: 0
+
+  - question: "Wetin you fit do THIS WEEK to enter the ecosystem?"
+    options:
+      - "A. Join free community like DSN and attend one event"
+      - "B. Wait make government call you"
+      - "C. Nothing - e no possible"
+      - "D. First japa abroad"
+    correct: 0

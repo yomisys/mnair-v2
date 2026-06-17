@@ -2,61 +2,66 @@ id: day3_ai_in_nigeria_pid
 day: 3
 topic: ai_in_nigeria
 language: pid
-title: 'Day 3: Ai In Nigeria (Pidgin)'
-content: 'This is Day 3 lesson on ai in nigeria.
+title: "Naija Data: Our Languages, Our Future"
+content: |
+  See one problem: dem train most AI with English and Chinese data. When AI no understand Hausa proverbs, Yoruba tones, or Igbo idioms, e no fit serve 200 million Nigerians well. Today, make we look the Naija data story.
 
+  THE DATA GAP:
+  - English get trillions of words online for AI training
+  - Hausa, Yoruba, and Igbo - wey pass 100 million people dey speak - get only small fraction
+  - Result: voice assistants wey no fit hear our accents, translators wey dey miss our meaning
 
-  Focus: Data and AI
+  NAIJA PEOPLE WEY DEY CLOSE THE GAP:
+  1. Researchers and volunteers dey build datasets for Naija languages - dem dey record speech, translate sentences, gather text
+  2. Lagos companies dey hire data labelers - young Nigerians wey dey earn money as dem dey teach AI
+  3. Projects like Masakhane (e mean "We build together" for isiZulu) dey unite African researchers wey dey build translation AI for African languages
+  4. Radio stations archive of local-language broadcasts don dey become gold mine for voice AI
 
+  WHY LOCAL DATA DEY WIN:
+  Flood prediction model need NAIJA rainfall records. Crop model need OUR soil data. Health chatbot need to understand how WE dey describe sickness ("my body dey scratch me"). Foreign data no fit capture Naija reality at all.
 
-  [In production, this would be 250-300 words of properly translated content]
+  THE OPPORTUNITY FOR YOU:
+  Data collection, cleaning, and labeling na entry-level road enter AI career - dem need carefulness, no be big degree. And to just dey use technology for your language - voice notes, posts, reviews - dey add Naija voices to the digital world.
 
+  Your language na data. Your experience na data. Naija AI future go build from am.
 
-  Key points:
-
-  - Understanding ai in nigeria
-
-  - Nigerian context and examples
-
-  - Practical applications
-
-  - How this helps you
-
-
-  Remember: AI is a tool to solve problems. Learn, practice, and build!'
 quiz:
-- question: What is the main focus of Day 3?
-  options:
-  - A. Data and AI
-  - B. Something else
-  - C. Random topic
-  - D. Not related
-  correct: 0
-- question: 'This lesson is about:'
-  options:
-  - A. Cooking
-  - B. Ai In Nigeria
-  - C. Sports
-  - D. Music
-  correct: 1
-- question: Can AI help solve Nigerian problems?
-  options:
-  - A. Yes, definitely
-  - B. No, never
-  - C. Only in cities
-  - D. Maybe not
-  correct: 0
-- question: What should you do after this lesson?
-  options:
-  - A. Forget everything
-  - B. Practice and apply what you learned
-  - C. Do nothing
-  - D. Give up
-  correct: 1
-- question: Is ai in nigeria important for Nigeria?
-  options:
-  - A. Yes, very important
-  - B. No value
-  - C. Only for foreigners
-  - D. Not relevant
-  correct: 0
+  - question: "Wetin be the 'data gap' for Naija languages?"
+    options:
+      - "A. Naija languages get far less training data than English"
+      - "B. Naija get too much data"
+      - "C. Naija languages no fit write"
+      - "D. No gap at all"
+    correct: 0
+
+  - question: "Wetin Masakhane project dey do?"
+    options:
+      - "A. E dey build roads for Lagos"
+      - "B. E dey unite African researchers wey dey build AI for African languages"
+      - "C. E dey sell phones"
+      - "D. E dey teach only English"
+    correct: 1
+
+  - question: "Why Naija flood prediction model need Naija data?"
+    options:
+      - "A. Foreign rainfall data no fit capture Naija reality"
+      - "B. Naija data cheap pass"
+      - "C. E no need data"
+      - "D. Foreign data na crime"
+    correct: 0
+
+  - question: "Which one be entry-level road enter AI career?"
+    options:
+      - "A. Data labeling and cleaning"
+      - "B. To first become professor"
+      - "C. To buy supercomputer"
+      - "D. No entry-level road dey"
+    correct: 0
+
+  - question: "How ordinary Nigerians fit add their languages to the AI future?"
+    options:
+      - "A. By using technology for their languages - voice notes, posts, reviews"
+      - "B. By avoiding technology completely"
+      - "C. By speaking only English"
+      - "D. Dem no fit contribute"
+    correct: 0

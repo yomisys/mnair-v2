@@ -2,61 +2,59 @@ id: day1_what_is_ai_ig
 day: 1
 topic: what_is_ai
 language: ig
-title: 'Day 1: What Is Ai (Igbo)'
-content: 'This is Day 1 lesson on what is ai.
+title: "Gini Bu Artificial Intelligence (AI)?"
+content: |
+  Artificial Intelligence (AI) bu mgbe komputa na igwe nwere ike ime ihe ndi na-achokari ogugu isi mmadu. Chee ya di ka ikuziri komputa ka o muta ihe, chee echiche, ma mee mkpebi.
 
+  Na Naijiria, AI agbaala gi gburugburu! Mgbe app ulo aku gi choputara aghugho, mgbe Google sugharia Igbo gaa Bekee, ma o bu mgbe ekwenti gi matara ihu gi - o bu AI na-aru oru.
 
-  Focus: Introduction to AI
+  Ihe AI nwere ike ime:
+  - Imata usoro (di ka ichoputa ego naira adigboroja)
+  - Ibu amuma (di ka amuma ihu igwe maka ndi oru ugbo)
+  - Ighota asusu (di ka chatbot na-aza ajuju)
+  - Ihu na imata ihe (di ka igwefoto na-agu nomba ugboala)
 
+  AI abughi anwansi ma o bu robot yiri mmadu. O bu mmemme komputa na-amuta site na data iji dozie nsogbu. Di ka i si muta inya okada site n'omume, otu ahu ka AI si amuta site n'ihu otutu ihe atu.
 
-  [In production, this would be 250-300 words of properly translated content]
+  Naijiria choro nka AI! Site n'oru ugbo ruo ahuike, ulo aku ruo agumakwukwo - AI nwere ike inyere anyi aka idozi nsogbu anyi. O bu ya mere i ji amu ihe a!
 
-
-  Key points:
-
-  - Understanding what is ai
-
-  - Nigerian context and examples
-
-  - Practical applications
-
-  - How this helps you
-
-
-  Remember: AI is a tool to solve problems. Learn, practice, and build!'
 quiz:
-- question: What is the main focus of Day 1?
-  options:
-  - A. Introduction to AI
-  - B. Something else
-  - C. Random topic
-  - D. Not related
-  correct: 0
-- question: 'This lesson is about:'
-  options:
-  - A. Cooking
-  - B. What Is Ai
-  - C. Sports
-  - D. Music
-  correct: 1
-- question: Can AI help solve Nigerian problems?
-  options:
-  - A. Yes, definitely
-  - B. No, never
-  - C. Only in cities
-  - D. Maybe not
-  correct: 0
-- question: What should you do after this lesson?
-  options:
-  - A. Forget everything
-  - B. Practice and apply what you learned
-  - C. Do nothing
-  - D. Give up
-  correct: 1
-- question: Is what is ai important for Nigeria?
-  options:
-  - A. Yes, very important
-  - B. No value
-  - C. Only for foreigners
-  - D. Not relevant
-  correct: 0
+  - question: "Gini bu Artificial Intelligence?"
+    options:
+      - "A. Komputa nwere ike imuta ihe ma mee mkpebi"
+      - "B. Naani robot yiri mmadu"
+      - "C. Anwansi na-eme ka komputa maa ihe"
+      - "D. Otu udi app ekwenti"
+    correct: 0
+
+  - question: "Kedu ihe atu Naijiria na-egosi oru AI?"
+    options:
+      - "A. Iji ekwenti Nokia 3310"
+      - "B. App ulo aku na-achoputa aghugho"
+      - "C. Iji biro na akwukwo dee ihe"
+      - "D. Isi nri jollof"
+    correct: 1
+
+  - question: "Kedu ka AI si amuta ihe?"
+    options:
+      - "A. Site na anwansi"
+      - "B. Site n'ihu otutu ihe atu na usoro"
+      - "C. Naani site n'akwukwo"
+      - "D. O dighi mkpa ka o muta ihe"
+    correct: 1
+
+  - question: "Gini mere AI ji di mkpa maka Naijiria?"
+    options:
+      - "A. Naani n'Amerika ka o bara uru"
+      - "B. O nwere ike inyere anyi aka idozi nsogbu anyi"
+      - "C. Anyi achoghi ya ebe a"
+      - "D. Naani nnukwu ulo oru nwere ike iji ya"
+    correct: 1
+
+  - question: "Gini ka AI NA-ENWEGHI ike ime ugbu a?"
+    options:
+      - "A. Imata ihu gi"
+      - "B. Isughari asusu"
+      - "C. Iche echiche kpomkwem ka uburu mmadu"
+      - "D. Ichota usoro na data"
+    correct: 2

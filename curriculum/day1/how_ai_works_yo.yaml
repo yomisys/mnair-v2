@@ -2,61 +2,68 @@ id: day1_how_ai_works_yo
 day: 1
 topic: how_ai_works
 language: yo
-title: 'Day 1: How Ai Works (Yoruba)'
-content: 'This is Day 1 lesson on how ai works.
+title: "Bawo Ni AI Se N Sise?"
+content: |
+  AI n sise nipa kiko eko lati inu data - opolopo apeere. Foju inu wo bi o se n ko omode ohun ti mangoro je. Iwo yoo fi opolopo mangoro han an titi yoo fi le da mangoro eyikeyii mo, koda awon ti ko ti ri ri. Bee ni AI se n ko eko!
 
+  Awon Igbese Meta ti AI:
 
-  Focus: Introduction to AI
+  1. GBIGBA DATA: Ko opolopo apeere jo
+     - Fun didamo oju: egbegberun foto oju
+     - Fun itumo ede: miliọnu gbolohun oro
+     - Fun riri jibiti: akosile awon isowo ti o ti koja
 
+  2. IKEKO (TRAINING): AI yoo ko awon ilana
+     - Bi o se ko pe alawo ewe ati ofeefee maa n tumo si "danfo Eko"
+     - AI n ri awon ilana ti eniyan le ma ri
+     - Eyi ni a n pe ni "machine learning"
 
-  [In production, this would be 250-300 words of properly translated content]
+  3. ASOTELE (PREDICTION): AI yoo lo ohun ti o ko
+     - Foonu re n so asotele oro ti o kan nigbati o ba n te nkan
+     - YouTube n daba awon fidio ti o le wu o
+     - Awon banki n so asotele boya isowo kan ni ifura
 
+  Wo AI bi agbero ni ibudo oko - leyin ti o ti ri egbegberun ero, o le yara mo eni ti o n rin irin-ajo jijin nipa eru won nikan!
 
-  Key points:
+  Bi AI se n ri data rere si, bee ni yoo se dara si. Data buburu n da AI buburu - idi niyen ti didara fi se pataki.
 
-  - Understanding how ai works
-
-  - Nigerian context and examples
-
-  - Practical applications
-
-  - How this helps you
-
-
-  Remember: AI is a tool to solve problems. Learn, practice, and build!'
 quiz:
-- question: What is the main focus of Day 1?
-  options:
-  - A. Introduction to AI
-  - B. Something else
-  - C. Random topic
-  - D. Not related
-  correct: 0
-- question: 'This lesson is about:'
-  options:
-  - A. Cooking
-  - B. How Ai Works
-  - C. Sports
-  - D. Music
-  correct: 1
-- question: Can AI help solve Nigerian problems?
-  options:
-  - A. Yes, definitely
-  - B. No, never
-  - C. Only in cities
-  - D. Maybe not
-  correct: 0
-- question: What should you do after this lesson?
-  options:
-  - A. Forget everything
-  - B. Practice and apply what you learned
-  - C. Do nothing
-  - D. Give up
-  correct: 1
-- question: Is how ai works important for Nigeria?
-  options:
-  - A. Yes, very important
-  - B. No value
-  - C. Only for foreigners
-  - D. Not relevant
-  correct: 0
+  - question: "Ki ni AI nilo julo lati ko eko?"
+    options:
+      - "A. Ina mona nikan"
+      - "B. Opolopo data ati apeere"
+      - "C. Agbara idan"
+      - "D. Eto komputa nikan"
+    correct: 1
+
+  - question: "Ki ni awon igbese meta pataki ti AI?"
+    options:
+      - "A. Ra, Ta, Ere"
+      - "B. Ka, Ko, Pa re"
+      - "C. Gbigba Data, Ikeko, Asotele"
+      - "D. Fi sii, Sise, Pa"
+    correct: 2
+
+  - question: "Ki ni yoo sele ti AI ba ko eko pelu data buburu?"
+    options:
+      - "A. Yoo se asotele buburu"
+      - "B. Yoo tun gbon sibe"
+      - "C. Ko si ohun ti yoo yipada"
+      - "D. Yoo tun ara re se"
+    correct: 0
+
+  - question: "Ki ni 'ikeko' (training) ninu AI?"
+    options:
+      - "A. Kiko eniyan lati ko eto komputa"
+      - "B. Sisare lori ero idaraya"
+      - "C. AI n ko awon ilana inu data"
+      - "D. Fifi awon imudojuiwon sii"
+    correct: 2
+
+  - question: "Ewo ni apeere asotele AI?"
+    options:
+      - "A. Foonu re ti o n daba oro ti o kan nigbati o n te nkan"
+      - "B. Tite bọtini agbara"
+      - "C. Titẹ iwe jade"
+      - "D. Titan jeneretọ re"
+    correct: 0

@@ -2,61 +2,69 @@ id: day3_ai_tools_pid
 day: 3
 topic: ai_tools
 language: pid
-title: 'Day 3: Ai Tools (Pidgin)'
-content: 'This is Day 3 lesson on ai tools.
+title: "Simple Tools to Work with Data"
+content: |
+  You no need to be data scientist before you start to work with data. Today, make we learn free tools wey go turn you to data-smart Naija person - e useful for business, school, or your first tech job.
 
+  GOOGLE FORMS (free):
+  Create surveys and gather data easy easy. Shop owner fit ask customers: "Which products we suppose stock?" The responses go gather automatically inside spreadsheet. Na DATA COLLECTION be this - step 1 of the AI journey wey you learn!
 
-  Focus: Data and AI
+  GOOGLE SHEETS / EXCEL (free):
+  Na the most important data tool for the world. You fit:
+  - Record daily sales and see monthly patterns
+  - Sort and filter (show only customers from Abuja)
+  - Make charts wey go show trends immediately
+  - Clean data (remove duplicates with two clicks)
+  Many data careers dey start with strong spreadsheet skills!
 
+  CHATGPT AS DATA ASSISTANT:
+  Paste your sales numbers and ask: "Which day of the week I dey sell pass?" or "Summarize this customer feedback into 3 main complaints." AI tools fit analyze small datasets like conversation - no coding needed.
 
-  [In production, this would be 250-300 words of properly translated content]
+  GOOGLE TRENDS (trends.google.com):
+  See wetin Nigerians dey search for - free market research! Fashion seller fit compare searches for "ankara styles" vs "lace styles" by state and month.
 
+  PRACTICE TASK FOR TODAY:
+  Open Google Forms. Create 3-question survey about anything (your business, your community). Share am with 5 friends for WhatsApp. Congratulations - you just gather your first dataset!
 
-  Key points:
+  Remember: na data dem take build AI, and now YOU fit collect, organize, and analyze am. That skill alone don make you valuable.
 
-  - Understanding ai tools
-
-  - Nigerian context and examples
-
-  - Practical applications
-
-  - How this helps you
-
-
-  Remember: AI is a tool to solve problems. Learn, practice, and build!'
 quiz:
-- question: What is the main focus of Day 3?
-  options:
-  - A. Data and AI
-  - B. Something else
-  - C. Random topic
-  - D. Not related
-  correct: 0
-- question: 'This lesson is about:'
-  options:
-  - A. Cooking
-  - B. Ai Tools
-  - C. Sports
-  - D. Music
-  correct: 1
-- question: Can AI help solve Nigerian problems?
-  options:
-  - A. Yes, definitely
-  - B. No, never
-  - C. Only in cities
-  - D. Maybe not
-  correct: 0
-- question: What should you do after this lesson?
-  options:
-  - A. Forget everything
-  - B. Practice and apply what you learned
-  - C. Do nothing
-  - D. Give up
-  correct: 1
-- question: Is ai tools important for Nigeria?
-  options:
-  - A. Yes, very important
-  - B. No value
-  - C. Only for foreigners
-  - D. Not relevant
-  correct: 0
+  - question: "Which free tool dey gather survey data automatically enter spreadsheet?"
+    options:
+      - "A. Google Forms"
+      - "B. Calculator"
+      - "C. Flashlight app"
+      - "D. Video player"
+    correct: 0
+
+  - question: "Wetin Google Sheets fit help you do with sales data?"
+    options:
+      - "A. Sort, filter, make chart, and find patterns"
+      - "B. Cook food"
+      - "C. Charge your phone"
+      - "D. Nothing useful"
+    correct: 0
+
+  - question: "How ChatGPT fit help with small dataset?"
+    options:
+      - "A. E fit summarize am and answer questions about am like conversation"
+      - "B. E dey refuse to read data"
+      - "C. E dey only work with images"
+      - "D. E dey delete the data"
+    correct: 0
+
+  - question: "Wetin Google Trends dey useful for?"
+    options:
+      - "A. Free market research on wetin people dey search for"
+      - "B. To make phone calls"
+      - "C. To send money"
+      - "D. To play games"
+    correct: 0
+
+  - question: "Why spreadsheet skills get value?"
+    options:
+      - "A. Many data careers dey start with them"
+      - "B. Dem totally useless"
+      - "C. Na only foreigners dey use spreadsheets"
+      - "D. Dem wan ban spreadsheets"
+    correct: 0

@@ -2,61 +2,67 @@ id: day5_what_is_ai_ig
 day: 5
 topic: what_is_ai
 language: ig
-title: 'Day 5: What Is Ai (Igbo)'
-content: 'This is Day 5 lesson on what is ai.
+title: "I Nwere Ike Iji AI Wuo Ihe (Akara Mmuta Adighi Mkpa)"
+content: |
+  Ubochi nke ise! Oge eruola igbanwe site n'ighota AI gaa n'IWU ihe na ya. Ihe ijuanya: i choghi akara mmuta sayensi komputa iji bido.
 
+  NGAZI ONYE NA-EWU - BIDO EBE I NO:
 
-  Focus: Building with AI
+  OGO 1 - ONYE OJI IKE EME IHE (i nwere ike ibido taa):
+  Iji ngwa AI eme ihe n'uzo nka iji meputa ihe bara uru: atumatu azumahia, atumatu, ndetu ihe omumu, ihe mgbasa ozi. Onye na-akwa akwa nke ji AI ese flyers ma na-aza ndi ahia nke oma na-"ewularị" azumahia ya na AI.
 
+  OGO 2 - ONYE NA-EWU WORKFLOW (koodu adighi mkpa):
+  Ijikota ngwa onu. Ihe atu: onye ahia dejuru Google Form → aziza abanye na spreadsheet → AI edee aziza puru iche → i kwado ma zipu. Ngwa di ka Zapier na-eme njiko ndi a site n'ipi, o bughi koodu.
 
-  [In production, this would be 250-300 words of properly translated content]
+  OGO 3 - ONYE NA-EWU APP NA-ENWEGHI KOODU:
+  Ikpo di ka Glide na Bubble na-agbanwe spreadsheets ka ha buru ezigbo app. Onye na-ere ihe oriri nwere ike iwu app ibu oda di mfe maka okporo uzo ya - na-enweghi otu ahiri koodu.
 
+  OGO 4 - ONYE KOODU (o buru na o na-amasi gi):
+  Imuta Python na-emeghe ogo kacha omimi. I makwa? AI n'onwe ya bu onye nkuzi mmemme kacha mma - o na-akowa njehie na ndidi na elekere 11 nke abali, n'efu!
 
-  Key points:
+  IHE NDI NA-EWU NAIJIRIA GOSIRI:
+  Otutu ndi guzobere ulo oru teknuzu Naijiria mere nke oma bidoro na-enweghi mmuta mmemme. Ha huru nsogbu obodo, bido na Ogo 1, ma rigoro. Nwanyi na-ere ahia nke maara IHE KPATARA ndi ahia ji eme mkpesa ghotara nsogbu ahu karia onye koodu na-agabeghi ahia.
 
-  - Understanding what is ai
+  NSOGBU GI + NGWA AI = OHERE GI.
+  Echi anyi ga-eji nke a mee ihe maka azumahia kpomkwem. Ugbu a, juo onwe gi: "Kedu nsogbu di m gburugburu nke teknuzu nwere ike inye aka dozie?"
 
-  - Nigerian context and examples
-
-  - Practical applications
-
-  - How this helps you
-
-
-  Remember: AI is a tool to solve problems. Learn, practice, and build!'
 quiz:
-- question: What is the main focus of Day 5?
-  options:
-  - A. Building with AI
-  - B. Something else
-  - C. Random topic
-  - D. Not related
-  correct: 0
-- question: 'This lesson is about:'
-  options:
-  - A. Cooking
-  - B. What Is Ai
-  - C. Sports
-  - D. Music
-  correct: 1
-- question: Can AI help solve Nigerian problems?
-  options:
-  - A. Yes, definitely
-  - B. No, never
-  - C. Only in cities
-  - D. Maybe not
-  correct: 0
-- question: What should you do after this lesson?
-  options:
-  - A. Forget everything
-  - B. Practice and apply what you learned
-  - C. Do nothing
-  - D. Give up
-  correct: 1
-- question: Is what is ai important for Nigeria?
-  options:
-  - A. Yes, very important
-  - B. No value
-  - C. Only for foreigners
-  - D. Not relevant
-  correct: 0
+  - question: "I choro akara mmuta sayensi komputa iji bido iji AI wuo ihe?"
+    options:
+      - "A. Mba - i nwere ike ibido di ka onye oji ike eme ihe taa"
+      - "B. Ee, mgbe niile"
+      - "C. Naani ndi mba ozo nwere ike iwu ihe"
+      - "D. I choro PhD"
+    correct: 0
+
+  - question: "Gini bu Ogo 2 (onye na-ewu workflow)?"
+    options:
+      - "A. Ijikota ngwa onu na-enweghi koodu"
+      - "B. Ide Python di omimi"
+      - "C. Iwu robots"
+      - "D. Ire komputa"
+    correct: 0
+
+  - question: "Gini ka ikpo na-enweghi koodu di ka Glide nwere ike ime?"
+    options:
+      - "A. Igbanwe spreadsheets ka ha buru ezigbo app"
+      - "B. Naani igba egwu"
+      - "C. Inochi ndi mmemme niile"
+      - "D. O dighi ihe bara uru"
+    correct: 0
+
+  - question: "Kedu ka AI ga-esi nyere onye na-amu koodu aka?"
+    options:
+      - "A. O na-akowa njehie na ndidi di ka onye nkuzi efu"
+      - "B. O nweghi ike inye aka na koodu"
+      - "C. O na-ede viruses"
+      - "D. O na-aru oru naani maka ndi oka"
+    correct: 0
+
+  - question: "Kedu uru nwanyi na-ere ahia nwere karia onye koodu na-agabeghi ahia?"
+    options:
+      - "A. O ghotara ezigbo nsogbu ahu nke oma karia"
+      - "B. O na-ede ngwa ngwa karia"
+      - "C. O nwere otutu akara mmuta"
+      - "D. O nweghi uru obula"
+    correct: 0

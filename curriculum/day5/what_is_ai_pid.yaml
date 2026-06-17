@@ -2,61 +2,67 @@ id: day5_what_is_ai_pid
 day: 5
 topic: what_is_ai
 language: pid
-title: 'Day 5: What Is Ai (Pidgin)'
-content: 'This is Day 5 lesson on what is ai.
+title: "You Fit Build with AI (No Degree Required)"
+content: |
+  Day 5! Time don reach to move from understanding AI to BUILDING with am. Surprise: you no need computer science degree to start.
 
+  THE BUILDER LADDER - START WHERE YOU DEY:
 
-  Focus: Building with AI
+  LEVEL 1 - POWER USER (you fit start today):
+  To use AI tools with skill to produce real value: business plans, designs, lesson notes, marketing content. Tailor wey dey use AI design flyers and reply customers professionally don already dey "build" her business with AI.
 
+  LEVEL 2 - WORKFLOW BUILDER (no code needed):
+  To connect tools together. Example: customer fill Google Form → answer land inside spreadsheet → AI draft personalized reply → you approve and send. Tools like Zapier dey make these connections with clicks, no be code.
 
-  [In production, this would be 250-300 words of properly translated content]
+  LEVEL 3 - NO-CODE APP BUILDER:
+  Platforms like Glide and Bubble dey turn spreadsheets to real apps. Provisions seller fit build simple ordering app for her street - without one line of code.
 
+  LEVEL 4 - CODER (if you enjoy am):
+  To learn Python go open the deepest level. And guess wetin? AI itself na the best programming teacher ever - e dey explain errors patiently for 11pm, for free!
 
-  Key points:
+  WETIN NAIJA BUILDERS DON PROVE:
+  Many successful Naija tech founders start without programming background. Dem see local problem, start from Level 1, and climb. The market woman wey know WHY customers dey complain understand the problem pass coder wey never enter market before.
 
-  - Understanding what is ai
+  YOUR PROBLEM + AI TOOLS = YOUR OPPORTUNITY.
+  Tomorrow we go apply this one to business specifically. For now, ask yourself: "Which problem around me technology fit help solve?"
 
-  - Nigerian context and examples
-
-  - Practical applications
-
-  - How this helps you
-
-
-  Remember: AI is a tool to solve problems. Learn, practice, and build!'
 quiz:
-- question: What is the main focus of Day 5?
-  options:
-  - A. Building with AI
-  - B. Something else
-  - C. Random topic
-  - D. Not related
-  correct: 0
-- question: 'This lesson is about:'
-  options:
-  - A. Cooking
-  - B. What Is Ai
-  - C. Sports
-  - D. Music
-  correct: 1
-- question: Can AI help solve Nigerian problems?
-  options:
-  - A. Yes, definitely
-  - B. No, never
-  - C. Only in cities
-  - D. Maybe not
-  correct: 0
-- question: What should you do after this lesson?
-  options:
-  - A. Forget everything
-  - B. Practice and apply what you learned
-  - C. Do nothing
-  - D. Give up
-  correct: 1
-- question: Is what is ai important for Nigeria?
-  options:
-  - A. Yes, very important
-  - B. No value
-  - C. Only for foreigners
-  - D. Not relevant
-  correct: 0
+  - question: "You need computer science degree to start building with AI?"
+    options:
+      - "A. No - you fit start as power user today"
+      - "B. Yes, always"
+      - "C. Na only foreigners fit build"
+      - "D. You need PhD"
+    correct: 0
+
+  - question: "Wetin be Level 2 (workflow builder)?"
+    options:
+      - "A. To connect tools together without code"
+      - "B. To write advanced Python"
+      - "C. To build robots"
+      - "D. To sell computers"
+    correct: 0
+
+  - question: "Wetin no-code platforms like Glide fit do?"
+    options:
+      - "A. Turn spreadsheets to real apps"
+      - "B. Only play music"
+      - "C. Replace all programmers"
+      - "D. Nothing useful"
+    correct: 0
+
+  - question: "How AI fit help person wey dey learn to code?"
+    options:
+      - "A. E dey explain errors patiently like free teacher"
+      - "B. E no fit help with coding"
+      - "C. E dey write viruses"
+      - "D. E dey only work for experts"
+    correct: 0
+
+  - question: "Which advantage market woman get over coder wey never enter market?"
+    options:
+      - "A. She understand the real problem better"
+      - "B. She dey type faster"
+      - "C. She get more degrees"
+      - "D. No advantage at all"
+    correct: 0

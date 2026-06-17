@@ -2,61 +2,69 @@ id: day2_ai_tools_pid
 day: 2
 topic: ai_tools
 language: pid
-title: 'Day 2: Ai Tools (Pidgin)'
-content: 'This is Day 2 lesson on ai tools.
+title: "ML Tools Wey You Don Already Dey Use"
+content: |
+  Surprise: you don dey use machine learning for years without knowing! Today, make we spot the ML wey dey hide inside your everyday apps - and learn how to use am better.
 
+  YOUR KEYBOARD:
+  When you type "how far" and your phone suggest "now?", na ML model wey dem train with billions of sentences. Tip: your keyboard dey learn YOUR own style as time dey go - e go even learn your pidgin!
 
-  Focus: Machine Learning Basics
+  WHATSAPP & SOCIAL MEDIA:
+  - Status and feed arrangement: ML dey predict which posts you go like
+  - Voice note transcription for some phones: ML dey convert speech to text
+  - Photo enhancement: ML dey brighten dark photos automatically
 
+  YOUTUBE & MUSIC APPS:
+  The recommendation engine na pure ML. E learn from millions of viewers: "People wey watch A also enjoy B." Tip: your recommendations go improve when you click "Not interested" for videos wey you no like - you dey give the model better training signals!
 
-  [In production, this would be 250-300 words of properly translated content]
+  CAMERA APPS:
+  Portrait mode (blurred background), night mode, and face beautification - all of them na ML models. Your 80,000 naira phone dey do tricks wey need professional equipment 10 years ago.
 
+  MAPS:
+  Google Maps dey predict say Third Mainland Bridge go heavy by 5pm because ML learn from millions of past trips.
 
-  Key points:
+  THE LESSON: ML no be future technology - e don already dey your pocket. Now wey you fit SEE am, you fit use am smarter:
+  1. Give apps honest feedback (like/dislike) to improve recommendations
+  2. Use voice typing for English - e surprisingly good now
+  3. Try Google Photos search: type "food" and e go find your food photos with ML!
 
-  - Understanding ai tools
-
-  - Nigerian context and examples
-
-  - Practical applications
-
-  - How this helps you
-
-
-  Remember: AI is a tool to solve problems. Learn, practice, and build!'
 quiz:
-- question: What is the main focus of Day 2?
-  options:
-  - A. Machine Learning Basics
-  - B. Something else
-  - C. Random topic
-  - D. Not related
-  correct: 0
-- question: 'This lesson is about:'
-  options:
-  - A. Cooking
-  - B. Ai Tools
-  - C. Sports
-  - D. Music
-  correct: 1
-- question: Can AI help solve Nigerian problems?
-  options:
-  - A. Yes, definitely
-  - B. No, never
-  - C. Only in cities
-  - D. Maybe not
-  correct: 0
-- question: What should you do after this lesson?
-  options:
-  - A. Forget everything
-  - B. Practice and apply what you learned
-  - C. Do nothing
-  - D. Give up
-  correct: 1
-- question: Is ai tools important for Nigeria?
-  options:
-  - A. Yes, very important
-  - B. No value
-  - C. Only for foreigners
-  - D. Not relevant
-  correct: 0
+  - question: "Wetin dey power your keyboard next-word suggestions?"
+    options:
+      - "A. Dictionary wey dem make by hand"
+      - "B. ML model wey dem train with billions of sentences"
+      - "C. Random guessing"
+      - "D. Your network provider"
+    correct: 1
+
+  - question: "How YouTube take decide wetin e go recommend for you?"
+    options:
+      - "A. ML learn patterns from millions of viewers"
+      - "B. Staff dey pick videos for each user"
+      - "C. E dey show videos alphabetically"
+      - "D. Na government dey choose"
+    correct: 0
+
+  - question: "How you fit improve your app recommendations?"
+    options:
+      - "A. Buy new phone every year"
+      - "B. Give honest feedback like clicking 'Not interested'"
+      - "C. Watch everything to confuse am"
+      - "D. You no fit influence them"
+    correct: 1
+
+  - question: "Which camera feature dey use machine learning?"
+    options:
+      - "A. Portrait mode with blurred background"
+      - "B. The physical lens"
+      - "C. The volume button"
+      - "D. The charging port"
+    correct: 0
+
+  - question: "How Google Maps take know say traffic go heavy by 5pm?"
+    options:
+      - "A. E dey guess from the weather"
+      - "B. ML learn from millions of past trips"
+      - "C. Police dey report am manually"
+      - "D. E no fit predict traffic"
+    correct: 1

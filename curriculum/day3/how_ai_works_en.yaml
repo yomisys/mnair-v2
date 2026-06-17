@@ -2,61 +2,65 @@ id: day3_how_ai_works_en
 day: 3
 topic: how_ai_works
 language: en
-title: 'Day 3: How Ai Works (English)'
-content: 'This is Day 3 lesson on how ai works.
+title: "From Raw Data to Smart AI: The Data Journey"
+content: |
+  Yesterday you learned about training. But before training can start, data must go on a journey. Let's follow it!
 
+  STEP 1 - COLLECTION:
+  Data is gathered from many sources: cameras, forms, sensors, apps, surveys. Example: an agric startup drives through farms in Kaduna photographing maize plants - healthy and sick ones.
 
-  Focus: Data and AI
+  STEP 2 - CLEANING:
+  Raw data is messy! Blurry photos, duplicate entries, wrong spellings ("Lagos", "Lagoss", "LAGOS"). Data scientists spend most of their time here - up to 80%! Dirty data confuses AI, like teaching a child from a torn, stained textbook.
 
+  STEP 3 - LABELING:
+  Humans tag each example: "this leaf is healthy", "this one has blight". This is real work that real people do - labeling jobs employ thousands of young Africans today. The labels become the "answers" AI learns from.
 
-  [In production, this would be 250-300 words of properly translated content]
+  STEP 4 - TRAINING:
+  The cleaned, labeled data feeds the learning process you learned about yesterday. The model studies it millions of times.
 
+  STEP 5 - TESTING:
+  Before release, the model is tested on data it has NEVER seen. If it scores well, it's ready. If not, back to training - sometimes back to collecting better data!
 
-  Key points:
+  WHY THIS MATTERS TO YOU:
+  When an app asks "Was this translation helpful? 👍👎" - you are LABELING data. When you type in your language, you may be helping future AI learn it. Every Nigerian using technology is quietly shaping tomorrow's AI. The question is: will our languages and faces be well-represented? That depends on data from people like you.
 
-  - Understanding how ai works
-
-  - Nigerian context and examples
-
-  - Practical applications
-
-  - How this helps you
-
-
-  Remember: AI is a tool to solve problems. Learn, practice, and build!'
 quiz:
-- question: What is the main focus of Day 3?
-  options:
-  - A. Data and AI
-  - B. Something else
-  - C. Random topic
-  - D. Not related
-  correct: 0
-- question: 'This lesson is about:'
-  options:
-  - A. Cooking
-  - B. How Ai Works
-  - C. Sports
-  - D. Music
-  correct: 1
-- question: Can AI help solve Nigerian problems?
-  options:
-  - A. Yes, definitely
-  - B. No, never
-  - C. Only in cities
-  - D. Maybe not
-  correct: 0
-- question: What should you do after this lesson?
-  options:
-  - A. Forget everything
-  - B. Practice and apply what you learned
-  - C. Do nothing
-  - D. Give up
-  correct: 1
-- question: Is how ai works important for Nigeria?
-  options:
-  - A. Yes, very important
-  - B. No value
-  - C. Only for foreigners
-  - D. Not relevant
-  correct: 0
+  - question: "What is the correct order of the data journey?"
+    options:
+      - "A. Collection → Cleaning → Labeling → Training → Testing"
+      - "B. Testing → Training → Collection"
+      - "C. Labeling → Collection → Sleeping"
+      - "D. Training only, nothing else"
+    correct: 0
+
+  - question: "Where do data scientists spend most of their time?"
+    options:
+      - "A. Buying computers"
+      - "B. Cleaning messy data"
+      - "C. Watching videos"
+      - "D. Writing emails"
+    correct: 1
+
+  - question: "What is data labeling?"
+    options:
+      - "A. Humans tagging examples with correct answers"
+      - "B. Printing stickers"
+      - "C. Naming your phone"
+      - "D. Deleting old files"
+    correct: 0
+
+  - question: "Why is the model tested on data it has never seen?"
+    options:
+      - "A. To waste time"
+      - "B. To check it truly learned, not just memorized"
+      - "C. Because new data is cheaper"
+      - "D. Testing is not necessary"
+    correct: 1
+
+  - question: "When you click 👍 on a translation, what are you doing?"
+    options:
+      - "A. Nothing useful"
+      - "B. Helping label data that can improve the AI"
+      - "C. Buying the app"
+      - "D. Deleting the translation"
+    correct: 1

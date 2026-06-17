@@ -2,61 +2,69 @@ id: day2_how_ai_works_ha
 day: 2
 topic: how_ai_works
 language: ha
-title: 'Day 2: How Ai Works (Hausa)'
-content: 'This is Day 2 lesson on how ai works.
+title: "Horo da Hasashe: Rayuwa Biyu na AI"
+content: |
+  Kowane tsarin machine learning yana da rayuwa biyu: HORO (lokacin makaranta) da HASASHE (lokacin aiki). Fahimtar wannan na taimaka maka fahimtar dukkan AI.
 
+  RAYUWA TA 1 - HORO (Koyo):
+  Ka yi tunanin koya wa wata budurwa koyon dinki. Ka nuna mata tufafi 500 da aka gama: "Wannan agbada ce, wannan kaftan ce, wannan senator ce." Tana nazarinsu, tana kuskure, ana gyara mata, sannu a hankali tana ingantawa. Wannan shi ne horo!
 
-  Focus: Machine Learning Basics
+  Yayin horo, AI yana:
+  1. Karbar misalai masu yawa da aka yi wa lakabi (hoto + "wannan mangwaro ne")
+  2. Yin hasashe
+  3. Duba ko hasashen daidai ne
+  4. Daidaita kansa kadan idan ya yi kuskure
+  5. Maimaitawa miliyoyin lokuta har sai ya zama daidai
 
+  RAYUWA TA 2 - HASASHE (Aiki):
+  Bayan horo, budurwar ta bude shagonta. Yanzu abokan ciniki na kawo sabbin yadudduka da ba ta taba gani ba, kuma tana iya dinka su daidai. Haka AI da aka horar ke aiki - yana magance SABBIN yanayi da abin da ya koya.
 
-  [In production, this would be 250-300 words of properly translated content]
+  Lokacin da manhajar bankinka ta duba ma'amala cikin dakika 1, hasashe ke nan. Watannin koyo daga miliyoyin ma'amaloli na baya sun riga sun faru a lokacin horo.
 
+  MUHIMMAN ABUBUWA:
+  - Horo na daukar lokaci kuma yana da tsada; hasashe na da sauri da rahusa
+  - AI ya san abin da ya gani a horo kawai - idan bai taba ganin hotunan abincin Najeriya ba, zai iya kiran moi moi "muffin"!
+  - Shi ya sa bayanan gida ke da muhimmanci ga AI na Najeriya
 
-  Key points:
+  Gobe za mu koyi game da man fetur na duk wannan: BAYANAI (DATA).
 
-  - Understanding how ai works
-
-  - Nigerian context and examples
-
-  - Practical applications
-
-  - How this helps you
-
-
-  Remember: AI is a tool to solve problems. Learn, practice, and build!'
 quiz:
-- question: What is the main focus of Day 2?
-  options:
-  - A. Machine Learning Basics
-  - B. Something else
-  - C. Random topic
-  - D. Not related
-  correct: 0
-- question: 'This lesson is about:'
-  options:
-  - A. Cooking
-  - B. How Ai Works
-  - C. Sports
-  - D. Music
-  correct: 1
-- question: Can AI help solve Nigerian problems?
-  options:
-  - A. Yes, definitely
-  - B. No, never
-  - C. Only in cities
-  - D. Maybe not
-  correct: 0
-- question: What should you do after this lesson?
-  options:
-  - A. Forget everything
-  - B. Practice and apply what you learned
-  - C. Do nothing
-  - D. Give up
-  correct: 1
-- question: Is how ai works important for Nigeria?
-  options:
-  - A. Yes, very important
-  - B. No value
-  - C. Only for foreigners
-  - D. Not relevant
-  correct: 0
+  - question: "Mene ne 'rayuwa biyu' na tsarin machine learning?"
+    options:
+      - "A. Rana da dare"
+      - "B. Horo da hasashe"
+      - "C. Caji da fitar da caji"
+      - "D. Online da offline"
+    correct: 1
+
+  - question: "Me ke faruwa yayin horo?"
+    options:
+      - "A. AI na nazarin misalai da aka yi wa lakabi yana daidaita kansa idan ya yi kuskure"
+      - "B. AI na hutawa yana adana wuta"
+      - "C. AI na goge bayanansa"
+      - "D. AI na buga rahotanni"
+    correct: 0
+
+  - question: "Me zai sa AI ya kira moi moi 'muffin'?"
+    options:
+      - "A. Saboda bai taba ganin abincin Najeriya ba yayin horo"
+      - "B. Saboda moi moi muffin ne"
+      - "C. Saboda AI na kin abincin Najeriya"
+      - "D. Saboda wayar ta tsufa"
+    correct: 0
+
+  - question: "Wace magana ce GASKIYA?"
+    options:
+      - "A. Horo na da sauri, hasashe na jinkiri"
+      - "B. Horo na daukar lokaci da tsada, hasashe na da sauri"
+      - "C. Dukansu na faruwa lokaci guda koyaushe"
+      - "D. Hasashe na zuwa kafin horo"
+    correct: 1
+
+  - question: "Lokacin da manhajar bankinka ta duba ma'amala cikin dakika 1, me ke faruwa?"
+    options:
+      - "A. Horo"
+      - "B. Hasashe da abin da aka riga aka koya"
+      - "C. Manhajar tana zato kawai"
+      - "D. Mutum ne ke dubawa"
+    correct: 1

@@ -2,61 +2,76 @@ id: day1_ai_ethics_ig
 day: 1
 topic: ai_ethics
 language: ig
-title: 'Day 1: Ai Ethics (Igbo)'
-content: 'This is Day 1 lesson on ai ethics.
+title: "Ukpuru Oma AI na Oru Di N'aka"
+content: |
+  AI nwere ike, mana ike na-eso oru! Di ka ndi Naijiria na-ewu ma na-eji AI, anyi ga-eche banyere ukpuru oma - ime ihe ziri ezi.
 
+  ISI OKWU UKPURU OMA:
 
-  Focus: Introduction to AI
+  1. ELE MMADU ANYA N'IHU NA IKPE ZIRI EZI:
+     - O buru na AI jiri naani aha Igbo zuo onwe ya, o nwere ike ghara imata aha Hausa
+     - Imata ihu nke e ji naani ihu ndi ocha zuo nwere ike daa na ihu ndi Naijiria
+     - Ihe ngwota: Jiri data Naijiria di iche iche mgbe i na-ewu AI
 
+  2. NZUZO:
+     - AI choro data, mana a ghaghi ichebe ozi ndi mmadu
+     - Cheta Iwu Nchebe Data Naijiria (NDPA)
+     - Ekekorithala ozi nzuzo onye obula ma o nyeghi gi ikike
 
-  [In production, this would be 250-300 words of properly translated content]
+  3. ORU NA MGBANWE:
+     - AI nwere ike were onodu ufodu oru (di ka onu uzo toll na-aru onwe ya were onodu ndi na-anakota ego)
+     - Mana AI na-emeputakwa oru OHURU (ndi ozuzu AI, ndi nyocha data)
+     - Ihe ngwota: Muta nka AI ka i noro na-aba uru!
 
+  4. OZI UGHA:
+     - AI nwere ike imeputa vidiyo ugha ("deepfakes") ma o bu akuko ugha
+     - ChatGPT nwere ike imeputa "eziokwu" na-adighi adi - nyochaa mgbe niile!
+     - Chee echiche tupu i kesaa ihe AI meputara
 
-  Key points:
+  5. ONODU NAIJIRIA:
+     - Wuo AI nke ghotara asusu na omenala anyi
+     - Esorola naani ihe ngwota Amerika - dozie nsogbu Naijiria
+     - Tinye ndi mmadu si na steeti 36 niile na mmepe AI
 
-  - Understanding ai ethics
+  Ka i na-amu AI, juo onwe gi: "Ihe a o ziri ezi? O na-enye aka? O bu eziokwu?" Nke ahu bu AI nwere ukpuru oma!
 
-  - Nigerian context and examples
-
-  - Practical applications
-
-  - How this helps you
-
-
-  Remember: AI is a tool to solve problems. Learn, practice, and build!'
 quiz:
-- question: What is the main focus of Day 1?
-  options:
-  - A. Introduction to AI
-  - B. Something else
-  - C. Random topic
-  - D. Not related
-  correct: 0
-- question: 'This lesson is about:'
-  options:
-  - A. Cooking
-  - B. Ai Ethics
-  - C. Sports
-  - D. Music
-  correct: 1
-- question: Can AI help solve Nigerian problems?
-  options:
-  - A. Yes, definitely
-  - B. No, never
-  - C. Only in cities
-  - D. Maybe not
-  correct: 0
-- question: What should you do after this lesson?
-  options:
-  - A. Forget everything
-  - B. Practice and apply what you learned
-  - C. Do nothing
-  - D. Give up
-  correct: 1
-- question: Is ai ethics important for Nigeria?
-  options:
-  - A. Yes, very important
-  - B. No value
-  - C. Only for foreigners
-  - D. Not relevant
-  correct: 0
+  - question: "Gini bu ele mmadu anya n'ihu nke AI (bias)?"
+    options:
+      - "A. Mgbe AI na-aru oru nke oma maka onye obula"
+      - "B. Mgbe AI na-akwado otu ndi karia ndi ozo n'uzo na-ezighi ezi"
+      - "C. Mgbe AI di oke onu"
+      - "D. Mgbe AI na-eje nwayoo"
+    correct: 1
+
+  - question: "Gini bu aha iwu nchebe data Naijiria?"
+    options:
+      - "A. USA Privacy Act"
+      - "B. Iwu Data Lagos"
+      - "C. Nigeria Data Protection Act (NDPA)"
+      - "D. Iwu Nchekwa Intaneti"
+    correct: 2
+
+  - question: "Gini ka i kwesiri ime na ozi AI meputara?"
+    options:
+      - "A. Kwere ihe niile ozugbo"
+      - "B. Nyochaa tupu i kesaa"
+      - "C. Kesaa ngwa ngwa ka i nwere ike"
+      - "D. Leghara ihe niile anya"
+    correct: 1
+
+  - question: "Kedu ka anyi ga-esi belata ele mmadu anya n'ihu nke AI na Naijiria?"
+    options:
+      - "A. Jiri naani AI si mba ozo"
+      - "B. Jiri data Naijiria di iche iche si n'agburu niile"
+      - "C. Wuo AI naani na Lagos"
+      - "D. Leghara nsogbu ahu anya"
+    correct: 1
+
+  - question: "Gini bu 'deepfake'?"
+    options:
+      - "A. Ezigbo vidiyo"
+      - "B. Vidiyo ma o bu uda ugha nke AI meputara"
+      - "C. Otu udi ekwenti"
+      - "D. Egwu ohuru"
+    correct: 1

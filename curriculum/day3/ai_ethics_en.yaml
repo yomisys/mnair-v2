@@ -2,61 +2,70 @@ id: day3_ai_ethics_en
 day: 3
 topic: ai_ethics
 language: en
-title: 'Day 3: Ai Ethics (English)'
-content: 'This is Day 3 lesson on ai ethics.
+title: "Your Data, Your Rights: Privacy and the NDPA"
+content: |
+  We've seen that AI feeds on data - often YOUR data. Today, learn your rights and how to protect yourself.
 
+  WHAT DATA DO YOU GIVE AWAY?
+  Every day, apps collect your: location, contacts, photos, messages, browsing history, voice recordings, and spending habits. Some collection is necessary (Maps needs your location). Some is excessive (why does a torchlight app need your contacts?).
 
-  Focus: Data and AI
+  YOUR RIGHTS UNDER THE NDPA:
+  The Nigeria Data Protection Act (2023) gives every Nigerian rights:
+  1. CONSENT: Companies must ask permission before collecting your personal data
+  2. ACCESS: You can ask any company what data they hold about you
+  3. CORRECTION: You can demand they fix wrong information
+  4. DELETION: You can ask them to delete your data
+  5. COMPLAINT: Report violations to the Nigeria Data Protection Commission (NDPC)
 
+  PROTECT YOURSELF - 5 HABITS:
+  1. Check app permissions: Settings → Apps → Permissions. Remove what's unnecessary
+  2. Think before sharing: your BVN, NIN, and OTP codes are NEVER needed by "customer care" on WhatsApp - that's fraud!
+  3. Use strong PINs and enable two-step verification on WhatsApp
+  4. Read before clicking "I Agree" - at least scan what data they take
+  5. Be careful with quizzes and games that ask for personal details
 
-  [In production, this would be 250-300 words of properly translated content]
+  DATA AND AI ETHICS:
+  Companies training AI on your data should tell you. When this course collects your progress, we tell you why (to issue your certificate) and how long we keep it (90 days for conversation data). That's NDPA compliance - and it's your right to expect it everywhere.
 
+  Your data has value. Guard it like you guard your money.
 
-  Key points:
-
-  - Understanding ai ethics
-
-  - Nigerian context and examples
-
-  - Practical applications
-
-  - How this helps you
-
-
-  Remember: AI is a tool to solve problems. Learn, practice, and build!'
 quiz:
-- question: What is the main focus of Day 3?
-  options:
-  - A. Data and AI
-  - B. Something else
-  - C. Random topic
-  - D. Not related
-  correct: 0
-- question: 'This lesson is about:'
-  options:
-  - A. Cooking
-  - B. Ai Ethics
-  - C. Sports
-  - D. Music
-  correct: 1
-- question: Can AI help solve Nigerian problems?
-  options:
-  - A. Yes, definitely
-  - B. No, never
-  - C. Only in cities
-  - D. Maybe not
-  correct: 0
-- question: What should you do after this lesson?
-  options:
-  - A. Forget everything
-  - B. Practice and apply what you learned
-  - C. Do nothing
-  - D. Give up
-  correct: 1
-- question: Is ai ethics important for Nigeria?
-  options:
-  - A. Yes, very important
-  - B. No value
-  - C. Only for foreigners
-  - D. Not relevant
-  correct: 0
+  - question: "What does the NDPA require before companies collect your personal data?"
+    options:
+      - "A. Nothing at all"
+      - "B. Your consent (permission)"
+      - "C. Payment of a fee"
+      - "D. A court order only"
+    correct: 1
+
+  - question: "Who should you give your OTP code to?"
+    options:
+      - "A. Anyone claiming to be customer care"
+      - "B. Nobody - real companies never ask for it"
+      - "C. WhatsApp groups"
+      - "D. Anyone who calls you"
+    correct: 1
+
+  - question: "Which right does the NDPA give you?"
+    options:
+      - "A. To ask companies to delete your data"
+      - "B. Free internet data monthly"
+      - "C. Free smartphones"
+      - "D. Unlimited bank loans"
+    correct: 0
+
+  - question: "Where do you report data protection violations in Nigeria?"
+    options:
+      - "A. The Nigeria Data Protection Commission (NDPC)"
+      - "B. Your local mechanic"
+      - "C. A radio station only"
+      - "D. Nowhere - violations cannot be reported"
+    correct: 0
+
+  - question: "Why should you check app permissions?"
+    options:
+      - "A. To make apps run slower"
+      - "B. To remove unnecessary access to your private data"
+      - "C. Permissions don't matter"
+      - "D. To use more battery"
+    correct: 1

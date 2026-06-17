@@ -2,61 +2,70 @@ id: day3_what_is_ai_ha
 day: 3
 topic: what_is_ai
 language: ha
-title: 'Day 3: What Is Ai (Hausa)'
-content: 'This is Day 3 lesson on what is ai.
+title: "Bayanai: Abincin da ke Ciyar da AI"
+content: |
+  Ka koya cewa AI na koyo daga misalai. Yau za mu zurfafa: wadannan misalan ana kiransu BAYANAI (DATA), kuma bayanai su ne mafi muhimmancin sinadari a AI.
 
+  MENENE BAYANAI?
+  Bayanai kawai bayani ne da aka adana. Duk lokacin da aka rubuta wani abu, aka dauki hotonsa, ko aka auna shi, an samar da bayanai:
+  - Hoton fuskarka = bayanan hoto
+  - Sakon muryarka = bayanan sauti
+  - "Na sayar da kwanduna 50 na tumatir yau" = bayanan sayarwa
+  - Wurin da kake lokacin amfani da Maps = bayanan wuri
 
-  Focus: Data and AI
+  Ba tare da bayanai ba, AI kamar dalibi ne ba shi da littattafai, ba malami, ba misalai - ba zai iya koyon komai ba.
 
+  NAWA NE BAYANAN DA AI KE BUKATA?
+  MASU YAWAN GASKE. ChatGPT ya karanta rubutu fiye da abin da mutum zai iya karantawa a rayuwa 1,000. Modelin gane fuska na iya nazarin miliyoyin fuskoki. Shi ya sa kamfanoni ke tattara bayanai masu yawa - bayanai su ne sabon mai, kuma Najeriya ta san game da mai!
 
-  [In production, this would be 250-300 words of properly translated content]
+  NAU'IKAN BAYANAN DA AI KE AMFANI DA SU:
+  1. RUBUTU: sakonni, littattafai, shafukan yanar gizo (na tafiyar da chatbots da fassara)
+  2. HOTUNA: hotuna, scans (na tafiyar da bude waya da fuska, gano cututtuka)
+  3. SAUTI: magana, sautuka (na tafiyar da mataimakan murya)
+  4. LAMBOBI: farashi, bayanan yanayi, ma'amaloli (na tafiyar da hasashe)
 
+  INGANCI YA FI YAWA:
+  Hotuna miliyan daya marasa kyau na koyarwa kasa da hotuna 100,000 bayyanannu da aka yi wa lakabi da kyau. Ka tuna Garbage In, Garbage Out na jiya? AI mai kyau na farawa da bayanai masu kyau.
 
-  Key points:
+  Ga abin farin ciki: kowane sakon WhatsApp da ka rubuta da Hausa, kowane sakon murya - irin wannan bayanan ne harsunan Najeriya ke BUKATA don shiga makomar AI. Kara bayani a darasi na gaba!
 
-  - Understanding what is ai
-
-  - Nigerian context and examples
-
-  - Practical applications
-
-  - How this helps you
-
-
-  Remember: AI is a tool to solve problems. Learn, practice, and build!'
 quiz:
-- question: What is the main focus of Day 3?
-  options:
-  - A. Data and AI
-  - B. Something else
-  - C. Random topic
-  - D. Not related
-  correct: 0
-- question: 'This lesson is about:'
-  options:
-  - A. Cooking
-  - B. What Is Ai
-  - C. Sports
-  - D. Music
-  correct: 1
-- question: Can AI help solve Nigerian problems?
-  options:
-  - A. Yes, definitely
-  - B. No, never
-  - C. Only in cities
-  - D. Maybe not
-  correct: 0
-- question: What should you do after this lesson?
-  options:
-  - A. Forget everything
-  - B. Practice and apply what you learned
-  - C. Do nothing
-  - D. Give up
-  correct: 1
-- question: Is what is ai important for Nigeria?
-  options:
-  - A. Yes, very important
-  - B. No value
-  - C. Only for foreigners
-  - D. Not relevant
-  correct: 0
+  - question: "Menene bayanai (data)?"
+    options:
+      - "A. Bayani da aka adana kamar hotuna, rubutu, da lambobi"
+      - "B. Biyan kudin intanet kawai"
+      - "C. Wani nau'in kwamfuta"
+      - "D. Kudi a banki"
+    correct: 0
+
+  - question: "Me zai faru da AI ba tare da bayanai ba?"
+    options:
+      - "A. Zai yi aiki da sauri"
+      - "B. Ba zai iya koyon komai ba"
+      - "C. Zai zama mai rahusa"
+      - "D. Babu abin da zai canza"
+    correct: 1
+
+  - question: "Wane nau'in bayanai ke tafiyar da mataimakan murya?"
+    options:
+      - "A. Bayanan sauti"
+      - "B. Bayanan wuri kawai"
+      - "C. Bayanan sayarwa"
+      - "D. Ba ya bukatar bayanai"
+    correct: 0
+
+  - question: "Me ya sa ake kiran bayanai 'sabon mai'?"
+    options:
+      - "A. Saboda baki ne kuma ruwa ne"
+      - "B. Albarkatu ne mai daraja da ke tafiyar da fasahar zamani"
+      - "C. Yana fitowa daga kasa"
+      - "D. Ana amfani da shi a janareta"
+    correct: 1
+
+  - question: "Wanne ya fi daraja don horar da AI?"
+    options:
+      - "A. Hotuna miliyan daya marasa kyau"
+      - "B. Hotuna 100,000 bayyanannu da aka yi wa lakabi da kyau"
+      - "C. Babu hotuna ko kadan"
+      - "D. Inganci ba shi da muhimmanci"
+    correct: 1

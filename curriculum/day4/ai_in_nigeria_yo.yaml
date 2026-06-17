@@ -2,61 +2,70 @@ id: day4_ai_in_nigeria_yo
 day: 4
 topic: ai_in_nigeria
 language: yo
-title: 'Day 4: Ai In Nigeria (Yoruba)'
-content: 'This is Day 4 lesson on ai in nigeria.
+title: "Awon Ilo AI Ti N Yi Igbesi Aye Ara Naijiria Pada"
+content: |
+  Loni, itan gidi ti awon ilo AI ti n sise kaakiri Naijiria lowolowo - ati awon ise ti n dagba ni ayika won.
 
+  ILERA - UBENWA:
+  Ile-ise ibere Naijiria kan ko AI ti n se ayewo igbe omo tuntun lati ri asphyxia ibimo - okunfa nla iku omo jojolo. A ko AI naa pelu igbasile igbe awon omo tuntun. Nọọsi ti o ni foonu le se ayewo awon omo ni ile-iwosan igberiko laisi ero olowo nla.
 
-  Focus: AI Applications
+  OGBIN - AIRSMAT ATI AWON MIIRAN:
+  Awon drone pelu vision AI n ya maapu oko, ka eweko, won si n ri awon agbegbe isoro. Awon ero iwadii ile n bo awon modeli asotele ti n so fun awon agbe akoko gangan ti won yoo bomi rin. Hello Tractor ("Uber fun tirakito") n lo AI lati so awon oni tirakito po mo awon agbe ti won nilo won.
 
+  ISUNA - NIBIGBOGBO:
+  Leyin riri jibiti, AI n mu sise bayii: app awin kiakia, imoran isowo ọja, idiyele iseduro, ati chatbots ti n yanju ẹdun banki ni iseju diẹ dipo ila ni ẹka banki.
 
-  [In production, this would be 250-300 words of properly translated content]
+  EKO:
+  Awon oluranlowo AI fun isamisi n ran awon oluko lowo lati samisi yara. Awon app kika n se atunse si ipele kika omo kookan. JAMB n lo idanwo lori komputa pelu isọ AI fun iwa ibaje idanwo.
 
+  ERE IDARAYA - NOLLYWOOD:
+  Awon olootu n lo AI lati mọ ohun, se atunse awọ, ati da akọle ede pupo sile - o n ran awon fiimu Naijiria lowo lati de odo awon oluwo agbaye.
 
-  Key points:
+  AWON ISE TITUN TI N FARAHAN:
+  - Awon oluko AI ati awon ti n fi aami si data
+  - Awon onimo prompt (awon eniyan ti o mo bi a se n fun AI ni itọsọna)
+  - Awon alamoja atileyin AI ni banki ati ile-ise sadarwa
+  - Awon awako drone fun ogbin
 
-  - Understanding ai in nigeria
+  Akiyesi: AI ko yo nọọsi, agbe, oluko, tabi olootu kuro - o so won di alagbara sii ni. Awon ara Naijiria ti n bori pelu AI ni awon ti won ko bi a se n LO o. Gangan ohun ti o n se niyen!
 
-  - Nigerian context and examples
-
-  - Practical applications
-
-  - How this helps you
-
-
-  Remember: AI is a tool to solve problems. Learn, practice, and build!'
 quiz:
-- question: What is the main focus of Day 4?
-  options:
-  - A. AI Applications
-  - B. Something else
-  - C. Random topic
-  - D. Not related
-  correct: 0
-- question: 'This lesson is about:'
-  options:
-  - A. Cooking
-  - B. Ai In Nigeria
-  - C. Sports
-  - D. Music
-  correct: 1
-- question: Can AI help solve Nigerian problems?
-  options:
-  - A. Yes, definitely
-  - B. No, never
-  - C. Only in cities
-  - D. Maybe not
-  correct: 0
-- question: What should you do after this lesson?
-  options:
-  - A. Forget everything
-  - B. Practice and apply what you learned
-  - C. Do nothing
-  - D. Give up
-  correct: 1
-- question: Is ai in nigeria important for Nigeria?
-  options:
-  - A. Yes, very important
-  - B. No value
-  - C. Only for foreigners
-  - D. Not relevant
-  correct: 0
+  - question: "Ki ni AI Ubenwa n se ayewo lati ri asphyxia ibimo?"
+    options:
+      - "A. Igbe omo tuntun"
+      - "B. Eje nikan"
+      - "C. Ojo ori iya"
+      - "D. Owo ile-iwosan"
+    correct: 0
+
+  - question: "Ki ni Hello Tractor?"
+    options:
+      - "A. Ere amọhunmaworan"
+      - "B. Iṣẹ AI ti n so oni tirakito po mo awon agbe"
+      - "C. Iru foonu kan"
+      - "D. Ibudo epo"
+    correct: 1
+
+  - question: "Bawo ni AI se n ran Nollywood lowo?"
+    options:
+      - "A. Mimọ ohun, atunse awọ, ati dida akọle sile"
+      - "B. Sise ere ninu gbogbo fiimu"
+      - "C. Kiko sinima"
+      - "D. Ko ran lowo rara"
+    correct: 0
+
+  - question: "Ewo ni ise TITUN ti AI da sile?"
+    options:
+      - "A. Onimo prompt"
+      - "B. Onise taya"
+      - "C. Akede ilu"
+      - "D. Onta epo"
+    correct: 0
+
+  - question: "Ki lo sele si awon nọọsi, agbe, ati oluko ti n lo AI?"
+    options:
+      - "A. Gbogbo won padanu ise won"
+      - "B. AI so won di alagbara sii ninu ise won"
+      - "C. Roboti gba ipo won"
+      - "D. Ko si ohun ti o yipada fun enikeni"
+    correct: 1

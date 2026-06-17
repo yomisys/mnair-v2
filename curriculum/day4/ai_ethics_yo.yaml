@@ -2,61 +2,72 @@ id: day4_ai_ethics_yo
 day: 4
 topic: ai_ethics
 language: yo
-title: 'Day 4: Ai Ethics (Yoruba)'
-content: 'This is Day 4 lesson on ai ethics.
+title: "Deepfakes ati Iroyin Iro: Jije Olomo Inu ni Akoko AI"
+content: |
+  AI le da fidio iro sile bayii ti awon eniyan gidi n so ohun ti won ko so ri. Ni akoko idibo tabi ninu egbe WhatsApp ebi, eyi lewu. Loni: bi o se le dabobo ara re ati awon elomiran.
 
+  OHUN TI AI LE SE NI IRO LONI:
+  - FIDIO: Oloselu ti n "jẹwọ" iwa ọdaran - oju ati ohun ti a daako
+  - OHUN: "Ajinigbe" ti n lo ohun ebi re ti a daako lati beere owo irapada
+  - AWORAN: Foto iro ti isele ti ko sele ri
+  - ỌRỌ: Egbegberun akaunti social media iro ti n tan iro kale
 
-  Focus: AI Applications
+  AWON EWU NAIJIRIA GIDI:
+  - Iroyin iro idibo ti a gbero lati fa rogbodiyan
+  - "Ijẹrisi idokowo olokiki" - fidio iro ti awon gbajumo Naijiria ti n polowo ete jibiti
+  - Ipe jibiti ohun ti a daako si awon ebi
+  - Aworan "iroyin kiakia" iro lasiko pajawiri
 
+  OHUN IJA AABO RE - AYEWO 6:
+  1. ORISUN: Ta lo koko fi sile? Ile iroyin ti a mo tabi akaunti alailorukọ?
+  2. AYEWO AGBELEBU: Nje ile iroyin olokiki kan n royin re? Ti orisun kan pere ba ni - duro na
+  3. WO DAADAA: Fidio AI maa n ni iseju ajeji, ete ti ko ba ọrọ mu, owo ajeji
+  4. IDANWO IMOLARA: Ohun ti a gbero lati mu o BINU gidigidi tabi BERU gidigidi maa n je ifọwọyi
+  5. WIWA PADA: Google Lens le fi han o boya "foto isele" je ti 2015 gangan
+  6. ỌRỌ ASIRI EBI: Fi enu ko lori ibeere asiri pelu awon ebi lati segun jibiti ohun ti a daako
 
-  [In production, this would be 250-300 words of properly translated content]
+  KI O TO FI RANSE SIWAJU:
+  Ifiranse "pin kiakia!" yen ninu egbe ebi? Se ayewo re na. Fifi iroyin iro ranse siwaju so O di ara isoro naa - ofin Naijiria si n koju itankale iro bayii.
 
+  Je eni ti n se idaniloju ni agbegbe re. Ni akoko AI, agbara nla niyen.
 
-  Key points:
-
-  - Understanding ai ethics
-
-  - Nigerian context and examples
-
-  - Practical applications
-
-  - How this helps you
-
-
-  Remember: AI is a tool to solve problems. Learn, practice, and build!'
 quiz:
-- question: What is the main focus of Day 4?
-  options:
-  - A. AI Applications
-  - B. Something else
-  - C. Random topic
-  - D. Not related
-  correct: 0
-- question: 'This lesson is about:'
-  options:
-  - A. Cooking
-  - B. Ai Ethics
-  - C. Sports
-  - D. Music
-  correct: 1
-- question: Can AI help solve Nigerian problems?
-  options:
-  - A. Yes, definitely
-  - B. No, never
-  - C. Only in cities
-  - D. Maybe not
-  correct: 0
-- question: What should you do after this lesson?
-  options:
-  - A. Forget everything
-  - B. Practice and apply what you learned
-  - C. Do nothing
-  - D. Give up
-  correct: 1
-- question: Is ai ethics important for Nigeria?
-  options:
-  - A. Yes, very important
-  - B. No value
-  - C. Only for foreigners
-  - D. Not relevant
-  correct: 0
+  - question: "Ki ni deepfake?"
+    options:
+      - "A. Fidio, ohun, tabi aworan iro ti AI da sile nipa eniyan gidi"
+      - "B. Kanga jijin"
+      - "C. Ona ipeja"
+      - "D. Iru ijo kan"
+    correct: 0
+
+  - question: "Ewo ni ami pe fidio le je ti AI da sile?"
+    options:
+      - "A. Iseju ajeji ati ete ti ko ba ọrọ mu"
+      - "B. Imole to dara"
+      - "C. O ni ohun"
+      - "D. O ni awọ"
+    correct: 0
+
+  - question: "Ki ni 'idanwo imolara'?"
+    options:
+      - "A. Ohun ti a gbero lati mu o binu tabi beru gidigidi maa n je ifọwọyi"
+      - "B. Sisọkun lasiko fiimu"
+      - "C. Idanwo ile-iwosan"
+      - "D. Idanwo iyara foonu re"
+    correct: 0
+
+  - question: "Bawo ni ọrọ asiri ebi se le dabobo o?"
+    options:
+      - "A. O n segun ipe jibiti ohun ti a daako ti n dibọn bi ebi"
+      - "B. O n din owo ipe ku"
+      - "C. O n mu ami network dara si"
+      - "D. Ko le ran lowo"
+    correct: 0
+
+  - question: "Ki ni o ye ki o se ki o to fi iroyin iyalenu ranse siwaju?"
+    options:
+      - "A. Fi ranse siwaju kiakia bi o ti le se"
+      - "B. Se idaniloju re lati awon orisun to gbekele na"
+      - "C. Fi ami iyalenu kun sii"
+      - "D. Tumo re na"
+    correct: 1
