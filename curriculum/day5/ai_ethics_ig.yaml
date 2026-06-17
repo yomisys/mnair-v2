@@ -1,0 +1,66 @@
+id: day5_ai_ethics_ig
+day: 5
+topic: ai_ethics
+language: ig
+title: "Iwu Nwere Ọrụ: Koodu Onye Ọrụ Ezi Obi"
+content: |
+  Ike nnukwu iwu na-abịa na ọrụ nnukwu. Ka ị malite ịmepụta ya na AI, nabata Koodu Onye Ọrụ Ezi Obi - ọ na-echebe aha gị, ndị ọrụ gị, na obodo gị.
+
+  IWU 1 - KỌỌ MGBE Ọ DỌ MKPA:
+  Eserese akwụkwọ ọzụzụ nke AI dere, meere ya site n'ịnye ya dị ka ọrụ gị n'onwe gị? Nke ahụ bụ uwe, ma ụlọ akwụkwọ na-achọpụtakwa ya. Arịọ ọrụ na-ekwu gbasara ọkachamara ị nweghị? Ọ ga-ada n'oge nzacha. Jiri AI maka IHE ỌMỤMỤ na NCHỊKỌTA MBỤ - nghọta ikpeazụ kwesịrị ịbụ nke gị.
+
+  IWU 2 - NWAA EZIOKWU TUPU Ị BIPỤTA:
+  Ị bụ onye na-azọkarị maka ihe ị pọstịrị - ọbụna ma AI dere ya. Ọ bụrụ na post ahụike gị nke AI mepụtara na-asagharị ọgwụgwọ ụgha, mmebi (na mmetụta) bụ nke gị. Nwaa eziokwu, karịsịa ụdị ahụike, iwu, na ego.
+
+  IWU 3 - TỌỌ IHEOMUMA:
+  Emegharịghị foto ụgha nke ndị mmadụ n'eziokwu. Emegharịghị olu onye egwu maka ihe egwu gị n'enweghị ikike. Atigharịghị ihe ndị AI dere ise ụdị onye ọ bụla dị ka ọrụ mbụ e kwere ya. Ndị mmepụta Naịjịrịa na-alụso ọgụ maka nkọwa ziri ezi - bụrụ n'akụkụ ziri ezi.
+
+  IWU 4 - CHEBE DATA NDỊ MMADỤ:
+  Ọ bụ bot ogo ndị na-ede uwe ị na-ewu? Ngọ ndị ahụ bụ data nzuzo n'okpuru NDPA. Nwaa naanị ihe ị chọrọ, chekwaa ya nke ọma, hichapụ ya mgbe achọrọ. Ntụkwasị obi ndị ọrụ gị bụ ego eziokwu gị.
+
+  IWU 5 - WU MAKA ÒJÒ ỌMA:
+  Otu AI ahụ na-ede ọdịnaya ahịa nwere ike ide ozi azụmahịa ụgha. Otu olu ndị na-emechaghachi ịdịpụta ihe nke Nollywood nwere ike ịkwado ụgha okike. Onye owu Naịjịrịa ọ bụla na-ahọrọ ụzọ ziri ezi na-enwu aha teknụzụ anyị n'ụwa - aha ahụ na-abịa na ego ntinye na ọrụ maka onye ọ bụla.
+
+  ULE DỊ MFE:
+  "Ọ ga-amasị m ọ bụrụ na onye ọ bụla mara otu m si mepụta nke a?" Ọ bụrụ ee - wusie iwu!
+
+quiz:
+  - question: "Ọ bụ ihe kwesịrị ka ị nyefee eserese AI dị ka ọrụ gị n'onwe gị?"
+    options:
+      - "A. Mba - ọ bụ uwe ma a na-achọpụtakwa ya"
+      - "B. Ee, mgbe niile"
+      - "C. Fraịdee naanị"
+      - "D. Mahadum naanị"
+    correct: 0
+
+  - question: "Onye bụ onye na-azọkarị mgbe ị pọstị ihe AI mepụtara?"
+    options:
+      - "A. Ị bụ onye na-azọkarị maka ihe ị pọstịrị"
+      - "B. Naanị ụlọ ọrụ AI"
+      - "C. Onye ọ bụla"
+      - "D. Onye na-enye gị netwọk"
+    correct: 0
+
+  - question: "Gịnị bụ ihe NDPA pụtara maka bot ogo ndị na-ede uwe?"
+    options:
+      - "A. Ogo bụ data nzuzo - nwaa obere naanị ma chekwaa ya nke ọma"
+      - "B. Bot bụ ihe dịghị n'iwu"
+      - "C. Ndị na-ede uwe enweghị ike iji ekwentị"
+      - "D. Ọ dịghị ihe na-emetụta ya"
+    correct: 0
+
+  - question: "Gịnị mere iwu nwere ọrụ dị mkpa karịa ị n'onwe gị?"
+    options:
+      - "A. Aha teknụzụ Naịjịrịa na-abịa na ego ntinye na ọrụ maka onye ọ bụla"
+      - "B. Ọ dịghị mkpa"
+      - "C. Naanị ndị mba ụwa na-elekọta"
+      - "D. Ezi obi na-ebelata ihe niile"
+    correct: 0
+
+  - question: "Gịnị bụ ule dị mfe maka iwu nwere ọrụ?"
+    options:
+      - "A. 'Ọ ga-amasị m ọ bụrụ na onye ọ bụla mara otu m si mepụta nke a?'"
+      - "B. 'Enwere m ike enweta ego ngwa ngwa?'"
+      - "C. 'Ọ ga-achọpụta m onye?'"
+      - "D. 'Ọ na-ezuru okè ọ dị mgbagwoju anya?'"
+    correct: 0

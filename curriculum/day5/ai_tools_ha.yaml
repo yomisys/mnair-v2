@@ -1,0 +1,76 @@
+id: day5_ai_tools_ha
+day: 5
+topic: ai_tools
+language: ha
+title: "Akwatin Kayan Aikin Mai Gina: Kirkirar Abubuwa Na Gaske Yau"
+content: |
+  Jiya ka koyi yadda ake rubutu ga AI kamar ƙwararren. Yau: kayan aiki da ke juya umarni zuwa KAYAYYAKI - takardu, zane-zane, manhajar kwamfuta, da ƙari.
+
+  KIRKIRAR TAKARDU DA GABATARWA:
+  - ChatGPT/Gemini: cikakken shawarwarin kasuwanci, CV, wasiƙu - sa'an nan gyara
+  - Canva Docs + AI: tana juya bayananku zuwa takardu masu salo
+  - Gamma.app: buga taken, samu cikakken gabatarwar slide. Ɗalibai da masu horo suna son wannan!
+
+  KIRKIRAR ZANE-ZANE:
+  - Canva Magic Studio: "Sako na Instagram don musamman ranar Juma'ar gidana" → an gama
+  - Microsoft Designer (kyauta): tana samar da zaɓuɓɓukan zane daga kalma ɗaya
+  - Remove.bg: tana share bayanan hotuna nan take don tsabar hotunan kaya
+
+  KIRKIRAR SAUTI DA BIDIYO:
+  - CapCut: gyaran bidiyo da AI akan wayarka - rubutun kai-da-kai da Turanci (mai kyau ga masu ƙirƙira na Najeriya!)
+  - Rubutun murya a WhatsApp/Google Docs: furta daftarinku na farko, gyara bayan haka
+
+  KIRKIRAR MANHAJAR SAUƘI DA NAU'IKAN:
+  - Google Forms + Sheets: nau'ikan oda, rajista, bincike
+  - Glide: sauya wannan takarda zuwa manhajar waya
+  - WhatsApp Business: catalog + amsa-atomatik = kantin ƙarami (KYAUTA)
+
+  HAƊIN GWIWA NA GASKE DA KOWA ZAI IYA:
+  1. ChatGPT: "Rubuta saƙonnin WhatsApp status 5 don inganta sayar da okrika na karshen mako"
+  2. Canva: zana hotunan status masu dacewa
+  3. WhatsApp Business: shirya su ka buga
+  Jimlar farashi: Naira 0. Jimlar lokaci: ƙasa da awa 1. Wannan shine GINI.
+
+  SHAWARAR AYYUKAN NUNI:
+  Ajiye duk abin da ka ƙirƙira wannan mako. Samfurori uku masu kyau = ayyukan nuni da za ka nuna wa masu daukar aiki ko abokan ciniki. "Na yi waɗannan da kayan aiki na AI" yanzu jumla ce mai iya daukar ma'aikata!
+
+quiz:
+  - question: "Menene Gamma.app ke ƙirƙira daga taken?"
+    options:
+      - "A. Cikakken gabatarwar slide"
+      - "B. Akwatunan wayar hannu"
+      - "C. Asusun banki"
+      - "D. Hasashen kwallon kafa"
+    correct: 0
+
+  - question: "Menene Remove.bg ke yi?"
+    options:
+      - "A. Tana share bayanan hotuna nan take"
+      - "B. Tana share manhajoji daga wayarka"
+      - "C. Tana toshe lambobin waya"
+      - "D. Tana share tarihin hira"
+    correct: 0
+
+  - question: "Menene ke sa WhatsApp Business 'kantin ƙarami'?"
+    options:
+      - "A. Catalog da amsa-atomatik, kyauta"
+      - "B. Yana gina shaguna na jiki"
+      - "C. Yana buƙatar babban bashi"
+      - "D. Babu komai - bai iya siyarwa"
+    correct: 0
+
+  - question: "Nawa ne ya kashe haɗin gwiwah okrika?"
+    options:
+      - "A. Zero naira da ƙasa da awa 1"
+      - "B. Naira 500,000"
+      - "C. Shekara gaba ɗaya na aiki"
+      - "D. Ba zai yiwu ba"
+    correct: 0
+
+  - question: "Me ya sa za ka ajiye ƙirƙirarka na AI wannan mako?"
+    options:
+      - "A. Samfurori uku masu kyau suna zama ayyukan nuni ga masu daukar aiki/abokan ciniki"
+      - "B. Don cike adana wayar"
+      - "C. Suna ƙarewa bayan yini"
+      - "D. Babu dalili"
+    correct: 0

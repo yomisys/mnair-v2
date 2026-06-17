@@ -1,0 +1,66 @@
+id: day5_ai_ethics_yo
+day: 5
+topic: ai_ethics
+language: yo
+title: "Kọ pẹlu Ojuse: Koodu Olùdásílẹ̀ Onitootọ"
+content: |
+  Agbara nla lati kọ wa pẹlu awon ojuse nla. Bi o ṣe bẹrẹ lati ṣẹda pẹlu AI, gba Koodu Olùdásílẹ̀ Onitootọ - yoo daabobo orukọ rẹ, awon olumulo rẹ, ati agbegbe rẹ.
+
+  OFIN 1 - ṢÀ Ì HÀNGBỌN NIGBA TI O ṢE PATAKI:
+  Arokọ ile-iwe ti AI kọ, ti a fi silẹ bi iṣẹ tirẹ? Iyẹn jẹ jibiti, awon ile-iwe si maa n wa ọna lati ṣe idanwo rẹ. Ìbéèrè iṣẹ ti n sọ awon ọgbọn ti o ko ni? Yoo wó lulẹ ni ijomitoro. Lo AI lati KỌ ati ṢAGBEKALẸ - oye ikẹhin gbọdọ jẹ tirẹ.
+
+  OFIN 2 - ṢÀYẸ̀WÒ ṢÁÁJÚ KI O TO GBÉJÁDE:
+  Ẹ jẹ oniduro fun ohun ti ẹ n gbejade - paapaa ti AI kọ ọ. Ti post ilera AI rẹ ba tan imọran oogun eke, ipalara (ati ẹbi) jẹ tirẹ. Ṣayẹwo awon otitọ, paapaa awon ẹtọ ilera, ofin, ati owo.
+
+  OFIN 3 - BỌẀỌ́ ÌDÍLÉ ẸNI:
+  Ma ṣẹda awon aworan eke ti awon eniyan gidi. Ma dan ẹrọ ohun akọrin nidi fun orin rẹ laisi igbanilaaye. Ma gbe awon adakọ AI ti ara onise apẹrẹ miiran gẹgẹ bi iṣẹ atilẹba ti a fowo si. Awon ẹlẹda Naijiria n jagun fun kirẹditi ti o tọ - wa ni ẹgbẹ ti o tọ.
+
+  OFIN 4 - DAA BỌBỌ DATA AWON ENIYAN:
+  Ṣe bot wiwọn alagbẹdẹ naa? Awon wiwọn naa jẹ data ti ara ẹni labẹ NDPA. Gba ohun ti o nilo nikan, pa a jẹ lailewu, pa a rẹ nigba ti a beere. Igbẹkẹle awon olumulo rẹ jẹ olu gidi rẹ.
+
+  OFIN 5 - KỌ FUN RERE:
+  Oun AI kanna ti n kọ ẹda ipolongo le kọ awon ifiranṣẹ ẹtan. Oun ti n sọ ohun kanna ti n dub awon fiimu Nollywood le fun agbara si awon ipe jibiti. Gbogbo olukọ Naijiria ti o yan ọna onitootọ n fi agbara kun orukọ imọ-ẹrọ wa ni agbaye - orukọ yẹn si n mu idoko-owo ati iṣẹ fun gbogbo eniyan.
+
+  IDANWO RỌ̀RÒ:
+  "Ṣe mo le jẹ ni arowoto ti gbogbo eniyan ba mọ bi mo ṣe ṣe eyi?" Ti bẹẹni - tẹsiwaju lati kọ!
+
+quiz:
+  - question: "Ṣe o tọ lati fi arokọ AI silẹ gẹgẹ bi iṣẹ tirẹ?"
+    options:
+      - "A. Rara - jibiti ni o si n sii n di idanwo"
+      - "B. Bẹẹni, nigbagbogbo"
+      - "C. Jimọ nikan"
+      - "D. Ni ile-ẹkọ giga nikan"
+    correct: 0
+
+  - question: "Tani o jẹ oniduro nigba ti o gbejade akoonu AI?"
+    options:
+      - "A. O jẹ oniduro fun ohun ti o gbejade"
+      - "B. Ile-iṣẹ AI nikan"
+      - "C. Ẹnikẹni"
+      - "D. Olupese nẹtiwọọki rẹ"
+    correct: 0
+
+  - question: "Kini NDPA tumọ si fun bot wiwọn alagbẹdẹ?"
+    options:
+      - "A. Awon wiwọn jẹ data ti ara ẹni - gba diẹ o si pa a jẹ lailewu"
+      - "B. Awon bot jẹ arufin"
+      - "C. Awon alagbẹdẹ ko le lo awon foonu"
+      - "D. Ohunkohun ko kan"
+    correct: 0
+
+  - question: "Kini o jẹ ki kikọ ni otitọ ṣe pataki ju ara rẹ lọ?"
+    options:
+      - "A. Orukọ imọ-ẹrọ Naijiria n mu idoko-owo ati iṣẹ fun gbogbo eniyan"
+      - "B. Ko ṣe pataki"
+      - "C. Awon ajeji nikan lo ni itọju"
+      - "D. Otitọ n fa idaduro ohun gbogbo"
+    correct: 0
+
+  - question: "Kini idanwo rọrọ fun kikọ pẹlu ojuse?"
+    options:
+      - "A. 'Ṣe mo le jẹ ni arowoto ti gbogbo eniyan ba mọ bi mo ṣe ṣe eyi?'"
+      - "B. 'Ṣe mo le gba owo ni kiakia?'"
+      - "C. 'Ṣe ẹnikẹni yoo ri i?'"
+      - "D. 'Ṣe o ni idiju to?'"
+    correct: 0

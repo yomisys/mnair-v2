@@ -1,0 +1,73 @@
+id: day5_ai_in_nigeria_yo
+day: 5
+topic: ai_in_nigeria
+language: yo
+title: "Awon Olùkọ́ Naijiria: Lati Ero si Ile-iṣẹ AI"
+content: |
+  Loni, pade ecosystem AI Naijiria - wa ọna ẹnu-ọna rẹ sinu rẹ.
+
+  ECOSYSTEM TI O WA ÁGBÈGBÈ RẸ:
+
+  AWON HUB ati AGBEGBE:
+  - Lagos: CcHub (Yaba) - ile-iṣẹ imotuntun ti o tobi julọ ni Naijiria, ti ṣe atilẹyin awon ile-iṣẹ pataki
+  - Abuja, Port Harcourt, Kano, Enugu: awon ile-iṣẹ imọ-ẹrọ ti ndagba pẹlu awon iṣẹlẹ ọfẹ
+  - Online: Data Science Nigeria (DSN) n ṣe awon bootcamp AI FRẸ o si ti kọ ẹgbẹẹgbẹrun awon ara Naijiria
+  - Google, Microsoft, ati AWS gbogbo wọn n ṣe awon eto ti o da lori Afirika pẹlu kirẹditi ọfẹ ati ikọṣẹ
+
+  ẸRỌ TALENTI:
+  Iran Data Science Nigeria: lati kọ awon talenti AI Naijiria miliọnu 1. Awon orisun ọfẹ wọn pẹlu awon iṣẹ ikẹkọ online, bootcamp ọdọọdun, ati awon ipade agbegbe ni awon ipinlẹ. ALX ati awon eto ti o jọ wọn n pese ikọṣẹ ẹrọ sọftiwia ọfẹ pẹlu àǹfààní owo.
+
+  AWON ỌNÀ ILE-IṢẸ GIDI (ni kukuru):
+  1. WA IRORA: "Awon alagbẹdẹ n padanu awon wiwọn awon onibara"
+  2. IFI TI O KERE JU: Bot WhatsApp ti n tọju awon wiwọn fun onibara kọọkan
+  3. ṢÀDÁNWÒ: Alagbẹdẹ 10 lo ọfẹ fun oṣu kan
+  4. GBỌ ATI ṢETUNṢE: Wọn fẹ awon fọto aṣọ ti a so mọ? Fi kun
+  5. GBA OWO: ₦1,000/oṣu. Alagbẹdẹ 100 = ₦100,000/oṣu
+  6. DAGBA: Bẹwẹ fun CcHub accelerator pẹlu awon nọmba lilo gidi
+
+  IRE-OWO WA:
+  Awon ile-iṣẹ AI Naijiria ti gbe miliọnu dola. Awon eto ijọba (bii awon ipilẹṣẹ NITDA), awon ifunni okeere, ati awon olubani abẹle n wa awon ojutu AI Afirika.
+
+  IGBESẸ RẸ ní ỌṢÈ YÌÍ:
+  Darapọ mọ agbegbe kan (DSN ọfẹ ni!). Lọ si iṣẹlẹ foju kan. Sọ fun ọrẹ kan ero ṣiṣe ipinnu iṣoro rẹ. Awon ecosystem n san awon ti o han.
+
+quiz:
+  - question: "Kini iran Data Science Nigeria?"
+    options:
+      - "A. Lati kọ awon talenti AI Naijiria miliọnu 1"
+      - "B. Lati ta awon foonu"
+      - "C. Lati rọpo gbogbo awon ile-ẹkọ giga"
+      - "D. Lati kọ awon ọna"
+    correct: 0
+
+  - question: "Kini igbesẹ AKỌKỌ ni ọna ile-iṣẹ?"
+    options:
+      - "A. Wa irora/iṣoro gidi ti eniyan ni"
+      - "B. Gba miliọnu lẹsẹkẹsẹ"
+      - "C. Ra ọfiisi"
+      - "D. Bẹwẹ oṣiṣẹ 50"
+    correct: 0
+
+  - question: "Kini CcHub?"
+    options:
+      - "A. Ile-iṣẹ imotuntun ti o tobi julọ ni Naijiria, ni Yaba, Lagos"
+      - "B. Ẹwọn ounjẹ"
+      - "C. Ile-ifowopamọ"
+      - "D. Ile-iṣere bọọlu"
+    correct: 0
+
+  - question: "Bawo ni o yẹ ki o ṣàdánwò ero ile-iṣẹ?"
+    options:
+      - "A. Jẹ ki ẹgbẹ kekere lo ojutu ti o kere julọ ọfẹ, lẹhinna gbọ"
+      - "B. Na gbogbo ifowopamọ rẹ ni akọkọ"
+      - "C. Pa a pamọ fun awon ọdun"
+      - "D. Maṣe ṣàdánwò awon ero rara"
+    correct: 0
+
+  - question: "Kini o le ṣe ní ỌṢÈ YÌÍ lati wọ inu ecosystem?"
+    options:
+      - "A. Darapọ mọ agbegbe ọfẹ bi DSN ki o lọ si iṣẹlẹ kan"
+      - "B. Duro de ijọba lati pe ọ"
+      - "C. Ohunkohun - ko ṣee ṣe"
+      - "D. Kọkọ lọ si okeere"
+    correct: 0

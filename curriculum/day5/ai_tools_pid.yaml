@@ -1,0 +1,76 @@
+id: day5_ai_tools_pid
+day: 5
+topic: ai_tools
+language: pid
+title: "The Builder's Toolbox: Create Real Things Today"
+content: |
+  Yesterday you learn how to prompt AI like pro. Today: tools wey go turn prompts into real PRODUCTS - documents, designs, apps, and more.
+
+  CREATE DOCUMENTS & PRESENTATIONS:
+  - ChatGPT/Gemini: full business proposals, CVs, letters - then refine am
+  - Canva Docs + AI: e go turn your outline into styled documents
+  - Gamma.app: type topic, get complete slide presentation. Students and trainers love this one!
+
+  CREATE DESIGNS:
+  - Canva Magic Studio: "Instagram post for my restaurant Friday special" → done
+  - Microsoft Designer (free): e go generate design options from one sentence
+  - Remove.bg: e go delete photo backgrounds immediately for clean product photos
+
+  CREATE AUDIO & VIDEO:
+  - CapCut: AI video editing on your phone - auto-captions for English (great for Naija creators!)
+  - Voice typing for WhatsApp/Google Docs: speak your first draft, edit am after
+
+  CREATE SIMPLE APPS & FORMS:
+  - Google Forms + Sheets: order forms, registrations, surveys
+  - Glide: convert that sheet into phone app
+  - WhatsApp Business: catalog + auto-replies = mini storefront (FREE)
+
+  REAL COMBO ANYONE FIT DO:
+  1. ChatGPT: "Write 5 WhatsApp status posts to promote my weekend okrika sale"
+  2. Canva: design matching status images
+  3. WhatsApp Business: schedule and post
+  Total cost: ₦0. Total time: under 1 hour. That na BUILDING.
+
+  PORTFOLIO TIP:
+  Save everything wey you create this week. Three good samples = portfolio wey you fit show employers or clients. "I make these with AI tools" na now hireable sentence!
+
+quiz:
+  - question: "Wetin Gamma.app go create from topic?"
+    options:
+      - "A. Complete slide presentation"
+      - "B. Phone cases"
+      - "C. Bank accounts"
+      - "D. Football predictions"
+    correct: 0
+
+  - question: "Wetin Remove.bg dey do?"
+    options:
+      - "A. E dey delete photo backgrounds immediately"
+      - "B. E dey remove apps from your phone"
+      - "C. E dey block phone numbers"
+      - "D. E dey clear chat history"
+    correct: 0
+
+  - question: "Wetin make WhatsApp Business be 'mini storefront'?"
+    options:
+      - "A. Catalog plus auto-replies, free"
+      - "B. E dey build physical shops"
+      - "C. E need big loan"
+      - "D. Nothing - e no fit sell"
+    correct: 0
+
+  - question: "How much the okrika sale combo cost?"
+    options:
+      - "A. Zero naira and under 1 hour"
+      - "B. 500,000 naira"
+      - "C. Full year of work"
+      - "D. E no possible"
+    correct: 0
+
+  - question: "Why you suppose save your AI creations this week?"
+    options:
+      - "A. Three good samples go become portfolio for employers/clients"
+      - "B. To fill phone storage"
+      - "C. Dem go expire after one day"
+      - "D. No reason"
+    correct: 0

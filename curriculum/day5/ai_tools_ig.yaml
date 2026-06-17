@@ -1,0 +1,76 @@
+id: day5_ai_tools_ig
+day: 5
+topic: ai_tools
+language: ig
+title: "Igbe Ngwa Onye Owu: Mepụta Ihe Ezigbo Taa"
+content: |
+  Nyaafụ ị mụtara ka isi nyefee AI arụmọrụ dị ka onye ọkachamara. Taa: ngwa ndị na-atọgharị arụmọrụ ka ọ bụrụ NGWAAHỊA - akwụkwọ, ihe ọchịchọ, apụrụ, na ọzọ.
+
+  MEPỤTA AKWỤKWỌ NA IGOSIPỤTA:
+  - ChatGPT/Gemini: aro azụmahịa zuru oke, CV, akwụkwọ ozi - wee melite
+  - Canva Docs + AI: na-atọgharị usoro gị ka ọ bụrụ akwụkwọ nwere ụdị
+  - Gamma.app: pịa isiokwu, nweta igosipụta islayịdị zuru oke. Ụmụ akwụkwọ na ndị nkuzi hụrụ nke a n'anya!
+
+  MEPỤTA IHE ỌCHỊCHỌ:
+  - Canva Magic Studio: "Post Instagram maka ihe pụrụ iche ụbọchị Fraidee ụlọ oriri m" → emechala
+  - Microsoft Designer (n'efu): na-emepụta nhọrọ ihe ọchịchọ site n'otu ahịrịokwu
+  - Remove.bg: na-ewepụ ndabere foto ozugbo maka foto ngwaahịa dị ọcha
+
+  MEPỤTA ỤDA NA VIDIYO:
+  - CapCut: ịmezi vidiyo nwere AI n'ekwentị gị - mkpọmkpọ akara n'Bekee ozugbo (ọ dị mma maka ndị mmepụta Naịjịrịa!)
+  - Ndepụta olu na WhatsApp/Google Docs: kwuo nchịkọta mbụ gị, mezịe ya mgbe e mechara
+
+  MEPỤTA APỤRỤ NA ỤDỊ DỊ MFE:
+  - Google Forms + Sheets: ụdị ọrụ, ndenye aha, nyocha
+  - Glide: tọgharịa sheetị ahụ ka ọ bụrụ apụrụ ekwentị
+  - WhatsApp Business: katalogu + aza-akpaaka = ụlọ ahịa nta (N'EFU)
+
+  NJIKỌ EZIGBO OTU MMADỤ OLE NA OLE NWERE IKE IME:
+  1. ChatGPT: "Dee post WhatsApp status ise na-akwado ire okrika m nke izu a"
+  2. Canva: mere foto status kwekọrọ
+  3. WhatsApp Business: hazie wee pọst
+  Ngụkọ ọnụahịa: ₦0. Ngụkọ oge: ihe na-erughị otu awa. Nke ahụ bụ IWU.
+
+  NDỤMỌDỤ PORTFOLIO:
+  Chekwaa ihe niile ị mepụtara n'izu a. Ihe atọ dị mma = portfolio ị nwere ike igosi ndị ọrụ ma ọ bụ ndị ahịa. "Emere m ndị a site n'ngwa AI" bụ ugbu a ahịrịokwu nwere ike were ọrụ!
+
+quiz:
+  - question: "Gịnị bụ ihe Gamma.app na-emepụta site n'isiokwu?"
+    options:
+      - "A. Igosipụta islayịdị zuru oke"
+      - "B. Igbe ekwentị"
+      - "C. Akaụntụ ụlọ akụ"
+      - "D. Akọrị bọọlụ"
+    correct: 0
+
+  - question: "Gịnị bụ ihe Remove.bg na-eme?"
+    options:
+      - "A. Na-ewepụ ndabere foto ozugbo"
+      - "B. Na-ewepụ apụrụ na ekwentị gị"
+      - "C. Na-egbochi nọmba ekwentị"
+      - "D. Na-ehichapụ akụkọ mkparịta ụka"
+    correct: 0
+
+  - question: "Gịnị mere WhatsApp Business bụ 'ụlọ ahịa nta'?"
+    options:
+      - "A. Katalogu na aza-akpaaka, n'efu"
+      - "B. Ọ na-ewu ụlọ ahịa n'onwe ya"
+      - "C. Ọ chọrọ ịgwọ ụgwọ nnukwu"
+      - "D. Ọ dịghị ihe - enweghị ike ire"
+    correct: 0
+
+  - question: "Ego ole ka njikọ ire okrika weere?"
+    options:
+      - "A. Naira efu na ihe na-erughị otu awa"
+      - "B. Naira 500,000"
+      - "C. Afọ ọrụ zuru oke"
+      - "D. Ọ bụ ihe na-ekwerịta"
+    correct: 0
+
+  - question: "Gịnị mere i kwesịrị ichekwa ihe ị mepụtara n'AI n'izu a?"
+    options:
+      - "A. Ihe atọ dị mma na-aghọ portfolio maka ndị ọrụ/ndị ahịa"
+      - "B. Iji jupụta nchekwa ekwentị"
+      - "C. Ha na-agwụ mgbe ụbọchị gasịrị"
+      - "D. Ọ dịghị ihe kpatara"
+    correct: 0

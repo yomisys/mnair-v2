@@ -1,0 +1,66 @@
+id: day5_ai_ethics_pid
+day: 5
+topic: ai_ethics
+language: pid
+title: "Build with Sense: The Honest Creator Code"
+content: |
+  Big power to build come with big responsibility. As you start to create with AI, adopt the Honest Creator Code - e go protect your reputation, your users, and your community.
+
+  RULE 1 - DISCLOSE WHEN E MATTER:
+  School essay wey AI write, wey you submit as your own work? That na cheating, and schools dey increasingly detect am. Job application wey dey claim skills wey you no get? E go collapse for interview. Use AI to LEARN and DRAFT - the final understanding must be yours.
+
+  RULE 2 - VERIFY BEFORE YOU POST:
+  You be the one wey responsible for wetin you post - even if AI write am. If your AI health post spread false medical advice, the harm (and blame) na yours. Check facts, especially health, legal, and money claims.
+
+  RULE 3 - RESPECT OWNERSHIP:
+  No generate fake images of real people. No clone musician voice for your jingle without permission. No pass AI copies of another designer style as original commissioned work. Naija creatives dey fight for fair credit - be on the right side.
+
+  RULE 4 - PROTECT PEOPLE DATA:
+  You dey build that tailor measurement bot? Those measurements na personal data under NDPA. Collect only wetin you need, keep am secure, delete when dem ask. Your users trust na your real capital.
+
+  RULE 5 - BUILD FOR GOOD:
+  The same AI wey write marketing copy fit write scam messages. The same voice cloning wey dey dub Nollywood films fit power fraud calls. Every Naija builder wey dey choose the honest path dey strengthen our tech reputation globally - and that reputation dey bring investment and jobs for everybody.
+
+  THE SIMPLE TEST:
+  "I go dey comfortable if everybody know exactly how I make this?" If yes - build on!
+
+quiz:
+  - question: "E correct to submit AI essay as your own work?"
+    options:
+      - "A. No - na cheating and dem dey increasingly detect am"
+      - "B. Yes, always"
+      - "C. Only on Fridays"
+      - "D. Only for university"
+    correct: 0
+
+  - question: "Who be responsible when you publish AI-generated content?"
+    options:
+      - "A. You dey responsible for wetin you post"
+      - "B. Only the AI company"
+      - "C. Nobody"
+      - "D. Your network provider"
+    correct: 0
+
+  - question: "Wetin NDPA mean for the tailor measurement bot?"
+    options:
+      - "A. Measurements na personal data - collect small small and keep am secure"
+      - "B. Bots no dey legal"
+      - "C. Tailors no fit use phone"
+      - "D. Nothing apply"
+    correct: 0
+
+  - question: "Why building honestly matter beyond yourself?"
+    options:
+      - "A. Naija tech reputation dey bring investment and jobs for everybody"
+      - "B. E no matter"
+      - "C. Only foreigners care"
+      - "D. Honesty dey slow everything"
+    correct: 0
+
+  - question: "Wetin be the simple test for responsible building?"
+    options:
+      - "A. 'I go dey comfortable if everybody know how I make this?'"
+      - "B. 'I fit make money fast?'"
+      - "C. 'Will anybody find out?'"
+      - "D. 'E dey complicated enough?'"
+    correct: 0

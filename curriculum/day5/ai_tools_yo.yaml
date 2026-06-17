@@ -1,0 +1,76 @@
+id: day5_ai_tools_yo
+day: 5
+topic: ai_tools
+language: yo
+title: "Apoti Iṣẹ Olùkọ́: Ṣẹda Awon Nkan Gidi Loni"
+content: |
+  Ana o kọ bi o ṣe le kọ fun AI bii ọjọgbọn. Loni: awon irinṣẹ ti n yi awon iyin sinu AWON OJA - awon iwe, awon apẹrẹ, awon app, ati diẹ sii.
+
+  ṢẸDA AWON IWE ATI IGBEKALẸ:
+  - ChatGPT/Gemini: awon igbero iṣowo ni kikun, CV, awon lẹta - lẹhinna tun ṣe
+  - Canva Docs + AI: n yi iwe akọsilẹ rẹ sinu awon iwe ti o ni ara
+  - Gamma.app: tẹ isiokwu, gba igbekalẹ ifaworanhan ni kikun. Awon ọmọ ile-iwe ati awon olukọni fẹran eyi!
+
+  ṢẸDA AWON APẸRẸ:
+  - Canva Magic Studio: "Post Instagram fun pataki Jimọ ile ounjẹ mi" → ti pari
+  - Microsoft Designer (ọfẹ): n ṣẹda awon aṣayan apẹrẹ lati gbolohun kan
+  - Remove.bg: n pa awon ipilẹ fọto kuro lẹsẹkẹsẹ fun awon fọto ọja ti o mọ
+
+  ṢẸDA OHUN ATI FIDIO:
+  - CapCut: ṣiṣatunṣe fidio AI lori foonu rẹ - awon akọsilẹ aifọwọyi ni Gẹẹsi (o dara fun awon ẹlẹda Naijiria!)
+  - Tẹjade ohun ni WhatsApp/Google Docs: sọ iwe akọsilẹ akọkọ rẹ, ṣatunṣe rẹ lẹhinna
+
+  ṢẸDA AWON APP ATI FỌỌMU RỌRUN:
+  - Google Forms + Sheets: awon fọọmu aṣẹ, iforukọsilẹ, awon iwadi
+  - Glide: yi iwe naa pada si app foonu
+  - WhatsApp Business: katalogi + awon idahun aifọwọyi = ile itaja kekere (FRẸ)
+
+  APO GIDI TI ẸNIKẸNI LE ṢE:
+  1. ChatGPT: "Kọ post status WhatsApp 5 ti n ṣe igbega tita okrika mi ti ọsẹ"
+  2. Canva: ṣe awon aworan status ti o baramu
+  3. WhatsApp Business: ṣeto ki o si fori
+  Iye lapapọ: ₦0. Akoko lapapọ: ni isalẹ wakati 1. Iyẹn ni KIKỌ.
+
+  IMỌ PORTFOLIO:
+  Fi ohun gbogbo ti o ṣẹda ni ọsẹ yii pamọ. Awon ayẹwo mẹta ti o dara = portfolio ti o le fihan awon agbanisiṣẹ tabi awon onibara. "Mo ṣe awon wọnyi pẹlu awon irinṣẹ AI" jẹ bayi gbolohun ti o le gba ọ iṣẹ!
+
+quiz:
+  - question: "Kini Gamma.app ṣẹda lati isiokwu?"
+    options:
+      - "A. Igbekalẹ ifaworanhan ni kikun"
+      - "B. Awon apoti foonu"
+      - "C. Awon akaọ ile-ifowopamọ"
+      - "D. Awon asọtẹlẹ bọọlu"
+    correct: 0
+
+  - question: "Kini Remove.bg ṣe?"
+    options:
+      - "A. N pa awon ipilẹ fọto kuro lẹsẹkẹsẹ"
+      - "B. N yọ awon app kuro ninu foonu rẹ"
+      - "C. N dina awon nọmba foonu"
+      - "D. N pa itan-ibaraẹnisọrọ rẹ rẹ"
+    correct: 0
+
+  - question: "Kini o jẹ ki WhatsApp Business jẹ 'ile itaja kekere'?"
+    options:
+      - "A. Katalogi pẹlu awon idahun aifọwọyi, ọfẹ"
+      - "B. O n kọ awon ile itaja ti ara ẹni"
+      - "C. O nilo gbese nla"
+      - "D. Ohunkohun - ko le ta"
+    correct: 0
+
+  - question: "Iye melo ni apo okrika ṣe?"
+    options:
+      - "A. Naira odo ati ni isalẹ wakati 1"
+      - "B. Naira 500,000"
+      - "C. Ọdun kika ni kikun"
+      - "D. Ko ṣee ṣe"
+    correct: 0
+
+  - question: "Kini o fi ọ fun lati fi awon ẹda AI rẹ pamọ ni ọsẹ yii?"
+    options:
+      - "A. Awon ayẹwo mẹta di portfolio fun awon agbanisiṣẹ/onibara"
+      - "B. Lati kun ibi ipamọ foonu"
+      - "C. Wọn pari lẹhin ọjọ kan"
+      - "D. Ko si idi"
+    correct: 0

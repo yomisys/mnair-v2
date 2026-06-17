@@ -1,0 +1,73 @@
+id: day5_ai_in_nigeria_ig
+day: 5
+topic: ai_in_nigeria
+language: ig
+title: "Ndị Owu Naịjịrịa: Site na Echiche ruo Ụlọ Ọrụ AI"
+content: |
+  Taa, zuo ndị ọrụ ecosystem AI Naịjịrịa - chọta ebe ị ga-abanye.
+
+  ECOSYSTEM DỊ GBURUGBURU GỊ:
+
+  ỤLỌ OBU & OBODO:
+  - Lagos: CcHub (Yaba) - isi ụlọ obu ihe omume Naịjịrịa, na-akwado nnukwu ụlọ ọrụ
+  - Abuja, Port Harcourt, Kano, Enugu: ụlọ obu teknụzụ na-eto eto nwere mmemme n'efu
+  - N'ịntanetị: Data Science Nigeria (DSN) na-agbasa ọzụzụ AI N'EFU ma zụọ narị puku nde ndị Naịjịrịa
+  - Google, Microsoft, na AWS niile na-eme mmemme na-elekwasị Afrika anya nwere ego n'efu na ọzụzụ
+
+  USORO NKÀ:
+  Echiche Data Science Nigeria: ọzụzụ nde 1 ndị nkà AI Naịjịrịa. Akụ nke ha n'efu gụnyere ihe ọmụmụ n'ịntanetị, bootcamp kwa afọ, na nzukọ obodo n'obodo dị iche. ALX na ndị yiri ha na-enye ọzụzụ injinia sọftụwia n'efu nwere ego.
+
+  ỤZỌ ỤLỌ ỌRỤ EZIOKWU (n'obere):
+  1. CHỌPỤTA NSOGBU: "Ndị na-ede uwe na-efu ogo ndị ahịa ha"
+  2. IHE NGỌZI KACHA NTA: Bot WhatsApp na-echekwa ogo maka onye ahịa ọ bụla
+  3. NWAA: Ndị na-ede uwe 10 jiri ya n'efu otu ọnwa
+  4. NỤ MA MELITE: Ha chọrọ foto ụdị ejikọtara? Tinye ya
+  5. WERE UGO: ₦1,000/ọnwa. Ndị na-ede uwe 100 = ₦100,000/ọnwa
+  6. TORO: Rịọ ịbanye CcHub accelerator nwere nọmba ojiji eziokwu
+
+  EGO NTINYE DỊ:
+  Ụlọ ọrụ AI Naịjịrịa anaghị asite n'ọnụ ọgugụ ọtụtụ nde dollar. Mmemme gọọmentị (dị ka nke NITDA), ego enyemaka mba ụwa, na ndị na-etinye ego mpaghara na-achọ ihe ngọzi AI Afrika.
+
+  NZỌỤKWỤ GỊ N'IZU A:
+  Sonye otu obodo (DSN efu!). Gaa otu mmemme n'ịntanetị. Gwa otu enyi echiche ngọzi nsogbu gị. Ecosystems na-akpọ ndị na-apụta.
+
+quiz:
+  - question: "Gịnị bụ echiche Data Science Nigeria?"
+    options:
+      - "A. Ọzụzụ nde 1 ndị nkà AI Naịjịrịa"
+      - "B. Ire igwe ekwentị"
+      - "C. Ọ bụ iji dochie mahadum niile"
+      - "D. Iwu ụzọ"
+    correct: 0
+
+  - question: "Gịnị bụ nzọụkwụ MBỤ n'ụzọ ụlọ ọrụ?"
+    options:
+      - "A. Chọpụta nsogbu eziokwu ndị mmadụ nwere"
+      - "B. Nweta ọtụtụ nde ozugbo"
+      - "C. Zụta ụlọ ọrụ"
+      - "D. Were ndị ọrụ 50"
+    correct: 0
+
+  - question: "Gịnị bụ CcHub?"
+    options:
+      - "A. Isi ụlọ obu ihe omume Naịjịrịa, na Yaba, Lagos"
+      - "B. Ụlọ oriri"
+      - "C. Ụlọ akụ"
+      - "D. Egwuregwu bọọlụ"
+    correct: 0
+
+  - question: "Kedu ka ị kwesịrị anwaa echiche ụlọ ọrụ?"
+    options:
+      - "A. Ka obere ìgwè jiri ihe ngọzi kacha nta n'efu, wee nụ ha"
+      - "B. Were ego ị chekwara niile tupu"
+      - "C. Zobe ya afọ ọtụtụ"
+      - "D. Emela ule echiche mgbe ọ bụla"
+    correct: 0
+
+  - question: "Gịnị i nwere ike ime N'IZU A iji banye ecosystem?"
+    options:
+      - "A. Sonye obodo n'efu dị ka DSN wee gaa otu mmemme"
+      - "B. Chere ka gọọmentị kpọọ gị"
+      - "C. Ọ dịghị ihe — ọ bụ ihe na-ekwerịta"
+      - "D. Bụ ụzọ pụọ mba ụwa mbụ"
+    correct: 0

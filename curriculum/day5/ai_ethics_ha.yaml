@@ -1,0 +1,66 @@
+id: day5_ai_ethics_ha
+day: 5
+topic: ai_ethics
+language: ha
+title: "Gini da Alhakin: Ka'idar Mai Ƙirƙira Aminci"
+content: |
+  Ikon gini mai girma yana zuwa da manyan alhakai. Yayin da ka fara ƙirƙira da AI, ɗauki Ka'idar Mai Ƙirƙira Aminci - tana kare sunanku, masu amfani da ku, da al'ummarku.
+
+  DOKA TA 1 - BAYYANA LOKACIN DA YA DACE:
+  Rubutun makaranta da AI ya rubuta kuma aka gabatar a matsayin aikinku? Wannan zamba ne, kuma makarantu suna iya gane shi. Aikace-aikacen aiki mai da'awar ƙwarewar da ba ku da ita? Zai ruguje a hira. Yi amfani da AI don KOYO da RUBUTUN FARKO - ƙarshen fahimtar dole ta kasance naku.
+
+  DOKA TA 2 - TABBATAR KAFIN KA BUGA:
+  Ku ne ke da alhakin abin da kuke fitar da shi - ko AI ne ya rubuta shi. Idan sakon lafiya da AI ya ƙirƙira yayi watsa ƙarya, ɓarna (da zargi) gareka ne. Bincika gaskiya, musamman da'awa na lafiya, doka, da kudi.
+
+  DOKA TA 3 - GIRMAMA DUKIYA:
+  Kar ka ƙirƙira hotunan ƙarya na mutane na gaske. Kar ka kwaikwayi muryar mawaƙi don waƙarka ba tare da izini ba. Kar ka gabatar da kwafe na AI na salon mai zanen wanda aka ba ka kwamiti a matsayin aikin asali. Masu ƙirƙira na Najeriya suna fafutukar neman cancanta mai adalci - kasance a gefen daidai.
+
+  DOKA TA 4 - KARE BAYANAN MUTANE:
+  Gina bot na ma'aunin dinki? Waɗancan ma'auni bayanan sirri ne ƙarƙashin NDPA. Tattara kawai abin da kuke buƙata, sanya shi lafiya, share lokacin da aka buƙata. Amincin masu amfani da ku jari naku ne na gaske.
+
+  DOKA TA 5 - GINA DON ALHERI:
+  Wannan AI ɗaya da ke rubuta kwafin tallace-tallace zai iya rubuta saƙonnin zamba. Wannan kwaikwayon murya ɗaya da ke ƙididdige fina-finai na Nollywood zai iya bawa zamba karfi. Kowane mai gina Najeriya da ke zaɓar hanyar aminci yana ƙarfafa sunan fasahata ta duniya - kuma wannan suna yana kawo jari da ayyuka ga kowa.
+
+  GWAJIN SAUƘI:
+  "Shin zan yi jin daɗi idan kowa ya san yadda na ƙirƙira wannan?" Idan eh - ci gaba da gini!
+
+quiz:
+  - question: "Shin gabatar da rubutun AI a matsayin ayyukanka abu ne mai karbuwa?"
+    options:
+      - "A. A'a - zamba ne kuma ana iya ganewa"
+      - "B. Eh, koyaushe"
+      - "C. Juma'a kawai"
+      - "D. Jami'a kawai"
+    correct: 0
+
+  - question: "Wane ne ke da alhakin lokacin da kuka buga abin da AI ya ƙirƙira?"
+    options:
+      - "A. Ku ne ke da alhakin abin da kuke fitar da shi"
+      - "B. Kamfanin AI kawai"
+      - "C. Babu wanda"
+      - "D. Mai ba ku hanyar sadarwa"
+    correct: 0
+
+  - question: "Menene NDPA ke nufi ga bot na ma'aunin dinki?"
+    options:
+      - "A. Ma'auni bayanan sirri ne - tattara kaɗan kuma sanya lafiya"
+      - "B. Bot ɗin ba bisa doka ba ne"
+      - "C. Masu dinki ba za su iya amfani da wayoyi ba"
+      - "D. Babu abin da ya shafa"
+    correct: 0
+
+  - question: "Me ya sa gina da aminci yana da muhimmanci fiye da kanka?"
+    options:
+      - "A. Sunan fasahar Najeriya yana kawo jari da ayyuka ga kowa"
+      - "B. Bai da muhimmanci"
+      - "C. 'Yan kasashen waje kawai suke kula"
+      - "D. Aminci yana jinkirtawa"
+    correct: 0
+
+  - question: "Menene gwajin sauƙi na gini da alhakin?"
+    options:
+      - "A. 'Shin zan yi jin daɗi idan kowa ya san yadda na ƙirƙira wannan?'"
+      - "B. 'Zan sami kudi da sauri?'"
+      - "C. 'Shin wani zai gano?'"
+      - "D. 'Shin ya isa rikitarwa?'"
+    correct: 0
