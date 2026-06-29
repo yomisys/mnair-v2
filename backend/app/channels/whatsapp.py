@@ -445,6 +445,20 @@ class WhatsAppWebhookHandler:
         # Get or create conversation
         conversation = await self.get_or_create_conversation(user.id, phone_number)
 
+        # Global command: change language from anywhere
+        if message_text.upper() == "LANGUAGE":
+            conversation.context = {**conversation.context, "pending_language_change": True}
+            conversation.previous_state = conversation.current_state
+            conversation.current_state = ConversationState.AWAITING_LANGUAGE
+            await self.db.commit()
+            await self.send_whatsapp_message(phone_number, self.message_builder.build_language_selector_list())
+            return
+
+        # Handle YES/NO confirmation for language change
+        if message_text.upper() in ("YES", "NO") and conversation.context.get("confirming_language_change"):
+            await self.handle_language_change_confirmation(user, conversation, message_text.upper())
+            return
+
         # Route to state handler
         if conversation.current_state == ConversationState.NEW_USER:
             await self.handle_new_user(user, conversation)
@@ -476,7 +490,6 @@ class WhatsAppWebhookHandler:
 
     async def handle_language_selection(self, user: User, conversation: Conversation, selection: str) -> None:
         """Handle AWAITING_LANGUAGE state - process language choice"""
-        # Map selection to language
         language_map = {
             "lang_en": Language.ENGLISH,
             "lang_pid": Language.PIDGIN,
@@ -487,18 +500,61 @@ class WhatsAppWebhookHandler:
 
         selected_language = language_map.get(selection)
         if not selected_language:
-            # Invalid selection, re-prompt
-            lang_msg = self.message_builder.build_language_selector_list()
-            await self.send_whatsapp_message(user.phone_number, lang_msg)
+            await self.send_whatsapp_message(user.phone_number, self.message_builder.build_language_selector_list())
             return
 
-        # Update user language
+        # Mid-flow language change — ask for confirmation first
+        if conversation.context.get("pending_language_change") and user.language != selected_language:
+            language_names = {
+                Language.ENGLISH: "English", Language.PIDGIN: "Pidgin",
+                Language.HAUSA: "Hausa", Language.YORUBA: "Yoruba", Language.IGBO: "Igbo",
+            }
+            conversation.context = {
+                **conversation.context,
+                "confirming_language_change": selected_language.value,
+            }
+            await self.db.commit()
+            await self.send_whatsapp_message(user.phone_number, {
+                "messaging_product": "whatsapp",
+                "type": "text",
+                "text": {
+                    "body": (
+                        f"⚠️ *Switching to {language_names[selected_language]}*\n\n"
+                        f"Your lessons will restart from Day {user.current_day} in the new language.\n"
+                        f"Your quiz scores won't transfer.\n\n"
+                        f"Reply *YES* to confirm or *NO* to cancel."
+                    )
+                }
+            })
+            return
+
+        # First-time selection or same language — apply immediately
         user.language = selected_language
         conversation.current_state = ConversationState.IN_LESSON
+        conversation.context = {}
         await self.db.commit()
-
-        # Start first lesson
         await self.deliver_next_lesson(user, conversation)
+
+    async def handle_language_change_confirmation(self, user: User, conversation: Conversation, response: str) -> None:
+        """Handle YES/NO confirmation for mid-flow language change"""
+        pending_lang = conversation.context.get("confirming_language_change")
+
+        if response == "YES" and pending_lang:
+            user.language = Language(pending_lang)
+            conversation.current_state = ConversationState.IN_LESSON
+            conversation.context = {}
+            await self.db.commit()
+            await self.deliver_next_lesson(user, conversation)
+        else:
+            # Restore previous state and cancel
+            conversation.current_state = conversation.previous_state or ConversationState.IN_LESSON
+            conversation.context = {}
+            await self.db.commit()
+            await self.send_whatsapp_message(user.phone_number, {
+                "messaging_product": "whatsapp",
+                "type": "text",
+                "text": {"body": "✅ Language change cancelled. Continuing in your current language."}
+            })
 
     async def deliver_next_lesson(self, user: User, conversation: Conversation) -> None:
         """Deliver the next lesson to user"""
@@ -510,14 +566,18 @@ class WhatsAppWebhookHandler:
             await self.handle_day_completion(user, conversation)
             return
 
-        # Calculate lesson number (1-5)
+        # Calculate lesson number (1-5) using the same topic order as lesson_state
+        topic_order = ["what_is_ai", "how_ai_works", "ai_in_nigeria", "ai_tools", "ai_ethics"]
         result = await self.db.execute(
             select(Lesson).where(
                 Lesson.day == user.current_day,
                 Lesson.language == user.language.value
-            ).order_by(Lesson.topic)
+            )
         )
-        day_lessons = list(result.scalars().all())
+        day_lessons = sorted(
+            result.scalars().all(),
+            key=lambda l: topic_order.index(l.topic) if l.topic in topic_order else 99
+        )
         lesson_number = day_lessons.index(next_lesson) + 1
 
         # Send lesson
@@ -579,6 +639,18 @@ class WhatsAppWebhookHandler:
             else:
                 return
         else:
+            # Re-send the current quiz question so user can tap the options
+            lesson_id = conversation.context.get("current_lesson_id")
+            current_question = conversation.context.get("current_question", 0)
+            if lesson_id:
+                from sqlalchemy import select as _select
+                result = await self.db.execute(_select(Lesson).where(Lesson.id == lesson_id))
+                lesson = result.scalar_one_or_none()
+                if lesson:
+                    await self.send_whatsapp_message(
+                        user.phone_number,
+                        self.message_builder.build_quiz_message(lesson, current_question)
+                    )
             return
 
         # Get current quiz state

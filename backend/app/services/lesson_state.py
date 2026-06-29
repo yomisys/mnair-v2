@@ -80,6 +80,8 @@ class LessonStateManager:
     QUESTIONS_PER_QUIZ = 5  # Expected questions per quiz
     LESSONS_PER_DAY = 5  # Topics per day
 
+    TOPIC_ORDER = ["what_is_ai", "how_ai_works", "ai_in_nigeria", "ai_tools", "ai_ethics"]
+
     def __init__(self, db: AsyncSession):
         """
         Initialize state manager with database session
@@ -117,10 +119,13 @@ class LessonStateManager:
                 Lesson.day == user.current_day,
                 Lesson.language == language
             )
-        ).order_by(Lesson.topic)
+        )
 
         result = await self.db.execute(lessons_query)
-        day_lessons = result.scalars().all()
+        day_lessons = sorted(
+            result.scalars().all(),
+            key=lambda l: self.TOPIC_ORDER.index(l.topic) if l.topic in self.TOPIC_ORDER else 99
+        )
 
         # Check which lessons are already completed
         for lesson in day_lessons:
