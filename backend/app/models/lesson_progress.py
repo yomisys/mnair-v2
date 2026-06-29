@@ -5,7 +5,7 @@ LessonProgress model - Tracks user progress through curriculum
 Records completion status, scores, and timestamps
 """
 
-from datetime import datetime
+from datetime import datetime, timezone
 from typing import Optional
 from sqlalchemy import Integer, Boolean, Float, DateTime, ForeignKey, Index, UniqueConstraint, String
 from sqlalchemy.orm import Mapped, mapped_column, relationship
@@ -139,14 +139,16 @@ class LessonProgress(Base):
         if not self.started_at:
             return None
 
-        end_time = self.completed_at or datetime.utcnow()
-        delta = end_time - self.started_at
-        return int(delta.total_seconds())
+        end_time = self.completed_at or datetime.now(timezone.utc)
+        started = self.started_at
+        if started.tzinfo is None:
+            started = started.replace(tzinfo=timezone.utc)
+        return int((end_time - started).total_seconds())
 
     def mark_completed(self, score: float) -> None:
         """Mark lesson as completed with final score"""
         self.is_completed = True
         self.quiz_score = score
         self.passed_quiz = score >= 60.0
-        self.completed_at = datetime.utcnow()
+        self.completed_at = datetime.now(timezone.utc)
         self.time_spent_seconds = self.calculate_time_spent()

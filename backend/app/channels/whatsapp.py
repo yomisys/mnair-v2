@@ -249,13 +249,15 @@ class WhatsAppMessageBuilder:
             "messaging_product": "whatsapp",
             "type": "text",
             "text": {
-                "body": f"🎊 *DAY {day} COMPLETE!* 🎊\n\n"
-                        f"Congratulations! You've finished all {lessons_completed} lessons for Day {day}!\n\n"
-                        f"📈 Your Progress:\n"
-                        f"✅ Day {day} - DONE\n"
-                        f"📚 {lessons_completed} lessons completed\n\n"
-                        f"{'🏆 Keep going! Only ' + str(7-day) + ' days left!' if day < 7 else '🎓 COURSE COMPLETE! Certificate coming soon!'}\n\n"
-                        f"Reply *NEXT* to continue to Day {day+1}!" if day < 7 else "Reply *CERTIFICATE* to get your certificate!"
+                "body": (
+                    f"🎊 *DAY {day} COMPLETE!* 🎊\n\n"
+                    f"Congratulations! You've finished all {lessons_completed} lessons for Day {day}!\n\n"
+                    f"📈 Your Progress:\n"
+                    f"✅ Day {day} - DONE\n"
+                    f"📚 {lessons_completed} lessons completed\n\n"
+                    f"{'🏆 Keep going! Only ' + str(7 - day) + ' days left!' if day < 7 else '🎓 COURSE COMPLETE! Certificate coming soon!'}\n\n"
+                    f"{'Reply *NEXT* to continue to Day ' + str(day + 1) + '!' if day < 7 else 'Reply *CERTIFICATE* to get your certificate!'}"
+                )
             }
         }
 
@@ -447,7 +449,11 @@ class WhatsAppWebhookHandler:
 
         # Global command: change language from anywhere
         if message_text.upper() == "LANGUAGE":
-            conversation.context = {**conversation.context, "pending_language_change": True}
+            conversation.context = {
+                **conversation.context,
+                "pending_language_change": True,
+                "saved_context": conversation.context,  # preserve lesson position for NO cancellation
+            }
             conversation.previous_state = conversation.current_state
             conversation.current_state = ConversationState.AWAITING_LANGUAGE
             await self.db.commit()
@@ -503,8 +509,9 @@ class WhatsAppWebhookHandler:
             await self.send_whatsapp_message(user.phone_number, self.message_builder.build_language_selector_list())
             return
 
-        # Mid-flow language change — ask for confirmation first
-        if conversation.context.get("pending_language_change") and user.language != selected_language:
+        # Mid-flow language change — ask for confirmation first (only if user has actual progress)
+        has_progress = user.current_day > 1 or conversation.previous_state not in (None, ConversationState.NEW_USER, ConversationState.AWAITING_LANGUAGE)
+        if conversation.context.get("pending_language_change") and user.language != selected_language and has_progress:
             language_names = {
                 Language.ENGLISH: "English", Language.PIDGIN: "Pidgin",
                 Language.HAUSA: "Hausa", Language.YORUBA: "Yoruba", Language.IGBO: "Igbo",
@@ -546,9 +553,10 @@ class WhatsAppWebhookHandler:
             await self.db.commit()
             await self.deliver_next_lesson(user, conversation)
         else:
-            # Restore previous state and cancel
+            # Restore previous state and context
+            saved = conversation.context.get("saved_context") or {}
             conversation.current_state = conversation.previous_state or ConversationState.IN_LESSON
-            conversation.context = {}
+            conversation.context = {k: v for k, v in saved.items() if k not in ("pending_language_change", "saved_context", "confirming_language_change")}
             await self.db.commit()
             await self.send_whatsapp_message(user.phone_number, {
                 "messaging_product": "whatsapp",
@@ -566,8 +574,8 @@ class WhatsAppWebhookHandler:
             await self.handle_day_completion(user, conversation)
             return
 
-        # Calculate lesson number (1-5) using the same topic order as lesson_state
-        topic_order = ["what_is_ai", "how_ai_works", "ai_in_nigeria", "ai_tools", "ai_ethics"]
+        # Calculate lesson number (1-5) using the canonical topic order
+        topic_order = self.lesson_manager.TOPIC_ORDER
         result = await self.db.execute(
             select(Lesson).where(
                 Lesson.day == user.current_day,
@@ -591,7 +599,7 @@ class WhatsAppWebhookHandler:
 
     async def handle_lesson_flow(self, user: User, conversation: Conversation, message_text: str) -> None:
         """Handle IN_LESSON state - waiting for user to request quiz"""
-        if message_text.upper() == "QUIZ":
+        if message_text.upper() in ("QUIZ", "RETRY"):
             # Start quiz
             lesson_id = conversation.context.get("current_lesson_id")
             if not lesson_id:
@@ -631,41 +639,43 @@ class WhatsAppWebhookHandler:
 
     async def handle_quiz_response(self, user: User, conversation: Conversation, response: str) -> None:
         """Handle AWAITING_QUIZ state - process quiz answers"""
-        # Extract answer index from response (format: "ans_0_2" = question 0, option 2)
-        if response.startswith("ans_"):
-            parts = response.split("_")
-            if len(parts) == 3:
-                answer_idx = int(parts[2])
-            else:
-                return
-        else:
-            # Re-send the current quiz question so user can tap the options
-            lesson_id = conversation.context.get("current_lesson_id")
-            current_question = conversation.context.get("current_question", 0)
-            if lesson_id:
-                from sqlalchemy import select as _select
-                result = await self.db.execute(_select(Lesson).where(Lesson.id == lesson_id))
-                lesson = result.scalar_one_or_none()
-                if lesson:
-                    await self.send_whatsapp_message(
-                        user.phone_number,
-                        self.message_builder.build_quiz_message(lesson, current_question)
-                    )
-            return
-
-        # Get current quiz state
         lesson_id = conversation.context.get("current_lesson_id")
         current_question = conversation.context.get("current_question", 0)
-        answers = conversation.context.get("answers", [])
 
-        # Record answer.
-        # Replace the entire dict so SQLAlchemy detects the JSON column change —
-        # in-place mutation (context["key"] = val) is invisible to the ORM.
+        # Guard: corrupted context — recover gracefully
+        if not lesson_id:
+            conversation.current_state = ConversationState.IN_LESSON
+            conversation.context = {}
+            await self.db.commit()
+            await self.deliver_next_lesson(user, conversation)
+            return
+
+        if response.startswith("ans_"):
+            parts = response.split("_")
+            try:
+                answer_idx = int(parts[2]) if len(parts) == 3 else None
+            except (ValueError, IndexError):
+                answer_idx = None
+            if answer_idx is None:
+                # Malformed ans_ — re-send current question
+                result = await self.db.execute(select(Lesson).where(Lesson.id == lesson_id))
+                lesson = result.scalar_one_or_none()
+                if lesson:
+                    await self.send_whatsapp_message(user.phone_number, self.message_builder.build_quiz_message(lesson, current_question))
+                return
+        else:
+            # Non-interactive reply — re-send current question
+            result = await self.db.execute(select(Lesson).where(Lesson.id == lesson_id))
+            lesson = result.scalar_one_or_none()
+            if lesson:
+                await self.send_whatsapp_message(user.phone_number, self.message_builder.build_quiz_message(lesson, current_question))
+            return
+
+        answers = conversation.context.get("answers", [])
         answers.append(answer_idx)
 
-        # Check if quiz complete
+        # Replace the entire dict so SQLAlchemy detects the JSON column change
         if current_question < 4:
-            # More questions
             next_question = current_question + 1
             conversation.context = {
                 **conversation.context,
@@ -674,37 +684,28 @@ class WhatsAppWebhookHandler:
             }
             await self.db.commit()
 
-            # Send next question
-            result = await self.db.execute(
-                select(Lesson).where(Lesson.id == lesson_id)
-            )
+            result = await self.db.execute(select(Lesson).where(Lesson.id == lesson_id))
             lesson = result.scalar_one_or_none()
-
             if lesson:
-                quiz_msg = self.message_builder.build_quiz_message(lesson, next_question)
-                await self.send_whatsapp_message(user.phone_number, quiz_msg)
+                await self.send_whatsapp_message(user.phone_number, self.message_builder.build_quiz_message(lesson, next_question))
         else:
-            # Quiz complete, score it
-            result = await self.lesson_manager.record_quiz_attempt(user.id, lesson_id, answers)
+            # Quiz complete — score it
+            quiz_result = await self.lesson_manager.record_quiz_attempt(user.id, lesson_id, answers)
 
-            # Send result
             result_msg = self.message_builder.build_quiz_result_message(
-                result.score, result.passed, result.attempt_number, result.can_retry
+                quiz_result.score, quiz_result.passed, quiz_result.attempt_number, quiz_result.can_retry
             )
             await self.send_whatsapp_message(user.phone_number, result_msg)
 
-            if result.passed:
-                # Move to next lesson
+            if quiz_result.passed:
                 conversation.current_state = ConversationState.IN_LESSON
                 conversation.context = {}
                 await self.db.commit()
-
-                # Deliver next lesson after a brief pause
                 await self.deliver_next_lesson(user, conversation)
             else:
-                # Failed, allow retry or move on
+                # Keep lesson_id so QUIZ re-triggers the same lesson, not deliver_next_lesson
                 conversation.current_state = ConversationState.IN_LESSON
-                conversation.context = {}
+                conversation.context = {"current_lesson_id": lesson_id}
                 await self.db.commit()
 
     async def handle_day_completion(self, user: User, conversation: Conversation) -> None:
@@ -724,29 +725,36 @@ class WhatsAppWebhookHandler:
 
     async def handle_day_complete(self, user: User, conversation: Conversation, message_text: str) -> None:
         """Handle DAY_COMPLETE state - waiting for user to advance"""
-        if message_text.upper() == "NEXT":
-            # Advance to next day
+        cmd = message_text.upper()
+
+        if cmd == "NEXT":
             advanced = await self.lesson_manager.advance_to_next_day(user.id)
 
             if advanced:
-                # Refresh user
                 await self.db.refresh(user)
-
-                # Start next day
                 conversation.current_state = ConversationState.IN_LESSON
                 await self.db.commit()
-
                 await self.deliver_next_lesson(user, conversation)
             else:
-                # Error advancing
-                error_msg = {
+                await self.send_whatsapp_message(user.phone_number, {
                     "messaging_product": "whatsapp",
                     "type": "text",
-                    "text": {
-                        "body": "❌ Couldn't advance to next day. Please ensure all lessons are complete."
-                    }
-                }
-                await self.send_whatsapp_message(user.phone_number, error_msg)
+                    "text": {"body": "❌ Couldn't advance to next day. Please ensure all lessons are complete."}
+                })
+        elif cmd == "CERTIFICATE":
+            await self.send_whatsapp_message(user.phone_number, {
+                "messaging_product": "whatsapp",
+                "type": "text",
+                "text": {"body": "🎓 Your certificate is being generated! You'll receive it shortly."}
+            })
+        else:
+            # Remind user what to do — no silent drop
+            next_action = "Reply *NEXT* to continue!" if user.current_day < 7 else "Reply *CERTIFICATE* to claim your certificate!"
+            await self.send_whatsapp_message(user.phone_number, {
+                "messaging_product": "whatsapp",
+                "type": "text",
+                "text": {"body": f"🎊 You've completed Day {user.current_day}!\n\n{next_action}"}
+            })
 
 
 # FastAPI Router for WhatsApp webhooks
