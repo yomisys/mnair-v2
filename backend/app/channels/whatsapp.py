@@ -695,7 +695,8 @@ async def verify_webhook(
     challenge = params.get("hub.challenge")
 
     if mode == "subscribe" and token == settings.META_VERIFY_TOKEN:
-        return int(challenge)
+        from fastapi.responses import PlainTextResponse
+        return PlainTextResponse(content=challenge)
     else:
         raise HTTPException(status_code=403, detail="Verification failed")
 
