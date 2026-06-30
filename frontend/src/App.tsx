@@ -9,12 +9,20 @@ import {
   Container,
   Stack,
 } from '@mui/material'
-import { Logout as LogoutIcon, VerifiedUser as VerifyIcon } from '@mui/icons-material'
+import { VerifiedUser as VerifyIcon } from '@mui/icons-material'
 import { useAuth } from './contexts/AuthContext'
 import Home from './pages/Home'
 import VerifyCertificate from './pages/VerifyCertificate'
 import Login from './pages/Login'
 import Dashboard from './pages/Dashboard'
+import LessonsReport from './pages/LessonsReport'
+import LanguageReport from './pages/LanguageReport'
+import EngagementReport from './pages/EngagementReport'
+import QuizReport from './pages/QuizReport'
+import ChannelsReport from './pages/ChannelsReport'
+import EmployersReport from './pages/EmployersReport'
+import UsersReport from './pages/UsersReport'
+import AdminLayout from './components/AdminLayout'
 
 const ProtectedRoute: React.FC<{ children: React.ReactElement }> = ({ children }) => {
   const { isAuthenticated, isLoading } = useAuth()
@@ -55,26 +63,6 @@ const PublicNavBar: React.FC = () => {
   )
 }
 
-const AdminNavBar: React.FC = () => {
-  const { user, logout } = useAuth()
-
-  return (
-    <AppBar position="static" elevation={1}>
-      <Toolbar>
-        <Typography variant="h6" component="div" sx={{ flexGrow: 1, fontWeight: 'bold' }}>
-          MNAIR Admin
-        </Typography>
-        <Typography variant="body2" sx={{ mr: 2 }}>
-          {user?.name} ({user?.role})
-        </Typography>
-        <Button color="inherit" startIcon={<LogoutIcon />} onClick={logout}>
-          Logout
-        </Button>
-      </Toolbar>
-    </AppBar>
-  )
-}
-
 const PublicFooter: React.FC = () => (
   <Box
     component="footer"
@@ -108,16 +96,16 @@ const PublicFooter: React.FC = () => (
               Contact Us
             </Typography>
             <Typography variant="body2" sx={{ opacity: 0.9 }}>
-              Email: support@mnair.gov.ng
+              Email: info@mnair.ng
             </Typography>
             <Typography variant="body2" sx={{ opacity: 0.9 }}>
-              WhatsApp: +234 XXX XXX XXXX
+              Phone: +234 706 572 8972
             </Typography>
           </Stack>
         </Stack>
 
         <Typography variant="body2" align="center" sx={{ opacity: 0.8, pt: 2, borderTop: '1px solid rgba(255,255,255,0.2)' }}>
-          © {new Date().getFullYear()} MNAIR Platform - Federal Government of Nigeria. All rights reserved.
+          © {new Date().getFullYear()} MNAIR Platform. All rights reserved.
         </Typography>
       </Stack>
     </Container>
@@ -128,21 +116,16 @@ const App: React.FC = () => {
   const { isAuthenticated } = useAuth()
   const location = useLocation()
 
-  // Determine if current route is public or admin
   const isPublicRoute = ['/', '/verify'].includes(location.pathname)
   const isAdminRoute = location.pathname.startsWith('/dashboard')
 
   return (
     <Box sx={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
-      {/* Navigation Bar */}
-      {isAuthenticated && isAdminRoute ? (
-        <AdminNavBar />
-      ) : isPublicRoute ? (
-        <PublicNavBar />
-      ) : null}
+      {/* Public nav only for non-admin routes */}
+      {!isAdminRoute && isPublicRoute && <PublicNavBar />}
+      {!isAdminRoute && !isPublicRoute && location.pathname !== '/login' && <PublicNavBar />}
 
-      {/* Main Content */}
-      <Box component="main" sx={{ flexGrow: 1, bgcolor: 'background.default' }}>
+      <Box component="main" sx={{ flexGrow: 1, bgcolor: isAdminRoute ? '#f0f2f5' : 'background.default' }}>
         <Routes>
           {/* Public Routes */}
           <Route path="/" element={<Home />} />
@@ -151,39 +134,91 @@ const App: React.FC = () => {
           {/* Auth Routes */}
           <Route path="/login" element={<Login />} />
 
-          {/* Protected Admin Routes */}
+          {/* Protected Admin Routes — all wrapped in AdminLayout sidebar */}
           <Route
             path="/dashboard"
             element={
               <ProtectedRoute>
-                <Dashboard />
+                <AdminLayout>
+                  <Dashboard />
+                </AdminLayout>
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/dashboard/users"
+            element={
+              <ProtectedRoute>
+                <AdminLayout>
+                  <UsersReport />
+                </AdminLayout>
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/dashboard/lessons"
+            element={
+              <ProtectedRoute>
+                <AdminLayout>
+                  <LessonsReport />
+                </AdminLayout>
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/dashboard/languages"
+            element={
+              <ProtectedRoute>
+                <AdminLayout>
+                  <LanguageReport />
+                </AdminLayout>
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/dashboard/engagement"
+            element={
+              <ProtectedRoute>
+                <AdminLayout>
+                  <EngagementReport />
+                </AdminLayout>
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/dashboard/quiz"
+            element={
+              <ProtectedRoute>
+                <AdminLayout>
+                  <QuizReport />
+                </AdminLayout>
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/dashboard/channels"
+            element={
+              <ProtectedRoute>
+                <AdminLayout>
+                  <ChannelsReport />
+                </AdminLayout>
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/dashboard/employers"
+            element={
+              <ProtectedRoute>
+                <AdminLayout>
+                  <EmployersReport />
+                </AdminLayout>
               </ProtectedRoute>
             }
           />
         </Routes>
       </Box>
 
-      {/* Footer */}
       {isPublicRoute && <PublicFooter />}
-      {isAuthenticated && isAdminRoute && (
-        <Box
-          component="footer"
-          sx={{
-            py: 2,
-            px: 2,
-            mt: 'auto',
-            backgroundColor: 'background.paper',
-            borderTop: '1px solid',
-            borderColor: 'divider',
-          }}
-        >
-          <Container maxWidth="lg">
-            <Typography variant="body2" color="text.secondary" align="center">
-              MNAIR Platform - Make Nigeria AI Ready © {new Date().getFullYear()}
-            </Typography>
-          </Container>
-        </Box>
-      )}
     </Box>
   )
 }

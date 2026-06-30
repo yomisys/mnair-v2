@@ -122,3 +122,98 @@ class DashboardOverview(BaseModel):
     user_growth_trend: List[TrendData]
     completion_trend: List[TrendData]
     last_updated: datetime
+
+
+class LessonAnalytics(BaseModel):
+    lesson_id: str
+    db_id: int
+    day: int
+    topic: str
+    language: str
+    title: str
+    started_count: int
+    completed_count: int
+    completion_rate: float
+    avg_score: Optional[float]
+    avg_attempts: float
+    first_attempt_pass_rate: float
+
+
+class LanguagePerformance(BaseModel):
+    language: str
+    total_users: int
+    completed_users: int
+    completion_rate: float
+    avg_quiz_score: Optional[float]
+    avg_days_to_complete: Optional[float]
+    dropout_rate: float
+
+
+class EngagementFunnel(BaseModel):
+    day: int
+    users_reached: int
+    users_completed_day: int
+    dropoff_from_prev: float
+    cumulative_dropoff: float
+
+
+class QuizLessonStats(BaseModel):
+    lesson_id: str
+    db_id: int
+    day: int
+    topic: str
+    language: str
+    title: str
+    total_attempts: int
+    unique_takers: int
+    pass_rate: float
+    avg_score: float
+    retry_rate: float
+    avg_score_attempt1: Optional[float]
+    avg_score_attempt2: Optional[float]
+    avg_score_attempt3: Optional[float]
+
+
+class ChannelPerformance(BaseModel):
+    channel: str
+    unique_users: int
+    lesson_starts: int
+    lesson_completions: int
+    completion_rate: float
+    avg_score: Optional[float]
+
+
+class UserRecord(BaseModel):
+    id: int
+    phone_number: str
+    name: Optional[str]
+    language: str
+    role: str
+    current_day: int
+    completed_days: int
+    is_active: bool
+    created_at: datetime
+    lesson_count: int
+    quiz_count: int
+    conversation_count: int
+
+    class Config:
+        from_attributes = True
+
+
+class EmployerRecord(BaseModel):
+    id: int
+    company_name: str
+    industry: Optional[str]
+    location: Optional[str]
+    company_size: Optional[str]
+    certificates_verified: int
+    api_requests: int
+    is_active: bool
+    is_approved: bool
+    is_verified: bool
+    created_at: datetime
+    last_verification_at: Optional[datetime]
+
+    class Config:
+        from_attributes = True

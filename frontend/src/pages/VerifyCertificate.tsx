@@ -217,7 +217,7 @@ const VerifyCertificate: React.FC = () => {
             Certificate IDs can be found on the certificate document
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            For assistance, contact support@mnair.gov.ng
+            For assistance, contact info@mnair.ng
           </Typography>
         </Box>
       </Container>

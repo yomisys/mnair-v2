@@ -89,6 +89,45 @@ export const analyticsAPI = {
     })
     return response.data
   },
+
+  getLessons: async (language?: string) => {
+    const response = await apiClient.get('/api/v1/analytics/lessons', {
+      params: language ? { language } : {},
+    })
+    return response.data
+  },
+
+  getLanguages: async () => {
+    const response = await apiClient.get('/api/v1/analytics/languages')
+    return response.data
+  },
+
+  getEngagement: async () => {
+    const response = await apiClient.get('/api/v1/analytics/engagement')
+    return response.data
+  },
+
+  getQuiz: async (language?: string) => {
+    const response = await apiClient.get('/api/v1/analytics/quiz', {
+      params: language ? { language } : {},
+    })
+    return response.data
+  },
+
+  getChannels: async () => {
+    const response = await apiClient.get('/api/v1/analytics/channels')
+    return response.data
+  },
+
+  getEmployers: async () => {
+    const response = await apiClient.get('/api/v1/analytics/employers')
+    return response.data
+  },
+
+  getUsers: async () => {
+    const response = await apiClient.get('/api/v1/analytics/users')
+    return response.data
+  },
 }
 
 export const certificatesAPI = {

@@ -59,7 +59,7 @@ class Settings(BaseSettings):
     # Security — no default; startup fails loudly if unset in production
     SESSION_SECRET: str
     RATE_LIMIT_PER_MINUTE: int = 60
-    CORS_ORIGINS: str = "http://localhost:3000,http://localhost:5173"
+    CORS_ORIGINS: str = "http://localhost:3000,http://localhost:5173,http://localhost:3001,http://localhost:3002,http://localhost:3003"
 
     # NDPA Compliance
     DATA_RETENTION_DAYS: int = 90

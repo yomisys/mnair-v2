@@ -5,13 +5,19 @@ Provides KPI metrics and dashboard data for admin users
 
 from __future__ import annotations
 from datetime import date, timedelta
-from typing import List
+from typing import List, Optional
 
 from fastapi import APIRouter, Depends, HTTPException, status, Query
+from sqlalchemy import select, func, case, and_, text
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.database import get_db
 from app.models.user import User
+from app.models.lesson import Lesson
+from app.models.lesson_progress import LessonProgress
+from app.models.quiz_attempt import QuizAttempt
+from app.models.employer import Employer
+from app.models.conversation import Conversation
 from app.schemas.analytics import (
     AnalyticsResponse,
     AnalyticsSummary,
@@ -20,6 +26,13 @@ from app.schemas.analytics import (
     DayStats,
     NetworkStats,
     TrendData,
+    LessonAnalytics,
+    LanguagePerformance,
+    EngagementFunnel,
+    QuizLessonStats,
+    ChannelPerformance,
+    EmployerRecord,
+    UserRecord,
 )
 from app.utils.auth import get_current_admin_user
 from app.analytics.service import AnalyticsService
@@ -246,3 +259,299 @@ async def calculate_analytics(
     analytics = await service.calculate_daily_analytics(target_date)
 
     return analytics
+
+
+@router.get("/lessons", response_model=List[LessonAnalytics])
+async def get_lesson_analytics(
+    language: Optional[str] = Query(None, description="Filter by language code"),
+    current_user: User = Depends(get_current_admin_user),
+    db: AsyncSession = Depends(get_db)
+):
+    """Per-lesson completion rates and quiz performance (Admin only)"""
+    q = (
+        select(
+            Lesson.lesson_id,
+            Lesson.id.label("db_id"),
+            Lesson.day,
+            Lesson.topic,
+            Lesson.language,
+            Lesson.title,
+            func.count(LessonProgress.id).label("started_count"),
+            func.sum(case((LessonProgress.is_completed == True, 1), else_=0)).label("completed_count"),
+            func.avg(LessonProgress.quiz_score).label("avg_score"),
+            func.avg(LessonProgress.quiz_attempts_count).label("avg_attempts"),
+            func.sum(
+                case((and_(LessonProgress.quiz_attempts_count == 1, LessonProgress.is_completed == True), 1), else_=0)
+            ).label("first_pass_count"),
+        )
+        .outerjoin(LessonProgress, Lesson.id == LessonProgress.lesson_id)
+        .group_by(Lesson.id)
+        .order_by(Lesson.day, Lesson.topic, Lesson.language)
+    )
+    if language:
+        q = q.where(Lesson.language == language)
+
+    rows = (await db.execute(q)).all()
+    result = []
+    for r in rows:
+        started = r.started_count or 0
+        completed = r.completed_count or 0
+        first_pass = r.first_pass_count or 0
+        result.append(LessonAnalytics(
+            lesson_id=r.lesson_id,
+            db_id=r.db_id,
+            day=r.day,
+            topic=r.topic,
+            language=r.language,
+            title=r.title,
+            started_count=started,
+            completed_count=completed,
+            completion_rate=round((completed / started * 100) if started > 0 else 0, 1),
+            avg_score=round(r.avg_score, 1) if r.avg_score is not None else None,
+            avg_attempts=round(r.avg_attempts or 0, 2),
+            first_attempt_pass_rate=round((first_pass / started * 100) if started > 0 else 0, 1),
+        ))
+    return result
+
+
+@router.get("/languages", response_model=List[LanguagePerformance])
+async def get_language_performance(
+    current_user: User = Depends(get_current_admin_user),
+    db: AsyncSession = Depends(get_db)
+):
+    """Completion rates and quiz scores broken down by language (Admin only)"""
+    user_q = (
+        select(
+            User.language,
+            func.count(User.id).label("total_users"),
+            func.sum(case((User.completed_days >= 7, 1), else_=0)).label("completed_users"),
+        )
+        .where(User.is_active == True)
+        .group_by(User.language)
+    )
+    user_rows = (await db.execute(user_q)).all()
+
+    quiz_q = (
+        select(
+            User.language,
+            func.avg(QuizAttempt.score).label("avg_score"),
+        )
+        .join(QuizAttempt, User.id == QuizAttempt.user_id)
+        .group_by(User.language)
+    )
+    quiz_rows = {r.language: r.avg_score for r in (await db.execute(quiz_q)).all()}
+
+    result = []
+    for r in user_rows:
+        total = r.total_users or 0
+        completed = r.completed_users or 0
+        dropout = round(((total - completed) / total * 100) if total > 0 else 0, 1)
+        result.append(LanguagePerformance(
+            language=r.language,
+            total_users=total,
+            completed_users=completed,
+            completion_rate=round((completed / total * 100) if total > 0 else 0, 1),
+            avg_quiz_score=round(quiz_rows.get(r.language, 0) or 0, 1),
+            avg_days_to_complete=None,
+            dropout_rate=dropout,
+        ))
+    result.sort(key=lambda x: x.total_users, reverse=True)
+    return result
+
+
+@router.get("/engagement", response_model=List[EngagementFunnel])
+async def get_engagement_funnel(
+    current_user: User = Depends(get_current_admin_user),
+    db: AsyncSession = Depends(get_db)
+):
+    """Learner dropout funnel — how many users reach each day (Admin only)"""
+    total_q = select(func.count(User.id)).where(User.is_active == True)
+    total_users = (await db.execute(total_q)).scalar() or 0
+
+    result = []
+    prev_reached = total_users
+    for day in range(1, 8):
+        reached_q = (
+            select(func.count(User.id))
+            .where(and_(User.is_active == True, User.current_day >= day))
+        )
+        completed_day_q = (
+            select(func.count(User.id))
+            .where(and_(User.is_active == True, User.completed_days >= day))
+        )
+        reached = (await db.execute(reached_q)).scalar() or 0
+        completed_day = (await db.execute(completed_day_q)).scalar() or 0
+        dropoff = round(((prev_reached - reached) / prev_reached * 100) if prev_reached > 0 else 0, 1)
+        cum_dropoff = round(((total_users - reached) / total_users * 100) if total_users > 0 else 0, 1)
+        result.append(EngagementFunnel(
+            day=day,
+            users_reached=reached,
+            users_completed_day=completed_day,
+            dropoff_from_prev=dropoff,
+            cumulative_dropoff=cum_dropoff,
+        ))
+        prev_reached = reached
+    return result
+
+
+@router.get("/quiz", response_model=List[QuizLessonStats])
+async def get_quiz_analytics(
+    language: Optional[str] = Query(None),
+    current_user: User = Depends(get_current_admin_user),
+    db: AsyncSession = Depends(get_db)
+):
+    """Quiz retry patterns and score progression per lesson (Admin only)"""
+    q = (
+        select(
+            Lesson.lesson_id,
+            Lesson.id.label("db_id"),
+            Lesson.day,
+            Lesson.topic,
+            Lesson.language,
+            Lesson.title,
+            func.count(QuizAttempt.id).label("total_attempts"),
+            func.count(func.distinct(QuizAttempt.user_id)).label("unique_takers"),
+            func.avg(case((QuizAttempt.passed == True, 1.0), else_=0.0)).label("pass_rate"),
+            func.avg(QuizAttempt.score).label("avg_score"),
+            func.avg(case((QuizAttempt.attempt_number == 1, QuizAttempt.score), else_=None)).label("avg_a1"),
+            func.avg(case((QuizAttempt.attempt_number == 2, QuizAttempt.score), else_=None)).label("avg_a2"),
+            func.avg(case((QuizAttempt.attempt_number == 3, QuizAttempt.score), else_=None)).label("avg_a3"),
+        )
+        .join(QuizAttempt, Lesson.id == QuizAttempt.lesson_id)
+        .group_by(Lesson.id)
+        .order_by(Lesson.day, Lesson.topic, Lesson.language)
+    )
+    if language:
+        q = q.where(Lesson.language == language)
+
+    rows = (await db.execute(q)).all()
+    result = []
+    for r in rows:
+        unique = r.unique_takers or 0
+        total = r.total_attempts or 0
+        retried = total - unique
+        retry_rate = round((retried / unique * 100) if unique > 0 else 0, 1)
+        result.append(QuizLessonStats(
+            lesson_id=r.lesson_id,
+            db_id=r.db_id,
+            day=r.day,
+            topic=r.topic,
+            language=r.language,
+            title=r.title,
+            total_attempts=total,
+            unique_takers=unique,
+            pass_rate=round((r.pass_rate or 0) * 100, 1),
+            avg_score=round(r.avg_score or 0, 1),
+            retry_rate=retry_rate,
+            avg_score_attempt1=round(r.avg_a1, 1) if r.avg_a1 is not None else None,
+            avg_score_attempt2=round(r.avg_a2, 1) if r.avg_a2 is not None else None,
+            avg_score_attempt3=round(r.avg_a3, 1) if r.avg_a3 is not None else None,
+        ))
+    return result
+
+
+@router.get("/channels", response_model=List[ChannelPerformance])
+async def get_channel_performance(
+    current_user: User = Depends(get_current_admin_user),
+    db: AsyncSession = Depends(get_db)
+):
+    """Performance breakdown by delivery channel (Admin only)"""
+    q = (
+        select(
+            func.coalesce(LessonProgress.channel_used, "unknown").label("channel"),
+            func.count(func.distinct(LessonProgress.user_id)).label("unique_users"),
+            func.count(LessonProgress.id).label("lesson_starts"),
+            func.sum(case((LessonProgress.is_completed == True, 1), else_=0)).label("lesson_completions"),
+            func.avg(LessonProgress.quiz_score).label("avg_score"),
+        )
+        .group_by(text("channel"))
+        .order_by(func.count(LessonProgress.id).desc())
+    )
+    rows = (await db.execute(q)).all()
+    result = []
+    for r in rows:
+        starts = r.lesson_starts or 0
+        completions = r.lesson_completions or 0
+        result.append(ChannelPerformance(
+            channel=r.channel,
+            unique_users=r.unique_users or 0,
+            lesson_starts=starts,
+            lesson_completions=completions,
+            completion_rate=round((completions / starts * 100) if starts > 0 else 0, 1),
+            avg_score=round(r.avg_score, 1) if r.avg_score is not None else None,
+        ))
+    return result
+
+
+@router.get("/employers", response_model=List[EmployerRecord])
+async def get_employer_analytics(
+    current_user: User = Depends(get_current_admin_user),
+    db: AsyncSession = Depends(get_db)
+):
+    """Employer directory with verification activity (Admin only)"""
+    q = select(Employer).order_by(Employer.certificates_verified_count.desc())
+    rows = (await db.execute(q)).scalars().all()
+    return [
+        EmployerRecord(
+            id=e.id,
+            company_name=e.company_name,
+            industry=e.industry,
+            location=e.location,
+            company_size=e.company_size,
+            certificates_verified=e.certificates_verified_count,
+            api_requests=e.api_requests_count,
+            is_active=e.is_active,
+            is_approved=e.is_approved,
+            is_verified=e.is_verified,
+            created_at=e.created_at,
+            last_verification_at=e.last_verification_at,
+        )
+        for e in rows
+    ]
+
+
+@router.get("/users", response_model=List[UserRecord])
+async def get_users_list(
+    current_user: User = Depends(get_current_admin_user),
+    db: AsyncSession = Depends(get_db)
+):
+    """All registered learners with their progress and session counts (Admin only)"""
+    q = (
+        select(
+            User.id,
+            User.phone_number,
+            User.name,
+            User.language,
+            User.role,
+            User.current_day,
+            User.completed_days,
+            User.is_active,
+            User.created_at,
+            func.count(LessonProgress.id.distinct()).label("lesson_count"),
+            func.count(QuizAttempt.id.distinct()).label("quiz_count"),
+            func.count(Conversation.id.distinct()).label("conversation_count"),
+        )
+        .outerjoin(LessonProgress, User.id == LessonProgress.user_id)
+        .outerjoin(QuizAttempt, User.id == QuizAttempt.user_id)
+        .outerjoin(Conversation, User.id == Conversation.user_id)
+        .group_by(User.id)
+        .order_by(User.created_at.desc())
+    )
+    rows = (await db.execute(q)).all()
+    return [
+        UserRecord(
+            id=r.id,
+            phone_number=r.phone_number,
+            name=r.name,
+            language=r.language,
+            role=r.role,
+            current_day=r.current_day,
+            completed_days=r.completed_days,
+            is_active=r.is_active,
+            created_at=r.created_at,
+            lesson_count=r.lesson_count or 0,
+            quiz_count=r.quiz_count or 0,
+            conversation_count=r.conversation_count or 0,
+        )
+        for r in rows
+    ]
