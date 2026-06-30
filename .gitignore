@@ -1,3 +1,9 @@
+# Reports & participant data (NDPA — never commit)
+*.pptx
+*.xlsx
+*cohort*report*
+*feedback*form*
+
 # Environment Variables
 .env
 .env.local
