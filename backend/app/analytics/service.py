@@ -419,13 +419,10 @@ class AnalyticsService:
 
     async def get_latest_analytics(self) -> Optional[Analytics]:
         """
-        Get the most recent analytics record
-
-        Returns:
-            Latest Analytics object or None
+        Get today's analytics record, or None if it hasn't been calculated yet.
+        Always returns today's data so the dashboard is never stale.
         """
         result = await self.db.execute(
-            select(Analytics).order_by(Analytics.date.desc()).limit(1)
+            select(Analytics).where(Analytics.date == date.today())
         )
-
         return result.scalar_one_or_none()

@@ -41,7 +41,7 @@ const UsersReport: React.FC = () => {
   if (loading) return <Box sx={{ display: 'flex', justifyContent: 'center', mt: 8 }}><CircularProgress /></Box>
   if (error) return <Container sx={{ mt: 4 }}><Alert severity="error">{error}</Alert></Container>
 
-  const learners = data.filter(u => u.role !== 'ADMIN')
+  const learners = data.filter(u => u.role.toLowerCase() !== 'admin')
   const filtered = learners.filter(u =>
     !search || u.phone_number.includes(search) || (u.name ?? '').toLowerCase().includes(search.toLowerCase())
   )
@@ -151,7 +151,7 @@ const UsersReport: React.FC = () => {
                       />
                     </TableCell>
                     <TableCell sx={{ whiteSpace: 'nowrap', fontSize: 12 }}>
-                      {format(new Date(u.created_at), 'dd MMM yyyy')}
+                      {format(new Date(u.created_at), 'dd MMM yyyy HH:mm')}
                     </TableCell>
                   </TableRow>
                 ))}
