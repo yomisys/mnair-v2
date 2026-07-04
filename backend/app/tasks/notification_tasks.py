@@ -4,22 +4,31 @@ Handles automated reminders, certificate generation, and user engagement
 """
 
 from __future__ import annotations
-from datetime import datetime, timedelta, date
+from datetime import datetime, timedelta, date, timezone
 import asyncio
 
 from celery import shared_task
 from celery.utils.log import get_task_logger
 
+import redis.asyncio as redis_asyncio
 from sqlalchemy import select, and_
 
 from app.database import AsyncSessionLocal
-from app.models.user import User
+from app.models.user import User, UserRole
 from app.models.certificate import Certificate
 from app.channels.sms import SMSNotifier
+from app.channels.whatsapp import WhatsAppMessageBuilder, WhatsAppWebhookHandler
 from app.certificates.generator import CertificateGenerator
 from app.config import settings
 
 logger = get_task_logger(__name__)
+
+# Free WhatsApp nudge window: a user who went quiet 20-23 hours ago is still
+# inside Meta's 24-hour customer service window, so a free-form message costs
+# nothing. Past 24 hours only paid template messages can reach them.
+WHATSAPP_REMINDER_MIN_HOURS = 20
+WHATSAPP_REMINDER_MAX_HOURS = 23
+WHATSAPP_REMINDER_DEDUPE_TTL = 60 * 60 * 48  # one nudge per inactivity episode
 
 
 @shared_task(name="app.tasks.notification_tasks.send_inactive_user_reminders")
@@ -76,9 +85,16 @@ async def _send_reminders_async():
         failed = 0
         skipped = 0
 
+        now = datetime.now(timezone.utc)
+
         for user in inactive_users:
             try:
-                days_inactive = (datetime.utcnow() - user.last_active_at).days
+                # PostgreSQL returns aware datetimes for timestamptz columns;
+                # SQLite (tests) returns naive. Normalize before arithmetic.
+                last_active = user.last_active_at
+                if last_active.tzinfo is None:
+                    last_active = last_active.replace(tzinfo=timezone.utc)
+                days_inactive = (now - last_active).days
 
                 # Don't spam - only send if 3, 7, or 14 days inactive
                 if days_inactive in [3, 7, 14]:
@@ -101,6 +117,111 @@ async def _send_reminders_async():
             "failed": failed,
             "skipped": skipped,
         }
+
+
+@shared_task(name="app.tasks.notification_tasks.send_whatsapp_window_reminders")
+def send_whatsapp_window_reminders():
+    """
+    Nudge WhatsApp learners who went quiet 20-23 hours ago — for free.
+
+    Runs hourly. Because the user is still inside Meta's 24-hour customer
+    service window, we can send a free-form interactive message (no paid
+    template needed) with a Continue button that drops them back into their
+    lesson. Redis SET NX dedupe keyed on the inactivity episode guarantees
+    at most one nudge per drop-off even though the 3-hour band spans
+    multiple hourly runs.
+    """
+    try:
+        logger.info("Starting WhatsApp window reminder task")
+
+        result = asyncio.run(_send_whatsapp_window_reminders_async())
+
+        logger.info(
+            f"WhatsApp nudges: {result['sent']} sent, {result['failed']} failed, "
+            f"{result['skipped']} already nudged"
+        )
+
+        return result
+
+    except Exception as e:
+        logger.error(f"WhatsApp window reminder task failed: {e}")
+        raise
+
+
+async def _send_whatsapp_window_reminders_async():
+    """Helper function to send WhatsApp window nudges"""
+    now = datetime.utcnow()
+    window_start = now - timedelta(hours=WHATSAPP_REMINDER_MAX_HOURS)
+    window_end = now - timedelta(hours=WHATSAPP_REMINDER_MIN_HOURS)
+
+    redis_client = redis_asyncio.from_url(settings.REDIS_URL)
+
+    try:
+        async with AsyncSessionLocal() as db:
+            handler = WhatsAppWebhookHandler(settings, db)
+
+            result = await db.execute(
+                select(User).where(
+                    and_(
+                        User.role == UserRole.LEARNER,
+                        User.preferred_channel == "whatsapp",
+                        User.is_active == True,
+                        User.consent_given == True,
+                        User.completed_days < 7,
+                        User.last_active_at >= window_start,
+                        User.last_active_at < window_end,
+                    )
+                )
+            )
+            eligible_users = result.scalars().all()
+
+            sent = 0
+            failed = 0
+            skipped = 0
+
+            for user in eligible_users:
+                try:
+                    # One nudge per inactivity episode: the key embeds
+                    # last_active_at, so re-engaging and dropping off again
+                    # makes the user eligible for a fresh nudge.
+                    episode = int(user.last_active_at.timestamp())
+                    dedupe_key = f"mnair:wa_reminder:{user.id}:{episode}"
+
+                    is_first = await redis_client.set(
+                        dedupe_key, "1",
+                        nx=True,
+                        ex=WHATSAPP_REMINDER_DEDUPE_TTL,
+                    )
+                    if not is_first:
+                        skipped += 1
+                        continue
+
+                    days_left = max(7 - user.completed_days, 1)
+                    message = WhatsAppMessageBuilder.build_reminder_message(
+                        user.language, user.current_day, days_left
+                    )
+
+                    success = await handler.send_whatsapp_message(user.phone_number, message)
+                    if success:
+                        sent += 1
+                    else:
+                        # Release the dedupe key so the next hourly run retries
+                        await redis_client.delete(dedupe_key)
+                        failed += 1
+
+                except Exception as e:
+                    logger.error(f"Failed to nudge user {user.id}: {e}")
+                    failed += 1
+
+            return {
+                "status": "success",
+                "total_eligible": len(eligible_users),
+                "sent": sent,
+                "failed": failed,
+                "skipped": skipped,
+            }
+    finally:
+        await redis_client.close()
 
 
 @shared_task(name="app.tasks.notification_tasks.auto_generate_certificates")

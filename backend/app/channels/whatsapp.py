@@ -261,6 +261,87 @@ class WhatsAppMessageBuilder:
             }
         }
 
+    # Localized copy for the inactivity nudge. Body text per language plus a
+    # button title (WhatsApp caps button titles at 20 chars).
+    REMINDER_COPY = {
+        Language.ENGLISH: {
+            "body": (
+                "👋 You're doing great! Day {day} of your FREE AI course is waiting for you.\n\n"
+                "🎓 Only {days_left} day{plural} left to earn your MNAIR certificate.\n\n"
+                "Tap Continue to pick up where you stopped."
+            ),
+            "button": "Continue",
+        },
+        Language.PIDGIN: {
+            "body": (
+                "👋 You dey do well! Day {day} of your FREE AI course dey wait for you.\n\n"
+                "🎓 Na only {days_left} day{plural} remain make you collect your MNAIR certificate.\n\n"
+                "Press Continue make you carry on."
+            ),
+            "button": "Continue",
+        },
+        Language.HAUSA: {
+            "body": (
+                "👋 Kana kokari sosai! Rana ta {day} na kwas dinka na AI KYAUTA tana jiranka.\n\n"
+                "🎓 Sauran rana {days_left} kacal ka samu takardar shaidar MNAIR.\n\n"
+                "Danna Ci gaba don ci gaba da karatu."
+            ),
+            "button": "Ci gaba",
+        },
+        Language.YORUBA: {
+            "body": (
+                "👋 O ń ṣe dáadáa! Ọjọ́ {day} nínú ẹ̀kọ́ AI ỌFẸ́ rẹ ń dúró dè ọ́.\n\n"
+                "🎓 Ọjọ́ {days_left} péré ló kù kí o gba ìwé ẹ̀rí MNAIR rẹ.\n\n"
+                "Tẹ Tẹ̀síwájú láti bẹ̀rẹ̀ láti ibi tí o dúró sí."
+            ),
+            "button": "Tẹ̀síwájú",
+        },
+        Language.IGBO: {
+            "body": (
+                "👋 Ị na-eme nke ọma! Ụbọchị {day} nke ọzụzụ AI EFU gị na-echere gị.\n\n"
+                "🎓 Ọ bụ naanị ụbọchị {days_left} fọdụrụ ka ị nweta asambodo MNAIR gị.\n\n"
+                "Pịa Gaa n'ihu ka ị malite ebe ị kwụsịrị."
+            ),
+            "button": "Gaa n'ihu",
+        },
+    }
+
+    @staticmethod
+    def build_reminder_message(language: Language, current_day: int, days_left: int) -> Dict[str, Any]:
+        """
+        Build the inactivity nudge sent inside Meta's free 24h service window.
+        Free-form interactive message (no template needed) with a Continue button
+        that re-enters the conversation flow via the continue_learning reply id.
+        """
+        copy = WhatsAppMessageBuilder.REMINDER_COPY.get(
+            language, WhatsAppMessageBuilder.REMINDER_COPY[Language.ENGLISH]
+        )
+        body = copy["body"].format(
+            day=current_day,
+            days_left=days_left,
+            plural="s" if days_left != 1 else "",
+        )
+
+        return {
+            "messaging_product": "whatsapp",
+            "type": "interactive",
+            "interactive": {
+                "type": "button",
+                "body": {"text": body},
+                "action": {
+                    "buttons": [
+                        {
+                            "type": "reply",
+                            "reply": {
+                                "id": "continue_learning",
+                                "title": copy["button"]
+                            }
+                        }
+                    ]
+                }
+            }
+        }
+
     @staticmethod
     def build_progress_message(current_day: int, lessons_completed: int, total_lessons: int, completion_pct: float) -> Dict[str, Any]:
         """Build progress summary message"""
@@ -444,6 +525,11 @@ class WhatsAppWebhookHandler:
         # Get or create user
         user = await self.get_or_create_user(phone_number)
 
+        # Track activity — drives reminder eligibility and marks the start of
+        # Meta's 24h customer service window (free-form replies allowed)
+        user.last_active_at = datetime.utcnow()
+        await self.db.commit()
+
         # Get or create conversation
         conversation = await self.get_or_create_conversation(user.id, phone_number)
 
@@ -463,6 +549,18 @@ class WhatsAppWebhookHandler:
         # Handle YES/NO confirmation for language change
         if message_text.upper() in ("YES", "NO") and conversation.context.get("confirming_language_change"):
             await self.handle_language_change_confirmation(user, conversation, message_text.upper())
+            return
+
+        # Global command: resume learning (typed CONTINUE or reminder button tap)
+        if (
+            (message_text.upper() == "CONTINUE" or interactive_id == "continue_learning")
+            and conversation.current_state in (
+                ConversationState.IN_LESSON,
+                ConversationState.AWAITING_QUIZ,
+                ConversationState.DAY_COMPLETE,
+            )
+        ):
+            await self.handle_continue(user, conversation)
             return
 
         # Route to state handler
@@ -563,6 +661,38 @@ class WhatsAppWebhookHandler:
                 "type": "text",
                 "text": {"body": "✅ Language change cancelled. Continuing in your current language."}
             })
+
+    async def handle_continue(self, user: User, conversation: Conversation) -> None:
+        """
+        Resume the user's current step regardless of where they stopped.
+        Entry point for the reminder nudge's Continue button and typed CONTINUE.
+        """
+        if conversation.current_state == ConversationState.AWAITING_QUIZ:
+            lesson_id = conversation.context.get("current_lesson_id")
+            current_question = conversation.context.get("current_question", 0)
+            if lesson_id:
+                result = await self.db.execute(select(Lesson).where(Lesson.id == lesson_id))
+                lesson = result.scalar_one_or_none()
+                if lesson:
+                    await self.send_whatsapp_message(
+                        user.phone_number,
+                        self.message_builder.build_quiz_message(lesson, current_question)
+                    )
+                    return
+            # Corrupted context — fall back to lesson delivery
+            conversation.current_state = ConversationState.IN_LESSON
+            conversation.context = {}
+            await self.db.commit()
+            await self.deliver_next_lesson(user, conversation)
+        elif conversation.current_state == ConversationState.DAY_COMPLETE:
+            if user.current_day < 7:
+                await self.handle_day_complete(user, conversation, "NEXT")
+            else:
+                await self.handle_day_complete(user, conversation, "CERTIFICATE")
+        else:
+            # IN_LESSON: get_next_lesson returns the first uncompleted lesson,
+            # so this re-sends the lesson the user stopped at
+            await self.deliver_next_lesson(user, conversation)
 
     async def deliver_next_lesson(self, user: User, conversation: Conversation) -> None:
         """Deliver the next lesson to user"""

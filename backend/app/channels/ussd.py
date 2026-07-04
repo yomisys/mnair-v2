@@ -248,6 +248,10 @@ class USSDHandler:
         user = await self.get_or_create_user(phone_number)
         session["user_id"] = user.id
 
+        # Track activity — drives inactive-user reminder eligibility
+        user.last_active_at = datetime.utcnow()
+        await self.db.commit()
+
         # Route to appropriate handler
         state = session.get("state", USSDMenuState.MAIN_MENU)
 
