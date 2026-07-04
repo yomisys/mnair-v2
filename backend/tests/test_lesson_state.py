@@ -58,7 +58,7 @@ async def test_get_next_lesson_first_day(test_db: AsyncSession):
     next_lesson = await manager.get_next_lesson(user.id, "en")
 
     assert next_lesson is not None
-    assert next_lesson.topic == "ai_ethics"  # First alphabetically
+    assert next_lesson.topic == "what_is_ai"  # First in canonical TOPIC_ORDER
     assert next_lesson.day == 1
 
 
@@ -95,9 +95,9 @@ async def test_get_next_lesson_with_progress(test_db: AsyncSession):
 
     await test_db.flush()
 
-    # Mark first two lessons as completed (alphabetically: ai_ethics and ai_in_nigeria)
+    # Mark first two lessons as completed (canonical order: what_is_ai, how_ai_works)
     for lesson in lessons:
-        if lesson.topic not in ["ai_ethics", "ai_in_nigeria"]:
+        if lesson.topic not in ["what_is_ai", "how_ai_works"]:
             continue
         progress = LessonProgress(
             user_id=user.id,
@@ -115,7 +115,7 @@ async def test_get_next_lesson_with_progress(test_db: AsyncSession):
     next_lesson = await manager.get_next_lesson(user.id, "en")
 
     assert next_lesson is not None
-    assert next_lesson.topic == "ai_tools"  # After completing first 2
+    assert next_lesson.topic == "ai_in_nigeria"  # Third in canonical TOPIC_ORDER
 
 
 @pytest.mark.asyncio

@@ -17,6 +17,7 @@ import {
   TrendingUp as TrendingIcon,
   Business as BusinessIcon,
   CheckCircle as CheckIcon,
+  NotificationsActive as NudgeIcon,
 } from '@mui/icons-material'
 import {
   Chart as ChartJS,
@@ -33,7 +34,7 @@ import {
 } from 'chart.js'
 import { Line, Bar, Doughnut } from 'react-chartjs-2'
 import { analyticsAPI } from '../services/api'
-import { format, subDays } from 'date-fns'
+import { format } from 'date-fns'
 
 ChartJS.register(
   CategoryScale,
@@ -50,7 +51,18 @@ ChartJS.register(
 
 const GREEN = '#1B8A4E'
 const LIGHT_GREEN = '#4CAF50'
+const BLUE = '#1976D2'
 const COLORS = ['#1B8A4E', '#4CAF50', '#81C784', '#A5D6A7', '#C8E6C9']
+
+interface ReminderStats {
+  window_days: number
+  total_sent: number
+  total_failed: number
+  total_re_engaged: number
+  re_engagement_rate: number
+  by_channel: { channel: string; sent: number; failed: number; re_engaged: number; re_engagement_rate: number }[]
+  daily: { date: string; sent: number; failed: number; re_engaged: number }[]
+}
 
 interface DashboardData {
   summary: {
@@ -122,19 +134,33 @@ const LANGUAGE_NAMES: Record<string, string> = {
 
 const Dashboard: React.FC = () => {
   const [data, setData] = useState<DashboardData | null>(null)
+  const [reminders, setReminders] = useState<ReminderStats | null>(null)
+  const [remindersError, setRemindersError] = useState(false)
   const [isLoading, setIsLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
 
   useEffect(() => {
     const load = async () => {
-      try {
-        const result = await analyticsAPI.getDashboard()
-        setData(result)
-      } catch (err: any) {
-        setError(err.response?.data?.detail || 'Failed to load dashboard data')
-      } finally {
-        setIsLoading(false)
+      // Load independently: a reminders failure must never blank the dashboard
+      const [dashboardResult, remindersResult] = await Promise.allSettled([
+        analyticsAPI.getDashboard(),
+        analyticsAPI.getReminders(30),
+      ])
+
+      if (dashboardResult.status === 'fulfilled') {
+        setData(dashboardResult.value)
+      } else {
+        const err: any = dashboardResult.reason
+        setError(err?.response?.data?.detail || 'Failed to load dashboard data')
       }
+
+      if (remindersResult.status === 'fulfilled') {
+        setReminders(remindersResult.value)
+      } else {
+        setRemindersError(true)
+      }
+
+      setIsLoading(false)
     }
     load()
   }, [])
@@ -234,6 +260,29 @@ const Dashboard: React.FC = () => {
     }],
   }
 
+  // Re-engagement nudges: daily sent vs came-back (validated palette: green/blue)
+  const reminderLabels = (reminders?.daily ?? []).map(d => format(new Date(d.date), 'MMM d'))
+  const reminderChart = {
+    labels: reminderLabels,
+    datasets: [
+      {
+        label: 'Nudges sent',
+        data: (reminders?.daily ?? []).map(d => d.sent),
+        backgroundColor: GREEN,
+        borderRadius: 4,
+        maxBarThickness: 24,
+      },
+      {
+        label: 'Came back',
+        data: (reminders?.daily ?? []).map(d => d.re_engaged),
+        backgroundColor: BLUE,
+        borderRadius: 4,
+        maxBarThickness: 24,
+      },
+    ],
+  }
+  const reminderTotalFailed = reminders?.total_failed ?? 0
+
   const lineOptions = {
     responsive: true,
     plugins: { legend: { display: false } },
@@ -313,6 +362,72 @@ const Dashboard: React.FC = () => {
             <CardContent>
               <Typography variant="h6" fontWeight={600} gutterBottom>Completion Rate Trend</Typography>
               <Line data={completionChart} options={lineOptions} />
+            </CardContent>
+          </Card>
+        </Grid>
+      </Grid>
+
+      {/* Re-engagement nudges */}
+      <Grid container spacing={3} sx={{ mb: 3 }}>
+        <Grid item xs={12}>
+          <Card>
+            <CardContent>
+              <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: 1 }}>
+                <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+                  <NudgeIcon sx={{ color: GREEN }} />
+                  <Typography variant="h6" fontWeight={600}>Re-engagement Nudges</Typography>
+                  <Chip label="last 30 days" size="small" variant="outlined" />
+                </Box>
+                {reminders && reminders.total_sent > 0 && (
+                  <Box sx={{ display: 'flex', gap: 3 }}>
+                    <Typography variant="body2" color="text.secondary">
+                      Sent: <strong>{reminders.total_sent.toLocaleString()}</strong>
+                    </Typography>
+                    <Typography variant="body2" color="text.secondary">
+                      Came back: <strong>{reminders.total_re_engaged.toLocaleString()}</strong>
+                      {' '}({reminders.re_engagement_rate.toFixed(1)}%)
+                    </Typography>
+                    {reminderTotalFailed > 0 && (
+                      <Typography variant="body2" color="error">
+                        Failed: <strong>{reminderTotalFailed.toLocaleString()}</strong>
+                      </Typography>
+                    )}
+                  </Box>
+                )}
+              </Box>
+              <Typography variant="caption" color="text.secondary">
+                Free WhatsApp reminders sent to learners who paused mid-course, and how many resumed afterwards
+              </Typography>
+              {remindersError ? (
+                <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: 120 }}>
+                  <Typography variant="body2" color="text.secondary">
+                    Reminder stats unavailable right now
+                  </Typography>
+                </Box>
+              ) : !reminders || reminders.total_sent + reminders.total_failed === 0 ? (
+                <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: 120 }}>
+                  <Typography variant="body2" color="text.secondary">
+                    No nudges sent yet — reminders go out automatically when a learner pauses for a day
+                  </Typography>
+                </Box>
+              ) : (
+                <Box sx={{ mt: 1 }}>
+                  <Bar
+                    data={reminderChart}
+                    options={{
+                      responsive: true,
+                      plugins: {
+                        legend: { position: 'bottom' as const, labels: { padding: 12, font: { size: 12 } } },
+                      },
+                      scales: {
+                        y: { beginAtZero: true, ticks: { stepSize: 1 }, grid: { color: '#f0f0f0' } },
+                        x: { grid: { display: false } },
+                      },
+                    }}
+                    height={70}
+                  />
+                </Box>
+              )}
             </CardContent>
           </Card>
         </Grid>

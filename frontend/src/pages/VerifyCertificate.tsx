@@ -119,7 +119,7 @@ const VerifyCertificate: React.FC = () => {
                   icon={<CheckIcon />}
                   label="Valid Certificate"
                   color="success"
-                  size="large"
+                  size="medium"
                   sx={{ px: 2, py: 3, fontSize: '1rem' }}
                 />
               </Box>

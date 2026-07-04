@@ -1,4 +1,4 @@
-import axios, { AxiosInstance, AxiosRequestConfig } from 'axios'
+import axios, { AxiosInstance } from 'axios'
 
 const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:8000'
 
@@ -104,6 +104,13 @@ export const analyticsAPI = {
 
   getEngagement: async () => {
     const response = await apiClient.get('/api/v1/analytics/engagement')
+    return response.data
+  },
+
+  getReminders: async (days = 30) => {
+    const response = await apiClient.get('/api/v1/analytics/reminders', {
+      params: { days },
+    })
     return response.data
   },
 

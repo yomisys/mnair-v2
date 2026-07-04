@@ -198,16 +198,20 @@ async def get_user_progress(
     )
     avg_score = avg_score_result.scalar()
 
-    # Calculate days active (days since registration)
-    from datetime import datetime
-    days_active = (datetime.utcnow() - current_user.created_at).days + 1
+    # Calculate days active (days since registration).
+    # PostgreSQL returns aware datetimes for timestamptz; normalize both sides.
+    from datetime import datetime, timezone
+    created_at = current_user.created_at
+    if created_at.tzinfo is None:
+        created_at = created_at.replace(tzinfo=timezone.utc)
+    days_active = (datetime.now(timezone.utc) - created_at).days + 1
 
     # Get last lesson date
     last_lesson_result = await db.execute(
-        select(LessonProgress.completion_date).where(
+        select(LessonProgress.completed_at).where(
             LessonProgress.user_id == current_user.id,
             LessonProgress.is_completed == True
-        ).order_by(LessonProgress.completion_date.desc()).limit(1)
+        ).order_by(LessonProgress.completed_at.desc()).limit(1)
     )
     last_lesson_date = last_lesson_result.scalar_one_or_none()
 
@@ -238,15 +242,17 @@ async def update_user_language(
     Args:
         language: New language (en, pidgin, hausa, yoruba, igbo)
     """
-    allowed_languages = ["en", "pidgin", "hausa", "yoruba", "igbo"]
+    from app.models.user import Language
+    from app.schemas.auth import LANGUAGE_INPUT_TO_CODE
 
-    if language.lower() not in allowed_languages:
+    code = LANGUAGE_INPUT_TO_CODE.get(language.lower())
+    if code is None:
         raise HTTPException(
             status_code=status.HTTP_400_BAD_REQUEST,
-            detail=f"Invalid language. Must be one of: {', '.join(allowed_languages)}"
+            detail="Invalid language. Must be one of: en, pidgin, hausa, yoruba, igbo"
         )
 
-    current_user.language = language.lower()
+    current_user.language = Language(code)
     await db.commit()
     await db.refresh(current_user)
 

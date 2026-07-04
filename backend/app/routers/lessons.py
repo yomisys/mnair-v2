@@ -244,8 +244,8 @@ async def submit_quiz(
         correct_count=quiz_result.correct_count,
         total_questions=5,
         passed=quiz_result.passed,
-        attempts_used=quiz_result.attempts_used,
-        attempts_remaining=3 - quiz_result.attempts_used,
+        attempts_used=quiz_result.attempt_number,
+        attempts_remaining=max(3 - quiz_result.attempt_number, 0),
         lesson_completed=lesson_completed,
         feedback=feedback
     )
@@ -303,13 +303,13 @@ async def get_day_progress(
 
     # Get completion date (latest lesson completion for this day)
     completion_date_result = await db.execute(
-        select(LessonProgress.completion_date).where(
+        select(LessonProgress.completed_at).where(
             and_(
                 LessonProgress.user_id == current_user.id,
                 LessonProgress.lesson_id.in_(lesson_ids),
                 LessonProgress.is_completed == True
             )
-        ).order_by(LessonProgress.completion_date.desc()).limit(1)
+        ).order_by(LessonProgress.completed_at.desc()).limit(1)
     )
     completion_date = completion_date_result.scalar_one_or_none()
 

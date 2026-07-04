@@ -4,7 +4,7 @@ Provides KPI metrics and dashboard data for admin users
 """
 
 from __future__ import annotations
-from datetime import date, timedelta
+from datetime import date, datetime, timedelta
 from typing import List, Optional
 
 from fastapi import APIRouter, Depends, HTTPException, status, Query
@@ -18,6 +18,7 @@ from app.models.lesson_progress import LessonProgress
 from app.models.quiz_attempt import QuizAttempt
 from app.models.employer import Employer
 from app.models.conversation import Conversation
+from app.models.reminder_log import ReminderLog
 from app.schemas.analytics import (
     AnalyticsResponse,
     AnalyticsSummary,
@@ -33,6 +34,9 @@ from app.schemas.analytics import (
     ChannelPerformance,
     EmployerRecord,
     UserRecord,
+    ReminderStats,
+    ReminderChannelStats,
+    ReminderDailyStats,
 )
 from app.utils.auth import get_current_admin_user
 from app.analytics.service import AnalyticsService
@@ -481,6 +485,100 @@ async def get_channel_performance(
             avg_score=round(r.avg_score, 1) if r.avg_score is not None else None,
         ))
     return result
+
+
+@router.get("/reminders", response_model=ReminderStats)
+async def get_reminder_analytics(
+    days: int = Query(30, ge=1, le=365, description="Lookback window in days"),
+    current_user: User = Depends(get_current_admin_user),
+    db: AsyncSession = Depends(get_db)
+):
+    """
+    Re-engagement nudge analytics (Admin only)
+
+    A nudge counts as re-engaged when the user's last_active_at is later
+    than the nudge's sent_at — i.e. they came back after we reminded them.
+    """
+    since = datetime.utcnow() - timedelta(days=days)
+
+    re_engaged_case = case(
+        (
+            and_(
+                ReminderLog.status == "sent",
+                User.last_active_at.isnot(None),
+                User.last_active_at > ReminderLog.sent_at,
+            ),
+            1,
+        ),
+        else_=0,
+    )
+    sent_case = case((ReminderLog.status == "sent", 1), else_=0)
+    failed_case = case((ReminderLog.status == "failed", 1), else_=0)
+
+    # Daily series
+    day_col = func.date(ReminderLog.sent_at)
+    daily_rows = (await db.execute(
+        select(
+            day_col.label("day"),
+            func.sum(sent_case).label("sent"),
+            func.sum(failed_case).label("failed"),
+            func.sum(re_engaged_case).label("re_engaged"),
+        )
+        .join(User, ReminderLog.user_id == User.id)
+        .where(ReminderLog.sent_at >= since)
+        .group_by(day_col)
+        .order_by(day_col)
+    )).all()
+
+    daily = [
+        ReminderDailyStats(
+            date=r.day,
+            sent=r.sent or 0,
+            failed=r.failed or 0,
+            re_engaged=r.re_engaged or 0,
+        )
+        for r in daily_rows
+    ]
+
+    # Channel breakdown
+    channel_rows = (await db.execute(
+        select(
+            ReminderLog.channel,
+            func.sum(sent_case).label("sent"),
+            func.sum(failed_case).label("failed"),
+            func.sum(re_engaged_case).label("re_engaged"),
+        )
+        .join(User, ReminderLog.user_id == User.id)
+        .where(ReminderLog.sent_at >= since)
+        .group_by(ReminderLog.channel)
+        .order_by(ReminderLog.channel)
+    )).all()
+
+    by_channel = []
+    for r in channel_rows:
+        sent = r.sent or 0
+        re_engaged = r.re_engaged or 0
+        by_channel.append(ReminderChannelStats(
+            channel=r.channel,
+            sent=sent,
+            failed=r.failed or 0,
+            re_engaged=re_engaged,
+            re_engagement_rate=round((re_engaged / sent * 100) if sent > 0 else 0, 1),
+        ))
+
+    total_sent = sum(c.sent for c in by_channel)
+    total_failed = sum(c.failed for c in by_channel)
+    total_re_engaged = sum(c.re_engaged for c in by_channel)
+
+    return ReminderStats(
+        window_days=days,
+        total_sent=total_sent,
+        total_failed=total_failed,
+        total_re_engaged=total_re_engaged,
+        re_engagement_rate=round((total_re_engaged / total_sent * 100) if total_sent > 0 else 0, 1),
+        by_channel=by_channel,
+        daily=daily,
+    )
 
 
 @router.get("/employers", response_model=List[EmployerRecord])

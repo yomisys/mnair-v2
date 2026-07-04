@@ -259,13 +259,14 @@ class TestLessonsAPI:
 
         # Create lesson
         lesson = Lesson(
+            lesson_id="day1_what_is_ai_en",
             topic="what_is_ai",
             day=1,
             language="en",
             title="What is AI?",
             content="AI is...",
             quiz=[{"question": "Q1", "options": ["A", "B", "C", "D"], "correct": 0}] * 5,
-            reading_time_minutes=5,
+            estimated_duration_minutes=5,
             word_count=300
         )
         test_db.add(lesson)
@@ -301,13 +302,14 @@ class TestLessonsAPI:
 
         # Create lesson
         lesson = Lesson(
+            lesson_id="day1_what_is_ai_en",
             topic="what_is_ai",
             day=1,
             language="en",
             title="What is AI?",
             content="AI is...",
             quiz=[{"question": "Q1", "options": ["A", "B", "C", "D"], "correct": 0}] * 5,
-            reading_time_minutes=5,
+            estimated_duration_minutes=5,
             word_count=300
         )
         test_db.add(lesson)
@@ -346,13 +348,14 @@ class TestLessonsAPI:
         topics = ["what_is_ai", "how_ai_works", "ai_in_nigeria"]
         for topic in topics:
             lesson = Lesson(
+                lesson_id=f"day1_{topic}_en",
                 topic=topic,
                 day=1,
                 language="en",
                 title=f"Lesson: {topic}",
                 content=f"Content for {topic}",
                 quiz=[{"question": "Q1", "options": ["A", "B", "C", "D"], "correct": 0}] * 5,
-                reading_time_minutes=5,
+                estimated_duration_minutes=5,
                 word_count=300
             )
             test_db.add(lesson)
@@ -388,6 +391,7 @@ class TestLessonsAPI:
 
         # Create lesson with quiz
         lesson = Lesson(
+            lesson_id="day1_what_is_ai_en",
             topic="what_is_ai",
             day=1,
             language="en",
@@ -400,7 +404,7 @@ class TestLessonsAPI:
                 {"question": "Q4", "options": ["A", "B", "C", "D"], "correct": 3},
                 {"question": "Q5", "options": ["A", "B", "C", "D"], "correct": 0},
             ],
-            reading_time_minutes=5,
+            estimated_duration_minutes=5,
             word_count=300
         )
         test_db.add(lesson)

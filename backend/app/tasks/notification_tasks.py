@@ -16,6 +16,7 @@ from sqlalchemy import select, and_
 from app.database import AsyncSessionLocal
 from app.models.user import User, UserRole
 from app.models.certificate import Certificate
+from app.models.reminder_log import ReminderLog
 from app.channels.sms import SMSNotifier
 from app.channels.whatsapp import WhatsAppMessageBuilder, WhatsAppWebhookHandler
 from app.certificates.generator import CertificateGenerator
@@ -103,12 +104,20 @@ async def _send_reminders_async():
                         sent += 1
                     else:
                         failed += 1
+                    db.add(ReminderLog(
+                        user_id=user.id,
+                        channel="sms",
+                        status="sent" if success else "failed",
+                        current_day=user.current_day,
+                    ))
                 else:
                     skipped += 1
 
             except Exception as e:
                 logger.error(f"Failed to send reminder to user {user.id}: {e}")
                 failed += 1
+
+        await db.commit()
 
         return {
             "status": "success",
@@ -209,9 +218,18 @@ async def _send_whatsapp_window_reminders_async():
                         await redis_client.delete(dedupe_key)
                         failed += 1
 
+                    db.add(ReminderLog(
+                        user_id=user.id,
+                        channel="whatsapp",
+                        status="sent" if success else "failed",
+                        current_day=user.current_day,
+                    ))
+
                 except Exception as e:
                     logger.error(f"Failed to nudge user {user.id}: {e}")
                     failed += 1
+
+            await db.commit()
 
             return {
                 "status": "success",
@@ -403,7 +421,7 @@ async def _send_day_completion_async():
                             LessonProgress.user_id == user.id,
                             LessonProgress.lesson_id.in_(lesson_ids),
                             LessonProgress.is_completed == True,
-                            LessonProgress.completion_date >= today_start,
+                            LessonProgress.completed_at >= today_start,
                         )
                     )
                 )

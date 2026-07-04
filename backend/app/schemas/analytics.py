@@ -217,3 +217,34 @@ class EmployerRecord(BaseModel):
 
     class Config:
         from_attributes = True
+
+
+class ReminderChannelStats(BaseModel):
+    """Reminder outcomes for one delivery channel"""
+
+    channel: str
+    sent: int
+    failed: int
+    re_engaged: int
+    re_engagement_rate: float = Field(..., description="% of sent nudges where the user came back")
+
+
+class ReminderDailyStats(BaseModel):
+    """Reminder outcomes for one calendar day"""
+
+    date: date
+    sent: int
+    failed: int
+    re_engaged: int
+
+
+class ReminderStats(BaseModel):
+    """Re-engagement nudge analytics for the dashboard"""
+
+    window_days: int
+    total_sent: int
+    total_failed: int
+    total_re_engaged: int
+    re_engagement_rate: float = Field(..., description="% of sent nudges where the user came back")
+    by_channel: List[ReminderChannelStats]
+    daily: List[ReminderDailyStats]

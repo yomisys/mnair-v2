@@ -26,7 +26,7 @@ class LessonResponse(BaseModel):
     title: str
     content: str
     quiz: List[QuizQuestionResponse]
-    reading_time_minutes: int
+    estimated_duration_minutes: int
     word_count: int
     created_at: datetime
 

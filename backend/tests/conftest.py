@@ -55,7 +55,20 @@ async def test_db():
     )
 
     async with async_session() as session:
-        yield session
+        # Route the FastAPI app's DB dependency to this session so route-level
+        # tests (AsyncClient(app=app)) hit the in-memory test DB — never the
+        # real dev/prod database configured in .env
+        from app.main import app
+        from app.database import get_db
+
+        async def _override_get_db():
+            yield session
+
+        app.dependency_overrides[get_db] = _override_get_db
+        try:
+            yield session
+        finally:
+            app.dependency_overrides.pop(get_db, None)
 
     # Drop all tables
     async with engine.begin() as conn:

@@ -356,3 +356,108 @@ async def test_sms_reminder_task_handles_naive_and_aware_datetimes(task_session,
     assert result["sent"] == 1
     assert result["failed"] == 0
     assert sms_calls == [("+2348030000001", 3)]
+
+
+# ---------------------------------------------------------------------------
+# Reminder logging + analytics endpoint
+# ---------------------------------------------------------------------------
+
+@pytest.mark.asyncio
+async def test_window_reminder_writes_reminder_log(task_session, fake_redis, capture_sends):
+    """Every nudge attempt is recorded for the dashboard"""
+    from app.models.reminder_log import ReminderLog
+
+    user = make_learner("+2348040000001", hours_inactive=21, current_day=3)
+    task_session.add(user)
+    await task_session.commit()
+
+    await notification_tasks._send_whatsapp_window_reminders_async()
+
+    logs = (await task_session.execute(select(ReminderLog))).scalars().all()
+    assert len(logs) == 1
+    assert logs[0].channel == "whatsapp"
+    assert logs[0].status == "sent"
+    assert logs[0].current_day == 3
+    assert logs[0].sent_at is not None
+
+
+@pytest.mark.asyncio
+async def test_window_reminder_logs_failures(task_session, fake_redis, monkeypatch):
+    """Failed sends are recorded too, so the dashboard shows delivery problems"""
+    from app.models.reminder_log import ReminderLog
+
+    async def failing_send(self, phone_number, message):
+        return False
+
+    monkeypatch.setattr(WhatsAppWebhookHandler, "send_whatsapp_message", failing_send)
+
+    user = make_learner("+2348040000002", hours_inactive=21)
+    task_session.add(user)
+    await task_session.commit()
+
+    await notification_tasks._send_whatsapp_window_reminders_async()
+
+    logs = (await task_session.execute(select(ReminderLog))).scalars().all()
+    assert len(logs) == 1
+    assert logs[0].status == "failed"
+
+
+@pytest.mark.asyncio
+async def test_reminder_analytics_endpoint(test_db):
+    """Aggregation: totals, channel breakdown, daily series, re-engagement rate"""
+    from app.models.reminder_log import ReminderLog
+    from app.routers.analytics import get_reminder_analytics
+
+    # Two nudged users: one came back after the nudge, one never returned
+    returned = make_learner("+2348050000001")
+    ghosted = make_learner("+2348050000002")
+    test_db.add_all([returned, ghosted])
+    await test_db.commit()
+    await test_db.refresh(returned)
+    await test_db.refresh(ghosted)
+
+    nudge_time = datetime.utcnow() - timedelta(hours=10)
+    returned.last_active_at = datetime.utcnow() - timedelta(hours=2)   # after nudge
+    ghosted.last_active_at = datetime.utcnow() - timedelta(hours=31)   # before nudge
+
+    test_db.add_all([
+        ReminderLog(user_id=returned.id, channel="whatsapp", status="sent",
+                    current_day=2, sent_at=nudge_time),
+        ReminderLog(user_id=ghosted.id, channel="whatsapp", status="sent",
+                    current_day=4, sent_at=nudge_time),
+        ReminderLog(user_id=ghosted.id, channel="sms", status="failed",
+                    current_day=4, sent_at=nudge_time),
+    ])
+    await test_db.commit()
+
+    stats = await get_reminder_analytics(days=30, current_user=None, db=test_db)
+
+    assert stats.total_sent == 2
+    assert stats.total_failed == 1
+    assert stats.total_re_engaged == 1
+    assert stats.re_engagement_rate == 50.0
+
+    channels = {c.channel: c for c in stats.by_channel}
+    assert channels["whatsapp"].sent == 2
+    assert channels["whatsapp"].re_engaged == 1
+    assert channels["whatsapp"].re_engagement_rate == 50.0
+    assert channels["sms"].failed == 1
+    assert channels["sms"].re_engagement_rate == 0
+
+    assert len(stats.daily) == 1
+    assert stats.daily[0].sent == 2
+    assert stats.daily[0].failed == 1
+    assert stats.daily[0].re_engaged == 1
+
+
+@pytest.mark.asyncio
+async def test_reminder_analytics_endpoint_empty(test_db):
+    """No reminders yet — endpoint returns zeros, not errors"""
+    from app.routers.analytics import get_reminder_analytics
+
+    stats = await get_reminder_analytics(days=30, current_user=None, db=test_db)
+
+    assert stats.total_sent == 0
+    assert stats.re_engagement_rate == 0
+    assert stats.by_channel == []
+    assert stats.daily == []

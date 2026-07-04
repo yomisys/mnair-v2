@@ -113,7 +113,6 @@ const PublicFooter: React.FC = () => (
 )
 
 const App: React.FC = () => {
-  const { isAuthenticated } = useAuth()
   const location = useLocation()
 
   const isPublicRoute = ['/', '/verify'].includes(location.pathname)

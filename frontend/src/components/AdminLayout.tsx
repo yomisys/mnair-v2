@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
 import { useNavigate, useLocation } from 'react-router-dom'
 import {
-  Box, Drawer, AppBar, Toolbar, Typography, List, ListItemButton,
-  ListItemIcon, ListItemText, IconButton, Divider, Button, Avatar, Tooltip,
+  Box, Drawer, Typography, List, ListItemButton,
+  ListItemIcon, ListItemText, IconButton, Divider, Avatar, Tooltip,
 } from '@mui/material'
 import {
   Dashboard as DashboardIcon,

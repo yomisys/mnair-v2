@@ -8,6 +8,23 @@ from pydantic import BaseModel, Field, field_validator
 from datetime import datetime
 import re
 
+# API contract uses long language names; the DB enum stores short codes.
+# Accept both on input, canonicalize to the short code, display long names.
+LANGUAGE_INPUT_TO_CODE = {
+    "en": "en", "english": "en",
+    "pid": "pid", "pidgin": "pid",
+    "ha": "ha", "hausa": "ha",
+    "yo": "yo", "yoruba": "yo",
+    "ig": "ig", "igbo": "ig",
+}
+LANGUAGE_CODE_TO_DISPLAY = {
+    "en": "en",
+    "pid": "pidgin",
+    "ha": "hausa",
+    "yo": "yoruba",
+    "ig": "igbo",
+}
+
 
 class UserRegister(BaseModel):
     """Schema for user registration"""
@@ -53,11 +70,13 @@ class UserRegister(BaseModel):
     @field_validator("language")
     @classmethod
     def validate_language(cls, v: str) -> str:
-        """Validate language choice"""
-        allowed = ["en", "pidgin", "hausa", "yoruba", "igbo"]
-        if v.lower() not in allowed:
-            raise ValueError(f"Language must be one of: {', '.join(allowed)}")
-        return v.lower()
+        """Validate language choice and canonicalize to the DB short code"""
+        code = LANGUAGE_INPUT_TO_CODE.get(v.lower())
+        if code is None:
+            raise ValueError(
+                "Language must be one of: en, pidgin, hausa, yoruba, igbo"
+            )
+        return code
 
     @field_validator("consent_given")
     @classmethod
@@ -102,6 +121,13 @@ class UserResponse(BaseModel):
     consent_given: bool
     created_at: datetime
     last_active_at: Optional[datetime] = None
+
+    @field_validator("language", mode="before")
+    @classmethod
+    def language_display_name(cls, v):
+        """Serialize the stored short code (or enum) as the API's long name"""
+        value = getattr(v, "value", v)
+        return LANGUAGE_CODE_TO_DISPLAY.get(value, value)
 
     class Config:
         from_attributes = True
