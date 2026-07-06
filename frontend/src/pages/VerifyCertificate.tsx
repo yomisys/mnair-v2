@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect, useCallback } from 'react'
 import {
   Box,
   Button,
@@ -38,15 +38,14 @@ const VerifyCertificate: React.FC = () => {
   const [isLoading, setIsLoading] = useState(false)
   const [hasSearched, setHasSearched] = useState(false)
 
-  const handleVerify = async (e: React.FormEvent) => {
-    e.preventDefault()
+  const runVerify = useCallback(async (id: string) => {
     setError(null)
     setCertificate(null)
     setHasSearched(true)
     setIsLoading(true)
 
     try {
-      const data = await certificatesAPI.verifyCertificate(certificateId.trim())
+      const data = await certificatesAPI.verifyCertificate(id.trim())
       setCertificate(data)
     } catch (err: any) {
       if (err.response?.status === 404) {
@@ -57,6 +56,22 @@ const VerifyCertificate: React.FC = () => {
     } finally {
       setIsLoading(false)
     }
+  }, [])
+
+  // Certificate-ready SMS/WhatsApp links carry ?code=... so the learner
+  // lands here with their code already verified, not an empty form.
+  useEffect(() => {
+    const code = new URLSearchParams(window.location.search).get('code')
+    if (code) {
+      setCertificateId(code)
+      runVerify(code)
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
+
+  const handleVerify = async (e: React.FormEvent) => {
+    e.preventDefault()
+    await runVerify(certificateId)
   }
 
   return (

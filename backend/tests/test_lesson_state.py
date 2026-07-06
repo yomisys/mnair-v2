@@ -451,8 +451,11 @@ async def test_advance_to_next_day(test_db: AsyncSession):
 
     await test_db.commit()
 
-    # Advance to next day
+    # In production, mark_day_complete fires the moment day completion is
+    # detected (handle_day_completion / ussd deliver_next_lesson), before the
+    # user ever replies NEXT — so it's called here first, matching that order.
     manager = LessonStateManager(test_db)
+    await manager.mark_day_complete(user.id, user.current_day)
     advanced = await manager.advance_to_next_day(user.id)
 
     assert advanced is True
@@ -505,6 +508,83 @@ async def test_advance_day_not_complete(test_db: AsyncSession):
     await test_db.refresh(user)
     assert user.current_day == 1
     assert user.completed_days == 0
+
+
+@pytest.mark.asyncio
+async def test_mark_day_complete_reaches_seven_on_final_day(test_db: AsyncSession):
+    """
+    Regression test: completing Day 7 must set completed_days to 7.
+
+    Bug: advance_to_next_day incremented completed_days only when moving to
+    a NEW day. Day 7 has no next day, so advance_to_next_day always returned
+    False before touching completed_days — it could never reach 7, which
+    left the USSD certificate menu (`current_day >= 7 and completed_days >= 7`)
+    permanently unreachable and made "days completed" stats undercount by one
+    for any learner who finished the course.
+    """
+    user = User(
+        phone_number="+2348012345690",
+        name="Test User 90",
+        language=Language.ENGLISH,
+        current_day=7,
+        completed_days=6,  # where a finisher was stuck before the fix
+        consent_given=True,
+        data_retention_date=datetime.utcnow() + timedelta(days=90)
+    )
+    test_db.add(user)
+    await test_db.commit()
+
+    manager = LessonStateManager(test_db)
+    await manager.mark_day_complete(user.id, day=7)
+
+    await test_db.refresh(user)
+    assert user.completed_days == 7
+
+    # advance_to_next_day must still refuse to advance past day 7 (no Day 8),
+    # and must not disturb completed_days now that it's been set
+    advanced = await manager.advance_to_next_day(user.id)
+    assert advanced is False
+    await test_db.refresh(user)
+    assert user.current_day == 7
+    assert user.completed_days == 7
+
+
+@pytest.mark.asyncio
+async def test_mark_day_complete_is_idempotent_and_monotonic(test_db: AsyncSession):
+    """
+    mark_day_complete must never move completed_days backward, and repeat
+    calls for the same day must be safe (called every time deliver_next_lesson
+    detects day completion — which can fire more than once for the same day
+    if a webhook retries).
+    """
+    user = User(
+        phone_number="+2348012345691",
+        name="Test User 91",
+        language=Language.ENGLISH,
+        current_day=3,
+        completed_days=2,
+        consent_given=True,
+        data_retention_date=datetime.utcnow() + timedelta(days=90)
+    )
+    test_db.add(user)
+    await test_db.commit()
+
+    manager = LessonStateManager(test_db)
+
+    # Repeat call for a day already recorded — no change
+    await manager.mark_day_complete(user.id, day=2)
+    await test_db.refresh(user)
+    assert user.completed_days == 2
+
+    # Advancing forward works
+    await manager.mark_day_complete(user.id, day=3)
+    await test_db.refresh(user)
+    assert user.completed_days == 3
+
+    # A stale/out-of-order call for an earlier day must not roll back progress
+    await manager.mark_day_complete(user.id, day=1)
+    await test_db.refresh(user)
+    assert user.completed_days == 3
 
 
 @pytest.mark.asyncio

@@ -1,0 +1,19 @@
+# Local development override — NOT for the VPS.
+# Usage: docker compose -f docker-compose.yml -f docker-compose.local.yml up -d
+# Exposes backend (8000) and frontend (3000) directly, since nginx needs the
+# production SSL certificates and cannot run on a local machine.
+# Host ports 8000/3000-3003 may be used by other local stacks (gll);
+# MNAIR uses 8010 (API) and 3005 (frontend) locally.
+services:
+  backend:
+    ports:
+      - "8010:8000"
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+      args:
+        VITE_API_URL: http://localhost:8010
+    ports:
+      - "3005:80"

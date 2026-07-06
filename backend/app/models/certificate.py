@@ -174,12 +174,12 @@ class Certificate(Base):
         data = f"{certificate_id}{user_id}{learner_name}{issued_at.isoformat()}"
         return hashlib.sha256(data.encode()).hexdigest()
 
-    def generate_verification_url(self, base_url: str = "https://mnair.gov.ng") -> str:
+    def generate_verification_url(self, base_url: str = "https://mnair.ng") -> str:
         """
         Generate public verification URL
-        Example: https://mnair.gov.ng/verify/MNAIR-2026-123-A7B9C2
+        Example: https://mnair.ng/verify?code=MNAIR-2026-123-A7B9C2
         """
-        return f"{base_url}/verify/{self.certificate_id}"
+        return f"{base_url}/verify?code={self.certificate_id}"
 
     @property
     def is_valid(self) -> bool:

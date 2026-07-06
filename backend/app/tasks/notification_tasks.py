@@ -261,7 +261,8 @@ def auto_generate_certificates():
 
         logger.info(
             f"Generated {result['generated']} certificates, "
-            f"{result['failed']} failed, {result['already_exists']} already existed"
+            f"{result['failed']} failed, {result['already_exists']} already existed, "
+            f"{result['notify_failed']} generated but notification failed on every channel"
         )
 
         return result
@@ -276,6 +277,7 @@ async def _generate_certificates_async():
     async with AsyncSessionLocal() as db:
         generator = CertificateGenerator(db, settings)
         sms_notifier = SMSNotifier(db, settings)
+        whatsapp_handler = WhatsAppWebhookHandler(settings, db)
 
         # Find completed users without certificates
         result = await db.execute(
@@ -291,6 +293,7 @@ async def _generate_certificates_async():
         generated = 0
         failed = 0
         already_exists = 0
+        notify_failed = 0
 
         for user in completed_users:
             try:
@@ -306,15 +309,51 @@ async def _generate_certificates_async():
                     user_id=user.id,
                     language=user.language
                 )
+                generated += 1
 
-                # Send SMS notification
-                await sms_notifier.send_certificate_ready_sms(
-                    user,
-                    certificate.certificate_id
+                # Notify the learner. Try WhatsApp first for WhatsApp users —
+                # it's the channel they actually live in, and free-form send
+                # works as long as they messaged within the last 24h (Meta's
+                # customer service window), which holds for almost everyone
+                # picked up by this daily job. SMS is always attempted too as
+                # a second channel — a failure on one must not look like the
+                # whole notification succeeded, so both are checked explicitly.
+                sms_ok = await sms_notifier.send_certificate_ready_sms(
+                    user, certificate.certificate_id
                 )
 
-                generated += 1
-                logger.info(f"Generated certificate {certificate.certificate_id} for user {user.id}")
+                whatsapp_ok = True
+                if user.preferred_channel == "whatsapp":
+                    verify_url = f"{settings.FRONTEND_URL}/verify?code={certificate.certificate_id}"
+                    whatsapp_ok = await whatsapp_handler.send_whatsapp_message(
+                        user.phone_number,
+                        {
+                            "messaging_product": "whatsapp",
+                            "type": "text",
+                            "text": {
+                                "body": (
+                                    f"🎓 Congratulations! Your MNAIR certificate is ready.\n\n"
+                                    f"Code: {certificate.certificate_id}\n"
+                                    f"Verify and download: {verify_url}"
+                                )
+                            }
+                        }
+                    )
+
+                if sms_ok or whatsapp_ok:
+                    logger.info(
+                        f"Generated certificate {certificate.certificate_id} for user {user.id} "
+                        f"(sms={sms_ok}, whatsapp={whatsapp_ok})"
+                    )
+                else:
+                    # Certificate exists and is retrievable, but the learner
+                    # was told nothing on any channel — flag it distinctly
+                    # from a generation failure so it's not silently missed.
+                    notify_failed += 1
+                    logger.warning(
+                        f"Certificate {certificate.certificate_id} generated for user {user.id} "
+                        f"but ALL notification channels failed (sms={sms_ok}, whatsapp={whatsapp_ok})"
+                    )
 
             except Exception as e:
                 logger.error(f"Failed to generate certificate for user {user.id}: {e}")
@@ -326,6 +365,7 @@ async def _generate_certificates_async():
             "generated": generated,
             "failed": failed,
             "already_exists": already_exists,
+            "notify_failed": notify_failed,
         }
 
 

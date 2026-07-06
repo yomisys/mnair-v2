@@ -93,6 +93,7 @@ class SMSNotifier:
             settings: Application settings
         """
         self.db = db
+        self.settings = settings
         self.sms_provider = SMSProvider(settings)
 
     async def send_welcome_sms(self, user: User) -> bool:
@@ -144,10 +145,11 @@ class SMSNotifier:
         Returns:
             True if sent successfully
         """
+        host = self.settings.FRONTEND_URL.replace("https://", "").replace("http://", "")
         message = (
             f"MNAIR Course Complete! "
             f"Your certificate is ready. "
-            f"Visit mnair.gov.ng to download. "
+            f"Visit {host} to download. "
             f"Well done!"
         )
 
@@ -169,10 +171,11 @@ class SMSNotifier:
         Returns:
             True if sent successfully
         """
+        verify_url = f"{self.settings.FRONTEND_URL}/verify?code={certificate_code}"
         message = (
             f"Your MNAIR certificate is ready! "
             f"Code: {certificate_code}. "
-            f"Download at mnair.gov.ng/cert"
+            f"Download at {verify_url}"
         )
 
         result = await self.sms_provider.send_sms(user.phone_number, message)

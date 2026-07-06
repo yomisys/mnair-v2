@@ -321,6 +321,29 @@ class LessonStateManager:
         # Should have completed all 5 topics for the day
         return completed_count >= self.LESSONS_PER_DAY
 
+    async def mark_day_complete(self, user_id: int, day: int) -> None:
+        """
+        Record that `day` is fully complete, for completed_days tracking.
+
+        Separate from advance_to_next_day (which moves current_day to the
+        next day's content): day 7 has no next day to advance to, but must
+        still be recorded as complete so completed_days reaches 7 and
+        certificate eligibility checks (USSD menu, dashboards) see it.
+        Idempotent — safe to call every time a day-completion is detected.
+
+        Args:
+            user_id: User ID
+            day: Day number just completed (1-7)
+        """
+        result = await self.db.execute(
+            select(User).where(User.id == user_id)
+        )
+        user = result.scalar_one_or_none()
+
+        if user and user.completed_days < day:
+            user.completed_days = day
+            await self.db.commit()
+
     async def advance_to_next_day(self, user_id: int) -> bool:
         """
         Advance user to next day if current day is complete
@@ -348,9 +371,10 @@ class LessonStateManager:
         if user.current_day >= 7:
             return False
 
-        # Advance to next day
+        # Advance to next day. completed_days is tracked separately by
+        # mark_day_complete, called at the moment each day's completion is
+        # detected (including day 7, which never reaches this branch).
         user.current_day += 1
-        user.completed_days += 1
         await self.db.commit()
 
         return True

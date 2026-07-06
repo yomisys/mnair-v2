@@ -340,10 +340,11 @@ class USSDHandler:
         elif choice == "3":
             # Certificate
             if user.current_day >= 7 and user.completed_days >= 7:
+                host = self.settings.FRONTEND_URL.replace("https://", "").replace("http://", "")
                 return USSDResponse.end(
                     "Congratulations!\n"
                     "You've completed the course!\n\n"
-                    "Visit mnair.gov.ng to download your certificate."
+                    f"Visit {host} to download your certificate."
                 )
             else:
                 return USSDResponse.end(
@@ -402,7 +403,10 @@ class USSDHandler:
         next_lesson = await self.lesson_mgr.get_next_lesson(user.id, user.language.value)
 
         if not next_lesson:
-            # Day complete
+            # Day complete — record it here (mirrors WhatsApp's
+            # handle_day_completion), the single point where every day's
+            # completion (1 through 7) is detected
+            await self.lesson_mgr.mark_day_complete(user.id, user.current_day)
             session["state"] = USSDMenuState.DAY_COMPLETE
             return await self.show_day_complete(user)
 

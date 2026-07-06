@@ -558,3 +558,100 @@ async def test_ussd_day_completion(test_db):
     # User should be on Day 2 now
     await test_db.refresh(user)
     assert user.current_day == 2
+
+
+@pytest.mark.asyncio
+async def test_ussd_day_seven_completion_sets_completed_days_to_seven(test_db):
+    """
+    Regression test for "completed Day 7, never received certificate" (USSD).
+
+    Before the fix, completed_days only incremented inside advance_to_next_day,
+    which is never reached on Day 7 (there's no Day 8 to advance to). That made
+    completed_days permanently stuck at 6, so the certificate menu's own check
+    (`current_day >= 7 and completed_days >= 7`) could never pass — a USSD
+    finisher was told "keep going" forever on a day they'd already finished.
+    """
+    settings = Settings()
+    redis_mock = MockRedis()
+    handler = USSDHandler(test_db, redis_mock, settings)
+
+    user = User(
+        phone_number="+2348012345698",
+        name="USSD Day 7 Finisher",
+        language=Language.ENGLISH,
+        current_day=7,
+        completed_days=6,
+        consent_given=True,
+        data_retention_date=datetime.utcnow() + timedelta(days=90)
+    )
+    test_db.add(user)
+    await test_db.flush()
+
+    for topic in ["ai_ethics", "ai_in_nigeria", "ai_tools", "how_ai_works", "what_is_ai"]:
+        lesson = Lesson(
+            lesson_id=f"day7_{topic}_en",
+            day=7,
+            topic=topic,
+            language="en",
+            title=f"Day 7: {topic}",
+            content="Test content",
+            word_count=5,
+            quiz=[{"question": "Q", "options": ["A", "B", "C", "D"], "correct": 0}] * 5
+        )
+        test_db.add(lesson)
+        await test_db.flush()
+
+        progress = LessonProgress(
+            user_id=user.id,
+            lesson_id=lesson.id,
+            is_started=True,
+            is_completed=True,
+            quiz_score=100.0
+        )
+        test_db.add(progress)
+
+    await test_db.commit()
+
+    session = {
+        "phone_number": user.phone_number,
+        "state": USSDMenuState.LESSON_DISPLAY,
+        "user_id": user.id,
+        "data": {}
+    }
+
+    # All Day 7 lessons already complete -> get_next_lesson returns None ->
+    # the day-complete branch fires, same path a real finisher hits
+    await handler.deliver_next_lesson(user, session)
+
+    await test_db.refresh(user)
+    assert user.current_day == 7
+    assert user.completed_days == 7
+
+
+@pytest.mark.asyncio
+async def test_ussd_certificate_ready_uses_real_domain(test_db):
+    """The USSD certificate-ready message must point at mnair.ng, not the
+    never-deployed mnair.gov.ng — a learner who reaches this branch (now
+    reachable thanks to the completed_days fix) still hit a dead link."""
+    settings = Settings(FRONTEND_URL="https://mnair.ng")
+    redis_mock = MockRedis()
+    handler = USSDHandler(test_db, redis_mock, settings)
+
+    user = User(
+        phone_number="+2348012345697",
+        name="Finisher",
+        language=Language.ENGLISH,
+        current_day=7,
+        completed_days=7,
+        consent_given=True,
+        data_retention_date=datetime.utcnow() + timedelta(days=90)
+    )
+    test_db.add(user)
+    await test_db.commit()
+
+    session_id = "session_cert_ready"
+    await handler.handle_request(session_id, user.phone_number, "")
+    response = await handler.handle_request(session_id, user.phone_number, "3")
+
+    assert "mnair.ng" in response
+    assert "mnair.gov.ng" not in response

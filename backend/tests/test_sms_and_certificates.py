@@ -176,6 +176,37 @@ class TestSMSNotifier:
         assert success is True
 
     @pytest.mark.asyncio
+    async def test_certificate_sms_uses_real_domain(self, test_db: AsyncSession):
+        """
+        The certificate-ready and course-complete SMS must point learners at
+        the live domain (mnair.ng) with a route that actually exists
+        (/verify?code=...), not the never-deployed mnair.gov.ng/cert link.
+        """
+        settings = Settings(TERMII_API_KEY=None, FRONTEND_URL="https://mnair.ng")
+        notifier = SMSNotifier(test_db, settings)
+
+        user = User(phone_number="+2348012345678", name="Test User", language="en", current_day=7)
+        test_db.add(user)
+        await test_db.commit()
+
+        captured = {}
+
+        async def fake_send_sms(phone_number, message):
+            captured["message"] = message
+            return {"status": "success"}
+
+        notifier.sms_provider.send_sms = fake_send_sms
+
+        await notifier.send_certificate_ready_sms(user, "MNAIR-2026-1-A3B9C")
+        assert "mnair.ng" in captured["message"]
+        assert "mnair.gov.ng" not in captured["message"]
+        assert "/verify?code=MNAIR-2026-1-A3B9C" in captured["message"]
+
+        await notifier.send_course_complete_sms(user)
+        assert "mnair.ng" in captured["message"]
+        assert "mnair.gov.ng" not in captured["message"]
+
+    @pytest.mark.asyncio
     async def test_send_reminder_sms(self, test_db: AsyncSession):
         """Test inactivity reminder SMS"""
         settings = Settings(TERMII_API_KEY=None)
@@ -373,6 +404,14 @@ class TestCertificateGenerator:
             assert certificate.pdf_url.startswith("certificates/")
             assert certificate.language == "en"
             assert certificate.learner_name == "Adebayo Ogunlesi"
+
+            # The stored verification_url must point at the real domain and
+            # an existing route — the SMS/PDF/USSD text all reference this
+            # same link, so a wrong domain here breaks certificate delivery
+            # everywhere at once.
+            assert certificate.verification_url.startswith(settings.FRONTEND_URL)
+            assert "mnair.gov.ng" not in certificate.verification_url
+            assert f"/verify?code={certificate.certificate_id}" in certificate.verification_url
 
             # Verify in database
             result = await test_db.execute(

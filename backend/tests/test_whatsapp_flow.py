@@ -544,3 +544,76 @@ async def test_invalid_language_selection(test_db):
     # Language should not have changed
     await test_db.refresh(user)
     assert user.language == Language.ENGLISH  # Still default
+
+
+@pytest.mark.asyncio
+async def test_day_seven_completion_sets_completed_days_to_seven(test_db):
+    """
+    Regression test for "completed Day 7, never received certificate."
+
+    On Day 7, the user is told to reply CERTIFICATE, not NEXT — so
+    advance_to_next_day (which used to be the only place completed_days was
+    incremented) is never called. Before the fix, completed_days was
+    permanently stuck at 6 for every finisher, which made the USSD
+    certificate menu unreachable and undercounted "days completed" stats.
+    handle_day_completion must set completed_days to 7 on its own.
+    """
+    settings = Settings()
+    handler = WhatsAppWebhookHandler(settings, test_db)
+
+    user = User(
+        phone_number="+2348012345699",
+        name="Day 7 Finisher",
+        language=Language.ENGLISH,
+        current_day=7,
+        completed_days=6,
+        consent_given=True,
+        data_retention_date=datetime.utcnow() + timedelta(days=90)
+    )
+    test_db.add(user)
+    await test_db.flush()
+
+    for topic in ["what_is_ai", "how_ai_works", "ai_in_nigeria", "ai_tools", "ai_ethics"]:
+        lesson = Lesson(
+            lesson_id=f"day7_{topic}_en",
+            day=7,
+            topic=topic,
+            language="en",
+            title=f"Day 7: {topic}",
+            content="Test content",
+            word_count=2,
+            quiz=[{"question": f"Q{j}", "options": ["A", "B", "C", "D"], "correct": 0} for j in range(5)]
+        )
+        test_db.add(lesson)
+        await test_db.flush()
+
+        progress = LessonProgress(
+            user_id=user.id,
+            lesson_id=lesson.id,
+            is_started=True,
+            is_completed=True,
+            quiz_score=80.0
+        )
+        test_db.add(progress)
+
+    conversation = Conversation(
+        user_id=user.id,
+        channel="whatsapp",
+        phone_number=user.phone_number,
+        current_state=ConversationState.IN_LESSON,
+        is_active=True
+    )
+    test_db.add(conversation)
+    await test_db.commit()
+
+    # All Day 7 lessons already completed -> get_next_lesson returns None ->
+    # handle_day_completion fires (mirrors production: the user's last quiz
+    # pass triggers this same path)
+    await handler.deliver_next_lesson(user, conversation)
+
+    await test_db.refresh(user)
+    assert user.current_day == 7  # no Day 8 to advance to
+    assert user.completed_days == 7  # but completion must still be recorded
+
+    await test_db.refresh(conversation)
+    assert conversation.current_state == ConversationState.DAY_COMPLETE

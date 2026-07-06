@@ -61,6 +61,10 @@ class Settings(BaseSettings):
     RATE_LIMIT_PER_MINUTE: int = 60
     CORS_ORIGINS: str = "http://localhost:3000,http://localhost:5173,http://localhost:3001,http://localhost:3002,http://localhost:3003"
 
+    # Public site URL — used in SMS/USSD/certificate text. Must match the
+    # live domain (see FRONTEND_URL in .env for prod), not a placeholder.
+    FRONTEND_URL: str = "https://mnair.ng"
+
     # NDPA Compliance
     DATA_RETENTION_DAYS: int = 90
     CONSENT_REQUIRED: bool = True

@@ -840,6 +840,11 @@ class WhatsAppWebhookHandler:
 
     async def handle_day_completion(self, user: User, conversation: Conversation) -> None:
         """Handle day completion celebration"""
+        # Record completed_days here — the single point where every day's
+        # completion (1 through 7) is detected, regardless of what the user
+        # replies afterward (NEXT vs CERTIFICATE on day 7)
+        await self.lesson_manager.mark_day_complete(user.id, user.current_day)
+
         # Get progress
         progress = await self.lesson_manager.get_user_progress(user.id)
 

@@ -461,3 +461,132 @@ async def test_reminder_analytics_endpoint_empty(test_db):
     assert stats.re_engagement_rate == 0
     assert stats.by_channel == []
     assert stats.daily == []
+
+
+# ---------------------------------------------------------------------------
+# Certificate delivery — regression coverage for the "no certificate after
+# completing Day 7" bug. The nightly auto_generate_certificates task
+# generates the cert correctly (gated on current_day, which does reach 7);
+# the actual failure was in notifying the learner it exists.
+# ---------------------------------------------------------------------------
+
+@pytest.fixture
+def capture_sms(monkeypatch):
+    """Capture certificate-ready SMS sends instead of hitting Termii"""
+    from app.channels.sms import SMSNotifier
+    sent = []
+
+    async def fake_send_certificate_sms(self, user, certificate_code):
+        sent.append((user.phone_number, certificate_code))
+        return True
+
+    monkeypatch.setattr(SMSNotifier, "send_certificate_ready_sms", fake_send_certificate_sms)
+    return sent
+
+
+@pytest.fixture(autouse=True)
+def mock_minio_for_certificate_tests(monkeypatch):
+    """
+    Certificate generation touches MinIO for bucket setup + PDF upload.
+    These tests exercise the notification logic around generation, not
+    storage, so MinIO is stubbed the same way test_sms_and_certificates.py
+    stubs it for unit tests — avoids a real network call to a service that
+    may not be reachable from wherever pytest happens to run.
+    """
+    from app.certificates.generator import CertificateGenerator
+
+    monkeypatch.setattr(CertificateGenerator, "_ensure_bucket_exists", lambda self: None)
+
+    async def fake_upload(self, pdf_bytes, certificate_code):
+        return f"certificates/{certificate_code}.pdf"
+
+    monkeypatch.setattr(CertificateGenerator, "upload_to_minio", fake_upload)
+
+
+def make_finisher(phone, *, channel="whatsapp", language=Language.ENGLISH):
+    return User(
+        phone_number=phone,
+        name=f"Finisher {phone[-4:]}",
+        language=language,
+        role=UserRole.LEARNER,
+        current_day=7,
+        completed_days=7,
+        preferred_channel=channel,
+        consent_given=True,
+        is_active=True,
+    )
+
+
+@pytest.mark.asyncio
+async def test_certificate_task_notifies_whatsapp_users_via_whatsapp(
+    task_session, capture_sends, capture_sms
+):
+    """WhatsApp learners get a WhatsApp certificate-ready message, not just
+    an SMS they may never see (SMS is unreliable — see Termii auth findings)."""
+    user = make_finisher("+2348060000001", channel="whatsapp")
+    task_session.add(user)
+    await task_session.commit()
+
+    result = await notification_tasks._generate_certificates_async()
+
+    assert result["generated"] == 1
+    assert result["notify_failed"] == 0
+    assert len(capture_sends) == 1  # WhatsApp message sent
+    assert len(capture_sms) == 1    # SMS also attempted as a second channel
+
+    body = capture_sends[0][1]["text"]["body"]
+    assert "certificate is ready" in body.lower()
+    assert "mnair.ng" in body
+    assert "mnair.gov.ng" not in body
+
+
+@pytest.mark.asyncio
+async def test_certificate_task_sms_only_user_no_whatsapp_attempt(
+    task_session, capture_sends, capture_sms
+):
+    """USSD/SMS-only learners aren't sent a WhatsApp message (they never
+    messaged the WhatsApp number, so a free-form send would fail anyway)."""
+    user = make_finisher("+2348060000002", channel="ussd")
+    task_session.add(user)
+    await task_session.commit()
+
+    result = await notification_tasks._generate_certificates_async()
+
+    assert result["generated"] == 1
+    assert len(capture_sends) == 0  # no WhatsApp attempt for a USSD user
+    assert len(capture_sms) == 1
+
+
+@pytest.mark.asyncio
+async def test_certificate_task_flags_total_notification_failure(
+    task_session, monkeypatch
+):
+    """
+    When every notification channel fails, the task must say so distinctly
+    from a plain generation failure — this is exactly the silent-failure gap
+    that made a completed certificate invisible to the learner and to
+    operators reading the logs (the old code logged "Generated certificate
+    X" regardless of whether the SMS send actually succeeded).
+    """
+    from app.channels.sms import SMSNotifier
+
+    async def failing_sms(self, user, certificate_code):
+        return False
+
+    async def failing_whatsapp(self, phone_number, message):
+        return False
+
+    monkeypatch.setattr(SMSNotifier, "send_certificate_ready_sms", failing_sms)
+    monkeypatch.setattr(WhatsAppWebhookHandler, "send_whatsapp_message", failing_whatsapp)
+
+    user = make_finisher("+2348060000003", channel="whatsapp")
+    task_session.add(user)
+    await task_session.commit()
+
+    result = await notification_tasks._generate_certificates_async()
+
+    # The certificate itself was still created — this is a notify failure,
+    # not a generation failure
+    assert result["generated"] == 1
+    assert result["failed"] == 0
+    assert result["notify_failed"] == 1

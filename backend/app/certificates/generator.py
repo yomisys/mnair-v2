@@ -250,10 +250,11 @@ class CertificateGenerator:
         c.setFont("Helvetica", 10)
         c.setFillColor(self.TEXT_COLOR)
         verify_y = 1.2 * inch
+        verify_host = self.settings.FRONTEND_URL.replace("https://", "").replace("http://", "")
         c.drawCentredString(
             page_width / 2,
             verify_y,
-            "Verify this certificate at: mnair.gov.ng/verify"
+            f"Verify this certificate at: {verify_host}/verify"
         )
 
         # Verification code
@@ -453,8 +454,10 @@ class CertificateGenerator:
             issued_at=issued_at
         )
 
-        # Generate verification URL
-        verification_url = f"https://mnair.gov.ng/verify/{certificate_id}"
+        # Generate verification URL. The /verify page is a manual code-entry
+        # form (no path-param route), so the certificate ID goes in a query
+        # string the frontend prefills — see VerifyCertificate.tsx.
+        verification_url = f"{self.settings.FRONTEND_URL}/verify?code={certificate_id}"
 
         # Create certificate record
         certificate = Certificate(
