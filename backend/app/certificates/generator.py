@@ -266,60 +266,6 @@ class CertificateGenerator:
             f"Verification Code: {verification_code}"
         )
 
-        # Footer signature section
-        signature_y = verify_y - 0.8 * inch
-        c.setFont("Helvetica", 10)
-        c.setFillColor(self.TEXT_COLOR)
-
-        # Left signature
-        c.drawCentredString(
-            page_width / 4,
-            signature_y,
-            "Dr. Bosun Tijani"
-        )
-        c.setFont("Helvetica-Oblique", 8)
-        c.drawCentredString(
-            page_width / 4,
-            signature_y - 0.2 * inch,
-            "Hon. Minister of Communications,"
-        )
-        c.drawCentredString(
-            page_width / 4,
-            signature_y - 0.35 * inch,
-            "Innovation & Digital Economy"
-        )
-
-        # Right signature
-        c.setFont("Helvetica", 10)
-        c.drawCentredString(
-            3 * page_width / 4,
-            signature_y,
-            "National Digital Economy Program"
-        )
-        c.setFont("Helvetica-Oblique", 8)
-        c.drawCentredString(
-            3 * page_width / 4,
-            signature_y - 0.2 * inch,
-            "Federal Ministry of Communications"
-        )
-
-        # Signature lines
-        c.setStrokeColor(self.TEXT_COLOR)
-        c.setLineWidth(1)
-        line_width = 1.5 * inch
-        c.line(
-            page_width / 4 - line_width / 2,
-            signature_y + 0.15 * inch,
-            page_width / 4 + line_width / 2,
-            signature_y + 0.15 * inch
-        )
-        c.line(
-            3 * page_width / 4 - line_width / 2,
-            signature_y + 0.15 * inch,
-            3 * page_width / 4 + line_width / 2,
-            signature_y + 0.15 * inch
-        )
-
         # Save PDF
         c.save()
 
