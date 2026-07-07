@@ -617,3 +617,39 @@ async def test_day_seven_completion_sets_completed_days_to_seven(test_db):
 
     await test_db.refresh(conversation)
     assert conversation.current_state == ConversationState.DAY_COMPLETE
+
+
+@pytest.mark.asyncio
+async def test_lesson_message_not_truncated(test_db):
+    """
+    Regression test: WhatsApp lesson delivery must not cut lessons short.
+
+    Bug: build_lesson_message hard-truncated content at 1400 chars, based
+    on a wrong assumption about WhatsApp's message limit (Meta's actual
+    Cloud API text body limit is 4096 chars). 139 of 175 real lessons in
+    the curriculum exceed 1400 chars (longest is 1868), so most learners
+    were silently shown only the first ~75% of their lesson with no way
+    to see the rest.
+    """
+    builder = WhatsAppMessageBuilder()
+
+    # Longest real lesson content length observed in the curriculum
+    long_content = "word " * 400  # 2000 chars, longer than any real lesson
+    lesson = Lesson(
+        lesson_id="test_long_lesson",
+        day=6,
+        topic="how_ai_works",
+        language="en",
+        title="How AI Works",
+        content=long_content,
+        word_count=400,
+        quiz=[{"question": "Q", "options": ["A", "B", "C", "D"], "correct": 0}] * 5,
+    )
+
+    msg = builder.build_lesson_message(lesson, 1, 5)
+    body = msg["text"]["body"]
+
+    assert long_content.strip() in body
+    assert "..." not in body
+    # Still comfortably inside Meta's actual 4096-char text body limit
+    assert len(body) < 4096

@@ -655,3 +655,34 @@ async def test_ussd_certificate_ready_uses_real_domain(test_db):
 
     assert "mnair.ng" in response
     assert "mnair.gov.ng" not in response
+
+
+def test_content_chunker_footer_does_not_truncate_chunks():
+    """
+    Regression test: chunk_text must size chunks to leave room for the
+    navigation footer format_lesson_chunk appends afterward.
+
+    Bug: deliver_next_lesson called chunk_text(content) with the default
+    max_chars=160 (screen width), then format_lesson_chunk appended a
+    ~30-35 char footer ("[n/m]\n1. Continue\n0. Main Menu") and re-truncated
+    any chunk that no longer fit -- silently dropping words at whichever
+    chunk boundary happened to land in the 120-160 char range, which is
+    common since chunk_text tries to maximize each chunk toward 160.
+    """
+    # Built from repeated real-length sentences so several raw 160-char
+    # chunks are produced -- exactly the range where the old bug fired
+    sentence = "AI helps Nigerian farmers predict rainfall and plan their planting season better. "
+    long_text = sentence * 15  # ~1275 chars, comparable to a real lesson
+
+    max_chars = ContentChunker.MAX_CHARS - ContentChunker.FOOTER_RESERVED_CHARS
+    chunks = ContentChunker.chunk_text(long_text, max_chars=max_chars)
+    total = len(chunks)
+
+    for i, chunk in enumerate(chunks):
+        formatted = ContentChunker.format_lesson_chunk(chunk, i, total)
+        assert "..." not in formatted, f"chunk {i+1}/{total} was truncated: {formatted!r}"
+        assert len(formatted) <= ContentChunker.MAX_CHARS
+
+    # No words lost across chunk boundaries
+    combined = " ".join(chunks)
+    assert combined.replace("  ", " ") == " ".join(long_text.split())

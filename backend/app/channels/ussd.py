@@ -53,6 +53,15 @@ class ContentChunker:
 
     MAX_CHARS = 160
 
+    # format_lesson_chunk appends a "[n/m]\n1. Continue/Take Quiz\n0. Main
+    # Menu" footer after chunking, so chunks must be sized to leave room for
+    # it up front -- otherwise a chunk landing between (MAX_CHARS - footer)
+    # and MAX_CHARS chars gets silently re-truncated once the footer is
+    # added, dropping words at the chunk boundary. 40 chars comfortably
+    # covers the longest footer variant ("1. Take Quiz") plus a 2-digit
+    # chunk count.
+    FOOTER_RESERVED_CHARS = 40
+
     @classmethod
     def chunk_text(cls, text: str, max_chars: int = MAX_CHARS) -> List[str]:
         """
@@ -414,8 +423,12 @@ class USSDHandler:
         session["data"]["current_lesson_id"] = next_lesson.id
         session["data"]["chunk_index"] = 0
 
-        # Chunk the lesson content
-        chunks = self.chunker.chunk_text(next_lesson.content)
+        # Chunk the lesson content, sized to leave room for the
+        # navigation footer format_lesson_chunk appends afterward
+        chunks = self.chunker.chunk_text(
+            next_lesson.content,
+            max_chars=ContentChunker.MAX_CHARS - ContentChunker.FOOTER_RESERVED_CHARS,
+        )
         session["data"]["lesson_chunks"] = chunks
         session["data"]["lesson_title"] = next_lesson.title
 

@@ -149,10 +149,13 @@ class WhatsAppMessageBuilder:
     @staticmethod
     def build_lesson_message(lesson: Lesson, lesson_number: int, total: int = 5) -> Dict[str, Any]:
         """Build lesson delivery message"""
-        # Truncate content if too long (WhatsApp limit 1600 chars)
+        # Meta's WhatsApp Cloud API text message body limit is 4096 chars.
+        # The longest lesson in the curriculum is ~1900 chars, so the full
+        # lesson (plus header/footer chrome) always fits comfortably --
+        # no truncation needed. A prior 1400-char cutoff here silently cut
+        # off the second half of most lessons (79% of lessons exceed 1400
+        # chars) with no way for the learner to see the rest.
         content = lesson.content
-        if len(content) > 1400:
-            content = content[:1400] + "..."
 
         message_text = (
             f"📚 Day {lesson.day} - Lesson {lesson_number}/{total}\n"
