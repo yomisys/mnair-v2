@@ -22,6 +22,7 @@ class ConversationState(str, Enum):
     IN_LESSON = "in_lesson"
     AWAITING_QUIZ = "awaiting_quiz"
     DAY_COMPLETE = "day_complete"
+    AWAITING_CERTIFICATE_NAME = "awaiting_certificate_name"
     PROGRAM_COMPLETE = "program_complete"
     IDLE = "idle"
 

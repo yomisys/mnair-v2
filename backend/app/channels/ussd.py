@@ -30,6 +30,7 @@ class USSDMenuState(str, Enum):
     QUIZ_RESULT = "quiz_result"
     PROGRESS_DISPLAY = "progress_display"
     DAY_COMPLETE = "day_complete"
+    AWAITING_CERTIFICATE_NAME = "awaiting_certificate_name"
 
 
 class USSDResponse:
@@ -278,6 +279,8 @@ class USSDHandler:
             response = await self.handle_progress_display(user, session, current_input)
         elif state == USSDMenuState.DAY_COMPLETE:
             response = await self.handle_day_complete(user, session, current_input)
+        elif state == USSDMenuState.AWAITING_CERTIFICATE_NAME:
+            response = await self.handle_certificate_name(user, session, current_input)
         else:
             response = await self.show_main_menu()
 
@@ -416,8 +419,14 @@ class USSDHandler:
             # handle_day_completion), the single point where every day's
             # completion (1 through 7) is detected
             await self.lesson_mgr.mark_day_complete(user.id, user.current_day)
-            session["state"] = USSDMenuState.DAY_COMPLETE
-            return await self.show_day_complete(user)
+
+            # Only ask for the certificate name once, right here on Day 7 —
+            # the one moment a name is actually needed, not at signup
+            needs_name = user.current_day == 7 and not user.name_confirmed
+            session["state"] = (
+                USSDMenuState.AWAITING_CERTIFICATE_NAME if needs_name else USSDMenuState.DAY_COMPLETE
+            )
+            return await self.show_day_complete(user, needs_name=needs_name)
 
         # Store lesson in session
         session["data"]["current_lesson_id"] = next_lesson.id
@@ -631,13 +640,52 @@ class USSDHandler:
 
         return USSDResponse.end(response)
 
-    async def show_day_complete(self, user: User) -> str:
+    async def show_day_complete(self, user: User, needs_name: bool = False) -> str:
         """Display day completion message"""
+        if user.current_day < 7:
+            return USSDResponse.con(
+                f"DAY {user.current_day} COMPLETE!\n\n"
+                f"Congratulations!\n"
+                f"All {user.current_day * 5} lessons done!\n\n"
+                f"1. Start Day {user.current_day + 1}\n"
+                f"0. Main Menu"
+            )
+
+        if needs_name:
+            return USSDResponse.con(
+                "DAY 7 COMPLETE!\n\n"
+                "Congratulations! You finished the course!\n\n"
+                "What name should appear on your\n"
+                "certificate? Type your full name:"
+            )
+
+        # Day 7, name already confirmed — no Day 8 to advance to
         return USSDResponse.con(
-            f"DAY {user.current_day} COMPLETE!\n\n"
-            f"Congratulations!\n"
-            f"All {user.current_day * 5} lessons done!\n\n"
-            f"1. Start Day {user.current_day + 1}\n"
+            "DAY 7 COMPLETE!\n\n"
+            "Congratulations! You finished the course!\n\n"
+            "1. Get Certificate\n"
+            "0. Main Menu"
+        )
+
+    async def handle_certificate_name(self, user: User, session: Dict, text_input: str) -> str:
+        """Handle AWAITING_CERTIFICATE_NAME state — capture the name for the certificate"""
+        candidate = text_input.strip()
+
+        if len(candidate) < 2 or len(candidate) > 255:
+            return USSDResponse.con(
+                "Please type the full name you'd\n"
+                "like printed on your certificate:"
+            )
+
+        user.name = candidate
+        user.name_confirmed = True
+        await self.db.commit()
+
+        session["state"] = USSDMenuState.DAY_COMPLETE
+        return USSDResponse.con(
+            f"Got it — your certificate will\n"
+            f"say: {candidate}\n\n"
+            f"1. Get Certificate\n"
             f"0. Main Menu"
         )
 
@@ -652,6 +700,15 @@ class USSDHandler:
             session["state"] = USSDMenuState.MAIN_MENU
             session["data"] = {}
             return await self.show_main_menu()
+
+        elif choice == "1" and user.current_day >= 7:
+            # No Day 8 to advance to — show the certificate message instead
+            host = self.settings.FRONTEND_URL.replace("https://", "").replace("http://", "")
+            return USSDResponse.end(
+                "Congratulations!\n"
+                "You've completed the course!\n\n"
+                f"Visit {host} to download your certificate."
+            )
 
         elif choice == "1":
             # Advance to next day

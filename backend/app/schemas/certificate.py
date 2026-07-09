@@ -33,12 +33,18 @@ class CertificateResponse(BaseModel):
 
 
 class CertificateVerification(BaseModel):
-    """Schema for certificate verification response"""
+    """
+    Schema for certificate verification response (PUBLIC endpoint).
 
-    valid: bool = Field(..., description="Whether certificate is valid")
+    Deliberately excludes phone number entirely, and never echoes the
+    learner's stored name back — the caller must already supply the name
+    they expect (see /verify/{certificate_id}?name=...), so this only ever
+    confirms a match/no-match, it never discloses identity to a stranger
+    who has nothing but a certificate code.
+    """
+
+    valid: bool = Field(..., description="Whether the certificate exists and the supplied name matches")
     certificate_id: str
-    user_name: str
-    user_phone: str
     issued_date: datetime
     language: str
     average_score: float
@@ -49,8 +55,6 @@ class CertificateVerification(BaseModel):
             "example": {
                 "valid": True,
                 "certificate_id": "MNAIR-2024-123-A3B9C",
-                "user_name": "Adebayo Ogunlesi",
-                "user_phone": "+2348012345678",
                 "issued_date": "2024-06-15T10:30:00",
                 "language": "en",
                 "average_score": 85.5,

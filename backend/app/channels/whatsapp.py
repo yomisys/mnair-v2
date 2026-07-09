@@ -246,8 +246,23 @@ class WhatsAppMessageBuilder:
         }
 
     @staticmethod
-    def build_day_complete_message(day: int, lessons_completed: int) -> Dict[str, Any]:
-        """Build day completion celebration message"""
+    def build_day_complete_message(day: int, lessons_completed: int, needs_name: bool = False) -> Dict[str, Any]:
+        """
+        Build day completion celebration message
+
+        Args:
+            needs_name: Day 7 only — True if the learner hasn't yet provided
+                the name that goes on their certificate (we never ask for it
+                until this exact moment, to avoid collecting it from the ~94%
+                of signups who never reach Day 7)
+        """
+        if day < 7:
+            cta = f"Reply *NEXT* to continue to Day {day + 1}!"
+        elif needs_name:
+            cta = "What name should appear on your certificate? Reply with your full name."
+        else:
+            cta = "Reply *CERTIFICATE* to get your certificate!"
+
         return {
             "messaging_product": "whatsapp",
             "type": "text",
@@ -258,8 +273,8 @@ class WhatsAppMessageBuilder:
                     f"📈 Your Progress:\n"
                     f"✅ Day {day} - DONE\n"
                     f"📚 {lessons_completed} lessons completed\n\n"
-                    f"{'🏆 Keep going! Only ' + str(7 - day) + ' days left!' if day < 7 else '🎓 COURSE COMPLETE! Certificate coming soon!'}\n\n"
-                    f"{'Reply *NEXT* to continue to Day ' + str(day + 1) + '!' if day < 7 else 'Reply *CERTIFICATE* to get your certificate!'}"
+                    f"{'🏆 Keep going! Only ' + str(7 - day) + ' days left!' if day < 7 else '🎓 COURSE COMPLETE!'}\n\n"
+                    f"{cta}"
                 )
             }
         }
@@ -577,14 +592,18 @@ class WhatsAppWebhookHandler:
             await self.handle_quiz_response(user, conversation, interactive_id or message_text)
         elif conversation.current_state == ConversationState.DAY_COMPLETE:
             await self.handle_day_complete(user, conversation, message_text)
+        elif conversation.current_state == ConversationState.AWAITING_CERTIFICATE_NAME:
+            await self.handle_certificate_name(user, conversation, message_text)
         else:
             # Unknown state, reset
             await self.handle_new_user(user, conversation)
 
     async def handle_new_user(self, user: User, conversation: Conversation) -> None:
         """Handle NEW_USER state - send welcome and language selection"""
-        # Send welcome message
-        welcome_msg = self.message_builder.build_welcome_message(user.name)
+        # Send welcome message. No name arg: we don't collect a real name
+        # until Day 7 (see handle_day_completion), so user.name is always
+        # the "WhatsApp User" placeholder at this point.
+        welcome_msg = self.message_builder.build_welcome_message()
         await self.send_whatsapp_message(user.phone_number, welcome_msg)
 
         # Send language selector
@@ -841,6 +860,11 @@ class WhatsAppWebhookHandler:
                 conversation.context = {"current_lesson_id": lesson_id}
                 await self.db.commit()
 
+    # Reserved commands a name reply must not collide with, so someone who
+    # taps a stale button or types a command while being asked for their
+    # name doesn't get that word stored as their certificate name
+    RESERVED_NAME_WORDS = {"next", "quiz", "continue", "certificate", "language", "retry", "yes", "no"}
+
     async def handle_day_completion(self, user: User, conversation: Conversation) -> None:
         """Handle day completion celebration"""
         # Record completed_days here — the single point where every day's
@@ -851,15 +875,49 @@ class WhatsAppWebhookHandler:
         # Get progress
         progress = await self.lesson_manager.get_user_progress(user.id)
 
+        # Only ask for the certificate name once, right here — the one
+        # moment a name is actually needed, not at signup
+        needs_name = user.current_day == 7 and not user.name_confirmed
+
         # Send celebration message
         celebration_msg = self.message_builder.build_day_complete_message(
-            user.current_day, progress.current_day_progress
+            user.current_day, progress.current_day_progress, needs_name=needs_name
         )
         await self.send_whatsapp_message(user.phone_number, celebration_msg)
 
         # Update conversation state
+        conversation.current_state = (
+            ConversationState.AWAITING_CERTIFICATE_NAME if needs_name else ConversationState.DAY_COMPLETE
+        )
+        await self.db.commit()
+
+    async def handle_certificate_name(self, user: User, conversation: Conversation, message_text: str) -> None:
+        """Handle AWAITING_CERTIFICATE_NAME state — capture the name for the certificate"""
+        candidate = message_text.strip()
+
+        if len(candidate) < 2 or len(candidate) > 255 or candidate.lower() in self.RESERVED_NAME_WORDS:
+            await self.send_whatsapp_message(user.phone_number, {
+                "messaging_product": "whatsapp",
+                "type": "text",
+                "text": {"body": "Please reply with the full name you'd like printed on your certificate."}
+            })
+            return
+
+        user.name = candidate
+        user.name_confirmed = True
         conversation.current_state = ConversationState.DAY_COMPLETE
         await self.db.commit()
+
+        await self.send_whatsapp_message(user.phone_number, {
+            "messaging_product": "whatsapp",
+            "type": "text",
+            "text": {
+                "body": (
+                    f"Got it — your certificate will say *{candidate}*.\n\n"
+                    f"🎓 Reply *CERTIFICATE* to get your certificate!"
+                )
+            }
+        })
 
     async def handle_day_complete(self, user: User, conversation: Conversation, message_text: str) -> None:
         """Handle DAY_COMPLETE state - waiting for user to advance"""

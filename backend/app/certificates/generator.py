@@ -400,10 +400,17 @@ class CertificateGenerator:
             issued_at=issued_at
         )
 
-        # Generate verification URL. The /verify page is a manual code-entry
-        # form (no path-param route), so the certificate ID goes in a query
-        # string the frontend prefills — see VerifyCertificate.tsx.
-        verification_url = f"{self.settings.FRONTEND_URL}/verify?code={certificate_id}"
+        # Generate verification URL. The /verify page is a code+name form
+        # (see VerifyCertificate.tsx and the public /verify endpoint's
+        # name-match requirement) -- this field is only ever exposed via
+        # authenticated endpoints (/me, /generate, admin) to the certificate
+        # owner or an admin, so pre-filling the name here is a convenience
+        # for someone who already has full access to this record, not a
+        # new disclosure to a third party.
+        from urllib.parse import quote
+        verification_url = (
+            f"{self.settings.FRONTEND_URL}/verify?code={certificate_id}&name={quote(user.name)}"
+        )
 
         # Create certificate record
         certificate = Certificate(
@@ -429,15 +436,29 @@ class CertificateGenerator:
 
         return certificate
 
-    async def verify_certificate(self, certificate_id: str) -> Optional[Dict[str, Any]]:
+    @staticmethod
+    def _normalize_name(name: str) -> str:
+        """Case/whitespace-insensitive compare so 'chidinma okafor' matches 'Chidinma Okafor'"""
+        return " ".join(name.strip().casefold().split())
+
+    async def verify_certificate(self, certificate_id: str, expected_name: str) -> Optional[Dict[str, Any]]:
         """
-        Verify certificate authenticity
+        Verify certificate authenticity against a required name match.
+
+        Public-safe by design: returns None for BOTH an unknown certificate_id
+        and a real certificate_id whose name doesn't match expected_name, so
+        a caller can never tell which failure mode occurred. That prevents
+        using this endpoint as an oracle to pull real names out of guessed
+        or leaked codes. Phone number is never included in the return value
+        under any circumstance.
 
         Args:
             certificate_id: Certificate ID to verify
+            expected_name: The name the caller believes is on the certificate
 
         Returns:
-            Dict with certificate details or None if invalid
+            Dict with certificate details (no name, no phone) if the code
+            exists and expected_name matches; None otherwise.
         """
         result = await self.db.execute(
             select(Certificate).where(
@@ -449,23 +470,16 @@ class CertificateGenerator:
         if not certificate:
             return None
 
-        # Get user details
-        user_result = await self.db.execute(
-            select(User).where(User.id == certificate.user_id)
-        )
-        user = user_result.scalar_one_or_none()
-
-        if not user:
+        if self._normalize_name(certificate.learner_name) != self._normalize_name(expected_name):
             return None
 
         return {
             "valid": True,
-            "user_name": certificate.learner_name,
-            "user_phone": certificate.learner_phone,
             "issued_date": certificate.issued_at,
             "language": certificate.language,
             "certificate_id": certificate_id,
-            "average_score": certificate.average_quiz_score
+            "average_score": certificate.average_quiz_score,
+            "completion_grade": certificate.completion_grade,
         }
 
     async def get_user_certificate(self, user_id: int) -> Optional[Certificate]:

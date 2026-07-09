@@ -532,14 +532,20 @@ class TestCertificateGenerator:
             test_db.add(certificate)
             await test_db.commit()
 
-            # Verify certificate
-            result = await generator.verify_certificate("MNAIR-2024-1-A3B9C")
+            # Verify certificate — requires the matching name, and the
+            # response never includes name or phone (public endpoint)
+            result = await generator.verify_certificate("MNAIR-2024-1-A3B9C", "Adebayo Ogunlesi")
 
             assert result is not None
             assert result["valid"] is True
-            assert result["user_name"] == "Adebayo Ogunlesi"
-            assert result["user_phone"] == "+2348012345678"
             assert result["certificate_id"] == "MNAIR-2024-1-A3B9C"
+            assert "user_name" not in result
+            assert "user_phone" not in result
+
+            # Case/whitespace-insensitive match
+            result_ci = await generator.verify_certificate("MNAIR-2024-1-A3B9C", "  adebayo   ogunlesi  ")
+            assert result_ci is not None
+            assert result_ci["valid"] is True
 
     @pytest.mark.asyncio
     async def test_verify_certificate_invalid(self, test_db: AsyncSession):
@@ -549,8 +555,55 @@ class TestCertificateGenerator:
         with patch.object(CertificateGenerator, "_ensure_bucket_exists"):
             generator = CertificateGenerator(test_db, settings)
 
-            result = await generator.verify_certificate("MNAIR-2024-INVALID")
+            result = await generator.verify_certificate("MNAIR-2024-INVALID", "Anyone")
 
+            assert result is None
+
+    @pytest.mark.asyncio
+    async def test_verify_certificate_wrong_name(self, test_db: AsyncSession):
+        """
+        A real certificate code with the wrong name must fail exactly like
+        an unknown code (returns None either way) -- this is what stops the
+        endpoint being used to fish real names out of guessed/leaked codes.
+        """
+        settings = Settings()
+
+        with patch.object(CertificateGenerator, "_ensure_bucket_exists"):
+            generator = CertificateGenerator(test_db, settings)
+
+            user = User(
+                phone_number="+2348012345679",
+                name="Ngozi Adeyemi",
+                language="en",
+                current_day=7
+            )
+            test_db.add(user)
+            await test_db.commit()
+            await test_db.refresh(user)
+
+            certificate_id = "MNAIR-2024-2-WRONGN"
+            certificate = Certificate(
+                certificate_id=certificate_id,
+                user_id=user.id,
+                learner_name="Ngozi Adeyemi",
+                learner_phone="+2348012345679",
+                language="en",
+                total_lessons_completed=35,
+                average_quiz_score=90.0,
+                days_to_complete=7,
+                pdf_url=f"certificates/{certificate_id}.pdf",
+                pdf_filename=f"{certificate_id}.pdf",
+                verification_hash=Certificate.generate_verification_hash(
+                    certificate_id=certificate_id, user_id=user.id,
+                    learner_name=user.name, issued_at=datetime(2024, 6, 15)
+                ),
+                verification_url=f"https://mnair.ng/verify?code={certificate_id}",
+                issued_at=datetime(2024, 6, 15)
+            )
+            test_db.add(certificate)
+            await test_db.commit()
+
+            result = await generator.verify_certificate(certificate_id, "Someone Else")
             assert result is None
 
     @pytest.mark.asyncio

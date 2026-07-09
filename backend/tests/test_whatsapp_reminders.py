@@ -503,7 +503,7 @@ def mock_minio_for_certificate_tests(monkeypatch):
     monkeypatch.setattr(CertificateGenerator, "upload_to_minio", fake_upload)
 
 
-def make_finisher(phone, *, channel="whatsapp", language=Language.ENGLISH):
+def make_finisher(phone, *, channel="whatsapp", language=Language.ENGLISH, name_confirmed=True):
     return User(
         phone_number=phone,
         name=f"Finisher {phone[-4:]}",
@@ -511,6 +511,7 @@ def make_finisher(phone, *, channel="whatsapp", language=Language.ENGLISH):
         role=UserRole.LEARNER,
         current_day=7,
         completed_days=7,
+        name_confirmed=name_confirmed,
         preferred_channel=channel,
         consent_given=True,
         is_active=True,
@@ -555,6 +556,30 @@ async def test_certificate_task_sms_only_user_no_whatsapp_attempt(
     assert result["generated"] == 1
     assert len(capture_sends) == 0  # no WhatsApp attempt for a USSD user
     assert len(capture_sms) == 1
+
+
+@pytest.mark.asyncio
+async def test_certificate_task_skips_unconfirmed_name(
+    task_session, capture_sends, capture_sms
+):
+    """
+    A learner who reached Day 7 but hasn't yet replied with their
+    certificate name must NOT get a certificate generated -- that's exactly
+    the "WhatsApp User" placeholder bug this whole feature exists to
+    prevent. They wait until they answer the name prompt (see
+    handle_day_completion / deliver_next_lesson), which the nightly cron
+    will pick up on a later run once name_confirmed flips to True.
+    """
+    user = make_finisher("+2348060000004", channel="whatsapp", name_confirmed=False)
+    task_session.add(user)
+    await task_session.commit()
+
+    result = await notification_tasks._generate_certificates_async()
+
+    assert result["generated"] == 0
+    assert result["total_completed_users"] == 0
+    assert len(capture_sends) == 0
+    assert len(capture_sms) == 0
 
 
 @pytest.mark.asyncio

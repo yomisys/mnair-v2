@@ -157,42 +157,30 @@ async def get_my_certificate_download_url(
 @router.get("/verify/{certificate_id}", response_model=CertificateVerification)
 async def verify_certificate(
     certificate_id: str,
+    name: str = Query(..., min_length=2, max_length=255, description="Full name printed on the certificate"),
     db: AsyncSession = Depends(get_db)
 ):
     """
     Verify certificate authenticity (PUBLIC endpoint - no auth required)
 
-    Anyone can verify a certificate using its ID
-
-    Returns certificate details if valid, 404 if not found
+    Requires both the certificate ID and the name printed on it. This is
+    deliberate: a certificate code alone must never let a stranger pull out
+    who it belongs to. The response never includes a phone number, and is
+    identical (404) whether the code is unknown or the name doesn't match,
+    so this endpoint can't be used to fish real names out of guessed codes.
     """
     from app.config import settings
 
     generator = CertificateGenerator(db, settings)
-    verification_result = await generator.verify_certificate(certificate_id)
+    verification_result = await generator.verify_certificate(certificate_id, name)
 
     if not verification_result:
         raise HTTPException(
             status_code=status.HTTP_404_NOT_FOUND,
-            detail="Certificate not found or invalid"
+            detail="Certificate not found or name does not match"
         )
 
-    # Get certificate to determine grade
-    result = await db.execute(
-        select(Certificate).where(Certificate.certificate_id == certificate_id)
-    )
-    certificate = result.scalar_one()
-
-    return CertificateVerification(
-        valid=verification_result["valid"],
-        certificate_id=certificate_id,
-        user_name=verification_result["user_name"],
-        user_phone=verification_result["user_phone"],
-        issued_date=verification_result["issued_date"],
-        language=verification_result["language"],
-        average_score=verification_result["average_score"],
-        completion_grade=certificate.completion_grade
-    )
+    return CertificateVerification(**verification_result)
 
 
 @router.get("/user/{user_id}", response_model=CertificateResponse)

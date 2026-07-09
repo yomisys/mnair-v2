@@ -686,3 +686,70 @@ def test_content_chunker_footer_does_not_truncate_chunks():
     # No words lost across chunk boundaries
     combined = " ".join(chunks)
     assert combined.replace("  ", " ") == " ".join(long_text.split())
+
+
+@pytest.mark.asyncio
+async def test_ussd_certificate_name_prompt_and_capture(test_db):
+    """
+    We never collect a real name at signup on USSD either (see the
+    "USSD User NNNN" placeholder default). This is the full round trip:
+    finishing Day 7 prompts for a name, a short/invalid reply is rejected,
+    a real reply is captured, and the certificate menu becomes reachable.
+    """
+    settings = Settings()
+    redis_mock = MockRedis()
+    handler = USSDHandler(test_db, redis_mock, settings)
+
+    user = User(
+        phone_number="+2348012345696",
+        name="USSD User 5696",  # the placeholder every learner starts with
+        language=Language.ENGLISH,
+        current_day=7,
+        completed_days=6,
+        name_confirmed=False,
+        consent_given=True,
+        data_retention_date=datetime.utcnow() + timedelta(days=90)
+    )
+    test_db.add(user)
+    await test_db.flush()
+
+    for topic in ["ai_ethics", "ai_in_nigeria", "ai_tools", "how_ai_works", "what_is_ai"]:
+        lesson = Lesson(
+            lesson_id=f"day7name_{topic}_en", day=7, topic=topic, language="en",
+            title=f"Day 7: {topic}", content="Test content", word_count=5,
+            quiz=[{"question": "Q", "options": ["A", "B", "C", "D"], "correct": 0}] * 5,
+        )
+        test_db.add(lesson)
+        await test_db.flush()
+        test_db.add(LessonProgress(
+            user_id=user.id, lesson_id=lesson.id,
+            is_started=True, is_completed=True, quiz_score=100.0,
+        ))
+    await test_db.commit()
+
+    session = {
+        "phone_number": user.phone_number,
+        "state": USSDMenuState.LESSON_DISPLAY,
+        "user_id": user.id,
+        "data": {}
+    }
+
+    # Finishing the last Day 7 lesson triggers the name prompt
+    response = await handler.deliver_next_lesson(user, session)
+    assert session["state"] == USSDMenuState.AWAITING_CERTIFICATE_NAME
+    assert "name" in response.lower()
+
+    # A too-short reply is rejected, not stored
+    session_id = "session_certname"
+    await handler.session_mgr.save_session(session_id, session)
+    response = await handler.handle_request(session_id, user.phone_number, "X")
+    await test_db.refresh(user)
+    assert user.name_confirmed is False
+    assert "CON " in response  # still prompting, not ended
+
+    # A real name is captured
+    response = await handler.handle_request(session_id, user.phone_number, "X*Chidinma Okafor")
+    await test_db.refresh(user)
+    assert user.name == "Chidinma Okafor"
+    assert user.name_confirmed is True
+    assert "1. Get Certificate" in response

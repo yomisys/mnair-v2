@@ -157,8 +157,10 @@ export const certificatesAPI = {
     return response.data
   },
 
-  verifyCertificate: async (certificateId: string) => {
-    const response = await apiClient.get(`/api/v1/certificates/verify/${certificateId}`)
+  verifyCertificate: async (certificateId: string, name: string) => {
+    const response = await apiClient.get(`/api/v1/certificates/verify/${certificateId}`, {
+      params: { name },
+    })
     return response.data
   },
 }

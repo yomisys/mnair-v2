@@ -171,6 +171,11 @@ class SMSNotifier:
         Returns:
             True if sent successfully
         """
+        # Code only, deliberately -- SMS truncates at 160 chars (see
+        # SMSProvider.send_sms), so a &name= param would often get cut off
+        # mid-string. The learner types their name once on the verify page;
+        # the WhatsApp equivalent of this message isn't length-constrained
+        # and does pre-fill both.
         verify_url = f"{self.settings.FRONTEND_URL}/verify?code={certificate_code}"
         message = (
             f"Your MNAIR certificate is ready! "

@@ -21,35 +21,42 @@ import {
 import { certificatesAPI } from '../services/api'
 import { format } from 'date-fns'
 
+// Matches the backend's CertificateVerification schema exactly. The public
+// endpoint deliberately never returns a name or phone number — the caller
+// must already know the name (they typed it in to verify), so it's only
+// ever echoed back from local state, never from the API response.
 interface CertificateData {
+  valid: boolean
   certificate_id: string
-  learner_name: string
-  learner_phone: string
-  completion_date: string
-  final_score: number
-  is_valid: boolean
+  issued_date: string
   language: string
+  average_score: number
+  completion_grade: string
 }
 
 const VerifyCertificate: React.FC = () => {
   const [certificateId, setCertificateId] = useState('')
+  const [name, setName] = useState('')
   const [certificate, setCertificate] = useState<CertificateData | null>(null)
   const [error, setError] = useState<string | null>(null)
   const [isLoading, setIsLoading] = useState(false)
   const [hasSearched, setHasSearched] = useState(false)
 
-  const runVerify = useCallback(async (id: string) => {
+  const runVerify = useCallback(async (id: string, holderName: string) => {
     setError(null)
     setCertificate(null)
     setHasSearched(true)
     setIsLoading(true)
 
     try {
-      const data = await certificatesAPI.verifyCertificate(id.trim())
+      const data = await certificatesAPI.verifyCertificate(id.trim(), holderName.trim())
       setCertificate(data)
     } catch (err: any) {
       if (err.response?.status === 404) {
-        setError('Certificate not found. Please check the ID and try again.')
+        // Deliberately vague: an unknown code and a name that doesn't
+        // match the real code both return the same message, so this page
+        // can't be used to check whether a code exists at all.
+        setError("No certificate found with that ID and name together. Double-check both and try again.")
       } else {
         setError(err.response?.data?.detail || 'Failed to verify certificate. Please try again.')
       }
@@ -58,20 +65,27 @@ const VerifyCertificate: React.FC = () => {
     }
   }, [])
 
-  // Certificate-ready SMS/WhatsApp links carry ?code=... so the learner
-  // lands here with their code already verified, not an empty form.
+  // The learner's own certificate-ready notification carries ?code=...&name=...
+  // (their own data, sent to their own phone) so they land here pre-filled
+  // instead of an empty form. A stranger sharing just the code has no name
+  // to append, so this auto-fill never helps anyone but the actual holder.
   useEffect(() => {
-    const code = new URLSearchParams(window.location.search).get('code')
-    if (code) {
+    const params = new URLSearchParams(window.location.search)
+    const code = params.get('code')
+    const prefilledName = params.get('name')
+    if (code && prefilledName) {
       setCertificateId(code)
-      runVerify(code)
+      setName(prefilledName)
+      runVerify(code, prefilledName)
+    } else if (code) {
+      setCertificateId(code)
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   const handleVerify = async (e: React.FormEvent) => {
     e.preventDefault()
-    await runVerify(certificateId)
+    await runVerify(certificateId, name)
   }
 
   return (
@@ -83,7 +97,7 @@ const VerifyCertificate: React.FC = () => {
             Verify Certificate
           </Typography>
           <Typography variant="body1" color="text.secondary">
-            Enter a certificate ID to verify its authenticity
+            Enter the certificate ID and the name printed on it to verify authenticity
           </Typography>
         </Box>
 
@@ -103,12 +117,24 @@ const VerifyCertificate: React.FC = () => {
                 helperText="Format: MNAIR-YEAR-USERID-RANDOM"
               />
 
+              <TextField
+                label="Full Name"
+                fullWidth
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+                placeholder="Name as printed on the certificate"
+                required
+                disabled={isLoading}
+                sx={{ mb: 3 }}
+                helperText="Must match the name on the certificate exactly"
+              />
+
               <Button
                 type="submit"
                 variant="contained"
                 fullWidth
                 size="large"
-                disabled={isLoading || !certificateId.trim()}
+                disabled={isLoading || !certificateId.trim() || !name.trim()}
                 startIcon={isLoading ? <CircularProgress size={20} color="inherit" /> : <SearchIcon />}
               >
                 {isLoading ? 'Verifying...' : 'Verify Certificate'}
@@ -140,7 +166,7 @@ const VerifyCertificate: React.FC = () => {
               </Box>
 
               <Typography variant="h5" align="center" gutterBottom fontWeight="bold" color="primary">
-                {certificate.learner_name}
+                {name}
               </Typography>
 
               <Typography variant="body2" align="center" color="text.secondary" sx={{ mb: 4 }}>
@@ -165,16 +191,16 @@ const VerifyCertificate: React.FC = () => {
                     Completion Date
                   </Typography>
                   <Typography variant="body1" fontWeight="medium">
-                    {format(new Date(certificate.completion_date), 'MMMM d, yyyy')}
+                    {format(new Date(certificate.issued_date), 'MMMM d, yyyy')}
                   </Typography>
                 </Grid>
 
                 <Grid item xs={12} sm={6}>
                   <Typography variant="body2" color="text.secondary" gutterBottom>
-                    Final Score
+                    Quiz Average
                   </Typography>
                   <Typography variant="body1" fontWeight="medium" color="success.main">
-                    {certificate.final_score.toFixed(1)}%
+                    {certificate.average_score.toFixed(1)}%
                   </Typography>
                 </Grid>
 
@@ -189,31 +215,20 @@ const VerifyCertificate: React.FC = () => {
 
                 <Grid item xs={12} sm={6}>
                   <Typography variant="body2" color="text.secondary" gutterBottom>
-                    Phone Number
+                    Grade
                   </Typography>
                   <Typography variant="body1" fontWeight="medium">
-                    {certificate.learner_phone}
+                    {certificate.completion_grade}
                   </Typography>
-                </Grid>
-
-                <Grid item xs={12} sm={6}>
-                  <Typography variant="body2" color="text.secondary" gutterBottom>
-                    Status
-                  </Typography>
-                  <Chip
-                    label={certificate.is_valid ? 'Valid' : 'Invalid'}
-                    color={certificate.is_valid ? 'success' : 'error'}
-                    size="small"
-                  />
                 </Grid>
               </Grid>
 
               <Divider sx={{ my: 3 }} />
 
               <Alert severity="info" sx={{ mt: 3 }}>
-                This certificate was issued by the Make Nigeria AI Ready (MNAIR) platform and is
-                officially recognized. The holder has successfully completed a 7-day AI literacy
-                program covering fundamental AI concepts, applications, and ethics.
+                This certificate was issued by the Make Nigeria AI Ready (MNAIR) platform. The
+                holder has successfully completed a 7-day AI literacy program covering fundamental
+                AI concepts, applications, and ethics.
               </Alert>
             </CardContent>
           </Card>

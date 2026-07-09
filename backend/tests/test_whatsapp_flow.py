@@ -615,8 +615,97 @@ async def test_day_seven_completion_sets_completed_days_to_seven(test_db):
     assert user.current_day == 7  # no Day 8 to advance to
     assert user.completed_days == 7  # but completion must still be recorded
 
+    # Name isn't confirmed yet (default), so the flow asks for it before
+    # DAY_COMPLETE — see test_certificate_name_flow.py-style tests below
     await test_db.refresh(conversation)
+    assert conversation.current_state == ConversationState.AWAITING_CERTIFICATE_NAME
+
+
+@pytest.mark.asyncio
+async def test_certificate_name_prompt_and_capture(test_db):
+    """
+    We never collect a real name at signup (see the placeholder default in
+    get_or_create_user) — the only moment we ask is right here, at Day 7
+    completion, and only from learners who actually reach it. This is the
+    full round trip: prompt fires once, a reply is captured, reserved
+    command words are rejected, and the certificate flow becomes reachable
+    afterward.
+    """
+    settings = Settings()
+    handler = WhatsAppWebhookHandler(settings, test_db)
+
+    user = User(
+        phone_number="+2348012345700",
+        name="WhatsApp User",  # the placeholder every learner starts with
+        language=Language.ENGLISH,
+        current_day=7,
+        completed_days=6,
+        name_confirmed=False,
+        consent_given=True,
+        data_retention_date=datetime.utcnow() + timedelta(days=90)
+    )
+    test_db.add(user)
+    await test_db.flush()
+
+    for topic in ["what_is_ai", "how_ai_works", "ai_in_nigeria", "ai_tools", "ai_ethics"]:
+        lesson = Lesson(
+            lesson_id=f"day7name_{topic}_en", day=7, topic=topic, language="en",
+            title=f"Day 7: {topic}", content="Test content", word_count=2,
+            quiz=[{"question": "Q", "options": ["A", "B", "C", "D"], "correct": 0}] * 5,
+        )
+        test_db.add(lesson)
+        await test_db.flush()
+        test_db.add(LessonProgress(
+            user_id=user.id, lesson_id=lesson.id,
+            is_started=True, is_completed=True, quiz_score=80.0,
+        ))
+
+    conversation = Conversation(
+        user_id=user.id, channel="whatsapp", phone_number=user.phone_number,
+        current_state=ConversationState.IN_LESSON, is_active=True,
+    )
+    test_db.add(conversation)
+    await test_db.commit()
+
+    async def _capture():
+        sent = []
+        orig = handler.send_whatsapp_message
+
+        async def fake_send(phone_number, message):
+            sent.append(message)
+            return True
+
+        handler.send_whatsapp_message = fake_send
+        return sent
+
+    sent = await _capture()
+
+    # Finishing the last Day 7 lesson triggers the name prompt
+    await handler.deliver_next_lesson(user, conversation)
+    await test_db.refresh(conversation)
+    assert conversation.current_state == ConversationState.AWAITING_CERTIFICATE_NAME
+    prompt_text = sent[-1]["text"]["body"]
+    assert "name" in prompt_text.lower()
+
+    # A reserved command word must be rejected, not stored as a name
+    await handler.handle_message(user.phone_number, "continue", "text")
+    await test_db.refresh(user)
+    await test_db.refresh(conversation)
+    assert user.name_confirmed is False
+    assert conversation.current_state == ConversationState.AWAITING_CERTIFICATE_NAME
+
+    # A real name is captured and confirmed
+    await handler.handle_message(user.phone_number, "Chidinma Okafor", "text")
+    await test_db.refresh(user)
+    await test_db.refresh(conversation)
+    assert user.name == "Chidinma Okafor"
+    assert user.name_confirmed is True
     assert conversation.current_state == ConversationState.DAY_COMPLETE
+
+    # CERTIFICATE now works normally from DAY_COMPLETE
+    await handler.handle_message(user.phone_number, "CERTIFICATE", "text")
+    final_msg = sent[-1]["text"]["body"]
+    assert "certificate" in final_msg.lower()
 
 
 @pytest.mark.asyncio

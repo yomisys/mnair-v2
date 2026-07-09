@@ -49,6 +49,14 @@ class User(Base):
         comment="Nigerian phone: 080XXXXXXXX or 234XXXXXXXXXX"
     )
     name: Mapped[str] = mapped_column(String(255), nullable=False)
+    name_confirmed: Mapped[bool] = mapped_column(
+        Boolean,
+        default=False,
+        nullable=False,
+        comment="True once the learner has deliberately provided their own "
+                "name (asked once, at Day 7 completion) rather than holding "
+                "the auto-assigned 'WhatsApp User'/'USSD User NNNN' placeholder"
+    )
     email: Mapped[Optional[str]] = mapped_column(String(255), unique=True, index=True)
 
     # Authentication (for admin/employer only)

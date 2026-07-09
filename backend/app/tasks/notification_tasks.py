@@ -279,12 +279,18 @@ async def _generate_certificates_async():
         sms_notifier = SMSNotifier(db, settings)
         whatsapp_handler = WhatsAppWebhookHandler(settings, db)
 
-        # Find completed users without certificates
+        # Find completed users without certificates. name_confirmed gates
+        # this: never generate a certificate carrying the auto-assigned
+        # "WhatsApp User"/"USSD User NNNN" placeholder — a user who finished
+        # Day 7 but hasn't yet replied with their certificate name simply
+        # waits until they do (the channel handler prompts them once, right
+        # at Day 7 completion).
         result = await db.execute(
             select(User).where(
                 and_(
                     User.current_day >= 7,
                     User.is_active == True,
+                    User.name_confirmed == True,
                 )
             )
         )
@@ -324,7 +330,15 @@ async def _generate_certificates_async():
 
                 whatsapp_ok = True
                 if user.preferred_channel == "whatsapp":
-                    verify_url = f"{settings.FRONTEND_URL}/verify?code={certificate.certificate_id}"
+                    # Pre-fill both code and name: this is the learner's own
+                    # data going to their own phone, so it's a convenience,
+                    # not a new disclosure. No length constraint here (unlike
+                    # SMS), so unlike the SMS link above this one carries name.
+                    from urllib.parse import quote
+                    verify_url = (
+                        f"{settings.FRONTEND_URL}/verify"
+                        f"?code={certificate.certificate_id}&name={quote(user.name)}"
+                    )
                     whatsapp_ok = await whatsapp_handler.send_whatsapp_message(
                         user.phone_number,
                         {

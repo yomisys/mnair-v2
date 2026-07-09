@@ -498,8 +498,20 @@ class TestCertificatesAPI:
         """Test verifying non-existent certificate (public endpoint)"""
         async with AsyncClient(app=app, base_url="http://test") as client:
             response = await client.get(
-                "/api/v1/certificates/verify/MNAIR-2024-999-INVALID"
+                "/api/v1/certificates/verify/MNAIR-2024-999-INVALID",
+                params={"name": "Anyone"}
             )
 
             assert response.status_code == 404
             assert "not found" in response.json()["detail"].lower()
+
+    @pytest.mark.asyncio
+    async def test_verify_certificate_requires_name(self, test_db):
+        """Verify endpoint must reject a request with no name at all —
+        a certificate code alone should never be enough to get a response"""
+        async with AsyncClient(app=app, base_url="http://test") as client:
+            response = await client.get(
+                "/api/v1/certificates/verify/MNAIR-2024-999-INVALID"
+            )
+
+            assert response.status_code == 422
