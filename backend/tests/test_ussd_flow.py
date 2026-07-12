@@ -324,19 +324,32 @@ async def test_ussd_quiz_flow(test_db):
     assert "Question 1/5" in response
     assert "What is AI" in response
 
-    # Answer question 1 correctly (option 1)
-    response = await handler.handle_request(session_id, phone, "1*1*1*1")
-    assert "Question 2/5" in response
+    correct_by_question = [0, 1, 2, 3, 0]  # matches the fixture's `correct` values above
+    ussd_input = "1*1*1"
 
-    # Answer remaining questions
-    await handler.handle_request(session_id, phone, "1*1*1*1*2")  # Q2
-    await handler.handle_request(session_id, phone, "1*1*1*1*2*3")  # Q3
-    await handler.handle_request(session_id, phone, "1*1*1*1*2*3*4")  # Q4
-    response = await handler.handle_request(session_id, phone, "1*1*1*1*2*3*4*1")  # Q5
+    def correct_choice_for(question_num: int) -> str:
+        # Options are shuffled per question (app/services/quiz_shuffle.py),
+        # so the digit that's actually correct has to be read from the
+        # session, not assumed to match the fixture's original index.
+        raw = redis_mock.data[f"ussd:session:{session_id}"]
+        session = json.loads(raw)
+        order = session["data"]["quiz_shuffle"][str(question_num)]
+        display_position = order.index(correct_by_question[question_num])
+        return str(display_position + 1)  # USSD choices are 1-indexed
 
-    # Should show quiz result
+    for question_num in range(5):
+        ussd_input += "*" + correct_choice_for(question_num)
+        response = await handler.handle_request(session_id, phone, ussd_input)
+        if question_num < 4:
+            assert f"Question {question_num + 2}/5" in response, \
+                f"expected question {question_num + 2} after answering question {question_num + 1} correctly, got: {response}"
+
+    # Answering every question with its actually-correct option must pass —
+    # this is the real regression check: it would fail if grading and
+    # shuffling ever fall out of sync with each other.
     assert "CON " in response
-    assert "PASSED" in response or "Score" in response
+    assert "PASSED" in response
+    assert "100" in response
 
 
 @pytest.mark.asyncio

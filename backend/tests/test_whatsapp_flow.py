@@ -95,11 +95,19 @@ async def test_message_builder_quiz_message(test_db):
         ] * 5
     )
 
-    msg = builder.build_quiz_message(lesson, 0)
+    options = lesson.quiz[0]["options"]
+    order = [2, 0, 3, 1]  # a non-identity shuffle, to prove display order is honored
+    msg = builder.build_quiz_message(lesson, 0, order)
     assert msg["type"] == "interactive"
     assert "Question 1/5" in msg["interactive"]["body"]["text"]
     assert "What does AI stand for?" in msg["interactive"]["body"]["text"]
-    assert len(msg["interactive"]["action"]["sections"][0]["rows"]) == 4
+    rows = msg["interactive"]["action"]["sections"][0]["rows"]
+    assert len(rows) == 4
+    # Rows must reflect `order`, not the option's original position —
+    # this is the whole point of the shuffle (see app/services/quiz_shuffle.py)
+    for display_pos, row in enumerate(rows):
+        assert row["id"] == f"ans_0_{display_pos}"
+        assert row["description"] == options[order[display_pos]][:72]
 
 
 @pytest.mark.asyncio
@@ -326,9 +334,14 @@ async def test_full_lesson_flow(test_db):
     assert conversation.context["current_question"] == 0
     assert conversation.context["answers"] == []
 
-    # Answer all 5 questions correctly
+    # Answer all 5 questions correctly. Every fixture question has
+    # correct=0, but display position 0 no longer reliably maps to it —
+    # options are shuffled per question (app/services/quiz_shuffle.py) —
+    # so look up where the shuffle actually placed the correct option.
     for i in range(5):
-        await handler.handle_quiz_response(user, conversation, f"ans_{i}_0")
+        order = conversation.context["quiz_shuffle"][str(i)]
+        display_position = order.index(0)
+        await handler.handle_quiz_response(user, conversation, f"ans_{i}_{display_position}")
         await test_db.refresh(conversation)
 
     # Should be back in IN_LESSON state
@@ -470,7 +483,11 @@ async def test_quiz_retry_flow(test_db):
     test_db.add(lesson)
     await test_db.flush()
 
-    # Create conversation in AWAITING_QUIZ state
+    # Create conversation in AWAITING_QUIZ state, bypassing the normal
+    # display flow (this test is focused on retry/fail behavior, not
+    # shuffling — see test_quiz_shuffle.py for that). Pre-seed an
+    # identity shuffle for every question so "option 3" is deterministically
+    # wrong, same as the fixture's correct=0 implies pre-shuffling.
     conversation = Conversation(
         user_id=user.id,
         channel="whatsapp",
@@ -480,7 +497,8 @@ async def test_quiz_retry_flow(test_db):
         context={
             "current_lesson_id": lesson.id,
             "current_question": 0,
-            "answers": []
+            "answers": [],
+            "quiz_shuffle": {str(i): [0, 1, 2, 3] for i in range(5)},
         }
     )
     test_db.add(conversation)

@@ -18,6 +18,7 @@ from app.database import get_db
 from app.models.user import User, Language
 from app.models.lesson import Lesson
 from app.services.lesson_state import LessonStateManager
+from app.services.quiz_shuffle import get_or_create_shuffle, shuffled_options, unshuffle_answer
 from app.config import Settings, get_settings
 
 
@@ -510,7 +511,17 @@ class USSDHandler:
 
         quiz_item = lesson.quiz[question_num]
         question = quiz_item["question"]
-        options = quiz_item["options"]
+
+        # Shuffled so the correct answer isn't always option A (curriculum
+        # content skews heavily toward the correct answer being written
+        # first -- see app/services/quiz_shuffle.py). Reuses an existing
+        # shuffle if this exact question was already shown (e.g. a resend
+        # after an invalid choice), so the displayed order stays stable
+        # for the same question within one attempt.
+        order, new_context_data = get_or_create_shuffle(
+            session["data"], question_num, len(quiz_item["options"]))
+        session["data"] = new_context_data
+        options = shuffled_options(quiz_item["options"], order)
 
         # Format question
         response = f"Question {question_num + 1}/5\n\n{question}\n\n"
@@ -529,11 +540,16 @@ class USSDHandler:
         if choice not in ["1", "2", "3", "4"]:
             return USSDResponse.end("Invalid answer. Dial *384*8080# to retry.")
 
-        # Record answer (convert to 0-indexed)
-        answer_index = int(choice) - 1
-        session["data"]["quiz_answers"].append(answer_index)
-
         current_question = session["data"]["current_question"]
+
+        # The typed choice is the DISPLAY position (1-indexed) shown by
+        # show_quiz_question, not the option's original index -- unshuffle
+        # using the order that question was actually shown in.
+        display_position = int(choice) - 1
+        order, new_context_data = get_or_create_shuffle(session["data"], current_question, 4)
+        session["data"] = new_context_data
+        answer_index = unshuffle_answer(display_position, order)
+        session["data"]["quiz_answers"].append(answer_index)
 
         if current_question < 4:
             # More questions

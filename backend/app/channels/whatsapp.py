@@ -21,6 +21,7 @@ from app.models.user import User, Language
 from app.models.conversation import Conversation, ConversationState
 from app.models.lesson import Lesson
 from app.services.lesson_state import LessonStateManager
+from app.services.quiz_shuffle import get_or_create_shuffle, shuffled_options, unshuffle_answer
 from app.config import Settings, get_settings
 
 
@@ -176,14 +177,21 @@ class WhatsAppMessageBuilder:
         }
 
     @staticmethod
-    def build_quiz_message(lesson: Lesson, question_num: int) -> Dict[str, Any]:
-        """Build quiz question with interactive buttons"""
+    def build_quiz_message(lesson: Lesson, question_num: int, order: List[int]) -> Dict[str, Any]:
+        """Build quiz question with interactive buttons.
+
+        `order` is the display shuffle for this question (see
+        app.services.quiz_shuffle) -- option button ids are keyed by
+        *display* position, not the option's original index, so the
+        caller must unshuffle the selected id back to an original index
+        before recording it as an answer.
+        """
         if not lesson.quiz or question_num >= len(lesson.quiz):
             raise ValueError(f"Invalid question number {question_num}")
 
         quiz_item = lesson.quiz[question_num]
         question_text = quiz_item["question"]
-        options = quiz_item["options"]
+        options = shuffled_options(quiz_item["options"], order)
 
         # Build buttons (max 3 buttons, so we'll use list for 4 options)
         return {
@@ -695,10 +703,16 @@ class WhatsAppWebhookHandler:
             if lesson_id:
                 result = await self.db.execute(select(Lesson).where(Lesson.id == lesson_id))
                 lesson = result.scalar_one_or_none()
-                if lesson:
+                if lesson and current_question < len(lesson.quiz):
+                    num_options = len(lesson.quiz[current_question]["options"])
+                    order, new_context = get_or_create_shuffle(
+                        conversation.context, current_question, num_options)
+                    if new_context is not conversation.context:
+                        conversation.context = new_context
+                        await self.db.commit()
                     await self.send_whatsapp_message(
                         user.phone_number,
-                        self.message_builder.build_quiz_message(lesson, current_question)
+                        self.message_builder.build_quiz_message(lesson, current_question, order)
                     )
                     return
             # Corrupted context — fall back to lesson delivery
@@ -766,13 +780,18 @@ class WhatsAppWebhookHandler:
             lesson = result.scalar_one_or_none()
 
             if lesson:
-                # Send first quiz question
-                quiz_msg = self.message_builder.build_quiz_message(lesson, 0)
+                # Send first quiz question. RETRY always starts from a
+                # fresh context below, so this always generates a new
+                # shuffle -- retries get re-randomized options too.
+                order, shuffled_context = get_or_create_shuffle(
+                    {}, 0, len(lesson.quiz[0]["options"]))
+                quiz_msg = self.message_builder.build_quiz_message(lesson, 0, order)
                 await self.send_whatsapp_message(user.phone_number, quiz_msg)
 
                 # Update state
                 conversation.current_state = ConversationState.AWAITING_QUIZ
                 conversation.context = {
+                    **shuffled_context,
                     "current_lesson_id": lesson_id,
                     "current_question": 0,
                     "answers": []
@@ -805,41 +824,69 @@ class WhatsAppWebhookHandler:
         if response.startswith("ans_"):
             parts = response.split("_")
             try:
-                answer_idx = int(parts[2]) if len(parts) == 3 else None
+                display_position = int(parts[2]) if len(parts) == 3 else None
             except (ValueError, IndexError):
-                answer_idx = None
-            if answer_idx is None:
-                # Malformed ans_ — re-send current question
+                display_position = None
+            if display_position is None:
+                # Malformed ans_ — re-send current question, same order as before
                 result = await self.db.execute(select(Lesson).where(Lesson.id == lesson_id))
                 lesson = result.scalar_one_or_none()
-                if lesson:
-                    await self.send_whatsapp_message(user.phone_number, self.message_builder.build_quiz_message(lesson, current_question))
+                if lesson and current_question < len(lesson.quiz):
+                    order, new_context = get_or_create_shuffle(
+                        conversation.context, current_question,
+                        len(lesson.quiz[current_question]["options"]))
+                    if new_context is not conversation.context:
+                        conversation.context = new_context
+                        await self.db.commit()
+                    await self.send_whatsapp_message(user.phone_number, self.message_builder.build_quiz_message(lesson, current_question, order))
                 return
         else:
-            # Non-interactive reply — re-send current question
+            # Non-interactive reply — re-send current question, same order as before
             result = await self.db.execute(select(Lesson).where(Lesson.id == lesson_id))
             lesson = result.scalar_one_or_none()
-            if lesson:
-                await self.send_whatsapp_message(user.phone_number, self.message_builder.build_quiz_message(lesson, current_question))
+            if lesson and current_question < len(lesson.quiz):
+                order, new_context = get_or_create_shuffle(
+                    conversation.context, current_question,
+                    len(lesson.quiz[current_question]["options"]))
+                if new_context is not conversation.context:
+                    conversation.context = new_context
+                    await self.db.commit()
+                await self.send_whatsapp_message(user.phone_number, self.message_builder.build_quiz_message(lesson, current_question, order))
             return
 
-        answers = conversation.context.get("answers", [])
+        # The button id encodes the DISPLAY position, not the option's
+        # original index — unshuffle using the order this question was
+        # actually shown in before recording the answer. Thread the
+        # (possibly updated) context through both lookups below rather
+        # than discarding either — if this question's shuffle didn't
+        # already exist (defensive fallback; shouldn't happen in normal
+        # flow, since it's always created when the question is first
+        # displayed), the freshly-created one must not be lost when the
+        # next question's shuffle is folded in afterward.
+        current_order, working_context = get_or_create_shuffle(
+            conversation.context, current_question, 4)
+        answer_idx = unshuffle_answer(display_position, current_order)
+
+        answers = working_context.get("answers", [])
         answers.append(answer_idx)
 
         # Replace the entire dict so SQLAlchemy detects the JSON column change
         if current_question < 4:
             next_question = current_question + 1
+            result = await self.db.execute(select(Lesson).where(Lesson.id == lesson_id))
+            lesson = result.scalar_one_or_none()
+            next_order, shuffled_context = get_or_create_shuffle(
+                working_context, next_question,
+                len(lesson.quiz[next_question]["options"]) if lesson else 4)
             conversation.context = {
-                **conversation.context,
+                **shuffled_context,
                 "current_question": next_question,
                 "answers": answers,
             }
             await self.db.commit()
 
-            result = await self.db.execute(select(Lesson).where(Lesson.id == lesson_id))
-            lesson = result.scalar_one_or_none()
             if lesson:
-                await self.send_whatsapp_message(user.phone_number, self.message_builder.build_quiz_message(lesson, next_question))
+                await self.send_whatsapp_message(user.phone_number, self.message_builder.build_quiz_message(lesson, next_question, next_order))
         else:
             # Quiz complete — score it
             quiz_result = await self.lesson_manager.record_quiz_attempt(user.id, lesson_id, answers)
