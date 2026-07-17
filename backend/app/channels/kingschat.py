@@ -361,13 +361,52 @@ class KingsChatHandler:
 
         return conversation
 
-    async def handle_message(self, session: "KingsChatSession", kingschat_user_id: str, message_text: str) -> None:
+    async def handle_message(self, session: "KingsChatSession", kingschat_user_id: str, message_text: str, kc_message_id: Optional[str] = None) -> bool:
+        """Route one incoming message. Returns True if it was processed,
+        False if it was skipped as a duplicate (already-seen kc_message_id)
+        — the return value lets poll_once count real work, since direct
+        polling of active conversations (see KingsChatWatcher) re-reads the
+        latest message every cycle by design and relies on this dedupe."""
         user = await self.get_or_create_user(kingschat_user_id)
         user.last_active_at = datetime.utcnow()
         await self.db.commit()
 
         conversation = await self.get_or_create_conversation(user.id, kingschat_user_id)
 
+        # Dedupe by KingsChat message id (bubble data-messageid, see
+        # KingsChatSession.read_latest_incoming). An inbox row can show
+        # "unread" without any new incoming message (observed live: the
+        # bot's own send did it), and the poll would then re-read the
+        # learner's LAST message — re-processing which would corrupt the
+        # quiz state machine (each call records an answer and advances
+        # the question). message_history is used as the ledger because
+        # handlers overwrite `context` wholesale on state transitions;
+        # message_history is a separate column that survives them.
+        if kc_message_id is not None:
+            history = conversation.message_history if isinstance(conversation.message_history, list) else []
+            if any(m.get("kc_message_id") == kc_message_id for m in history if isinstance(m, dict)):
+                logger.info(
+                    "kingschat_duplicate_message_skipped conversation=%s kc_message_id=%s",
+                    kingschat_user_id, kc_message_id,
+                )
+                return False
+
+        await self._route_message(session, kingschat_user_id, user, conversation, message_text)
+
+        if kc_message_id is not None:
+            # Record only after successful routing — if processing raised,
+            # the message stays unrecorded and the next poll retries it.
+            history = conversation.message_history if isinstance(conversation.message_history, list) else []
+            conversation.message_history = (history + [{
+                "role": "user",
+                "content": message_text,
+                "kc_message_id": kc_message_id,
+                "timestamp": datetime.utcnow().isoformat(),
+            }])[-10:]
+            await self.db.commit()
+        return True
+
+    async def _route_message(self, session: "KingsChatSession", kingschat_user_id: str, user: User, conversation: Conversation, message_text: str) -> None:
         if message_text.strip().upper() == "CONTINUE" and conversation.current_state in (
             ConversationState.IN_LESSON,
             ConversationState.AWAITING_QUIZ,
@@ -1159,23 +1198,45 @@ class KingsChatSession:
                 return row
         return None
 
-    async def read_latest_incoming_message(self) -> Optional[str]:
-        """Read the text of the most recent message NOT sent by this
-        account, on whatever conversation the page is currently on. Must
-        be called after navigating to a specific conversation (e.g. via
-        list_unread_direct_conversation_ids, which leaves the page on the
-        conversation it just opened).
+    async def read_latest_incoming(self) -> Optional[tuple[Optional[str], str]]:
+        """Return (message_id, text) of the most recent message NOT sent by
+        this account, on whatever conversation the page is currently on.
+        Must be called after navigating to a specific conversation (e.g.
+        via list_unread_direct_conversation_ids, which leaves the page on
+        the conversation it just opened).
+
+        message_id comes from the bubble's data-messageid attribute
+        (discovered live 2026-07-17 — a stable per-message identifier,
+        e.g. 'qnjwZEILXVvSb4Lcc1fwig=='); None if the attribute is absent.
+        Callers use it to dedupe: an inbox row can show "unread" for
+        reasons other than a new incoming message (observed live: the
+        bot's own send did it), and processing the same learner message
+        twice would corrupt the quiz state machine (each call records an
+        answer and advances the question).
+
+        Waits for the bubble list to STABILIZE (count unchanged between
+        checks) rather than sleeping a fixed amount: confirmed live
+        2026-07-17, three separate times, that this SPA renders the bubble
+        list progressively — the first bubble attaching does not mean the
+        newest messages are rendered, and both a fixed-delay retry AND an
+        instant scan each missed a real learner message mid-render (one
+        of which was lost to polling entirely, since the row click had
+        already consumed the unread flag).
         """
         bubbles = self._page.locator(SELECTORS.message_bubble)
-        # Message bubbles hydrate seconds after navigation on this SPA
-        # (confirmed live 2026-07-17: an instant scan right after the
-        # inbox-row click found zero bubbles on a thread with 45 messages,
-        # so the poll skipped a real learner). Bounded wait, swallowed --
-        # a genuinely empty thread just times out quietly and returns None.
         try:
             await bubbles.first.wait_for(state="attached", timeout=20000)
         except Exception:
             return None
+
+        prev = -1
+        for _ in range(12):  # up to ~24s for a slow render; exits early once stable
+            cur = await bubbles.count()
+            if cur == prev:
+                break
+            prev = cur
+            await self._page.wait_for_timeout(2000)
+
         count = await bubbles.count()
         for i in range(count - 1, -1, -1):
             bubble = bubbles.nth(i)
@@ -1186,13 +1247,26 @@ class KingsChatSession:
             if await text_el.count() == 0:
                 continue
             raw = await text_el.first.text_content() or ""
+            message_id = await bubble.get_attribute("data-messageid")
             # Collapse runs of whitespace: text_content() on these bubbles
             # returns huge internal gaps (one text node per word — observed
             # live: 'Get          a          certificate'). Single-word
             # commands survive strip() anyway, but multi-word input (e.g. a
             # certificate name) would otherwise be stored gap-ridden.
-            return " ".join(raw.split())
+            return (message_id, " ".join(raw.split()))
         return None
+
+    async def read_latest_incoming_message(self) -> Optional[str]:
+        """Text-only convenience wrapper around read_latest_incoming()."""
+        result = await self.read_latest_incoming()
+        return result[1] if result else None
+
+    async def open_conversation(self, kingschat_user_id: str) -> None:
+        """Navigate to a conversation by ID so read_latest_incoming can be
+        called on it — the direct-polling path (see KingsChatWatcher),
+        which reads known learner threads by URL every cycle instead of
+        depending on inbox unread flags."""
+        await _goto_and_settle(self._page, f"https://kingschat.online/conversations/{kingschat_user_id}")
 
 
 class DryRunKingsChatSession:
@@ -1222,54 +1296,135 @@ class DryRunKingsChatSession:
     async def list_unread_direct_conversation_ids(self, contact_filter: Optional[str] = None) -> list[str]:
         return await self._real.list_unread_direct_conversation_ids(contact_filter)
 
+    async def read_latest_incoming(self) -> Optional[tuple[Optional[str], str]]:
+        return await self._real.read_latest_incoming()
+
     async def read_latest_incoming_message(self) -> Optional[str]:
         return await self._real.read_latest_incoming_message()
 
+    async def open_conversation(self, kingschat_user_id: str) -> None:
+        await self._real.open_conversation(kingschat_user_id)
+
 
 class KingsChatWatcher:
-    """Ties the pieces together: poll the inbox for unread DMs, read the
-    latest incoming message, dispatch it through KingsChatHandler (the
-    same state machine whatsapp.py/ussd.py use, per Premise 2), and send
-    the computed reply back. This is the piece that turns the individual
-    components (session store, browser pool, handler, message builder)
-    into something that actually runs — see kingschat_bot.py for the
-    runnable entrypoint that constructs one of these.
+    """Ties the pieces together: poll for new learner messages, dispatch
+    them through KingsChatHandler (the same state machine whatsapp.py/
+    ussd.py use, per Premise 2), and send the computed reply back. See
+    kingschat_bot.py for the runnable entrypoint that constructs one.
+
+    Two complementary discovery paths per cycle:
+
+    1. UNREAD SCAN — the inbox's unread rows. This is how brand-new
+       learners (not yet in our database) are discovered at all.
+    2. DIRECT POLL — every active KingsChat conversation already in our
+       database is navigated by URL and its latest incoming message read,
+       regardless of any unread flag. Added 2026-07-17 after unread-driven
+       discovery lost a real learner answer TWICE, live: the flag is
+       consumed by clicking the row, but the message list renders
+       progressively and can also lag the flag entirely (message still in
+       transit), so click-then-read can eat the flag while seeing nothing
+       — and the bot's own sends also raise spurious flags. Flags are a
+       hint, not a ledger. Direct polling has no flag race by
+       construction; kc_message_id dedupe (see handle_message) makes
+       re-reading the same latest message every cycle harmless.
     """
 
-    def __init__(self, handler: KingsChatHandler, ban_fallback: KingsChatBanFallback):
+    # Direct-poll only conversations with activity in this window — keeps
+    # a long-running deployment from re-navigating every learner thread
+    # ever created on every cycle.
+    ACTIVE_WINDOW_HOURS = 72
+
+    def __init__(self, handler: KingsChatHandler, ban_fallback: KingsChatBanFallback, db: Optional[AsyncSession] = None):
         self.handler = handler
         self.ban_fallback = ban_fallback
+        # db powers the direct-poll path; None (e.g. in unit tests that
+        # only exercise the unread scan) disables it.
+        self.db = db
+
+    async def _active_conversation_ids(self) -> list[str]:
+        from datetime import timedelta
+
+        cutoff = datetime.utcnow() - timedelta(hours=self.ACTIVE_WINDOW_HOURS)
+        result = await self.db.execute(
+            select(Conversation.external_id).where(
+                Conversation.channel == ConversationChannel.KINGSCHAT,
+                Conversation.is_active == True,
+                Conversation.current_state != ConversationState.PROGRAM_COMPLETE,
+                Conversation.last_message_at >= cutoff,
+            )
+        )
+        return [row[0] for row in result if row[0]]
 
     async def poll_once(self, session, contact_filter: Optional[str] = None) -> int:
-        """One poll cycle: check for a ban first, then process every
-        currently-unread Direct conversation. Returns the number of
-        messages processed. `session` accepts either a real
-        KingsChatSession or a DryRunKingsChatSession -- both expose the
-        same interface.
+        """One poll cycle: ban check, then the unread scan, then the
+        direct poll of active known conversations. Returns the number of
+        messages actually processed (duplicates skipped by dedupe don't
+        count). `session` accepts either a real KingsChatSession or a
+        DryRunKingsChatSession -- both expose the same interface.
 
-        contact_filter: scope this cycle to only unread conversations whose
-        visible text matches this substring (see KingsChatSession's
-        _find_next_unread_row) -- everything else unread is left completely
-        untouched. Used by kingschat_bot.py's --only-contact for safely
-        testing against one known conversation on a real, actively-used
-        inbox. None (default) processes everything, as before.
+        contact_filter: scope the UNREAD SCAN to rows whose visible text
+        matches this substring (see _find_next_unread_row; display names,
+        not @handles) -- everything else unread is left untouched. Used by
+        kingschat_bot.py's --only-contact for safely testing on a real,
+        actively-used inbox. The direct-poll path is inherently scoped to
+        threads already in our own database (i.e. learners this bot
+        created), so it runs regardless.
         """
         if await session.detect_ban():
             await self.ban_fallback.notify_leader(lesson=None, reason="ban/suspension signal detected during poll")
             raise KingsChatBanDetectedError("Ban signal detected at start of poll cycle")
 
-        conversation_ids = await session.list_unread_direct_conversation_ids(contact_filter)
         processed = 0
-        for conversation_id in conversation_ids:
-            message_text = await session.read_latest_incoming_message()
-            if message_text is None:
+        visited: set = set()
+
+        # Path 1: unread scan (new-learner discovery). De-duplicated:
+        # observed live 2026-07-17 that a row can stay/return unread across
+        # the scan's own clicks, so the same conversation can appear twice
+        # in one scan.
+        conversation_ids = await session.list_unread_direct_conversation_ids(contact_filter)
+        for conversation_id in dict.fromkeys(conversation_ids):
+            visited.add(conversation_id)
+            # Navigate to the conversation EXPLICITLY before reading.
+            # list_unread_direct_conversation_ids returns to the INBOX
+            # after each row click (it has to, to keep scanning) — a
+            # read without this navigation scans the inbox page, finds
+            # no message bubbles, and reports a false "no incoming"
+            # (confirmed live 2026-07-17: every unread-scan read ever
+            # made had failed this way; it was masked by the direct-poll
+            # path and manual processing doing the reading instead).
+            await session.open_conversation(conversation_id)
+            incoming = await session.read_latest_incoming()
+            if incoming is None:
                 logger.warning(
                     "kingschat_no_incoming_message_found conversation=%s -- "
-                    "unread marker present but no non-outgoing message found",
+                    "unread marker present but no non-outgoing message found "
+                    "(if a message was in transit, the direct poll of a "
+                    "later cycle picks it up)",
                     conversation_id,
                 )
                 continue
-            await self.handler.handle_message(session, conversation_id, message_text)
-            processed += 1
+            kc_message_id, message_text = incoming
+            if await self.handler.handle_message(
+                session, conversation_id, message_text, kc_message_id=kc_message_id
+            ):
+                processed += 1
+
+        # Path 2: direct poll of active known conversations
+        if self.db is not None:
+            for conversation_id in await self._active_conversation_ids():
+                if conversation_id in visited:
+                    continue
+                await session.open_conversation(conversation_id)
+                incoming = await session.read_latest_incoming()
+                if incoming is None:
+                    continue
+                kc_message_id, message_text = incoming
+                if await self.handler.handle_message(
+                    session, conversation_id, message_text, kc_message_id=kc_message_id
+                ):
+                    logger.info(
+                        "kingschat_direct_poll_processed conversation=%s", conversation_id
+                    )
+                    processed += 1
 
         return processed

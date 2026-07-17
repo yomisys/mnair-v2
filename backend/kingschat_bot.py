@@ -185,7 +185,9 @@ async def run(args: argparse.Namespace) -> int:
             cycle += 1
             async with AsyncSessionLocal() as db:
                 handler = KingsChatHandler(settings=settings, db=db)
-                watcher = KingsChatWatcher(handler=handler, ban_fallback=ban_fallback)
+                # db enables the direct-poll path (flag-race-free reading of
+                # known learner threads) alongside the unread scan.
+                watcher = KingsChatWatcher(handler=handler, ban_fallback=ban_fallback, db=db)
 
                 async with pool.acquire() as context:
                     page = await context.new_page()

@@ -829,7 +829,7 @@ async def test_poll_once_passes_contact_filter_through_to_session():
     session = AsyncMock()
     session.detect_ban = AsyncMock(return_value=False)
     session.list_unread_direct_conversation_ids = AsyncMock(return_value=["conv_1"])
-    session.read_latest_incoming_message = AsyncMock(return_value="hi")
+    session.read_latest_incoming = AsyncMock(return_value=("mid-1", "hi"))
 
     handler = AsyncMock(spec=KingsChatHandler)
     ban_fallback = AsyncMock(spec=KingsChatBanFallback)
@@ -956,12 +956,14 @@ async def test_dry_run_session_delegates_reads_to_real_session():
     real_session = AsyncMock(spec=KingsChatSession)
     real_session.detect_ban = AsyncMock(return_value=True)
     real_session.list_unread_direct_conversation_ids = AsyncMock(return_value=["a", "b"])
+    real_session.read_latest_incoming = AsyncMock(return_value=("mid-1", "hi"))
     real_session.read_latest_incoming_message = AsyncMock(return_value="hi")
 
     dry_run = DryRunKingsChatSession(real_session)
 
     assert await dry_run.detect_ban() is True
     assert await dry_run.list_unread_direct_conversation_ids() == ["a", "b"]
+    assert await dry_run.read_latest_incoming() == ("mid-1", "hi")
     assert await dry_run.read_latest_incoming_message() == "hi"
 
 
@@ -990,7 +992,7 @@ async def test_poll_once_processes_each_unread_conversation():
     session = AsyncMock()
     session.detect_ban = AsyncMock(return_value=False)
     session.list_unread_direct_conversation_ids = AsyncMock(return_value=["conv1", "conv2"])
-    session.read_latest_incoming_message = AsyncMock(return_value="QUIZ")
+    session.read_latest_incoming = AsyncMock(return_value=("mid-7", "QUIZ"))
 
     handler = AsyncMock(spec=KingsChatHandler)
     ban_fallback = AsyncMock(spec=KingsChatBanFallback)
@@ -1000,8 +1002,35 @@ async def test_poll_once_processes_each_unread_conversation():
 
     assert processed == 2
     assert handler.handle_message.await_count == 2
-    handler.handle_message.assert_any_await(session, "conv1", "QUIZ")
-    handler.handle_message.assert_any_await(session, "conv2", "QUIZ")
+    handler.handle_message.assert_any_await(session, "conv1", "QUIZ", kc_message_id="mid-7")
+    handler.handle_message.assert_any_await(session, "conv2", "QUIZ", kc_message_id="mid-7")
+    # The unread scan leaves the page on the INBOX after each row click, so
+    # the read must be preceded by explicit navigation to the conversation
+    # — without it, the read scans the inbox page and finds nothing
+    # (confirmed live: every unread-scan read had silently failed this way)
+    session.open_conversation.assert_any_await("conv1")
+    session.open_conversation.assert_any_await("conv2")
+
+
+@pytest.mark.asyncio
+async def test_poll_once_deduplicates_repeated_unread_conversation_ids():
+    """A row can stay unread across the scan's own clicks (observed live),
+    making the same conversation appear twice in one scan -- it must only
+    be processed once per cycle."""
+    session = AsyncMock()
+    session.detect_ban = AsyncMock(return_value=False)
+    session.list_unread_direct_conversation_ids = AsyncMock(return_value=["conv1", "conv1"])
+    session.read_latest_incoming = AsyncMock(return_value=("mid-9", "hello"))
+
+    handler = AsyncMock(spec=KingsChatHandler)
+    handler.handle_message = AsyncMock(return_value=True)
+    ban_fallback = AsyncMock(spec=KingsChatBanFallback)
+    watcher = KingsChatWatcher(handler=handler, ban_fallback=ban_fallback)
+
+    processed = await watcher.poll_once(session)
+
+    assert processed == 1
+    assert handler.handle_message.await_count == 1
 
 
 @pytest.mark.asyncio
@@ -1013,7 +1042,7 @@ async def test_poll_once_skips_conversation_with_no_incoming_message_found(caplo
     session = AsyncMock()
     session.detect_ban = AsyncMock(return_value=False)
     session.list_unread_direct_conversation_ids = AsyncMock(return_value=["conv1"])
-    session.read_latest_incoming_message = AsyncMock(return_value=None)
+    session.read_latest_incoming = AsyncMock(return_value=None)
 
     handler = AsyncMock(spec=KingsChatHandler)
     ban_fallback = AsyncMock(spec=KingsChatBanFallback)
@@ -1025,6 +1054,91 @@ async def test_poll_once_skips_conversation_with_no_incoming_message_found(caplo
     assert processed == 0
     handler.handle_message.assert_not_called()
     assert any("kingschat_no_incoming_message_found" in r.message for r in caplog.records)
+
+
+@pytest.mark.asyncio
+async def test_poll_once_direct_polls_active_conversations_without_unread_flags(test_db):
+    """The direct-poll path must read known active conversations by URL
+    even when the unread scan finds nothing — regression for a learner
+    answer lost live (twice) to the unread-flag race: the flag was
+    consumed by the row click while the message was still rendering/in
+    transit, making it invisible to flag-driven discovery forever."""
+    lesson = _quiz_lesson()
+    test_db.add(lesson)
+    await test_db.commit()
+    await test_db.refresh(lesson)
+
+    handler = KingsChatHandler(settings=None, db=test_db)
+    session = _FakeSession()
+    # Unread scan finds nothing (the lost-answer scenario)
+    session.list_unread_direct_conversation_ids = AsyncMock(return_value=[])
+    session.open_conversation = AsyncMock()
+    session.detect_ban = AsyncMock(return_value=False)
+    session.read_latest_incoming = AsyncMock(return_value=("kcmid-lost", "QUIZ"))
+
+    user = await handler.get_or_create_user("conv_active_1")
+    conversation = await handler.get_or_create_conversation(user.id, "conv_active_1")
+    conversation.current_state = ConversationState.IN_LESSON
+    conversation.context = {"current_lesson_id": lesson.id}
+    await test_db.commit()
+
+    ban_fallback = AsyncMock(spec=KingsChatBanFallback)
+    watcher = KingsChatWatcher(handler=handler, ban_fallback=ban_fallback, db=test_db)
+
+    processed = await watcher.poll_once(session)
+
+    assert processed == 1
+    session.open_conversation.assert_awaited_once_with("conv_active_1")
+    await test_db.refresh(conversation)
+    assert conversation.current_state == ConversationState.AWAITING_QUIZ
+
+    # Second cycle: same latest message re-read — dedupe makes it a no-op
+    processed_again = await watcher.poll_once(session)
+    assert processed_again == 0
+    await test_db.refresh(conversation)
+    assert conversation.context["current_question"] == 0  # not advanced
+
+
+@pytest.mark.asyncio
+async def test_handle_message_dedupes_by_kc_message_id(test_db):
+    """Processing the same kc_message_id twice must be a no-op the second
+    time: an inbox row can show unread without a new incoming message
+    (observed live — the bot's own send did it), and re-processing the
+    learner's last message would corrupt the quiz state machine (each call
+    records an answer and advances the question)."""
+    lesson = _quiz_lesson()
+    test_db.add(lesson)
+    await test_db.commit()
+    await test_db.refresh(lesson)
+
+    handler = KingsChatHandler(settings=None, db=test_db)
+    session = _FakeSession()
+
+    user = await handler.get_or_create_user("user_dedupe")
+    conversation = await handler.get_or_create_conversation(user.id, "user_dedupe")
+    conversation.current_state = ConversationState.IN_LESSON
+    conversation.context = {"current_lesson_id": lesson.id}
+    await test_db.commit()
+
+    # First delivery of this message id: QUIZ starts the quiz
+    await handler.handle_message(session, "user_dedupe", "QUIZ", kc_message_id="kcmid-1")
+    await test_db.refresh(conversation)
+    assert conversation.current_state == ConversationState.AWAITING_QUIZ
+    sent_after_first = len(session.sent)
+
+    # Same message id again (spurious unread): must be skipped entirely —
+    # no state change, nothing sent
+    await handler.handle_message(session, "user_dedupe", "QUIZ", kc_message_id="kcmid-1")
+    await test_db.refresh(conversation)
+    assert conversation.current_state == ConversationState.AWAITING_QUIZ
+    assert conversation.context["current_question"] == 0
+    assert len(session.sent) == sent_after_first
+
+    # A NEW message id with the same text is genuinely new input and must
+    # be processed (same-letter quiz answers are legitimate)
+    await handler.handle_message(session, "user_dedupe", "A", kc_message_id="kcmid-2")
+    await test_db.refresh(conversation)
+    assert conversation.context["current_question"] == 1
 
 
 # ---------------------------------------------------------------------------
