@@ -226,6 +226,67 @@ async def test_quiz_full_flow_grades_against_original_index_not_display_position
 
 
 # ---------------------------------------------------------------------------
+# Stranded-learner recovery (regression for a failure reproduced live
+# 2026-07-17): handle_language_selection commits IN_LESSON before
+# deliver_next_lesson's send confirms, so a transient send failure leaves
+# the conversation in IN_LESSON with an empty context and the learner with
+# no lesson. Any subsequent reply must re-deliver the lesson — not send a
+# "Reply QUIZ" reminder about a lesson that never arrived.
+# ---------------------------------------------------------------------------
+
+@pytest.mark.asyncio
+async def test_stranded_in_lesson_with_no_lesson_redelivers_on_any_reply(test_db):
+    lesson = _quiz_lesson()
+    test_db.add(lesson)
+    await test_db.commit()
+    await test_db.refresh(lesson)
+
+    handler = KingsChatHandler(settings=None, db=test_db)
+    session = _FakeSession()
+
+    user = await handler.get_or_create_user("user_stranded")
+    conversation = await handler.get_or_create_conversation(user.id, "user_stranded")
+    # The exact stranded state observed live: IN_LESSON committed, send
+    # failed before context could record which lesson went out.
+    conversation.current_state = ConversationState.IN_LESSON
+    conversation.context = {}
+    await test_db.commit()
+
+    # A non-QUIZ reply ("hello") must re-deliver the lesson, not remind
+    # about a quiz for a lesson the learner never received.
+    await handler.handle_lesson_flow(session, "user_stranded", user, conversation, "hello")
+
+    assert len(session.sent) == 1
+    assert lesson.title in session.sent[0][1]
+    assert conversation.context.get("current_lesson_id") == lesson.id
+
+
+@pytest.mark.asyncio
+async def test_in_lesson_with_lesson_on_record_still_gets_quiz_reminder(test_db):
+    """The recovery path must not swallow the normal reminder: when a
+    lesson IS on record, an off-script reply still gets the QUIZ nudge."""
+    lesson = _quiz_lesson()
+    test_db.add(lesson)
+    await test_db.commit()
+    await test_db.refresh(lesson)
+
+    handler = KingsChatHandler(settings=None, db=test_db)
+    session = _FakeSession()
+
+    user = await handler.get_or_create_user("user_reminder")
+    conversation = await handler.get_or_create_conversation(user.id, "user_reminder")
+    conversation.current_state = ConversationState.IN_LESSON
+    conversation.context = {"current_lesson_id": lesson.id}
+    await test_db.commit()
+
+    await handler.handle_lesson_flow(session, "user_reminder", user, conversation, "hello")
+
+    assert len(session.sent) == 1
+    assert "QUIZ" in session.sent[0][1]
+    assert lesson.title not in session.sent[0][1]
+
+
+# ---------------------------------------------------------------------------
 # Certificate flow — mirrors the whatsapp.py fix: CERTIFICATE is a global
 # command reachable from any state, and generates + sends immediately
 # instead of the old "being generated" dead end that never actually called
@@ -582,6 +643,26 @@ async def test_send_message_happy_path_navigates_types_and_clicks_send():
     assert any(
         call.args == (SELECTORS.send_button,) for call in page.locator.call_args_list
     )
+
+
+@pytest.mark.asyncio
+async def test_send_message_never_presses_bare_enter_for_newlines():
+    """Regression for the fragmentation bug confirmed live 2026-07-17: the
+    old editor.type(text) pressed real Enter for every '\\n', and Enter
+    SUBMITS in this Tiptap composer -- the first live lesson went out as
+    ~30 separate messages. Newlines must be Shift+Enter soft breaks, and
+    the plain Enter key must never be pressed."""
+    page = _make_page()
+    session = KingsChatSession(page)
+
+    await session.send_message("conv123", "line one\nline two\n\nline four")
+
+    inserted = [c.args[0] for c in page.keyboard.insert_text.await_args_list]
+    pressed = [c.args[0] for c in page.keyboard.press.await_args_list]
+
+    assert inserted == ["line one", "line two", "line four"]  # empty line inserts nothing
+    assert pressed == ["Shift+Enter"] * 3  # one per '\n', including the blank line
+    assert "Enter" not in pressed
 
 
 @pytest.mark.asyncio
@@ -947,3 +1028,145 @@ async def test_pool_set_storage_state_applied_to_new_contexts():
         pass
 
     assert captured["storage_state"] == {"cookies": ["from-login"]}
+
+
+# ---------------------------------------------------------------------------
+# Session identity verification (regression for the wrong-account bug found
+# live 2026-07-17: the stored session belonged to the founder's personal
+# account, not the bot's, and every "bot" reply went out as the founder --
+# ensure_logged_in only ever checked that the session worked, never whose
+# it was)
+# ---------------------------------------------------------------------------
+
+from app.channels.kingschat import get_logged_in_username
+
+
+def _page_with_profile_link(handle):
+    page = AsyncMock()
+
+    def locator(selector):
+        loc = AsyncMock()
+        if selector == "a[href^='/user/']" and handle is not None:
+            loc.first.wait_for = AsyncMock(return_value=None)
+            loc.first.get_attribute = AsyncMock(return_value=f"/user/{handle}")
+        else:
+            loc.first.wait_for = AsyncMock(side_effect=TimeoutError("no profile link"))
+        return loc
+
+    page.locator = MagicMock(side_effect=locator)
+    page.url = "https://kingschat.online/conversations"
+    return page
+
+
+@pytest.mark.asyncio
+async def test_get_logged_in_username_reads_profile_link():
+    page = _page_with_profile_link("yomimnair")
+    assert await get_logged_in_username(page) == "yomimnair"
+
+
+@pytest.mark.asyncio
+async def test_get_logged_in_username_returns_none_when_link_never_renders():
+    page = _page_with_profile_link(None)
+    assert await get_logged_in_username(page) is None
+
+
+@pytest.mark.asyncio
+async def test_ensure_logged_in_discards_wrong_account_session(monkeypatch, tmp_path):
+    """A stored session that WORKS but belongs to the wrong account must be
+    discarded and replaced via fresh login -- not silently used. This is
+    the exact bug from the first live test."""
+    import kingschat_bot as bot_mod
+    from contextlib import asynccontextmanager
+
+    store = KingsChatSessionStore(
+        path=str(tmp_path / "kc.session"), encryption_key=_fernet_key()
+    )
+    store.save({"cookies": [{"name": "who", "value": "wrong-account"}]})
+
+    handles = iter(["dcnyomi", "yomimnair"])  # stored session, then fresh login
+
+    async def fake_get_username(page):
+        return next(handles)
+
+    async def fake_goto(page, url, **kw):
+        pass
+
+    async def fake_login(page, email, password):
+        return {"cookies": [{"name": "who", "value": "right-account"}]}
+
+    monkeypatch.setattr(bot_mod, "get_logged_in_username", fake_get_username)
+    monkeypatch.setattr(bot_mod, "_goto_and_settle", fake_goto)
+    monkeypatch.setattr(bot_mod, "kingschat_login", fake_login)
+
+    page = AsyncMock()
+    page.url = "https://kingschat.online/conversations"
+    context = AsyncMock()
+    context.new_page = AsyncMock(return_value=page)
+
+    class FakePool:
+        def set_storage_state(self, s):
+            pass
+
+        @asynccontextmanager
+        async def acquire(self):
+            yield context
+
+    class FakeSettings:
+        KINGSCHAT_EXPECTED_USERNAME = "yomimnair"
+        KINGSCHAT_ACCOUNT_EMAIL = "bot@example.com"
+        KINGSCHAT_ACCOUNT_PASSWORD = "pw"
+
+    result = await bot_mod.ensure_logged_in(FakePool(), store, FakeSettings())
+
+    assert result == {"cookies": [{"name": "who", "value": "right-account"}]}
+    # The wrong-account session must have been replaced on disk too
+    assert store.load() == {"cookies": [{"name": "who", "value": "right-account"}]}
+
+
+@pytest.mark.asyncio
+async def test_ensure_logged_in_hard_fails_when_credentials_are_wrong_account(monkeypatch, tmp_path):
+    """If even a FRESH login lands on the wrong account, the credentials
+    themselves are wrong -- hard failure, and the wrong session must NOT
+    be saved."""
+    import kingschat_bot as bot_mod
+    from contextlib import asynccontextmanager
+
+    store = KingsChatSessionStore(
+        path=str(tmp_path / "kc.session"), encryption_key=_fernet_key()
+    )
+
+    async def fake_get_username(page):
+        return "dcnyomi"  # always the wrong account
+
+    async def fake_goto(page, url, **kw):
+        pass
+
+    async def fake_login(page, email, password):
+        return {"cookies": [{"name": "who", "value": "wrong-account"}]}
+
+    monkeypatch.setattr(bot_mod, "get_logged_in_username", fake_get_username)
+    monkeypatch.setattr(bot_mod, "_goto_and_settle", fake_goto)
+    monkeypatch.setattr(bot_mod, "kingschat_login", fake_login)
+
+    page = AsyncMock()
+    page.url = "https://kingschat.online/conversations"
+    context = AsyncMock()
+    context.new_page = AsyncMock(return_value=page)
+
+    class FakePool:
+        def set_storage_state(self, s):
+            pass
+
+        @asynccontextmanager
+        async def acquire(self):
+            yield context
+
+    class FakeSettings:
+        KINGSCHAT_EXPECTED_USERNAME = "yomimnair"
+        KINGSCHAT_ACCOUNT_EMAIL = "bot@example.com"
+        KINGSCHAT_ACCOUNT_PASSWORD = "pw"
+
+    with pytest.raises(KingsChatLoginError, match="WRONG account"):
+        await bot_mod.ensure_logged_in(FakePool(), store, FakeSettings())
+
+    assert store.load() is None  # wrong-account session never persisted

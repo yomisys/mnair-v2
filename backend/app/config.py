@@ -90,6 +90,18 @@ class Settings(BaseSettings):
     # default (no proxy) until that research lands; wiring the setting in
     # now avoids a pool redesign later if the answer is "yes, need proxies".
     KINGSCHAT_CONTEXT_PROXY_SERVER: Optional[str] = None
+    # The KingsChat username (handle, without '@') the bot session MUST be
+    # logged in as. Added 2026-07-17 after the first live test ran an entire
+    # lesson flow as the WRONG account: the stored session file predated the
+    # bot (captured during 2026-07-12 selector verification against the
+    # founder's personal account), ensure_logged_in only checked that the
+    # session *worked* — never *whose* it was — and every "bot" reply went
+    # out as the founder. When set, the identity is verified after every
+    # session establishment (stored or fresh login); a mismatched stored
+    # session is discarded and a mismatched fresh login is a hard failure.
+    # Optional so existing setups don't break, but any real deployment
+    # should set it.
+    KINGSCHAT_EXPECTED_USERNAME: Optional[str] = None
 
     # Security — no default; startup fails loudly if unset in production
     SESSION_SECRET: str

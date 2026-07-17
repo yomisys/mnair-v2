@@ -814,6 +814,14 @@ class WhatsAppWebhookHandler:
                 }
                 await self.db.commit()
         else:
+            # No lesson on record means the learner never actually received
+            # one (state committed IN_LESSON, then the send failed) — the
+            # "Reply QUIZ" reminder would refer to a lesson they never saw.
+            # Re-deliver on any reply instead; same fix as kingschat.py's
+            # handle_lesson_flow, where the failure mode was reproduced live.
+            if not conversation.context.get("current_lesson_id"):
+                await self.deliver_next_lesson(user, conversation)
+                return
             # Remind user to start quiz
             reminder = {
                 "messaging_product": "whatsapp",

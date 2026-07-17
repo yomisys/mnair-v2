@@ -281,78 +281,79 @@ the actual remaining gate before a `--live` run against real learners.
 
 ---
 
-### Add "Requests" inbox support — current code can't onboard first-time contacts unattended
+### Put @yomimnair's real credentials in backend/.env, re-login, re-run the live test
 
-**What:** `KingsChatSession.list_unread_direct_conversation_ids` only ever scans the **Direct**
-tab. Confirmed live 2026-07-17: a message from an account with no prior connection to the bot
-account lands under a separate **Requests** tab (4 pending at time of testing) that nothing in
-this codebase reads.
+**What:** The identity guard added 2026-07-17 proved that BOTH the stored session AND the
+credentials in `backend/.env` belong to `@dcnyomi` (the founder's personal account), not
+`@yomimnair` (the intended bot account). The entire first live test therefore ran as the wrong
+account: every "bot" reply was sent *as the founder*. The bot now hard-refuses to run until
+`KINGSCHAT_ACCOUNT_EMAIL`/`KINGSCHAT_ACCOUNT_PASSWORD` are replaced with @yomimnair's actual
+login (founder action — credentials, don't commit them). `KINGSCHAT_EXPECTED_USERNAME=yomimnair`
+is already set.
 
-**Why:** Every first-time learner is, by definition, not yet a contact of the bot account — so
-their very first message is exactly the case this gap misses. In continuous `--loop` polling
-(the real production mode), a first-time learner's message would sit in Requests forever, never
-picked up. The only reason the first live test worked at all is that the conversation ID was
-supplied manually (via the real KingsChat app) rather than discovered through normal polling.
+**Why:** Nothing KingsChat-related can go live — or even be correctly tested — until the session
+belongs to the right account. The wrong-account session file has been discarded by the guard.
 
-**Context:** Needs live-verified selectors for the Requests tab/list (same rigor as the existing
-`KingsChatSelectors`, per this module's docstring) and a decision on whether reading a request
-implicitly "accepts" it or whether an explicit accept action is required first — this is a new
-UI interaction, not just a new selector.
+**Effort:** S (founder: update two env values, then re-run `python kingschat_bot.py`)
+**Priority:** P0 — blocks everything else in this section
+**Depends on:** None
 
-**Effort:** M
+---
+
+### Finish Requests-inbox / first-contact discovery — re-verify on the REAL bot account
+
+**What:** `list_unread_direct_conversation_ids` still has no explicit Requests-tab handling, and
+everything observed about the inbox on 2026-07-17 was observed on the WRONG account (the
+founder's personal inbox — its 99+ groups, its "Requests 7", its unread DMs). What was learned,
+and holds regardless of account: (1) replying to a request-state conversation implicitly accepts
+it and moves it into the normal inbox — no separate Accept step; (2) the filter chips
+("Requests"/"All"/"Direct"/...) are user-configurable via "Edit filters" and rendered with
+Tailwind (`tw:`) classes — `text=Direct` no longer reliably exists, so chip-clicking is brittle;
+(3) the default view is "All", which mixes `PrivateConversationBox` and `GroupConversationBox`
+rows, and the component-scoped unread selector already picks out private unread rows without any
+chip click; (4) `--only-contact` matches the row's DISPLAY NAME (e.g. "Yomi Adelowotan"), not
+the @handle — this is why the first scoped poll matched nothing.
+
+**Context:** Once logged in as the real @yomimnair (item above), its inbox should be nearly
+empty, making verification trivial: have a learner account send a first-contact message, then
+check whether it shows as an unread Private row in the default view or only under the Requests
+chip, and implement the scan accordingly (prefer scanning the default view; add a best-effort
+Requests-chip pass only if first-contact rows genuinely don't appear otherwise).
+
+**Effort:** S–M once the account is right
 **Priority:** P0 — blocks unattended onboarding of any new learner
-**Depends on:** None
-
----
-
-### Investigate outgoing/incoming message misclassification on first-contact conversations
-
-**What:** `read_latest_incoming_message()`'s outgoing-message detection
-(`message_bubble_outgoing_modifier`, verified 2026-07-12 against an *established* DM thread)
-incorrectly flagged a message from `@dcnyomi` — the other party — as sent by the bot account, on
-what's very likely a Requests-type conversation. Confirmed by directly inspecting the single
-message bubble present: `outgoing=True` on a message the bot account never sent.
-
-**Why:** This silently breaks the poll loop's ability to find genuinely incoming messages on
-exactly the conversations most likely to need it (first contact). Worked around during the live
-test by passing the known message text directly into `KingsChatHandler.handle_message()` instead
-of relying on this method — not a real fix.
-
-**Context:** Likely related to the Requests-tab gap above — the `--actor` modifier may carry
-different semantics in that UI mode than in an established thread. Needs live investigation
-against a real Requests-tab conversation, ideally resolved together with the item above.
-
-**Effort:** S–M
-**Priority:** P0 — same blocking reason as Requests support
-**Depends on:** Add "Requests" inbox support (above)
-
----
-
-### Harden lesson delivery against mid-send failures stranding a learner
-
-**What:** `handle_language_selection` (and the day-advance equivalent) commits the `IN_LESSON`
-state transition *before* confirming `deliver_next_lesson`'s send actually succeeded. Reproduced
-live 2026-07-17: a transient send failure left a real conversation in `IN_LESSON` with no
-`current_lesson_id` recorded, and the next message routed to `handle_lesson_flow`'s generic
-"reply QUIZ" reminder instead of retrying the lesson — confusing since the learner never received
-lesson content to begin with. It self-heals only because a learner following that literal
-instruction (reply QUIZ) happens to retry delivery as a side effect.
-
-**Why:** The same commit-before-send pattern exists in `whatsapp.py`, but WhatsApp's send is a
-single reliable server-to-server API call, making this rare there. KingsChat's send is real
-Playwright browser automation against a live SPA — proven repeatedly flaky this session (see the
-Completed entry below) — so this failure mode is far more likely to actually occur in production.
-
-**Context:** Needs either committing the state transition only after the send confirms success,
-or a retry-on-next-message check that doesn't depend on the learner guessing to reply QUIZ.
-
-**Effort:** M
-**Priority:** P1
-**Depends on:** None
+**Depends on:** Correct credentials (item above)
 
 ---
 
 ## Completed
+
+### Session identity verification + message fragmentation + stranded-learner recovery (2026-07-17, second pass)
+
+Follow-up to the first live test, driven by deeper live probes of the same thread:
+
+1. **Wrong-account discovery.** Every bubble in the test thread was right-aligned/`--actor` —
+   because every message really WAS sent by the logged-in account: the stored session (captured
+   2026-07-12 during selector verification "against the founder's own account") belonged to
+   `@dcnyomi`, not `@yomimnair`. The whole first live test ran as the founder. The
+   `--actor`-misclassification item is thereby RESOLVED AS NOT A BUG: `--actor` = sent by the
+   logged-in account, correct all along; `read_latest_incoming_message()` returning None was the
+   correct answer for a thread with no incoming messages. Fix shipped: `KINGSCHAT_EXPECTED_USERNAME`
+   setting + `get_logged_in_username()` (reads the sidebar `/user/{handle}` profile link, verified
+   live) + identity verification in `ensure_logged_in` on BOTH the stored-session and fresh-login
+   paths — wrong stored session is discarded, wrong fresh login hard-fails without saving. The
+   guard caught both layers live on its first run.
+2. **Message fragmentation.** `.type()` presses real Enter for every `\n`, and Enter SUBMITS in
+   this Tiptap composer — the first live lesson went out as ~30 separate rapid-fire messages
+   (plus partial duplicate sets from the two timed-out attempts before it). Exactly the risk the
+   2026-07-12 notes flagged as untested. `send_message` now inserts line content via
+   `insert_text()` (no per-keystroke typing — also kills the measured 79s-per-lesson type time
+   and the need for a length-scaled timeout) with `Shift+Enter` soft breaks, and never presses
+   bare Enter. Regression test asserts Enter is never pressed.
+3. **Stranded-learner recovery** (was the P1 "harden lesson delivery" item): `handle_lesson_flow`
+   in BOTH kingschat.py and whatsapp.py now re-delivers the lesson on ANY reply when no lesson is
+   on record, instead of sending a "Reply QUIZ" reminder about a lesson that never arrived.
+   Recovery no longer depends on the learner guessing the magic word.
 
 ### First real live test — full curriculum delivery over KingsChat, end to end
 

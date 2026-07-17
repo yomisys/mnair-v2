@@ -39,6 +39,7 @@ from app.channels.kingschat import (
     KingsChatSession,
     KingsChatWatcher,
     _goto_and_settle,
+    get_logged_in_username,
     kingschat_login,
 )
 from app.config import get_settings
@@ -50,9 +51,49 @@ logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(mess
 logger = logging.getLogger("kingschat_bot")
 
 
+async def _verify_session_identity(page, settings) -> bool:
+    """Check whose account the current page's session belongs to, against
+    KINGSCHAT_EXPECTED_USERNAME. Page must already be on /conversations.
+
+    Added 2026-07-17 after the first live test ran the entire lesson flow
+    as the WRONG account: the stored session predated the bot (captured
+    during selector verification against the founder's personal account),
+    and the validity check below only ever asked "does this session work?",
+    never "whose is it?" — so every 'bot' reply went out as the founder.
+
+    Unset KINGSCHAT_EXPECTED_USERNAME = log the identity but don't enforce
+    (backwards compatible); any real deployment should set it.
+    """
+    handle = await get_logged_in_username(page)
+    expected = settings.KINGSCHAT_EXPECTED_USERNAME
+
+    if not expected:
+        logger.warning(
+            "kingschat_session_identity handle=%s -- KINGSCHAT_EXPECTED_USERNAME "
+            "is unset, so this is NOT being enforced. Set it to prevent the "
+            "bot silently running as the wrong account.", handle,
+        )
+        return True
+
+    if handle is None:
+        logger.error(
+            "kingschat_session_identity_unknown -- could not read the logged-in "
+            "handle (profile link never rendered); treating as mismatch since "
+            "KINGSCHAT_EXPECTED_USERNAME=%s is set.", expected,
+        )
+        return False
+
+    ok = handle.lower() == expected.lower()
+    (logger.info if ok else logger.error)(
+        "kingschat_session_identity handle=%s expected=%s match=%s", handle, expected, ok,
+    )
+    return ok
+
+
 async def ensure_logged_in(pool: KingsChatBrowserPool, store: KingsChatSessionStore, settings) -> dict:
-    """Return a valid storage_state, logging in interactively if no stored
-    session exists or the stored one no longer works."""
+    """Return a valid storage_state FOR THE EXPECTED ACCOUNT, logging in
+    interactively if no stored session exists, the stored one no longer
+    works, or the stored one belongs to a different account."""
     try:
         stored = store.load()
     except SessionStoreError:
@@ -80,14 +121,32 @@ async def ensure_logged_in(pool: KingsChatBrowserPool, store: KingsChatSessionSt
             # testing, in two different ways.
             await _goto_and_settle(page, "https://kingschat.online/conversations")
             still_valid = "accounts.kingschat.online" not in page.url
-        if still_valid:
+            identity_ok = still_valid and await _verify_session_identity(page, settings)
+        if still_valid and identity_ok:
             logger.info("kingschat_stored_session_valid")
             return stored
-        logger.warning("kingschat_stored_session_expired -- logging in again")
+        if still_valid and not identity_ok:
+            # Wrong account's session -- discard it so nothing can ever
+            # accidentally fall back to it, then fresh-login below.
+            logger.warning("kingschat_stored_session_wrong_account -- discarding and logging in again")
+            store.clear()
+        else:
+            logger.warning("kingschat_stored_session_expired -- logging in again")
 
     async with pool.acquire() as context:
         page = await context.new_page()
         storage_state = await kingschat_login(page, settings.KINGSCHAT_ACCOUNT_EMAIL, settings.KINGSCHAT_ACCOUNT_PASSWORD)
+        # Fresh login must ALSO be the right account -- wrong credentials in
+        # .env would otherwise reintroduce the exact bug the stored-session
+        # check above just caught.
+        await _goto_and_settle(page, "https://kingschat.online/conversations")
+        if not await _verify_session_identity(page, settings):
+            raise KingsChatLoginError(
+                f"Fresh login succeeded but as the WRONG account (expected "
+                f"@{settings.KINGSCHAT_EXPECTED_USERNAME}) -- the "
+                f"KINGSCHAT_ACCOUNT_EMAIL/PASSWORD credentials belong to a "
+                f"different account. Session NOT saved."
+            )
     store.save(storage_state)
     logger.info("kingschat_login_succeeded_session_saved")
     return storage_state

@@ -509,6 +509,18 @@ class KingsChatHandler:
                 }
                 await self.db.commit()
         else:
+            # No lesson on record means the learner never actually received
+            # one: handle_language_selection (and the day-advance path)
+            # commit IN_LESSON before deliver_next_lesson's send confirms,
+            # so a transient send failure — much more likely on this
+            # channel's Playwright send than on WhatsApp's API call, and
+            # reproduced live 2026-07-17 — lands the conversation here with
+            # an empty context. Telling that learner "Reply QUIZ" refers to
+            # a lesson they never saw; re-deliver it instead, on ANY reply,
+            # so recovery doesn't depend on them guessing the magic word.
+            if not conversation.context.get("current_lesson_id"):
+                await self.deliver_next_lesson(session, kingschat_user_id, user, conversation)
+                return
             await session.send_message(
                 kingschat_user_id,
                 "Reply QUIZ when you're ready to test your knowledge! 📝",
@@ -878,6 +890,30 @@ async def kingschat_login(page, email: str, password: str) -> dict:
     return await page.context.storage_state()
 
 
+async def get_logged_in_username(page) -> Optional[str]:
+    """Return the handle (without '@') of the account this page's session is
+    logged in as, or None if it can't be determined.
+
+    Reads the sidebar Profile link (a[href='/user/{handle}']) on the
+    conversations page — verified live 2026-07-17: exactly one such link
+    exists on a hydrated /conversations page, and it exposed the wrong-
+    account bug this function now guards against (the stored session
+    turned out to be the founder's personal account, not the bot's; every
+    "bot" reply in the first live test went out as the founder). Caller
+    must have navigated to /conversations already; the hydration wait is
+    handled here (the link takes several seconds to render on this SPA —
+    every probe that read it needed 8-12s after domcontentloaded).
+    """
+    links = page.locator("a[href^='/user/']")
+    try:
+        await links.first.wait_for(state="attached", timeout=20000)
+    except Exception:
+        return None
+    href = await links.first.get_attribute("href") or ""
+    handle = href.rstrip("/").rsplit("/", 1)[-1].strip()
+    return handle or None
+
+
 class SelectorDriftError(Exception):
     """Raised when a selector that should exist doesn't — signals a
     KingsChat frontend deploy has changed the DOM out from under this
@@ -904,26 +940,26 @@ class KingsChatSession:
         this module's docstring) — navigation is a direct URL, there's no
         separate thread-lookup step.
 
-        Uses the confirmed click-based Send button, not Enter-to-submit —
-        Enter's behavior in this Tiptap/ProseMirror editor (send vs.
-        newline) was deliberately NOT tested against a real conversation
-        during selector verification (see module docstring). Multi-line
-        lesson text (this app sends lessons with embedded '\\n's) should
-        get a dedicated test against a disposable conversation before this
-        handles production traffic — if Enter turns out to submit early,
-        typing a multi-line message would send it in fragments.
+        MULTI-LINE HANDLING — confirmed live 2026-07-17, the hard way: the
+        original implementation used editor.type(text), and Playwright's
+        type() presses the real Enter key for every '\\n'. In this Tiptap/
+        ProseMirror composer Enter SUBMITS (exactly the risk the original
+        selector-verification notes flagged as untested), so the first live
+        lesson went out as ~30 separate rapid-fire messages — one per line
+        — and the two timed-out attempts before it each spammed partial
+        fragment sets on top. Newlines are now produced with Shift+Enter
+        (the universal chat-composer soft-break, never submits), and line
+        content is inserted with insert_text() rather than per-keystroke
+        typing — which also collapses the measured 79s-per-lesson type()
+        time and removes the need for the content-length-scaled timeout the
+        typing approach required.
 
-        Confirmed live 2026-07-17 during the first real send test: this
-        conversation's composer did NOT reliably render within
-        _goto_and_settle's window on every attempt -- one call found it
-        immediately, a follow-up call moments later on the SAME
-        conversation raised SelectorDriftError from a bare .count()==0
-        check. That's a timing race, not proof of real drift (the earlier
-        successful send is direct evidence the selector itself is still
-        correct) -- the composer check below now waits (bounded) for the
-        element to actually appear, the same pattern the Send button check
-        just after it already used correctly. A genuine drift (composer
-        never appears within the wait) still raises SelectorDriftError.
+        Composer wait — also confirmed live 2026-07-17: the composer did
+        NOT reliably render within _goto_and_settle's window on every
+        attempt (a bare .count()==0 check raised a false SelectorDriftError
+        on a conversation proven working moments earlier), so the check
+        below waits bounded for it to actually appear, matching the Send
+        button check's pattern. A genuine drift still raises.
         """
         await _goto_and_settle(self._page, f"https://kingschat.online/conversations/{kingschat_user_id}")
 
@@ -944,17 +980,14 @@ class KingsChatSession:
             ) from e
 
         await editor.first.click()
-        # Confirmed live 2026-07-17: Playwright's type() default 30s timeout
-        # is not always enough for real lesson content (curriculum lessons
-        # run up to ~1900 chars -- see whatsapp.py's build_lesson_message
-        # comment) typed keystroke-by-keystroke into a Tiptap/ProseMirror
-        # editor, where every character can trigger a full editor
-        # transaction + re-render. A short "START"-length reply worked fine
-        # at the default; the actual Day 1 lesson timed out. Scale the
-        # timeout to content length instead of guessing a single fixed
-        # value -- generous floor for short replies, headroom for the
-        # longest real lesson.
-        await editor.first.type(text, timeout=max(30000, len(text) * 50))
+        lines = text.split("\n")
+        for i, line in enumerate(lines):
+            if line:
+                await self._page.keyboard.insert_text(line)
+            if i < len(lines) - 1:
+                # Soft line break — NEVER bare Enter, which submits in this
+                # composer (see docstring).
+                await self._page.keyboard.press("Shift+Enter")
 
         send = self._page.locator(SELECTORS.send_button)
         try:
