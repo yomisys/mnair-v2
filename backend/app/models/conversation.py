@@ -68,10 +68,13 @@ class Conversation(Base):
     )
 
     phone_number: Mapped[str] = mapped_column(
-        String(15),
+        String(64),
         nullable=False,
         index=True,
-        comment="User's phone number for this conversation"
+        comment="User's phone number for this conversation. For KingsChat, "
+                "this is the 'kc:{conversation_id}' identity slot (see "
+                "User.phone_number) -- widened from 15 to 64 chars 2026-07-17 "
+                "for the same reason."
     )
 
     # State Management

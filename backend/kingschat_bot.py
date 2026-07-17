@@ -134,7 +134,7 @@ async def run(args: argparse.Namespace) -> int:
                     session = real_session if args.live else DryRunKingsChatSession(real_session)
 
                     try:
-                        processed = await watcher.poll_once(session)
+                        processed = await watcher.poll_once(session, contact_filter=args.only_contact)
                     except KingsChatBanDetectedError:
                         logger.error("kingschat_ban_detected -- stopping. Leader notified via KingsChatBanFallback.")
                         return 1
@@ -161,12 +161,24 @@ def main() -> int:
     parser.add_argument("--live", action="store_true", help="Actually send messages. Default is dry-run (logs what would be sent).")
     parser.add_argument("--loop", action="store_true", help="Poll continuously. Default is a single poll cycle.")
     parser.add_argument("--interval", type=int, default=30, help="Seconds between poll cycles when --loop is set. Default 30.")
+    parser.add_argument(
+        "--only-contact", type=str, default=None, metavar="TEXT",
+        help=(
+            "Scope this run to unread conversations whose visible inbox text contains TEXT "
+            "(case-insensitive), e.g. a display name or handle. Every other unread conversation "
+            "is left completely untouched -- not clicked, not marked read. Use this for a safe "
+            "first --live test against one known conversation on a real, actively-used inbox, "
+            "where other unread DMs from real people may be waiting."
+        ),
+    )
     args = parser.parse_args()
 
     if args.live:
         logger.warning("kingschat_bot_starting_LIVE_MODE -- this will send real messages to real conversations")
     else:
         logger.info("kingschat_bot_starting_dry_run -- no messages will actually be sent. Use --live to send for real.")
+    if args.only_contact:
+        logger.info("kingschat_bot_scoped_to_contact filter=%r -- all other unread conversations will be left untouched", args.only_contact)
 
     return asyncio.run(run(args))
 

@@ -281,7 +281,110 @@ the actual remaining gate before a `--live` run against real learners.
 
 ---
 
+### Add "Requests" inbox support — current code can't onboard first-time contacts unattended
+
+**What:** `KingsChatSession.list_unread_direct_conversation_ids` only ever scans the **Direct**
+tab. Confirmed live 2026-07-17: a message from an account with no prior connection to the bot
+account lands under a separate **Requests** tab (4 pending at time of testing) that nothing in
+this codebase reads.
+
+**Why:** Every first-time learner is, by definition, not yet a contact of the bot account — so
+their very first message is exactly the case this gap misses. In continuous `--loop` polling
+(the real production mode), a first-time learner's message would sit in Requests forever, never
+picked up. The only reason the first live test worked at all is that the conversation ID was
+supplied manually (via the real KingsChat app) rather than discovered through normal polling.
+
+**Context:** Needs live-verified selectors for the Requests tab/list (same rigor as the existing
+`KingsChatSelectors`, per this module's docstring) and a decision on whether reading a request
+implicitly "accepts" it or whether an explicit accept action is required first — this is a new
+UI interaction, not just a new selector.
+
+**Effort:** M
+**Priority:** P0 — blocks unattended onboarding of any new learner
+**Depends on:** None
+
+---
+
+### Investigate outgoing/incoming message misclassification on first-contact conversations
+
+**What:** `read_latest_incoming_message()`'s outgoing-message detection
+(`message_bubble_outgoing_modifier`, verified 2026-07-12 against an *established* DM thread)
+incorrectly flagged a message from `@dcnyomi` — the other party — as sent by the bot account, on
+what's very likely a Requests-type conversation. Confirmed by directly inspecting the single
+message bubble present: `outgoing=True` on a message the bot account never sent.
+
+**Why:** This silently breaks the poll loop's ability to find genuinely incoming messages on
+exactly the conversations most likely to need it (first contact). Worked around during the live
+test by passing the known message text directly into `KingsChatHandler.handle_message()` instead
+of relying on this method — not a real fix.
+
+**Context:** Likely related to the Requests-tab gap above — the `--actor` modifier may carry
+different semantics in that UI mode than in an established thread. Needs live investigation
+against a real Requests-tab conversation, ideally resolved together with the item above.
+
+**Effort:** S–M
+**Priority:** P0 — same blocking reason as Requests support
+**Depends on:** Add "Requests" inbox support (above)
+
+---
+
+### Harden lesson delivery against mid-send failures stranding a learner
+
+**What:** `handle_language_selection` (and the day-advance equivalent) commits the `IN_LESSON`
+state transition *before* confirming `deliver_next_lesson`'s send actually succeeded. Reproduced
+live 2026-07-17: a transient send failure left a real conversation in `IN_LESSON` with no
+`current_lesson_id` recorded, and the next message routed to `handle_lesson_flow`'s generic
+"reply QUIZ" reminder instead of retrying the lesson — confusing since the learner never received
+lesson content to begin with. It self-heals only because a learner following that literal
+instruction (reply QUIZ) happens to retry delivery as a side effect.
+
+**Why:** The same commit-before-send pattern exists in `whatsapp.py`, but WhatsApp's send is a
+single reliable server-to-server API call, making this rare there. KingsChat's send is real
+Playwright browser automation against a live SPA — proven repeatedly flaky this session (see the
+Completed entry below) — so this failure mode is far more likely to actually occur in production.
+
+**Context:** Needs either committing the state transition only after the send confirms success,
+or a retry-on-next-message check that doesn't depend on the learner guessing to reply QUIZ.
+
+**Effort:** M
+**Priority:** P1
+**Depends on:** None
+
+---
+
 ## Completed
+
+### First real live test — full curriculum delivery over KingsChat, end to end
+
+**Completed 2026-07-17.** Login (`@yomimnair`, the bot account) → real learner (`@dcnyomi`) sends
+START → welcome message + language menu sent for real → learner replies 1 → language recorded →
+Day 1 lesson ("What is AI?") delivered in full and confirmed readable by the learner. First time
+any of this code sent a real message to a real KingsChat account. Found and fixed four real bugs
+along the way that no mocked test could have caught:
+
+1. `users.phone_number` / `conversations.phone_number` / `certificates.learner_phone` were all
+   `VARCHAR(15)` (sized for phone numbers) — a real KingsChat conversation ID plus the `kc:`
+   prefix runs ~52 chars. Every KingsChat learner's first message would have failed outright with
+   `StringDataRightTruncationError`. Widened to `VARCHAR(64)` in `app/models/{user,conversation,
+   certificate}.py`; migration in `backend/widen_kingschat_identity_columns.py` for already-deployed
+   databases. Added a schema-contract test (`test_identity_columns_wide_enough_for_a_real_
+   conversation_id`) since the in-memory SQLite test DB doesn't enforce `VARCHAR(n)` at all —
+   this bug was invisible to all 41 prior tests.
+2. `_goto_and_settle`'s `page.goto()` could time out even when navigation genuinely succeeded
+   (confirmed by inspecting the real page content immediately after the exception) — now
+   swallowed the same way the existing `networkidle` wait already was, with a longer bound.
+3. The composer-presence check used an instant `.count()` snapshot instead of a bounded wait,
+   unlike the adjacent Send-button check — caused a false `SelectorDriftError` on a conversation
+   proven seconds earlier to have a working composer. Now uses `wait_for(state="visible")`,
+   matching the Send button's already-correct pattern.
+4. `.type()`'s default 30s timeout wasn't enough for real lesson content (~1900 chars typed
+   keystroke-by-keystroke into a Tiptap/ProseMirror editor) — a short reply worked fine, the
+   actual Day 1 lesson timed out. Timeout now scales with content length.
+
+Also surfaced three follow-ups now tracked above (Requests-tab support, the outgoing/incoming
+misclassification on first-contact threads, and the commit-before-send-confirmed reliability
+gap) — none of which blocked completing this test, since the conversation ID was supplied
+manually rather than discovered via normal polling.
 
 ### Verify Playwright BrowserContext fingerprint isolation before pooling
 

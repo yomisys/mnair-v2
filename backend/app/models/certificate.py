@@ -49,9 +49,12 @@ class Certificate(Base):
     )
 
     learner_phone: Mapped[str] = mapped_column(
-        String(15),
+        String(64),
         nullable=False,
-        comment="Phone number for verification"
+        comment="Phone number for verification. For a KingsChat learner, "
+                "this is the 'kc:{conversation_id}' identity slot (see "
+                "User.phone_number) -- widened from 15 to 64 chars 2026-07-17 "
+                "for the same reason."
     )
 
     # Completion Details

@@ -328,6 +328,39 @@ async def test_certificate_command_reaches_legacy_completer_cold(test_db):
 
 
 # ---------------------------------------------------------------------------
+# Identity-column width (regression for a real bug caught live 2026-07-17:
+# users.phone_number etc. were VARCHAR(15), sized for phone numbers, but a
+# real KingsChat conversation ID ('kc:' + ~49 chars) is ~52 chars -- Postgres
+# rejected every write outright. The in-memory SQLite test DB does NOT
+# enforce VARCHAR(n) length at all, so a round-trip test here would pass
+# regardless of the column width and prove nothing -- this checks the
+# SQLAlchemy column metadata directly instead, which actually regresses if
+# someone narrows the column back down.
+# ---------------------------------------------------------------------------
+
+def test_identity_columns_wide_enough_for_a_real_conversation_id():
+    from app.models.user import User
+    from app.models.conversation import Conversation
+    from app.models.certificate import Certificate
+
+    # Real ID observed live 2026-07-17; KINGSCHAT_ID_PREFIX adds 'kc:' on top.
+    real_id_len = len(KINGSCHAT_ID_PREFIX + "53b9877a73322e5105030100_6a0ae2c1095c473320cb9891")
+
+    for model, column in (
+        (User, "phone_number"),
+        (Conversation, "phone_number"),
+        (Certificate, "learner_phone"),
+    ):
+        length = model.__table__.columns[column].type.length
+        assert length >= real_id_len, (
+            f"{model.__name__}.{column} is VARCHAR({length}), too narrow for a "
+            f"real KingsChat identity string ({real_id_len} chars) -- this is "
+            f"the exact bug that made every KingsChat learner's first message "
+            f"fail with StringDataRightTruncationError on Postgres."
+        )
+
+
+# ---------------------------------------------------------------------------
 # Message builder
 # ---------------------------------------------------------------------------
 
@@ -507,7 +540,12 @@ def _make_page(*, logged_out=False, composer_present=True, send_button_appears=T
         if selector == SELECTORS.logged_out_redirect_marker:
             loc.count = AsyncMock(return_value=1 if logged_out else 0)
         elif selector == SELECTORS.message_input:
-            loc.count = AsyncMock(return_value=1 if composer_present else 0)
+            # send_message waits on editor.first, not a bare .count() check
+            # (see send_message's docstring on why) -- mirror that here.
+            if composer_present:
+                loc.first.wait_for = AsyncMock(return_value=None)
+            else:
+                loc.first.wait_for = AsyncMock(side_effect=TimeoutError("never appeared"))
         elif selector == SELECTORS.send_button:
             if send_button_appears:
                 loc.wait_for = AsyncMock(return_value=None)
@@ -531,7 +569,7 @@ async def test_send_message_happy_path_navigates_types_and_clicks_send():
     # domcontentloaded, not goto()'s default "load" -- see _goto_and_settle's
     # docstring for why (this app never reaches a clean "load" event).
     page.goto.assert_awaited_once_with(
-        "https://kingschat.online/conversations/conv123", wait_until="domcontentloaded"
+        "https://kingschat.online/conversations/conv123", wait_until="domcontentloaded", timeout=15000
     )
     editor_locator = page.locator(SELECTORS.message_input)
     # locator() is a MagicMock side_effect -- re-invoking it above returns a
@@ -571,6 +609,133 @@ async def test_send_message_raises_selector_drift_when_send_button_never_appears
 
     with pytest.raises(SelectorDriftError, match="[Ss]end button"):
         await session.send_message("conv123", "hello learner")
+
+
+# ---------------------------------------------------------------------------
+# contact_filter scoping (--only-contact) — safety mechanism for a first
+# live test against a real, actively-used inbox: only touch conversations
+# matching the filter, leave everything else completely untouched.
+# ---------------------------------------------------------------------------
+
+def _make_inbox_page(rows_spec):
+    """Mock page for list_unread_direct_conversation_ids(contact_filter=...).
+    rows_spec: list of (visible_text, is_unread) tuples, in DOM order.
+    Returns (page, click_log) -- click_log records which row indices were
+    actually clicked, so tests can assert non-matching rows were never
+    touched.
+
+    Mirrors real KingsChat behavior: clicking a row clears ITS unread state
+    for subsequent re-scans (list_unread_direct_conversation_ids loops until
+    no more matches), via a mutable unread-flags list rather than a value
+    frozen at row-construction time -- without this, a matching row that
+    stays "unread" forever after being clicked makes the real while-True
+    loop in list_unread_direct_conversation_ids spin forever.
+    """
+    click_log: list[int] = []
+    row_objs = []
+    unread_flags = [is_unread for _, is_unread in rows_spec]
+
+    for i, (text, _is_unread) in enumerate(rows_spec):
+        row = AsyncMock()
+        row.inner_text = AsyncMock(return_value=text)
+
+        def row_locator(selector, _i=i):
+            marker = AsyncMock()
+            marker.count = AsyncMock(return_value=1 if (unread_flags[_i] and selector == SELECTORS.unread_direct_item) else 0)
+            return marker
+        row.locator = MagicMock(side_effect=row_locator)
+
+        async def do_click(_i=i):
+            click_log.append(_i)
+            unread_flags[_i] = False
+            page.url = f"https://kingschat.online/conversations/conv_{_i}"
+        row.click = AsyncMock(side_effect=do_click)
+        row_objs.append(row)
+
+    rows_mock = AsyncMock()
+    rows_mock.count = AsyncMock(return_value=len(row_objs))
+    rows_mock.nth = MagicMock(side_effect=lambda i: row_objs[i])
+
+    direct_tab = AsyncMock()
+    direct_tab.count = AsyncMock(return_value=0)  # skip the "click Direct tab" branch
+
+    def page_locator(selector):
+        if selector == SELECTORS.direct_conversation_item:
+            return rows_mock
+        if selector == "text=Direct":
+            return direct_tab
+        loc = AsyncMock()
+        loc.count = AsyncMock(return_value=0)
+        return loc
+
+    page = AsyncMock()
+    page.locator = MagicMock(side_effect=page_locator)
+    page.url = "https://kingschat.online/conversations"
+    return page, click_log
+
+
+@pytest.mark.asyncio
+async def test_contact_filter_only_clicks_matching_unread_row():
+    """Two unread rows, only one matches the filter -- the other must never
+    be clicked (i.e. never marked read), only inspected read-only."""
+    page, click_log = _make_inbox_page([
+        ("Jane Real Learner: hey when's day 3?", True),
+        ("yomimnair: test message", True),
+        ("John Also Real: unrelated unread", True),
+    ])
+    session = KingsChatSession(page)
+
+    conversation_ids = await session.list_unread_direct_conversation_ids(contact_filter="yomimnair")
+
+    assert conversation_ids == ["conv_1"]
+    assert click_log == [1], (
+        "only the matching row should ever be clicked -- clicking marks a "
+        "conversation read, so touching a non-matching row would incorrectly "
+        "clear a real person's unread state"
+    )
+
+
+@pytest.mark.asyncio
+async def test_contact_filter_case_insensitive_and_no_match_returns_empty():
+    page, click_log = _make_inbox_page([
+        ("Someone Else: hi", True),
+    ])
+    session = KingsChatSession(page)
+
+    conversation_ids = await session.list_unread_direct_conversation_ids(contact_filter="YOMIMNAIR")
+    assert conversation_ids == []
+    assert click_log == []
+
+
+@pytest.mark.asyncio
+async def test_contact_filter_ignores_read_rows_even_if_text_matches():
+    """A row matching the filter text but not carrying the unread marker
+    must not be clicked -- filter narrows WHICH unread row to act on, it
+    doesn't turn a read conversation into a target."""
+    page, click_log = _make_inbox_page([
+        ("yomimnair: already read", False),
+    ])
+    session = KingsChatSession(page)
+
+    conversation_ids = await session.list_unread_direct_conversation_ids(contact_filter="yomimnair")
+    assert conversation_ids == []
+    assert click_log == []
+
+
+@pytest.mark.asyncio
+async def test_poll_once_passes_contact_filter_through_to_session():
+    session = AsyncMock()
+    session.detect_ban = AsyncMock(return_value=False)
+    session.list_unread_direct_conversation_ids = AsyncMock(return_value=["conv_1"])
+    session.read_latest_incoming_message = AsyncMock(return_value="hi")
+
+    handler = AsyncMock(spec=KingsChatHandler)
+    ban_fallback = AsyncMock(spec=KingsChatBanFallback)
+    watcher = KingsChatWatcher(handler=handler, ban_fallback=ban_fallback)
+
+    await watcher.poll_once(session, contact_filter="yomimnair")
+
+    session.list_unread_direct_conversation_ids.assert_awaited_once_with("yomimnair")
 
 
 # ---------------------------------------------------------------------------

@@ -43,13 +43,21 @@ class User(Base):
 
     # Identity
     phone_number: Mapped[str] = mapped_column(
-        String(15),
+        String(64),
         unique=True,
         index=True,
         comment="Nigerian phone: 080XXXXXXXX or 234XXXXXXXXXX. For KingsChat "
                 "learners (who have no phone-based identity in this flow), "
                 "this holds the KingsChat internal user ID instead, prefixed "
-                "'kc:' — see app.channels.kingschat for the identity mapping."
+                "'kc:' — see app.channels.kingschat for the identity mapping. "
+                "Widened from 15 to 64 chars 2026-07-17: confirmed live that "
+                "real KingsChat conversation IDs (e.g. "
+                "'53b9877a73322e5105030100_6a0ae2c1095c473320cb9891') run "
+                "~49 chars, well past a phone number's length -- the kc: "
+                "prefix pushes it to ~52. Postgres rejected every write "
+                "attempt outright (StringDataRightTruncationError) until "
+                "this fix -- every single KingsChat learner would have "
+                "failed at first contact."
     )
     name: Mapped[str] = mapped_column(String(255), nullable=False)
     name_confirmed: Mapped[bool] = mapped_column(

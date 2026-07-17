@@ -762,8 +762,25 @@ async def _goto_and_settle(page, url: str, *, timeout_ms: int = 5000) -> None:
     (images, the WebSocket connection, background polling) has settled --
     standard practice for automating a modern SPA, not a workaround
     specific to a bug.
+
+    Confirmed live 2026-07-17, during the first real --live run: even
+    `domcontentloaded` can time out on this app -- caught mid-run navigating
+    to /conversations with a stored session applied, then confirmed by
+    inspecting page.url and page.inner_text("body") immediately after the
+    exception that the real inbox UI ("Chats", "Timeline", "New" etc.) had
+    already fully rendered. The navigation had actually succeeded; only
+    Playwright's own bookkeeping for "this event fired" hadn't caught up
+    within the window, almost certainly the same persistent-WebSocket cause
+    documented above showing up one layer earlier. A goto() timeout on this
+    app is therefore not proof the navigation failed, exactly like
+    _settle's networkidle wait below -- swallowed here for the same reason,
+    with a longer bound than _settle's since goto() has more work to do
+    than a post-load quiet check.
     """
-    await page.goto(url, wait_until="domcontentloaded")
+    try:
+        await page.goto(url, wait_until="domcontentloaded", timeout=timeout_ms * 3)
+    except Exception:
+        pass
     await _settle(page, timeout_ms=timeout_ms)
 
 
@@ -895,6 +912,18 @@ class KingsChatSession:
         get a dedicated test against a disposable conversation before this
         handles production traffic — if Enter turns out to submit early,
         typing a multi-line message would send it in fragments.
+
+        Confirmed live 2026-07-17 during the first real send test: this
+        conversation's composer did NOT reliably render within
+        _goto_and_settle's window on every attempt -- one call found it
+        immediately, a follow-up call moments later on the SAME
+        conversation raised SelectorDriftError from a bare .count()==0
+        check. That's a timing race, not proof of real drift (the earlier
+        successful send is direct evidence the selector itself is still
+        correct) -- the composer check below now waits (bounded) for the
+        element to actually appear, the same pattern the Send button check
+        just after it already used correctly. A genuine drift (composer
+        never appears within the wait) still raises SelectorDriftError.
         """
         await _goto_and_settle(self._page, f"https://kingschat.online/conversations/{kingschat_user_id}")
 
@@ -905,15 +934,27 @@ class KingsChatSession:
             )
 
         editor = self._page.locator(SELECTORS.message_input)
-        if await editor.count() == 0:
+        try:
+            await editor.first.wait_for(state="visible", timeout=15000)
+        except Exception as e:
             raise SelectorDriftError(
                 f"Message composer ({SELECTORS.message_input}) not found "
                 f"on conversation {kingschat_user_id} — KingsChat's DOM "
                 f"may have changed since selectors were last verified."
-            )
+            ) from e
 
-        await editor.click()
-        await editor.type(text)
+        await editor.first.click()
+        # Confirmed live 2026-07-17: Playwright's type() default 30s timeout
+        # is not always enough for real lesson content (curriculum lessons
+        # run up to ~1900 chars -- see whatsapp.py's build_lesson_message
+        # comment) typed keystroke-by-keystroke into a Tiptap/ProseMirror
+        # editor, where every character can trigger a full editor
+        # transaction + re-render. A short "START"-length reply worked fine
+        # at the default; the actual Day 1 lesson timed out. Scale the
+        # timeout to content length instead of guessing a single fixed
+        # value -- generous floor for short replies, headroom for the
+        # longest real lesson.
+        await editor.first.type(text, timeout=max(30000, len(text) * 50))
 
         send = self._page.locator(SELECTORS.send_button)
         try:
@@ -945,7 +986,7 @@ class KingsChatSession:
                 return True
         return False
 
-    async def list_unread_direct_conversation_ids(self) -> list[str]:
+    async def list_unread_direct_conversation_ids(self, contact_filter: Optional[str] = None) -> list[str]:
         """Navigate to the inbox, filter to Direct (1:1) only — Groups are
         explicitly out of scope (Open Question 5) — and return the
         conversation IDs of unread threads by clicking each one and
@@ -956,6 +997,16 @@ class KingsChatSession:
         Clicking marks a conversation read, so this is destructive with
         respect to unread state -- call it once per poll cycle, not
         speculatively.
+
+        contact_filter: if given, only clicks into (and thus only marks
+        read / returns) unread rows whose visible text contains this
+        substring (case-insensitive) -- e.g. a display name or handle.
+        Every non-matching unread row is inspected read-only (inner_text
+        only, never clicked) and left exactly as it was. This exists for
+        safely scoping a manual test run (see kingschat_bot.py's
+        --only-contact) to one known conversation without touching
+        whatever else happens to be unread in a real, actively-used inbox
+        -- production polling (no filter) still processes everything.
         """
         await _goto_and_settle(self._page, "https://kingschat.online/conversations")
 
@@ -970,11 +1021,10 @@ class KingsChatSession:
         # persists, but the returned collection would otherwise reference
         # elements from before that navigation.
         while True:
-            unread = self._page.locator(SELECTORS.unread_direct_item)
-            count = await unread.count()
-            if count == 0:
+            target = await self._find_next_unread_row(contact_filter)
+            if target is None:
                 break
-            await unread.first.click()
+            await target.click()
             await _settle(self._page)
             conversation_id = self._page.url.rstrip("/").rsplit("/", 1)[-1]
             conversation_ids.append(conversation_id)
@@ -985,6 +1035,30 @@ class KingsChatSession:
                 await _settle(self._page)
 
         return conversation_ids
+
+    async def _find_next_unread_row(self, contact_filter: Optional[str]):
+        """Return a Locator for the next unread conversation row to act on,
+        or None if there isn't one (matching the filter, if given).
+
+        No filter: behaves exactly as the old implementation (first unread
+        row in DOM order). With a filter: scans full conversation rows
+        (not just the unread badge) for one that is BOTH unread AND has the
+        filter substring anywhere in its rendered text, read-only for every
+        row that doesn't match -- never clicks a non-matching row.
+        """
+        if contact_filter is None:
+            unread = self._page.locator(SELECTORS.unread_direct_item)
+            return unread.first if await unread.count() > 0 else None
+
+        rows = self._page.locator(SELECTORS.direct_conversation_item)
+        for i in range(await rows.count()):
+            row = rows.nth(i)
+            if await row.locator(SELECTORS.unread_direct_item).count() == 0:
+                continue
+            text = (await row.inner_text()).strip()
+            if contact_filter.lower() in text.lower():
+                return row
+        return None
 
     async def read_latest_incoming_message(self) -> Optional[str]:
         """Read the text of the most recent message NOT sent by this
@@ -1031,8 +1105,8 @@ class DryRunKingsChatSession:
     async def detect_ban(self) -> bool:
         return await self._real.detect_ban()
 
-    async def list_unread_direct_conversation_ids(self) -> list[str]:
-        return await self._real.list_unread_direct_conversation_ids()
+    async def list_unread_direct_conversation_ids(self, contact_filter: Optional[str] = None) -> list[str]:
+        return await self._real.list_unread_direct_conversation_ids(contact_filter)
 
     async def read_latest_incoming_message(self) -> Optional[str]:
         return await self._real.read_latest_incoming_message()
@@ -1052,18 +1126,25 @@ class KingsChatWatcher:
         self.handler = handler
         self.ban_fallback = ban_fallback
 
-    async def poll_once(self, session) -> int:
+    async def poll_once(self, session, contact_filter: Optional[str] = None) -> int:
         """One poll cycle: check for a ban first, then process every
         currently-unread Direct conversation. Returns the number of
         messages processed. `session` accepts either a real
         KingsChatSession or a DryRunKingsChatSession -- both expose the
         same interface.
+
+        contact_filter: scope this cycle to only unread conversations whose
+        visible text matches this substring (see KingsChatSession's
+        _find_next_unread_row) -- everything else unread is left completely
+        untouched. Used by kingschat_bot.py's --only-contact for safely
+        testing against one known conversation on a real, actively-used
+        inbox. None (default) processes everything, as before.
         """
         if await session.detect_ban():
             await self.ban_fallback.notify_leader(lesson=None, reason="ban/suspension signal detected during poll")
             raise KingsChatBanDetectedError("Ban signal detected at start of poll cycle")
 
-        conversation_ids = await session.list_unread_direct_conversation_ids()
+        conversation_ids = await session.list_unread_direct_conversation_ids(contact_filter)
         processed = 0
         for conversation_id in conversation_ids:
             message_text = await session.read_latest_incoming_message()
