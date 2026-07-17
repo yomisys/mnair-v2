@@ -341,6 +341,19 @@ drains cleanly on SIGTERM (docker stop), and bounds cycle time via the direct-po
 
 ## Completed
 
+### KingsChat bot deployed to the production stack (2026-07-17)
+
+Live as the `mnair_kingschat_bot` compose service (profile-gated), running against the
+production database (migrated: KINGSCHAT enum value, VARCHAR(64) identity columns — the
+certificate-name migration was already applied). Fresh login inside the container's session
+volume, identity guard passing, unfiltered polling serving all inbound learners. The isolated
+test stack was archived (`backups/kingschat_test_run_20260717.sql`, gitignored — learner data)
+and torn down. Test-phase learners restart fresh on prod by design: the founder's own test
+account, and one real learner who had only reached the language menu.
+
+Operate with: `docker compose --profile kingschat up -d kingschat_bot` / `docker logs -f
+mnair_kingschat_bot` / `docker compose stop kingschat_bot` (SIGTERM drains cleanly).
+
 ### First-contact discovery + correct-account end-to-end run (2026-07-17, third pass)
 
 The full production path now works, verified live on the REAL bot account:
