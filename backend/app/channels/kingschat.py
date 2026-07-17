@@ -62,6 +62,7 @@ not just the ban signals already checked.
 from __future__ import annotations
 
 import logging
+import re
 from dataclasses import dataclass
 from pathlib import Path
 from datetime import datetime
@@ -193,14 +194,27 @@ class KingsChatMessageBuilder:
             f"Ready for the quiz? Reply QUIZ to start!"
         )
 
-    @staticmethod
-    def build_quiz_message(lesson: Lesson, question_num: int, order: list[int]) -> str:
+    # Curriculum option strings mostly embed their own letter prefix
+    # ("A. Knowing HOW to work with AI"). Displaying them verbatim under a
+    # freshly-assigned display letter double-letters every option — and
+    # since options are SHUFFLED, the embedded letter actively contradicts
+    # the display letter ("A. D. Opportunity...", observed live by a real
+    # learner 2026-07-17). Strip an embedded leading prefix before
+    # lettering. Requires punctuation+space after the letter so a literal
+    # one-letter option ("A") is never stripped to nothing.
+    _EMBEDDED_LETTER_PREFIX = re.compile(r"^[A-Da-d][.)]\s+")
+
+    @classmethod
+    def build_quiz_message(cls, lesson: Lesson, question_num: int, order: list[int]) -> str:
         if not lesson.quiz or question_num >= len(lesson.quiz):
             raise ValueError(f"Invalid question number {question_num}")
 
         quiz_item = lesson.quiz[question_num]
         options = shuffled_options(quiz_item["options"], order)
-        lettered = "\n".join(f"{chr(65 + i)}. {opt}" for i, opt in enumerate(options))
+        lettered = "\n".join(
+            f"{chr(65 + i)}. {cls._EMBEDDED_LETTER_PREFIX.sub('', opt)}"
+            for i, opt in enumerate(options)
+        )
 
         return (
             f"❓ Question {question_num + 1}/5\n\n"

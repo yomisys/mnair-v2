@@ -434,6 +434,43 @@ def test_message_builder_quiz_message_is_lettered_plain_text():
     assert "Reply with the letter" in msg
 
 
+def test_quiz_options_embedded_letter_prefixes_stripped():
+    """Real curriculum options embed their own letter prefix ('A. Knowing
+    HOW to work with AI'), and options are displayed shuffled — so the
+    embedded letter contradicts the assigned display letter ('A. D.
+    Opportunity...', reported live by a real learner). The builder must
+    strip the embedded prefix, but never strip a literal one-letter
+    option ('A') to nothing."""
+    lesson = Lesson(
+        lesson_id="prefix_lesson", day=1, topic="what_is_ai", language="en",
+        title="T", content="C", word_count=1,
+        quiz=[{
+            "question": "Q",
+            "options": [
+                "A. First real option",
+                "B. Second real option",
+                "C. Third real option",
+                "D. Fourth real option",
+            ],
+            "correct": 0,
+        }] * 5,
+    )
+    msg = KingsChatMessageBuilder.build_quiz_message(lesson, 0, [3, 2, 1, 0])
+
+    # Shuffled display: A shows original D's text, stripped of its 'D. '
+    assert "A. Fourth real option" in msg
+    assert "D. First real option" in msg
+    # No double-lettering anywhere
+    for a in "ABCD":
+        for b in "ABCD":
+            assert f"{a}. {b}. " not in msg
+
+    # A literal one-letter option (test fixtures use these) is untouched
+    plain = _quiz_lesson()
+    msg2 = KingsChatMessageBuilder.build_quiz_message(plain, 0, [0, 1, 2, 3])
+    assert "A. A" in msg2 and "B. B" in msg2  # display letter + literal option
+
+
 def test_message_builder_lesson_message():
     lesson = _quiz_lesson()
     msg = KingsChatMessageBuilder.build_lesson_message(lesson, 1, 5)

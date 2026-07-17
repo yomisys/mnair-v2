@@ -7,6 +7,7 @@ from __future__ import annotations
 import hmac
 import hashlib
 import json
+import re
 from typing import Dict, Optional, List, Any
 from datetime import datetime
 from enum import Enum
@@ -176,8 +177,17 @@ class WhatsAppMessageBuilder:
             }
         }
 
-    @staticmethod
-    def build_quiz_message(lesson: Lesson, question_num: int, order: List[int]) -> Dict[str, Any]:
+    # Curriculum option strings mostly embed their own letter prefix
+    # ("A. Knowing HOW to work with AI"); options are displayed SHUFFLED,
+    # so the embedded letter contradicts the assigned display letter
+    # ("Option A" described as "D. Opportunity...") — observed live by a
+    # real learner on the KingsChat channel, same data feeds this one.
+    # Strip it before display; punctuation+space required after the letter
+    # so a literal one-letter option is never stripped to nothing.
+    _EMBEDDED_LETTER_PREFIX = re.compile(r"^[A-Da-d][.)]\s+")
+
+    @classmethod
+    def build_quiz_message(cls, lesson: Lesson, question_num: int, order: List[int]) -> Dict[str, Any]:
         """Build quiz question with interactive buttons.
 
         `order` is the display shuffle for this question (see
@@ -211,7 +221,7 @@ class WhatsAppMessageBuilder:
                                 {
                                     "id": f"ans_{question_num}_{i}",
                                     "title": f"Option {chr(65+i)}",
-                                    "description": opt[:72]  # WhatsApp description limit
+                                    "description": cls._EMBEDDED_LETTER_PREFIX.sub("", opt)[:72]  # WhatsApp description limit
                                 }
                                 for i, opt in enumerate(options)
                             ]
