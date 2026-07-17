@@ -292,6 +292,53 @@ fix. Rotate it once testing settles, and update `backend/.env` to match.
 
 ---
 
+### KingsChat throughput ceiling — the honest math, and what "1000s of users" actually requires
+
+**The physics:** every KingsChat send is real browser automation through ONE account: navigate
+(~10-20s with this SPA's hydration), compose, confirm — ~30-60s per message, and a chunked
+lesson is 2-3 messages. One serving of one learner interaction (read their message + send the
+reply) costs roughly 1-2 minutes of browser time.
+
+**What the current architecture delivers** (post-2026-07-17 hardening: bounded-concurrency
+workers via `KINGSCHAT_CONCURRENCY`, capped rotating direct poll via
+`KINGSCHAT_DIRECT_POLL_CAP`): with concurrency 3, roughly **90-180 learner interactions/hour**
+sustained, with per-learner response latency of one-to-a-few poll cycles. A lesson+quiz round
+is ~8 interactions, so think **~15-25 learners actively mid-lesson per hour**, or a few hundred
+casually-paced learners per day. Raising concurrency raises throughput linearly AND raises the
+odds of the single bot account being flagged — every worker is another simultaneous automated
+stream from one identity.
+
+**What it can NEVER deliver, regardless of code:** thousands of *concurrent real-time* learners
+through one automated account. The ceilings are structural: one account, one inbox, human-speed
+UI automation, and a platform with no bot API whose anti-automation posture is unknown (ToS
+check still pending above). The options that actually reach that scale, in rough order of
+realism:
+
+1. **WhatsApp/USSD as the scale channels** (already built, API-based, stateless webhooks —
+   horizontally scalable to thousands today; DB pool 10+20 and 2 uvicorn workers are the current
+   knobs to raise). KingsChat remains the niche channel for the WhatsApp-forbidden audience, at
+   its natural pace.
+2. **Broadcast/group model for KingsChat** (the design doc's Approach C hybrid): the leader or
+   a SuperUser account broadcasts lessons to a group; quizzes happen on a web link (reusing the
+   verify-page pattern). One send serves N learners — removes the per-learner send cost
+   entirely. Needs the group-automation work that was explicitly scoped out (Open Question 5).
+3. **Official API access** via the leader's LoveWorld connections (design doc Approach A) —
+   the only path to true per-learner scale on KingsChat itself.
+4. **Account sharding** (multiple bot accounts, learners partitioned) — multiplies throughput
+   linearly but multiplies ToS exposure and operational surface; per-context proxies
+   (`KINGSCHAT_CONTEXT_PROXY_SERVER`) become relevant here. Not recommended before the ToS
+   question is answered.
+
+**Also done as part of this hardening** (2026-07-17): the bot no longer dies on a single
+learner's failure (per-conversation isolation), survives whole-cycle failures with exponential
+backoff, distinguishes session expiry from a ban by attempting re-login before giving up,
+drains cleanly on SIGTERM (docker stop), and bounds cycle time via the direct-poll cap.
+
+**Priority:** P1 — decision needed before the leader's distribution commitment lands
+**Depends on:** ToS check (above); leader's actual scale number
+
+---
+
 ## Completed
 
 ### First-contact discovery + correct-account end-to-end run (2026-07-17, third pass)

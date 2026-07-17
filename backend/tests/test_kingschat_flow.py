@@ -1391,3 +1391,147 @@ async def test_ensure_logged_in_hard_fails_when_credentials_are_wrong_account(mo
         await bot_mod.ensure_logged_in(FakePool(), store, FakeSettings())
 
     assert store.load() is None  # wrong-account session never persisted
+
+
+# ---------------------------------------------------------------------------
+# poll_cycle: the production path — bounded concurrency, capped rotating
+# direct poll, per-conversation failure isolation
+# ---------------------------------------------------------------------------
+
+from types import SimpleNamespace
+from contextlib import asynccontextmanager
+
+from app.channels.kingschat import SelectorDriftError as _SelectorDriftError
+
+
+def test_direct_poll_targets_rotate_and_cover_all():
+    """With a cap smaller than the active list, the rotating cursor must
+    visit every conversation within ceil(n/cap) cycles — a plain
+    'most recent first, take cap' would starve the oldest forever."""
+    watcher = KingsChatWatcher(handler=None, ban_fallback=AsyncMock())
+    ids = ["a", "b", "c", "d", "e"]
+
+    seen = []
+    for _ in range(3):  # ceil(5/2) = 3 cycles
+        window = watcher._select_direct_poll_targets(ids, cap=2)
+        assert len(window) == 2
+        seen.extend(window)
+    assert set(seen) == set(ids)
+
+    # No cap or cap >= n: everything, in order, cursor untouched
+    watcher2 = KingsChatWatcher(handler=None, ban_fallback=AsyncMock())
+    assert watcher2._select_direct_poll_targets(ids, cap=None) == ids
+    assert watcher2._select_direct_poll_targets(ids, cap=10) == ids
+
+
+class _FakeCycleSession:
+    """session_cls injectable for poll_cycle tests: class-level registries
+    shared across the per-worker instances poll_cycle constructs."""
+    reads: dict = {}
+    sent: list = []
+    opened: list = []
+    fail_on: set = set()
+
+    @classmethod
+    def reset(cls):
+        cls.reads, cls.sent, cls.opened, cls.fail_on = {}, [], [], set()
+
+    def __init__(self, page):
+        self._current = None
+
+    async def detect_ban(self):
+        return False
+
+    async def list_unread_direct_conversation_ids(self, contact_filter=None):
+        return []
+
+    async def open_conversation(self, conversation_id):
+        if conversation_id in type(self).fail_on:
+            raise _SelectorDriftError(f"simulated drift on {conversation_id}")
+        type(self).opened.append(conversation_id)
+        self._current = conversation_id
+
+    async def read_latest_incoming(self):
+        return type(self).reads.get(self._current)
+
+    async def send_message(self, conversation_id, text):
+        type(self).sent.append((conversation_id, text))
+
+
+class _FakeCyclePool:
+    @asynccontextmanager
+    async def acquire(self):
+        context = AsyncMock()
+        context.new_page = AsyncMock(return_value=AsyncMock())
+        yield context
+
+
+@pytest.mark.asyncio
+async def test_poll_cycle_isolates_per_conversation_failures(test_db):
+    """One conversation blowing up (selector drift, send failure, ...) must
+    not take down the cycle or the other learners — before this existed,
+    ANY exception on one learner killed the whole bot process."""
+    _FakeCycleSession.reset()
+
+    @asynccontextmanager
+    async def session_factory():
+        yield test_db
+
+    handler = KingsChatHandler(settings=None, db=test_db)
+    conv_ids = []
+    for i in range(3):
+        cid = f"cycle_conv_{i}"
+        user = await handler.get_or_create_user(cid)
+        await handler.get_or_create_conversation(user.id, cid)
+        conv_ids.append(cid)
+    await test_db.commit()
+
+    _FakeCycleSession.reads = {
+        "cycle_conv_0": ("m0", "hi"),
+        "cycle_conv_2": ("m2", "hi"),
+    }
+    _FakeCycleSession.fail_on = {"cycle_conv_1"}
+
+    settings = SimpleNamespace(KINGSCHAT_CONCURRENCY=1, KINGSCHAT_DIRECT_POLL_CAP=10)
+    watcher = KingsChatWatcher(
+        handler=None, ban_fallback=AsyncMock(spec=KingsChatBanFallback),
+        session_factory=session_factory, settings=settings,
+    )
+
+    processed = await watcher.poll_cycle(
+        _FakeCyclePool(), live=True, session_cls=_FakeCycleSession,
+    )
+
+    # conv_0 and conv_2 processed (NEW_USER -> welcome sent); conv_1's
+    # failure isolated
+    assert processed == 2
+    sent_to = [c for c, _ in _FakeCycleSession.sent]
+    assert "cycle_conv_0" in sent_to and "cycle_conv_2" in sent_to
+    assert "cycle_conv_1" not in sent_to
+
+
+@pytest.mark.asyncio
+async def test_poll_cycle_caps_direct_poll_targets(test_db):
+    """Cycle time must stay bounded: with cap=2 and 4 active conversations,
+    only 2 are visited this cycle (the rest rotate in on later cycles)."""
+    _FakeCycleSession.reset()
+
+    @asynccontextmanager
+    async def session_factory():
+        yield test_db
+
+    handler = KingsChatHandler(settings=None, db=test_db)
+    for i in range(4):
+        cid = f"cap_conv_{i}"
+        user = await handler.get_or_create_user(cid)
+        await handler.get_or_create_conversation(user.id, cid)
+    await test_db.commit()
+
+    settings = SimpleNamespace(KINGSCHAT_CONCURRENCY=1, KINGSCHAT_DIRECT_POLL_CAP=2)
+    watcher = KingsChatWatcher(
+        handler=None, ban_fallback=AsyncMock(spec=KingsChatBanFallback),
+        session_factory=session_factory, settings=settings,
+    )
+
+    await watcher.poll_cycle(_FakeCyclePool(), live=True, session_cls=_FakeCycleSession)
+    assert len(_FakeCycleSession.opened) == 2

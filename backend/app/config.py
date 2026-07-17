@@ -102,6 +102,18 @@ class Settings(BaseSettings):
     # Optional so existing setups don't break, but any real deployment
     # should set it.
     KINGSCHAT_EXPECTED_USERNAME: Optional[str] = None
+    # How many conversations are processed in parallel per poll cycle, each
+    # on its own BrowserContext (from the pool) and its own DB session.
+    # This is the throughput lever AND the ban-risk lever: N workers means
+    # N simultaneous automated streams from one account. Keep modest.
+    KINGSCHAT_CONCURRENCY: int = 3
+    # Max known-active conversations direct-polled per cycle. Direct
+    # polling navigates a real browser to each thread (~30-60s each), so
+    # an uncapped poll makes cycle time linear in active learners — at 100
+    # actives that's over an hour per cycle. The cap bounds cycle time;
+    # a rotating cursor guarantees every active conversation is still
+    # visited within ceil(actives/cap) cycles.
+    KINGSCHAT_DIRECT_POLL_CAP: int = 12
 
     # Security — no default; startup fails loudly if unset in production
     SESSION_SECRET: str

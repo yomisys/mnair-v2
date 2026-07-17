@@ -61,6 +61,7 @@ not just the ban signals already checked.
 """
 from __future__ import annotations
 
+import asyncio
 import logging
 import re
 from dataclasses import dataclass
@@ -1385,17 +1386,24 @@ class KingsChatWatcher:
 
     1. UNREAD SCAN — the inbox's unread rows. This is how brand-new
        learners (not yet in our database) are discovered at all.
-    2. DIRECT POLL — every active KingsChat conversation already in our
-       database is navigated by URL and its latest incoming message read,
-       regardless of any unread flag. Added 2026-07-17 after unread-driven
-       discovery lost a real learner answer TWICE, live: the flag is
-       consumed by clicking the row, but the message list renders
-       progressively and can also lag the flag entirely (message still in
-       transit), so click-then-read can eat the flag while seeing nothing
-       — and the bot's own sends also raise spurious flags. Flags are a
-       hint, not a ledger. Direct polling has no flag race by
-       construction; kc_message_id dedupe (see handle_message) makes
-       re-reading the same latest message every cycle harmless.
+    2. DIRECT POLL — active KingsChat conversations already in our
+       database are navigated by URL and their latest incoming message
+       read, regardless of any unread flag. Added 2026-07-17 after
+       unread-driven discovery lost a real learner answer TWICE, live:
+       the flag is consumed by clicking the row, but the message list
+       renders progressively and can also lag the flag entirely (message
+       still in transit), so click-then-read can eat the flag while
+       seeing nothing — and the bot's own sends also raise spurious
+       flags. Flags are a hint, not a ledger. Direct polling has no flag
+       race by construction; kc_message_id dedupe (see handle_message)
+       makes re-reading the same latest message every cycle harmless.
+
+    Two entry points:
+    - poll_once(session): sequential, single page, single handler —
+      simple path for one-shot runs and tests.
+    - poll_cycle(pool, ...): the production path — capped rotating direct
+      poll, bounded-concurrency workers each on their OWN BrowserContext
+      and OWN DB session, per-conversation failure isolation.
     """
 
     # Direct-poll only conversations with activity in this window — keeps
@@ -1403,26 +1411,55 @@ class KingsChatWatcher:
     # ever created on every cycle.
     ACTIVE_WINDOW_HOURS = 72
 
-    def __init__(self, handler: KingsChatHandler, ban_fallback: KingsChatBanFallback, db: Optional[AsyncSession] = None):
+    def __init__(
+        self,
+        handler: Optional[KingsChatHandler],
+        ban_fallback: KingsChatBanFallback,
+        db: Optional[AsyncSession] = None,
+        session_factory=None,
+        settings: Optional[Settings] = None,
+    ):
         self.handler = handler
         self.ban_fallback = ban_fallback
-        # db powers the direct-poll path; None (e.g. in unit tests that
-        # only exercise the unread scan) disables it.
+        # db powers the direct-poll path in poll_once; session_factory
+        # (e.g. app.database.AsyncSessionLocal) powers poll_cycle, where
+        # every worker needs its own session — an AsyncSession is not safe
+        # for concurrent tasks.
         self.db = db
+        self.session_factory = session_factory
+        self.settings = settings
+        # Rotating cursor over the active-conversation list so a capped
+        # direct poll still visits every active conversation within
+        # ceil(actives/cap) cycles instead of starving the oldest.
+        self._direct_poll_cursor = 0
 
-    async def _active_conversation_ids(self) -> list[str]:
+    async def _query_active_ids(self, db: AsyncSession) -> list[str]:
         from datetime import timedelta
 
         cutoff = datetime.utcnow() - timedelta(hours=self.ACTIVE_WINDOW_HOURS)
-        result = await self.db.execute(
+        result = await db.execute(
             select(Conversation.external_id).where(
                 Conversation.channel == ConversationChannel.KINGSCHAT,
                 Conversation.is_active == True,
                 Conversation.current_state != ConversationState.PROGRAM_COMPLETE,
                 Conversation.last_message_at >= cutoff,
-            )
+            ).order_by(Conversation.last_message_at.desc())
         )
         return [row[0] for row in result if row[0]]
+
+    async def _active_conversation_ids(self) -> list[str]:
+        return await self._query_active_ids(self.db)
+
+    def _select_direct_poll_targets(self, active_ids: list[str], cap: Optional[int]) -> list[str]:
+        """Slice the active list to at most `cap` ids, rotating the window
+        each call so every active conversation is visited within
+        ceil(n/cap) cycles. cap=None means no cap (poll_once behavior)."""
+        if cap is None or len(active_ids) <= cap:
+            return list(active_ids)
+        start = self._direct_poll_cursor % len(active_ids)
+        window = (active_ids + active_ids)[start:start + cap]
+        self._direct_poll_cursor = (start + cap) % len(active_ids)
+        return window
 
     async def poll_once(self, session, contact_filter: Optional[str] = None) -> int:
         """One poll cycle: ban check, then the unread scan, then the
@@ -1497,3 +1534,108 @@ class KingsChatWatcher:
                     processed += 1
 
         return processed
+
+    async def poll_cycle(
+        self,
+        pool,
+        *,
+        live: bool = True,
+        contact_filter: Optional[str] = None,
+        session_cls=None,
+    ) -> int:
+        """Production poll cycle: discovery, then bounded-concurrency
+        per-conversation processing, with per-conversation failure
+        isolation. Requires session_factory and settings (see __init__).
+
+        - Discovery runs on one primary page: ban check + unread scan
+          (row IDs only — reading happens in workers by URL, so the scan's
+          inbox-page position doesn't matter), plus the capped rotating
+          direct-poll selection from the database.
+        - Each conversation is then processed by a worker holding its OWN
+          BrowserContext (from the pool) and its OWN DB session — an
+          AsyncSession must never be shared across concurrent tasks.
+        - A failure on one conversation (SelectorDriftError,
+          KingsChatSendNotConfirmedError, DB error, ...) is logged and
+          isolated: every other learner in the cycle still gets served,
+          and the failed learner self-heals via dedupe + stranded-learner
+          recovery on a later cycle. Only a ban/session-invalid signal
+          propagates, so the caller can run its re-login ladder.
+
+        session_cls: injectable KingsChatSession replacement for tests.
+        Returns the number of messages actually processed.
+        """
+        import random
+
+        if self.session_factory is None or self.settings is None:
+            raise RuntimeError("poll_cycle requires session_factory and settings")
+        session_cls = session_cls or KingsChatSession
+
+        concurrency = max(1, self.settings.KINGSCHAT_CONCURRENCY)
+        cap = self.settings.KINGSCHAT_DIRECT_POLL_CAP
+
+        # --- discovery (sequential, one primary page) ---
+        async with pool.acquire() as context:
+            page = await context.new_page()
+            primary = session_cls(page)
+            if await primary.detect_ban():
+                await self.ban_fallback.notify_leader(lesson=None, reason="ban/suspension signal detected during poll")
+                raise KingsChatBanDetectedError("Ban signal detected at start of poll cycle")
+            unread_ids = await primary.list_unread_direct_conversation_ids(contact_filter)
+
+        async with self.session_factory() as db:
+            active_ids = await self._query_active_ids(db)
+        direct_targets = self._select_direct_poll_targets(
+            [c for c in active_ids if c not in set(unread_ids)], cap
+        )
+        work = list(dict.fromkeys(list(unread_ids) + direct_targets))
+        if not work:
+            return 0
+
+        # --- bounded-concurrency processing ---
+        semaphore = asyncio.Semaphore(concurrency)
+        processed_counts: list[int] = []
+        ban_signal: list[Exception] = []
+
+        async def process_conversation(conversation_id: str) -> None:
+            async with semaphore:
+                # Jitter so N workers don't hit the app in lockstep — both
+                # politeness and a less machine-regular traffic pattern.
+                await asyncio.sleep(random.uniform(0.3, 1.5))
+                try:
+                    async with pool.acquire() as context:
+                        worker_page = await context.new_page()
+                        real = session_cls(worker_page)
+                        session = real if live else DryRunKingsChatSession(real)
+                        await session.open_conversation(conversation_id)
+                        incoming = await session.read_latest_incoming()
+                        if incoming is None:
+                            return
+                        kc_message_id, message_text = incoming
+                        async with self.session_factory() as db:
+                            handler = KingsChatHandler(settings=self.settings, db=db)
+                            if await handler.handle_message(
+                                session, conversation_id, message_text, kc_message_id=kc_message_id
+                            ):
+                                logger.info(
+                                    "kingschat_cycle_processed conversation=%s", conversation_id
+                                )
+                                processed_counts.append(1)
+                except KingsChatBanDetectedError as e:
+                    # Account-level problem — not this conversation's fault;
+                    # surface to the cycle level for the re-login ladder.
+                    ban_signal.append(e)
+                except Exception:
+                    # One learner's failure must not take down the cycle.
+                    # Dedupe + stranded-learner recovery re-serve them later.
+                    logger.exception(
+                        "kingschat_conversation_processing_failed conversation=%s -- "
+                        "isolated; other learners unaffected, this one retries "
+                        "on a later cycle", conversation_id,
+                    )
+
+        await asyncio.gather(*(process_conversation(c) for c in work))
+
+        if ban_signal:
+            raise ban_signal[0]
+
+        return len(processed_counts)

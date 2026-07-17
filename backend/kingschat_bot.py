@@ -31,12 +31,9 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).parent))
 
 from app.channels.kingschat import (
-    DryRunKingsChatSession,
     KingsChatBanDetectedError,
     KingsChatBanFallback,
-    KingsChatHandler,
     KingsChatLoginError,
-    KingsChatSession,
     KingsChatWatcher,
     _goto_and_settle,
     get_logged_in_username,
@@ -169,6 +166,20 @@ async def run(args: argparse.Namespace) -> int:
     )
     await pool.start()
 
+    # Graceful shutdown: finish the in-flight cycle, then exit — a killed
+    # mid-send worker would otherwise leave a learner mid-flow (dedupe +
+    # stranded-learner recovery would still self-heal, but cleanly draining
+    # is better). SIGTERM is what docker stop sends; not available on
+    # Windows event loops, hence the guard.
+    shutdown = asyncio.Event()
+    try:
+        import signal
+        loop = asyncio.get_running_loop()
+        for sig in (signal.SIGINT, signal.SIGTERM):
+            loop.add_signal_handler(sig, shutdown.set)
+    except (NotImplementedError, ImportError):
+        pass
+
     try:
         try:
             storage_state = await ensure_logged_in(pool, store, settings)
@@ -179,39 +190,72 @@ async def run(args: argparse.Namespace) -> int:
         pool.set_storage_state(storage_state)  # subsequent acquire() calls reuse it
 
         ban_fallback = KingsChatBanFallback(settings)
+        watcher = KingsChatWatcher(
+            handler=None,  # poll_cycle builds one handler per worker, each on its own DB session
+            ban_fallback=ban_fallback,
+            session_factory=AsyncSessionLocal,
+            settings=settings,
+        )
 
         cycle = 0
-        while True:
+        consecutive_failures = 0
+        while not shutdown.is_set():
             cycle += 1
-            async with AsyncSessionLocal() as db:
-                handler = KingsChatHandler(settings=settings, db=db)
-                # db enables the direct-poll path (flag-race-free reading of
-                # known learner threads) alongside the unread scan.
-                watcher = KingsChatWatcher(handler=handler, ban_fallback=ban_fallback, db=db)
-
-                async with pool.acquire() as context:
-                    page = await context.new_page()
-                    real_session = KingsChatSession(page)
-                    session = real_session if args.live else DryRunKingsChatSession(real_session)
-
-                    try:
-                        processed = await watcher.poll_once(session, contact_filter=args.only_contact)
-                    except KingsChatBanDetectedError:
-                        logger.error("kingschat_ban_detected -- stopping. Leader notified via KingsChatBanFallback.")
-                        return 1
-
-                    logger.info(
-                        "kingschat_poll_cycle_complete cycle=%d mode=%s processed=%d",
-                        cycle, "LIVE" if args.live else "DRY_RUN", processed,
-                    )
-                    if not args.live and isinstance(session, DryRunKingsChatSession) and session.sent_log:
-                        for conv_id, text in session.sent_log:
-                            logger.info("  would send -> %s: %r", conv_id, text[:200])
+            try:
+                processed = await watcher.poll_cycle(
+                    pool, live=args.live, contact_filter=args.only_contact,
+                )
+                consecutive_failures = 0
+                logger.info(
+                    "kingschat_poll_cycle_complete cycle=%d mode=%s processed=%d",
+                    cycle, "LIVE" if args.live else "DRY_RUN", processed,
+                )
+            except KingsChatBanDetectedError:
+                # Could be a real ban OR just session expiry — they look
+                # identical from inside a page (redirect to login). The
+                # re-login ladder distinguishes them: expiry -> fresh login
+                # succeeds -> keep going; ban -> login fails -> notify the
+                # leader and stop.
+                logger.warning("kingschat_session_invalid_signal -- attempting re-login to distinguish expiry from ban")
+                try:
+                    store.clear()
+                    storage_state = await ensure_logged_in(pool, store, settings)
+                    pool.set_storage_state(storage_state)
+                    logger.info("kingschat_relogin_succeeded -- session had expired, resuming")
+                    consecutive_failures = 0
+                except KingsChatLoginError:
+                    logger.exception("kingschat_relogin_failed -- treating as ban/lockout, stopping")
+                    await ban_fallback.notify_leader(lesson=None, reason="session invalid and re-login failed (ban/lockout)")
+                    return 1
+            except Exception:
+                # A whole-cycle failure (network blip, page crash, DB
+                # hiccup) must not kill the bot — log, back off, retry.
+                # Backoff grows with consecutive failures so a persistent
+                # outage doesn't hammer anything, capped at 10 minutes.
+                consecutive_failures += 1
+                backoff = min(args.interval * (2 ** consecutive_failures), 600)
+                logger.exception(
+                    "kingschat_poll_cycle_failed cycle=%d consecutive=%d -- backing off %ds",
+                    cycle, consecutive_failures, backoff,
+                )
+                if not args.loop:
+                    return 1
+                try:
+                    await asyncio.wait_for(shutdown.wait(), timeout=backoff)
+                except asyncio.TimeoutError:
+                    pass
+                continue
 
             if not args.loop:
                 break
-            await asyncio.sleep(args.interval)
+            # Interruptible sleep: docker stop doesn't wait out the interval
+            try:
+                await asyncio.wait_for(shutdown.wait(), timeout=args.interval)
+            except asyncio.TimeoutError:
+                pass
 
+        if shutdown.is_set():
+            logger.info("kingschat_bot_shutdown_requested -- drained cleanly")
         return 0
     finally:
         await pool.stop()
