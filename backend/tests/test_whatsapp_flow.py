@@ -5,6 +5,7 @@ Tests complete Day 1-7 simulation with state management
 
 import pytest
 from datetime import datetime, timedelta
+from unittest.mock import patch, MagicMock
 from sqlalchemy import select
 
 from app.models.user import User, Language
@@ -712,18 +713,111 @@ async def test_certificate_name_prompt_and_capture(test_db):
     assert user.name_confirmed is False
     assert conversation.current_state == ConversationState.AWAITING_CERTIFICATE_NAME
 
-    # A real name is captured and confirmed
-    await handler.handle_message(user.phone_number, "Chidinma Okafor", "text")
+    # A real name is captured, confirmed, and the certificate is generated
+    # and sent immediately — no separate "reply CERTIFICATE" round trip
+    with patch("app.certificates.generator.Minio", return_value=MagicMock()):
+        await handler.handle_message(user.phone_number, "Chidinma Okafor", "text")
+
     await test_db.refresh(user)
     await test_db.refresh(conversation)
     assert user.name == "Chidinma Okafor"
     assert user.name_confirmed is True
-    assert conversation.current_state == ConversationState.DAY_COMPLETE
-
-    # CERTIFICATE now works normally from DAY_COMPLETE
-    await handler.handle_message(user.phone_number, "CERTIFICATE", "text")
+    assert conversation.current_state == ConversationState.PROGRAM_COMPLETE
     final_msg = sent[-1]["text"]["body"]
     assert "certificate" in final_msg.lower()
+    assert "Chidinma Okafor" in final_msg
+
+
+@pytest.mark.asyncio
+async def test_certificate_command_below_day_seven_declines(test_db):
+    """CERTIFICATE from a learner who hasn't finished must not generate anything."""
+    settings = Settings()
+    handler = WhatsAppWebhookHandler(settings, test_db)
+
+    user = User(
+        phone_number="+2348012345701",
+        name="Not Done Yet",
+        language=Language.ENGLISH,
+        current_day=3,
+        completed_days=2,
+        consent_given=True,
+        data_retention_date=datetime.utcnow() + timedelta(days=90)
+    )
+    test_db.add(user)
+    await test_db.commit()
+
+    sent = []
+    async def fake_send(phone_number, message):
+        sent.append(message)
+        return True
+    handler.send_whatsapp_message = fake_send
+
+    await handler.handle_message(user.phone_number, "CERTIFICATE", "text")
+
+    assert "Day 3/7" in sent[-1]["text"]["body"]
+
+    await test_db.refresh(user)
+    result = await test_db.execute(select(Conversation).where(Conversation.user_id == user.id))
+    conversation = result.scalar_one()
+    # No certificate flow should have been entered
+    assert conversation.current_state != ConversationState.AWAITING_CERTIFICATE_NAME
+
+
+@pytest.mark.asyncio
+async def test_certificate_command_reaches_legacy_completer_cold(test_db):
+    """
+    Regression test for "some learners completed the course before we
+    started collecting certificate names."
+
+    Those learners hold completed_days=7, name_confirmed=False, and — since
+    they finished a while ago — no active conversation (their session timed
+    out long since). Their very first message back is CERTIFICATE, which
+    lands on a brand-new NEW_USER conversation (see get_or_create_conversation).
+    The global CERTIFICATE intercept must catch this before NEW_USER routing
+    sends them the welcome/language flow instead, ask for their name, and
+    generate+send the certificate immediately once they reply with it.
+    """
+    settings = Settings()
+    handler = WhatsAppWebhookHandler(settings, test_db)
+
+    user = User(
+        phone_number="+2348012345702",
+        name="WhatsApp User",  # legacy placeholder, never replaced
+        language=Language.ENGLISH,
+        current_day=7,
+        completed_days=7,
+        name_confirmed=False,
+        consent_given=True,
+        data_retention_date=datetime.utcnow() + timedelta(days=90)
+    )
+    test_db.add(user)
+    await test_db.commit()
+    # Deliberately no Conversation row — mirrors a long-since-timed-out session
+
+    sent = []
+    async def fake_send(phone_number, message):
+        sent.append(message)
+        return True
+    handler.send_whatsapp_message = fake_send
+
+    await handler.handle_message(user.phone_number, "CERTIFICATE", "text")
+
+    result = await test_db.execute(select(Conversation).where(Conversation.user_id == user.id))
+    conversation = result.scalar_one()
+    assert conversation.current_state == ConversationState.AWAITING_CERTIFICATE_NAME
+    assert "name" in sent[-1]["text"]["body"].lower()
+
+    with patch("app.certificates.generator.Minio", return_value=MagicMock()):
+        await handler.handle_message(user.phone_number, "Bisi Adewale", "text")
+
+    await test_db.refresh(user)
+    await test_db.refresh(conversation)
+    assert user.name == "Bisi Adewale"
+    assert user.name_confirmed is True
+    assert conversation.current_state == ConversationState.PROGRAM_COMPLETE
+    final_msg = sent[-1]["text"]["body"]
+    assert "certificate" in final_msg.lower()
+    assert "Bisi Adewale" in final_msg
 
 
 @pytest.mark.asyncio

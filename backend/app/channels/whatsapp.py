@@ -589,6 +589,22 @@ class WhatsAppWebhookHandler:
             await self.handle_continue(user, conversation)
             return
 
+        # Global command: claim/regenerate a certificate — reachable from any
+        # state, including a brand-new conversation for a returning user
+        # whose previous session already timed out (get_or_create_conversation
+        # starts a fresh NEW_USER conversation once the old one is inactive).
+        # This is what makes the certificate reachable for learners who
+        # finished all 7 days before certificate names were collected: their
+        # only path back in is texting CERTIFICATE cold, not resuming a state
+        # machine that no longer exists.
+        if message_text.upper() == "CERTIFICATE" and conversation.current_state not in (
+            ConversationState.AWAITING_QUIZ,
+            ConversationState.AWAITING_LANGUAGE,
+            ConversationState.AWAITING_CERTIFICATE_NAME,
+        ):
+            await self.handle_certificate_request(user, conversation)
+            return
+
         # Route to state handler
         if conversation.current_state == ConversationState.NEW_USER:
             await self.handle_new_user(user, conversation)
@@ -724,7 +740,7 @@ class WhatsAppWebhookHandler:
             if user.current_day < 7:
                 await self.handle_day_complete(user, conversation, "NEXT")
             else:
-                await self.handle_day_complete(user, conversation, "CERTIFICATE")
+                await self.handle_certificate_request(user, conversation)
         else:
             # IN_LESSON: get_next_lesson returns the first uncompleted lesson,
             # so this re-sends the lesson the user stopped at
@@ -952,16 +968,88 @@ class WhatsAppWebhookHandler:
 
         user.name = candidate
         user.name_confirmed = True
-        conversation.current_state = ConversationState.DAY_COMPLETE
         await self.db.commit()
 
         await self.send_whatsapp_message(user.phone_number, {
             "messaging_product": "whatsapp",
             "type": "text",
+            "text": {"body": f"Got it — your certificate will say *{candidate}*. Generating it now..."}
+        })
+
+        await self.generate_and_send_certificate(user, conversation)
+
+    async def handle_certificate_request(self, user: User, conversation: Conversation) -> None:
+        """
+        Entry point for the CERTIFICATE command, reachable from any state.
+
+        Covers two paths: the natural Day 7 completion flow (name already
+        confirmed → generate immediately), and a learner who finished the
+        course before certificate names were collected — texting CERTIFICATE
+        cold, from a conversation that may have reset to NEW_USER after their
+        old session timed out. name_confirmed is False for every such learner
+        (see add_name_confirmed_column.py), so they're asked for a name here
+        exactly like a fresh Day 7 finisher would be.
+        """
+        if user.completed_days < 7:
+            await self.send_whatsapp_message(user.phone_number, {
+                "messaging_product": "whatsapp",
+                "type": "text",
+                "text": {"body": f"You're on Day {user.current_day}/7 — finish all 7 days to unlock your certificate! 💪"}
+            })
+            return
+
+        if not user.name_confirmed:
+            conversation.current_state = ConversationState.AWAITING_CERTIFICATE_NAME
+            await self.db.commit()
+            await self.send_whatsapp_message(user.phone_number, {
+                "messaging_product": "whatsapp",
+                "type": "text",
+                "text": {"body": "🎓 You're eligible for your certificate! What name should appear on it? Reply with your full name."}
+            })
+            return
+
+        await self.generate_and_send_certificate(user, conversation)
+
+    async def generate_and_send_certificate(self, user: User, conversation: Conversation) -> None:
+        """
+        Generate (or fetch the already-issued) certificate and send the
+        download link right away. generate_and_store_certificate is
+        idempotent — a repeat call (e.g. texting CERTIFICATE again) just
+        returns the certificate already on file instead of making a new one.
+        """
+        from app.certificates.generator import CertificateGenerator
+        from urllib.parse import quote
+
+        generator = CertificateGenerator(self.db, self.settings)
+
+        try:
+            certificate = await generator.generate_and_store_certificate(
+                user_id=user.id, language=user.language.value
+            )
+        except Exception as e:
+            print(f"[ERROR] Certificate generation failed for user {user.id}: {e}")
+            await self.send_whatsapp_message(user.phone_number, {
+                "messaging_product": "whatsapp",
+                "type": "text",
+                "text": {"body": "⚠️ We couldn't generate your certificate right now. Please reply *CERTIFICATE* to try again in a few minutes."}
+            })
+            return
+
+        conversation.current_state = ConversationState.PROGRAM_COMPLETE
+        await self.db.commit()
+
+        verify_url = (
+            f"{self.settings.FRONTEND_URL}/verify"
+            f"?code={certificate.certificate_id}&name={quote(user.name)}"
+        )
+        await self.send_whatsapp_message(user.phone_number, {
+            "messaging_product": "whatsapp",
+            "type": "text",
             "text": {
                 "body": (
-                    f"Got it — your certificate will say *{candidate}*.\n\n"
-                    f"🎓 Reply *CERTIFICATE* to get your certificate!"
+                    f"🎓 Congratulations, {user.name}! Your MNAIR certificate is ready.\n\n"
+                    f"Code: {certificate.certificate_id}\n"
+                    f"Download: {verify_url}"
                 )
             }
         })
@@ -984,12 +1072,6 @@ class WhatsAppWebhookHandler:
                     "type": "text",
                     "text": {"body": "❌ Couldn't advance to next day. Please ensure all lessons are complete."}
                 })
-        elif cmd == "CERTIFICATE":
-            await self.send_whatsapp_message(user.phone_number, {
-                "messaging_product": "whatsapp",
-                "type": "text",
-                "text": {"body": "🎓 Your certificate is being generated! You'll receive it shortly."}
-            })
         else:
             # Remind user what to do — no silent drop
             next_action = "Reply *NEXT* to continue!" if user.current_day < 7 else "Reply *CERTIFICATE* to claim your certificate!"
