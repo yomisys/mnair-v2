@@ -281,52 +281,46 @@ the actual remaining gate before a `--live` run against real learners.
 
 ---
 
-### Put @yomimnair's real credentials in backend/.env, re-login, re-run the live test
+### Rotate the @yomimnair password
 
-**What:** The identity guard added 2026-07-17 proved that BOTH the stored session AND the
-credentials in `backend/.env` belong to `@dcnyomi` (the founder's personal account), not
-`@yomimnair` (the intended bot account). The entire first live test therefore ran as the wrong
-account: every "bot" reply was sent *as the founder*. The bot now hard-refuses to run until
-`KINGSCHAT_ACCOUNT_EMAIL`/`KINGSCHAT_ACCOUNT_PASSWORD` are replaced with @yomimnair's actual
-login (founder action — credentials, don't commit them). `KINGSCHAT_EXPECTED_USERNAME=yomimnair`
-is already set.
+**What:** The account password was shared in a chat transcript during the 2026-07-17 credential
+fix. Rotate it once testing settles, and update `backend/.env` to match.
 
-**Why:** Nothing KingsChat-related can go live — or even be correctly tested — until the session
-belongs to the right account. The wrong-account session file has been discarded by the guard.
-
-**Effort:** S (founder: update two env values, then re-run `python kingschat_bot.py`)
-**Priority:** P0 — blocks everything else in this section
+**Effort:** S (founder action)
+**Priority:** P1
 **Depends on:** None
 
 ---
 
-### Finish Requests-inbox / first-contact discovery — re-verify on the REAL bot account
-
-**What:** `list_unread_direct_conversation_ids` still has no explicit Requests-tab handling, and
-everything observed about the inbox on 2026-07-17 was observed on the WRONG account (the
-founder's personal inbox — its 99+ groups, its "Requests 7", its unread DMs). What was learned,
-and holds regardless of account: (1) replying to a request-state conversation implicitly accepts
-it and moves it into the normal inbox — no separate Accept step; (2) the filter chips
-("Requests"/"All"/"Direct"/...) are user-configurable via "Edit filters" and rendered with
-Tailwind (`tw:`) classes — `text=Direct` no longer reliably exists, so chip-clicking is brittle;
-(3) the default view is "All", which mixes `PrivateConversationBox` and `GroupConversationBox`
-rows, and the component-scoped unread selector already picks out private unread rows without any
-chip click; (4) `--only-contact` matches the row's DISPLAY NAME (e.g. "Yomi Adelowotan"), not
-the @handle — this is why the first scoped poll matched nothing.
-
-**Context:** Once logged in as the real @yomimnair (item above), its inbox should be nearly
-empty, making verification trivial: have a learner account send a first-contact message, then
-check whether it shows as an unread Private row in the default view or only under the Requests
-chip, and implement the scan accordingly (prefer scanning the default view; add a best-effort
-Requests-chip pass only if first-contact rows genuinely don't appear otherwise).
-
-**Effort:** S–M once the account is right
-**Priority:** P0 — blocks unattended onboarding of any new learner
-**Depends on:** Correct credentials (item above)
-
----
-
 ## Completed
+
+### First-contact discovery + correct-account end-to-end run (2026-07-17, third pass)
+
+The full production path now works, verified live on the REAL bot account:
+
+- `backend/.env` updated with @yomimnair's credentials; fresh login passed the identity guard
+  (`handle=yomimnair expected=yomimnair match=True`) and the session was saved.
+- **Requests-inbox question resolved without needing chip navigation at all**: on @yomimnair's
+  own inbox, a real pending first-contact request appeared as a normal unread
+  `PrivateConversationBox` row in the DEFAULT view. `list_unread_direct_conversation_ids` no
+  longer clicks any tab/chip — the chips are user-configurable ("Edit filters"), `text=Direct`
+  matched nothing on one account's configuration, chip clicks were flaky, and a Direct-filtered
+  view risks hiding exactly the first-contact threads that matter. Scanning the default view
+  with the component-scoped unread selector covers established DMs and requests, and ignores
+  groups. Replying to a request implicitly accepts it (verified live twice).
+- Live polling discovered the learner thread by display name, clicked it, extracted the
+  conversation ID (same ID both parties see), read the latest incoming message, ran the state
+  machine, and sent the multi-line welcome **as ONE message from @yomimnair** — first live
+  validation of the fragmentation fix (the same welcome went out as ~7 fragments the day
+  before).
+- Two more hydration races fixed with the same bounded-wait pattern as the rest: the inbox row
+  list and the message-bubble list both render seconds after navigation; instant scans saw
+  empty lists on non-empty threads (one skipped a real learner mid-poll).
+- `read_latest_incoming_message` now collapses whitespace runs — bubble text_content() returns
+  one text node per word ('Get          a          certificate'), which would have corrupted
+  multi-word input like certificate names.
+- `--only-contact` documentation corrected: rows show the contact's DISPLAY NAME
+  ("Dcn Yomi(CGDR) CE LZ1"), never the @handle.
 
 ### Session identity verification + message fragmentation + stranded-learner recovery (2026-07-17, second pass)
 

@@ -1020,33 +1020,57 @@ class KingsChatSession:
         return False
 
     async def list_unread_direct_conversation_ids(self, contact_filter: Optional[str] = None) -> list[str]:
-        """Navigate to the inbox, filter to Direct (1:1) only — Groups are
-        explicitly out of scope (Open Question 5) — and return the
-        conversation IDs of unread threads by clicking each one and
-        reading the resulting URL, since KingsChat's conversation list
-        items carry no ID in their own DOM attributes (see module
-        docstring): the ID only appears in the URL after navigating in.
+        """Scan the inbox's DEFAULT view for unread 1:1 conversations and
+        return their conversation IDs by clicking each one and reading the
+        resulting URL (list rows carry no ID in their own DOM attributes —
+        see module docstring; the ID only appears in the URL after
+        navigating in).
 
-        Clicking marks a conversation read, so this is destructive with
-        respect to unread state -- call it once per poll cycle, not
-        speculatively.
+        NO tab/chip is ever clicked — deliberate, changed 2026-07-17 after
+        live verification on the real bot account:
+        - The filter chips ("Direct"/"Requests"/...) are user-configurable
+          ("Edit filters") and rendered with utility classes; `text=Direct`
+          matched nothing at all on one account's configuration. Chip
+          clicks also proved flaky (repeated 30s click timeouts).
+        - The unread selector (SELECTORS.unread_direct_item) is scoped to
+          the PrivateConversationBox component, so scanning the default
+          "All" view already yields exactly the unread 1:1 threads and
+          ignores groups — no filtering needed.
+        - Critically, a pending first-contact REQUEST (the "Requests"
+          badge) appears as a normal unread Private row in the default
+          view too — verified live on @yomimnair's own inbox with a real
+          pending request. Scanning the default view is therefore what
+          makes brand-new learners discoverable at all; a Direct-filtered
+          view risks hiding exactly those threads. Replying to a request
+          implicitly accepts it (verified live) — no Accept step needed.
+
+        Clicking a row marks that conversation read, so this is
+        destructive with respect to unread state -- call it once per poll
+        cycle, not speculatively.
 
         contact_filter: if given, only clicks into (and thus only marks
         read / returns) unread rows whose visible text contains this
-        substring (case-insensitive) -- e.g. a display name or handle.
-        Every non-matching unread row is inspected read-only (inner_text
-        only, never clicked) and left exactly as it was. This exists for
-        safely scoping a manual test run (see kingschat_bot.py's
-        --only-contact) to one known conversation without touching
-        whatever else happens to be unread in a real, actively-used inbox
-        -- production polling (no filter) still processes everything.
+        substring (case-insensitive). NOTE: rows display the contact's
+        DISPLAY NAME (e.g. "Dcn Yomi(CGDR) CE LZ1"), never the @handle —
+        filter on the display name. Every non-matching unread row is
+        inspected read-only (inner_text only, never clicked) and left
+        exactly as it was. This exists for safely scoping a manual test
+        run (see kingschat_bot.py's --only-contact) to one known
+        conversation without touching whatever else happens to be unread
+        in a real, actively-used inbox -- production polling (no filter)
+        still processes everything.
         """
         await _goto_and_settle(self._page, "https://kingschat.online/conversations")
-
-        direct_tab = self._page.locator("text=Direct")
-        if await direct_tab.count() > 0:
-            await direct_tab.first.click()
-            await _settle(self._page)
+        # The conversation list hydrates well after domcontentloaded on
+        # this SPA (rows appeared only ~8-12s in on every live probe) --
+        # wait for at least one row component to attach before scanning,
+        # bounded so an genuinely empty inbox doesn't hang the poll.
+        try:
+            await self._page.locator(SELECTORS.direct_conversation_item).first.wait_for(
+                state="attached", timeout=20000
+            )
+        except Exception:
+            pass  # empty inbox, or nothing hydrated -- the scan below finds nothing
 
         conversation_ids: list[str] = []
         # Re-query after each click rather than iterating a stale locator
@@ -1062,10 +1086,6 @@ class KingsChatSession:
             conversation_id = self._page.url.rstrip("/").rsplit("/", 1)[-1]
             conversation_ids.append(conversation_id)
             await _goto_and_settle(self._page, "https://kingschat.online/conversations")
-            direct_tab = self._page.locator("text=Direct")
-            if await direct_tab.count() > 0:
-                await direct_tab.first.click()
-                await _settle(self._page)
 
         return conversation_ids
 
@@ -1101,6 +1121,15 @@ class KingsChatSession:
         conversation it just opened).
         """
         bubbles = self._page.locator(SELECTORS.message_bubble)
+        # Message bubbles hydrate seconds after navigation on this SPA
+        # (confirmed live 2026-07-17: an instant scan right after the
+        # inbox-row click found zero bubbles on a thread with 45 messages,
+        # so the poll skipped a real learner). Bounded wait, swallowed --
+        # a genuinely empty thread just times out quietly and returns None.
+        try:
+            await bubbles.first.wait_for(state="attached", timeout=20000)
+        except Exception:
+            return None
         count = await bubbles.count()
         for i in range(count - 1, -1, -1):
             bubble = bubbles.nth(i)
@@ -1110,7 +1139,13 @@ class KingsChatSession:
             text_el = bubble.locator(SELECTORS.message_text)
             if await text_el.count() == 0:
                 continue
-            return (await text_el.first.text_content() or "").strip()
+            raw = await text_el.first.text_content() or ""
+            # Collapse runs of whitespace: text_content() on these bubbles
+            # returns huge internal gaps (one text node per word — observed
+            # live: 'Get          a          certificate'). Single-word
+            # commands survive strip() anyway, but multi-word input (e.g. a
+            # certificate name) would otherwise be stored gap-ridden.
+            return " ".join(raw.split())
         return None
 
 
