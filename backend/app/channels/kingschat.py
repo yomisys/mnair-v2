@@ -212,11 +212,19 @@ class KingsChatMessageBuilder:
     @staticmethod
     def build_quiz_result_message(score: float, passed: bool, attempt: int, can_retry: bool) -> str:
         if passed:
+            # "may take a minute" is deliberate and KingsChat-specific:
+            # sends on this channel are real browser automation (navigate,
+            # hydrate, type, confirm — up to ~1 min), so unlike WhatsApp's
+            # instant API send, the next lesson does NOT appear immediately
+            # after this message. Learner feedback from the first live quiz
+            # run: "Moving to next lesson..." followed by a minute of
+            # silence read as broken, with no direction on what to do.
             return (
                 f"🎉 Congratulations!\n\n"
                 f"You scored {score:.0f}% on your quiz!\n"
                 f"Attempt: {attempt}/3\n\n"
-                f"✅ Lesson completed! Moving to next lesson..."
+                f"✅ Lesson completed! Your next lesson is on its way — "
+                f"it may take a minute to arrive. No need to reply."
             )
         retry_msg = "\n\nReply RETRY to try again!" if can_retry else "\n\n❌ Maximum attempts reached."
         return (
