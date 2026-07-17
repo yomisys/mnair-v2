@@ -923,6 +923,21 @@ class SelectorDriftError(Exception):
     fallback rather than failing silently."""
 
 
+class KingsChatSendNotConfirmedError(Exception):
+    """Raised when the Send button was clicked but the message observably
+    did NOT post (the composer kept its content instead of clearing).
+
+    Exists because click() returning is not proof of delivery — confirmed
+    live 2026-07-17: a lesson send's click "succeeded", the handler
+    committed current_lesson_id, and the message never appeared in the
+    thread; an identical send minutes later posted fine. Raising here
+    (instead of silently returning) leaves the conversation WITHOUT a
+    lesson on record, which is exactly the state handle_lesson_flow's
+    stranded-learner recovery re-delivers from on the learner's next
+    reply — so a flaky send self-heals instead of stranding the learner
+    behind a quiz for a lesson they never received."""
+
+
 class KingsChatSession:
     """Wraps a single acquired BrowserContext page for one send/receive
     operation. See KingsChatBrowserPool for how contexts are acquired —
@@ -969,6 +984,20 @@ class KingsChatSession:
                 f"{kingschat_user_id} — session expired or was invalidated."
             )
 
+        # Let the thread UI hydrate before touching the composer. Confirmed
+        # live 2026-07-17: typing+sending immediately after the composer
+        # became visible produced a click that "succeeded" but a message
+        # that never posted, while an identical send that first waited for
+        # the message list to render posted fine — acting before this SPA
+        # is fully ready gets swallowed by its own re-renders. Bounded and
+        # swallowed: a brand-new thread may legitimately render no bubbles.
+        try:
+            await self._page.locator(SELECTORS.message_bubble).first.wait_for(
+                state="attached", timeout=10000
+            )
+        except Exception:
+            pass
+
         editor = self._page.locator(SELECTORS.message_input)
         try:
             await editor.first.wait_for(state="visible", timeout=15000)
@@ -999,6 +1028,23 @@ class KingsChatSession:
                 f"expected it to appear once the composer has content."
             ) from e
         await send.click()
+
+        # click() returning is NOT proof the message posted (observed live:
+        # one click was silently swallowed). A successful submit observably
+        # clears the composer — poll for that, bounded, and raise if it
+        # never happens so the caller doesn't record a send that didn't
+        # occur (see KingsChatSendNotConfirmedError for how that state
+        # self-heals).
+        for _ in range(20):  # ~10s at 500ms
+            remaining = ((await editor.first.inner_text()) or "").strip()
+            if not remaining:
+                return
+            await self._page.wait_for_timeout(500)
+        raise KingsChatSendNotConfirmedError(
+            f"Send clicked on conversation {kingschat_user_id} but the "
+            f"composer still holds {len(remaining)} chars after 10s — the "
+            f"message did not post."
+        )
 
     async def detect_ban(self) -> bool:
         """Check the current page for suspension/CAPTCHA/logged-out signals.

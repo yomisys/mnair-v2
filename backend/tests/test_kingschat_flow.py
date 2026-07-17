@@ -589,7 +589,8 @@ async def test_pool_passes_proxy_and_storage_state_to_new_context():
 # send_message — against the real, verified selectors (2026-07-12)
 # ---------------------------------------------------------------------------
 
-def _make_page(*, logged_out=False, composer_present=True, send_button_appears=True):
+def _make_page(*, logged_out=False, composer_present=True, send_button_appears=True,
+               composer_clears_after_send=True):
     """Mock Playwright page whose .locator(selector) returns a mock Locator
     keyed by which real selector was asked for, so these tests exercise
     the actual selector constants in kingschat.py rather than duplicating
@@ -607,6 +608,11 @@ def _make_page(*, logged_out=False, composer_present=True, send_button_appears=T
                 loc.first.wait_for = AsyncMock(return_value=None)
             else:
                 loc.first.wait_for = AsyncMock(side_effect=TimeoutError("never appeared"))
+            # Post-send confirmation reads the composer's remaining text:
+            # empty = posted, still-full = send silently swallowed.
+            loc.first.inner_text = AsyncMock(
+                return_value="" if composer_clears_after_send else "stuck content"
+            )
         elif selector == SELECTORS.send_button:
             if send_button_appears:
                 loc.wait_for = AsyncMock(return_value=None)
@@ -643,6 +649,21 @@ async def test_send_message_happy_path_navigates_types_and_clicks_send():
     assert any(
         call.args == (SELECTORS.send_button,) for call in page.locator.call_args_list
     )
+
+
+@pytest.mark.asyncio
+async def test_send_message_raises_when_composer_never_clears():
+    """click() returning is not proof of delivery — observed live: a send
+    click 'succeeded' but the message never posted. A successful submit
+    clears the composer; if it stays full, send_message must raise so the
+    caller doesn't record a send that didn't happen."""
+    from app.channels.kingschat import KingsChatSendNotConfirmedError
+
+    page = _make_page(composer_clears_after_send=False)
+    session = KingsChatSession(page)
+
+    with pytest.raises(KingsChatSendNotConfirmedError, match="did not post"):
+        await session.send_message("conv123", "hello learner")
 
 
 @pytest.mark.asyncio
