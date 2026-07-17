@@ -651,6 +651,55 @@ async def test_send_message_happy_path_navigates_types_and_clicks_send():
     )
 
 
+def test_chunk_text_splits_long_content_at_line_boundaries():
+    """KingsChat silently voids messages over ~800-1100 chars (bounded live
+    with marked test sends: 800 posts, 1100 voids — the composer clears
+    either way, so nothing downstream can tell). Long lessons must be split
+    into <=MAX_MESSAGE_CHARS chunks at line boundaries."""
+    limit = KingsChatSession.MAX_MESSAGE_CHARS
+
+    # Short text: untouched, single chunk
+    assert KingsChatSession._chunk_text("hello\nworld", limit) == ["hello\nworld"]
+
+    # Realistic lesson-sized text: every chunk under the limit, no content lost
+    lines = [f"Paragraph {i}: " + "word " * 30 for i in range(12)]  # ~165 chars/line
+    text = "\n".join(lines)
+    assert len(text) > limit
+    chunks = KingsChatSession._chunk_text(text, limit)
+    assert len(chunks) >= 2
+    assert all(len(c) <= limit for c in chunks)
+    assert "\n".join(chunks) == text  # boundary splits only — nothing dropped
+
+    # Defensive: a single line longer than the limit gets hard-split
+    monster = "x" * (limit * 2 + 10)
+    chunks = KingsChatSession._chunk_text(monster, limit)
+    assert all(len(c) <= limit for c in chunks)
+    assert "".join(chunks) == monster
+
+
+@pytest.mark.asyncio
+async def test_send_message_chunks_long_text_into_multiple_sends():
+    """A lesson-sized text must produce one send per chunk — not one
+    voided mega-message."""
+    page = _make_page()
+    session = KingsChatSession(page)
+
+    lines = [f"L{i}: " + "word " * 30 for i in range(12)]
+    text = "\n".join(lines)
+    expected_chunks = KingsChatSession._chunk_text(text, KingsChatSession.MAX_MESSAGE_CHARS)
+    assert len(expected_chunks) >= 2
+
+    await session.send_message("conv123", text)
+
+    send_button_requests = [
+        c for c in page.locator.call_args_list if c.args == (SELECTORS.send_button,)
+    ]
+    assert len(send_button_requests) == len(expected_chunks)
+
+    inserted = "".join(c.args[0] for c in page.keyboard.insert_text.await_args_list)
+    assert inserted == text.replace("\n", "")  # all content inserted, none lost
+
+
 @pytest.mark.asyncio
 async def test_send_message_raises_when_composer_never_clears():
     """click() returning is not proof of delivery — observed live: a send

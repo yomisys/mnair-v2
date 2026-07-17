@@ -992,11 +992,50 @@ class KingsChatSession:
     page, not how to log in or manage the pool.
     """
 
+    # KingsChat silently VOIDS over-long messages: the composer clears (so
+    # even the composer-cleared confirmation passes), a bubble slot may
+    # appear, but the content never posts and the recipient gets nothing.
+    # Bounded live 2026-07-17 with marked test sends: 800 chars posts fine,
+    # 1100 chars voids. 800 is the safe chunk ceiling — real lessons
+    # (~1100-1900 chars) become 2-3 messages. Discovered because a learner
+    # passed two quizzes without ever receiving the lessons: every
+    # lesson-content send had been voided while every shorter message
+    # (welcome, quiz questions, results) arrived.
+    MAX_MESSAGE_CHARS = 800
+
     def __init__(self, page):
         self._page = page
 
+    @staticmethod
+    def _chunk_text(text: str, limit: int) -> list[str]:
+        """Split text into <=limit-char chunks at line boundaries (a single
+        line longer than the limit is hard-split — defensive; curriculum
+        lines are far shorter)."""
+        if len(text) <= limit:
+            return [text]
+        chunks: list[str] = []
+        current = ""
+        for line in text.split("\n"):
+            while len(line) > limit:
+                if current:
+                    chunks.append(current)
+                    current = ""
+                chunks.append(line[:limit])
+                line = line[limit:]
+            candidate = f"{current}\n{line}" if current else line
+            if len(candidate) > limit:
+                chunks.append(current)
+                current = line
+            else:
+                current = candidate
+        if current:
+            chunks.append(current)
+        return chunks
+
     async def send_message(self, kingschat_user_id: str, text: str) -> None:
-        """Navigate to the learner's conversation and send `text`.
+        """Navigate to the learner's conversation and send `text`,
+        splitting into multiple messages if it exceeds MAX_MESSAGE_CHARS
+        (see that constant — KingsChat silently voids over-long messages).
 
         kingschat_user_id is actually the KingsChat conversation ID (see
         this module's docstring) — navigation is a direct URL, there's no
@@ -1055,14 +1094,22 @@ class KingsChatSession:
                 f"may have changed since selectors were last verified."
             ) from e
 
+        for chunk_index, chunk in enumerate(self._chunk_text(text, self.MAX_MESSAGE_CHARS)):
+            if chunk_index:
+                # Brief pause between chunks keeps ordering stable and
+                # avoids hammering the composer mid-re-render.
+                await self._page.wait_for_timeout(1500)
+            await self._compose_and_send_chunk(editor, kingschat_user_id, chunk)
+
+    async def _compose_and_send_chunk(self, editor, kingschat_user_id: str, chunk: str) -> None:
         await editor.first.click()
-        lines = text.split("\n")
+        lines = chunk.split("\n")
         for i, line in enumerate(lines):
             if line:
                 await self._page.keyboard.insert_text(line)
             if i < len(lines) - 1:
                 # Soft line break — NEVER bare Enter, which submits in this
-                # composer (see docstring).
+                # composer (see send_message's docstring).
                 await self._page.keyboard.press("Shift+Enter")
 
         send = self._page.locator(SELECTORS.send_button)
