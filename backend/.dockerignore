@@ -1,0 +1,15 @@
+# Never bake real credentials or the encrypted KingsChat session into an
+# image layer -- COPY . . in Dockerfile/Dockerfile.kingschat would otherwise
+# include these regardless of whether the container ever runs them.
+.env
+.env.local
+.env.*.local
+kingschat.session
+kingschat.session.tmp
+kingschat_sessions/
+
+venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.git/

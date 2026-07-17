@@ -120,6 +120,40 @@ services:
     networks:
       - mnair_network
 
+  # KingsChat browser-automation channel. Off by default (KINGSCHAT_ENABLED
+  # defaults to false in app/config.py) -- this service is additionally
+  # gated behind the "kingschat" profile so a plain `docker compose up`
+  # never starts it even with KINGSCHAT_ENABLED=true in .env. Enable with:
+  #   docker compose --profile kingschat up -d kingschat_bot
+  # Uses its own Dockerfile (Dockerfile.kingschat) since it needs a full
+  # headless Chromium install that no other service requires.
+  kingschat_bot:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile.kingschat
+    container_name: mnair_kingschat_bot
+    env_file: .env
+    environment:
+      DATABASE_URL: postgresql+asyncpg://mnair:${DATABASE_PASSWORD}@db:5432/mnair_db
+      REDIS_URL: redis://:${REDIS_PASSWORD}@redis:6379/0
+      APP_ENV: production
+      # Overrides whatever relative path is in .env (meant for local venv
+      # runs) with a path inside the named volume below, so the encrypted
+      # session survives container restarts/recreates.
+      KINGSCHAT_SESSION_STORE_PATH: /app/kingschat_sessions/kingschat.session
+    volumes:
+      - kingschat_session:/app/kingschat_sessions
+    depends_on:
+      db:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    restart: unless-stopped
+    profiles:
+      - kingschat
+    networks:
+      - mnair_network
+
   frontend:
     build:
       context: ./frontend
@@ -155,6 +189,7 @@ volumes:
   postgres_data:
   redis_data:
   minio_data:
+  kingschat_session:
 
 networks:
   mnair_network:

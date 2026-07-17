@@ -32,6 +32,7 @@ class ConversationChannel(str, Enum):
     WHATSAPP = "whatsapp"
     USSD = "ussd"
     SMS = "sms"
+    KINGSCHAT = "kingschat"
 
 
 class Conversation(Base):
@@ -257,6 +258,11 @@ class Conversation(Base):
     def is_sms(self) -> bool:
         """Check if conversation is via SMS"""
         return self.channel == ConversationChannel.SMS
+
+    @property
+    def is_kingschat(self) -> bool:
+        """Check if conversation is via KingsChat"""
+        return self.channel == ConversationChannel.KINGSCHAT
 
     @property
     def session_duration_seconds(self) -> Optional[int]:

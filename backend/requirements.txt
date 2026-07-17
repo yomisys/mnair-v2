@@ -21,6 +21,9 @@ celery[redis]==5.3.6
 # HTTP Client
 httpx==0.26.0
 
+# KingsChat channel — browser automation (no official bot API)
+playwright==1.41.2
+
 # Security
 python-jose[cryptography]==3.3.0
 passlib[bcrypt]==1.7.4

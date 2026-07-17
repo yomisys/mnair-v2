@@ -9,6 +9,20 @@
 .env.local
 .env.*.local
 
+# KingsChat session store — encrypted, but never commit regardless (see
+# app/services/kingschat_session_store.py). Explicit entry per /plan-eng-review
+# rather than relying on it happening to fall outside tracked paths.
+# KINGSCHAT_SESSION_STORE_PATH's actual default (./kingschat.session, per
+# .env.example) doesn't match *.kingschat-session below -- that pattern was
+# written for a filename convention the code never actually uses. Both are
+# kept: the literal default path, and the naming convention in case a
+# deployment configures a different one.
+kingschat.session
+kingschat.session.tmp
+*.kingschat-session
+*.kingschat-session.tmp
+backend/kingschat_sessions/
+
 # Python
 __pycache__/
 *.py[cod]

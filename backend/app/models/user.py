@@ -46,7 +46,10 @@ class User(Base):
         String(15),
         unique=True,
         index=True,
-        comment="Nigerian phone: 080XXXXXXXX or 234XXXXXXXXXX"
+        comment="Nigerian phone: 080XXXXXXXX or 234XXXXXXXXXX. For KingsChat "
+                "learners (who have no phone-based identity in this flow), "
+                "this holds the KingsChat internal user ID instead, prefixed "
+                "'kc:' — see app.channels.kingschat for the identity mapping."
     )
     name: Mapped[str] = mapped_column(String(255), nullable=False)
     name_confirmed: Mapped[bool] = mapped_column(
@@ -92,7 +95,7 @@ class User(Base):
     # Preferred communication channel
     preferred_channel: Mapped[Optional[str]] = mapped_column(
         String(20),
-        comment="whatsapp, ussd, or sms"
+        comment="whatsapp, ussd, sms, or kingschat"
     )
 
     # NDPA Compliance Fields (Nigeria Data Protection Act 2023)

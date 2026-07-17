@@ -259,6 +259,62 @@ STEP 4 — PREVENT:
 
 ---
 
+## KingsChat Channel
+
+### Resolve the remaining design-doc Open Questions before real users are exposed
+
+**What:** Three items from `yomis-master-design-20260712-032947.md` are still unresolved and are
+founder-level calls, not engineering ones: (1) the ToS check ("The Assignment" — 30 minutes
+re-reading KingsChat's actual terms for automation/bot language, never confirmed done), (2) the
+leader's concrete distribution commitment (a specific group, member count, date — not just
+interest), (3) whether groups/broadcasts are in scope for v1 or DM-only (as currently
+implemented) is acceptable to start.
+
+**Why:** The design doc is explicit that the ToS check and the leader's concrete commitment
+"should land before real users are exposed to the bot, even though they don't block starting the
+build itself" — the build is now functionally complete (see Completed below), which makes this
+the actual remaining gate before a `--live` run against real learners.
+
+**Effort:** S (founder time, not engineering)
+**Priority:** P0 — blocks going live, not blocks building
+**Depends on:** None
+
+---
+
 ## Completed
 
-*(No completed items yet — add items here as they ship)*
+### Verify Playwright BrowserContext fingerprint isolation before pooling
+
+**Resolved 2026-07-17.** The premise didn't apply to the architecture actually built: every
+context `KingsChatBrowserPool` creates carries the *same* `storage_state` (see
+`_context_options()` in `kingschat_browser_pool.py`) — there is one automated KingsChat account
+(Open Question 1 resolved to a single shared bot account), not one account per learner. Pooling
+exists purely to parallelize page operations under that one already-known identity, so
+cross-context fingerprint correlation is moot: pool size adds no distinguishing signal beyond
+what a single context under this account already exposes. Confirmed via research that Playwright
+`BrowserContext`s do NOT isolate IP, TLS fingerprint, or most GPU/canvas signals regardless —
+that fact just doesn't matter for a single-identity pool.
+
+The risk that *does* apply regardless of pool size — standard single-account headless-detection
+signals (`navigator.webdriver`, HeadlessChrome markers) — got mitigated as part of closing this
+out: `--disable-blink-features=AutomationControlled` on browser launch plus a `navigator.webdriver`
+override via `context.add_init_script()` on every acquired context. See
+`backend/app/services/kingschat_browser_pool.py`.
+
+### Fix certificate "being generated" dead end in kingschat.py
+
+`handle_day_complete`'s `CERTIFICATE` branch said "being generated" and never called the
+generator — same bug independently fixed in `whatsapp.py` the same day. `CERTIFICATE` is now a
+global command reachable from any conversation state (mirrors the WhatsApp fix, including
+reaching a learner whose conversation reset to `NEW_USER`), generates the certificate
+synchronously, and sends the download link immediately.
+
+### Wire the KingsChat channel into deployment
+
+Added `backend/Dockerfile.kingschat` (separate image so the main backend doesn't carry a full
+headless Chromium install), a profile-gated `kingschat_bot` service in `docker-compose.yml`
+(`docker compose --profile kingschat up -d kingschat_bot` — never starts on a plain `up`), all
+`KINGSCHAT_*` vars documented in `.env.example`, and `backend/.dockerignore` (previously missing
+entirely — `COPY . .` was baking `backend/.env` and the encrypted KingsChat session into every
+image layer). Also fixed the `.gitignore` rule for the session file, which never matched the
+filename the code actually produces.

@@ -1,0 +1,33 @@
+# Playwright's own image, pinned to the exact playwright version in
+# requirements.txt (1.41.2) -- Chromium and every OS-level library it needs
+# (libnss3, libatk, libx11-xcb, etc.) come pre-installed and version-matched
+# by Microsoft for this tag.
+#
+# Originally this was python:3.10-slim + `playwright install --with-deps
+# chromium`, but that failed the build outright: python:3.10-slim's Debian
+# base has moved to a release Playwright 1.41.2's dependency installer
+# doesn't recognize, so it falls back to an ubuntu20.04 package list that
+# references packages (ttf-ubuntu-font-family, ttf-unifont) no longer
+# resolvable on that base -- confirmed by actually running `docker build`,
+# not assumed. Building on Playwright's own image sidesteps this whole class
+# of base-image/browser-deps version skew.
+FROM mcr.microsoft.com/playwright/python:v1.41.2-jammy
+
+WORKDIR /app
+
+# Install system deps needed for bcrypt, psycopg2, reportlab
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    gcc \
+    libpq-dev \
+    && rm -rf /var/lib/apt/lists/*
+
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
+
+COPY . .
+
+# Non-root user for security
+RUN useradd -m appuser && mkdir -p /app/kingschat_sessions && chown -R appuser /app
+USER appuser
+
+CMD ["python", "kingschat_bot.py", "--live", "--loop"]
