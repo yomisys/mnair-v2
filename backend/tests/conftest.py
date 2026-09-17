@@ -87,6 +87,11 @@ async def client(test_db):
     from httpx import AsyncClient as HttpxClient
     from app.main import app
     from app.database import get_db
+    from app.middleware.rate_limit import limiter
+
+    # slowapi keeps counters in process memory; the 5/min auth limit on
+    # /api/v1/learn/enrol would otherwise trip across a fast test run
+    limiter.reset()
 
     async def _override_get_db():
         yield test_db
