@@ -34,7 +34,7 @@ class Language(str, Enum):
 class User(Base):
     """
     User model for all platform users
-    Supports learners (via WhatsApp/USSD), admins, and employers
+    Supports learners (via Telegram, web, USSD, SMS, KingsChat), admins, and employers
     """
     __tablename__ = "users"
 
@@ -46,18 +46,10 @@ class User(Base):
         String(64),
         unique=True,
         index=True,
-        comment="Nigerian phone: 080XXXXXXXX or 234XXXXXXXXXX. For KingsChat "
-                "learners (who have no phone-based identity in this flow), "
-                "this holds the KingsChat internal user ID instead, prefixed "
-                "'kc:' — see app.channels.kingschat for the identity mapping. "
-                "Widened from 15 to 64 chars 2026-07-17: confirmed live that "
-                "real KingsChat conversation IDs (e.g. "
-                "'53b9877a73322e5105030100_6a0ae2c1095c473320cb9891') run "
-                "~49 chars, well past a phone number's length -- the kc: "
-                "prefix pushes it to ~52. Postgres rejected every write "
-                "attempt outright (StringDataRightTruncationError) until "
-                "this fix -- every single KingsChat learner would have "
-                "failed at first contact."
+        comment="Learner identity slot. Nigerian phone (+234XXXXXXXXXX) for "
+                "web/USSD/SMS learners; 'tg:{chat_id}' for Telegram learners; "
+                "'kc:{conversation_id}' for KingsChat learners (see "
+                "app.engine.identity). 64 chars so every form fits."
     )
     name: Mapped[str] = mapped_column(String(255), nullable=False)
     name_confirmed: Mapped[bool] = mapped_column(
@@ -66,12 +58,26 @@ class User(Base):
         nullable=False,
         comment="True once the learner has deliberately provided their own "
                 "name (asked once, at Day 7 completion) rather than holding "
-                "the auto-assigned 'WhatsApp User'/'USSD User NNNN' placeholder"
+                "the auto-assigned 'Telegram User'/'USSD User NNNN' placeholder"
     )
     email: Mapped[Optional[str]] = mapped_column(String(255), unique=True, index=True)
 
     # Authentication (for admin/employer only)
     hashed_password: Mapped[Optional[str]] = mapped_column(String(255))
+
+    # Web learner sign-in: a short numeric PIN chosen at enrolment, bcrypt
+    # hashed. Replaces the old passwordless phone-only login so nobody can
+    # open another learner's course just by knowing their phone number.
+    learner_pin_hash: Mapped[Optional[str]] = mapped_column(String(255))
+
+    # Telegram chat id for learners who came in through the bot. Also
+    # mirrored into phone_number as 'tg:{chat_id}' (the unique identity slot).
+    telegram_chat_id: Mapped[Optional[str]] = mapped_column(
+        String(32),
+        unique=True,
+        index=True,
+        comment="Telegram chat id (Bot API) — outbound reminders go here"
+    )
 
     # Role & Permissions
     role: Mapped[UserRole] = mapped_column(
@@ -103,7 +109,8 @@ class User(Base):
     # Preferred communication channel
     preferred_channel: Mapped[Optional[str]] = mapped_column(
         String(20),
-        comment="whatsapp, ussd, sms, or kingschat"
+        comment="telegram, web, ussd, sms, or kingschat — picks the free "
+                "channel outbound reminders are routed through"
     )
 
     # NDPA Compliance Fields (Nigeria Data Protection Act 2023)
@@ -162,6 +169,11 @@ class User(Base):
     )
     conversations: Mapped[List["Conversation"]] = relationship(
         "Conversation",
+        back_populates="user",
+        cascade="all, delete-orphan"
+    )
+    push_subscriptions: Mapped[List["PushSubscription"]] = relationship(
+        "PushSubscription",
         back_populates="user",
         cascade="all, delete-orphan"
     )

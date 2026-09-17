@@ -396,7 +396,7 @@ const Dashboard: React.FC = () => {
                 )}
               </Box>
               <Typography variant="caption" color="text.secondary">
-                Free WhatsApp reminders sent to learners who paused mid-course, and how many resumed afterwards
+                Free Telegram / Web Push reminders sent to learners who paused mid-course, and how many resumed afterwards
               </Typography>
               {remindersError ? (
                 <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: 120 }}>

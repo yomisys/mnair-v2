@@ -78,7 +78,7 @@ def test_get_or_create_shuffle_is_independent_per_question():
 
 
 def test_get_or_create_shuffle_does_not_mutate_input_context():
-    """Callers (WhatsApp/USSD handlers) rely on identity comparison
+    """Callers (engine/USSD handlers) rely on identity comparison
     (`new_context is not conversation.context`) to decide whether a DB
     commit is needed — this only works if an unchanged context is
     returned as the *same* object, and a changed one is a *new* dict."""

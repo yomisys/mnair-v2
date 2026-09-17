@@ -211,9 +211,13 @@ TERMII_SENDER_ID=MNAIR
 AFRICAS_TALKING_USERNAME=<username>
 AFRICAS_TALKING_API_KEY=<api-key>
 AFRICAS_TALKING_SHORTCODE=*384*8080#
-META_WHATSAPP_TOKEN=<whatsapp-token>
-META_WHATSAPP_PHONE_ID=<phone-id>
-META_WHATSAPP_VERIFY_TOKEN=<verify-token>
+# Free learner channels (v2 — WhatsApp removed)
+TELEGRAM_BOT_TOKEN=<from @BotFather>
+TELEGRAM_BOT_USERNAME=<bot handle without @>
+TELEGRAM_WEBHOOK_SECRET=<python -c "import secrets; print(secrets.token_urlsafe(32))">
+VAPID_PUBLIC_KEY=<from generate_vapid_keys()>
+VAPID_PRIVATE_KEY=<from generate_vapid_keys()>
+SMS_REMINDERS_ENABLED=false
 
 # NDPA Compliance
 DATA_RETENTION_DAYS=90

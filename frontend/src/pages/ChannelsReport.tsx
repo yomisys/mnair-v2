@@ -15,10 +15,12 @@ import ExportButton from '../components/ExportButton'
 ChartJS.register(CategoryScale, LinearScale, BarElement, ArcElement, Title, Tooltip, Legend)
 
 const CHANNEL_COLORS: Record<string, string> = {
-  whatsapp: '#25D366', ussd: '#FF9800', sms: '#2196F3', unknown: '#9E9E9E',
+  telegram: '#229ED9', web: '#1B7A3E', webpush: '#43A047', ussd: '#FF9800', sms: '#2196F3',
+  kingschat: '#7B1FA2', whatsapp: '#9E9E9E', unknown: '#9E9E9E',
 }
 const CHANNEL_LABELS: Record<string, string> = {
-  whatsapp: 'WhatsApp', ussd: 'USSD', sms: 'SMS', unknown: 'Unknown',
+  telegram: 'Telegram', web: 'Web app', webpush: 'Web Push', ussd: 'USSD', sms: 'SMS',
+  kingschat: 'KingsChat', whatsapp: 'WhatsApp (legacy)', unknown: 'Unknown',
 }
 
 interface ChannelRow {
@@ -70,7 +72,7 @@ const ChannelsReport: React.FC = () => {
       <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', mb: 3 }}>
         <Box>
           <Typography variant="h5" fontWeight={700}>Channel Performance</Typography>
-          <Typography variant="body2" color="text.secondary">WhatsApp vs USSD vs SMS delivery breakdown</Typography>
+          <Typography variant="body2" color="text.secondary">Telegram vs Web vs USSD vs SMS delivery breakdown</Typography>
         </Box>
         <ExportButton data={exportData as any} filename="channels_report.csv" />
       </Box>

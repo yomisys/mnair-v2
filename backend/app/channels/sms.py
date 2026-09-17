@@ -109,7 +109,7 @@ class SMSNotifier:
         message = (
             f"Welcome to Make Nigeria AI Ready! "
             f"Learn AI in 7 days. FREE certificate. "
-            f"Dial *384*8080# or WhatsApp to start. - MNAIR"
+            f"Dial *384*8080# or visit {self.settings.learn_url} to start. - MNAIR"
         )
 
         result = await self.sms_provider.send_sms(user.phone_number, message)
@@ -174,8 +174,7 @@ class SMSNotifier:
         # Code only, deliberately -- SMS truncates at 160 chars (see
         # SMSProvider.send_sms), so a &name= param would often get cut off
         # mid-string. The learner types their name once on the verify page;
-        # the WhatsApp equivalent of this message isn't length-constrained
-        # and does pre-fill both.
+        # the Telegram/web equivalent isn't length-constrained and pre-fills both.
         verify_url = f"{self.settings.FRONTEND_URL}/verify?code={certificate_code}"
         message = (
             f"Your MNAIR certificate is ready! "

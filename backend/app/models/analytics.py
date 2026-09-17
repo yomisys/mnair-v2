@@ -140,7 +140,7 @@ class Analytics(Base):
         comment="""
         Active users by channel:
         {
-            "whatsapp": 12500,
+            "telegram": 12500,
             "ussd": 8200,
             "sms": 1300
         }

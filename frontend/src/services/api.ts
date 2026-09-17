@@ -176,4 +176,70 @@ export const employersAPI = {
   },
 }
 
+// ---------------------------------------------------------------------------
+// Learner app (/learn) — separate token + no admin redirect on 401
+// ---------------------------------------------------------------------------
+
+export const LEARN_TOKEN_KEY = 'learn_token'
+
+const learnClient: AxiosInstance = axios.create({
+  baseURL: API_BASE_URL,
+  headers: { 'Content-Type': 'application/json' },
+  timeout: 30000,
+})
+
+learnClient.interceptors.request.use((config) => {
+  const token = localStorage.getItem(LEARN_TOKEN_KEY)
+  if (token) config.headers.Authorization = `Bearer ${token}`
+  return config
+})
+
+export interface LearnButton { id: string; title: string; description: string }
+export interface LearnMessage {
+  kind: string
+  text: string
+  buttons: LearnButton[]
+  meta: Record<string, unknown>
+  role?: 'user' | 'bot'
+  timestamp?: string
+}
+export interface LearnerSummary {
+  id: number; name: string; name_confirmed: boolean; language: string
+  current_day: number; completed_days: number; preferred_channel: string | null
+}
+export interface LearnProgress {
+  current_day: number; lessons_completed: number; total_lessons: number
+  completion_percentage: number; current_day_progress: number; lessons_per_day: number
+}
+export interface LearnAuth {
+  access_token: string; expires_in: number; learner: LearnerSummary; messages: LearnMessage[]; state: string
+}
+export interface LearnTurn { messages: LearnMessage[]; state: string; learner: LearnerSummary; progress: LearnProgress | null }
+export interface LearnState {
+  state: string; learner: LearnerSummary; history: LearnMessage[]; progress: LearnProgress | null; push_subscribed: boolean
+}
+export interface LearnConfig { telegram_link: string | null; vapid_public_key: string | null; pin_min_length: number; ussd_code: string }
+
+export const learnAPI = {
+  getConfig: async (): Promise<LearnConfig> => (await learnClient.get('/api/v1/learn/config')).data,
+
+  enrol: async (phone_number: string, pin: string, name?: string): Promise<LearnAuth> =>
+    (await learnClient.post('/api/v1/learn/enrol', { phone_number, pin, consent_given: true, name: name || undefined })).data,
+
+  login: async (phone_number: string, pin: string): Promise<LearnAuth> =>
+    (await learnClient.post('/api/v1/learn/login', { phone_number, pin })).data,
+
+  getState: async (): Promise<LearnState> => (await learnClient.get('/api/v1/learn/state')).data,
+
+  send: async (payload: { text?: string; interactive_id?: string }): Promise<LearnTurn> =>
+    (await learnClient.post('/api/v1/learn/message', payload)).data,
+
+  subscribePush: async (subscription: PushSubscriptionJSON) =>
+    learnClient.post('/api/v1/learn/push/subscribe', { subscription, user_agent: navigator.userAgent.slice(0, 255) }),
+
+  unsubscribePush: async (endpoint: string) => learnClient.post('/api/v1/learn/push/unsubscribe', { endpoint }),
+
+  forgetMe: async () => learnClient.post('/api/v1/learn/forget-me'),
+}
+
 export default apiClient

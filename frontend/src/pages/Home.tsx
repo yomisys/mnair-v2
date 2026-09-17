@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import {
   Box,
@@ -19,7 +19,8 @@ import {
   Chip,
 } from '@mui/material'
 import {
-  WhatsApp as WhatsAppIcon,
+  Telegram as TelegramIcon,
+  Smartphone as BrowserIcon,
   Message as MessageIcon,
   Dialpad as DialpadIcon,
   CheckCircle as CheckIcon,
@@ -27,8 +28,14 @@ import {
   ArrowForward as ArrowIcon,
 } from '@mui/icons-material'
 
-const WHATSAPP_NUMBER = '+234 706 572 8972'
-const WHATSAPP_LINK = `https://wa.me/${WHATSAPP_NUMBER.replace(/[^0-9]/g, '')}?text=START`
+import { learnAPI } from '../services/api'
+
+// WhatsApp was retired (Meta bills every conversation from 1 Oct 2026, including
+// replies to user-initiated messages). The two free channels are Telegram and
+// the in-browser learner app at /learn. The Telegram link comes from the API
+// (TELEGRAM_BOT_USERNAME) with an env fallback for static builds.
+const TELEGRAM_FALLBACK = (import.meta.env.VITE_TELEGRAM_LINK as string | undefined) || 'https://t.me/MnairBot?start=learn'
+const TELEGRAM_BLUE = '#229ED9'
 
 const DAYS = [
   { day: 1, title: 'Meet AI', color: '#1B5E20', topics: ['What is AI?', 'How AI Thinks', 'AI Around You', 'AI Tools Intro', 'AI & Society'] },
@@ -77,6 +84,14 @@ const ChatBubble: React.FC<{ text: string; from: 'bot' | 'user' }> = ({ text, fr
 const Home: React.FC = () => {
   const navigate = useNavigate()
   const [openDialog, setOpenDialog] = useState(false)
+  const [telegramLink, setTelegramLink] = useState<string>(TELEGRAM_FALLBACK)
+
+  useEffect(() => {
+    learnAPI
+      .getConfig()
+      .then((cfg) => { if (cfg?.telegram_link) setTelegramLink(cfg.telegram_link) })
+      .catch(() => { /* keep fallback */ })
+  }, [])
 
   return (
     <Box>
@@ -111,30 +126,50 @@ const Home: React.FC = () => {
                 Make Nigeria<br />AI Ready
               </Typography>
               <Typography sx={{ fontSize: '1.1rem', opacity: 0.88, mb: 1, lineHeight: 1.7 }}>
-                A free 7-day AI literacy program delivered straight to your WhatsApp — in your language, at your pace.
+                A free 7-day AI literacy program delivered as a chat — on Telegram or right here in your browser — in your language, at your pace.
               </Typography>
               <Typography sx={{ fontSize: '0.95rem', opacity: 0.7, mb: 4 }}>
-                No data charges. No prerequisites. Earn a verifiable certificate.
+                No app to install. No prerequisites. Earn a verifiable certificate.
               </Typography>
 
               <Stack direction={{ xs: 'column', sm: 'row' }} spacing={2}>
                 <Button
                   variant="contained"
                   size="large"
-                  startIcon={<WhatsAppIcon />}
-                  onClick={() => setOpenDialog(true)}
+                  startIcon={<BrowserIcon />}
+                  onClick={() => navigate('/learn')}
                   sx={{
-                    bgcolor: '#25D366',
+                    bgcolor: 'white',
+                    color: 'primary.main',
+                    fontWeight: 700,
+                    fontSize: '1rem',
+                    px: 3.5,
+                    py: 1.5,
+                    borderRadius: 2,
+                    '&:hover': { bgcolor: 'grey.100' },
+                  }}
+                >
+                  Learn in your browser — Free
+                </Button>
+                <Button
+                  variant="contained"
+                  size="large"
+                  startIcon={<TelegramIcon />}
+                  href={telegramLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  sx={{
+                    bgcolor: TELEGRAM_BLUE,
                     color: 'white',
                     fontWeight: 700,
                     fontSize: '1rem',
                     px: 3.5,
                     py: 1.5,
                     borderRadius: 2,
-                    '&:hover': { bgcolor: '#1ebe57' },
+                    '&:hover': { bgcolor: '#1b8cc4' },
                   }}
                 >
-                  Start on WhatsApp — Free
+                  Start on Telegram
                 </Button>
                 <Button
                   variant="outlined"
@@ -155,7 +190,7 @@ const Home: React.FC = () => {
               </Stack>
             </Grid>
 
-            {/* Right: WhatsApp phone mockup */}
+            {/* Right: chat phone mockup */}
             <Grid item xs={12} md={6} sx={{ display: 'flex', justifyContent: 'center', pb: { xs: 0, md: 0 } }}>
               <Box
                 sx={{
@@ -168,9 +203,9 @@ const Home: React.FC = () => {
                 }}
               >
                 {/* phone header */}
-                <Box sx={{ bgcolor: '#075E54', px: 2, py: 1.5, display: 'flex', alignItems: 'center', gap: 1.5 }}>
-                  <Box sx={{ width: 34, height: 34, borderRadius: '50%', bgcolor: '#25D366', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                    <WhatsAppIcon sx={{ fontSize: 18, color: 'white' }} />
+                <Box sx={{ bgcolor: '#17212b', px: 2, py: 1.5, display: 'flex', alignItems: 'center', gap: 1.5 }}>
+                  <Box sx={{ width: 34, height: 34, borderRadius: '50%', bgcolor: TELEGRAM_BLUE, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                    <TelegramIcon sx={{ fontSize: 18, color: 'white' }} />
                   </Box>
                   <Box>
                     <Typography sx={{ color: 'white', fontWeight: 700, fontSize: '0.82rem', lineHeight: 1.2 }}>MNAIR</Typography>
@@ -178,7 +213,7 @@ const Home: React.FC = () => {
                   </Box>
                 </Box>
                 {/* chat body */}
-                <Box sx={{ bgcolor: '#ECE5DD', p: 1.5, minHeight: 300 }}>
+                <Box sx={{ bgcolor: '#e7ebf0', p: 1.5, minHeight: 300 }}>
                   <ChatBubble from="bot" text="👋 Welcome to MNAIR! Nigeria's free AI literacy program." />
                   <ChatBubble from="bot" text="Which language do you prefer? Reply with a number:" />
                   <ChatBubble from="bot" text={"1. English\n2. Naija Pidgin\n3. Hausa\n4. Yorùbá\n5. Igbo"} />
@@ -187,7 +222,7 @@ const Home: React.FC = () => {
                   <ChatBubble from="bot" text="📚 Lesson 1: What is Artificial Intelligence?" />
                   <ChatBubble from="bot" text="AI is when computers do things that normally need human thinking — like recognizing your face or translating languages." />
                   <ChatBubble from="user" text="Wow, that's cool!" />
-                  <ChatBubble from="bot" text="Ready for the quiz? Type YES to continue ✅" />
+                  <ChatBubble from="bot" text="Ready for the quiz? Tap Start quiz ✅" />
                 </Box>
               </Box>
             </Grid>
@@ -244,9 +279,9 @@ const Home: React.FC = () => {
             {[
               {
                 step: '01',
-                title: 'Send "START" on WhatsApp',
-                desc: `Message ${WHATSAPP_NUMBER} with the word START. No app download. No signup. No data charge.`,
-                icon: <WhatsAppIcon sx={{ fontSize: 28, color: '#25D366' }} />,
+                title: 'Open Telegram or your browser',
+                desc: 'Tap "Start on Telegram" or "Learn in your browser". Nothing to install for the web version — just your phone number and a PIN.',
+                icon: <TelegramIcon sx={{ fontSize: 28, color: TELEGRAM_BLUE }} />,
               },
               {
                 step: '02',
@@ -299,7 +334,7 @@ const Home: React.FC = () => {
             <Button
               variant="contained"
               size="large"
-              startIcon={<WhatsAppIcon />}
+              endIcon={<ArrowIcon />}
               onClick={() => setOpenDialog(true)}
               color="primary"
               sx={{ fontWeight: 700, px: 4, py: 1.5, borderRadius: 2 }}
@@ -365,7 +400,7 @@ const Home: React.FC = () => {
           <Grid container spacing={3}>
             {[
               {
-                quote: 'I liked how AI was explained in a simple and easy way. The WhatsApp format made learning convenient and interesting.',
+                quote: 'I liked how AI was explained in a simple and easy way. The chat format made learning convenient and interesting.',
                 name: 'Victor Solomon',
                 role: 'Tech Worker, Ogun State',
               },
@@ -575,12 +610,12 @@ const Home: React.FC = () => {
               {
                 emoji: '📱',
                 title: 'Works on Any Phone',
-                desc: 'No smartphone needed. Our WhatsApp bot runs on basic Android and feature phones. No app download, no account creation.',
+                desc: 'Learn inside Telegram or in any phone browser — no app-store download for the web version. Feature phones can dial *384*8080#.',
               },
               {
                 emoji: '⚡',
-                title: 'Zero Data Cost',
-                desc: 'WhatsApp data is free on most Nigerian networks. Learn all 7 days without spending a kobo on data.',
+                title: 'Tiny Data Footprint',
+                desc: 'Every lesson is short text. A full day of lessons is well under 100 KB — less data than a single photo.',
               },
               {
                 emoji: '🎓',
@@ -636,30 +671,27 @@ const Home: React.FC = () => {
             Ready to become AI-literate?
           </Typography>
           <Typography color="text.secondary" sx={{ mb: 4, fontSize: '1.05rem' }}>
-            Join Nigerians already learning. It's free, it's on WhatsApp, and it takes just 7 days.
+            Join Nigerians already learning. It's free, it's on Telegram or the web, and it takes just 7 days.
           </Typography>
           <Button
             variant="contained"
             size="large"
-            startIcon={<WhatsAppIcon />}
             endIcon={<ArrowIcon />}
             onClick={() => setOpenDialog(true)}
+            color="primary"
             sx={{
-              bgcolor: '#25D366',
-              color: 'white',
               fontWeight: 700,
               fontSize: '1.1rem',
               px: 5,
               py: 1.8,
               borderRadius: 2,
-              '&:hover': { bgcolor: '#1ebe57' },
-              boxShadow: '0 8px 30px rgba(37,211,102,0.35)',
+              boxShadow: '0 8px 30px rgba(27,122,62,0.35)',
             }}
           >
             Start Learning Free
           </Button>
           <Typography variant="caption" color="text.secondary" display="block" sx={{ mt: 2 }}>
-            No signup · No app download · No cost
+            No app download · No message charges · No cost
           </Typography>
         </Container>
       </Box>
@@ -675,23 +707,46 @@ const Home: React.FC = () => {
           </Typography>
 
           <Stack spacing={3}>
-            {/* WhatsApp */}
-            <Card variant="outlined" sx={{ borderColor: '#25D366', borderWidth: 2 }}>
+            {/* Web browser */}
+            <Card variant="outlined" sx={{ borderColor: 'primary.main', borderWidth: 2 }}>
               <CardContent>
                 <Stack direction="row" spacing={2} alignItems="flex-start">
-                  <Box sx={{ p: 1.5, borderRadius: 2, bgcolor: '#25D366', color: 'white' }}>
-                    <WhatsAppIcon />
+                  <Box sx={{ p: 1.5, borderRadius: 2, bgcolor: 'primary.main', color: 'white' }}>
+                    <BrowserIcon />
                   </Box>
                   <Box flex={1}>
                     <Stack direction="row" spacing={1} alignItems="center" sx={{ mb: 0.5 }}>
-                      <Typography variant="h6">WhatsApp</Typography>
+                      <Typography variant="h6">In your browser</Typography>
+                      <Chip label="Available Now" size="small" color="success" />
+                    </Stack>
+                    <Typography variant="body2" color="text.secondary" sx={{ mb: 1.5 }}>
+                      Nothing to install. Enrol with your phone number and a 4-digit PIN, then learn in a chat right on this site. Turn on notifications to get a free daily nudge.
+                    </Typography>
+                    <Button variant="contained" onClick={() => { setOpenDialog(false); navigate('/learn') }} endIcon={<ArrowIcon />}>
+                      Open the learner app
+                    </Button>
+                  </Box>
+                </Stack>
+              </CardContent>
+            </Card>
+
+            {/* Telegram */}
+            <Card variant="outlined" sx={{ borderColor: TELEGRAM_BLUE, borderWidth: 2 }}>
+              <CardContent>
+                <Stack direction="row" spacing={2} alignItems="flex-start">
+                  <Box sx={{ p: 1.5, borderRadius: 2, bgcolor: TELEGRAM_BLUE, color: 'white' }}>
+                    <TelegramIcon />
+                  </Box>
+                  <Box flex={1}>
+                    <Stack direction="row" spacing={1} alignItems="center" sx={{ mb: 0.5 }}>
+                      <Typography variant="h6">Telegram</Typography>
                       <Chip label="Available Now" size="small" color="success" />
                     </Stack>
                     <Typography variant="body2" color="text.secondary" sx={{ mb: 1 }}>
-                      Send <strong>"START"</strong> to:
+                      Open our bot and press <strong>Start</strong>:
                     </Typography>
-                    <Tooltip title="Click to open WhatsApp" placement="top">
-                      <Link href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer" underline="none">
+                    <Tooltip title="Click to open Telegram" placement="top">
+                      <Link href={telegramLink} target="_blank" rel="noopener noreferrer" underline="none">
                         <Typography
                           variant="h6"
                           color="primary"
@@ -704,16 +759,17 @@ const Home: React.FC = () => {
                             display: 'flex',
                             alignItems: 'center',
                             gap: 1,
+                            wordBreak: 'break-all',
                             '&:hover': { bgcolor: 'grey.200' },
                           }}
                         >
-                          <WhatsAppIcon fontSize="small" sx={{ color: '#25D366' }} />
-                          {WHATSAPP_NUMBER}
+                          <TelegramIcon fontSize="small" sx={{ color: TELEGRAM_BLUE }} />
+                          {telegramLink.replace('https://', '').replace('?start=learn', '')}
                         </Typography>
                       </Link>
                     </Tooltip>
                     <Typography variant="caption" color="text.secondary" display="block" sx={{ mt: 1 }}>
-                      Tap to open WhatsApp with "START" pre-filled
+                      Free messages, works on any Android or iPhone with Telegram installed
                     </Typography>
                   </Box>
                 </Stack>

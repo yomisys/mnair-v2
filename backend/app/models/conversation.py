@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 """
-Conversation model - Tracks WhatsApp/USSD session state
+Conversation model - Tracks Telegram / web / USSD / SMS / KingsChat session state
 Manages conversation flow, state machine, and message history
 """
 
@@ -28,17 +28,25 @@ class ConversationState(str, Enum):
 
 
 class ConversationChannel(str, Enum):
-    """Communication channels"""
-    WHATSAPP = "whatsapp"
+    """Communication channels.
+
+    TELEGRAM and WEB are the free learner channels that replaced WhatsApp
+    (Meta bills every conversation from 1 Oct 2026, including user-initiated
+    replies). WHATSAPP is kept ONLY so historical rows in a migrated
+    database still load — no handler exists for it and nothing writes it.
+    """
+    TELEGRAM = "telegram"
+    WEB = "web"
     USSD = "ussd"
     SMS = "sms"
     KINGSCHAT = "kingschat"
+    WHATSAPP = "whatsapp"  # legacy, read-only
 
 
 class Conversation(Base):
     """
     Conversation state tracker for multi-channel communication
-    Manages WhatsApp, USSD, SMS sessions
+    Manages Telegram, web, USSD, SMS and KingsChat sessions
     """
     __tablename__ = "conversations"
 
@@ -57,24 +65,23 @@ class Conversation(Base):
         SQLEnum(ConversationChannel),
         nullable=False,
         index=True,
-        comment="Communication channel: whatsapp, ussd, sms"
+        comment="Communication channel: telegram, web, ussd, sms, kingschat"
     )
 
     # External IDs (for channel-specific tracking)
     external_id: Mapped[Optional[str]] = mapped_column(
         String(255),
         index=True,
-        comment="WhatsApp message ID, USSD session ID, etc."
+        comment="Telegram update ID, USSD session ID, etc."
     )
 
     phone_number: Mapped[str] = mapped_column(
         String(64),
         nullable=False,
         index=True,
-        comment="User's phone number for this conversation. For KingsChat, "
-                "this is the 'kc:{conversation_id}' identity slot (see "
-                "User.phone_number) -- widened from 15 to 64 chars 2026-07-17 "
-                "for the same reason."
+        comment="User's phone number for this conversation. For KingsChat "
+                "this is the 'kc:{conversation_id}' identity slot and for "
+                "Telegram it is 'tg:{chat_id}' (see User.phone_number)."
     )
 
     # State Management
@@ -233,7 +240,7 @@ class Conversation(Base):
     def is_timed_out(self, timeout_seconds: int = 300) -> bool:
         """
         Check if conversation has timed out
-        Default: 5 minutes for WhatsApp, 90 seconds for USSD
+        Default: 5 minutes for chat channels, 90 seconds for USSD
         """
         if not self.last_message_at:
             return False
@@ -248,9 +255,14 @@ class Conversation(Base):
         self.updated_at = datetime.utcnow()
 
     @property
-    def is_whatsapp(self) -> bool:
-        """Check if conversation is via WhatsApp"""
-        return self.channel == ConversationChannel.WHATSAPP
+    def is_telegram(self) -> bool:
+        """Check if conversation is via Telegram"""
+        return self.channel == ConversationChannel.TELEGRAM
+
+    @property
+    def is_web(self) -> bool:
+        """Check if conversation is via the web learner app"""
+        return self.channel == ConversationChannel.WEB
 
     @property
     def is_ussd(self) -> bool:

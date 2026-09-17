@@ -8,7 +8,7 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).parent))
 
 from app.database import engine, Base
-from app.models import User, Lesson, LessonProgress, QuizAttempt, Certificate, Conversation, Employer, Analytics
+import app.models  # noqa: F401  -- registers every table with Base.metadata
 
 async def create_tables():
     print("Creating database tables...")

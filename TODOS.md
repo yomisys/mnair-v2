@@ -1,20 +1,45 @@
 # TODOS
 
-## Security (P0 — Must complete before cloud deployment)
+## v2 channel migration (WhatsApp removed — Meta bills every conversation from 1 Oct 2026)
 
-### Remove test WhatsApp simulator from production app
+### Go-live checklist for the free channels
 
-**What:** Add environment guard to test_whatsapp_router registration in main.py.
+**What:** Before pointing learners at v2:
+1. Create the production bot with @BotFather; set `TELEGRAM_BOT_TOKEN`, `TELEGRAM_BOT_USERNAME`, `TELEGRAM_WEBHOOK_SECRET`; run `python telegram_bot.py --set-webhook https://<api-host>/api/v1/webhooks/telegram`.
+2. Generate VAPID keys (`generate_vapid_keys()`), set `VAPID_*`, confirm the bell in `/learn` subscribes on Android Chrome (iOS Safari requires the PWA to be installed to the home screen first).
+3. Run `python migrate_v2_channels.py` on the production database.
+4. Decide `SMS_REMINDERS_ENABLED` (default false). Budget: only USSD-only learners are affected.
+5. Update the USSD "welcome" copy and any printed material that still says "WhatsApp".
 
-**Why:** `/api/v1/test/whatsapp/simulate` is currently exposed in production without authentication, allowing anyone to create fake users, fake lesson completions, and skip the 7-day curriculum. This contaminates pilot data and is a government partnership disqualifier.
-
-**Context:** `backend/app/main.py` — add `if settings.APP_ENV != "production":` guard before `app.include_router(test_whatsapp_router)`. Also remove the "Testing" tag from Swagger docs in production to avoid NITDA reviewers seeing a test endpoint in the platform documentation.
-
-**Effort:** S
-**Priority:** P0
-**Depends on:** None
+**Effort:** S · **Priority:** P0 · **Depends on:** none
 
 ---
+
+### Migrate existing WhatsApp learners
+
+**What:** ~All v1 learners have `preferred_channel='whatsapp'` and a `+234…` identity. After migration they are unassigned. Options: (a) one final WhatsApp broadcast before 1 Oct pointing to `t.me/<bot>` and `mnair.ng/learn` (their phone number + a new PIN resumes progress on the web); (b) SMS blast (paid, one-off). A Telegram learner is keyed `tg:{chat_id}`, so a WhatsApp learner who moves to Telegram starts a *new* learner record unless we add account linking (see next item).
+
+**Effort:** S (ops) · **Priority:** P0 · **Depends on:** go-live checklist
+
+---
+
+### Telegram ↔ phone account linking
+
+**What:** Add a `/link` command (or `request_contact` keyboard button) so a Telegram learner can attach their +234 number and inherit web/USSD progress, and vice-versa. `app/engine/identity.py` is the single place to change; `User.telegram_chat_id` already exists.
+
+**Effort:** M · **Priority:** P1 · **Depends on:** none
+
+---
+
+### Learner-app bundle size
+
+**What:** `/learn` ships inside the admin bundle (~260 KB gzipped, MUI). For 2G learners, split `/learn` into its own lazy chunk or a lighter standalone page. `frontend/vite.config.ts` `manualChunks` is the quick win.
+
+**Effort:** S · **Priority:** P2 · **Depends on:** none
+
+---
+
+## Security (P0 — Must complete before cloud deployment)
 
 ### Reimplement security middleware as pure ASGI
 

@@ -24,7 +24,8 @@ from app.routers import (
     analytics_router,
     employers_router,
 )
-from app.channels.whatsapp import router as whatsapp_router
+from app.channels.telegram import router as telegram_router
+from app.channels.web import router as learn_router
 from app.middleware import limiter
 from app.middleware.logging import setup_logging
 
@@ -197,13 +198,9 @@ app.include_router(lessons_router)
 app.include_router(certificates_router)
 app.include_router(analytics_router)
 app.include_router(employers_router)
-app.include_router(whatsapp_router)
-
-# Test simulator — development only; never expose in production
-if settings.APP_ENV != "production":
-    from app.routers.test_whatsapp import router as test_whatsapp_router
-    app.include_router(test_whatsapp_router)
-    logger.debug("Test WhatsApp simulator enabled (non-production environment)")
+# Free learner channels (replaced the WhatsApp webhook — see app/engine)
+app.include_router(telegram_router)
+app.include_router(learn_router)
 
 
 # ── Routes ──
@@ -214,6 +211,13 @@ async def root():
         "version": settings.API_VERSION,
         "status": "healthy",
         "environment": settings.APP_ENV,
+        "channels": {
+            "telegram": bool(settings.TELEGRAM_BOT_TOKEN),
+            "web": True,
+            "webpush": settings.webpush_configured,
+            "ussd": True,
+            "sms_reminders": settings.SMS_REMINDERS_ENABLED,
+        },
     }
 
 

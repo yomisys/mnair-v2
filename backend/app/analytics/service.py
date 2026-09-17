@@ -243,15 +243,15 @@ class AnalyticsService:
             analytics.quiz_pass_rate = 0.0
 
     async def _calculate_channel_distribution(self, analytics: Analytics) -> None:
-        """Calculate distribution of users by channel"""
-        # For MVP, we'll just track by primary channel preference
-        # In production, this would come from conversation/session data
-        analytics.channel_distribution = {
-            "whatsapp": 0,
-            "ussd": 0,
-            "sms": 0,
-            "api": analytics.total_users  # Default to API for now
-        }
+        """Distribution of learners by the channel they use (preferred_channel)."""
+        distribution = {"telegram": 0, "web": 0, "ussd": 0, "sms": 0, "kingschat": 0, "unknown": 0}
+        result = await self.db.execute(
+            select(User.preferred_channel, func.count(User.id)).group_by(User.preferred_channel)
+        )
+        for channel, count in result:
+            key = channel if channel in distribution else "unknown"
+            distribution[key] += count
+        analytics.channel_distribution = distribution
 
     async def _calculate_language_distribution(self, analytics: Analytics) -> None:
         """Calculate distribution of users by language"""

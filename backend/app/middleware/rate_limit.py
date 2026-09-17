@@ -44,7 +44,7 @@ PUBLIC_RATE_LIMIT = "30/minute"   # For public endpoints (certificate verificati
 # Authentication endpoints (prevent brute force)
 AUTH_RATE_LIMIT = "5/minute"      # 5 login/register attempts per minute
 
-# WhatsApp/USSD webhook endpoints (high volume expected)
+# Telegram/USSD webhook endpoints (high volume expected)
 WEBHOOK_RATE_LIMIT = "300/minute" # 300 webhook requests per minute
 
 # Quiz submission (prevent spam)

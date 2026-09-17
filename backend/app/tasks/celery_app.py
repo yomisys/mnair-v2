@@ -49,10 +49,10 @@ celery_app.conf.beat_schedule = {
         "schedule": crontab(hour=10, minute=0),  # 10:00 AM WAT
     },
 
-    # Free WhatsApp nudge for learners inactive 20-23h (inside Meta's free
-    # 24h service window) - Run hourly at :15 to avoid on-the-hour pile-up
-    "send-whatsapp-window-reminders": {
-        "task": "app.tasks.notification_tasks.send_whatsapp_window_reminders",
+    # Free ~1-day nudge (Telegram / Web Push) for learners inactive 20-23h
+    # - Run hourly at :15 to avoid on-the-hour pile-up
+    "send-daily-nudges": {
+        "task": "app.tasks.notification_tasks.send_daily_nudges",
         "schedule": crontab(minute=15),  # every hour at hh:15
     },
 

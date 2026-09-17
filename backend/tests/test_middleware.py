@@ -1,7 +1,7 @@
 """
 Middleware tests: security headers, input validation, request body passthrough.
 The body-passthrough test is the critical one — if InputValidationMiddleware
-consumes the body without caching it, the WhatsApp webhook silently breaks.
+consumes the body without caching it, the Telegram webhook silently breaks.
 """
 
 from __future__ import annotations

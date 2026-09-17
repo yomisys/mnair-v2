@@ -14,7 +14,7 @@ from app.database import Base
 
 class ReminderLog(Base):
     """
-    One row per reminder attempt (WhatsApp window nudge or SMS reminder).
+    One row per reminder attempt (Telegram nudge, web push, or SMS reminder).
     Re-engagement is derived by comparing the user's last_active_at
     against sent_at — no extra write needed when the user comes back.
     """
@@ -34,7 +34,7 @@ class ReminderLog(Base):
     channel: Mapped[str] = mapped_column(
         String(20),
         nullable=False,
-        comment="whatsapp or sms"
+        comment="telegram, webpush, or sms"
     )
     status: Mapped[str] = mapped_column(
         String(20),

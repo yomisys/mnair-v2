@@ -9,14 +9,14 @@ from sqlalchemy.orm import DeclarativeBase
 from app.config import settings
 
 
-# Create async engine
-engine = create_async_engine(
-    settings.DATABASE_URL,
-    echo=settings.APP_DEBUG,
-    pool_pre_ping=True,
-    pool_size=10,
-    max_overflow=20,
-)
+# Create async engine. Pool sizing only applies to PostgreSQL; SQLite
+# (sqlite+aiosqlite:///./mnair.db — handy for a single-box pilot or local
+# smoke tests) uses a NullPool and rejects those arguments.
+_engine_kwargs = {"echo": settings.APP_DEBUG, "pool_pre_ping": True}
+if not settings.DATABASE_URL.startswith("sqlite"):
+    _engine_kwargs.update(pool_size=10, max_overflow=20)
+
+engine = create_async_engine(settings.DATABASE_URL, **_engine_kwargs)
 
 # Create async session factory
 AsyncSessionLocal = async_sessionmaker(

@@ -118,6 +118,8 @@ def setup_logging(log_level: str = "INFO"):
     Args:
         log_level: Logging level (DEBUG, INFO, WARNING, ERROR, CRITICAL)
     """
+    import os
+    os.makedirs("logs", exist_ok=True)  # fresh checkout has no logs/ (gitignored)
     logging.basicConfig(
         level=getattr(logging, log_level),
         format="%(asctime)s - %(name)s - %(levelname)s - %(message)s",

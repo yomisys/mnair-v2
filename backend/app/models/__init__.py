@@ -11,6 +11,7 @@ from app.models.conversation import Conversation
 from app.models.employer import Employer
 from app.models.analytics import Analytics
 from app.models.reminder_log import ReminderLog
+from app.models.push_subscription import PushSubscription
 
 __all__ = [
     "User",
@@ -22,4 +23,5 @@ __all__ = [
     "Employer",
     "Analytics",
     "ReminderLog",
+    "PushSubscription",
 ]

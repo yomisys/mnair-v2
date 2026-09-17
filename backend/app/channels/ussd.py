@@ -416,7 +416,7 @@ class USSDHandler:
         next_lesson = await self.lesson_mgr.get_next_lesson(user.id, user.language.value)
 
         if not next_lesson:
-            # Day complete — record it here (mirrors WhatsApp's
+            # Day complete — record it here (mirrors the engine's
             # handle_day_completion), the single point where every day's
             # completion (1 through 7) is detected
             await self.lesson_mgr.mark_day_complete(user.id, user.current_day)

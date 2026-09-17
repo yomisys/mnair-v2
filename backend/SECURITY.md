@@ -42,7 +42,7 @@ This document outlines the security measures implemented in the MNAIR (Make Nige
 | Public (certificate verification) | 30/minute | Allow public access while preventing abuse |
 | Quiz Submission | 10/minute | Prevent spam submissions |
 | Certificate Generation | 3/minute | Limit expensive PDF operations |
-| WhatsApp/USSD Webhooks | 300/minute | Handle high-volume webhook traffic |
+| Telegram/USSD Webhooks | 300/minute | Handle high-volume webhook traffic |
 
 #### Custom Rate Limit Handler
 ```python
@@ -200,11 +200,18 @@ max_age: 3600  # Cache preflight for 1 hour
 
 ### 8. Webhook Security
 
-#### WhatsApp Webhook
-- **Signature Verification**: HMAC-SHA256 with app secret
-- **Header**: `X-Hub-Signature-256`
-- **Algorithm**: SHA-256 HMAC of raw request body
-- **Rejection**: Invalid signatures rejected with 403 Forbidden
+#### Telegram Webhook
+- **Secret Token**: `TELEGRAM_WEBHOOK_SECRET` registered via `setWebhook(secret_token=…)`
+- **Header**: `X-Telegram-Bot-Api-Secret-Token` compared on every update
+- **Rejection**: Mismatch → 403; secret unset in production → 503 (fail closed)
+- **Replay safety**: handler always returns 200 after accepting a body so Telegram never re-delivers learner input
+- **Groups/channels ignored**: only private chats reach the engine
+
+#### Web learner app (`/api/v1/learn`)
+- **Sign-in**: phone number + bcrypt-hashed PIN (`users.learner_pin_hash`); auth endpoints rate-limited (5/min)
+- **Enumeration resistance**: unknown number and wrong PIN return the same 401 message
+- **Token**: same JWT scheme as admin; learner endpoints reject admin/employer tokens (403)
+- **Push subscriptions**: endpoint must be `https://`; stored per user; expired endpoints purged on 404/410
 
 #### USSD Session Security
 - **Session Storage**: Redis with 90-second timeout

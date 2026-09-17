@@ -232,7 +232,7 @@ VITE_API_URL=http://localhost:8000
 5. **API Keys**:
    - Obtain Termii API key (SMS)
    - Configure Africa's Talking credentials (USSD)
-   - Set up Meta WhatsApp Business API
+   - Create the Telegram bot (@BotFather) and register the webhook; generate VAPID keys
 
 ---
 

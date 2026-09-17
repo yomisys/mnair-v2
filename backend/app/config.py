@@ -44,7 +44,8 @@ class Settings(BaseSettings):
     JWT_ALGORITHM: str = "HS256"
     JWT_EXPIRATION_MINUTES: int = 10080
 
-    # API Keys - Nigerian SMS/WhatsApp Providers
+    # API Keys - Nigerian SMS/USSD providers (paid channels; kept for USSD
+    # learners and as an OPT-IN reminder fallback — see SMS_REMINDERS_ENABLED)
     TERMII_API_KEY: Optional[str] = None
     TERMII_SENDER_ID: str = "MNAIR"
 
@@ -52,16 +53,41 @@ class Settings(BaseSettings):
     AFRICASTALKING_API_KEY: Optional[str] = None
     AFRICASTALKING_USSD_CODE: str = "*384*8080#"
 
-    META_WHATSAPP_TOKEN: Optional[str] = None
-    META_WHATSAPP_PHONE_NUMBER_ID: Optional[str] = None
-    META_VERIFY_TOKEN: Optional[str] = None
-    META_WEBHOOK_SECRET: Optional[str] = None
+    # Telegram Bot API — the free chat channel that replaced WhatsApp.
+    # No per-message cost, no template approval, no 24h window. Unset token
+    # = dev mode: outbound messages are logged instead of sent.
+    TELEGRAM_BOT_TOKEN: Optional[str] = None
+    # Public handle (without '@') — used to build https://t.me/<username>
+    # deep links on the landing page and in SMS/USSD copy.
+    TELEGRAM_BOT_USERNAME: Optional[str] = None
+    # Random string passed to setWebhook(secret_token=...); Telegram echoes it
+    # back in X-Telegram-Bot-Api-Secret-Token so the webhook can reject
+    # forged requests. Required when running in webhook mode in production.
+    TELEGRAM_WEBHOOK_SECRET: Optional[str] = None
+    # Long-polling is the zero-infrastructure alternative to a public webhook
+    # (python telegram_bot.py). Poll timeout in seconds.
+    TELEGRAM_POLL_TIMEOUT: int = 30
+
+    # Web Push (VAPID) — free reminders for web-app learners. Generate once:
+    #   python -c "from app.channels.webpush import generate_vapid_keys as g; print(g())"
+    VAPID_PUBLIC_KEY: Optional[str] = None
+    VAPID_PRIVATE_KEY: Optional[str] = None
+    VAPID_CLAIMS_EMAIL: str = "mailto:info@mnair.ng"
+
+    # SMS costs money per message. Off by default: reminders and certificate
+    # notices go out over Telegram / Web Push. Turn on only for learners who
+    # have no free channel (USSD-only) and only with budget approval.
+    SMS_REMINDERS_ENABLED: bool = False
+
+    # Web learner sign-in PIN length (digits). 4 is the floor; bump to 6 if
+    # brute-force attempts show up in the auth rate-limit logs.
+    LEARNER_PIN_MIN_LENGTH: int = 4
 
     # KingsChat — browser-automation channel (no official bot API; see
     # ~/.gstack/projects/yomisys-mnair/yomis-master-design-20260712-032947.md
     # and the follow-up /plan-eng-review for the full architecture rationale).
     # Feature-flagged: the whole channel is off unless explicitly enabled, so
-    # a normal MNAIR deploy (WhatsApp/USSD/SMS only) never needs these vars.
+    # a normal MNAIR deploy (Telegram/web/USSD/SMS) never needs these vars.
     KINGSCHAT_ENABLED: bool = False
     # No defaults on any of the four below — required whenever
     # KINGSCHAT_ENABLED is true. Same fix pattern as the P0 TODOS.md item for
@@ -157,6 +183,22 @@ class Settings(BaseSettings):
     @property
     def cors_origins_list(self) -> list[str]:
         return [origin.strip() for origin in self.CORS_ORIGINS.split(",")]
+
+    @property
+    def telegram_link(self) -> Optional[str]:
+        """Deep link to the bot, or None when no username is configured."""
+        if not self.TELEGRAM_BOT_USERNAME:
+            return None
+        return f"https://t.me/{self.TELEGRAM_BOT_USERNAME.lstrip('@')}?start=learn"
+
+    @property
+    def learn_url(self) -> str:
+        """Public URL of the web learner app."""
+        return f"{self.FRONTEND_URL.rstrip('/')}/learn"
+
+    @property
+    def webpush_configured(self) -> bool:
+        return bool(self.VAPID_PUBLIC_KEY and self.VAPID_PRIVATE_KEY)
 
     @model_validator(mode="after")
     def _require_kingschat_credentials_when_enabled(self) -> "Settings":

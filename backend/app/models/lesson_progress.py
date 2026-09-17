@@ -76,7 +76,7 @@ class LessonProgress(Base):
     # Channel Information
     channel_used: Mapped[Optional[str]] = mapped_column(
         String(20),
-        comment="Channel used: whatsapp, ussd, or sms"
+        comment="Channel used: telegram, web, ussd, sms, or kingschat"
     )
 
     # Timestamps

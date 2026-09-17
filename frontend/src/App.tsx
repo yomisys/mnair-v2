@@ -9,9 +9,10 @@ import {
   Container,
   Stack,
 } from '@mui/material'
-import { VerifiedUser as VerifyIcon } from '@mui/icons-material'
+import { VerifiedUser as VerifyIcon, School as LearnIcon } from '@mui/icons-material'
 import { useAuth } from './contexts/AuthContext'
 import Home from './pages/Home'
+import Learn from './pages/Learn'
 import VerifyCertificate from './pages/VerifyCertificate'
 import Login from './pages/Login'
 import Dashboard from './pages/Dashboard'
@@ -47,6 +48,11 @@ const PublicNavBar: React.FC = () => {
           {location.pathname !== '/' && (
             <Button color="inherit" href="/">
               Home
+            </Button>
+          )}
+          {location.pathname !== '/learn' && (
+            <Button color="inherit" href="/learn" startIcon={<LearnIcon />}>
+              Learn
             </Button>
           )}
           {location.pathname !== '/verify' && (
@@ -116,6 +122,7 @@ const App: React.FC = () => {
   const location = useLocation()
 
   const isPublicRoute = ['/', '/verify'].includes(location.pathname)
+  const isLearnRoute = location.pathname === '/learn'
   const isAdminRoute = location.pathname.startsWith('/dashboard')
 
   return (
@@ -123,12 +130,14 @@ const App: React.FC = () => {
       {/* Public nav only for non-admin routes */}
       {!isAdminRoute && isPublicRoute && <PublicNavBar />}
       {!isAdminRoute && !isPublicRoute && location.pathname !== '/login' && <PublicNavBar />}
+      {/* /learn keeps the nav (64px) but no footer so the chat fills the phone screen */}
 
       <Box component="main" sx={{ flexGrow: 1, bgcolor: isAdminRoute ? '#f0f2f5' : 'background.default' }}>
         <Routes>
           {/* Public Routes */}
           <Route path="/" element={<Home />} />
           <Route path="/verify" element={<VerifyCertificate />} />
+          <Route path="/learn" element={<Learn />} />
 
           {/* Auth Routes */}
           <Route path="/login" element={<Login />} />
@@ -217,7 +226,7 @@ const App: React.FC = () => {
         </Routes>
       </Box>
 
-      {isPublicRoute && <PublicFooter />}
+      {isPublicRoute && !isLearnRoute && <PublicFooter />}
     </Box>
   )
 }

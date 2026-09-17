@@ -120,6 +120,33 @@ services:
     networks:
       - mnair_network
 
+  # Telegram bot in long-polling mode. Only needed when the API is NOT
+  # reachable on a public HTTPS URL (otherwise register a webhook once with
+  # `python telegram_bot.py --set-webhook https://<host>/api/v1/webhooks/telegram`
+  # and the backend service receives updates directly). Gated behind the
+  # "telegram-poll" profile so the two modes are never both active:
+  #   docker compose --profile telegram-poll up -d telegram_bot
+  telegram_bot:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: mnair_telegram_bot
+    command: python telegram_bot.py
+    env_file: .env
+    environment:
+      DATABASE_URL: postgresql+asyncpg://mnair:${DATABASE_PASSWORD}@db:5432/mnair_db
+      REDIS_URL: redis://:${REDIS_PASSWORD}@redis:6379/0
+      MINIO_ENDPOINT: minio:9000
+      APP_ENV: production
+    depends_on:
+      db:
+        condition: service_healthy
+    restart: unless-stopped
+    profiles:
+      - telegram-poll
+    networks:
+      - mnair_network
+
   # KingsChat browser-automation channel. Off by default (KINGSCHAT_ENABLED
   # defaults to false in app/config.py) -- this service is additionally
   # gated behind the "kingschat" profile so a plain `docker compose up`
