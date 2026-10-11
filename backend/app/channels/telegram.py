@@ -61,7 +61,8 @@ HELP_TEXT = (
     "/next — move to the next day\n"
     "/language — change your learning language\n"
     "/progress — see how far you've come\n"
-    "/certificate — get your certificate (after Day 7)\n\n"
+    "/certificate — get your certificate (after Day 7)\n"
+    "/code CODE — join under a sponsor's code\n\n"
     "You can also just tap the buttons under each message."
 )
 
@@ -225,6 +226,7 @@ class TelegramClient:
             {"command": "language", "description": "Change learning language"},
             {"command": "progress", "description": "See your progress"},
             {"command": "certificate", "description": "Get your certificate"},
+            {"command": "code", "description": "Enter a sponsor code"},
             {"command": "help", "description": "Show commands"},
         ]
         return (await self.call("setMyCommands", {"commands": commands})) is not None
@@ -290,7 +292,13 @@ class TelegramChannel:
         if command == "/help":
             await self.client.send_message(chat_id, OutboundMessage.text_only(HELP_TEXT))
             return []
-        if command in SLASH_COMMANDS:
+        payload = text.split(maxsplit=1)[1].strip() if command and len(text.split(maxsplit=1)) > 1 else ""
+        if command == "/start" and payload and payload.lower() != "learn":
+            # Sponsor deep link: t.me/<bot>?start=<CODE>
+            text = f"CODE {payload}"
+        elif command == "/code":
+            text = f"CODE {payload}" if payload else "CODE"
+        elif command in SLASH_COMMANDS:
             text = SLASH_COMMANDS[command]
 
         user = await get_or_create_learner(

@@ -150,7 +150,20 @@ const AuthPanel: React.FC<{
   const [consent, setConsent] = useState(false)
   const [error, setError] = useState<string | null>(null)
   const [busy, setBusy] = useState(false)
+  // Sponsor code from a join link (/learn?code=GRACE-7K2Q) or typed in
+  const [sponsorCode, setSponsorCode] = useState(() => new URLSearchParams(window.location.search).get('code')?.toUpperCase() ?? '')
+  const [sponsorName, setSponsorName] = useState<string | null>(null)
   const minPin = config?.pin_min_length ?? 4
+
+  useEffect(() => {
+    const code = sponsorCode.trim()
+    setSponsorName(null)
+    if (code.length < 3) return
+    const t = window.setTimeout(() => {
+      learnAPI.lookupSponsor(code).then((r) => setSponsorName(r.sponsor_name)).catch(() => setSponsorName(null))
+    }, 400)
+    return () => window.clearTimeout(t)
+  }, [sponsorCode])
 
   const submit = async (e: React.FormEvent) => {
     e.preventDefault()
@@ -162,7 +175,7 @@ const AuthPanel: React.FC<{
     setBusy(true)
     try {
       const auth = tab === 'enrol'
-        ? await learnAPI.enrol(phone, pin, name)
+        ? await learnAPI.enrol(phone, pin, name, sponsorCode.trim())
         : await learnAPI.login(phone, pin)
       localStorage.setItem(LEARN_TOKEN_KEY, auth.access_token)
       onAuthed(auth.messages.map((m) => ({ ...m, role: 'bot' as const })), auth.learner, auth.state)
@@ -186,6 +199,12 @@ const AuthPanel: React.FC<{
         <Typography variant="body2" color="text.secondary" sx={{ mb: 2 }}>
           Lessons arrive here as a chat. Your phone number and a PIN are all you need to pick up where you left off on any device.
         </Typography>
+
+        {sponsorName && tab === 'enrol' && (
+          <Alert severity="success" sx={{ mb: 2 }}>
+            Your course and certificate are sponsored by <strong>{sponsorName}</strong>.
+          </Alert>
+        )}
 
         <Tabs value={tab} onChange={(_, v) => { setTab(v); setError(null) }} variant="fullWidth" sx={{ mb: 2 }}>
           <Tab label="New learner" value="enrol" />
@@ -220,6 +239,14 @@ const AuthPanel: React.FC<{
                   value={name}
                   onChange={(e) => setName(e.target.value)}
                   helperText="Only used on your certificate. You can add it later."
+                  fullWidth
+                />
+                <TextField
+                  label="Sponsor code (optional)"
+                  value={sponsorCode}
+                  onChange={(e) => setSponsorCode(e.target.value.toUpperCase())}
+                  helperText={sponsorName ? `Sponsored by ${sponsorName}` : 'From your church, employer or school, if they gave you one.'}
+                  inputProps={{ autoCapitalize: 'characters', maxLength: 40 }}
                   fullWidth
                 />
                 <Box
@@ -400,6 +427,12 @@ const Learn: React.FC = () => {
     }
   }
 
+  const enterSponsorCode = () => {
+    setMenuAnchor(null)
+    const code = window.prompt('Enter the sponsor code you were given:')?.trim()
+    if (code) sendTurn({ text: `CODE ${code}` }, `Sponsor code ${code.toUpperCase()}`)
+  }
+
   const signOut = () => {
     setMenuAnchor(null)
     localStorage.removeItem(LEARN_TOKEN_KEY)
@@ -475,6 +508,7 @@ const Learn: React.FC = () => {
               <MenuItem onClick={() => { setMenuAnchor(null); sendTurn({ text: 'PROGRESS' }, 'Progress') }}>My progress</MenuItem>
               <MenuItem onClick={() => { setMenuAnchor(null); sendTurn({ text: 'LANGUAGE' }, 'Change language') }}>Change language</MenuItem>
               {pushSupported && <MenuItem onClick={togglePush}>{pushOn ? 'Turn off reminders' : 'Turn on reminders'}</MenuItem>}
+              <MenuItem onClick={enterSponsorCode}>Enter a sponsor code</MenuItem>
               <MenuItem onClick={() => { setMenuAnchor(null); navigate('/verify') }}>Verify a certificate</MenuItem>
               <MenuItem onClick={signOut}><LogoutIcon fontSize="small" sx={{ mr: 1 }} /> Sign out</MenuItem>
               <MenuItem onClick={forgetMe} sx={{ color: 'error.main' }}>Delete my account</MenuItem>

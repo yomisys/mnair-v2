@@ -25,6 +25,8 @@ class CertificateResponse(BaseModel):
     verification_hash: str = Field(..., description="SHA-256 hash for verification")
     verification_url: str = Field(..., description="Public verification URL")
     is_public: bool = Field(default=True, description="Allow public verification")
+    access_type: str = Field(default="free", description="free | sponsored | paid | pending_payment")
+    sponsor_name: Optional[str] = None
     issued_at: datetime
     created_at: datetime
 
@@ -48,6 +50,7 @@ class CertificateVerification(BaseModel):
     issued_date: datetime
     language: str
     average_score: float
+    sponsor_name: Optional[str] = None
     completion_grade: str = Field(..., description="Grade: Excellent, Very Good, Good, Pass")
 
     class Config:

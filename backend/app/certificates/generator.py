@@ -20,12 +20,18 @@ from reportlab.pdfbase.ttfonts import TTFont
 from minio import Minio
 from minio.error import S3Error
 
-from sqlalchemy import select
+from sqlalchemy import func, select
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.models.user import User
 from app.models.certificate import Certificate
+from app.models.lesson_progress import LessonProgress
+from app.models.sponsor import CertificateAccess, Organization
 from app.config import Settings
+
+# Logos are drawn inside this box (points), aspect ratio kept
+LOGO_MAX_W = 1.6 * inch
+LOGO_MAX_H = 0.75 * inch
 
 
 class CertificateGenerator:
@@ -157,7 +163,9 @@ class CertificateGenerator:
         user_name: str,
         completion_date: datetime,
         verification_code: str,
-        language: str = "en"
+        language: str = "en",
+        sponsor_name: Optional[str] = None,
+        sponsor_logo: Optional[bytes] = None,
     ) -> bytes:
         """
         Generate PDF certificate as bytes
@@ -246,6 +254,11 @@ class CertificateGenerator:
         date_y = achievement_y - 0.9 * inch
         c.drawCentredString(page_width / 2, date_y, f"Completed on {date_str}")
 
+        # Sponsor credit — bottom-left, above the verification block, so the
+        # certificate's own layout is unchanged for unsponsored learners
+        if sponsor_name:
+            self._draw_sponsor(c, page_width, sponsor_name, sponsor_logo)
+
         # Verification section
         c.setFont("Helvetica", 10)
         c.setFillColor(self.TEXT_COLOR)
@@ -274,6 +287,57 @@ class CertificateGenerator:
         buffer.close()
 
         return pdf_bytes
+
+    def _draw_sponsor(
+        self, c: canvas.Canvas, page_width: float, sponsor_name: str, sponsor_logo: Optional[bytes]
+    ) -> None:
+        x = 1.0 * inch
+        base_y = 1.0 * inch
+        c.setFont("Helvetica", 9)
+        c.setFillColor(self.TEXT_COLOR)
+        c.drawString(x, base_y + LOGO_MAX_H + 0.12 * inch, "Sponsored by")
+        if sponsor_logo:
+            try:
+                image = ImageReader(io.BytesIO(sponsor_logo))
+                iw, ih = image.getSize()
+                scale = min(LOGO_MAX_W / iw, LOGO_MAX_H / ih)
+                c.drawImage(
+                    image, x, base_y, width=iw * scale, height=ih * scale,
+                    mask="auto", preserveAspectRatio=True,
+                )
+                return
+            except Exception as e:  # noqa: BLE001 — a bad logo must never block a certificate
+                print(f"[WARN] Sponsor logo could not be drawn: {e}")
+        c.setFont("Helvetica-Bold", 13)
+        c.setFillColor(self.TITLE_COLOR)
+        name = sponsor_name if len(sponsor_name) <= 40 else sponsor_name[:39] + "…"
+        c.drawString(x, base_y + 0.3 * inch, name)
+
+    def fetch_logo(self, object_name: Optional[str]) -> Optional[bytes]:
+        """Sponsor logo bytes from MinIO, or None (missing logo = name only)."""
+        if not object_name:
+            return None
+        response = None
+        try:
+            response = self.minio_client.get_object(self.settings.MINIO_BUCKET, object_name)
+            return response.read()
+        except Exception as e:  # noqa: BLE001
+            print(f"[WARN] Sponsor logo {object_name} unavailable: {e}")
+            return None
+        finally:
+            if response is not None:
+                response.close()
+                response.release_conn()
+
+    async def _average_quiz_score(self, user_id: int) -> float:
+        """Mean of the learner's final per-lesson quiz scores (0-100)."""
+        avg = (await self.db.execute(
+            select(func.avg(LessonProgress.quiz_score)).where(
+                LessonProgress.user_id == user_id,
+                LessonProgress.quiz_score.is_not(None),
+            )
+        )).scalar_one()
+        return round(float(avg), 1) if avg is not None else 0.0
 
     async def upload_to_minio(
         self,
@@ -374,7 +438,20 @@ class CertificateGenerator:
         existing_cert = existing.scalar_one_or_none()
 
         if existing_cert:
+            # A learner who paid after the certificate was issued (webhook
+            # missed or arrived first) is unlocked on their next request
+            if existing_cert.access_type == CertificateAccess.PENDING_PAYMENT.value:
+                from app.services.payments import has_paid_for_certificate
+                if await has_paid_for_certificate(self.db, user_id):
+                    existing_cert.access_type = CertificateAccess.PAID.value
+                    await self.db.commit()
             return existing_cert
+
+        from app.services.sponsorship import get_sponsor_for_user, bill_certificate
+        from app.services.payments import has_paid_for_certificate
+
+        sponsor: Optional[Organization] = await get_sponsor_for_user(self.db, user)
+        sponsor_logo = self.fetch_logo(sponsor.logo_object) if sponsor else None
 
         # Generate certificate ID
         certificate_id = self.generate_certificate_id(user_id)
@@ -385,7 +462,9 @@ class CertificateGenerator:
             user_name=user.name,
             completion_date=issued_at,
             verification_code=certificate_id,
-            language=language
+            language=language,
+            sponsor_name=sponsor.name if sponsor else None,
+            sponsor_logo=sponsor_logo,
         )
 
         # Upload to MinIO
@@ -420,7 +499,7 @@ class CertificateGenerator:
             learner_phone=user.phone_number,
             language=language,
             total_lessons_completed=35,
-            average_quiz_score=75.0,  # Default, should be calculated from actual quiz attempts
+            average_quiz_score=await self._average_quiz_score(user_id),
             days_to_complete=user.current_day,
             pdf_url=object_name,
             pdf_filename=pdf_filename,
@@ -431,6 +510,17 @@ class CertificateGenerator:
         )
 
         self.db.add(certificate)
+
+        # Who pays: sponsor > free (paywall off) > learner already paid > awaiting payment
+        if sponsor:
+            await bill_certificate(self.db, user, certificate, org=sponsor)
+        elif not self.settings.CERTIFICATE_PAYWALL_ENABLED:
+            certificate.access_type = CertificateAccess.FREE.value
+        elif await has_paid_for_certificate(self.db, user_id):
+            certificate.access_type = CertificateAccess.PAID.value
+        else:
+            certificate.access_type = CertificateAccess.PENDING_PAYMENT.value
+
         await self.db.commit()
         await self.db.refresh(certificate)
 
@@ -473,6 +563,11 @@ class CertificateGenerator:
         if self._normalize_name(certificate.learner_name) != self._normalize_name(expected_name):
             return None
 
+        # An unpaid certificate isn't a credential yet — indistinguishable
+        # from unknown, same as a name mismatch
+        if not certificate.is_verified:
+            return None
+
         return {
             "valid": True,
             "issued_date": certificate.issued_at,
@@ -480,6 +575,7 @@ class CertificateGenerator:
             "certificate_id": certificate_id,
             "average_score": certificate.average_quiz_score,
             "completion_grade": certificate.completion_grade,
+            "sponsor_name": certificate.sponsor_name,
         }
 
     async def get_user_certificate(self, user_id: int) -> Optional[Certificate]:

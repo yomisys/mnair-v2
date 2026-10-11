@@ -338,6 +338,7 @@ async def test_day_seven_asks_for_name_then_issues_certificate(test_db, monkeypa
 
     class FakeCert:
         certificate_id = "MNAIR-2026-1-ABCD"
+        is_verified = True
 
     async def fake_generate(self, user_id, language):
         return FakeCert()

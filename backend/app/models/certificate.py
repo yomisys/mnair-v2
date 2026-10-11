@@ -122,6 +122,26 @@ class Certificate(Base):
         comment="Public URL for certificate verification"
     )
 
+    # Monetisation. access_type decides whether the certificate is a
+    # verified credential (public /verify + PDF download) — see
+    # CertificateAccess. Rows that pre-date this column are "free".
+    access_type: Mapped[str] = mapped_column(
+        String(20),
+        default="free",
+        server_default="free",
+        nullable=False,
+        comment="free | sponsored | paid | pending_payment"
+    )
+    organization_id: Mapped[Optional[int]] = mapped_column(
+        ForeignKey("organizations.id", ondelete="SET NULL"),
+        index=True,
+        comment="Sponsor that paid for this certificate"
+    )
+    sponsor_name: Mapped[Optional[str]] = mapped_column(
+        String(255),
+        comment="Sponsor name as printed (snapshot — survives sponsor rename)"
+    )
+
     # Timestamps
     issued_at: Mapped[datetime] = mapped_column(
         DateTime(timezone=True),
@@ -193,6 +213,11 @@ class Certificate(Base):
             and self.pdf_url
             and self.total_lessons_completed == 35
         )
+
+    @property
+    def is_verified(self) -> bool:
+        """True when this is a verified credential (not awaiting payment)."""
+        return (self.access_type or "free") != "pending_payment"
 
     @property
     def completion_grade(self) -> str:

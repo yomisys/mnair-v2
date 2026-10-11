@@ -16,6 +16,7 @@ import {
   ChevronLeft as ChevronLeftIcon,
   CellTower as ChannelIcon,
   People as PeopleIcon,
+  VolunteerActivism as SponsorsIcon,
 } from '@mui/icons-material'
 import { useAuth } from '../contexts/AuthContext'
 
@@ -31,6 +32,7 @@ const NAV = [
   { label: 'Quiz Analytics', path: '/dashboard/quiz', icon: <QuizIcon /> },
   { label: 'Channels', path: '/dashboard/channels', icon: <ChannelIcon /> },
   { label: 'Employers', path: '/dashboard/employers', icon: <EmployersIcon /> },
+  { label: 'Sponsors', path: '/dashboard/sponsors', icon: <SponsorsIcon /> },
 ]
 
 const AdminLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => {

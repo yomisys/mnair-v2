@@ -150,6 +150,22 @@ class Settings(BaseSettings):
     # live domain (see FRONTEND_URL in .env for prod), not a placeholder.
     FRONTEND_URL: str = "https://mnair.ng"
 
+    # Payments (Paystack — card, bank transfer and USSD in one checkout).
+    # Unset secret = payments disabled: pay endpoints answer 503 and the
+    # learner is told to try later. Amounts are kobo (₦1 = 100 kobo).
+    PAYSTACK_SECRET_KEY: Optional[str] = None
+    PAYSTACK_PUBLIC_KEY: Optional[str] = None
+    PAYSTACK_BASE_URL: str = "https://api.paystack.co"
+    # Paystack insists on an email; learners sign up by phone, so they get a
+    # synthetic, non-identifying address learner-{id}@<this domain>.
+    PAYSTACK_PLACEHOLDER_EMAIL_DOMAIN: str = "learners.mnair.ng"
+
+    # Individual verified certificate. Paywall is OFF by default so turning
+    # this release on changes nothing for learners until it is switched on.
+    # Sponsored learners never see it.
+    CERTIFICATE_PAYWALL_ENABLED: bool = False
+    CERTIFICATE_PRICE_KOBO: int = 200_000  # ₦2,000
+
     # NDPA Compliance
     DATA_RETENTION_DAYS: int = 90
     CONSENT_REQUIRED: bool = True
@@ -195,6 +211,15 @@ class Settings(BaseSettings):
     def learn_url(self) -> str:
         """Public URL of the web learner app."""
         return f"{self.FRONTEND_URL.rstrip('/')}/learn"
+
+    @property
+    def payments_configured(self) -> bool:
+        return bool(self.PAYSTACK_SECRET_KEY)
+
+    @property
+    def payment_callback_url(self) -> str:
+        """Where Paystack sends the payer back after checkout."""
+        return f"{self.FRONTEND_URL.rstrip('/')}/payment/callback"
 
     @property
     def webpush_configured(self) -> bool:

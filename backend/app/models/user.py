@@ -9,7 +9,7 @@ NDPA compliant: consent tracking, data retention
 from datetime import datetime, timedelta
 from enum import Enum
 from typing import List,Optional
-from sqlalchemy import String, Boolean, DateTime, Enum as SQLEnum, Index
+from sqlalchemy import String, Boolean, DateTime, Enum as SQLEnum, ForeignKey, Index
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 from app.database import Base
 from app.config import settings
@@ -78,6 +78,15 @@ class User(Base):
         index=True,
         comment="Telegram chat id (Bot API) — outbound reminders go here"
     )
+
+    # Sponsorship: set once when the learner redeems a sponsor code. A
+    # sponsored learner's certificate is billed to the sponsor and carries
+    # its name/logo. SET NULL so deleting a code never deletes learners.
+    sponsor_code_id: Mapped[Optional[int]] = mapped_column(
+        ForeignKey("sponsor_codes.id", ondelete="SET NULL"),
+        index=True,
+    )
+    sponsored_at: Mapped[Optional[datetime]] = mapped_column(DateTime(timezone=True))
 
     # Role & Permissions
     role: Mapped[UserRole] = mapped_column(

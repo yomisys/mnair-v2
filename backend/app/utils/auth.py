@@ -235,3 +235,42 @@ async def get_current_employer(
         )
 
     return employer
+
+
+async def get_current_sponsor(
+    credentials: HTTPAuthorizationCredentials = Depends(security),
+    db: AsyncSession = Depends(get_db),
+):
+    """
+    Sponsor-portal account from a JWT whose sub is "sponsor:{organization id}".
+
+    Like employer tokens, these are rejected by get_current_user (the sub is
+    not an int) and vice versa, so a sponsor can never act as a learner or
+    admin.
+    """
+    from app.models.sponsor import Organization
+
+    credentials_exception = HTTPException(
+        status_code=status.HTTP_401_UNAUTHORIZED,
+        detail="Could not validate sponsor credentials",
+        headers={"WWW-Authenticate": "Bearer"},
+    )
+    try:
+        payload = jwt.decode(
+            credentials.credentials,
+            settings.JWT_SECRET_KEY,
+            algorithms=[settings.JWT_ALGORITHM],
+        )
+        sub: str = payload.get("sub")
+        if not sub or not sub.startswith("sponsor:"):
+            raise credentials_exception
+        org_id = int(sub.split(":", 1)[1])
+    except (JWTError, ValueError, TypeError):
+        raise credentials_exception
+
+    org = (await db.execute(select(Organization).where(Organization.id == org_id))).scalar_one_or_none()
+    if org is None or not org.hashed_password:
+        raise credentials_exception
+    if not org.is_active:
+        raise HTTPException(status_code=status.HTTP_403_FORBIDDEN, detail="Sponsor account is inactive")
+    return org

@@ -12,6 +12,7 @@ from app.models.employer import Employer
 from app.models.analytics import Analytics
 from app.models.reminder_log import ReminderLog
 from app.models.push_subscription import PushSubscription
+from app.models.sponsor import Organization, SponsorCode, SponsorCharge, Payment
 
 __all__ = [
     "User",
@@ -24,4 +25,8 @@ __all__ = [
     "Analytics",
     "ReminderLog",
     "PushSubscription",
+    "Organization",
+    "SponsorCode",
+    "SponsorCharge",
+    "Payment",
 ]

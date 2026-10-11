@@ -288,7 +288,17 @@ async def _generate_certificates_async():
                 )
                 generated += 1
 
-                channel, ok = await router.send_certificate_ready(user, certificate.certificate_id)
+                if certificate.is_verified:
+                    channel, ok = await router.send_certificate_ready(user, certificate.certificate_id)
+                else:
+                    # Paywall on: no verify link yet (it would 404). Point
+                    # them at Get certificate, which shows the pay button.
+                    channel, ok = await router.send_text(
+                        user,
+                        "🎓 You've earned your MNAIR certificate! Tap *Get certificate* "
+                        f"(or open {settings.learn_url}) to unlock your verified copy.",
+                        title="🎓 Your MNAIR certificate is waiting",
+                    )
                 if ok:
                     logger.info(
                         f"Generated certificate {certificate.certificate_id} for user {user.id} (via {channel})"

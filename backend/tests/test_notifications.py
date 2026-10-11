@@ -322,6 +322,7 @@ async def test_certificate_task_notifies_via_free_channel(task_session, capture_
 
     class FakeCert:
         certificate_id = "MNAIR-2026-70-ZZZZ"
+        is_verified = True
 
     from app.certificates.generator import CertificateGenerator
 

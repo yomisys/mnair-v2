@@ -23,6 +23,9 @@ import QuizReport from './pages/QuizReport'
 import ChannelsReport from './pages/ChannelsReport'
 import EmployersReport from './pages/EmployersReport'
 import UsersReport from './pages/UsersReport'
+import SponsorsAdmin from './pages/SponsorsAdmin'
+import SponsorPortal from './pages/SponsorPortal'
+import PaymentCallback from './pages/PaymentCallback'
 import AdminLayout from './components/AdminLayout'
 
 const ProtectedRoute: React.FC<{ children: React.ReactElement }> = ({ children }) => {
@@ -138,6 +141,8 @@ const App: React.FC = () => {
           <Route path="/" element={<Home />} />
           <Route path="/verify" element={<VerifyCertificate />} />
           <Route path="/learn" element={<Learn />} />
+          <Route path="/sponsor" element={<SponsorPortal />} />
+          <Route path="/payment/callback" element={<PaymentCallback />} />
 
           {/* Auth Routes */}
           <Route path="/login" element={<Login />} />
@@ -219,6 +224,16 @@ const App: React.FC = () => {
               <ProtectedRoute>
                 <AdminLayout>
                   <EmployersReport />
+                </AdminLayout>
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/dashboard/sponsors"
+            element={
+              <ProtectedRoute>
+                <AdminLayout>
+                  <SponsorsAdmin />
                 </AdminLayout>
               </ProtectedRoute>
             }

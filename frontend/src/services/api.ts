@@ -223,8 +223,13 @@ export interface LearnConfig { telegram_link: string | null; vapid_public_key: s
 export const learnAPI = {
   getConfig: async (): Promise<LearnConfig> => (await learnClient.get('/api/v1/learn/config')).data,
 
-  enrol: async (phone_number: string, pin: string, name?: string): Promise<LearnAuth> =>
-    (await learnClient.post('/api/v1/learn/enrol', { phone_number, pin, consent_given: true, name: name || undefined })).data,
+  enrol: async (phone_number: string, pin: string, name?: string, sponsor_code?: string): Promise<LearnAuth> =>
+    (await learnClient.post('/api/v1/learn/enrol', {
+      phone_number, pin, consent_given: true, name: name || undefined, sponsor_code: sponsor_code || undefined,
+    })).data,
+
+  lookupSponsor: async (code: string): Promise<{ code: string; sponsor_name: string }> =>
+    (await learnClient.get(`/api/v1/sponsors/code/${encodeURIComponent(code)}`)).data,
 
   login: async (phone_number: string, pin: string): Promise<LearnAuth> =>
     (await learnClient.post('/api/v1/learn/login', { phone_number, pin })).data,
@@ -242,4 +247,84 @@ export const learnAPI = {
   forgetMe: async () => learnClient.post('/api/v1/learn/forget-me'),
 }
 
+// ---------------------------------------------------------------------------
+// Payments (public status check for the /payment/callback page)
+// ---------------------------------------------------------------------------
+
+export interface PaymentStatus { reference: string; status: string; purpose: string; amount_kobo: number }
+
+export const paymentsAPI = {
+  verify: async (reference: string): Promise<PaymentStatus> =>
+    (await learnClient.get(`/api/v1/payments/verify/${encodeURIComponent(reference)}`)).data,
+}
+
+// ---------------------------------------------------------------------------
+// Sponsor portal (/sponsor) — its own token; a sponsor is never an admin
+// ---------------------------------------------------------------------------
+
+export const SPONSOR_TOKEN_KEY = 'sponsor_token'
+
+const sponsorClient: AxiosInstance = axios.create({
+  baseURL: API_BASE_URL,
+  headers: { 'Content-Type': 'application/json' },
+  timeout: 30000,
+})
+
+sponsorClient.interceptors.request.use((config) => {
+  const token = localStorage.getItem(SPONSOR_TOKEN_KEY)
+  if (token) config.headers.Authorization = `Bearer ${token}`
+  return config
+})
+
+export interface SponsorAccount {
+  certificates_billed: number; charged_kobo: number; paid_kobo: number; deposit_paid_kobo: number
+  deposit_outstanding_kobo: number; credit_remaining_kobo: number; amount_due_kobo: number
+}
+export interface SponsorCodeSummary {
+  code: string; label: string | null; max_enrolments: number | null; is_active: boolean; enrolled: number
+  join_url: string; telegram_url: string | null
+}
+export interface SponsorDashboard {
+  organization: {
+    id: number; name: string; package: string; price_per_certificate_kobo: number
+    deposit_kobo: number; learner_cap: number | null; has_logo: boolean
+  }
+  learners: {
+    enrolled: number; active_last_7_days: number; certified: number; completion_rate: number
+    average_quiz_score: number | null; days_completed: Record<string, number>; by_language: Record<string, number>
+  }
+  codes: SponsorCodeSummary[]
+  account: SponsorAccount
+  payments_enabled: boolean
+}
+export interface SponsorLearner {
+  name: string; language: string; current_day: number; completed_days: number; certified: boolean
+  certificate_id: string | null; joined_at: string | null; last_active_at: string | null
+}
+export interface SponsorStatement {
+  organization: string; period: string; price_per_certificate_kobo: number
+  opening_balance_kobo: number; certificates_issued: number; charges_kobo: number; payments_kobo: number
+  closing_balance_kobo: number; amount_due_kobo: number
+  charges: { certificate_id: string; amount_kobo: number; issued_at: string }[]
+  payments: { reference: string; purpose: string; amount_kobo: number; channel: string | null; paid_at: string }[]
+}
+
+export const sponsorAPI = {
+  login: async (email: string, password: string): Promise<{ access_token: string; organization: { id: number; name: string } }> =>
+    (await sponsorClient.post('/api/v1/sponsors/login', { email, password })).data,
+  dashboard: async (): Promise<SponsorDashboard> => (await sponsorClient.get('/api/v1/sponsors/me/dashboard')).data,
+  learners: async (offset = 0, limit = 50): Promise<{ total: number; items: SponsorLearner[] }> =>
+    (await sponsorClient.get('/api/v1/sponsors/me/learners', { params: { offset, limit } })).data,
+  learnersCsv: async (): Promise<Blob> =>
+    (await sponsorClient.get('/api/v1/sponsors/me/learners.csv', { responseType: 'blob' })).data,
+  statement: async (year: number, month: number): Promise<SponsorStatement> =>
+    (await sponsorClient.get('/api/v1/sponsors/me/statement', { params: { year, month } })).data,
+  pay: async (purpose: 'deposit' | 'balance'): Promise<{ authorization_url: string; amount_kobo: number }> =>
+    (await sponsorClient.post('/api/v1/sponsors/me/pay', { purpose })).data,
+}
+
+export const formatNaira = (kobo: number): string =>
+  `₦${(kobo / 100).toLocaleString('en-NG', { maximumFractionDigits: kobo % 100 ? 2 : 0 })}`
+
 export default apiClient
+

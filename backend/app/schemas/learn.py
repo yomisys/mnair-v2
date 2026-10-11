@@ -42,6 +42,7 @@ class EnrolRequest(PinMixin):
     phone_number: str
     consent_given: bool = Field(..., description="NDPA consent — must be true")
     name: Optional[str] = Field(None, max_length=255)
+    sponsor_code: Optional[str] = Field(None, max_length=60, description="Sponsor code, if the learner has one")
 
     @field_validator("phone_number")
     @classmethod

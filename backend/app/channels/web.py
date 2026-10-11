@@ -42,6 +42,7 @@ from app.schemas.learn import (
     TurnResponse,
 )
 from app.services.lesson_state import LessonStateManager
+from app.services.sponsorship import SponsorCodeError, check_code
 from app.utils.auth import create_access_token, get_current_user, get_password_hash, verify_password
 
 logger = logging.getLogger(__name__)
@@ -131,6 +132,14 @@ async def enrol(
             detail="This number is already enrolled. Sign in with your PIN instead.",
         )
 
+    # Reject a bad sponsor code before creating the account, so the
+    # learner can fix a typo instead of ending up unsponsored
+    if body.sponsor_code:
+        try:
+            await check_code(db, body.sponsor_code)
+        except SponsorCodeError as e:
+            raise HTTPException(status_code=422, detail=str(e))
+
     user = User(
         phone_number=body.phone_number,
         name=body.name.strip() if body.name else "Web Learner",
@@ -149,7 +158,8 @@ async def enrol(
     await db.refresh(user)
 
     conversation = await get_or_create_conversation(db, user, ConversationChannel.WEB)
-    replies = await ConversationEngine(db, settings).handle(user, conversation, "START")
+    start = f"CODE {body.sponsor_code}" if body.sponsor_code else "START"
+    replies = await ConversationEngine(db, settings).handle(user, conversation, start)
 
     return AuthResponse(
         **_token(user, settings),

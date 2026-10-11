@@ -137,6 +137,12 @@ async def get_my_certificate_download_url(
             detail="Certificate not found. Complete the course first!"
         )
 
+    if not certificate.is_verified:
+        raise HTTPException(
+            status_code=status.HTTP_402_PAYMENT_REQUIRED,
+            detail="Unlock your verified certificate to download it."
+        )
+
     # Get pre-signed download URL
     download_url = await generator.get_certificate_url(certificate.certificate_id)
 

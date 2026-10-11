@@ -193,7 +193,23 @@ mnair-v2/
 | SMS | reminders + certificates | **off by default** (`SMS_REMINDERS_ENABLED`) |
 | USSD | telco session billing | unchanged |
 
+## Revenue: sponsors + verified certificates
+
+The course stays free for learners. Sponsors (churches, companies, states)
+pay ₦1,500–₦2,500 per **certified** learner. Learners join through a sponsor
+code (`/learn?code=GRACE-2026`, `t.me/<bot>?start=GRACE-2026`, or
+`CODE GRACE-2026` in chat), and their certificates carry the sponsor's name
+and logo. Sponsors get a portal at `/sponsor`, and admins manage everything
+under **Admin → Sponsors**. Payments go through Paystack (card, transfer,
+USSD). There is an optional ₦2,000 individual verified certificate,
+**off by default** (`CERTIFICATE_PAYWALL_ENABLED`).
+
+Upgrading an existing database: `python backend/migrate_v3_sponsors.py`.
+See [docs/MONETISATION.md](docs/MONETISATION.md) for the billing model, API and go-live checklist.
+
 ## Documentation
+
+- [docs/MONETISATION.md](docs/MONETISATION.md) — sponsors, Paystack, certificate paywall
 
 - [DEPLOYMENT_GUIDE.md](DEPLOYMENT_GUIDE.md) — production deployment
 - [QUICK_START.md](QUICK_START.md) — daily operations

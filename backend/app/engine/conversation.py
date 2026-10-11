@@ -13,7 +13,7 @@ State machine (unchanged):
              -> DAY_COMPLETE -> (AWAITING_CERTIFICATE_NAME) -> PROGRAM_COMPLETE
 
 Global commands reachable from (almost) any state: LANGUAGE, CONTINUE,
-CERTIFICATE. Button ids map onto the same keywords, so a tap and a typed
+CERTIFICATE, CODE <sponsor code>, PAY. Button ids map onto the same keywords, so a tap and a typed
 reply are indistinguishable to the engine.
 """
 
@@ -50,6 +50,7 @@ COMMAND_BUTTON_IDS = {
     "yes": "YES",
     "no": "NO",
     "start": "START",
+    "pay_certificate": "PAY",
 }
 
 LANGUAGE_MAP = {
@@ -72,7 +73,7 @@ LANGUAGE_WORDS = {
 # Reserved commands a name reply must not collide with, so someone who
 # taps a stale button or types a command while being asked for their
 # name doesn't get that word stored as their certificate name
-RESERVED_NAME_WORDS = {"next", "quiz", "continue", "certificate", "language", "retry", "yes", "no", "start"}
+RESERVED_NAME_WORDS = {"next", "quiz", "continue", "certificate", "language", "retry", "yes", "no", "start", "pay"}
 
 HISTORY_LIMIT = 40
 
@@ -158,6 +159,28 @@ class ConversationEngine:
         await self.db.commit()
 
         upper = message_text.upper()
+
+        # Global command: redeem a sponsor code ("CODE GRACE-7K2Q"). A brand
+        # new learner (Telegram deep link t.me/<bot>?start=<CODE>) still gets
+        # onboarded straight after.
+        if upper.startswith("CODE ") and conversation.current_state != ConversationState.AWAITING_CERTIFICATE_NAME:
+            await self.handle_sponsor_code(user, conversation, message_text[5:])
+            if conversation.current_state == ConversationState.NEW_USER:
+                await self.handle_new_user(user, conversation)
+            await self.db.commit()
+            return self._outbox
+
+        if upper == "CODE":
+            self._emit(conversation, OutboundMessage.text_only(
+                "Reply *CODE* followed by your sponsor code, for example: CODE GRACE-7K2Q"
+            ))
+            await self.db.commit()
+            return self._outbox
+
+        # Global command: pay for a verified certificate
+        if upper == "PAY" and conversation.current_state != ConversationState.AWAITING_CERTIFICATE_NAME:
+            await self.handle_certificate_request(user, conversation)
+            return self._outbox
 
         # Global command: change language from anywhere
         if upper == "LANGUAGE":
@@ -567,6 +590,9 @@ class ConversationEngine:
             return
 
         conversation.current_state = ConversationState.PROGRAM_COMPLETE
+        if not certificate.is_verified:
+            await self.send_certificate_paywall(user, conversation)
+            return
         verify_url = (
             f"{self.settings.FRONTEND_URL}/verify"
             f"?code={certificate.certificate_id}&name={quote(user.name)}"
@@ -575,6 +601,66 @@ class ConversationEngine:
             user.name, certificate.certificate_id, verify_url
         ))
         await self.db.commit()
+
+    async def send_certificate_paywall(self, user: User, conversation: Conversation) -> None:
+        """Earned but not yet unlocked: offer checkout (or a sponsor code)."""
+        from app.services.payments import format_naira, start_certificate_payment
+        from app.services.paystack import PaystackError
+
+        price = format_naira(self.settings.CERTIFICATE_PRICE_KOBO)
+        try:
+            payment = await start_certificate_payment(self.db, self.settings, user)
+        except PaystackError as e:
+            logger.error("Certificate checkout unavailable for user %s: %s", user.id, e)
+            self._emit(conversation, OutboundMessage(
+                kind="text",
+                text=(
+                    f"🎓 You've earned your certificate! Unlocking the verified copy costs {price}, "
+                    "but payments are unavailable right now. Please tap *Get certificate* again later.\n\n"
+                    "Have a sponsor code? Reply *CODE* followed by the code."
+                ),
+                buttons=[self._btn("certificate", "🎓 Get certificate")],
+            ))
+            await self.db.commit()
+            return
+
+        from app.engine.messages import Button
+        self._emit(conversation, OutboundMessage(
+            kind="payment",
+            text=(
+                f"🎓 Well done, {user.name}! You've earned your MNAIR certificate.\n\n"
+                f"Unlock your *verified certificate* for {price}. You'll get a PDF that employers "
+                "can check online.\n"
+                "Pay by card, bank transfer or USSD.\n\n"
+                "After paying, tap *Get certificate*.\n"
+                "Have a sponsor code? Reply *CODE* followed by the code."
+            ),
+            buttons=[
+                Button("pay_link", f"💳 Pay {price}", payment.authorization_url or ""),
+                self._btn("certificate", "🎓 Get certificate"),
+            ],
+            meta={"reference": payment.reference, "url": payment.authorization_url, "amount_kobo": payment.amount_kobo},
+        ))
+        await self.db.commit()
+
+    async def handle_sponsor_code(self, user: User, conversation: Conversation, raw_code: str) -> None:
+        from app.services.sponsorship import SponsorCodeError, redeem_code
+
+        try:
+            result = await redeem_code(self.db, user, raw_code)
+        except SponsorCodeError as e:
+            self._emit(conversation, OutboundMessage.text_only(f"⚠️ {e}"))
+            return
+        name = result.organization.name
+        if result.already_applied:
+            text = f"✅ You're already sponsored by *{name}*."
+        else:
+            text = f"✅ Code accepted! Your course and certificate are sponsored by *{name}*."
+        self._emit(conversation, OutboundMessage.text_only(text))
+
+        # A learner who was waiting at the paywall gets the certificate now
+        if user.completed_days >= 7 and user.name_confirmed and conversation.current_state == ConversationState.PROGRAM_COMPLETE:
+            await self.generate_and_send_certificate(user, conversation)
 
     async def handle_day_complete(self, user: User, conversation: Conversation, message_text: str) -> None:
         """DAY_COMPLETE: waiting for the learner to advance."""

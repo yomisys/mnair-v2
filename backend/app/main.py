@@ -26,6 +26,8 @@ from app.routers import (
 )
 from app.channels.telegram import router as telegram_router
 from app.channels.web import router as learn_router
+from app.routers.payments import router as payments_router, WEBHOOK_PATH as PAYSTACK_WEBHOOK_PATH
+from app.routers.sponsors import public_router as sponsors_public_router, portal_router as sponsors_portal_router, admin_router as sponsors_admin_router
 from app.middleware import limiter
 from app.middleware.logging import setup_logging
 
@@ -162,7 +164,9 @@ async def validate_input(request: Request, call_next):
             content={"detail": "Request body too large (max 10MB)"},
         )
 
-    if body:
+    # The Paystack webhook is authenticated by an HMAC over the exact body;
+    # pattern-matching a signed payment event could only drop a real payment.
+    if body and request.url.path != PAYSTACK_WEBHOOK_PATH:
         body_text = body.decode("utf-8", errors="ignore")
         for pattern in _SQL_PATTERNS:
             if pattern.search(body_text):
@@ -201,6 +205,11 @@ app.include_router(employers_router)
 # Free learner channels (replaced the WhatsApp webhook — see app/engine)
 app.include_router(telegram_router)
 app.include_router(learn_router)
+# Monetisation: sponsor codes, sponsor portal, Paystack
+app.include_router(payments_router)
+app.include_router(sponsors_public_router)
+app.include_router(sponsors_portal_router)
+app.include_router(sponsors_admin_router)
 
 
 # ── Routes ──
@@ -218,6 +227,7 @@ async def root():
             "ussd": True,
             "sms_reminders": settings.SMS_REMINDERS_ENABLED,
         },
+        "payments": settings.payments_configured,
     }
 
 

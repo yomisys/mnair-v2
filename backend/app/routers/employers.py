@@ -203,6 +203,9 @@ async def search_certificates(
     if filters:
         query = query.where(or_(*filters))
 
+    # Certificates awaiting payment are not credentials yet
+    query = query.where(Certificate.access_type != "pending_payment")
+
     # Execute query
     result = await db.execute(query)
     certificates = result.scalars().all()
@@ -245,7 +248,7 @@ async def verify_certificate_by_id(
     )
     certificate = result.scalar_one_or_none()
 
-    if not certificate:
+    if not certificate or not certificate.is_verified:
         raise HTTPException(
             status_code=status.HTTP_404_NOT_FOUND,
             detail="Certificate not found"
