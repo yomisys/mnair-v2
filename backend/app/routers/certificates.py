@@ -6,11 +6,14 @@ Handles certificate generation, retrieval, and verification
 from __future__ import annotations
 from typing import Optional
 
-from fastapi import APIRouter, Depends, HTTPException, status, Query
+from fastapi import APIRouter, Depends, HTTPException, Request, Response, status, Query
 from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession
 
+from app.config import Settings, get_settings
 from app.database import get_db
+from app.middleware.rate_limit import PUBLIC_RATE_LIMIT, limiter
+from app.services import certificate_files
 from app.models.user import User
 from app.models.certificate import Certificate
 from app.schemas.certificate import (
@@ -157,6 +160,37 @@ async def get_my_certificate_download_url(
         download_url=download_url,
         expires_in_seconds=7 * 24 * 60 * 60,  # 7 days
         pdf_filename=certificate.pdf_filename
+    )
+
+
+@router.get("/file/{certificate_id}")
+@limiter.limit(PUBLIC_RATE_LIMIT)
+async def download_certificate_by_link(
+    request: Request,
+    certificate_id: str,
+    t: str = Query(..., min_length=20, max_length=2000),
+    db: AsyncSession = Depends(get_db),
+    settings: Settings = Depends(get_settings),
+):
+    """
+    Certificate PDF behind a signed share link (made by an admin or the
+    sponsor). The token names one certificate and expires on its own.
+    """
+    if certificate_files.certificate_id_from_token(t) != certificate_id:
+        raise HTTPException(status_code=404, detail="This download link is invalid or has expired")
+    cert = (await db.execute(
+        select(Certificate).where(Certificate.certificate_id == certificate_id)
+    )).scalar_one_or_none()
+    if not cert:
+        raise HTTPException(status_code=404, detail="This download link is invalid or has expired")
+    pdf = await certificate_files.pdf_bytes(db, settings, cert)
+    return Response(
+        content=pdf,
+        media_type="application/pdf",
+        headers={
+            "Content-Disposition": f'inline; filename="{certificate_files.filename(cert)}"',
+            "Cache-Control": "private, no-store",
+        },
     )
 
 

@@ -27,6 +27,7 @@ import {
   SponsorStatement,
   SPONSOR_TOKEN_KEY,
 } from '../services/api'
+import { CertificateActions } from '../components/AdminKit'
 
 /**
  * Sponsor portal — what a church, company or state sees: how many of its
@@ -347,7 +348,15 @@ const SponsorPortal: React.FC = () => {
                   <TableCell>{x.name}</TableCell>
                   <TableCell>{x.language.toUpperCase()}</TableCell>
                   <TableCell align="right">{x.completed_days}/7</TableCell>
-                  <TableCell>{x.certified ? <Chip size="small" color="success" label={x.certificate_id} /> : '–'}</TableCell>
+                  <TableCell>
+                    {x.certified && x.certificate_id ? (
+                      <Stack direction="row" alignItems="center" spacing={0.5}>
+                        <Chip size="small" color="success" label={x.certificate_id} />
+                        <CertificateActions compact certificateId={x.certificate_id}
+                          fetchPdf={sponsorAPI.certificatePdf} makeLink={(cid, days) => sponsorAPI.certificateLink(cid, days)} />
+                      </Stack>
+                    ) : '–'}
+                  </TableCell>
                   <TableCell>{x.joined_at ? new Date(x.joined_at).toLocaleDateString('en-NG') : '–'}</TableCell>
                 </TableRow>
               ))}

@@ -17,6 +17,10 @@ import {
   CellTower as ChannelIcon,
   People as PeopleIcon,
   VolunteerActivism as SponsorsIcon,
+  ManageAccounts as LearnersIcon,
+  Payments as PaymentsIcon,
+  WorkspacePremium as CertificatesIcon,
+  History as AuditIcon,
 } from '@mui/icons-material'
 import { useAuth } from '../contexts/AuthContext'
 
@@ -25,14 +29,18 @@ const DRAWER_MINI = 64
 
 const NAV = [
   { label: 'Overview', path: '/dashboard', icon: <DashboardIcon /> },
-  { label: 'Users', path: '/dashboard/users', icon: <PeopleIcon /> },
+  { label: 'Learners', path: '/dashboard/learners', icon: <LearnersIcon /> },
+  { label: 'Sponsors', path: '/dashboard/sponsors', icon: <SponsorsIcon /> },
+  { label: 'Payments', path: '/dashboard/payments', icon: <PaymentsIcon /> },
+  { label: 'Certificates', path: '/dashboard/certificates', icon: <CertificatesIcon /> },
+  { label: 'Audit log', path: '/dashboard/audit', icon: <AuditIcon /> },
+  { label: 'Users report', path: '/dashboard/users', icon: <PeopleIcon /> },
   { label: 'Lessons', path: '/dashboard/lessons', icon: <LessonsIcon /> },
   { label: 'Languages', path: '/dashboard/languages', icon: <LanguageIcon /> },
   { label: 'Engagement', path: '/dashboard/engagement', icon: <EngagementIcon /> },
   { label: 'Quiz Analytics', path: '/dashboard/quiz', icon: <QuizIcon /> },
   { label: 'Channels', path: '/dashboard/channels', icon: <ChannelIcon /> },
   { label: 'Employers', path: '/dashboard/employers', icon: <EmployersIcon /> },
-  { label: 'Sponsors', path: '/dashboard/sponsors', icon: <SponsorsIcon /> },
 ]
 
 const AdminLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
@@ -78,7 +86,7 @@ const AdminLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
 
         <List dense sx={{ pt: 1 }}>
           {NAV.map(item => {
-            const active = location.pathname === item.path
+            const active = location.pathname === item.path || (item.path !== '/dashboard' && location.pathname.startsWith(item.path + '/'))
             return (
               <Tooltip key={item.path} title={open ? '' : item.label} placement="right">
                 <ListItemButton

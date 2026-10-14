@@ -13,6 +13,7 @@ from app.models.analytics import Analytics
 from app.models.reminder_log import ReminderLog
 from app.models.push_subscription import PushSubscription
 from app.models.sponsor import Organization, SponsorCode, SponsorCharge, Payment
+from app.models.audit import AdminAuditLog
 
 __all__ = [
     "User",
@@ -29,4 +30,5 @@ __all__ = [
     "SponsorCode",
     "SponsorCharge",
     "Payment",
+    "AdminAuditLog",
 ]

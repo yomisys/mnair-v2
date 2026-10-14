@@ -34,6 +34,7 @@ import {
 } from 'chart.js'
 import { Line, Bar, Doughnut } from 'react-chartjs-2'
 import { analyticsAPI } from '../services/api'
+import RevenueOverview from '../components/RevenueOverview'
 import { format } from 'date-fns'
 
 ChartJS.register(
@@ -324,6 +325,8 @@ const Dashboard: React.FC = () => {
       <Typography variant="body2" color="text.secondary" sx={{ mb: 4 }}>
         Real-time analytics for the MNAIR platform
       </Typography>
+
+      <RevenueOverview />
 
       {/* Stat cards */}
       <Grid container spacing={3} sx={{ mb: 4 }}>

@@ -11,7 +11,7 @@ import io
 from datetime import datetime, timedelta
 from typing import List, Optional
 
-from fastapi import APIRouter, Depends, File, HTTPException, Query, Request, UploadFile, status
+from fastapi import APIRouter, Depends, File, HTTPException, Query, Request, Response, UploadFile, status
 from fastapi.responses import StreamingResponse
 from sqlalchemy import select
 from sqlalchemy.exc import IntegrityError
@@ -20,8 +20,10 @@ from sqlalchemy.ext.asyncio import AsyncSession
 from app.config import Settings, get_settings
 from app.database import get_db
 from app.middleware.rate_limit import AUTH_RATE_LIMIT, PUBLIC_RATE_LIMIT, STRICT_RATE_LIMIT, limiter
-from app.models.sponsor import Organization, Payment, PaymentPurpose, SponsorCode
+from app.models.certificate import Certificate
+from app.models.sponsor import CertificateAccess, Organization, Payment, PaymentPurpose, SponsorCode
 from app.models.user import User
+from app.schemas.admin import CertificateLinkRequest
 from app.schemas.sponsor import (
     AdminPaymentLinkRequest,
     CheckoutOut,
@@ -34,7 +36,7 @@ from app.schemas.sponsor import (
     SponsorLogin,
     SponsorPayRequest,
 )
-from app.services import sponsorship
+from app.services import audit, certificate_files, sponsorship
 from app.services.payments import record_manual_payment, start_sponsor_payment
 from app.services.paystack import PaystackError
 from app.utils.auth import (
@@ -128,6 +130,44 @@ async def _checkout(db, settings, org, purpose: str, amount_kobo: Optional[int])
         authorization_url=payment.authorization_url,
         amount_kobo=payment.amount_kobo,
         purpose=payment.purpose,
+    )
+
+
+def _payment_row(p: Payment) -> dict:
+    return {
+        "reference": p.reference,
+        "purpose": p.purpose,
+        "status": p.status,
+        "amount_kobo": p.amount_kobo,
+        "channel": p.channel,
+        "note": p.note,
+        "paid_at": p.paid_at.isoformat() if p.paid_at else None,
+        "created_at": p.created_at.isoformat() if p.created_at else None,
+    }
+
+
+async def _sponsored_cert(db: AsyncSession, org: Organization, certificate_id: str) -> Certificate:
+    """A certificate this sponsor paid for, or 404 (never reveals others)."""
+    cert = (await db.execute(
+        select(Certificate).where(
+            Certificate.certificate_id == certificate_id,
+            Certificate.organization_id == org.id,
+            Certificate.access_type == CertificateAccess.SPONSORED.value,
+        )
+    )).scalar_one_or_none()
+    if not cert:
+        raise HTTPException(status_code=404, detail="Certificate not found")
+    return cert
+
+
+def _pdf_response(cert: Certificate, pdf: bytes, disposition: str = "attachment") -> Response:
+    return Response(
+        content=pdf,
+        media_type="application/pdf",
+        headers={
+            "Content-Disposition": f'{disposition}; filename="{certificate_files.filename(cert)}"',
+            "Cache-Control": "private, no-store",
+        },
     )
 
 
@@ -248,6 +288,35 @@ async def my_statement(
     return await sponsorship.monthly_statement(db, org, y, m)
 
 
+@portal_router.get("/certificates/{certificate_id}/pdf")
+async def my_certificate_pdf(
+    certificate_id: str,
+    org: Organization = Depends(get_current_sponsor),
+    db: AsyncSession = Depends(get_db),
+    settings: Settings = Depends(get_settings),
+):
+    """PDF of a certificate this sponsor paid for."""
+    cert = await _sponsored_cert(db, org, certificate_id)
+    return _pdf_response(cert, await certificate_files.pdf_bytes(db, settings, cert))
+
+
+@portal_router.post("/certificates/{certificate_id}/link")
+async def my_certificate_link(
+    certificate_id: str,
+    body: CertificateLinkRequest,
+    org: Organization = Depends(get_current_sponsor),
+    db: AsyncSession = Depends(get_db),
+):
+    """Shareable download link (no login needed) for a sponsored certificate."""
+    cert = await _sponsored_cert(db, org, certificate_id)
+    token = certificate_files.make_link_token(cert.certificate_id, body.days)
+    return {
+        "certificate_id": cert.certificate_id,
+        "path": certificate_files.link_path(cert.certificate_id, token),
+        "expires_at": (datetime.utcnow() + timedelta(days=body.days)).isoformat(),
+    }
+
+
 @portal_router.post("/pay", response_model=CheckoutOut)
 @limiter.limit(STRICT_RATE_LIMIT)
 async def my_pay(
@@ -274,7 +343,8 @@ async def list_sponsors(_: User = Depends(get_current_admin_user), db: AsyncSess
 @admin_router.post("", status_code=status.HTTP_201_CREATED)
 async def create_sponsor(
     body: OrganizationCreate,
-    _: User = Depends(get_current_admin_user),
+    request: Request,
+    admin: User = Depends(get_current_admin_user),
     db: AsyncSession = Depends(get_db),
     settings: Settings = Depends(get_settings),
 ):
@@ -298,6 +368,15 @@ async def create_sponsor(
     db.add(org)
     await db.flush()
     code = await _new_code(db, org, CodeCreate(code=body.first_code, label="Main code"))
+    audit.record(
+        db, admin, "sponsor.create", f"Created sponsor {org.name} ({org.package}) with code {code.code}",
+        target_type="sponsor", target_id=org.id,
+        details={
+            "package": org.package, "price_per_certificate_kobo": org.price_per_certificate_kobo,
+            "deposit_kobo": org.deposit_kobo, "learner_cap": org.learner_cap, "portal_login": bool(org.portal_email),
+        },
+        request=request,
+    )
     try:
         await db.commit()
     except IntegrityError:
@@ -312,10 +391,17 @@ async def create_sponsor(
 async def update_sponsor(
     org_id: int,
     body: OrganizationUpdate,
-    _: User = Depends(get_current_admin_user),
+    request: Request,
+    admin: User = Depends(get_current_admin_user),
     db: AsyncSession = Depends(get_db),
 ):
     org = await _get_org(db, org_id)
+    before = {
+        k: getattr(org, k) for k in (
+            "name", "package", "contact_email", "contact_name", "contact_phone", "price_per_certificate_kobo",
+            "deposit_kobo", "learner_cap", "is_active", "portal_email", "notes",
+        )
+    }
     data = body.model_dump(exclude_unset=True)
     password = data.pop("portal_password", None)
     if data.pop("clear_learner_cap", False):
@@ -336,6 +422,21 @@ async def update_sponsor(
         org.hashed_password = get_password_hash(password)
     if org.hashed_password and not org.portal_email:
         raise HTTPException(status_code=422, detail="Set portal_email together with the password")
+    changes = {
+        k: {"from": v, "to": getattr(org, k)} for k, v in before.items() if getattr(org, k) != v
+    }
+    if password:
+        changes["portal_password"] = "(changed)"
+    if changes:
+        action = "sponsor.update"
+        if set(changes) == {"is_active"}:
+            action = "sponsor.activate" if org.is_active else "sponsor.deactivate"
+        elif set(changes) <= {"portal_password", "portal_email"}:
+            action = "sponsor.portal_login"
+        audit.record(
+            db, admin, action, f"{org.name}: changed {', '.join(sorted(changes))}",
+            target_type="sponsor", target_id=org.id, details=changes, request=request,
+        )
     await db.commit()
     return {"id": org.id, "updated": sorted(list(data.keys()) + (["portal_password"] if password else []))}
 
@@ -358,12 +459,19 @@ async def list_codes(
 async def create_code(
     org_id: int,
     body: CodeCreate,
-    _: User = Depends(get_current_admin_user),
+    request: Request,
+    admin: User = Depends(get_current_admin_user),
     db: AsyncSession = Depends(get_db),
     settings: Settings = Depends(get_settings),
 ):
     org = await _get_org(db, org_id)
     code = await _new_code(db, org, body)
+    audit.record(
+        db, admin, "code.create", f"{org.name}: new code {code.code}" + (f" ({code.label})" if code.label else ""),
+        target_type="sponsor", target_id=org.id,
+        details={"code": code.code, "label": code.label, "max_enrolments": code.max_enrolments, "expires_at": code.expires_at},
+        request=request,
+    )
     try:
         await db.commit()
     except IntegrityError:
@@ -377,15 +485,25 @@ async def create_code(
 async def update_code(
     code_id: int,
     body: CodeUpdate,
-    _: User = Depends(get_current_admin_user),
+    request: Request,
+    admin: User = Depends(get_current_admin_user),
     db: AsyncSession = Depends(get_db),
     settings: Settings = Depends(get_settings),
 ):
     code = (await db.execute(select(SponsorCode).where(SponsorCode.id == code_id))).scalar_one_or_none()
     if not code:
         raise HTTPException(status_code=404, detail="Code not found")
+    changes = {}
     for key, value in body.model_dump(exclude_unset=True).items():
+        if getattr(code, key) != value:
+            changes[key] = {"from": getattr(code, key), "to": value}
         setattr(code, key, value)
+    if changes:
+        audit.record(
+            db, admin, "code.update", f"Code {code.code}: changed {', '.join(sorted(changes))}",
+            target_type="sponsor", target_id=code.organization_id, details={"code": code.code, **changes},
+            request=request,
+        )
     await db.commit()
     await db.refresh(code)
     return _code_out(code, settings)
@@ -394,8 +512,9 @@ async def update_code(
 @admin_router.post("/{org_id}/logo")
 async def upload_logo(
     org_id: int,
+    request: Request,
     file: UploadFile = File(...),
-    _: User = Depends(get_current_admin_user),
+    admin: User = Depends(get_current_admin_user),
     db: AsyncSession = Depends(get_db),
     settings: Settings = Depends(get_settings),
 ):
@@ -429,6 +548,10 @@ async def upload_logo(
     except Exception:
         raise HTTPException(status_code=503, detail="File storage unavailable — try again")
     org.logo_object = object_name
+    audit.record(
+        db, admin, "sponsor.logo", f"{org.name}: uploaded a new logo", target_type="sponsor", target_id=org.id,
+        request=request,
+    )
     await db.commit()
     return {"id": org.id, "logo_object": object_name}
 
@@ -448,7 +571,56 @@ async def sponsor_learners_admin(
     _: User = Depends(get_current_admin_user),
     db: AsyncSession = Depends(get_db),
 ):
-    return await sponsorship.learner_list(db, await _get_org(db, org_id), offset, limit)
+    return await sponsorship.learner_list(db, await _get_org(db, org_id), offset, limit, admin_view=True)
+
+
+@admin_router.get("/{org_id}/learners.csv")
+async def sponsor_learners_csv_admin(
+    org_id: int, _: User = Depends(get_current_admin_user), db: AsyncSession = Depends(get_db)
+):
+    data = await sponsorship.learner_list(db, await _get_org(db, org_id), 0, 100_000)
+    return _learners_csv(data["items"])
+
+
+@admin_router.get("/{org_id}/payments")
+async def sponsor_payments_admin(
+    org_id: int, _: User = Depends(get_current_admin_user), db: AsyncSession = Depends(get_db)
+):
+    await _get_org(db, org_id)
+    rows = (await db.execute(
+        select(Payment).where(Payment.organization_id == org_id).order_by(Payment.created_at.desc(), Payment.id.desc())
+    )).scalars().all()
+    return [_payment_row(p) for p in rows]
+
+
+@admin_router.get("/{org_id}")
+async def sponsor_detail_admin(
+    org_id: int,
+    _: User = Depends(get_current_admin_user),
+    db: AsyncSession = Depends(get_db),
+    settings: Settings = Depends(get_settings),
+):
+    """Everything the sponsor page needs in one call: profile, account,
+    progress, codes with links."""
+    org = await _get_org(db, org_id)
+    data = await sponsorship.dashboard(db, org)
+    codes = (await db.execute(
+        select(SponsorCode).where(SponsorCode.organization_id == org.id).order_by(SponsorCode.created_at)
+    )).scalars().all()
+    enrolled = {c["code"]: c["enrolled"] for c in data["codes"]}
+    data["organization"].update({
+        "is_active": org.is_active,
+        "contact_name": org.contact_name,
+        "contact_email": org.contact_email,
+        "contact_phone": org.contact_phone,
+        "portal_email": org.portal_email,
+        "has_portal_password": bool(org.hashed_password),
+        "notes": org.notes,
+        "created_at": org.created_at.isoformat() if org.created_at else None,
+    })
+    data["codes"] = [{**_code_out(c, settings).model_dump(mode="json"), "enrolled": enrolled.get(c.code, 0)} for c in codes]
+    data["payments_enabled"] = settings.payments_configured
+    return data
 
 
 @admin_router.get("/{org_id}/statement")
@@ -467,22 +639,37 @@ async def sponsor_statement_admin(
 async def sponsor_payment_link(
     org_id: int,
     body: AdminPaymentLinkRequest,
-    _: User = Depends(get_current_admin_user),
+    request: Request,
+    admin: User = Depends(get_current_admin_user),
     db: AsyncSession = Depends(get_db),
     settings: Settings = Depends(get_settings),
 ):
     """A Paystack link to email to the sponsor (deposit or balance)."""
-    return await _checkout(db, settings, await _get_org(db, org_id), body.purpose, body.amount_kobo)
+    org = await _get_org(db, org_id)
+    # Added before _checkout, whose commit then saves it with the payment row
+    audit.record(
+        db, admin, "payment.link", f"{org.name}: Paystack {body.purpose} link",
+        target_type="sponsor", target_id=org.id, details={"purpose": body.purpose, "amount_kobo": body.amount_kobo},
+        request=request,
+    )
+    return await _checkout(db, settings, org, body.purpose, body.amount_kobo)
 
 
 @admin_router.post("/{org_id}/manual-payment", status_code=status.HTTP_201_CREATED)
 async def sponsor_manual_payment(
     org_id: int,
     body: ManualPaymentRequest,
-    _: User = Depends(get_current_admin_user),
+    request: Request,
+    admin: User = Depends(get_current_admin_user),
     db: AsyncSession = Depends(get_db),
 ):
     org = await _get_org(db, org_id)
+    # record_manual_payment commits, saving this row with the payment
+    audit.record(
+        db, admin, "payment.manual", f"{org.name}: recorded bank transfer of NGN {body.amount_kobo / 100:,.2f}",
+        target_type="sponsor", target_id=org.id, details={"amount_kobo": body.amount_kobo, "note": body.note},
+        request=request,
+    )
     payment = await record_manual_payment(db, org, body.amount_kobo, body.note, body.paid_at)
     return {"reference": payment.reference, "amount_kobo": payment.amount_kobo, "account": await sponsorship.account_summary(db, org)}
 

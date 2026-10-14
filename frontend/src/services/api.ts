@@ -1,6 +1,6 @@
 import axios, { AxiosInstance } from 'axios'
 
-const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:8000'
+export const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:8000'
 
 // Create axios instance
 const apiClient: AxiosInstance = axios.create({
@@ -321,6 +321,136 @@ export const sponsorAPI = {
     (await sponsorClient.get('/api/v1/sponsors/me/statement', { params: { year, month } })).data,
   pay: async (purpose: 'deposit' | 'balance'): Promise<{ authorization_url: string; amount_kobo: number }> =>
     (await sponsorClient.post('/api/v1/sponsors/me/pay', { purpose })).data,
+  certificatePdf: async (certificateId: string): Promise<Blob> =>
+    (await sponsorClient.get(`/api/v1/sponsors/me/certificates/${encodeURIComponent(certificateId)}/pdf`, { responseType: 'blob' })).data,
+  certificateLink: async (certificateId: string, days = 7): Promise<ShareLink> =>
+    withFullUrl((await sponsorClient.post(`/api/v1/sponsors/me/certificates/${encodeURIComponent(certificateId)}/link`, { days })).data),
+}
+
+// ---------------------------------------------------------------------------
+// Admin back office
+// ---------------------------------------------------------------------------
+
+export interface ShareLink { certificate_id: string; path: string; expires_at: string; url: string }
+
+const withFullUrl = (r: Omit<ShareLink, 'url'>): ShareLink => ({ ...r, url: `${API_BASE_URL}${r.path}` })
+
+export const saveBlob = (blob: Blob, filename: string) => {
+  const url = URL.createObjectURL(blob)
+  const a = document.createElement('a')
+  a.href = url
+  a.download = filename
+  document.body.appendChild(a)
+  a.click()
+  a.remove()
+  setTimeout(() => URL.revokeObjectURL(url), 1000)
+}
+
+export interface Paged<T> { total: number; offset: number; limit: number; items: T[] }
+
+export interface AdminOverview {
+  learners: {
+    total: number; active_last_7_days: number; new_last_7_days: number; inactive_accounts: number
+    sponsored: number; completed_course: number; certificates_issued: number
+  }
+  sponsors: { total: number; active: number; owing: number }
+  revenue: {
+    charged_kobo: number; sponsor_collected_kobo: number; learner_certificate_collected_kobo: number
+    total_collected_kobo: number; outstanding_kobo: number; sponsor_credit_kobo: number
+    deposits_outstanding_kobo: number; collected_last_30_days_kobo: number; pending_payments: number
+  }
+  trend: { month: string; charged_kobo: number; collected_kobo: number; certificates: number }[]
+}
+
+export interface AdminLearnerRow {
+  id: number; name: string; name_confirmed: boolean; phone_number: string; email: string | null
+  role: string; language: string; current_day: number; completed_days: number; is_active: boolean
+  preferred_channel: string | null; sponsor: { id: number; name: string; code: string } | null
+  certificate_id: string | null; certificate_access: string | null
+  created_at: string | null; last_active_at: string | null
+}
+
+export interface AdminCertificate {
+  certificate_id: string; learner_name: string; language: string; access_type: string; is_verified: boolean
+  sponsor_name: string | null; organization_id: number | null; average_quiz_score: number | null
+  days_to_complete: number | null; issued_at: string | null; user_id?: number
+}
+
+export interface AdminPayment {
+  reference: string; purpose: string; status: string; amount_kobo: number
+  organization_id: number | null; organization_name: string | null; user_id: number | null; user_name: string | null
+  email: string; channel: string | null; note: string | null; gateway_response: string | null
+  paid_at: string | null; created_at: string | null
+}
+
+export interface AuditEntry {
+  id: number; admin_user_id: number | null; admin: string; action: string; target_type: string | null
+  target_id: string | null; summary: string; details: Record<string, unknown> | null; ip_address: string | null
+  created_at: string | null
+}
+
+export interface AdminLearnerDetail extends Omit<AdminLearnerRow, 'sponsor' | 'certificate_id' | 'certificate_access'> {
+  has_pin: boolean; has_password: boolean; telegram_linked: boolean; network_operator: string | null
+  consent_given: boolean; consent_date: string | null
+  sponsor: { id: number; name: string; code: string; sponsored_at: string | null } | null
+  progress: { lessons_completed: number; quiz_attempts: number; quiz_correct: number; quiz_questions: number; quiz_accuracy: number | null }
+  certificates: AdminCertificate[]
+  payments: AdminPayment[]
+  history: AuditEntry[]
+}
+
+type Params = Record<string, string | number | boolean | undefined | null>
+const clean = (p: Params) => Object.fromEntries(Object.entries(p).filter(([, v]) => v !== undefined && v !== null && v !== ''))
+
+export const adminAPI = {
+  overview: async (): Promise<AdminOverview> => (await apiClient.get('/api/v1/admin/overview')).data,
+
+  learners: async (p: Params): Promise<Paged<AdminLearnerRow>> =>
+    (await apiClient.get('/api/v1/admin/learners', { params: clean(p) })).data,
+  learner: async (id: number): Promise<AdminLearnerDetail> => (await apiClient.get(`/api/v1/admin/learners/${id}`)).data,
+  updateLearner: async (id: number, body: Record<string, unknown>) =>
+    (await apiClient.patch(`/api/v1/admin/learners/${id}`, body)).data,
+  resetPin: async (id: number) => (await apiClient.post(`/api/v1/admin/learners/${id}/reset-pin`)).data,
+  removeSponsor: async (id: number) => (await apiClient.post(`/api/v1/admin/learners/${id}/remove-sponsor`)).data,
+
+  certificates: async (p: Params): Promise<Paged<AdminCertificate>> =>
+    (await apiClient.get('/api/v1/admin/certificates', { params: clean(p) })).data,
+  certificatePdf: async (certificateId: string): Promise<Blob> =>
+    (await apiClient.get(`/api/v1/admin/certificates/${encodeURIComponent(certificateId)}/pdf`, { responseType: 'blob', timeout: 60000 })).data,
+  certificateLink: async (certificateId: string, days = 7, allowUnpaid = false): Promise<ShareLink> =>
+    withFullUrl((await apiClient.post(`/api/v1/admin/certificates/${encodeURIComponent(certificateId)}/link`, { days, allow_unpaid: allowUnpaid })).data),
+
+  payments: async (p: Params): Promise<Paged<AdminPayment> & { totals_kobo: Record<string, number> }> =>
+    (await apiClient.get('/api/v1/admin/payments', { params: clean(p) })).data,
+  voidPayment: async (reference: string, reason: string) =>
+    (await apiClient.post(`/api/v1/admin/payments/${encodeURIComponent(reference)}/void`, { reason })).data,
+
+  audit: async (p: Params): Promise<Paged<AuditEntry> & { actions: string[] }> =>
+    (await apiClient.get('/api/v1/admin/audit', { params: clean(p) })).data,
+
+  // sponsors
+  sponsors: async () => (await apiClient.get('/api/v1/admin/sponsors')).data,
+  sponsor: async (id: number) => (await apiClient.get(`/api/v1/admin/sponsors/${id}`)).data,
+  createSponsor: async (body: Record<string, unknown>) => (await apiClient.post('/api/v1/admin/sponsors', body)).data,
+  updateSponsor: async (id: number, body: Record<string, unknown>) => (await apiClient.patch(`/api/v1/admin/sponsors/${id}`, body)).data,
+  sponsorLearners: async (id: number, offset = 0, limit = 25) =>
+    (await apiClient.get(`/api/v1/admin/sponsors/${id}/learners`, { params: { offset, limit } })).data,
+  sponsorLearnersCsv: async (id: number): Promise<Blob> =>
+    (await apiClient.get(`/api/v1/admin/sponsors/${id}/learners.csv`, { responseType: 'blob' })).data,
+  sponsorPayments: async (id: number): Promise<AdminPayment[]> => (await apiClient.get(`/api/v1/admin/sponsors/${id}/payments`)).data,
+  sponsorStatement: async (id: number, year: number, month: number): Promise<SponsorStatement> =>
+    (await apiClient.get(`/api/v1/admin/sponsors/${id}/statement`, { params: { year, month } })).data,
+  createCode: async (id: number, body: Record<string, unknown>) => (await apiClient.post(`/api/v1/admin/sponsors/${id}/codes`, body)).data,
+  updateCode: async (codeId: number, body: Record<string, unknown>) => (await apiClient.patch(`/api/v1/admin/sponsors/codes/${codeId}`, body)).data,
+  uploadLogo: async (id: number, file: File) => {
+    const data = new FormData()
+    data.append('file', file)
+    return (await apiClient.post(`/api/v1/admin/sponsors/${id}/logo`, data, { headers: { 'Content-Type': 'multipart/form-data' } })).data
+  },
+  paymentLink: async (id: number, purpose: 'deposit' | 'balance', amountKobo?: number) =>
+    (await apiClient.post(`/api/v1/admin/sponsors/${id}/payment-link`, { purpose, amount_kobo: amountKobo })).data,
+  manualPayment: async (id: number, amountKobo: number, note: string, paidAt?: string) =>
+    (await apiClient.post(`/api/v1/admin/sponsors/${id}/manual-payment`, { amount_kobo: amountKobo, note, paid_at: paidAt || undefined })).data,
 }
 
 export const formatNaira = (kobo: number): string =>

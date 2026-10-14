@@ -28,6 +28,7 @@ from app.channels.telegram import router as telegram_router
 from app.channels.web import router as learn_router
 from app.routers.payments import router as payments_router, WEBHOOK_PATH as PAYSTACK_WEBHOOK_PATH
 from app.routers.sponsors import public_router as sponsors_public_router, portal_router as sponsors_portal_router, admin_router as sponsors_admin_router
+from app.routers.admin import router as admin_router
 from app.middleware import limiter
 from app.middleware.logging import setup_logging
 
@@ -210,6 +211,7 @@ app.include_router(payments_router)
 app.include_router(sponsors_public_router)
 app.include_router(sponsors_portal_router)
 app.include_router(sponsors_admin_router)
+app.include_router(admin_router)
 
 
 # ── Routes ──

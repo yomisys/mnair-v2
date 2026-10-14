@@ -366,27 +366,37 @@ async def dashboard(db: AsyncSession, org: Organization) -> Dict[str, Any]:
     }
 
 
-async def learner_list(db: AsyncSession, org: Organization, offset: int = 0, limit: int = 50) -> Dict[str, Any]:
+async def learner_list(
+    db: AsyncSession, org: Organization, offset: int = 0, limit: int = 50, admin_view: bool = False
+) -> Dict[str, Any]:
+    """admin_view adds the learner id and any certificate (not only the
+    sponsored one) so the admin can open the learner record. The sponsor's
+    own view never carries ids or contacts."""
     total = await _enrolled_count_for_org(db, org.id)
     rows = (await db.execute(
         _learners_query(org.id).order_by(User.sponsored_at.desc(), User.id.desc()).offset(offset).limit(limit)
     )).all()
-    return {
-        "total": total,
-        "items": [
-            {
-                "name": u.name if u.name_confirmed else "Learner (name not set yet)",
-                "language": u.language.value if hasattr(u.language, "value") else str(u.language),
-                "current_day": u.current_day,
-                "completed_days": u.completed_days or 0,
-                "certified": bool(cert_id) and access == CertificateAccess.SPONSORED.value,
-                "certificate_id": cert_id if access == CertificateAccess.SPONSORED.value else None,
-                "joined_at": u.sponsored_at.isoformat() if u.sponsored_at else None,
-                "last_active_at": u.last_active_at.isoformat() if u.last_active_at else None,
-            }
-            for u, cert_id, access in rows
-        ],
-    }
+    items = []
+    for u, cert_id, access in rows:
+        item = {
+            "name": u.name if u.name_confirmed else "Learner (name not set yet)",
+            "language": u.language.value if hasattr(u.language, "value") else str(u.language),
+            "current_day": u.current_day,
+            "completed_days": u.completed_days or 0,
+            "certified": bool(cert_id) and access == CertificateAccess.SPONSORED.value,
+            "certificate_id": cert_id if access == CertificateAccess.SPONSORED.value else None,
+            "joined_at": u.sponsored_at.isoformat() if u.sponsored_at else None,
+            "last_active_at": u.last_active_at.isoformat() if u.last_active_at else None,
+        }
+        if admin_view:
+            item.update({
+                "user_id": u.id,
+                "is_active": u.is_active,
+                "any_certificate_id": cert_id,
+                "certificate_access": access,
+            })
+        items.append(item)
+    return {"total": total, "items": items}
 
 
 async def organization_list(db: AsyncSession) -> List[Dict[str, Any]]:

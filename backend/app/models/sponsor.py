@@ -58,6 +58,7 @@ class PaymentStatus(str, Enum):
     SUCCESS = "success"
     FAILED = "failed"
     ABANDONED = "abandoned"
+    VOIDED = "voided"                    # admin reversed a mis-recorded bank transfer
 
 
 class CertificateAccess(str, Enum):

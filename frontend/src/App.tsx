@@ -24,6 +24,12 @@ import ChannelsReport from './pages/ChannelsReport'
 import EmployersReport from './pages/EmployersReport'
 import UsersReport from './pages/UsersReport'
 import SponsorsAdmin from './pages/SponsorsAdmin'
+import SponsorDetail from './pages/SponsorDetail'
+import LearnersAdmin from './pages/LearnersAdmin'
+import LearnerDetail from './pages/LearnerDetail'
+import CertificatesAdmin from './pages/CertificatesAdmin'
+import PaymentsAdmin from './pages/PaymentsAdmin'
+import AuditLog from './pages/AuditLog'
 import SponsorPortal from './pages/SponsorPortal'
 import PaymentCallback from './pages/PaymentCallback'
 import AdminLayout from './components/AdminLayout'
@@ -234,6 +240,66 @@ const App: React.FC = () => {
               <ProtectedRoute>
                 <AdminLayout>
                   <SponsorsAdmin />
+                </AdminLayout>
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/dashboard/sponsors/:id"
+            element={
+              <ProtectedRoute>
+                <AdminLayout>
+                  <SponsorDetail />
+                </AdminLayout>
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/dashboard/learners"
+            element={
+              <ProtectedRoute>
+                <AdminLayout>
+                  <LearnersAdmin />
+                </AdminLayout>
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/dashboard/learners/:id"
+            element={
+              <ProtectedRoute>
+                <AdminLayout>
+                  <LearnerDetail />
+                </AdminLayout>
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/dashboard/certificates"
+            element={
+              <ProtectedRoute>
+                <AdminLayout>
+                  <CertificatesAdmin />
+                </AdminLayout>
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/dashboard/payments"
+            element={
+              <ProtectedRoute>
+                <AdminLayout>
+                  <PaymentsAdmin />
+                </AdminLayout>
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/dashboard/audit"
+            element={
+              <ProtectedRoute>
+                <AdminLayout>
+                  <AuditLog />
                 </AdminLayout>
               </ProtectedRoute>
             }
