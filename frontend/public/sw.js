@@ -5,7 +5,9 @@
  * tab if there is one, otherwise opens /learn.
  */
 
-const SHELL_CACHE = 'mnair-shell-v1'
+// v2 (Oct 2026): every cache made before the site compromise is dropped on
+// activate, and only clean same-origin pages are ever cached again.
+const SHELL_CACHE = 'mnair-shell-v2'
 const SHELL = ['/', '/learn', '/manifest.webmanifest']
 
 self.addEventListener('install', (event) => {
@@ -22,6 +24,12 @@ self.addEventListener('activate', (event) => {
   self.clients.claim()
 })
 
+// Only a plain 200 page from this site is worth keeping for offline use.
+// Redirects (above all to another site) and errors are never cached, so a
+// bad response can't be replayed later.
+const cacheable = (response) =>
+  response.ok && response.status === 200 && response.type === 'basic' && !response.redirected
+
 // Network-first for navigations (so deploys show up), cache fallback offline.
 self.addEventListener('fetch', (event) => {
   const { request } = event
@@ -29,8 +37,10 @@ self.addEventListener('fetch', (event) => {
   event.respondWith(
     fetch(request)
       .then((response) => {
-        const copy = response.clone()
-        caches.open(SHELL_CACHE).then((cache) => cache.put(request, copy)).catch(() => undefined)
+        if (cacheable(response)) {
+          const copy = response.clone()
+          caches.open(SHELL_CACHE).then((cache) => cache.put(request, copy)).catch(() => undefined)
+        }
         return response
       })
       .catch(() => caches.match(request).then((hit) => hit || caches.match('/learn')))
