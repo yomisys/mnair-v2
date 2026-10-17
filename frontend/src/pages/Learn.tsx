@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useRef, useState } from 'react'
+import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import {
   Alert,
@@ -20,6 +20,7 @@ import {
   Tooltip,
   Typography,
 } from '@mui/material'
+import { ThemeProvider, useTheme } from '@mui/material/styles'
 import {
   Send as SendIcon,
   MoreVert as MoreIcon,
@@ -35,7 +36,9 @@ import {
   LearnMessage,
   LearnProgress,
   LearnerSummary,
+  SponsorBrandBase,
 } from '../services/api'
+import { BrandMark, brandTheme, SponsorAdvertCard } from '../components/SponsorBrand'
 
 /**
  * Web learner app — the course as a chat, in the browser, with no messaging
@@ -152,15 +155,18 @@ const AuthPanel: React.FC<{
   const [busy, setBusy] = useState(false)
   // Sponsor code from a join link (/learn?code=GRACE-7K2Q) or typed in
   const [sponsorCode, setSponsorCode] = useState(() => new URLSearchParams(window.location.search).get('code')?.toUpperCase() ?? '')
-  const [sponsorName, setSponsorName] = useState<string | null>(null)
+  const [sponsor, setSponsor] = useState<SponsorBrandBase | null>(null)
+  const sponsorName = sponsor?.sponsor_name ?? null
+  const base = useTheme()
+  const sponsorTheme = useMemo(() => brandTheme(base, sponsor?.brand_color), [base, sponsor?.brand_color])
   const minPin = config?.pin_min_length ?? 4
 
   useEffect(() => {
     const code = sponsorCode.trim()
-    setSponsorName(null)
+    setSponsor(null)
     if (code.length < 3) return
     const t = window.setTimeout(() => {
-      learnAPI.lookupSponsor(code).then((r) => setSponsorName(r.sponsor_name)).catch(() => setSponsorName(null))
+      learnAPI.brand(code).then(setSponsor).catch(() => setSponsor(null))
     }, 400)
     return () => window.clearTimeout(t)
   }, [sponsorCode])
@@ -200,10 +206,20 @@ const AuthPanel: React.FC<{
           Lessons arrive here as a chat. Your phone number and a PIN are all you need to pick up where you left off on any device.
         </Typography>
 
-        {sponsorName && tab === 'enrol' && (
-          <Alert severity="success" sx={{ mb: 2 }}>
-            Your course and certificate are sponsored by <strong>{sponsorName}</strong>.
-          </Alert>
+        {sponsor && tab === 'enrol' && (
+          <ThemeProvider theme={sponsorTheme}>
+            <Stack
+              direction="row"
+              spacing={1.5}
+              alignItems="center"
+              sx={{ mb: 2, p: 1.5, borderRadius: 2, bgcolor: 'primary.main', color: 'primary.contrastText' }}
+            >
+              <BrandMark name={sponsor.sponsor_name} logoUrl={sponsor.logo_url} size={36} light />
+              <Typography variant="body2">
+                Your course and certificate are sponsored by <strong>{sponsor.sponsor_name}</strong>.
+              </Typography>
+            </Stack>
+          </ThemeProvider>
         )}
 
         <Tabs value={tab} onChange={(_, v) => { setTab(v); setError(null) }} variant="fullWidth" sx={{ mb: 2 }}>
@@ -287,6 +303,13 @@ const AuthPanel: React.FC<{
           No internet? Dial <strong>{config?.ussd_code ?? '*384*8080#'}</strong>
         </Typography>
       </Paper>
+      {sponsor?.advert && tab === 'enrol' && (
+        <ThemeProvider theme={sponsorTheme}>
+          <Box sx={{ mt: 2 }}>
+            <SponsorAdvertCard advert={sponsor.advert} sponsorName={sponsor.sponsor_name} variant="compact" />
+          </Box>
+        </ThemeProvider>
+      )}
     </Container>
   )
 }
@@ -310,7 +333,27 @@ const Learn: React.FC = () => {
   const [pushOn, setPushOn] = useState(false)
   const [pushSupported, setPushSupported] = useState(false)
   const [menuAnchor, setMenuAnchor] = useState<null | HTMLElement>(null)
+  const [sponsor, setSponsor] = useState<SponsorBrandBase | null>(null)
+  const [adHidden, setAdHidden] = useState(() => {
+    try { return sessionStorage.getItem('learn_ad_hidden') === '1' } catch { return false }
+  })
+  const base = useTheme()
+  const sponsorTheme = useMemo(() => brandTheme(base, sponsor?.brand_color), [base, sponsor?.brand_color])
   const bottomRef = useRef<HTMLDivElement | null>(null)
+
+  const loadSponsor = useCallback(() => {
+    learnAPI.mySponsor().then((r) => setSponsor(r.sponsor)).catch(() => setSponsor(null))
+  }, [])
+
+  useEffect(() => {
+    if (authed) loadSponsor()
+    else setSponsor(null)
+  }, [authed, loadSponsor])
+
+  const hideAd = () => {
+    setAdHidden(true)
+    try { sessionStorage.setItem('learn_ad_hidden', '1') } catch { /* private mode */ }
+  }
 
   // Service worker (offline shell + push handler). Registration is best-effort.
   useEffect(() => {
@@ -430,7 +473,7 @@ const Learn: React.FC = () => {
   const enterSponsorCode = () => {
     setMenuAnchor(null)
     const code = window.prompt('Enter the sponsor code you were given:')?.trim()
-    if (code) sendTurn({ text: `CODE ${code}` }, `Sponsor code ${code.toUpperCase()}`)
+    if (code) sendTurn({ text: `CODE ${code}` }, `Sponsor code ${code.toUpperCase()}`).then(loadSponsor)
   }
 
   const signOut = () => {
@@ -521,6 +564,13 @@ const Learn: React.FC = () => {
       {/* thread */}
       <Box sx={{ flex: 1, overflowY: 'auto', px: 2, py: 2 }}>
         <Container maxWidth="sm" disableGutters>
+          {sponsor?.advert && !adHidden && (
+            <ThemeProvider theme={sponsorTheme}>
+              <Box sx={{ mb: 2 }}>
+                <SponsorAdvertCard advert={sponsor.advert} sponsorName={sponsor.sponsor_name} variant="compact" onDismiss={hideAd} />
+              </Box>
+            </ThemeProvider>
+          )}
           {messages.map((m, i) => (
             <Bubble key={i} message={m} isLast={i === lastBotIndex} onButton={onButton} busy={busy} />
           ))}

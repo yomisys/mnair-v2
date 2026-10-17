@@ -42,7 +42,7 @@ from app.schemas.learn import (
     TurnResponse,
 )
 from app.services.lesson_state import LessonStateManager
-from app.services.sponsorship import SponsorCodeError, check_code
+from app.services.sponsorship import SponsorCodeError, check_code, get_sponsor_for_user, public_brand
 from app.utils.auth import create_access_token, get_current_user, get_password_hash, verify_password
 
 logger = logging.getLogger(__name__)
@@ -235,6 +235,13 @@ async def get_state(
         push_subscribed=subs is not None,
     )
 
+
+
+@router.get("/sponsor")
+async def my_sponsor(user: User = Depends(_learner_only), db: AsyncSession = Depends(get_db)):
+    """The learner's sponsor branding and advert, or {"sponsor": null}."""
+    org = await get_sponsor_for_user(db, user)
+    return {"sponsor": public_brand(org) if org and org.is_active else None}
 
 @router.post("/message", response_model=TurnResponse)
 @limiter.limit(DEFAULT_RATE_LIMIT)

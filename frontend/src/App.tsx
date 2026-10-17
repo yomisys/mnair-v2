@@ -31,6 +31,7 @@ import CertificatesAdmin from './pages/CertificatesAdmin'
 import PaymentsAdmin from './pages/PaymentsAdmin'
 import AuditLog from './pages/AuditLog'
 import SponsorPortal from './pages/SponsorPortal'
+import SponsorLanding from './pages/SponsorLanding'
 import PaymentCallback from './pages/PaymentCallback'
 import AdminLayout from './components/AdminLayout'
 
@@ -133,12 +134,14 @@ const App: React.FC = () => {
   const isPublicRoute = ['/', '/verify'].includes(location.pathname)
   const isLearnRoute = location.pathname === '/learn'
   const isAdminRoute = location.pathname.startsWith('/dashboard')
+  // Sponsor pages are white-labelled: they draw their own branded header
+  const isWhiteLabel = location.pathname.startsWith('/s/') || location.pathname === '/sponsor'
 
   return (
     <Box sx={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
       {/* Public nav only for non-admin routes */}
       {!isAdminRoute && isPublicRoute && <PublicNavBar />}
-      {!isAdminRoute && !isPublicRoute && location.pathname !== '/login' && <PublicNavBar />}
+      {!isAdminRoute && !isPublicRoute && !isWhiteLabel && location.pathname !== '/login' && <PublicNavBar />}
       {/* /learn keeps the nav (64px) but no footer so the chat fills the phone screen */}
 
       <Box component="main" sx={{ flexGrow: 1, bgcolor: isAdminRoute ? '#f0f2f5' : 'background.default' }}>
@@ -148,6 +151,7 @@ const App: React.FC = () => {
           <Route path="/verify" element={<VerifyCertificate />} />
           <Route path="/learn" element={<Learn />} />
           <Route path="/sponsor" element={<SponsorPortal />} />
+          <Route path="/s/:code" element={<SponsorLanding />} />
           <Route path="/payment/callback" element={<PaymentCallback />} />
 
           {/* Auth Routes */}

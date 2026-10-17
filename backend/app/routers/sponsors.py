@@ -26,6 +26,7 @@ from app.models.user import User
 from app.schemas.admin import CertificateLinkRequest
 from app.schemas.sponsor import (
     AdminPaymentLinkRequest,
+    BrandingUpdate,
     CheckoutOut,
     CodeCreate,
     CodeOut,
@@ -48,6 +49,7 @@ from app.utils.auth import (
 )
 
 LOGO_MAX_BYTES = 1024 * 1024
+AD_IMAGE_MAX_BYTES = 2 * 1024 * 1024
 LOGO_TYPES = {b"\x89PNG\r\n\x1a\n": ("png", "image/png"), b"\xff\xd8\xff": ("jpg", "image/jpeg")}
 
 public_router = APIRouter(prefix="/api/v1/sponsors", tags=["Sponsors"])
@@ -101,6 +103,56 @@ async def _new_code(db: AsyncSession, org: Organization, body: CodeCreate) -> Sp
     )
     db.add(code)
     return code
+
+
+async def _read_image(file: UploadFile, max_bytes: int, what: str):
+    """PNG or JPEG under max_bytes. Checked by magic bytes and by actually
+    decoding it, so a bad file fails here rather than on a certificate or a
+    learner's screen. Returns (bytes, ext, content_type)."""
+    content = await file.read(max_bytes + 1)
+    if len(content) > max_bytes:
+        raise HTTPException(status_code=413, detail=f"{what} must be {max_bytes // (1024 * 1024)} MB or smaller")
+    kind = next((v for sig, v in LOGO_TYPES.items() if content.startswith(sig)), None)
+    if not kind:
+        raise HTTPException(status_code=415, detail=f"{what} must be a PNG or JPEG image")
+    try:
+        from PIL import Image
+        with Image.open(io.BytesIO(content)) as img:
+            img.verify()
+    except Exception:
+        raise HTTPException(status_code=415, detail=f"{what} image could not be read")
+    return content, kind[0], kind[1]
+
+
+def _put_image(settings: Settings, folder: str, org: Organization, content: bytes, ext: str, content_type: str) -> str:
+    object_name = f"{folder}/{org.id}-{int(datetime.utcnow().timestamp())}.{ext}"
+    from minio import Minio
+    try:
+        client = Minio(
+            settings.MINIO_ENDPOINT,
+            access_key=settings.MINIO_ACCESS_KEY,
+            secret_key=settings.MINIO_SECRET_KEY,
+            secure=settings.MINIO_SECURE,
+        )
+        client.put_object(settings.MINIO_BUCKET, object_name, io.BytesIO(content), len(content), content_type=content_type)
+    except Exception:
+        raise HTTPException(status_code=503, detail="File storage unavailable — try again")
+    return object_name
+
+
+async def _live_code(db: AsyncSession, code: str):
+    """(SponsorCode, Organization) for a code learners can join with, or 404."""
+    value = sponsorship.normalize_code(code)
+    row = (await db.execute(
+        select(SponsorCode, Organization)
+        .join(Organization, Organization.id == SponsorCode.organization_id)
+        .where(SponsorCode.code == value)
+    )).first()
+    if not row or not row[0].is_active or not row[1].is_active:
+        raise HTTPException(status_code=404, detail="Sponsor code not found")
+    if row[0].expires_at and row[0].expires_at.replace(tzinfo=None) < datetime.utcnow():
+        raise HTTPException(status_code=404, detail="Sponsor code not found")
+    return row[0], row[1]
 
 
 def _month(year: Optional[int], month: Optional[int]):
@@ -202,18 +254,47 @@ def _learners_csv(items) -> StreamingResponse:
 async def lookup_code(request: Request, code: str, db: AsyncSession = Depends(get_db)):
     """Name the sponsor behind a code, so the join page can say 'Sponsored
     by Grace Chapel' before the learner enrols. Reveals nothing else."""
-    value = sponsorship.normalize_code(code)
-    row = (await db.execute(
-        select(SponsorCode, Organization)
-        .join(Organization, Organization.id == SponsorCode.organization_id)
-        .where(SponsorCode.code == value)
-    )).first()
-    if not row or not row[0].is_active or not row[1].is_active:
-        raise HTTPException(status_code=404, detail="Sponsor code not found")
-    code_row, org = row
-    if code_row.expires_at and code_row.expires_at.replace(tzinfo=None) < datetime.utcnow():
-        raise HTTPException(status_code=404, detail="Sponsor code not found")
+    code_row, org = await _live_code(db, code)
     return {"code": code_row.code, "sponsor_name": org.name}
+
+
+@public_router.get("/brand/{code}")
+@limiter.limit(PUBLIC_RATE_LIMIT)
+async def brand_for_code(
+    request: Request, code: str, db: AsyncSession = Depends(get_db), settings: Settings = Depends(get_settings)
+):
+    """The white-label landing page (/s/<code>): sponsor name, colours,
+    logo, welcome text, its advert, and the links to start learning."""
+    code_row, org = await _live_code(db, code)
+    links = _code_out(code_row, settings)
+    return {
+        "code": code_row.code,
+        "join_url": links.join_url,
+        "telegram_url": links.telegram_url,
+        **sponsorship.public_brand(org),
+    }
+
+
+@public_router.get("/assets/{org_id}/{kind}")
+async def brand_asset(
+    org_id: int, kind: str, db: AsyncSession = Depends(get_db), settings: Settings = Depends(get_settings)
+):
+    """A sponsor's logo or advert image. Public on purpose: both are shown
+    to learners and printed on certificates."""
+    if kind not in ("logo", "ad_image"):
+        raise HTTPException(status_code=404, detail="Not found")
+    org = (await db.execute(select(Organization).where(Organization.id == org_id))).scalar_one_or_none()
+    name = (org.logo_object if kind == "logo" else org.ad_image_object) if org and org.is_active else None
+    if not name:
+        raise HTTPException(status_code=404, detail="Not found")
+    content = certificate_files._read_object(certificate_files._storage_client(settings), settings.MINIO_BUCKET, name)
+    if not content:
+        raise HTTPException(status_code=404, detail="Not found")
+    return Response(
+        content=content,
+        media_type="image/png" if name.endswith(".png") else "image/jpeg",
+        headers={"Cache-Control": "public, max-age=86400", "X-Content-Type-Options": "nosniff"},
+    )
 
 
 @public_router.post("/login")
@@ -331,6 +412,58 @@ async def my_pay(
     return await _checkout(db, settings, org, body.purpose, None)
 
 
+@portal_router.get("/branding")
+async def my_branding(org: Organization = Depends(get_current_sponsor)):
+    return sponsorship.branding(org)
+
+
+@portal_router.patch("/branding")
+async def update_my_branding(
+    body: BrandingUpdate,
+    org: Organization = Depends(get_current_sponsor),
+    db: AsyncSession = Depends(get_db),
+):
+    """The sponsor's landing page and advert. ad_suspended (the admin's
+    override) is not in BrandingUpdate, so a sponsor cannot lift it."""
+    for key, value in body.model_dump(exclude_unset=True).items():
+        if key == "ad_enabled" and value is None:
+            continue
+        setattr(org, key, value)
+    await db.commit()
+    await db.refresh(org)
+    return sponsorship.branding(org)
+
+
+@portal_router.post("/branding/{kind}")
+async def upload_my_brand_image(
+    kind: str,
+    file: UploadFile = File(...),
+    org: Organization = Depends(get_current_sponsor),
+    db: AsyncSession = Depends(get_db),
+    settings: Settings = Depends(get_settings),
+):
+    """kind = logo (also printed on certificates, 1 MB) or ad_image (2 MB)."""
+    if kind == "logo":
+        content, ext, content_type = await _read_image(file, LOGO_MAX_BYTES, "Logo")
+        org.logo_object = _put_image(settings, "sponsor-logos", org, content, ext, content_type)
+    elif kind == "ad_image":
+        content, ext, content_type = await _read_image(file, AD_IMAGE_MAX_BYTES, "Advert image")
+        org.ad_image_object = _put_image(settings, "sponsor-ads", org, content, ext, content_type)
+    else:
+        raise HTTPException(status_code=404, detail="Not found")
+    await db.commit()
+    await db.refresh(org)
+    return sponsorship.branding(org)
+
+
+@portal_router.delete("/branding/ad_image")
+async def remove_my_ad_image(org: Organization = Depends(get_current_sponsor), db: AsyncSession = Depends(get_db)):
+    org.ad_image_object = None
+    await db.commit()
+    await db.refresh(org)
+    return sponsorship.branding(org)
+
+
 # ---------------------------------------------------------------------------
 # admin
 # ---------------------------------------------------------------------------
@@ -399,7 +532,7 @@ async def update_sponsor(
     before = {
         k: getattr(org, k) for k in (
             "name", "package", "contact_email", "contact_name", "contact_phone", "price_per_certificate_kobo",
-            "deposit_kobo", "learner_cap", "is_active", "portal_email", "notes",
+            "deposit_kobo", "learner_cap", "is_active", "portal_email", "notes", "ad_suspended",
         )
     }
     data = body.model_dump(exclude_unset=True)
@@ -433,6 +566,8 @@ async def update_sponsor(
             action = "sponsor.activate" if org.is_active else "sponsor.deactivate"
         elif set(changes) <= {"portal_password", "portal_email"}:
             action = "sponsor.portal_login"
+        elif set(changes) == {"ad_suspended"}:
+            action = "sponsor.advert_suspend" if org.ad_suspended else "sponsor.advert_restore"
         audit.record(
             db, admin, action, f"{org.name}: changed {', '.join(sorted(changes))}",
             target_type="sponsor", target_id=org.id, details=changes, request=request,
@@ -521,32 +656,8 @@ async def upload_logo(
     """PNG or JPEG, up to 1 MB. Checked by magic bytes and by actually
     decoding it, so a bad file fails here rather than on a certificate."""
     org = await _get_org(db, org_id)
-    content = await file.read(LOGO_MAX_BYTES + 1)
-    if len(content) > LOGO_MAX_BYTES:
-        raise HTTPException(status_code=413, detail="Logo must be 1 MB or smaller")
-    kind = next((v for sig, v in LOGO_TYPES.items() if content.startswith(sig)), None)
-    if not kind:
-        raise HTTPException(status_code=415, detail="Logo must be a PNG or JPEG image")
-    try:
-        from PIL import Image
-        with Image.open(io.BytesIO(content)) as img:
-            img.verify()
-    except Exception:
-        raise HTTPException(status_code=415, detail="Logo image could not be read")
-
-    ext, content_type = kind
-    object_name = f"sponsor-logos/{org.id}-{int(datetime.utcnow().timestamp())}.{ext}"
-    from minio import Minio
-    try:
-        client = Minio(
-            settings.MINIO_ENDPOINT,
-            access_key=settings.MINIO_ACCESS_KEY,
-            secret_key=settings.MINIO_SECRET_KEY,
-            secure=settings.MINIO_SECURE,
-        )
-        client.put_object(settings.MINIO_BUCKET, object_name, io.BytesIO(content), len(content), content_type=content_type)
-    except Exception:
-        raise HTTPException(status_code=503, detail="File storage unavailable — try again")
+    content, ext, content_type = await _read_image(file, LOGO_MAX_BYTES, "Logo")
+    object_name = _put_image(settings, "sponsor-logos", org, content, ext, content_type)
     org.logo_object = object_name
     audit.record(
         db, admin, "sponsor.logo", f"{org.name}: uploaded a new logo", target_type="sponsor", target_id=org.id,

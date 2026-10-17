@@ -180,6 +180,25 @@ export const employersAPI = {
 // Learner app (/learn) — separate token + no admin redirect on 401
 // ---------------------------------------------------------------------------
 
+// White-label sponsor branding (public landing page /s/<code>, /learn, portal)
+export interface SponsorAdvert {
+  headline: string; body: string | null; cta_label: string | null; cta_url: string | null; image_url: string | null
+}
+export interface SponsorBrandBase {
+  sponsor_name: string; tagline: string | null; welcome_message: string | null; brand_color: string | null
+  website_url: string | null; logo_url: string | null; advert: SponsorAdvert | null
+}
+export interface SponsorBrand extends SponsorBrandBase { code: string; join_url: string; telegram_url: string | null }
+export interface SponsorBranding {
+  brand_color: string | null; tagline: string | null; welcome_message: string | null; website_url: string | null
+  ad_enabled: boolean; ad_headline: string | null; ad_body: string | null; ad_cta_label: string | null; ad_cta_url: string | null
+  logo_url: string | null; ad_image_url: string | null; ad_suspended: boolean; ad_live: boolean
+}
+export type BrandingEdit = Partial<Omit<SponsorBranding, 'logo_url' | 'ad_image_url' | 'ad_suspended' | 'ad_live'>>
+
+/** Brand image paths come back relative to the API. */
+export const assetUrl = (path: string | null): string | null => (path ? `${API_BASE_URL}${path}` : null)
+
 export const LEARN_TOKEN_KEY = 'learn_token'
 
 const learnClient: AxiosInstance = axios.create({
@@ -230,6 +249,11 @@ export const learnAPI = {
 
   lookupSponsor: async (code: string): Promise<{ code: string; sponsor_name: string }> =>
     (await learnClient.get(`/api/v1/sponsors/code/${encodeURIComponent(code)}`)).data,
+
+  brand: async (code: string): Promise<SponsorBrand> =>
+    (await learnClient.get(`/api/v1/sponsors/brand/${encodeURIComponent(code)}`)).data,
+
+  mySponsor: async (): Promise<{ sponsor: SponsorBrandBase | null }> => (await learnClient.get('/api/v1/learn/sponsor')).data,
 
   login: async (phone_number: string, pin: string): Promise<LearnAuth> =>
     (await learnClient.post('/api/v1/learn/login', { phone_number, pin })).data,
@@ -295,6 +319,7 @@ export interface SponsorDashboard {
   }
   codes: SponsorCodeSummary[]
   account: SponsorAccount
+  branding: SponsorBranding
   payments_enabled: boolean
 }
 export interface SponsorLearner {
@@ -325,6 +350,15 @@ export const sponsorAPI = {
     (await sponsorClient.get(`/api/v1/sponsors/me/certificates/${encodeURIComponent(certificateId)}/pdf`, { responseType: 'blob' })).data,
   certificateLink: async (certificateId: string, days = 7): Promise<ShareLink> =>
     withFullUrl((await sponsorClient.post(`/api/v1/sponsors/me/certificates/${encodeURIComponent(certificateId)}/link`, { days })).data),
+  branding: async (): Promise<SponsorBranding> => (await sponsorClient.get('/api/v1/sponsors/me/branding')).data,
+  updateBranding: async (body: BrandingEdit): Promise<SponsorBranding> =>
+    (await sponsorClient.patch('/api/v1/sponsors/me/branding', body)).data,
+  uploadBrandImage: async (kind: 'logo' | 'ad_image', file: File): Promise<SponsorBranding> => {
+    const data = new FormData()
+    data.append('file', file)
+    return (await sponsorClient.post(`/api/v1/sponsors/me/branding/${kind}`, data, { headers: { 'Content-Type': 'multipart/form-data' } })).data
+  },
+  removeAdImage: async (): Promise<SponsorBranding> => (await sponsorClient.delete('/api/v1/sponsors/me/branding/ad_image')).data,
 }
 
 // ---------------------------------------------------------------------------

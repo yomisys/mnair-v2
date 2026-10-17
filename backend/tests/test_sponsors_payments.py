@@ -491,3 +491,117 @@ async def test_logo_upload_rejects_non_images(test_db, client):
         files={"file": ("logo.png", b"GIF89a not allowed", "image/png")},
     )
     assert r.status_code == 415
+
+
+# ---------------------------------------------------------------------------
+# White-label landing page + sponsor advert
+# ---------------------------------------------------------------------------
+
+def sponsor_bearer(org):
+    return {"Authorization": f"Bearer {create_access_token(data={'sub': f'sponsor:{org.id}'})}"}
+
+
+def tiny_png() -> bytes:
+    import io
+    from PIL import Image
+    buf = io.BytesIO()
+    Image.new("RGB", (4, 4), (0, 135, 81)).save(buf, format="PNG")
+    return buf.getvalue()
+
+
+@pytest.fixture
+def fake_storage(monkeypatch):
+    """In-memory MinIO for brand images."""
+    store = {}
+
+    class FakeMinio:
+        def __init__(self, *a, **kw):
+            pass
+
+        def put_object(self, bucket, name, data, length, content_type=None):
+            store[name] = data.read()
+
+    from app.services import certificate_files
+    monkeypatch.setattr("minio.Minio", FakeMinio)
+    monkeypatch.setattr(certificate_files, "_storage_client", lambda settings: None)
+    monkeypatch.setattr(certificate_files, "_read_object", lambda client, bucket, name: store.get(name))
+    return store
+
+
+@pytest.mark.asyncio
+async def test_sponsor_brands_landing_page_and_runs_advert(test_db, client, fake_storage):
+    from app.main import app
+    settings = make_settings(TELEGRAM_BOT_USERNAME="MnairBot")
+    app.dependency_overrides[get_settings] = lambda: settings
+    org, _ = await make_org(test_db, portal_email="pastor@grace.example", hashed_password=get_password_hash("a-long-password"))
+    headers = sponsor_bearer(org)
+
+    # Unbranded: landing page still works, no advert
+    page = (await client.get("/api/v1/sponsors/brand/grace-7k2q")).json()
+    assert page["sponsor_name"] == "Grace Chapel" and page["code"] == "GRACE-7K2Q"
+    assert page["join_url"].endswith("/learn?code=GRACE-7K2Q")
+    assert page["telegram_url"] == "https://t.me/MnairBot?start=GRACE-7K2Q"
+    assert page["advert"] is None and page["logo_url"] is None
+    assert "price_per_certificate_kobo" not in page and "contact_email" not in page
+
+    # Validation: colour format, and no javascript: links reach learners
+    r = await client.patch("/api/v1/sponsors/me/branding", headers=headers, json={"brand_color": "green"})
+    assert r.status_code == 422
+    r = await client.patch("/api/v1/sponsors/me/branding", headers=headers, json={"ad_cta_url": "javascript:alert(1)"})
+    assert r.status_code in (400, 422)  # XSS middleware or the schema
+    r = await client.patch("/api/v1/sponsors/me/branding", headers=headers, json={"ad_cta_url": "ftp://grace.example"})
+    assert r.status_code == 422
+    # The admin override is not something the sponsor can set
+    r = await client.patch("/api/v1/sponsors/me/branding", headers=headers, json={"ad_suspended": False})
+    assert r.status_code == 200 and r.json()["ad_suspended"] is False
+
+    r = await client.patch("/api/v1/sponsors/me/branding", headers=headers, json={
+        "brand_color": "#7b1fa2", "tagline": "  Raising a digital generation  ",
+        "welcome_message": "Free AI course for our members.",
+        "ad_enabled": True, "ad_headline": "Sunday Tech Service", "ad_body": "Join us at 10am.",
+        "ad_cta_label": "Plan a visit", "ad_cta_url": "https://grace.example/visit",
+    })
+    assert r.status_code == 200, r.text
+    b = r.json()
+    assert b["brand_color"] == "#7B1FA2" and b["tagline"] == "Raising a digital generation" and b["ad_live"] is True
+
+    # Images: rejected when not an image, stored and served when PNG
+    r = await client.post("/api/v1/sponsors/me/branding/ad_image", headers=headers,
+                          files={"file": ("x.png", b"not an image", "image/png")})
+    assert r.status_code == 415
+    for kind in ("logo", "ad_image"):
+        r = await client.post(f"/api/v1/sponsors/me/branding/{kind}", headers=headers,
+                              files={"file": ("x.png", tiny_png(), "image/png")})
+        assert r.status_code == 200, r.text
+    assert len(fake_storage) == 2
+
+    page = (await client.get("/api/v1/sponsors/brand/GRACE-7K2Q")).json()
+    assert page["brand_color"] == "#7B1FA2"
+    assert page["advert"]["headline"] == "Sunday Tech Service"
+    assert page["advert"]["cta_url"] == "https://grace.example/visit"
+    img = await client.get(page["advert"]["image_url"])
+    assert img.status_code == 200 and img.headers["content-type"] == "image/png"
+    assert (await client.get(page["logo_url"])).content.startswith(b"\x89PNG")
+    assert (await client.get(f"/api/v1/sponsors/assets/{org.id}/secrets")).status_code == 404
+
+    # A sponsored learner sees the same advert inside /learn
+    learner = await make_learner(test_db, "+2348031119999")
+    learner.sponsor_code_id = (await test_db.execute(select(SponsorCode.id).where(SponsorCode.organization_id == org.id))).scalar_one()
+    await test_db.commit()
+    mine = (await client.get("/api/v1/learn/sponsor", headers=bearer(str(learner.id)))).json()
+    assert mine["sponsor"]["advert"]["headline"] == "Sunday Tech Service"
+    other = await make_learner(test_db, "+2348031119998")
+    assert (await client.get("/api/v1/learn/sponsor", headers=bearer(str(other.id)))).json() == {"sponsor": None}
+
+    # Admin suspends the advert: it disappears everywhere, sponsor can't lift it
+    admin = User(phone_number="+2348030000009", name="Admin", role=UserRole.ADMIN, email="z@mnair.ng", consent_given=True)
+    test_db.add(admin)
+    await test_db.commit()
+    r = await client.patch(f"/api/v1/admin/sponsors/{org.id}", headers=bearer(str(admin.id)), json={"ad_suspended": True})
+    assert r.status_code == 200
+    assert (await client.get("/api/v1/sponsors/brand/GRACE-7K2Q")).json()["advert"] is None
+    await client.patch("/api/v1/sponsors/me/branding", headers=headers, json={"ad_enabled": True})
+    b = (await client.get("/api/v1/sponsors/me/branding", headers=headers)).json()
+    assert b["ad_suspended"] is True and b["ad_live"] is False
+    dash = (await client.get("/api/v1/sponsors/me/dashboard", headers=headers)).json()
+    assert dash["branding"]["ad_suspended"] is True

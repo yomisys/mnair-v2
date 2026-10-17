@@ -7,6 +7,7 @@ Payment rows at read time (see app.models.sponsor for why).
 """
 
 from __future__ import annotations
+import hashlib
 import re
 import secrets
 from dataclasses import dataclass
@@ -363,6 +364,7 @@ async def dashboard(db: AsyncSession, org: Organization) -> Dict[str, Any]:
             for c, l, m, a, n in by_code
         ],
         "account": account,
+        "branding": branding(org),
     }
 
 
@@ -418,3 +420,64 @@ async def organization_list(db: AsyncSession) -> List[Dict[str, Any]]:
             **account,
         })
     return out
+
+
+# ---------------------------------------------------------------------------
+# white-label branding + advert
+# ---------------------------------------------------------------------------
+
+BRAND_FIELDS = (
+    "brand_color", "tagline", "welcome_message", "website_url",
+    "ad_enabled", "ad_headline", "ad_body", "ad_cta_label", "ad_cta_url",
+)
+
+
+def asset_url(org: Organization, kind: str) -> Optional[str]:
+    """Public URL of the sponsor's logo or advert image. The object name
+    changes on every upload, so its hash doubles as a cache buster."""
+    name = org.logo_object if kind == "logo" else org.ad_image_object
+    if not name:
+        return None
+    return f"/api/v1/sponsors/assets/{org.id}/{kind}?v={hashlib.sha1(name.encode()).hexdigest()[:10]}"
+
+
+def advert_live(org: Organization) -> bool:
+    return bool(org.is_active and org.ad_enabled and not org.ad_suspended and org.ad_headline)
+
+
+def advert(org: Organization) -> Optional[Dict[str, Any]]:
+    """The advert as learners see it, or None when it isn't showing."""
+    if not advert_live(org):
+        return None
+    return {
+        "headline": org.ad_headline,
+        "body": org.ad_body,
+        "cta_label": org.ad_cta_label if org.ad_cta_url else None,
+        "cta_url": org.ad_cta_url,
+        "image_url": asset_url(org, "ad_image"),
+    }
+
+
+def public_brand(org: Organization) -> Dict[str, Any]:
+    """Everything the white-label landing page and /learn may show. Public:
+    nothing about billing, contacts or learners."""
+    return {
+        "sponsor_name": org.name,
+        "tagline": org.tagline,
+        "welcome_message": org.welcome_message,
+        "brand_color": org.brand_color,
+        "website_url": org.website_url,
+        "logo_url": asset_url(org, "logo"),
+        "advert": advert(org),
+    }
+
+
+def branding(org: Organization) -> Dict[str, Any]:
+    """The sponsor's own editable view, including a switched-off advert."""
+    return {
+        **{f: getattr(org, f) for f in BRAND_FIELDS},
+        "logo_url": asset_url(org, "logo"),
+        "ad_image_url": asset_url(org, "ad_image"),
+        "ad_suspended": org.ad_suspended,
+        "ad_live": advert_live(org),
+    }

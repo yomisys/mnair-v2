@@ -97,6 +97,22 @@ class Organization(Base):
     # Logo printed on certificates — object name in the MinIO bucket
     logo_object: Mapped[Optional[str]] = mapped_column(String(255))
 
+    # White-label landing page (/s/<code>), edited by the sponsor in its portal
+    brand_color: Mapped[Optional[str]] = mapped_column(String(7), comment="#RRGGBB")
+    tagline: Mapped[Optional[str]] = mapped_column(String(160))
+    welcome_message: Mapped[Optional[str]] = mapped_column(Text)
+    website_url: Mapped[Optional[str]] = mapped_column(String(500))
+
+    # The sponsor's advert to its own learners (landing page + /learn).
+    # ad_suspended is the admin's override; the sponsor cannot clear it.
+    ad_enabled: Mapped[bool] = mapped_column(Boolean, default=False, nullable=False)
+    ad_headline: Mapped[Optional[str]] = mapped_column(String(120))
+    ad_body: Mapped[Optional[str]] = mapped_column(Text)
+    ad_cta_label: Mapped[Optional[str]] = mapped_column(String(40))
+    ad_cta_url: Mapped[Optional[str]] = mapped_column(String(500))
+    ad_image_object: Mapped[Optional[str]] = mapped_column(String(255))
+    ad_suspended: Mapped[bool] = mapped_column(Boolean, default=False, nullable=False)
+
     is_active: Mapped[bool] = mapped_column(Boolean, default=True, nullable=False)
     notes: Mapped[Optional[str]] = mapped_column(Text)
     created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=datetime.utcnow, nullable=False)

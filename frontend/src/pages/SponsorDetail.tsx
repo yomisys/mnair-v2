@@ -6,7 +6,8 @@ import {
   TableRow, Tabs, TextField, Tooltip, Typography,
 } from '@mui/material'
 import { ContentCopy as CopyIcon } from '@mui/icons-material'
-import { adminAPI, AdminPayment, formatNaira, saveBlob, SponsorStatement } from '../services/api'
+import { adminAPI, AdminPayment, formatNaira, saveBlob, SponsorBranding, SponsorStatement } from '../services/api'
+import { SponsorAdvertCard } from '../components/SponsorBrand'
 import {
   CertificateActions, copyText, errorText, fmtDate, Loading, nairaToKobo, PageHeader, StatCard, StatusChip, useConfirm, useNotice,
 } from '../components/AdminKit'
@@ -16,7 +17,7 @@ import { PACKAGES } from './SponsorsAdmin'
  * Admin: one sponsor, end to end — account and progress, codes (add, cap,
  * expiry, switch off), learners with certificate download/share, payments
  * (Paystack links, record or void a transfer), monthly statement, and
- * settings (edit, prices, portal login, logo, deactivate).
+ * settings (edit, prices, portal login, logo, advert moderation, deactivate).
  */
 
 interface Code {
@@ -38,6 +39,7 @@ interface Detail {
     certificates_billed: number; charged_kobo: number; paid_kobo: number; deposit_paid_kobo: number
     deposit_outstanding_kobo: number; credit_remaining_kobo: number; amount_due_kobo: number
   }
+  branding: SponsorBranding
   payments_enabled: boolean
 }
 interface LearnerItem {
@@ -563,8 +565,52 @@ const SettingsTab: React.FC<{ data: Detail; run: Run }> = ({ data, run }) => {
               onChange={(e) => { const file = e.target.files?.[0]; e.target.value = ''; if (file) run(() => adminAPI.uploadLogo(o.id, file), 'Logo saved.') }} />
           </Button>
         </Paper>
+        <AdvertModeration data={data} run={run} />
       </Grid>
     </Grid>
+  )
+}
+
+const AdvertModeration: React.FC<{ data: Detail; run: Run }> = ({ data, run }) => {
+  const o = data.organization
+  const b = data.branding
+  const page = data.codes.find((c) => c.is_active)
+  const status = b.ad_suspended ? 'Paused by MNAIR' : b.ad_live ? 'Live to learners' : b.ad_enabled ? 'On, but no headline' : 'Off (sponsor)'
+  return (
+    <Paper elevation={0} sx={{ ...card, mt: 2 }}>
+      <Stack direction="row" alignItems="center" justifyContent="space-between" sx={{ mb: 1 }}>
+        <Typography fontWeight={700}>Branded page and advert</Typography>
+        <Chip size="small" label={status} color={b.ad_live ? 'success' : b.ad_suspended ? 'warning' : 'default'} />
+      </Stack>
+      <Typography variant="body2" color="text.secondary" sx={{ mb: 1.5 }}>
+        The sponsor edits this in their portal. Pausing hides the advert everywhere, and the sponsor cannot turn it back on.
+      </Typography>
+      <Stack direction="row" spacing={1} alignItems="center" sx={{ mb: 1.5 }}>
+        <Box sx={{ width: 20, height: 20, borderRadius: '50%', bgcolor: b.brand_color || '#008751', border: '1px solid', borderColor: 'grey.300' }} />
+        <Typography variant="body2">{b.brand_color || 'Default colour'}</Typography>
+        {page && (
+          <Link href={`/s/${encodeURIComponent(page.code)}`} target="_blank" rel="noopener noreferrer" variant="body2" sx={{ ml: 'auto' }}>
+            Open their page
+          </Link>
+        )}
+      </Stack>
+      {b.ad_headline && (
+        <Box sx={{ mb: 1.5 }}>
+          <SponsorAdvertCard
+            variant="compact"
+            sponsorName={o.name}
+            advert={{ headline: b.ad_headline, body: b.ad_body, cta_label: b.ad_cta_label, cta_url: b.ad_cta_url, image_url: b.ad_image_url }}
+          />
+        </Box>
+      )}
+      <Button
+        variant="outlined"
+        color={b.ad_suspended ? 'success' : 'warning'}
+        onClick={() => run(() => adminAPI.updateSponsor(o.id, { ad_suspended: !b.ad_suspended }), b.ad_suspended ? 'Advert allowed again.' : 'Advert paused.')}
+      >
+        {b.ad_suspended ? 'Allow advert' : 'Pause advert'}
+      </Button>
+    </Paper>
   )
 }
 

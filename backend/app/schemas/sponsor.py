@@ -4,6 +4,7 @@ All money is kobo (int).
 """
 
 from __future__ import annotations
+import re
 from datetime import datetime
 from typing import Literal, Optional
 
@@ -68,6 +69,57 @@ class OrganizationUpdate(BaseModel):
     portal_email: Optional[EmailStr] = None
     portal_password: Optional[str] = Field(None, min_length=10, max_length=128)
     notes: Optional[str] = Field(None, max_length=2000)
+    # Admin override: hide the sponsor's advert whatever the sponsor sets
+    ad_suspended: Optional[bool] = None
+
+
+HEX_COLOR = re.compile(r"^#[0-9A-Fa-f]{6}$")
+
+
+def _web_url(v: Optional[str]) -> Optional[str]:
+    """Only plain http(s) links: these are rendered as <a href> to learners,
+    so 'javascript:' and friends must never get through."""
+    if v is None:
+        return v
+    v = v.strip()
+    if not v:
+        return None
+    if not re.match(r"^https?://[^\s/$.?#][^\s]*$", v, re.IGNORECASE):
+        raise ValueError("Enter a full web address starting with https://")
+    return v
+
+
+class BrandingUpdate(BaseModel):
+    """What a sponsor edits in its portal. Empty strings clear a field."""
+    brand_color: Optional[str] = None
+    tagline: Optional[str] = Field(None, max_length=160)
+    welcome_message: Optional[str] = Field(None, max_length=1000)
+    website_url: Optional[str] = Field(None, max_length=500)
+    ad_enabled: Optional[bool] = None
+    ad_headline: Optional[str] = Field(None, max_length=120)
+    ad_body: Optional[str] = Field(None, max_length=600)
+    ad_cta_label: Optional[str] = Field(None, max_length=40)
+    ad_cta_url: Optional[str] = Field(None, max_length=500)
+
+    @field_validator("brand_color")
+    @classmethod
+    def _color(cls, v: Optional[str]) -> Optional[str]:
+        if v is None or not v.strip():
+            return None
+        v = v.strip()
+        if not HEX_COLOR.match(v):
+            raise ValueError("Brand colour must look like #0A7D4F")
+        return v.upper()
+
+    @field_validator("tagline", "welcome_message", "ad_headline", "ad_body", "ad_cta_label")
+    @classmethod
+    def _text(cls, v: Optional[str]) -> Optional[str]:
+        return (v.strip() or None) if v is not None else None
+
+    @field_validator("website_url", "ad_cta_url")
+    @classmethod
+    def _url(cls, v: Optional[str]) -> Optional[str]:
+        return _web_url(v)
 
 
 class CodeCreate(BaseModel):
