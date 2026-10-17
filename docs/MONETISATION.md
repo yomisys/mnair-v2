@@ -82,12 +82,44 @@ sponsor owes.
    the join link and its portal login.
 6. Only when you choose to: `CERTIFICATE_PAYWALL_ENABLED=true`.
 
+### Upgrading to sponsor branding + adverts
+
+Do this once on every existing database (production, staging, local),
+**before** starting the new backend:
+
+```bash
+# Docker
+docker-compose exec backend python migrate_v5_sponsor_branding.py
+# or from a venv, inside backend/
+python migrate_v5_sponsor_branding.py
+```
+
+It adds 11 columns to `organizations`: `brand_color`, `tagline`,
+`welcome_message`, `website_url`, the `ad_*` advert fields and
+`ad_suspended`. It works on PostgreSQL and SQLite, and you can run it again
+safely. A brand-new database doesn't need it. If you skip it, every sponsor
+query fails because the new columns are missing.
+
+After it runs:
+
+- Existing sponsors start unbranded with no advert. Their `/s/<CODE>` page
+  uses the default green until they fill in the **Brand** tab.
+- Logo and advert-image uploads are stored in MinIO, so MinIO must be
+  reachable. Text, colour and advert fields work without it.
+- Admins can pause a sponsor's advert in Admin → Sponsors → Settings, and
+  the sponsor can't turn it back on.
+
 ## API
 
 | Method | Path | Who |
 |---|---|---|
 | GET | `/api/v1/sponsors/code/{code}` | public: sponsor name for the join page |
+| GET | `/api/v1/sponsors/brand/{code}` | public: branding + live advert for `/s/<CODE>` |
+| GET | `/api/v1/sponsors/assets/{org_id}/{logo\|ad_image}` | public: sponsor images |
 | POST | `/api/v1/sponsors/login` | sponsor |
+| GET/PATCH | `/api/v1/sponsors/me/branding` | sponsor |
+| POST/DELETE | `/api/v1/sponsors/me/branding/{logo\|ad_image}` (≤ 1 MB / 2 MB) | sponsor |
+| GET | `/api/v1/learn/sponsor` | learner: their sponsor's branding + advert |
 | GET | `/api/v1/sponsors/me/dashboard`, `/learners`, `/learners.csv`, `/statement?year&month` | sponsor |
 | POST | `/api/v1/sponsors/me/pay` `{purpose: deposit\|balance}` | sponsor (amount computed server-side) |
 | GET/POST/PATCH | `/api/v1/admin/sponsors`, `/{id}`, `/{id}/codes`, `/codes/{id}` | admin |

@@ -204,7 +204,18 @@ under **Admin → Sponsors**. Payments go through Paystack (card, transfer,
 USSD). There is an optional ₦2,000 individual verified certificate,
 **off by default** (`CERTIFICATE_PAYWALL_ENABLED`).
 
-Upgrading an existing database: `python backend/migrate_v3_sponsors.py`.
+Each sponsor code also has a white-labelled landing page at `/s/<CODE>`.
+The sponsor's colour, logo and welcome message lead the page, and an advert
+the sponsor writes is shown to its learners. Sponsors edit both from the
+**Brand** tab in `/sponsor`.
+
+Upgrading an existing database: run these in order. Both are safe to re-run.
+
+```bash
+python backend/migrate_v3_sponsors.py          # sponsors, codes, payments
+python backend/migrate_v5_sponsor_branding.py  # sponsor branding + advert columns
+```
+
 See [docs/MONETISATION.md](docs/MONETISATION.md) for the billing model, API and go-live checklist.
 
 ## Documentation
